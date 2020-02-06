@@ -1,0 +1,48 @@
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			a{
+				text-decoration:none;
+				color: black;
+			}
+			.favorite_top{
+				text-align:center;
+			}
+				.favorite_image{
+					width : 150px;
+					display:inline-block;
+				}
+				.favorite_detail{
+					width : 500px;
+					display:inline-block;
+					text-align : justify;
+					vertical-align: top;				
+				}
+		</style>
+		<script type="text/javascript">
+			function parentCall(){
+				//parent.movieDetail();
+				window.parent.location.href = "../cinema/movie_contents.html";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="favorite_top">
+			<div class="favorite_image">
+				<a href="#" onclick="parentCall()"><img src="../image/movie/101_01.jpg" width="120" height="180"/></a>
+			</div>
+			<div class="favorite_detail">
+				<b>해치지 않아</b><br>
+				개봉일 2020.01.17<br><br>	
+				“사자? 호랑이? 공룡? 다~ 됩니다!”<br>
+				쫄지마! 티 안나! 털 날리며, 당당하게!<br>
+				생계형 수습 변호사 ‘태수’에게 찾아온 일생일대의 기회, 위기의 동물원 ‘동산파크’를 구하라!<br>
+				<br>
+				<a href="">리스트 제거</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EZEN CINEMA</title>
+<style>
+.movie_home_page { width: 1000px; margin: 0 auto;}
+.clstable {border-top: 2px solid black; border-bottom: 1px solid black;}
+ 
+</style>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<div class="movie_home_page">
+		<form>
+			<table border style="border-collapse: collapse; text-align: center;"
+				align="center" height="400px" width="800px">
+				<tr>
+					<th rowspan="2" style="width: 10%;">상영시간</th>
+					<th style="height:50px;">예매정보</th>
+					<th>결제수단</th>
+					<th>결제하기</th>
+				</tr>
+				<tr>
+					<td rowspan="7" width="25%">
+						<div>
+							<img src="../image/movie/101_01.jpg" style="width: 100px;" /><br>
+							<img src="../image/movie/12age.png" style="width: 25px;" /> <b
+								style="font-size: 20px;">해지지않아</b>
+						</div>
+						<table style="text-align: right;" align="center">
+							<tr>
+								<td>일시</td>
+								<td style="text-align: left;">: 1/26 09:00</td>
+							</tr>
+							<tr>
+								<td>영화관</td>
+								<td style="text-align: left;">: 강남역</td>
+							</tr>
+							<tr>
+								<td>인원</td>
+								<td style="text-align: left;">: 성인 1</td>
+							</tr>
+							<tr>
+								<td>좌석</td>
+								<td style="text-align: left;">: C5</td>
+							</tr>
+							<tr><td colspan="2" style="text-align:center;">
+								<input type="button" value="이전" onclick="location.href='reservation_seat.html'"/></td></tr>
+						</table>
+					</td>
+					<td rowspan="7" width="35%">
+						<div style="text-align: left; padding-left: 5px">
+							<form>
+								<span style="font-size: 20px;">할인/마일리지</span><br>
+								<input class="pay_button" type="button" name="vip" value="VIP" />
+								<input class="pay_button" type="button" name="preTicket" value="관람권" />
+								<input class="pay_button" type="button" name="saleTicket" value="할인권" />
+								<input class="pay_button" type="button" name="mileage" value="마일리지" />
+								<br>
+								<br>
+								<br>
+								<br> <span style="font-size: 20px;">결제수단 선택</span><br>
+								<label><input type="radio" name="howpay" checked>신용카드</label><br>
+								<label><input type="radio" name="howpay">휴대폰결제</label><br>
+								<label><input type="radio" name="howpay">무통장입금</label><br>
+							</form>
+						</div>
+					</td>
+					<td rowspan="7" style="width:30%;">
+						<br><br><br><br><br><br><br>
+						<table style="text-align:left; background-color:gray; color:white; width:100%; border:0px solid black;">
+							<tr><td>상품금액</td><td style="text-align:right;">10,000원</td></tr>
+							<tr><td>할인금액</td><td style="text-align:right;">- 0원</td></tr>
+							<tr><td>&nbsp;&nbsp;- VIP</td><td style="text-align:right;">- 0원</td></tr>
+							<tr><td>&nbsp;&nbsp;- 관람권</td><td style="text-align:right;">- 0원</td></tr>
+							<tr><td>&nbsp;&nbsp;- 할인권</td><td style="text-align:right;">- 0원</td></tr>
+							<tr></tr>
+							<tr></tr>
+							<tr></tr>
+							<tr><td>결제금액</td><td style="text-align:right;">총 10,000원</td></tr>
+							<tr><th colspan="2" style="border:2px solid red;background-color:red;
+									text-align:center; fint-size:25px;"
+									onclick="location.href='reservation_end.html'">
+								결제하기								
+								</th></tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<th rowspan="2">좌석</th>
+				</tr>
+				<tr></tr>
+				<tr>
+					<th rowspan="2" style="background-color: lightblue;">결제</th>
+				</tr>
+				<tr></tr>
+				<tr>
+					<th rowspan="2">결제완료</th>
+				</tr>
+				<tr></tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+</html>

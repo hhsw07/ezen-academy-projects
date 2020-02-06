@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+		html, body {
+			width: 99.5%; height: 2000px;
+			text-align:center;
+		}
+		a{
+			text-decoration:none;
+			colo r: black;
+			font-size:30px;
+		}
+		#reviewtop{
+			width:100%; height:100%;
+		}
+			#reviewpage{
+				width:1100px;
+				height:100%;	
+				align:center; /*글자가 고정되게 해준다?*/
+				display:inline-block;
+			}
+				#reviewtitle{
+					font-size:26px;
+					text-align:justify;
+				}
+				#reviewdetail{
+					padding-top:26px;
+					text-align:justify;
+				}
+				#reviewsub{
+					padding-top:26px;
+					text-align:right;
+				}
+				#reviewcomment{
+					text-align:justify;
+					-ms-user-select: none; 
+				   -moz-user-select: -moz-none;
+				   -khtml-user-select: none;
+				   -webkit-user-select: none;
+				   user-select: none;
+				}
+					#commentdetail{
+						display:none;
+					}
+		</style>
+		<script type="text/javascript">
+			function changeDiv(){
+				var div = document.querySelector("#commentdetail");
+				if(div.style.display=='none'){
+					div.style.display='block';
+					}else{
+						div.style.display = 'none';
+					}
+			}
+
+	        function btn() {
+	            var material_an0 = '';
+                material_an0 += "<th colspan='2'><b>cine****</b></th>";
+
+	            var material1 = document.getElementById('comment_detail').value;
+	            
+	            var material_an1 = '';
+                if (material1 == '') {
+                    material_an1 = '';
+                } else {
+                    material_an1 += '<td>' + material1 + '</td>';
+                }
+
+	            // table 또는 tbody 객체를 가져온다.
+	            var clsTable = document.getElementById("comment_table");
+	            // table 또는 tbody 에 저장된 row 의 개수를 가져온다.
+	            var iRowCount = clsTable.rows.length;
+
+	            if (material1 == '') {
+	            	alert('내용을 입력해주세요!');
+                } else {
+                	 // table 또는 tbody 에 4개의 row 가 있다면 2 와 3 번째 사이에 
+    	            // 새로운 row 를 추가하고 싶으면 아래와 같이 호출한다.
+    	            // 맨 마지막에 row 를 추가하고 싶으면 iRowCount 를 입력한다.
+    	            var clsRow1 = clsTable.insertRow( iRowCount - 2 );
+    	            var clsRow2 = clsTable.insertRow( iRowCount - 2 );
+                	
+                	// 새로운 row 에 2개의 cell 을 추가한다.
+                	var clsCell1 = clsRow1.insertCell(0);
+     	            var clsCell2 = clsRow2.insertCell(0);
+     	            var clsCell3 = clsRow2.insertCell(1);
+     	        // 각 cell 에 텍스트를 입력한다.
+                	clsCell1.innerHTML = material_an1;
+    	            clsCell2.innerHTML = material_an0;
+    	            clsCell3.innerHTML = "20-01-28";
+                }
+
+	        }
+	        function del(){
+	        	 if(confirm("삭제하시려면 예를 누르시고 하지 않으시려면 아니오를 눌러주세요")){
+	        	 	location.href="movie_contents.html";
+	        	 	/*movie_contents페이지를 두 종류로 나눠서 출력하게끔 함*/
+	        	 }
+	        	 else{
+	        	 	alert('아니오를 누르셨습니다');
+	        	 }
+        	}
+		</script>
+	</head>
+	<body>
+		<div id="reviewtop">
+			<div id="reviewpage">
+				<div id="reviewtitle"><b>뻔뻔한 동물원 이야기로 제2의 '극한직업'을 노렸으나…</b></div>
+				<div id="reviewsub">작성자 : cine**** 등록일 : 2020-01-16</div>
+				<div id="reviewdetail">
+					영화 '해치지않아'는 재정 악화로 희귀 동물이 모두 팔려나간 동물원에 새로 부임한 원장 '태수'가 직원들에게 특수 동물 의상을 입혀, 위장 동물 근무로 관람객을 모은다는 소동을 담고 있습니다.<br><br>
+					- 연기? 좋아요! <br>
+					작품에 등장하는 안재홍, 강소라, 박영규, 김성오, 전여빈은 자신이 연기할 동물의 특징과 행동을 사전에 완벽히 몸에 익힌 상태에서 모든 촬영 동선을 외워, 앞도 안 보이는 10kg에 달하는 동물 수트를 입고 연기해야 하는 악조건을 극복했는데요. 이런 고생 끝에 나온 북극곰, 사자, 고릴라, 나무늘보의 모습은 관객들의 폭소를 유발하는 성공적인 킬링 포인트가 되어주었습니다.<br><br>
+					- 때깔? 그럭저럭! <br>
+					특수분장팀은 동물원 수의사의 자문을 토대로 배우들의 동물 수트를 실제 동물에 가까워 보이도록 제작했는데요. 이는 배우가 입지 않은 기린 모형을 실제 기린이 한참 동안 바라봤다는 촬영 에피소드로도 짐작할 수 있습니다. 다만 북극곰 '까만코'의 CG 장면은 최근 개봉한 '닥터 두리틀' CG에 비해 다소 아쉬운 퀄리티를 보여주었습니다.<br><br>
+					- 개연성? 새로움? 그럭저럭! <br>
+					대형 로펌의 수습 변호사가 로펌 대표에 의해 동물원의 경영권을 맡게 된다는, 만화적이지만 신선한 소재로 출발한 '해치지않아'! 무리수 같은 설정이지만, '충분한 근거'로 뻔뻔하게 밀고 가던 이 영화는 그러나 이기적이었던 주인공이 인심 좋은 동물원 사람들을 만나 동화되기 시작하면서부터, 누구나 예상 가능한 익숙한 결말로 끝을 맺었는데요. 때문에 엉뚱한 상상력을 끝까지 밀고 갔던 '극한직업'에 비해서는 여러모로 아쉬운 작품이었습니다.<br><br>
+					초반의 독특하고 매력적인 설정이 점점 뒤로 갈수록 미지근해지는 안타까움은 있었지만, 동물 학대에 반대하는 '동물권'이란 참신한 메시지가 사랑스럽게 담긴 영화 '해치지않아'는 2020년 1월 15일 개봉했습니다.
+				</div>
+				<div id="reviewsub">
+					<form action="">
+						<input type="button" onclick="javascript:alert('추천되었습니다~');" value="추천"/>
+						<input type="button" onclick="location.href='movie_contents_afterreview.html'" value="목록"/>
+						<input type="button" onclick="location.href='error.html'" value="수정"/>
+						<input type="button" onclick="del()" value="삭제"/>
+					</form>
+				</div>
+				<div id="reviewcomment" onclick="changeDiv()">
+					댓글
+				</div>
+				<div id="commentdetail">
+					<form id="commentcreate">
+						<table id="comment_table" style="text-align:left;" align="center">
+							<tr><th colspan="2">wowl****</th></tr>
+							<tr><td style="width:800px; padding-left:20px;">정말 공감갑니다.</td><td>20-01-18</td></tr>
+							<tr><th colspan="2">novi****</th></tr>
+							<tr><td style="padding-left:20px;">공감가는 부분도 아닌부분도 있었네요..</td><td>20-01-18</td></tr>
+							<tr><th colspan="2">cine****</th></tr>
+							<tr>
+								<td style="padding-left:20px; align:center;">
+								<input type="text" style="width:750px;" name="aa" id="comment_detail" placeholder="깨끗한 댓글 환경을 위해 비속어 사용을 자제해주세요."/></td>
+								<td><input type="button" onclick="btn()" value="작성" /></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>		
+	</body>
+</html>

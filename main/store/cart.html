@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.clstable{border-top:2px solid black; border-bottom:1px solid black;}
+	#title{margin-top:30px; width:1000px; text-align:left; font-size:24px;}
+	table{width:1000px;}
+	tr th{font-size:20px; padding:15px;}
+	.itemright{text-align:right;}
+	.itemcenter{text-align:center;}
+	.itemleft{text-align:left;}
+	.listbtn{width:100px; height:30px}
+	ul li{list-style-type:none; margin:10px 0px;}
+	.itemexp{font-size:12px; color:#585858;}
+	input[type=submit]{width:250px; height:50px; font-size:20px; color:white; background-color:#4374D9;}
+	
+	input[type="checkbox"] {display: none;}
+	input[type="checkbox"] + label {
+		display: inline-block; width:17px; height: 17px; 
+		background: #fa3062; cursor: pointer; border-radius: 3px;float: right;
+	}
+	input[type="checkbox"]:checked + label {
+		background:url(../image/store/check.PNG) #fa3062 no-repeat center/10px 10px; float: right
+	}
+	
+	
+</style>
+<script type="text/javascript">
+function allck(val){
+    var obj = document.getElementsByName("ckitem");
+ 
+    if (val.checked == true){
+        for(var i=0; i<obj.length; i++){
+         obj[i].checked = true;
+        }
+    }else{
+        for(var i=0; i<obj.length; i++){
+         obj[i].checked = false;
+        }
+    }
+}
+</script>
+</head>
+<body>
+	<div align="center">
+		<div id="title"><strong>장바구니</strong></div>
+		<div style="margin:15px">&nbsp;</div>
+		<div>
+			<table class="clstable">
+				<colgroup>
+					<col width="5%">
+					<col width="13%">
+					<col width="19%">
+					<col width="15%">
+					<col width="15%">
+					<col width="15%">
+					<col width="13%">
+					<col width="5%">
+				</colgroup>
+				<tr style="background-color:#EAEAEA;">
+					<th>
+						<input type="checkbox" id="ck00" name="ckitem" onclick="allck(this)" checked>
+						<label for="ck00"></label>
+					</th>
+					<th colspan="2">상품</th>
+					<th>판매금액</th>
+					<th>구매수량</th>
+					<th>결제금액</th>
+					<th colspan="2">&nbsp;</th>
+				</tr>
+				<tr>
+					<th>
+						<input type="checkbox" id="ck01" name="ckitem" checked>
+						<label for="ck01"></label>
+					</th>
+					<td class="itemright">
+						<img src="../image/store/2dticket.png" width="100px" style="margin-right:0px">
+					</td>
+					<td>
+						<ul>
+							<li><strong>일반관람권</strong></li>
+							<li class="itemexp">2D영화 관람권</li>
+						</ul>
+					</td>
+					<td class="itemcenter">10,000원</td>
+					<td class="itemcenter">
+						<select name="count" style="height:30px;">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+						<input type="button" name="changecnt" value="변경" style="height:30px;">	
+					</td>
+					<td class="itemcenter">10,000원</td>
+					<td>
+						<ul style="padding-left:15px;">
+							<li><a href="buy2d.html"><input type="button" class="listbtn" name="topay" value="바로구매"></a></li>
+							<li><a href="gift2d.html"><input type="button" class="listbtn" name="togift" value="선물하기"></a></li>
+						</ul>
+					</td>
+					<td style="padding-left:0px;">	
+						<input type="button" name="del" value="X" style="width:30px;height:30px; font-size:20px">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="itemright" style="width:1000px;padding:5px;">
+				<p class="itemexp">장바구니에 담긴 상품은 최대 30일까지 보관됩니다.</p>
+		</div>
+		<div style="margin:20px">&nbsp;</div>
+		<div>
+			<table class="clstable">
+				<colgroup>
+					<col style="width:30%">
+					<col style="width:36%">
+					<col style="width:34%">
+				</colgroup>
+				<thead style="background-color:#EAEAEA;">
+					<tr>
+						<th>총 상품 금액</th>
+						<th>할인금액</th>
+						<th>총 결제 예정금액</th>
+					</tr>
+				</thead>
+				<tbody class="itemcenter" style="font-size:18px;">
+					<tr>
+						<td><p><strong>10,000원</strong></p></td>
+						<td><p><strong>- 0</strong></p></td>
+						<td><p><strong>= 10,000원</strong></p></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="margin:20px">&nbsp;</div>
+		
+		
+		<div>
+			<a href="gift2d.html"><input type="submit" name="gift" value="선물하기"></a>
+			<a href="buy2d.html"><input type="submit" name="pay" value="결제하기"></a>
+		</div>
+		<div style="margin:10px">&nbsp;</div>
+	</div>
+	
+</body>
+</html>

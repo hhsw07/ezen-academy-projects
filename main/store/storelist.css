@@ -1,0 +1,10 @@
+@charset "UTF-8";
+	div{clear:both;} /*div에서 float:left으로 인한 겹침방지*/
+	a{color:black; text-decoration:none;} /*하이퍼링크 밑줄, 파란색보라색 없애기*/
+	.itemlist:hover{opacity:0.9;background-color:#A4A4A4;} /*상품 위에 커서 올리면 회색상자*/
+	ul li{list-style-type:none; float:left; margin-left:20px} /*리스트 마킹없애고 옆으로 정렬*/
+	.itemtitle{text-align:center; line-height:50%} /*상품명 가운데정렬*/
+	.price{text-align:right; margin-right:20px;line-height:150%} /*가격 오른쪽정렬*/
+	h3{margin:30px;}
+	p{font-size:12px; color:#585858;}
+	.store{padding:50px;}

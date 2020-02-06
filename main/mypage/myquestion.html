@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			a{
+				text-decoration:none;
+				color: black;
+			}
+			.question_top{
+				height:200px;
+			}
+				.question_info{
+					width : 500px;
+					display:inline-block;
+					text-align : justify;
+					vertical-align: top;				
+				}	
+					.question_title{
+						position:relative;
+					}
+					.question_answer{
+						position:relative;
+					   -ms-user-select: none; 
+					   -moz-user-select: -moz-none;
+					   -khtml-user-select: none;
+					   -webkit-user-select: none;
+					   user-select: none;
+					}
+					.question_detail1{
+						position:relative;
+						vertical-align: center;
+						display:none;
+					}
+					.question_detail2{
+						position:relative;
+						vertical-align: center;
+						display:none;
+					}
+					.question_detail3{
+						position:relative;
+						vertical-align: center;
+						display:none;
+					}
+					.answer_detail{
+						position:relative;
+						vertical-align: center;
+					}
+		</style>
+		<script type="text/javascript">
+			function changeDiv1(){
+				var div = document.querySelector(".question_detail1");
+				if(div.style.display=='none'){
+					div.style.display='block';
+				}else{
+					div.style.display = 'none';
+				}
+			}
+			function changeDiv2(){
+				var div = document.querySelector(".question_detail2");
+				if(div.style.display=='none'){
+					div.style.display='block';
+				}else{
+					div.style.display = 'none';
+				}
+			}
+			function changeDiv3(){
+				var div = document.querySelector(".question_detail3");
+				if(div.style.display=='none'){
+					div.style.display='block';
+				}else{
+					div.style.display = 'none';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="question_top">
+			<div class="question_info">
+				<div id="question_title3" class="question_title"><b>영화관에서 물건을 잃어버렸어요..</b><br>질문날짜 : 2020.01.22 | 답변 : 대기</div>
+				<div id="question_answer3" class="question_answer" onclick="changeDiv3()" ><b>상세</b></div>
+				<div class="question_detail3">
+				제가 어제 영화를 봤는데 영화관에서 지갑을 잃어버렸습니다.<br>
+				혹시 확인해주실 수 있으신가요..
+					<div class="answer_detail"></div>
+				</div>
+				<div>------------------</div>
+			</div>
+			<div class="question_info">
+				<div id="question_title2" class="question_title"><b>영화 예매내역을 바꾸고 싶은데요</b><br>질문날짜 : 2020.01.19 | 답변 : 완료</div>
+				<div id="question_answer2" class="question_answer" onclick="changeDiv2()" ><b>상세</b></div>
+				<div id="question_detail2" class="question_detail2">
+				제가 예매했던 영화가 오늘이 상영일인데 시간을 놓쳐서 날짜를 바꾸고 싶은데 가능할까요..<br>
+					<div class="answer_detail">
+					<b>답변</b><br>
+					안녕하세요 고객님, 항상 이젠영화관을 이용해주셔서 감사합니다.<br>
+					문의해주신 건은 애석하게도 이미 상영이 끝난 사항이라 바꾸실 수가 없습니다.<br>
+					도움을 드리지 못해 정말 죄송합니다.
+					</div>
+				</div>
+				<div>------------------</div>
+			</div>
+			<div class="question_info">
+				<div id="question_title1" class="question_title"><b>스토어에서 결제를 했는데 물건이 없어요</b><br>질문날짜 : 2020.01.15 | 답변 : 완료</div>
+				<div id="question_answer1" class="question_answer" onclick="changeDiv1()" ><b>상세</b></div>
+				<div id="question_detail1" class="question_detail1">
+				제가 저번주 월요일(1월 13일)에 영화를 볼때 먹을 팝콘을 결제했습니다.<br>
+				그런데 오늘 확인을 해보니 쿠폰리스트에 팝콘이 안보이는데 정상적으로 결제가 된건지 알고 싶습니다.
+					<div class="answer_detail">
+					<b>답변</b><br>
+					안녕하세요 고객님, 항상 이젠영화관을 이용해주셔서 감사합니다.<br>
+					문의해주신 건은 담당자를 통해서 알아본 결과 제대로 지급이 안된 것을 확인했습니다<br>
+					정말 죄송하며 이 점에 대해서 영화를 볼 수 있는 관람권도 추가적으로 지급해드렸습니다.<br>
+					앞으로도 이젠영화관을 사랑하고 이용해주시면 감사하겠습니다.
+					</div>
+				</div>
+				<div>------------------</div>
+			</div>
+		</div>
+	</body>
+</html>

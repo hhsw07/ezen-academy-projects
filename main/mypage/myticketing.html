@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			a{
+				text-decoration:none;
+				color: black;
+			}
+			.ticket_top{
+				text-align:center;
+			}
+				.ticket_image{
+					width : 150px;
+					display:inline-block;
+				}
+				.ticket_detail{
+					width : 500px;
+					display:inline-block;
+					text-align : justify;
+					vertical-align: top;				
+				}
+			
+		</style>
+		<script type="text/javascript">
+			function parentCall(){
+				//parent.movieDetail();
+				window.parent.location.href = "../cinema/movie_contents.html";
+			}
+		</script>
+	</head>
+	<body>	
+		<div class="ticket_top">
+			<div class="ticket_image">
+				<a href="#" onclick="parentCall()"><img src="../image/movie/101_01.jpg" width="120" height="180"/></a>
+			</div>
+			<div class="ticket_detail">
+				<h4>해치지 않아</h4>
+				상영일 : 2020.01.17 / 예매일 : 2020.01.15<br>
+				이젠시네마 종로점 / 성인 1명 7000원<br>
+				<br><br>
+				<a href="">예매취소</a>
+			</div>
+		</div>
+		<div class="ticket_top">
+			<div class="ticket_image">
+				<a href="#" onclick="parentCall()"><img src="../image/movie/101_01.jpg" width="120" height="180"/></a>
+			</div>
+			<div class="ticket_detail">
+				<h4>해치지 않아</h4>
+				상영일 : 2020.01.21 / 예매일 : 2020.01.17<br>
+				이젠시네마 종로점 / 성인 1명 7000원<br>
+				<br><br>
+				<a href="">예매취소</a>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			a{
+				text-decoration:none;
+				color: black;
+			}
+			.mysecession_top{
+				text-align:center;
+			}
+			.mysecession_explain{
+				text-align:justify;
+			}
+		</style>
+		<script type="text/javascript">
+			/*function submitForm() {
+				document.mysecession.action = "window.parent.location.href='mysecessionOK.html'"
+				document.mysecession.submit();
+			}*/
+			function parentCall(){
+				//parent.movieDetail();
+				window.parent.location.href = "mysecessionOK.html";
+			}
+		</script>
+	</head>
+	<body>
+		<div class="mysecession_top" action="window.parent.location.href = 'mysecessionOK.html'">
+			<form name="mysecession">
+				<h2>회원탈퇴 주의사항</h2>
+				<div class="mysecession_explain">
+				회원 탈퇴를 하시게 되면 회원님의 정보(구매내역, 마일리지, 예매정보 등)가 사라지게 되어 다시 복구할 수 없고
+				당 사에서는 이에 대한 책임을 지지 않습니다. 탈퇴를 원하신다면 아래 동의 버튼을 체크해주시고 비밀번호를 입력하신 후
+				<b>회원탈퇴</b> 버튼을 눌러주세요<br>
+				</div>
+				<input type="radio" value="secession"/> 동의함<br><br>
+				비밀번호 입력 : <input type="password" placeholder="비밀번호 입력"/><br><br>
+				<input type="button" onclick="parentCall()" value="회원탈퇴"/>
+			</form>
+		</div>
+	</body>
+</html>
