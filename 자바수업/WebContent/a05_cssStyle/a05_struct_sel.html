@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+/*
+# 구조 선택자.
+1. 화면에서 list형으로 나열된 데이터에 대한 css 처리
+2. 주요 속성
+	1) :first-child : 형제 관계에서 첫번째로 등장하는 태그
+					    같은 level의 형제 관계에 첫번째 요소가 해당 선택자일 때
+					  * 주의: 계층 안에서 형제관계에서 첫번째 요소.
+	2) :last-child : 형제 관계에서 마지막으로 등장하는 태그
+	3) :nth-child(수열) : 형제 관계에서 해당 수열이 반복적으로 처리
+		cf) 수열	2n : 2개 단위로 반복적 처리.
+				3n : 3개 단위로 반복적 처리.
+				1,2,3... : 1번째, 2번째, 3번쨰...
+		ex) nth-child(1): first-child와 동일
+	4) :nth-last-child(수열) : 형제 관계에서 해당 수열이 뒤에서부터 반복적으로 처리
+*/
+	h1:first-child{background-color:yellow;}
+	/*
+	h1이 같은 형제관계에서 첫번째로 나와야 위 css속성이 적용 된다.
+	ex)	h1:first-child{}
+		h1	적용됨					h2
+		h2							h1	적용안됨
+		h3							h1
+		
+	*/
+	h1:last-child{background-color:pink;}
+	h1:nth-child(2n){background-color:blue;}
+	h1:nth-child(2n+1){background-color:red;}
+	h1:nth-child(1){font-size:150%; background-color:rgba(51,255,102,0.5);}
+	h1:nth-child(2){font-size:2.0em;}
+	h1:nth-child(3){font-size:100px;}
+	
+	
+	td{text-align:center; font-size:20px;}
+	/* 선택자1, 선택자2 {속성:속성값;} : 선택자1, 선택자2에 동일한 속성설정*/
+	td:first-child, td:last-child{color:yellow;}
+	td:nth-child(3n){background-color:blue;}
+	td:nth-child(3n+1){background-color:green;}
+	td:nth-child(3n+2){background-color:red;}
+
+/* 
+# 크기 단위 처리
+1. % : 백분율 단위로 화면의 해상도에 따라서 크기가 자동으로 조절이 된다.(상대적 크기 설정)
+2. em : tag가 가지고 있는 기본적인 크기에서 배수단위로 조절. 0.5 => 1/2, 2.0 => 2배(상대적 크기 설정)
+3. px : 픽셀 단위로 조절.
+
+# 색상 설정
+1. 지정된 영문명
+	ex) h1{color:blue;}
+2. rgb색상 16진수 코드값
+	ex) h1{color:#0094ff;}
+3. rgb함수형: 0~255
+	ex) h1{color:rgb(255,255,255);}
+4. rgba : rgb함수에 투명도까지 추가. 투명도는 0 ~ 1.0 사이 (0:투명, 1:불투명)
+	ex) h1{color:rgba(255,255,255,0.5);}
+	
+ */
+
+
+
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<!--<h2>만약 h2가 첫번째로 나오면 h1:first-child 가 적용되지 않는다.</h2> -->
+	<h1>시작1</h1>	<!-- 형제관계의 첫번째(first-child) -->
+	<h1>시작2</h1>	<!-- 형제관계 -->
+	<h1>시작3</h1>	<!-- 형제관계 -->
+	<h1>시작4</h1>	<!-- 형제관계 -->
+	<h1>시작5</h1>	<!-- 형제관계 -->
+	<h1>시작6</h1>	<!-- 형제관계 -->
+	<h1>시작7</h1>	<!-- 형제관계 -->
+	<h1>시작8</h1>	<!-- 형제관계 -->
+	<h1>시작9</h1>	<!-- 형제관계의 마지막(last-child) -->
+	<!-- css에서 같은 우선순위(inline,id,class,태그)에서는 코드 진행순서에 따라 위보다 아래가 우선순위를 갖는다. -->
+<!-- 
+ex) 4X4 테이블 생성후, 번호를 1~16까지 붙인후 각 td의 첫번째와 마지막 글자 색상으로 노랑색, 3개 단위로 다른 배경색상을 설정하여 처리하세요.
+ -->
+	<table border style="border-collapse:collapse;">
+		<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+		<tr><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+		<tr><td>9</td><td>10</td><td>11</td><td>12</td></tr>
+		<tr><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+	</table>
+	
+</body>
+</html>

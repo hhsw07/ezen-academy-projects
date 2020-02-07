@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<!-- 
+# List 목록 처리
+1. ul: 순서 없는 목록(unordered list) 생성
+2. ol: 순서 있는 목록(ordered list) 생성
+3. 위 목록 태그의 하위 태그 li: 목록 요소(list item) 생성
+4. 기본 사용 방법
+	<ul>
+		<li>사과</li>
+		<li>바나나</li>
+		<li>딸기</li>
+	</ul> 
+	<ol>
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+5. 속성 설정
+	ul 속성=속성값
+	ol 속성=속성값
+	1) ul의 type 속성
+		ex) <ul type="square">: square(네모), disc(동그라미), circle(속빈원형)
+	2) ol의 type 속성
+		ex) <ol type="A"> : 넘버링 타입: 1, a, A, I, i
+6. 중첩 목록 만들기
+	ul, ol을 상위/하위에 중첩으로 설정하여 처리하는 것을 말한다.
+	<ul>
+		<li>html
+			<ol>
+				<li>html 기본구조</li>
+				<li>기본 태그</li>
+				<li>입력 양식 태그</li>
+			</ol>
+		</li>
+		<li>css
+			<ol>
+				<li>css 기본구조</li>
+				<li>css 속성</li>
+				<li>다양한 레이아웃의 구성과 기능</li>
+			</ol>
+		</li>
+		<li>javascript</li>
+		<li>database</li>
+		<li>java고급</li>
+		<li>jsp</li>
+		<li>스프링</li>
+	
+	</ul>
+
+ -->
+
+<body>
+	<h1>리스트형 데이터 처리</h1>
+	<h2>과일 리스트</h2>
+	<ul type="disc">	<!-- default 값 -->
+		<li>사과</li>
+		<li>바나나</li>
+		<li>딸기</li>
+	</ul>
+	<ul type="square">
+		<li>사과</li>
+		<li>바나나</li>
+		<li>딸기</li>
+	</ul>
+	<ul type="circle">
+		<li>사과</li>
+		<li>바나나</li>
+		<li>딸기</li>
+	</ul>
+	<h2>회원 이름 리스트(순서)</h2>
+	<ol type="1">		<!-- default 값 -->
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+	<ol type="A">
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+	<ol type="a">
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+	<ol type="I">
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+	<ol type="i">
+		<li>홍길동</li>
+		<li>김길동</li>
+		<li>신길동</li>
+	</ol>
+	<h2>중첩 구문 처리</h2>
+	<ul>
+		<li>html
+			<ol>
+				<li>html 기본구조</li>
+				<li>기본 태그</li>
+				<li>입력 양식 태그</li>
+			</ol>
+		</li>
+		<li>css
+			<ol>
+				<li>css 기본구조</li>
+				<li>css 속성</li>
+				<li>다양한 레이아웃의 구성과 기능</li>
+			</ol>
+		</li>
+		<li>javascript</li>
+		<li>database</li>
+		<li>java고급</li>
+		<li>jsp</li>
+		<li>스프링</li>
+	</ul>
+<!-- 
+ex) 중첩 리스트 구문 처리
+날짜별, 시간별 일정 계획을 중첩리스트 구문에 의해서 상위는 날짜, 하위 시간을 설정하여 리스트 처리하세요.
+날짜는 사각형 형태로, 시간은 로마표기 순으로 출력하세요.
+ -->
+ 	<h2>날짜별 일정 리스트	</h2>
+	<ul type="square">
+		<li>1/13
+			<ol  type="I">
+				<li>09:30 1교시 시작</li>
+				<li>10:30 2교시 시작</li>
+				<li>11:30 3교시 시작</li>
+			</ol>
+		</li>
+		<li>1/14
+			<ol  type="I">
+				<li>09:30 1교시 시작</li>
+				<li>10:30 2교시 시작</li>
+				<li>11:30 3교시 시작</li>
+			</ol>
+		</li>
+		<li>1/15
+			<ol  type="I">
+				<li>09:30 1교시 시작</li>
+				<li>10:30 2교시 시작</li>
+				<li>11:30 3교시 시작</li>
+			</ol>
+		</li>
+	</ul>
+
+	
+</body>
+</html>

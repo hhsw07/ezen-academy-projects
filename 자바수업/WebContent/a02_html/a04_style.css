@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/*
+ ex) a04_includeExp.html
+		h1, h3 배경색상, 글자색상 설정
+		body h1~h4가지 출력
+	 a04_style.css
+		h2, h4 배경색상, 글자색상 설정
+ */
+
+h2{
+	background-color:green;
+	color:yellow;
+}
+h4{
+	background-color:yellow;
+	color:green;	
+}

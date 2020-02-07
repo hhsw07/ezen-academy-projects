@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	
+<!-- 
+ex) a03_hrefExp.html 페이지에서
+	1) 절대경로로 구글사이트 호출하여 처리
+	2) 절대경로(웹서버기반)
+		WebContent\a02_html\a04_includeExp.html 페이지로 이동
+	3) 상대경로로 WebContents\index.jsp에 이동
+	4) 상대경로로 현재 페이지에서 sub2폴더 만들고, gogo.html 페이지로 이동
+	5) 상대경로로 WebContent\a02_html\배경이미지1.jpg 파일 호출
+	<a href="경로"></a>
+	
+ -->
+ 	<h1>절대경로, 상대경로 예제</h1><hr>
+	<a href="http://www.google.com/">절대경로 구글사이트 호출</a><br> 
+	<a href="http://localhost:7080/javaexp/a02_html/a04_includeExp.html">절대경로 WebContent\a02_html\a04_includeExp.html 페이지로 이동</a><br> 
+	<a href="/javaexp/a02_html/a04_includeExp.html">절대경로 WebContent\a02_html\a04_includeExp.html 페이지로 이동</a><br> 
+	<a href="../index.jsp">상대경로로 WebContents\index.jsp에 이동</a><br>
+	<a href="sub2/gogo.html">상대경로로 현재 페이지에서 sub2폴더 만들고, gogo.html 페이지로 이동</a><br>
+	<a href="../a02_html/배경이미지1.jpg">상대경로로 WebContent\a02_html\배경이미지1.jpg 파일 호출</a>
+
+<!-- 
+ex) a03_hrefExp.html에tj WebContent\a03_basicTag\sub2\gogo.html로 상호 이동되는 link 처리하시오.
+ -->
+ 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 	<h1 id="point03">여기는 hrefExp.html point03입니다.</h1>
+ 	<a href="http://localhost:7080/javaexp/a03_basicTag/sub2/gogo.html#point04">gogo.html의 point04로 절대주소 이동</a>
+ 	<a href="sub2/gogo.html#point04">gogo.html의 point04로 상대주소 이동</a>
+</body>
+</html>

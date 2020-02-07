@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+/*
+# css 선택자 처리2
+1. 반응형 선택자
+	1) 선택자: active - 해당 선택자를 클릭시 하고 있는 동안 일시적으로 적용. 
+	2) 선택자: hover - 마우스의 커서를 해당 선택자에 위치시켰을 때 적용.
+2. 상태 선택자: 상태의 변경에 따른 css 처리 변경
+	1) :checked - 해당 선택자가 checked 되었을 때
+		요소1+ 요소2 : 요소1을 앞에 둔 요소2 객체가 있을 때 처리할 내용
+	2) :focus - 해당 선택자에 focus를 위치시켰을 때
+	3) :enabled - 해당 선택자가 활성화 되었을 때
+	4) :disabled - 해당 선택자가 비활성화 되었을 때
+		
+
+*/
+
+	h1:active{background-color:yellow;}
+	h1:hover{color:blue;}
+	[type=checkbox]:checked + span{background-color:blue;}
+	/*
+	속성이 type=checkbox인 경우이고, 이 요소가 checked 된 상황에서 바로 옆 요소 객체가 span인 경우에 
+	배경색을 파란색으로 처리한다.
+	*/
+	
+	input[type=text]:focus{background-color:pink;}
+	#gogo01:enabled{background-color:green;}
+	input:disabled{background-color:yellow;}
+	
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<h1>시작</h1>
+	<input type="checkbox"/><span>선택1</span><br>
+	<input type="text" placeholder="이름" />
+	<h2>사용 가능</h2>
+	<input id="gogo01">
+	<h2>사용 불가능</h2>
+	<input disabled="disabled">
+</body>
+</html>
