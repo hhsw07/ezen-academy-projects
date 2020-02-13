@@ -279,24 +279,33 @@ VALUES(1,2,'x',to_date('2020/01/15','yyyy/mm/dd');
 SELECT pro03_sitter.sit_mem_id "시터ID", pro03_status.stat_startdate 시작일,
 		pro03_status.stat_enddate 종료일,	pro03_status.stat_pet_num 펫번호,
 		pro03_status.stat_care_num 케어분류번호
-FROM pro03_status, pro03_pet, pro03_sitter
-WHERE pro03_pet.pet_mem_id = 'hswpuppy'
+FROM pro03_status, pro03_pet, pro03_carekind, pro03_sitter
+WHERE pro03_status.stat_pet_num = pro03_pet.pet_num
+AND pro03_status.stat_care_num = pro03_carekind.care_num
+AND pro03_carekind.care_sit_num = pro03_sitter.sit_num
+AND pro03_pet.pet_mem_id = 'hswpuppy'
 AND stat_permission = 'o';
 
 /* 시터 id를 포함한 예약현황(보호자가 보는 화면)*/
 SELECT pro03_sitter.sit_mem_id "시터ID", pro03_status.stat_startdate 시작일,
 		pro03_status.stat_enddate 종료일,	pro03_status.stat_pet_num 펫번호,
 		pro03_status.stat_care_num 케어분류번호, pro03_status.stat_permission 승인상태
-FROM pro03_status, pro03_pet, pro03_sitter
-WHERE pro03_pet.pet_mem_id = 'hswpuppy'
+FROM pro03_status, pro03_pet, pro03_carekind, pro03_sitter
+WHERE pro03_status.stat_pet_num = pro03_pet.pet_num
+AND pro03_status.stat_care_num = pro03_carekind.care_num
+AND pro03_carekind.care_sit_num = pro03_sitter.sit_num
+AND pro03_pet.pet_mem_id = 'hswpuppy'
 AND stat_permission != 'o';
 
 /* 보호자 id를 포함한 이용현황(시터가 보는 화면)*/
 SELECT pet_mem_id "보호자ID", pro03_status.stat_startdate 시작일,
 		pro03_status.stat_enddate 종료일,	pro03_status.stat_pet_num 펫번호,
 		pro03_status.stat_care_num 케어분류번호, pro03_status.stat_permission 승인상태
-FROM pro03_status, pro03_pet, pro03_sitter
-WHERE pro03_sitter.sit_mem_id = 'gudwns19';
+FROM pro03_status, pro03_pet, pro03_carekind, pro03_sitter
+WHERE pro03_status.stat_pet_num = pro03_pet.pet_num
+AND pro03_status.stat_care_num = pro03_carekind.care_num
+AND pro03_carekind.care_sit_num = pro03_sitter.sit_num
+AND pro03_sitter.sit_mem_id = 'gudwns19';
 
 
 CREATE UNIQUE INDEX PK_pro03_status
@@ -414,7 +423,6 @@ CREATE TABLE pro03_review (
 	rev_date DATE /* 작성일 */
 );
 /* 리뷰 행 추가*/
-
 INSERT INTO pro03_review
 VALUES((SELECT nvl(MAX(rev_num),0)+1 FROM pro03_review),'hswpuppy',1, 5,'너무 좋은 시터였어요.', to_date('2020/01/10','yyyy/mm/dd'));
 INSERT INTO pro03_review
@@ -636,11 +644,15 @@ CREATE TABLE pro03_notice (
 	not_priority NUMBER /* 우선도 */
 );
 
-/* 공지사항 데이터 불러오기*/
-SELECT not_num 번호, not_priority 우선도, not_title 제목,
-	   not_detail 내용, not_date 작성일
-FROM pro03_notice;
+/* 주요 공지사항 데이터 불러오기*/
+SELECT not_title 제목, not_detail 내용, not_date 작성일
+FROM pro03_notice
+WHERE not_priority = 1;
 
+/* 일반 공지사항 데이터 불러오기*/
+SELECT not_num 번호,not_title 제목,
+		not_detail 내용, not_date 작성일
+FROM pro03_notice;
 
 
 CREATE UNIQUE INDEX PK_pro03_notice
