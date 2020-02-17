@@ -8,7 +8,7 @@
 
     <style media="screen">
 
-      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
+      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px; overflow:auto;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
 
@@ -29,9 +29,17 @@
           .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
-      .middle{position:relative; width:1280px; margin:0 auto; padding-top:30px; text-align:center;}
-      	.searchSitter{width:900px;height:500px; background-color:gray; display:inline-block;}
-		.searchOption{width:290px;height:500px; position:relative; display:inline-block;}
+      .middle{position:relative; width:1280px; margin:0 auto; padding-top:10px; text-align:center;}
+      	.searchSitter{width:1280px;height:500px; background-color:gray; display:inline-block;}
+		.searchOption{width:280px;height:500px; position:relative; display:inline-block;
+		vertical-align: top; text-align:justify; padding-left:10px;}
+			.searchOption>p{font-size:10;margin:10px;}
+			.searchOption>#button{border : 1px solid black; padding:10px; margin:10px; width:40px; cursor: default;}
+			.searchOption>#button:hover{background-color: silver;}
+		.searchResult{width:538px;height:500px; position:relative; display:inline-block;
+		vertical-align: top; text-align:justify; padding-left:10px;}
+		.searchResMap{width:428px;height:500px; position:relative; display:inline-block;
+		vertical-align: top;}
 
           .visual{position:relative;}
 
@@ -67,10 +75,14 @@
     <meta charset="utf-8">
     <title>HELLO PET SITTER : before login</title>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-
+	<script type="text/javascript">
+	function SetValue(obj){
+		document.querySelector(".slider_value").innerHTML = obj.value;
+	}
+	</script>
   </head>
   <body>
 <!-- http://192.168.4.163:7080/project03/main/mainPageBL.html -->
@@ -105,9 +117,37 @@
 
     <div class="middle">
     	<div class="searchSitter">
-		    <div class="searchOption"></div>
-		    <div class="searchOption"></div>
-		    <div class="searchOption"></div>
+		    <div class="searchOption">
+		    	<p>서비스 종류</p>
+			    	<select name="service_kind">
+			    	<option value="1">맡기기</option>
+			    	<option value="2">맡아주기</option>
+			    	<option value="3">일일케어</option>
+			    	<option value="4">산책</option>
+			    	</select>
+		    	<p>지역 선택</p>
+		    		<input type="text" name="service_loc"/>
+		    	<p>펫 종류</p>
+		    		<input type="checkbox" name="service_petkind" value="dog"/>강아지
+		    		<input type="checkbox" name="service_petkind" value="cat"/>고양이
+		    	<p>수용가능 펫 수</p>
+		    		<input type="radio" name="service_petcty" value="1"/>1
+		    		<input type="radio" name="service_petcty" value="2"/>2
+		    		<input type="radio" name="service_petcty" value="3"/>3 이상
+		    	<p>수용가능 펫 무게(kg)</p>
+		    		<input type="radio" name="service_petweight" value="7"/>0~7
+		    		<input type="radio" name="service_petweight" value="18"/>8~18
+		    		<input type="radio" name="service_petweight" value="45"/>19~45
+		    		<input type="radio" name="service_petweight" value="46"/>46이상
+		    	<p>비용(하루 지불 비용, 단위:만)</p>
+		    		<input type="range" value="1" min="1" max="20" class="slider_range" onChange="SetValue(this)" />
+		    		<font size='4' class="slider_value">1</font>
+		    	<div id="button">검색</div>	
+		    </div>
+		    <div class="searchResult">
+		    	<p>검색결과</p>
+		    </div>
+		    <div class="searchResMap"></div>
 		</div>
     </div>
       
@@ -132,7 +172,7 @@
         </div>
          <div class="info_wrap">
           <div class="page_info_logo">
-            <div class=""><img src="image/LOGO2.png" alt="" style="width:350px; opacity:0.5;"> </div>
+            <div class=""><img src="" alt="" style="width:350px; opacity:0.5;"> </div>
           </div>
           <div class="page_info2">
             <ul>
