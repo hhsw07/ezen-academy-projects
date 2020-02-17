@@ -5,7 +5,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	<style media="screen">
+
+    <style media="screen">
 
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
       ul li{list-style:none;}
@@ -34,9 +35,25 @@
           .sc_menubar{text-align:center;}
             .sc_menubar ul li {float:left;text-size:20px;width:33%; border:1px solid black;}
             .sc_menubar ul li:hover {border:1px solid #9553F3;background-color:red;}
-          .sc_notice{}
-          .sc_notice table{width:100%; border-collapse:collapse;}
-       /* visibility:visible | hidden | collapse  */ 
+          .sc_QnA{}
+          .sc_QnA img{width:10px;}
+          .sc_QnA table{width:100%; border-collapse:collapse; cursor:default;}
+          .sc_QnA table tr:nth-child(3n+2){border-top:1px solid black;}
+          .sc_QnA table tr:nth-child(3n){visibility:collapse;}
+          .sc_QnA table tr:nth-child(3n+1){visibility:collapse;}
+          .sc_QnA table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}
+          .sc_QnA table tr td:first-child {width:10%;} 
+          .sc_QnA table tr td:nth-child(2) {width:10%;} 
+          .sc_QnA table tr td:nth-child(3) {width:60%;text-align:left;} 
+          .sc_QnA table tr td:last-child {width:20%;}
+          .sc_QnA table tr th {padding:10px 20px;}
+          .sc_QnA table tr td {padding:10px 20px;}
+          .sc_QnAlist{align:center;}
+          .sc_QnASearch{}
+          .sc_QnASearch select {}
+          .sc_QnASearch input[type=text] {}
+          .sc_QnASearch input[type=button] {}
+
       .bottom{width:1080px; margin:0 auto;}
         .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
 
@@ -55,19 +72,31 @@
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER : </title>
+    <title>HELLO PET SITTER</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-
+	<script type="text/javascript">
+		function QnA(id01, id02){
+			var obj1 = document.querySelector(`${id01}`);
+			var obj2 = document.querySelector(`${id02}`);
+			
+			if(obj1.style.visibility == "visible"){
+				obj1.style.visibility = "collapse";
+				obj2.style.visibility = "collapse";
+			}else{
+				obj1.style.visibility = "visible";
+				obj2.style.visibility = "visible";
+			}
+		}
+	</script>
   </head>
   <body>
 
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href=""><img src="image/LOGO2.png" alt="" style="width:245px; height:60px;"></a>
+              <a href="../main/mainPageBL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
@@ -87,13 +116,12 @@
           <li><a href="#">시터찾기</a></li>
           <li><a href="#">이동</a></li>
           <li><a href="#">반려인</a></li>
-          <li><a href="#">고객센터</a></li>
+          <li><a href="sc_notice.html">고객센터</a></li>
         </ul>
       </div>
     </div>
 
-	<div style="clear:both;"></div>
-	
+
     <div class="middle">
     	<div class="sc">
     		<div class="sc_title">
@@ -101,56 +129,122 @@
     		</div>
     	 	<div class="sc_menubar">
 	    	 	<ul>
-	    			<li><a href="#">공지사항</a></li>
-	    			<li><a href="#">FAQ</a></li>
-	    			<li><a href="#">QnA</a></li>
+	    			<li><a href="sc_notice.html">공지사항</a></li>
+	    			<li><a href="sc_FAQ.html">FAQ</a></li>
+	    			<li><a href="sc_QnA.html">QnA</a></li>
 	    	  	</ul>
     		</div>
     		<div>&nbsp;</div>
-    		<div class="sc_notice">
-	    		<table border>
-	    			<tr><th>번호</th>
+    		<div class="sc_QnA">
+	    		<table>
+	    			<tr>
+	    				<th>번호</th>
+	    				<th>답변상태</th>
 	    				<th>제목</th>
 	    				<th>날짜</th>
 	   				</tr>
-	   				<tr><td>1</td>
-	   					<td>블라블라</td>
+	   				<tr>
+	   					<td>6</td>
+	   					<td>답변완료</td>
+	   					<td onclick="QnA('#Q06','#A06')">카드가 결제 불가능이라고 떠요</td>
 	   					<td>2020/02/11</td>
 					</tr>
-					<tr><td></td>
-	   					<td>블라블라</td>
+					<tr id="Q06">
+						<td></td>
+						<td></td>
+	   					<td>서비스 이용중 카드가 결제 불가능이라고 합니다. 어떻게 해야 하나요?</td>
 	   					<td></td>
 					</tr>
-					<tr><td>2</td>
-	   					<td>블라블라</td>
-	   					<td>2020/0205</td>
-					</tr>
-					<tr><td></td>
-	   					<td></td>
-	   					<td></td>
-					</tr>
-					<tr><td></td>
-	   					<td></td>
+					<tr id="A06">
+						<td></td>
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
+	   					<td>결제 불가 상태는 펫시터가 고객의 예약 요청을 수학했으나, 결제 수단 및 시스템상 문제로 금액이 결제되지 않은 상태입니다. 카드번호 및 결제가 가능한 카드인지 다시 한번 확인 부탁드리며 아맥스 및 15자리 카드는 페이사 문제로 결제가 불가능합니다.</td>
 	   					<td></td>
 					</tr>
-					<tr><td></td>
+					<tr>
+						<td>5</td>
+						<td>답변완료</td>
+	   					<td onclick="QnA('#Q05','#A05')">공휴일에 비용</td>
+	   					<td>2020/02/05</td>
+					</tr>
+					<tr id = "Q05">
+						<td></td>
 	   					<td></td>
+	   					<td>연휴 또는 공휴일에 비용이 어떻게 되나요?</td>
 	   					<td></td>
 					</tr>
-					<tr><td></td>
-	   					<td></td>
+					<tr id = "A05">
+						<td></td>
+	   					<td>
+	   						<img src="../image/꺽인화살표.png" />
+						</td>
+	   					<td>연휴 또는 공휴일에는 할증 비용이 발생할 수 있습니다. 각 펫시터님들마다 0~10,000원 사이의 할등 비용이 있을 수 있으니 공휴일 날짜와 할증 비용을 꼭 체크하세요.</td>
 	   					<td></td>
 					</tr>
-					<tr><td></td>
+					<tr>
+						<td>4</td>
+	   					<td>답변완료</td>
+	   					<td onclick="QnA('#Q04','#A04')">펫시팅 전에 필요한 준비사항</td>
+	   					<td>2020/02/01</td>
+					</tr>
+					<tr id = "Q04">
+						<td></td>
 	   					<td></td>
+	   					<td>펫시팅 전에 필요한 준비사항은 뭐가 있나요? 산책도구와 강아지 밥그릇은 있어요.</td>
 	   					<td></td>
 					</tr>
+					<tr id = "A04">
+						<td></td>
+	   					<td>
+	   						<img src="../image/꺽인화살표.png" />
+						</td>
+	   					<td>기본적인 준비물들은 배변패드, 배변 판, 배식 도구, 사료, 강아지 인식표 및 산책도구 등이 있습니다. 하지만 펫시터분들마다 준비물에대한 요구사항이 다를 수 있으니 펫시터분들의 프로필을 필히 읽어보시고 대화를 해보시기 바랍니다. 또한 펫시팅을 맡기기 위해선 기본적인 5차 접종이 꼭 완료되어야 합니다.</td>
+	   					<td></td>
+					</tr>
+					<tr>
+						<td>3</td>
+	   					<td>답변완료</td>
+	   					<td onclick="QnA('#Q03','#A03')">예약 했는데, 예약 대기상태로 나타나요?</td>
+	   					<td>2020/01/25</td>
+					</tr>
+					<tr id = "Q03">
+						<td></td>
+	   					<td></td>
+	   					<td>방금전 예약했는데 예약 대기상태로 나타나내요. 왜 그렇죠?</td>
+	   					<td></td>
+					</tr>
+					<tr id = "A03">
+						<td></td>
+	   					<td>
+	   						<img src="../image/꺽인화살표.png" />
+						</td>
+	   					<td>펫시터님께서 예약 요청을 승인해야 펫시팅 매칭이 완료됩니다. 예약 대기상태란 아직 펫시터님이 예약을 승인하기 전 대기상태를 말합니다. 24시간 내로 펫시터님께서 승인하지 않으면 자동으로 예약은 취소됩니다.</td>
+	   					<td></td>
+					</tr>
+					<tr><td colspan="4"></td></tr>
 	    		</table>
     		</div>
     	</div>	
+    	<div class="QnAList">
+    		<ul>
+    			<li>1</li>
+    			<li>2</li>
+    		</ul>
+    	</div>
+    	<div class="QnASearch">
+    		<select>
+    			<option>제목</option>
+    			<option>작성자</option>
+    			<option>제목+내용</option>
+    		</select>
+    		<input type="text" />
+    		<input type="button" value="등록"/>
+    	</div>	
     	<div class=""></div>
       
-   	 </div>
+   	</div>
 
 
     <div class="bottom">
@@ -178,7 +272,7 @@
         </div>
          <div class="info_wrap">
           <div class="page_info_logo">
-            <div class=""><img src="" alt="" style="width:350px; opacity:0.5;"> </div>
+            <div class=""><img src="image/LOGO2.png" alt="" style="width:350px; opacity:0.5;"> </div>
           </div>
           <div class="page_info2">
             <ul>

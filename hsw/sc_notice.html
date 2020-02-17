@@ -5,7 +5,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	<style media="screen">
+
+    <style media="screen">
 
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
       ul li{list-style:none;}
@@ -35,13 +36,15 @@
             .sc_menubar ul li {float:left;text-size:20px;width:33%; border:1px solid black;}
             .sc_menubar ul li:hover {border:1px solid #9553F3;background-color:red;}
           .sc_notice{}
-          .sc_notice table{width:100%; border-collapse:collapse;}
+          .sc_notice img{width:10px;}
+          .sc_notice table{width:100%; border-collapse:collapse; cursor:default;}
+          .sc_notice table tr:nth-child(2n+1){visibility:collapse;}
+          .sc_notice table tr:first-child{visibility:visible;}
           .sc_notice table tr td,th {padding:10px 20px;} 
           .sc_notice table tr td:first-child {width:10%;} 
           .sc_notice table tr td:nth-child(2) {text-align:left;} 
-          .sc_notice table tr td:last-child {width:20%;} 
-          
-       /* visibility:visible | hidden | collapse  */ 
+          .sc_notice table tr td:last-child {width:20%;}
+
       .bottom{width:1080px; margin:0 auto;}
         .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
 
@@ -60,11 +63,20 @@
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER : </title>
+    <title>HELLO PET SITTER</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+	<script type="text/javascript">
+		function Notice(id){
+			var obj = document.querySelector(`${id}`);
+			if(obj.style.visibility == "visible"){
+				obj.style.visibility = "collapse";
+			}else{
+				obj.style.visibility = "visible";
+			}
+		}
+	</script>
 
   </head>
   <body>
@@ -72,7 +84,7 @@
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href=""><img src="image/LOGO2.png" alt="" style="width:245px; height:60px;"></a>
+              <a href="../main/mainPageBL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
@@ -92,13 +104,12 @@
           <li><a href="#">시터찾기</a></li>
           <li><a href="#">이동</a></li>
           <li><a href="#">반려인</a></li>
-          <li><a href="#">고객센터</a></li>
+          <li><a href="sc_notice.html">고객센터</a></li>
         </ul>
       </div>
     </div>
 
-	<div style="clear:both;"></div>
-	
+
     <div class="middle">
     	<div class="sc">
     		<div class="sc_title">
@@ -106,9 +117,9 @@
     		</div>
     	 	<div class="sc_menubar">
 	    	 	<ul>
-	    			<li><a href="#">공지사항</a></li>
-	    			<li><a href="#">FAQ</a></li>
-	    			<li><a href="#">QnA</a></li>
+	    			<li><a href="sc_notice.html">공지사항</a></li>
+	    			<li><a href="sc_FAQ.html">FAQ</a></li>
+	    			<li><a href="sc_QnA.html">QnA</a></li>
 	    	  	</ul>
     		</div>
     		<div>&nbsp;</div>
@@ -118,11 +129,14 @@
 	    				<th>제목</th>
 	    				<th>날짜</th>
 	   				</tr>
-	   				<tr><td>1</td>
-	   					<td>펫시터 지원 자격을 알려드려요.</td>
+	   				<tr><td>중요</td>
+	   					<td onclick="Notice('#NoticeS1')">펫시터 지원 자격을 알려드려요.</td>
 	   					<td>2020/02/11</td>
 					</tr>
-					<tr><td></td>
+					<tr id="NoticeS1">
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
 	   					<td>*서울, 경기, 인천 수도권에 거주해요.<br>
 	   						*강아지와 5년 이상 함께 했어요.<br>
 	   						*모든일에 있어서 책임감이 강해요.<br>
@@ -134,32 +148,73 @@
 	   					</td>
 	   					<td></td>
 					</tr>
-					<tr><td>2</td>
-	   					<td>수입 정산 방법입니다.</td>
-	   					<td>2020/0205</td>
+					<tr><td>중요</td>
+	   					<td onclick="Notice('#NoticeS2')">수입 정산 방법입니다.</td>
+	   					<td>2020/02/05</td>
 					</tr>
-					<tr><td></td>
+					<tr id="NoticeS2">
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
 	   					<td>수입은 매주 수요일에 회사 수수료 및 원천세 제외한 금액을 펫시터님게 계좌로 정산해드리고 있습니다.<br>
 	   						감사합니다.<br>
 	   					</td>
 	   					<td></td>
 					</tr>
+					<tr><td>4</td>
+	   					<td onclick="Notice('#Notice01')">펫시터 지원 자격을 알려드려요.</td>
+	   					<td>2020/02/11</td>
+					</tr>
+					<tr id="Notice01">
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
+						<td>*서울, 경기, 인천 수도권에 거주해요.<br>
+	   						*강아지와 5년 이상 함께 했어요.<br>
+	   						*모든일에 있어서 책임감이 강해요.<br>
+	   						*고객에게 친절하게 대응할 수 있어요.<br>
+	   						*시간 약속은 철저하게 지켜요.<br>
+	   						*활동 가능일 수가 한달 20일 이상인 경우<br>
+	   						<br>
+	   						많은 지원 바랍니다.<br>
+	   					</td>
+	   					<td></td>
+					</tr>
 					<tr><td>3</td>
-	   					<td>설 연휴를 맞이하여 비용에 할증이 발생할 수 있습니다.</td>
+	   					<td onclick="Notice('#Notice02')">수입 정산 방법입니다.</td>
+	   					<td>2020/02/05</td>
+					</tr>
+					<tr id="Notice02">
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
+	   					<td>수입은 매주 수요일에 회사 수수료 및 원천세 제외한 금액을 펫시터님게 계좌로 정산해드리고 있습니다.<br>
+	   						감사합니다.<br>
+	   					</td>
+	   					<td></td>
+					</tr>
+					<tr><td>2</td>
+	   					<td onclick="Notice('#Notice03')">설 연휴를 맞이하여 비용에 할증이 발생할 수 있습니다.</td>
 	   					<td>2020/01/22</td>
 					</tr>
-					<tr><td></td>
+					<tr id="Notice03">
+	   					<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
 	   					<td>설 연휴 기간(01/24~01/27)동안 할증 비용이 발생할 수 있습니다.<br>
 	   						각 펫시터님들마다 0~10,000원 사이의 할증 비용이 있을 수 있으니 날짜와 할증 비용을 꼭 체크하세요.
 	   						모두 새해 복 많이 받으시길 바랍니다~ 행복하세요.<br>
 	   					</td>
 	   					<td></td>
 					</tr>
-					<tr><td>4</td>
-	   					<td>펫시터가 하는 주요 업무</td>
+					<tr><td>1</td>
+	   					<td onclick="Notice('#Notice04')">펫시터가 하는 주요 업무</td>
 	   					<td>2020/01/10</td>
 					</tr>
-					<tr><td></td>
+					<tr id="Notice04">
+						<td>
+							<img src="../image/꺽인화살표.png" />
+						</td>
 	   					<td>펫시터들은 반려동물에 대해 지속적인 관심과 돌봄을 제공하여 아이들이 맡겨진 동안 안전하게 지낼 수 있도록 노력합니다.<br>
 	   						야외 산책, 실내놀이 뿐만 아니라 견주님들과의 원할한 소통을 원칙으로, 아이들이 안전하게 잘 지내는 모습을 보여줍니다.<br>
 	   						추가서비스가 가능한 펫시터들에 한해서 픽업, 목욕, 발톱 관리 등의 서비스도 함게 제공합니다.<br> 
@@ -199,7 +254,7 @@
         </div>
          <div class="info_wrap">
           <div class="page_info_logo">
-            <div class=""><img src="" alt="" style="width:350px; opacity:0.5;"> </div>
+            <div class=""><img src="image/LOGO2.png" alt="" style="width:350px; opacity:0.5;"> </div>
           </div>
           <div class="page_info2">
             <ul>
