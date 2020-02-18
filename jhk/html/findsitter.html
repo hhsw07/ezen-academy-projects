@@ -31,14 +31,15 @@
 
       .middle{position:relative; width:1280px; margin:0 auto; padding-top:10px; text-align:center;}
       	.searchSitter{width:1280px;height:500px; background-color:gray; display:inline-block;}
-		.searchOption{width:280px;height:500px; position:relative; display:inline-block;
+		.searchOption{width:280px;height:100%; position:relative; display:inline-block;
 		vertical-align: top; text-align:justify; padding-left:10px;}
 			.searchOption>p{font-size:10;margin:10px;}
-			.searchOption>#button{border : 1px solid black; padding:10px; margin:10px; width:40px; cursor: default;}
-			.searchOption>#button:hover{background-color: silver;}
-		.searchResult{width:538px;height:500px; position:relative; display:inline-block;
+			.searchOption>#search{border : 1px solid black; padding:10px; margin:10px; width:40px; cursor: default;}
+			.searchOption>#search:hover{background-color: silver;}
+			.searchOption>#search:active{background-color: blue;}
+		.searchResult{width:538px;height:100%; position:relative; display:inline-block;
 		vertical-align: top; text-align:justify; padding-left:10px;}
-		.searchResMap{width:428px;height:500px; position:relative; display:inline-block;
+		.searchResMap{width:428px;height:100%; position:relative; display:inline-block;
 		vertical-align: top;}
 
           .visual{position:relative;}
@@ -79,10 +80,23 @@
     </script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script type="text/javascript">
-	function SetValue(obj){
+	function setValue(obj){
 		document.querySelector(".slider_value").innerHTML = obj.value;
 	}
+	function searchSitter(){
+		var result = document.querySelector(".searchResult");
+		result.innerHTML+="<div class='resultList'><div style='vertical-align:top; display:inline-block'><img src='hong.jpg' style='width:135px; height:163px; border-radius:50%;'></div>"+
+		"<div style='display:inline-block; width:395px; padding-left:5px'> <div style='display:inline-block; width:100px;'>1.홍길동</div> <div style='display:inline-block; text-align:right; width:285px;'>하루 30,000원</div><br>★★★★★<br>오랜경험과 노하우로 동물들을 내 반려동물처럼 길러줄 수 있습니다.</div></div>"
+		result.innerHTML+="<div class='resultList'><div style='vertical-align:top; display:inline-block'><img src='kimgil.jpg' style='width:135px; height:163px; border-radius:50%;'></div>"+
+		"<div style='display:inline-block; width:395px; padding-left:5px'> <div style='display:inline-block; width:100px;'>2.김길동</div> <div style='display:inline-block; text-align:right; width:285px;'>하루 300,000원</div><br>★★★★★<br>동물들도 울고갈 베테랑 동물관리사입니다. 믿고 맡겨주십시오.</div></div>"
+		result.innerHTML+="<div class='resultList'><div style='vertical-align:top; display:inline-block'><img src='gogil.jpg' style='width:135px; height:163px; border-radius:50%;'></div>"+
+		"<div style='display:inline-block; width:395px; padding-left:5px'> <div style='display:inline-block; width:100px;'>3.김길동</div> <div style='display:inline-block; text-align:right; width:285px;'>하루 80,000원</div><br>★★★★★<br>소드마스터 고길동은 어떤 흉폭한 동물도 잘 다룰수 있습니다.</div></div>"
+		
+		var sSitter = document.querySelector(".searchSitter");
+		sSitter.style.height = 1000+"px";
+	}
 	</script>
+	
   </head>
   <body>
 <!-- http://192.168.4.163:7080/project03/main/mainPageBL.html -->
@@ -140,9 +154,9 @@
 		    		<input type="radio" name="service_petweight" value="45"/>19~45
 		    		<input type="radio" name="service_petweight" value="46"/>46이상
 		    	<p>비용(하루 지불 비용, 단위:만)</p>
-		    		<input type="range" value="1" min="1" max="20" class="slider_range" onChange="SetValue(this)" />
+		    		<input type="range" value="1" min="1" max="20" class="slider_range" onChange="setValue(this)" />
 		    		<font size='4' class="slider_value">1</font>
-		    	<div id="button">검색</div>	
+		    	<div id="search" onclick="searchSitter()">검색</div>	
 		    </div>
 		    <div class="searchResult">
 		    	<p>검색결과</p>
