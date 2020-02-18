@@ -35,16 +35,26 @@
             .sc_menubar ul li {float:left;left:50%; text-size:20px;width:300px; padding:10px 20px;
             				   border-top:3px double black;border-bottom:3px double black;}
             .sc_menubar ul li:hover {border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
-          .sc_notice{}
-          .sc_notice img{width:10px;}
-          .sc_notice table{width:100%; border-collapse:collapse; cursor:default;}
-          .sc_notice table tr:nth-child(2n+1){visibility:collapse;}
-          .sc_notice table tr:nth-child(2n){border-top:1px solid black;}
-          .sc_notice table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}
-          .sc_notice table tr td,th {padding:10px 20px;} 
-          .sc_notice table tr td:first-child {width:10%;} 
-          .sc_notice table tr td:nth-child(2) {text-align:left;} 
-          .sc_notice table tr td:last-child {width:20%;}
+          .sc_QnA{}
+          .sc_QnA img{width:10px;}
+          .sc_QnA table{width:100%; border-collapse:collapse; cursor:default;}
+          .sc_QnA table tr:nth-child(3n+2){border-top:1px solid black;}
+          .sc_QnA table tr:nth-child(3n){visibility:collapse;}
+          .sc_QnA table tr:nth-child(3n+1){visibility:collapse;}
+          .sc_QnA table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}
+          .sc_QnA table tr td:first-child {width:10%;} 
+          .sc_QnA table tr td:nth-child(2) {width:10%;} 
+          .sc_QnA table tr td:nth-child(3) {width:60%;text-align:left;} 
+          .sc_QnA table tr td:last-child {width:20%;}
+          .sc_QnA table tr th {padding:10px 20px;}
+          .sc_QnA table tr td {padding:10px 20px;}
+          .sc_QnAlist{}
+            .sc_QnAlist ul{float: right; position: relative; left: -50%;}
+            .sc_QnAlist ul li{float:left;position: relative; left:50%;width:20px;}
+          .sc_QnASearch{text-align:right;}
+          .sc_QnASearch select {}
+          .sc_QnASearch input[type=text] {width:100px;}
+          .sc_QnASearch input[type=button] {}
 
       .bottom{width:1080px; margin:0 auto;}
         .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
@@ -59,8 +69,6 @@
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
 
-
-
     </style>
 
     <meta charset="utf-8">
@@ -69,16 +77,19 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script type="text/javascript">
-		function Notice(id){
-			var obj = document.querySelector(`${id}`);
-			if(obj.style.visibility == "visible"){
-				obj.style.visibility = "collapse";
+		function QnA(id01, id02){
+			var obj1 = document.querySelector(`${id01}`);
+			var obj2 = document.querySelector(`${id02}`);
+			
+			if(obj1.style.visibility == "visible"){
+				obj1.style.visibility = "collapse";
+				obj2.style.visibility = "collapse";
 			}else{
-				obj.style.visibility = "visible";
+				obj1.style.visibility = "visible";
+				obj2.style.visibility = "visible";
 			}
 		}
 	</script>
-
   </head>
   <body>
 
@@ -126,110 +137,79 @@
     		<div>&nbsp;</div>
     		<div>&nbsp;</div>
     		<div>&nbsp;</div>
-    		<div class="sc_notice">
+    		<div class="sc_QnA">
 	    		<table>
-	    			<tr><th>번호</th>
+	    			<tr>
+	    				<th>번호</th>
+	    				<th>답변상태</th>
 	    				<th>제목</th>
 	    				<th>날짜</th>
 	   				</tr>
-	   				<tr><td>중요</td>
-	   					<td onclick="Notice('#NoticeS1')">펫시터 지원 자격을 알려드려요.</td>
-	   					<td>2020/02/11</td>
+	   				<tr>
+	   					<td>2</td>
+	   					<td>답변완료</td>
+	   					<td onclick="QnA('#Q02','#A02')">서비스 이용후 강아지가 아파요</td>
+	   					<td>2020/01/19</td>
 					</tr>
-					<tr id="NoticeS1">
+					<tr id="Q02">
+						<td></td>
+						<td></td>
+	   					<td>펫시팅 이후 강아지가 이상해요. 병원에도 다녀왔는데... 어떻해요ㅠㅠ</td>
+	   					<td></td>
+					</tr>
+					<tr id="A02">
+						<td></td>
 						<td>
 							<img src="../image/꺽인화살표.png" />
 						</td>
-	   					<td>*서울, 경기, 인천 수도권에 거주해요.<br>
-	   						*강아지와 5년 이상 함께 했어요.<br>
-	   						*모든일에 있어서 책임감이 강해요.<br>
-	   						*고객에게 친절하게 대응할 수 있어요.<br>
-	   						*시간 약속은 철저하게 지켜요.<br>
-	   						*활동 가능일 수가 한달 20일 이상인 경우<br>
-	   						<br>
-	   						많은 지원 바랍니다.<br>
-	   					</td>
+	   					<td>서비스 이용 후 48시간 이내로 반려동물이 질환을 앓는 경우, 수의학적 판단에 의한 과실 여부에 따라 이젠펫시터의 보상프로그램을 적용 받으실 수 있습니다. 고객센터로 전화 주시면 자세하게 안내해 드리겠습니다.</td>
+	   					<td>2020/01/20</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>답변완료</td>
+	   					<td onclick="QnA('#Q01','#A01')">펫시터 교육비 얼마인가요?</td>
+	   					<td>2020/01/15</td>
+					</tr>
+					<tr id = "Q01">
+						<td></td>
+	   					<td></td>
+	   					<td>펫시터 교육비 얼마인가요?</td>
 	   					<td></td>
 					</tr>
-					<tr><td>중요</td>
-	   					<td onclick="Notice('#NoticeS2')">수입 정산 방법입니다.</td>
-	   					<td>2020/02/05</td>
-					</tr>
-					<tr id="NoticeS2">
+					<tr id="A01">
+						<td></td>
 						<td>
 							<img src="../image/꺽인화살표.png" />
 						</td>
-	   					<td>수입은 매주 수요일에 회사 수수료 및 원천세 제외한 금액을 펫시터님게 계좌로 정산해드리고 있습니다.<br>
-	   						감사합니다.<br>
-	   					</td>
-	   					<td></td>
+	   					<td>펫시터 교육비는 총 6만원입니다ㅏ. 교육비 납수시에는 변심으로 인한 환불은 불가능 하오니 이점 양해 부탁드립니다.</td>
+	   					<td>2020/01/16</td>
 					</tr>
-					<tr><td>4</td>
-	   					<td onclick="Notice('#Notice01')">펫시터 지원 자격을 알려드려요.</td>
-	   					<td>2020/02/11</td>
-					</tr>
-					<tr id="Notice01">
-						<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-						<td>*서울, 경기, 인천 수도권에 거주해요.<br>
-	   						*강아지와 5년 이상 함께 했어요.<br>
-	   						*모든일에 있어서 책임감이 강해요.<br>
-	   						*고객에게 친절하게 대응할 수 있어요.<br>
-	   						*시간 약속은 철저하게 지켜요.<br>
-	   						*활동 가능일 수가 한달 20일 이상인 경우<br>
-	   						<br>
-	   						많은 지원 바랍니다.<br>
-	   					</td>
-	   					<td></td>
-					</tr>
-					<tr><td>3</td>
-	   					<td onclick="Notice('#Notice02')">수입 정산 방법입니다.</td>
-	   					<td>2020/02/05</td>
-					</tr>
-					<tr id="Notice02">
-						<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-	   					<td>수입은 매주 수요일에 회사 수수료 및 원천세 제외한 금액을 펫시터님게 계좌로 정산해드리고 있습니다.<br>
-	   						감사합니다.<br>
-	   					</td>
-	   					<td></td>
-					</tr>
-					<tr><td>2</td>
-	   					<td onclick="Notice('#Notice03')">설 연휴를 맞이하여 비용에 할증이 발생할 수 있습니다.</td>
-	   					<td>2020/01/22</td>
-					</tr>
-					<tr id="Notice03">
-	   					<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-	   					<td>설 연휴 기간(01/24~01/27)동안 할증 비용이 발생할 수 있습니다.<br>
-	   						각 펫시터님들마다 0~10,000원 사이의 할증 비용이 있을 수 있으니 날짜와 할증 비용을 꼭 체크하세요.
-	   						모두 새해 복 많이 받으시길 바랍니다~ 행복하세요.<br>
-	   					</td>
-	   					<td></td>
-					</tr>
-					<tr><td>1</td>
-	   					<td onclick="Notice('#Notice04')">펫시터가 하는 주요 업무</td>
-	   					<td>2020/01/10</td>
-					</tr>
-					<tr id="Notice04">
-						<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-	   					<td>펫시터들은 반려동물에 대해 지속적인 관심과 돌봄을 제공하여 아이들이 맡겨진 동안 안전하게 지낼 수 있도록 노력합니다.<br>
-	   						야외 산책, 실내놀이 뿐만 아니라 견주님들과의 원할한 소통을 원칙으로, 아이들이 안전하게 잘 지내는 모습을 보여줍니다.<br>
-	   						추가서비스가 가능한 펫시터들에 한해서 픽업, 목욕, 발톱 관리 등의 서비스도 함게 제공합니다.<br> 
-	   						많은 이용 부탁드립니다.<br></td>
-	   					<td></td>
-					</tr>
-					<tr><td colspan="3"></td></tr>
+					<tr><td colspan="4"></td></tr>
 	    		</table>
     		</div>
-    	</div>	
-   	 </div>
-
+    		
+	    	<div class="sc_QnAlist">
+	    		<ul>
+	    			<li><a href="sc_QnA.html">1</a></li>
+	    			<li><a href="sc_QnA2.html" style="color:#9553F3">2</a></li>
+	    		</ul>
+	    	</div>
+	    	<div style="clear:both;"></div>
+	    	<div class="sc_QnASearch">
+	    		<select>
+	    			<option>제목</option>
+	    			<option>작성자</option>
+	    			<option>제목+내용</option>
+	    		</select>
+	    		<input type="text"/>
+	    		<input type="button" value="검색"/>
+	    		<input type="button" value="QnA 등록"/>
+	    	</div>	
+	    	<div class=""></div>
+      
+   	</div>
+	<div style="clear:both;"></div>
 
     <div class="bottom">
       <div class="banner">

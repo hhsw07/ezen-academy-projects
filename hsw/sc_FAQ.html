@@ -30,16 +30,19 @@
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
       .middle{position:relative; width:1280px; margin:0 auto; padding:0px;}
-          .sc{width:1080px; margin:0px auto; text-align:center;}
-          .sc_title{text-align:left;border:1px solid black; }
+        .sc{width:1080px; margin:0px auto; text-align:center;}
+          .sc_title{text-align:left;}
           .sc_menubar{text-align:center;}
-            .sc_menubar ul li {float:left;text-size:20px;width:33%; border:1px solid black;}
-            .sc_menubar ul li:hover {border:1px solid #9553F3;background-color:red;}
+            .sc_menubar ul{}
+            .sc_menubar ul li {float:left;left:50%; text-size:20px;width:300px; padding:10px 20px;
+            				   border-top:3px double black;border-bottom:3px double black;}
+            .sc_menubar ul li:hover {border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
           .sc_FAQ{}
           .sc_FAQ img{width:10px;}
           .sc_FAQ table{width:100%; border-collapse:collapse; cursor:default;}
-          .sc_FAQ table tr:nth-child(2n+1){visibility:collapse;}	/*FAQ 답변칸*/
-          .sc_FAQ table tr:first-child{visibility:visible;}			
+          .sc_FAQ table tr:nth-child(2n+1){visibility:collapse;}	
+          .sc_FAQ table tr:nth-child(2n){border-top:1px solid black;}
+          .sc_FAQ table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}			
           .sc_FAQ table tr td,th {padding:10px 20px;} 
           .sc_FAQ table tr td:first-child {width:10%;} 
           .sc_FAQ table tr td:last-child {text-align:left;}
@@ -122,8 +125,10 @@
 	    	  	</ul>
     		</div>
     		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
     		<div class="sc_FAQ">
-	    		<table border>
+	    		<table>
 	    			<tr><th>번호</th>
 	    				<th>제목</th>
 	   				</tr>
@@ -289,6 +294,7 @@
 						</td>
 						<td>하단의 프로필 탭을 누르면 환경설정에서 회원 탈퇴가 가능합니다. 회원탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해 주시길 부탁드립니다.</td>
 					</tr>
+					<tr><td colspan="2"></td></tr>
 	    		</table>
     		</div>
     	</div>	

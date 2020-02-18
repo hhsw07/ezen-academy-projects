@@ -31,10 +31,12 @@
 
       .middle{position:relative; width:1280px; margin:0 auto; padding:0px;}
         .sc{width:1080px; margin:0px auto; text-align:center;}
-          .sc_title{text-align:left;border:1px solid black; }
+          .sc_title{text-align:left;}
           .sc_menubar{text-align:center;}
-            .sc_menubar ul li {float:left;text-size:20px;width:33%; border:1px solid black;}
-            .sc_menubar ul li:hover {border:1px solid #9553F3;background-color:red;}
+            .sc_menubar ul{}
+            .sc_menubar ul li {float:left;left:50%; text-size:20px;width:300px; padding:10px 20px;
+            				   border-top:3px double black;border-bottom:3px double black;}
+            .sc_menubar ul li:hover {border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
           .sc_QnA{}
           .sc_QnA img{width:10px;}
           .sc_QnA table{width:100%; border-collapse:collapse; cursor:default;}
@@ -48,10 +50,12 @@
           .sc_QnA table tr td:last-child {width:20%;}
           .sc_QnA table tr th {padding:10px 20px;}
           .sc_QnA table tr td {padding:10px 20px;}
-          .sc_QnAlist{align:center;}
-          .sc_QnASearch{}
+          .sc_QnAlist{}
+            .sc_QnAlist ul{float: right; position: relative; left: -50%;}
+            .sc_QnAlist ul li{float:left;position: relative; left:50%;width:20px; }
+          .sc_QnASearch{text-align:right;}
           .sc_QnASearch select {}
-          .sc_QnASearch input[type=text] {}
+          .sc_QnASearch input[type=text] {width:100px;}
           .sc_QnASearch input[type=button] {}
 
       .bottom{width:1080px; margin:0 auto;}
@@ -66,8 +70,6 @@
             .page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
-
-
 
     </style>
 
@@ -135,6 +137,8 @@
 	    	  	</ul>
     		</div>
     		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
     		<div class="sc_QnA">
 	    		<table>
 	    			<tr>
@@ -161,7 +165,7 @@
 							<img src="../image/꺽인화살표.png" />
 						</td>
 	   					<td>결제 불가 상태는 펫시터가 고객의 예약 요청을 수학했으나, 결제 수단 및 시스템상 문제로 금액이 결제되지 않은 상태입니다. 카드번호 및 결제가 가능한 카드인지 다시 한번 확인 부탁드리며 아맥스 및 15자리 카드는 페이사 문제로 결제가 불가능합니다.</td>
-	   					<td></td>
+	   					<td>2020/02/12</td>
 					</tr>
 					<tr>
 						<td>5</td>
@@ -181,7 +185,7 @@
 	   						<img src="../image/꺽인화살표.png" />
 						</td>
 	   					<td>연휴 또는 공휴일에는 할증 비용이 발생할 수 있습니다. 각 펫시터님들마다 0~10,000원 사이의 할등 비용이 있을 수 있으니 공휴일 날짜와 할증 비용을 꼭 체크하세요.</td>
-	   					<td></td>
+	   					<td>2020/02/07</td>
 					</tr>
 					<tr>
 						<td>4</td>
@@ -201,7 +205,7 @@
 	   						<img src="../image/꺽인화살표.png" />
 						</td>
 	   					<td>기본적인 준비물들은 배변패드, 배변 판, 배식 도구, 사료, 강아지 인식표 및 산책도구 등이 있습니다. 하지만 펫시터분들마다 준비물에대한 요구사항이 다를 수 있으니 펫시터분들의 프로필을 필히 읽어보시고 대화를 해보시기 바랍니다. 또한 펫시팅을 맡기기 위해선 기본적인 5차 접종이 꼭 완료되어야 합니다.</td>
-	   					<td></td>
+	   					<td>2020/02/02</td>
 					</tr>
 					<tr>
 						<td>3</td>
@@ -221,31 +225,33 @@
 	   						<img src="../image/꺽인화살표.png" />
 						</td>
 	   					<td>펫시터님께서 예약 요청을 승인해야 펫시팅 매칭이 완료됩니다. 예약 대기상태란 아직 펫시터님이 예약을 승인하기 전 대기상태를 말합니다. 24시간 내로 펫시터님께서 승인하지 않으면 자동으로 예약은 취소됩니다.</td>
-	   					<td></td>
+	   					<td>2020/01/26</td>
 					</tr>
 					<tr><td colspan="4"></td></tr>
 	    		</table>
     		</div>
-    	</div>	
-    	<div class="QnAList">
-    		<ul>
-    			<li>1</li>
-    			<li>2</li>
-    		</ul>
-    	</div>
-    	<div class="QnASearch">
-    		<select>
-    			<option>제목</option>
-    			<option>작성자</option>
-    			<option>제목+내용</option>
-    		</select>
-    		<input type="text" />
-    		<input type="button" value="등록"/>
-    	</div>	
-    	<div class=""></div>
+    		
+	    	<div class="sc_QnAlist">
+	    		<ul>
+	    			<li><a href="sc_QnA.html" style="color:#9553F3">1</a></li>
+	    			<li><a href="sc_QnA2.html">2</a></li>
+	    		</ul>
+	    	</div>
+	    	<div style="clear:both;"></div>
+	    	<div class="sc_QnASearch">
+	    		<select>
+	    			<option>제목</option>
+	    			<option>작성자</option>
+	    			<option>제목+내용</option>
+	    		</select>
+	    		<input type="text"/>
+	    		<input type="button" value="검색"/>
+	    		<input type="button" value="QnA 등록"/>
+	    	</div>	
+	    	<div class=""></div>
       
    	</div>
-
+	<div style="clear:both;"></div>
 
     <div class="bottom">
       <div class="banner">
