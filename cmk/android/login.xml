@@ -10,21 +10,28 @@
         android:layout_margin="5dp"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00FFFFFF" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
             app:srcCompat="@drawable/logo_id" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/login_btn" />
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/login_btn" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -111,7 +118,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/find_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -127,7 +134,7 @@
                     android:background="?android:attr/listDivider" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/find_pass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
