@@ -9,21 +9,26 @@
         android:layout_margin="5dp"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00FFFFFF" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
             android:src="@drawable/logo_id" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/login_btn" />
+        <Button
+            android:id="@+id/go_login"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/login_btn" />
     </LinearLayout>
 
     <LinearLayout
