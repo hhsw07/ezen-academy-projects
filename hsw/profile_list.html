@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
     <style media="screen">
-
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
@@ -27,36 +26,16 @@
           .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
-      .middle{position:relative; width:1280px; margin:0 auto; padding:0px;}
-        .sc{width:1080px; margin:0px auto; text-align:center;}
-          .sc_title{text-align:left;}
-          .sc_menubar{text-align:center;}
-            .sc_menubar ul{}
-            .sc_menubar ul li {float:left;left:50%; text-size:20px;width:300px; padding:10px 20px;
-            				   border-top:3px double black;border-bottom:3px double black;}
-            .sc_menubar ul li:hover {border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
-          .sc_QnA{}
-          .sc_QnA img{width:10px;}
-          .sc_QnA table{width:100%; border-collapse:collapse; cursor:default;}
-          .sc_QnA table tr:nth-child(3n+2){border-top:1px solid black;}
-          .sc_QnA table tr:nth-child(3n){visibility:collapse;}
-          .sc_QnA table tr:nth-child(3n+1){visibility:collapse;}
-          .sc_QnA table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}
-          .sc_QnA table tr td:first-child {width:10%;} 
-          .sc_QnA table tr td:nth-child(2) {width:10%;} 
-          .sc_QnA table tr td:nth-child(3) {width:60%;text-align:left;} 
-          .sc_QnA table tr td:last-child {width:20%;}
-          .sc_QnA table tr th {padding:10px 20px;}
-          .sc_QnA table tr td {padding:10px 20px;}
-          .sc_QnAlist{}
-            .sc_QnAlist ul{float: right; position: relative; left: -50%;}
-            .sc_QnAlist ul li{float:left;position: relative; left:50%;width:20px;}
-          .sc_QnASearch{text-align:right;}
-          .sc_QnASearch select {}
-          .sc_QnASearch input[type=text] {width:100px;}
-          .sc_QnASearch input[type=button] {}
+      .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
+        .tab a{border:1px solid black; border-radius:20px;}
+        .tab a:hover{border:1px solid #9553F3; color:#9553F3; }
 
-      .footer{width:1280px; margin:0 auto; height:289px; background-color: #E6E6E6;}
+      .service{width:1280px; margin: 50px auto; display:flex;}
+        .profile_image{border:1px solid black; width:200px; height:200px; margin-left:150px; border-radius: 50%; text-align: center;}
+        .profile_name{margin-left:100px; border:1px solid black; width:600px; border-radius: 30px;}
+          .profile_image i{margin-top:60px;}
+	  
+	  .footer{width:1280px; margin:0 auto; height:289px; background-color: #E6E6E6;}
         .footer_wrap{width:1080;}
           .page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
             .page_info_menubar ul li{display:inline; margin:0 10px;}
@@ -65,7 +44,7 @@
             .page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
-      
+	  
       /* 아래로 내려오는 메뉴바 css */
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
       .dropdown{position: relative; display: inline-block;}
@@ -75,35 +54,24 @@
       .dropdown_content a:hover{background-color: #9553F3;}
       .dropdown:hover .dropdown_content{display: block;}
       .dropdown:hover .dropbtn{background-color:;}
-      
+
+
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER : Service Center</title>
+    <title>HELLO PET SITTER : My Page</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-	<script type="text/javascript">
-		function QnA(id01, id02){
-			var obj1 = document.querySelector(`${id01}`);
-			var obj2 = document.querySelector(`${id02}`);
-			
-			if(obj1.style.visibility == "visible"){
-				obj1.style.visibility = "collapse";
-				obj2.style.visibility = "collapse";
-			}else{
-				obj1.style.visibility = "visible";
-				obj2.style.visibility = "visible";
-			}
-		}
-	</script>
+
+
   </head>
   <body>
 
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href="../main/mainPageBL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+              <a href=""><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
@@ -138,95 +106,32 @@
       </div>
     </div>
 
+    <div class="tab">
+      	<!-- 좌우로 선택하여 움직이는 시터의 프로필 사진 --> 
+      <a href="profile_my.html" style="padding:5px 10px 5px 10px;">보호자</a>
+      <a href="profile_sitter.html" style="padding:5px 20px 5px 20px;">시터</a>
+    </div>
 
+    <div class="" style="border-bottom:1px dotted black; padding-top:20px; width:1280px; margin:0 auto;"></div>
+    
     <div class="middle">
-    	<div class="sc">
-    		<div class="sc_title">
-	      		<h1>고객센터</h1>
-    		</div>
-    	 	<div class="sc_menubar">
-	    	 	<ul>
-	    			<li><a href="sc_notice.html">공지사항</a></li>
-	    			<li><a href="sc_FAQ.html">FAQ</a></li>
-	    			<li><a href="sc_QnA.html">QnA</a></li>
-	    	  	</ul>
-    		</div>
-    		<div>&nbsp;</div>
-    		<div>&nbsp;</div>
-    		<div>&nbsp;</div>
-    		<div class="sc_QnA">
-	    		<table>
-	    			<tr>
-	    				<th>번호</th>
-	    				<th>답변상태</th>
-	    				<th>제목</th>
-	    				<th>날짜</th>
-	   				</tr>
-	   				<tr>
-	   					<td>2</td>
-	   					<td>답변완료</td>
-	   					<td onclick="QnA('#Q02','#A02')">서비스 이용후 강아지가 아파요</td>
-	   					<td>2020/01/19</td>
-					</tr>
-					<tr id="Q02">
-						<td></td>
-						<td></td>
-	   					<td>펫시팅 이후 강아지가 이상해요. 병원에도 다녀왔는데... 어떻해요ㅠㅠ</td>
-	   					<td></td>
-					</tr>
-					<tr id="A02">
-						<td></td>
-						<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-	   					<td>서비스 이용 후 48시간 이내로 반려동물이 질환을 앓는 경우, 수의학적 판단에 의한 과실 여부에 따라 헬로 펫시터의 보상프로그램을 적용 받으실 수 있습니다. 고객센터로 전화 주시면 자세하게 안내해 드리겠습니다.</td>
-	   					<td>2020/01/20</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>답변완료</td>
-	   					<td onclick="QnA('#Q01','#A01')">펫시터 교육비 얼마인가요?</td>
-	   					<td>2020/01/15</td>
-					</tr>
-					<tr id = "Q01">
-						<td></td>
-	   					<td></td>
-	   					<td>펫시터 교육비 얼마인가요?</td>
-	   					<td></td>
-					</tr>
-					<tr id="A01">
-						<td></td>
-						<td>
-							<img src="../image/꺽인화살표.png" />
-						</td>
-	   					<td>펫시터 교육비는 총 6만원입니다ㅏ. 교육비 납수시에는 변심으로 인한 환불은 불가능 하오니 이점 양해 부탁드립니다.</td>
-	   					<td>2020/01/16</td>
-					</tr>
-					<tr><td colspan="4"></td></tr>
-	    		</table>
-    		</div>
-    		
-	    	<div class="sc_QnAlist">
-	    		<ul>
-	    			<li><a href="sc_QnA.html">1</a></li>
-	    			<li><a href="sc_QnA2.html" style="color:#9553F3">2</a></li>
-	    		</ul>
-	    	</div>
-	    	<div style="clear:both;"></div>
-	    	<div class="sc_QnASearch">
-	    		<select>
-	    			<option>제목</option>
-	    			<option>작성자</option>
-	    			<option>제목+내용</option>
-	    		</select>
-	    		<input type="text"/>
-	    		<input type="button" value="검색"/>
-	    		<input type="button" value="QnA 등록"/>
-	    	</div>	
+    	<div class = "service">
+    		<!-- 시터 이용현황 타이틀-->
+    		<div></div>
+	    	<!-- 시터 이용현황 표 -->
+	    	<div></div>
+	    	
+	    	<!-- 보호자 이용현황 타이틀-->
+    		<div></div>
+	    	<!-- 보호자 이용현황 표 -->
+	    	<div></div>
     	</div>
-   	</div>
-	<div style="clear:both;"></div>
-
+    </div>
+    
+    
+    
+    
+    
     <div class="footer">
       <div class="footer_wrap">
         <div class="page_info_menubar">
@@ -263,7 +168,5 @@
          </div>
        </div>
     </div>
-
-
   </body>
 </html>
