@@ -5,13 +5,12 @@
   <head>
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	<style media="screen">
+
+    <style media="screen">
 
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
-
-
 
       .header{width:1280px; margin:0 auto;  position:relative;}
         .navbar{width:1280px; position:relative;}
@@ -30,24 +29,24 @@
 
       .middle{position:relative; width:1280px; margin:0 auto; padding:0px;}
         .sc{width:1080px; margin:0px auto; text-align:center;}
-          .sc_title{text-align:left;border:1px solid black; }
+          .sc_title{text-align:left;}
           .sc_menubar{text-align:center;}
-            .sc_menubar ul li {float:left;text-size:20px;width:33%; border:1px solid black;}
-            .sc_menubar ul li:hover {border:1px solid #9553F3;background-color:red;}
+            .sc_menubar ul{}
+            .sc_menubar ul li {float:left;left:50%; text-size:20px;width:300px; padding:10px 20px;
+            				   border-top:3px double black;border-bottom:3px double black;}
+            .sc_menubar ul li:hover {border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
           .sc_notice{}
           .sc_notice img{width:10px;}
           .sc_notice table{width:100%; border-collapse:collapse; cursor:default;}
           .sc_notice table tr:nth-child(2n+1){visibility:collapse;}
-          .sc_notice table tr:first-child{visibility:visible;}
+          .sc_notice table tr:nth-child(2n){border-top:1px solid black;}
+          .sc_notice table tr:first-child{visibility:visible;border-top:3px double black;border-bottom:3px double black;}
           .sc_notice table tr td,th {padding:10px 20px;} 
           .sc_notice table tr td:first-child {width:10%;} 
           .sc_notice table tr td:nth-child(2) {text-align:left;} 
-          .sc_notice table tr td:last-child {width:20%;} 
-          
-      .bottom{width:1080px; margin:0 auto;}
-        .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
+          .sc_notice table tr td:last-child {width:20%;}
 
-      .footer{position: relative; width:100%; height:289px; background-color: #E6E6E6;}
+     .footer{width:1280px; margin:0 auto; height:289px; background-color: #E6E6E6;}
         .footer_wrap{width:1080;}
           .page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
             .page_info_menubar ul li{display:inline; margin:0 10px;}
@@ -57,12 +56,20 @@
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
 
-
+      /* 아래로 내려오는 메뉴바 css */
+      .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
+      .dropdown{position: relative; display: inline-block;}
+      .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
+                              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;}
+      .dropdown_content a{color: black; padding: 12px 16px; text-decoration: none; display: block;}
+      .dropdown_content a:hover{background-color: #9553F3;}
+      .dropdown:hover .dropdown_content{display: block;}
+      .dropdown:hover .dropbtn{background-color:;}
 
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER : </title>
+    <title>HELLO PET SITTER : Service Center</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -83,33 +90,42 @@
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href=""><img src="image/LOGO2.png" alt="" style="width:245px; height:60px;"></a>
+              <a href="../main/mainPageBL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
               <ul>
-                <li><a href="#"><i class="xi-log-in"></i>로그인</a></li>
-                <li><a href="#"><i class="xi-user-plus-o"></i>회원가입</a></li>
+                <!--xi-bell-o 알람벨 아이콘-->
+                <i class="xi-bell-o"></i>
+                <li><a href="mainPage.html"><i class="xi-log-out"></i>로그아웃</a></li>
+                <!-- 아래로 내려오는 메뉴바 -->
+                <div class="dropdown">
+                  <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
+                    <div class="dropdown_content ">
+                      <a href="profile_my_page.html">보호자프로필</a>
+                      <a href="#">시터프로필</a>
+                      <a href="profile_my.html">프로필수정</a>
+                      <a href="#">이용현황</a>
+                    </div>
+                </div>
               </ul>
           </div>
         </div>
       </div>
     </div>
 
-
     <div class="top">
       <div class="menubar">
         <ul>
           <li><a href="#">시터찾기</a></li>
-          <li><a href="#">이동</a></li>
-          <li><a href="#">반려인</a></li>
+          <li><a href="#">장거리이동</a></li>
+          <li><a href="#">프로그램</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>
       </div>
     </div>
 
-	<div style="clear:both;"></div>
-	
+
     <div class="middle">
     	<div class="sc">
     		<div class="sc_title">
@@ -123,8 +139,10 @@
 	    	  	</ul>
     		</div>
     		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
+    		<div>&nbsp;</div>
     		<div class="sc_notice">
-	    		<table border>
+	    		<table>
 	    			<tr><th>번호</th>
 	    				<th>제목</th>
 	    				<th>날짜</th>
@@ -221,19 +239,11 @@
 	   						많은 이용 부탁드립니다.<br></td>
 	   					<td></td>
 					</tr>
+					<tr><td colspan="3"></td></tr>
 	    		</table>
     		</div>
     	</div>	
-    	<div class=""></div>
-      
    	 </div>
-
-
-    <div class="bottom">
-      <div class="banner">
-        <div class="">광고용 배너 이미지 영역</div>
-      </div>
-    </div>
 
     <div class="footer">
       <div class="footer_wrap">
@@ -254,7 +264,7 @@
         </div>
          <div class="info_wrap">
           <div class="page_info_logo">
-            <div class=""><img src="" alt="" style="width:350px; opacity:0.5;"> </div>
+            <div class=""><img src="image/LOGO2.png" alt="" style="width:350px; opacity:0.5;"> </div>
           </div>
           <div class="page_info2">
             <ul>
