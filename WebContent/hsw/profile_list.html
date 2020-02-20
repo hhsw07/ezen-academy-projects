@@ -27,13 +27,21 @@
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
       .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
-        .tab a{border:1px solid black; border-radius:20px;}
-        .tab a:hover{border:1px solid #9553F3; color:#9553F3; }
-
-      .service{width:1280px; margin: 50px auto; display:flex;}
-        .profile_image{border:1px solid black; width:200px; height:200px; margin-left:150px; border-radius: 50%; text-align: center;}
-        .profile_name{margin-left:100px; border:1px solid black; width:600px; border-radius: 30px;}
-          .profile_image i{margin-top:60px;}
+         .favSitter{width:130px; margin:0 auto;}
+         
+          .tab button{position:absolute; z-index:10; left:115%; top:50%; transform:translate(-50%, -50% );
+                        width:40px; height:40px; border-radius:100%; background-color:rgba(0,0,0,.5); border:none; }
+          .tab button:before{font-family:'xeicon'; color:#fff; font-size:30px; }
+          .tab button.slick-prev{left:-30px; font-size:0; color:transparent; outline:none;}
+          .tab button.slick-prev:before{content:"\e93d"; outline:none;}
+          .tab button.slick-next{right:0px; font-size:0; color:transparent; outline:none;}
+          .tab button.slick-next:before{content:"\e940"; outline:none;}
+	  	  .tab img {width:50px; height:50px;}
+	  	  .tab img:first-child {}
+	  
+	  
+      .middle{width:1280px; margin: 50px auto; display:flex;}
+      
 	  
 	  .footer{width:1280px; margin:0 auto; height:289px; background-color: #E6E6E6;}
         .footer_wrap{width:1080;}
@@ -45,7 +53,7 @@
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
 	  
-      /* 아래로 내려오는 메뉴바 css */
+      //아래로 내려오는 메뉴바 css
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
       .dropdown{position: relative; display: inline-block;}
       .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
@@ -60,10 +68,10 @@
 
     <meta charset="utf-8">
     <title>HELLO PET SITTER : My Page</title>
-
+	
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+	
 
   </head>
   <body>
@@ -107,10 +115,24 @@
     </div>
 
     <div class="tab">
+      <section class="favSitter">
       	<!-- 좌우로 선택하여 움직이는 시터의 프로필 사진 --> 
-      <a href="profile_my.html" style="padding:5px 10px 5px 10px;">보호자</a>
-      <a href="profile_sitter.html" style="padding:5px 20px 5px 20px;">시터</a>
+	      <div><img src="../image/sitter1.jpg" class="sitter" ></div>
+	      <div><img src="../image/sitter2.jpg" class="sitter" ></div>
+	      <div><img src="../image/sitter3.jpg" class="sitter" ></div>
+      </section>
+      <script type="text/javascript">
+		$('.favSitter').slick({
+			infinite: true,
+			slidesToShow: 2,
+			slidesToScroll: 1,
+			speed:400
+			
+		});
+	  </script>
+      
     </div>
+    
 
     <div class="" style="border-bottom:1px dotted black; padding-top:20px; width:1280px; margin:0 auto;"></div>
     
@@ -127,6 +149,58 @@
 	    	<div></div>
     	</div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -151,7 +225,7 @@
         </div>
          <div class="info_wrap">
           <div class="page_info_logo">
-            <div class=""><img src="image/LOGO2.png" alt="" style="width:350px; opacity:0.5;"> </div>
+            <div class=""><img src="../image/LOGO.png" alt="" style="width:350px; opacity:0.5;"> </div>
           </div>
           <div class="page_info2">
             <ul>
