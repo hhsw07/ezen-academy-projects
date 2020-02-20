@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+		div {}
+		div input{}
+		div textarea{}
+		.button{width:50px; height:30px; border-radius:10px;}
+		
+			
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		
+
+
+	};
+</script>
+</head>
+<body>
+	<div>
+		<h3>QnA 등록</h3>
+		<form>
+			<input type="text" placeholder="제목을 입력하세요." />
+			<br>
+			<textarea row="20" cols="50" name="content">내용을 입력해주세요.</textarea>
+		
+		</form>
+		<div class="inOut">
+			<input type="button" value="취소" class="button"/>
+			<input type="button" value="등록" class="button"/>
+		</div>
+	</div>
+	
+	
+	<div id="createtop">
+			<!-- submit이 없으므로 action은 작동하지 않음 -->
+			<form action="movie_contents.html." method="post">
+				<div id="createtitle">
+					<input type="text" style="width:720px; height:30px;" class="create" placeholder="제목을 입력해주세요"/>
+				</div>
+				<div id="createdetail">
+					<textarea class="create" rows="30" cols="100" name="content" >내용을 입력해주세요.	</textarea>
+				</div>
+				<div id="createside">
+					<input type="button" value="취소" onclick="closed()"/>	
+					<input type="button" value="작성" onclick="create()"/>	
+				</div>
+			</form>
+		</div>		
+</body>
+</html>

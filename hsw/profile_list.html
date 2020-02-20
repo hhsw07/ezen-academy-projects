@@ -7,12 +7,9 @@
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
     <style media="screen">
-      html{overflow-y:scroll;}
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
-
-
 
       .header{width:1280px; margin:0 auto;  position:relative;}
         .navbar{width:1280px; position:relative;}
@@ -29,28 +26,16 @@
           .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
-      .middle{position:relative; width:1280px; margin:0 auto; padding:0px;}
-        .move_image{position: relative; left:150px; height:550px; padding-top:60px;}
+      .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
+        .tab a{border:1px solid black; border-radius:20px;}
+        .tab a:hover{border:1px solid #9553F3; color:#9553F3; }
 
-          .visual{position:relative;}
-
-          .visual button{position:absolute; z-index:10; left:78.5%; top:50%; transform:translate(-50%, -50% );
-                        width:71px; height:71px; border-radius:100%; background-color:rgba(0,0,0,.5); border:none;}
-          .visual button:before{font-family:'xeicon'; color:#fff; font-size:45px;}
-          .visual button.slick-prev{left:0px; font-size:0; color:transparent;}
-          .visual button.slick-prev:before{content:"\e93d";}
-          .visual button.slick-next{right:0px; font-size:0; color:transparent;}
-          .visual button.slick-next:before{content:"\e940";}
-
-        .middle_text{text-align:center;}
-          .middle_text p{font-size:30px; margin:60px 0;}
-        .other_planner{text-align:center;}
-          .other_planner div{border-radius:10%; width:200px; height:300px; margin:20px 32px; background-color:orangered; display:inline-block;}
-
-      .bottom{width:1080px; margin:0 auto;}
-        .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
-
-      .footer{position: relative; width:100%; height:289px; background-color: #E6E6E6;}
+      .service{width:1280px; margin: 50px auto; display:flex;}
+        .profile_image{border:1px solid black; width:200px; height:200px; margin-left:150px; border-radius: 50%; text-align: center;}
+        .profile_name{margin-left:100px; border:1px solid black; width:600px; border-radius: 30px;}
+          .profile_image i{margin-top:60px;}
+	  
+	  .footer{width:1280px; margin:0 auto; height:289px; background-color: #E6E6E6;}
         .footer_wrap{width:1080;}
           .page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
             .page_info_menubar ul li{display:inline; margin:0 10px;}
@@ -59,13 +44,22 @@
             .page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
             .page_info2{float:right; margin-bottom:100px;}
               .page_info2 ul li{padding:2px 5px; font-size:15px;}
-
+	  
+      /* 아래로 내려오는 메뉴바 css */
+      .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
+      .dropdown{position: relative; display: inline-block;}
+      .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
+                              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;}
+      .dropdown_content a{color: black; padding: 12px 16px; text-decoration: none; display: block;}
+      .dropdown_content a:hover{background-color: #9553F3;}
+      .dropdown:hover .dropdown_content{display: block;}
+      .dropdown:hover .dropbtn{background-color:;}
 
 
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER :after login</title>
+    <title>HELLO PET SITTER : My Page</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -77,66 +71,67 @@
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href="mainPage2.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+              <a href=""><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
               <ul>
                 <!--xi-bell-o 알람벨 아이콘-->
                 <i class="xi-bell-o"></i>
-                <li><a href="#"><i class="xi-log-out"></i>로그아웃</a></li>
-                <li><a href="#"><i class="xi-user-o"></i>마이페이지</a></li>
+                <li><a href="mainPage.html"><i class="xi-log-out"></i>로그아웃</a></li>
+                <!-- 아래로 내려오는 메뉴바 -->
+                <div class="dropdown">
+                  <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
+                    <div class="dropdown_content ">
+                      <a href="profile_my_page.html">보호자프로필</a>
+                      <a href="#">시터프로필</a>
+                      <a href="profile_my.html">프로필수정</a>
+                      <a href="#">이용현황</a>
+                    </div>
+                </div>
               </ul>
           </div>
         </div>
       </div>
     </div>
 
-
     <div class="top">
       <div class="menubar">
         <ul>
           <li><a href="#">시터찾기</a></li>
-          <li><a href="#">이동</a></li>
-          <li><a href="#">반려인</a></li>
+          <li><a href="#">장거리이동</a></li>
+          <li><a href="#">프로그램</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>
       </div>
     </div>
 
+    <div class="tab">
+      	<!-- 좌우로 선택하여 움직이는 시터의 프로필 사진 --> 
+      <a href="profile_my.html" style="padding:5px 10px 5px 10px;">보호자</a>
+      <a href="profile_sitter.html" style="padding:5px 20px 5px 20px;">시터</a>
+    </div>
 
+    <div class="" style="border-bottom:1px dotted black; padding-top:20px; width:1280px; margin:0 auto;"></div>
+    
     <div class="middle">
-      <div class="move_image">
-        <section class="visual">
-          <div class="bg1"><img src="image/move_bg1.png" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-          <div class="bg2"><img src="image/move_bg2.png" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-          <div class="bg3"><img src="image/move_bg3.jpg" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-          <div class="bg4"><img src="image/move_bg4.png" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-          <div class="bg5"><img src="image/move_bg5.png" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-          <div class="bg6"><img src="image/move_bg6.png" style="border:1px solid #fff; height:550px; width:1000px; border-radius:50px;" alt=""></div>
-        </section>
-      </div>
-
-      <!--image slied-->
-      <script type="text/javascript">
-        $('.visual').slick({
-          autoplay: true,
-          autoplaySpeed: 3000
-        });
-      </script>
-
-      <div class="middle_text">
-        <p>Services for every dog and cat</p>
-      </div>
+    	<div class = "service">
+    		<!-- 시터 이용현황 타이틀-->
+    		<div></div>
+	    	<!-- 시터 이용현황 표 -->
+	    	<div></div>
+	    	
+	    	<!-- 보호자 이용현황 타이틀-->
+    		<div></div>
+	    	<!-- 보호자 이용현황 표 -->
+	    	<div></div>
+    	</div>
     </div>
-
-
-    <div class="bottom">
-      <div class="banner">
-        <div class="">광고용 배너 이미지 영역</div>
-      </div>
-    </div>
-
+    
+    
+    
+    
+    
     <div class="footer">
       <div class="footer_wrap">
         <div class="page_info_menubar">
@@ -173,7 +168,5 @@
          </div>
        </div>
     </div>
-
-
   </body>
 </html>
