@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			.pet{border:1px solid black; width:30px; height:30px;}
+			.choice{border:1px solid black; width:30px; height:30px;}
+		</style>
+		<script type="text/javascript">
+		function changebg(text){
+			var texts = document.querySelectorAll(text);
+			if(texts[1].style.borderColor=="red"){
+				texts[1].style.borderColor=null;	
+				texts[0].style.borderColor="red";
+			}else{
+				texts[0].style.borderColor="red";
+			}
+		}
+		
+		function changebg2(text){
+			var texts = document.querySelectorAll(text);
+			if(texts[0].style.borderColor=="red"){
+				texts[0].style.borderColor=null;	
+				texts[1].style.borderColor="red";
+			}else{
+				texts[1].style.borderColor="red";
+			}
+    	}
+		</script>
+	</head>
+	<body>
+		<div class="pet" onclick="changebg('.pet')">cat</div>
+		<div class="pet" onclick="changebg2('.pet')">dog</div>
+		<div class="choice" onclick="changebg('.choice')">yes</div>
+		<div class="choice" onclick="changebg2('.choice')">no</div>
+	</body>
+</html>
