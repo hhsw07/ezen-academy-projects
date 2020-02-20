@@ -1,4 +1,4 @@
-package com.example.ezenpetsitter;
+package com.example.hellopetsitter;
 
 import android.content.Intent;
 import android.os.Bundle;
