@@ -13,11 +13,11 @@
         app:srcCompat="@drawable/logo" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/go_login"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentRight="true"
-        android:text="로그인" />
+        android:background="@drawable/login_btn" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/find_sitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,7 +51,7 @@
             android:text="프로그램" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/go_cs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

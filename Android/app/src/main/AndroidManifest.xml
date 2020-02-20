@@ -10,22 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-  <!--      <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>-->
-
-        <!-- 로그인페이지가 메인으로 -->
-        <activity android:name=".loginActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 로그인페이지가 메인으로 -->
+        <activity android:name=".loginActivity"/>
         <activity android:name=".termActivity"/>
         <activity android:name=".joinActivity"/>
         <activity android:name=".findIdActivity" />
