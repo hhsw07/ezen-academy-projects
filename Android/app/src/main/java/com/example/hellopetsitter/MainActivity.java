@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         login.setOnClickListener(glListen);
         cs.setOnClickListener(csListen);
+        fs.setOnClickListener(fsListen);
     }
     View.OnClickListener glListen = new View.OnClickListener() {
         @Override
