@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,10 +19,12 @@ public class findIdActivity extends AppCompatActivity {
         Button login = (Button)findViewById(R.id.go_login);
         Button auth = (Button)findViewById(R.id.auth);
         Button idf = (Button)findViewById(R.id.id_find);
+        ImageView main = (ImageView)findViewById(R.id.logo);
 
         login.setOnClickListener(glListen);
         auth.setOnClickListener(aListen);
         idf.setOnClickListener(idfListen);
+        main.setOnClickListener(home);
     }
     View.OnClickListener glListen = new View.OnClickListener() {
         @Override
@@ -42,6 +45,13 @@ public class findIdActivity extends AppCompatActivity {
         public void onClick(View v) {
             idf = new Intent(findIdActivity.this, foundActivity.class);
             startActivity(idf);
+        }
+    };
+    View.OnClickListener home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent main = new Intent(findIdActivity.this, MainActivity.class);
+            startActivity(main);
         }
     };
 }

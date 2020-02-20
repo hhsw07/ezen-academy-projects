@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +18,20 @@ public class loginActivity extends AppCompatActivity {
         Button goj = (Button)findViewById(R.id.go_join);
         Button fi = (Button)findViewById(R.id.find_id);
         Button fp = (Button)findViewById(R.id.find_pass);
+        ImageView main = (ImageView)findViewById(R.id.logo);
 
         goj.setOnClickListener(gjListen);
         fi.setOnClickListener(fiListen);
         fp.setOnClickListener(fpListen);
+        main.setOnClickListener(home);
     }
+    View.OnClickListener home = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent main = new Intent(loginActivity.this, MainActivity.class);
+            startActivity(main);
+        }
+    };
     View.OnClickListener fiListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
