@@ -9,13 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+  <!--      <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
+
+        <!-- 로그인페이지가 메인으로 -->
+        <activity android:name=".loginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".termActivity"/>
+        <activity android:name=".joinActivity"/>
+        <activity android:name=".findIdActivity" />
+        <activity android:name=".findPassActivity"/>
+        <activity android:name=".newPassActivity"/>
+        <activity android:name=".foundActivity"/>
+        <activity android:name=".faq"/>
+        <activity android:name=".notice"/>
+        <activity android:name=".qna"/>
     </application>
 
 </manifest>
