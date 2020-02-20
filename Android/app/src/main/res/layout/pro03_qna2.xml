@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textAllCaps="false">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -75,13 +76,27 @@
 
                 <TableRow
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/line_v40"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_span="3"
+                        android:layout_weight="1"
+                        android:background="#000000" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp">
 
                     <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="60dp"
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
@@ -92,60 +107,18 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center|center_vertical"
                         android:text="제목"
                         android:textColor="#000000" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
                     <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="1"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="예약은 어디에서 하나요?"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#C8E1FF">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_column="1"
-                        android:layout_weight="1"
-                        android:paddingRight="20dp"
-                        android:text="예약은 시터 찾기를 통해 희망하는 시터에게 간단하고 쉽게 예약을 진행할 수 있습니다."
+                        android:text="날짜"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -173,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="2"
+                        android:text="중요"
                         android:textColor="#000000" />
 
                     <TextView
@@ -181,7 +154,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="헬로 펫시터는 어떤 서비스를 제공하나요?"
+                        android:text="펫시터 지원 자격을 알려드려요."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="02/11"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -192,12 +173,9 @@
                     android:background="#C8E1FF">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:layout_weight="1"
-                        android:paddingRight="20dp"
-                        android:text="저희는 국내 최고 반려동물 전문가들의 교육을 받은 펫시터분들의 1:1 케어와 픽업 서비스 등 이용가능한 다양한 서비스 옵션을 제공하고 있습니다. 또한, 프리미엄 안전보장 프로그램과 모바일 앱을 통해 간단하고 쉽게 서비스를 이용할 수 있습니다."
+                        android:paddingLeft="30dp"
+                        android:text="*서울, 경기, 인천 수도권에 거주해요. \n*강아지와 5년 이상 함께 했어요. \n*모든일에 있어서 책임감이 강해요. \n*고객에게 친절하게 대응할 수 있어요. \n*시간 약속은 철저하게 지켜요. \n*활동 가능일 수가 한달 20일 이상인 경우 \n많은 지원 바랍니다."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -207,9 +185,10 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/line_v35"
+                        android:id="@+id/line1"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_span="3"
                         android:layout_weight="1"
                         android:background="#000000" />
 
@@ -224,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="3"
+                        android:text="중요"
                         android:textColor="#000000" />
 
                     <TextView
@@ -232,7 +211,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="호텔이나 병원에 맡기는 것과 다른 점은 무엇인가요?"
+                        android:text="수입 정산 방법입니다."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="02/05"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -243,12 +230,9 @@
                     android:background="#C8E1FF">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:layout_weight="1"
-                        android:paddingRight="20dp"
-                        android:text="호텔이나 병원의 경우 여러 마리의 반려동물을 수용하여야 하기 때문에 24시간 맞춤케어가 힘든 단점이 있습니다. 헬로 펫시터의 펫시팅 서비스는 1:1 반려동물 케어를 원칙으로 하며, 반려동물이 펫시터의 가정집에서 있는 동안 안전하게 지낼 수 있도록 합니다."
+                        android:paddingLeft="30dp"
+                        android:text="수입은 매주 수요일에 회사 수수료 및 원천세 \n제외한 금액을 펫시터님게 계좌로 정산해드리고 \n있습니다. 감사합니다."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -258,11 +242,13 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/line_v36"
+                        android:id="@+id/line_v35"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_span="3"
                         android:layout_weight="1"
                         android:background="#000000" />
+
                 </TableRow>
 
                 <TableRow
@@ -282,7 +268,58 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="타 펫시팅 서비스와 다른 점은 무엇인가요?"
+                        android:text="펫시터 지원 자격을 알려드려요."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="02/11"
+                        android:textColor="#000000" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/line_v36"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_span="3"
+                        android:layout_weight="1"
+                        android:background="#000000" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="3"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="15dp"
+                        android:text="수입 정산 방법입니다."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="02/05"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -295,6 +332,7 @@
                         android:id="@+id/line_v34"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_span="3"
                         android:layout_weight="1"
                         android:background="#000000" />
                 </TableRow>
@@ -308,7 +346,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="5"
+                        android:text="2"
                         android:textColor="#000000" />
 
                     <TextView
@@ -316,7 +354,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="헬로 펫시터 믿을 수 있는 업체인가요?"
+                        android:text="설 연휴를 맞이하여 비용에 할증이 \n발생할 수 있습니다."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center|center_vertical"
+                        android:text="01/22"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -329,6 +375,7 @@
                         android:id="@+id/line_v28"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_span="3"
                         android:layout_weight="1"
                         android:background="#000000" />
 
@@ -343,7 +390,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="6"
+                        android:text="1"
                         android:textColor="#000000" />
 
                     <TextView
@@ -351,42 +398,15 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="펫시팅 비용이 얼마인가요?"
+                        android:text="펫시터가 하는 주요 업무"
                         android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center|center_vertical"
-                        android:text="7"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="고양이도 가능한가요?"
+                        android:text="01/10"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -396,156 +416,68 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/line1"
+                        android:id="@+id/line_v37"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="8"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="추가비용 발생은 무엇인가요?"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="9"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="서비스에 대한 비용 결제는 언제되나요?"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="10"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="결제수단 (카드) 변경 및 관리는 어디서하나요?"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="11"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="예약 취소 및 환불 규정은 어떻게 되나요?"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line1"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_span="3"
                         android:layout_weight="1"
                         android:background="#000000" />
 
                 </TableRow>
 
             </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:entries="@array/spinner_entries" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:inputType="textPersonName"
+                        android:hint="검색 내용"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="검색" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:textAllCaps="false"
+                    android:text="QnA 등록" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+
+
 </LinearLayout>
+

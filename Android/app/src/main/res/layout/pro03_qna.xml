@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textAllCaps="false">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                 android:textSize="25sp" />
 
             <TextView
-                android:id="@+id/line_v1"
+                android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#000000"
@@ -66,370 +67,357 @@
                     android:text="QnA" />
             </LinearLayout>
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="15dp"
+                android:orientation="vertical">
 
-                <TableRow
+                <TextView
+                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/line_v40"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView6"
+                        android:layout_width="35dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
                         android:text="번호"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/textView7"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="답변상태"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center|center_vertical"
+                        android:layout_weight="1"
                         android:text="제목"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView9"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
                         android:text="날짜"
                         android:textColor="#000000" />
 
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <TextView
+                    android:id="@+id/textView19"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/line_v39"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView12"
+                        android:layout_width="35dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="중요"
+                        android:text="6"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView13"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="펫시터 지원 자격을 알려드려요."
+                        android:text="답변완료"
                         android:textColor="#000000" />
 
                     <TextView
+                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
+                        android:text="카드가 불가능이라고 떠요"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
                         android:text="02/11"
                         android:textColor="#000000" />
+                </LinearLayout>
 
-                </TableRow>
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#C8E1FF">
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_column="1"
-                        android:paddingLeft="15dp"
-                        android:text="*서울, 경기, 인천 수도권에 거주해요. \n*강아지와 5년 이상 함께 했어요. \n*모든일에 있어서 책임감이 강해요. \n*고객에게 친절하게 대응할 수 있어요. \n*시간 약속은 철저하게 지켜요. \n*활동 가능일 수가 한달 20일 이상인 경우 \n많은 지원 바랍니다."
+                        android:id="@+id/textView12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="45dp"
+                        android:text="서비스 이용중 카드가 결제 불가능이라고 합니다. 어떻게 해야 하나요?"
                         android:textColor="#000000" />
 
-                </TableRow>
+                </LinearLayout>
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#C8E1FF"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/line_v38"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="#000000" />
+                        android:background="#C8E1FF"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="5dp"
+                        android:text="결제 불가 상태는 펫시터가 고객의 예약 요청을 수학했으나, 결제 수단 및 시스템상 문제로 금액이 결제되지 않은 상태입니다. 카드번호 및 결제가 가능한 카드인지 다시 한번 확인 부탁드리며 아맥스 및 15자리 카드는 페이사 문제로 결제가 불가능합니다."
+                        android:textColor="#000000" />
 
-                </TableRow>
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="02/12"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-                <TableRow
+                <TextView
+                    android:id="@+id/textView21"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView12"
+                        android:layout_width="35dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="중요"
+                        android:text="5"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView13"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="수입 정산 방법입니다."
+                        android:text="답변완료"
                         android:textColor="#000000" />
 
                     <TextView
+                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
+                        android:text="공휴일에 비용"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
                         android:text="02/05"
                         android:textColor="#000000" />
+                </LinearLayout>
 
-                </TableRow>
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
 
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#C8E1FF">
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_column="1"
-                        android:paddingLeft="15dp"
-                        android:text="수입은 매주 수요일에 회사 수수료 및 원천세 \n제외한 금액을 펫시터님게 계좌로 정산해드리고 \n있습니다. 감사합니다."
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line_v35"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
+                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="45dp"
+                        android:text="연휴 또는 공휴일에 비용이 어떻게 되나요?"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C8E1FF"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#C8E1FF"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="5dp"
+                        android:text="연휴 또는 공휴일에는 할증 비용이 발생할 수 있습니다. 각 펫시터님들마다 0~10,000원 사이의 할등 비용이 있을 수 있으니 공휴일 날짜와 할증 비용을 꼭 체크하세요."
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="02/07"
+                        android:textColor="#000000" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
                         android:text="4"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView13"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="펫시터 지원 자격을 알려드려요."
+                        android:text="답변완료"
                         android:textColor="#000000" />
 
                     <TextView
+                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="02/11"
+                        android:text="펫시팅 전에 필요한 준비사항"
                         android:textColor="#000000" />
 
-                </TableRow>
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:text="02/01"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-                <TableRow
+                <TextView
+                    android:id="@+id/textView24"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="1dp"
+                    android:background="#000000" />
 
-                    <TextView
-                        android:id="@+id/line_v36"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-                </TableRow>
-
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="3"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="45dp"
+                        android:text="펫시팅 전에 필요한 준비사항은 뭐가 있나요? 산책도구와 강아지 밥그릇은 있어요."
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="수입 정산 방법입니다."
-                        android:textColor="#000000" />
+                </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="02/05"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#C8E1FF"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/line_v34"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
+                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="2"
+                        android:background="#C8E1FF"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="5dp"
+                        android:text="기본적인 준비물들은 배변패드, 배변 판, 배식 도구, 사료, 강아지 인식표 및 산책도구 등이 있습니다. 하지만 펫시터분들마다 준비물에대한 요구사항이 다를 수 있으니 펫시터분들의 프로필을 필히 읽어보시고 대화를 해보시기 바랍니다. 또한 펫시팅을 맡기기 위해선 기본적인 5차 접종이 꼭 완료되어야 합니다."
                         android:textColor="#000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView15"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="설 연휴를 맞이하여 비용에 할증이 \n발생할 수 있습니다."
+                        android:text="02/02"
                         android:textColor="#000000" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="01/22"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line_v28"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
-                        android:background="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
+                        android:layout_margin="10dp"
                         android:text="1"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textView17"
+                        android:layout_width="1dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:text="펫시터가 하는 주요 업무"
-                        android:textColor="#000000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center|center_vertical"
-                        android:text="01/10"
-                        android:textColor="#000000" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/line_v37"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_span="3"
-                        android:layout_weight="1"
+                        android:layout_margin="10dp"
                         android:background="#000000" />
 
-                </TableRow>
-
-            </TableLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="2" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -440,18 +428,18 @@
                         android:id="@+id/spinner"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
                         android:entries="@array/spinner_entries" />
 
                     <EditText
                         android:id="@+id/editText"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:ems="5"
-                        android:inputType="textPersonName"
-                        android:hint="검색 내용"
                         android:layout_gravity="center_vertical"
+                        android:ems="5"
+                        android:hint="검색 내용"
+                        android:inputType="textPersonName"
                         android:textSize="12sp" />
 
                     <Button
@@ -466,10 +454,11 @@
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_gravity="right"
                     android:layout_marginRight="15dp"
-                    android:text="QnA 등록" />
+                    android:text="QnA 등록"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
         </LinearLayout>
