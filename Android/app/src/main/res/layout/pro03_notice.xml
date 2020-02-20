@@ -118,7 +118,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/line_v39"
+                android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_span="3"
@@ -164,7 +164,7 @@
 
             <TextView
                 android:layout_column="1"
-                android:paddingLeft="15dp"
+                android:paddingLeft="30dp"
                 android:text="*서울, 경기, 인천 수도권에 거주해요. \n*강아지와 5년 이상 함께 했어요. \n*모든일에 있어서 책임감이 강해요. \n*고객에게 친절하게 대응할 수 있어요. \n*시간 약속은 철저하게 지켜요. \n*활동 가능일 수가 한달 20일 이상인 경우 \n많은 지원 바랍니다."
                 android:textColor="#000000" />
 
@@ -175,7 +175,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/line_v38"
+                android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_span="3"
@@ -221,7 +221,7 @@
 
             <TextView
                 android:layout_column="1"
-                android:paddingLeft="15dp"
+                android:paddingLeft="30dp"
                 android:text="수입은 매주 수요일에 회사 수수료 및 원천세 \n제외한 금액을 펫시터님게 계좌로 정산해드리고 \n있습니다. 감사합니다."
                 android:textColor="#000000" />
 

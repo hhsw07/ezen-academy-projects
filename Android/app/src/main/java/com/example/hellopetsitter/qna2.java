@@ -2,20 +2,18 @@ package com.example.ezenpetsitter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Button;
+import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class qna extends AppCompatActivity {
+public class qna2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pro03_qna);
+        setContentView(R.layout.pro03_qna2);
 
         TextView notice = (TextView)findViewById(R.id.title_notice);
         TextView faq = (TextView)findViewById(R.id.title_faq);
@@ -54,7 +52,7 @@ public class qna extends AppCompatActivity {
         // 이 클래스를 통해서, 특정한 이벤트 click을 했을 때 처리할 내용을 기술한다.
         @Override
         public void onClick(View v) {
-            int03 = new Intent(getApplicationContext(),qna.class);
+            int03 = new Intent(getApplicationContext(), qna2.class);
             // 해당 activity 로딩 시작.
             startActivity(int03);
         }

@@ -1,4 +1,4 @@
-package com.example.hellopetsitter;
+package com.example.ezenpetsitter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
