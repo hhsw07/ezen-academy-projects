@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="image/girl_icon.ico" />
+<link rel="shortcut icon" href="../image/girl_icon.ico" />
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <title>HELLO PET SITTER</title>
+
 <style media="screen">
-/* 페이지 전체 */
+/* 홈페이지 전체 */
 	body{height:100%; margin:0px; padding:0px; position:relative; min-width:1903px;}
 	ul li{list-style:none;}
 	a{text-decoration:none; color:black;}
@@ -26,7 +27,7 @@
 	.menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
 	.menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 /* 홈페이지 하단 */
-	.footer{position: relative; width:100%; height:289px; background-color:#E6E6E6;}
+	.footer{position: relative; width:100%; height:289px; background-color: #E6E6E6;}
 	.footer_wrap{width:1080;}
 	.page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
 	.page_info_menubar ul li{display:inline; margin:0 10px;}
@@ -35,18 +36,19 @@
 	.page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
 	.page_info2{float:right; margin-bottom:100px;}
 	.page_info2 ul li{padding:2px 5px; font-size:15px;}
-/* 로그인 */
-	.loginbox{text-align:center; margin:100px auto; border:2px solid black; width:450px; height:540px; padding:20px;}
-	.loginlogo{margin-top:50px;}
-	.login{width:400px; margin:10px auto; text-align:left;}
-	.logintitle{margin:10px auto;}
-	.inputlogin{width:90%; height:30px;}
-	.loginbtn{height:40px; width:150px; font-size:20px; margin:10px;}
-/* 아이디 비밀번호 찾기, 회원가입 */
-	.gofind{text-align:center; margin-top:35px;}
-	.gofind ul li{display:inline; margin-right:20px;}
-	.gojoin{border-top:1px solid gray; width:300px; margin:10px auto; padding:20px;}
-
+/* 회원가입 약관동의 */
+	.jc_page{margin-top:100px;}
+	.jc_title{width:440px; margin:20px auto;}
+	.joincheck{width:400px; margin:10px auto 100px; border:2px solid black; padding:20px; }
+	.joincheck hr{border-bottom:2px soild #E6E6E6; width:98%; margin-top:20px;}
+	.jc_btn{width:100%; text-align:center; margin-top:30px;}
+	.jc_btn [name=term]{width:200px; height:50px; margin:10px auto; cursor:pointer;}
+/* 체크박스 */
+	input[type="checkbox"] {-webkit-appearance:none; -moz-appearance:none; -o-appearance:none; appearance:none; outline:none; box-shadow:none;
+    background:#3679A4;border-radius:50%; width:17px; height: 17px; cursor: pointer; display:inline-block; vertical-align:middle;}
+	input[type="checkbox"]:checked {background:url(../image/ck01.png) #3679A4 no-repeat center/17px 17px;}
+	label{vertical-align:middle;}
+	
 </style>
 
 </head>
@@ -55,21 +57,22 @@
 	<div class="header">
 		<div class="navbar">
 			<div class="page_logo">
-				<a href="mainPage2.html"><img src="image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+				<a href="mainPage2.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
 			</div>
 			<div class="navbar12_wrap">
 				<div class="navbar_1">
+
 				</div>
 				<div class="navbar_2">
 					<ul>
 						<li><a href="login.html"><i class="xi-log-in"></i>로그인</a></li>
-						<li><a href="#"><i class="xi-user-plus-o"></i>회원가입</a></li>
+						<li><a href="term.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-      
+	
 <!-- 사이트 메뉴 -->
 	<div class="top">
 		<div class="menubar">
@@ -81,38 +84,51 @@
 			</ul>
 		</div>
 	</div>
-    
-<!-- 로그인박스 -->
-	<div class="loginbox">
-		<div class="loginlogo">
-			<h1><img alt="" src="image/001-dog.png" style="width:50px;height:50px;">LOGIN</h1>
+	
+<!-- 회원가입약관동의 -->
+	<div class="jc_page">
+		<div class="jc_title">
+			<h2>회원가입 약관동의</h2>
 		</div>
-		<div class="login">
-			<ul>
-				<li class="logintitle">ID</li>
-				<li><input class="inputlogin" type="text" name="아이디"/></li>
-				<li class="logintitle">PASSWORD</li>
-				<li><input class="inputlogin" type="password" name="비밀번호"/></li>
-			</ul>
-		</div>
-		<div>
-			<a herf="#"><input class="loginbtn" type="submit" name="로그인" value="로그인"/></a>
-		</div>
-		<div class="gofind">
-			<ul>
-				<li><a herf="#">아이디 찾기</a></li>
-				<li>|</li>
-				<li><a herf="#">비밀번호 찾기</a></li>
-			</ul>
-		</div>
-		<div class="gojoin">
-			<label><a herf="#">회원가입</a></label>
+		<div class="joincheck">
+			<div>
+				<input type="checkbox" onclick="allck(this)" id="agree00" name="agree"/>
+				<label for="agree00">아래 항목에 전체동의 합니다</label>
+			</div>
+			<hr>
+			<div>
+				<p>
+					<input type="checkbox" id="agree01" name="agree"/>
+					<label for="agree01">본인은 만 14세 이상입니다 (필수)</label>
+				</p>
+				<p>
+					<input type="checkbox" id="agree02" name="agree"/>
+					<label for="agree02">서비스 이용약관 동의 (<a href="../terms/service.html" target="_blank">보기</a>) (필수)</label>
+				</p>
+				<p>
+					<input type="checkbox" id="agree03" name="agree"/>
+					<label for="agree03">개인정보 수집 이용 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
+				</p>
+				<p>
+					<input type="checkbox" id="agree04" name="agree"/>
+					<label for="agree04">안전보상지원 프로그램약관 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
+				</p>
+				<p>
+					<input type="checkbox" id="agree05" name="agree"/>
+					<label for="agree05">위치기반서비스 이용약관 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
+				</p>
+				<p>
+					<input type="checkbox" id="agree06" name="agree"/>
+					<label for="agree06">이벤트 및 마케팅 정보 수신 동의 (선택)</label>
+				</p>
+			</div>
+			<div class="jc_btn">
+				<a href="join.html"><input type="button" name="term" value="다음"/></a>
+			</div>
 		</div>
 	</div>
-
-
-
 	
+
 <!-- 홈페이지 하단 -->
 	<div class="footer">
 		<div class="footer_wrap">
@@ -120,7 +136,7 @@
 				<ul>
 					<li><a href="#">광고/제휴문의</a></li>
 					<li>  |  </li>
-					<li><a href="service.html">이용약관</a></li>
+					<li><a href="../terms/service.html">이용약관</a></li>
 					<li>  |  </li>
 					<li><a href="#">개인정보취급방침</a></li>
 					<li>  |  </li>
@@ -133,7 +149,7 @@
 			</div>
 			<div class="info_wrap">
 				<div class="page_info_logo">
-					<div class=""><img src="image/LOGO.png" alt="" style="width:350px;"> </div>
+					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px; opacity:0.8;"> </div>
 				</div>
 				<div class="page_info2">
 					<ul>
@@ -149,9 +165,22 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
+
 </body>
 <script type="text/javascript">
+	function allck(val){
+	    var obj = document.getElementsByName("agree");
+	    if (val.checked == true){
+	        for(var i=0; i<obj.length; i++){
+	         obj[i].checked = true;
+	        }
+	    }else{
+	        for(var i=0; i<obj.length; i++){
+	         obj[i].checked = false;
+	        }
+	    }
+	}
 
 </script>
 </html>

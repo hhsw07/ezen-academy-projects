@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../image/girl_icon.ico" />
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<title>HELLO PET SITTER</title>
+
+<style media="screen">
+/* 홈페이지 전체 */
+	body{height:100%; margin:0px; padding:0px; position:relative; min-width:1903px;}
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* 홈페이지 상단 */
+	.header{width:1280px; margin:0 auto;  position:relative;}
+	.navbar{width:1280px; position:relative;}
+	.page_logo{display:inline-block; position:relative; top:10px;}
+	.navbar12_wrap{position:relative; width:1036px; left:242px; bottom:44px; border-bottom:1px solid black; padding-bottom:45px;}
+	.navbar_2{display:inline-block; position:relative; float:right;}
+	.navbar_2 i{font-size:25px;}
+	.navbar_2 ul li{display:inline; margin-left:20px;}
+	.navbar_2 ul li:hover{border-bottom:2px solid #9553F3;}
+/* 사이트 메뉴 */
+	.top{width:1280px; margin:0 auto; padding:0px;}
+	.menubar{text-align:center; margin-top:40px; border-bottom-style:double; border-top-style:double;}
+	.menubar ul{margin-bottom: 5px; margin-top: 5px;}
+	.menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
+	.menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
+/* 홈페이지 하단 */
+	.footer{position:relative; width:100%; height:289px; background-color: #E6E6E6; margin-bottom:0;}
+	.footer_wrap{width:1080;}
+	.page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
+	.page_info_menubar ul li{display:inline; margin:0 10px;}
+	.page_info_menubar a{color:black;}
+	.info_wrap{width:1080px; margin:0 auto;}
+	.page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
+	.page_info2{float:right; margin-bottom:100px;}
+	.page_info2 ul li{padding:2px 5px; font-size:15px;}
+/* 아이디찾기 */
+	.find{width:500px; margin:150px auto; border:2px solid black; padding:20px;}
+	.find_title img{width:25px; height:25px; margin-right:10px;}
+	.find_form{margin:10px;width:95%; margin:5px auto;}
+	.find_form label{width:100px; display:inline-block; text-align:right;}
+	.find_form input{width:200px;height:30px;margin:5px auto;}
+	.find_form [name=checkhp]{width:150px; height:35px;}
+	.find_btn{text-align:center; margin:20px;}
+	.find_btn [type=submit]{width:120px; height:40px; font-size:24px;}
+/* modal */
+	#idmodal{visibility:hidden; position:absolute; left:0px; top:0px; width:100%; height:100%; text-align:center; z-index:1000; background-color:rgba(0,0,0,0.6);} 
+	#show{width:300px; margin:400px auto; background-color:#ffffff; border:1px solid #000000; padding:15px; text-align:center; opacity:1;} 
+	
+</style>
+
+
+</head>
+<body>
+<!-- 홈페이지 상단 -->
+	<div class="header">
+		<div class="navbar">
+			<div class="page_logo">
+				<a href="mainPage2.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+			</div>
+			<div class="navbar12_wrap">
+				<div class="navbar_1">
+
+				</div>
+				<div class="navbar_2">
+					<ul>
+						<li><a href="login.html"><i class="xi-log-in"></i>로그인</a></li>
+						<li><a href="term.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!-- 사이트 메뉴 -->
+	<div class="top">
+		<div class="menubar">
+			<ul>
+				<li><a href="#">시터찾기</a></li>
+				<li><a href="#">이동</a></li>
+				<li><a href="#">반려인</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+		</div>
+	</div>
+	
+<!-- 아이디 찾기 -->
+	<div class="find">
+		<div class="find_title">
+			<h2><img alt="" src="../image/031-search.png">아이디찾기</h2>
+		</div>
+		<div class="find_form">
+			<label for="name">이름</label>
+			<input type="text" name="name"/>
+		</div>
+		<div class="find_form">
+			<label for="hp">휴대폰 번호</label>
+			<input type="tel" name="hp"/>
+			<input type="button" name="checkhp" onclick="auth()" value="인증번호받기"/>
+		</div>
+		<div class="find_form" id="ckhp">
+			<label for="cknum">인증번호</label>
+			<input type="text" name="cknum"/>
+		</div>
+		<div class="find_btn">
+			<input onclick="overlay()" type="submit" value="찾기"/>
+		</div>
+	</div>
+<!-- Modal -->
+	<div id="idmodal">
+		<div id="show">
+			<p>회원님의 아이디는</p>
+			<p><strong> hellopet </strong> 입니다 </p>
+			<input id="close" type="button" value="확인"/>
+		</div>
+	</div>	
+	
+<!-- 홈페이지 하단 -->
+	<div class="footer">
+		<div class="footer_wrap">
+			<div class="page_info_menubar">
+				<ul>
+					<li><a href="#">광고/제휴문의</a></li>
+					<li>  |  </li>
+					<li><a href="service.html">이용약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">개인정보취급방침</a></li>
+					<li>  |  </li>
+					<li><a href="#">안전보상제도 약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">위치기반서비스 약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">펫시터 약관</a></li>
+				</ul>
+			</div>
+			<div class="info_wrap">
+				<div class="page_info_logo">
+					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px;"> </div>
+				</div>
+				<div class="page_info2">
+					<ul>
+						<li>(<span style="font-size:5px;">주</span>)PETcare | 대표:홍길동 | 사업자등록번호:652-000-000000</li>
+						<li>고객센터 : 02-0000-0000 | 이메일 : aaaaa@naver.com | 운영시간(한국) 11시~19시(주말/공휴일 제외)</li>
+						<li>주소 : 서울특별시 종로구 @@@로 0000 @@빌딩0000 | 통신판매업 신고 : 2020 - @@로 - 000호</li>
+					</ul>
+					<ul>
+						<li>자사는 서울특별시@@협회 공제영업보증보험에 가입되어 있습니다.</li>
+						<li>PETcare는 통신판매중개자이며 통신판매의 당사자가 아닙니다.</li>
+						<li>따라서 PETcare는 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var ckhp = document.querySelector("#ckhp");
+	ckhp.style.display="none";
+	function auth(){
+		alert('인증번호가 전송되었습니다');
+		ckhp.style.display="inline-block";
+		ckhp.style.margin="0 13px";
+	}
+	function overlay() { 
+	    var el = document.querySelector("#idmodal"); 
+	    el.style.visibility="visible"; 
+	}
+	var close = document.querySelector("#close");
+	close.onclick = function(){
+		var el = document.querySelector("#idmodal");
+		el.style.visibility="hidden";
+	}
+
+</script>
+
+</html>

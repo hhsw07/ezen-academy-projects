@@ -36,13 +36,15 @@
 	.page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
 	.page_info2{float:right; margin-bottom:100px;}
 	.page_info2 ul li{padding:2px 5px; font-size:15px;}
-/* 회원가입 약관동의 */
-	.jc_page{margin-top:100px;}
-	.jc_title{width:440px; margin:20px auto;}
-	.joincheck{width:400px; margin:10px auto; border:2px solid black; padding:20px;}
-	.jc_all{border-bottom:2px soild #E6E6E6; width:300px;}
-	.jc_btn{width:100%; text-align:center;}
-	.jc_btn [name=term]{width:200px; height:50px; margin:10px auto;}
+/* 비밀번호 재설정 */
+	.find{width:500px; margin:150px auto; border:2px solid black; padding:20px;}
+	.find_title img{width:25px; height:25px; margin-right:10px;}
+	.find_form{margin:10px;width:95%; margin:5px auto;}
+	.find_form label{width:200px; display:inline-block; text-align:right;}
+	.find_form input{width:200px;height:30px;margin:5px auto;}
+	.find_btn{text-align:center; margin:20px;}
+	.find_btn [type=submit]{width:120px; height:40px; font-size:24px;}
+	
 	
 </style>
 
@@ -60,8 +62,8 @@
 				</div>
 				<div class="navbar_2">
 					<ul>
-						<li><a href="#"><i class="xi-log-in"></i>로그인</a></li>
-						<li><a href="#"><i class="xi-user-plus-o"></i>회원가입</a></li>
+						<li><a href="login.html"><i class="xi-log-in"></i>로그인</a></li>
+						<li><a href="term.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
 					</ul>
 				</div>
 			</div>
@@ -80,49 +82,24 @@
 		</div>
 	</div>
 	
-<!-- 회원가입약관동의 -->
-	<div class="jc_page">
-		<div class="jc_title">
-			<h2>회원가입 약관동의</h2>
+<!-- 비밀번호 재설정 -->
+	<div class="find">
+		<div class="find_title">
+			<h2><img alt="" src="../image/031-search.png">비밀번호 재설정</h2>
 		</div>
-		<div class="joincheck">
-			<div class="jc_all">
-				<input type="checkbox" id="agree00" name="agree"/>
-				<label for="agree00">아래 항목에 전체동의 합니다</label>
-			</div>
-			<div>
-				<p>
-					<input type="checkbox" id="agree01" name="agree"/>
-					<label for="agree01">본인은 만 14세 이상입니다 (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree02" name="agree"/>
-					<label for="agree02">서비스 이용약관 동의 (<a href="service.html" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree03" name="agree"/>
-					<label for="agree03">개인정보 수집 이용 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree04" name="agree"/>
-					<label for="agree04">안전보상지원 프로그램약관 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree05" name="agree"/>
-					<label for="agree05">위치기반서비스 이용약관 동의 (<a href="#" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree06" name="agree"/>
-					<label for="agree06">이벤트 및 마케팅 정보 수신 동의 (선택)</label>
-				</p>
-			</div>
-			<div class="jc_btn">
-				<a href="#"><input type="button" name="term" value="다음"/></a>
-			</div>
+		<div class="find_form">
+			<label for="newpw">새로운 비밀번호</label>
+			<input type="password" name="newpw"/>
+		</div>
+		<div class="find_form">
+			<label for="ckpw">비밀번호 확인</label>
+			<input type="password" name="ckpw"/>
+		</div>
+		<div class="find_btn">
+			<a href="login.html"><input onclick="auth()" type="submit" value="확인"/></a>
 		</div>
 	</div>
 	
-
 <!-- 홈페이지 하단 -->
 	<div class="footer">
 		<div class="footer_wrap">
@@ -143,7 +120,7 @@
 			</div>
 			<div class="info_wrap">
 				<div class="page_info_logo">
-					<div class=""><img src="../image/LOGO2.png" alt="" style="width:350px;"> </div>
+					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px;"> </div>
 				</div>
 				<div class="page_info2">
 					<ul>
@@ -159,10 +136,13 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-
+	</div>
+	
 </body>
 <script type="text/javascript">
+	function auth(){
+		alert('비밀번호가 변경되었습니다');
+	}
 
 </script>
 </html>
