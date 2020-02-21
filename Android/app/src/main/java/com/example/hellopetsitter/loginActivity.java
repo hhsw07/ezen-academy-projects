@@ -19,11 +19,13 @@ public class loginActivity extends AppCompatActivity {
         Button fi = (Button)findViewById(R.id.find_id);
         Button fp = (Button)findViewById(R.id.find_pass);
         ImageView main = (ImageView)findViewById(R.id.logo);
+        Button inh = (Button)findViewById(R.id.login);
 
         goj.setOnClickListener(gjListen);
         fi.setOnClickListener(fiListen);
         fp.setOnClickListener(fpListen);
         main.setOnClickListener(home);
+        inh.setOnClickListener(home);
     }
     View.OnClickListener home = new View.OnClickListener() {
         @Override
