@@ -38,7 +38,7 @@
               .list textarea{border-radius:20px; margin-top:5px; outline:none; font-size:20px; border-color:#A4A4A4; padding-left:20px;}
               .list li button{width:150px; height:50px; margin-right:50px; background-color:white; border-color:#A4A4A4; border-radius:20px; outline:none;}
               .list li button:hover{background-color:#9553F3;}
-              .list li select{outline:none; font-size:15px;}
+              .list li select{outline:none; font-size:15px; width:295px; height:55px; border-radius: 10px; border-color:black; margin-right: 20px;}
 
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
       .dropdown{position: relative; display: inline-block;}
@@ -87,7 +87,7 @@
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href=""><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+              <a href=""><img src="../PETCARE/image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
@@ -100,9 +100,8 @@
                 <div class="dropdown">
                   <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
                     <div class="dropdown_content ">
-                      <a href="profile_my_page.html">보호자프로필</a>
-                      <a href="#">시터프로필</a>
-                      <a href="profile_my.html">프로필수정</a>
+                      <a href="profile_my_page.html">프로필</a>
+                      <a href="profile_my.html">프로필설정</a>
                       <a href="#">이용현황</a>
                     </div>
                 </div>
@@ -133,36 +132,28 @@
     <div class="pet_info_list">
         <div class="list">
           <ul>
-            <span style="font-size:20px;">펫의 정보를 입력해 주세요.</span><br><br><br> 펫의 종류를 선택해 주세요
+            <span style="font-size:20px;">서비스 정보를 입력해 주세요.</span><br><br><br> 서비스 가능 펫의 종류를 선택해 주세요
             <li><input style="margin-right:10px;" type="button" name="" value="Dog" class="select1" onclick="changebg('.select1')">
             <input style="margin-left:10px;" type="button" name="" value="Cat" class="select1" onclick="changebg2('.select1')"></li>
-            <li>이름</li>
-            <li><input type="text" name="" value=""></li>
-            <li>몸무게(kg)</li>
-            <li><input type="text" name="" value=""></li>
-            <li>나이(년/개월)</li>
-            <li><input type="text" name="" value="" placeholder="예) 1/5(1살5개월) 0/5(5개월)"></li>
-            <li>성별</li>
-            <li><select class="" name="" style="width:300px; height:50px; border-radius:10px; border-color:black;">
-                <option value="">선택</option>
-                <option value="">남</option>
-                <option value="">여</option>
-            </select></li>
-            <li>품종</li>
-            <li> <input type="text" name="" value=""> </li>
           </ul>
           <ul class="select">
-            중성화 수술을 하였나요?
+            선호하는 펫 정보를 선택해주세요.</span><br><br><br> 중성화 수술여부
             <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select2" onclick="changebg('.select2')">
             <input style="margin-left:10px;" type="button" name="" value="No" class="select2" onclick="changebg2('.select2')"></li>
           </ul>
           <ul class="select">
-            반려동물 등록제용 인식칩을 삽입 하셨나요?
+            반려동물 등록제용 인식칩을 삽입 여부
             <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select3" onclick="changebg('.select3')">
             <input style="margin-left:10px;" type="button" name="" value="No" class="select3" onclick="changebg2('.select3')"></li>
           </ul>
           <ul class="select">
-            다른 고양이와도 잘 지내나요?
+            배변훈련 여부
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select4" onclick="changebg('.select4')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select4" onclick="changebg2('.select4')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul class="select">
+            반려동물관리사 자격증 여부
             <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select4" onclick="changebg('.select4')">
             <input style="margin-left:10px;" type="button" name="" value="No" class="select4" onclick="changebg2('.select4')"></li>
             <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
@@ -174,38 +165,62 @@
             <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
           </ul>
           <ul class="select">
-            아이와도 잘 지내나요?
+            다른 고양이와도 잘 지내나요?
             <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select6" onclick="changebg('.select6')">
             <input style="margin-left:10px;" type="button" name="" value="No" class="select6" onclick="changebg2('.select6')"></li>
             <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
           </ul>
           <ul class="select">
-            배변훈련 여부
+            아이와도 잘 지내나요?
             <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select7" onclick="changebg('.select7')">
             <input style="margin-left:10px;" type="button" name="" value="No" class="select7" onclick="changebg2('.select7')"></li>
             <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
           </ul>
           <ul>
-            <li>질병이력</li>
-            <li><textarea name="name" rows="8" cols="58.5"></textarea></li>
+            <span style="font-size:20px;">서비스 목록을 선택해 주세요.</span><br><br><br> 하루돌봄 서비스
+            <li> <select class="" name="">
+              <option value="">선택없음</option>
+              <option value="">시터집</option>
+              <option value="">보호자집</option>
+            </select> <input type="text" name="" value="" placeholder="서비스 가격"> </li>
           </ul>
           <ul>
-            <li>사고이력</li>
-            <li><textarea name="name" rows="8" cols="58.5"></textarea></li>
-          </ul>
-          <ul>
-            <li>나의 강아지 또는 고양이에 대해서 소개해주세요</li>
-            <li><textarea name="name" rows="8" cols="58.5"></textarea></li>
-          </ul>
-          <ul>
+            시간제 돌봄 서비스
             <li>
-              <div style="text-align:center; border:1px solid black; width:618px; height:50px; border-radius:10px;">
-                  <span style="padding-top:10px;"><i class="xi-plus" style="font-size:30px;">사진 추가</i></span>
-              </div>
-            </li>
+              <select class="" name="" style="width:189px;">
+              <option value="">선택없음</option>
+              <option value="">시터집</option>
+              <option value="">보호자집</option>
+              </select>
+              <select class="" name="" style="width:189px;">
+                <option value="">선택없음</option>
+                <option value="">1시간</option>
+                <option value="">2시간</option>
+                <option value="">3시간</option>
+                <option value="">4시간</option>
+                <option value="">5시간</option>
+                <option value="">6시간</option>
+                <option value="">7시간</option>
+                <option value="">8시간</option>
+              </select>
+             <input type="text" name="" value="" placeholder="서비스 가격" style="width:189px;"> </li>
           </ul>
           <ul>
-            <li> <a href="profile_my_addpet.html"><button type="button" name="button" >저장</button></a><a href="profile_my.html"><button type="button" name="button">취소</button></a> </li>
+            산책
+            <li> <select class="" name="">
+              <option value="">선택없음</option>
+              <option value="">1시간</option>
+              <option value="">2시간</option>
+              <option value="">3시간</option>
+              <option value="">4시간</option>
+            </select> <input type="text" name="" value="" placeholder="서비스 가격"> </li>
+          </ul>
+          <ul>
+            <li>나에 대해서 소개해주세요</li>
+            <li><textarea name="name" rows="8" cols="58.5"></textarea></li>
+          </ul>
+          <ul>
+            <li> <a href="profile_sitter_addservices.html"><button type="button" name="button" >저장</button></a><a href="profile_my.html"><button type="button" name="button">취소</button></a> </li>
           </ul>
 
         </div>

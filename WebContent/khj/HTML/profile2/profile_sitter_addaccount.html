@@ -37,14 +37,11 @@
             .profile_image i{margin-top:60px;}
 
       .info_wrap{width:1280px; height:300px; background-color: #E4E0E0; margin:0 auto; border-radius: 30px; }
-        .info{width:1280px; margin:50px auto; padding-top:1px;}
-          .extra{border:1px solid black; width:360px; height:260px; text-align: center; margin:20px; border-radius: 20px; border-style:dashed; display:inline-block; }
+        .info{width:1280px; margin:50px auto; text-align: center; padding-top:1px;}
+          .extra{border:1px solid black; width:360px; height:260px; margin:20px; border-radius: 20px; border-style:dashed;}
             .extra i{margin-top: 85px;}
 
-      td button{border-radius:10px; outline:none; border-color:black; cursor:pointer;}
-
-
-      /* 아래로 내려오는 메뉴바 css */
+      /* 아래로 내려오는 매뉴바 */
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
       .dropdown{position: relative; display: inline-block;}
       .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
@@ -53,7 +50,6 @@
       .dropdown_content a:hover{background-color: #9553F3;}
       .dropdown:hover .dropdown_content{display: block;}
       .dropdown:hover .dropbtn{background-color:;}
-
 
     </style>
 
@@ -78,13 +74,13 @@
                 <!--xi-bell-o 알람벨 아이콘-->
                 <i class="xi-bell-o"></i>
                 <li><a href="mainPage.html"><i class="xi-log-out"></i>로그아웃</a></li>
+                <!-- xi-user 사람 아이콘 -->
                 <!-- 아래로 내려오는 메뉴바 -->
                 <div class="dropdown">
                   <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
                     <div class="dropdown_content ">
-                      <a href="profile_my_page.html">보호자프로필</a>
-                      <a href="#">시터프로필</a>
-                      <a href="profile_my.html">프로필수정</a>
+                      <a href="myPage.html">프로필</a>
+                      <a href="profile_my.html">프로필설정</a>
                       <a href="#">이용현황</a>
                     </div>
                 </div>
@@ -121,40 +117,38 @@
           <ul>
             <li><span style="font-size:35px;">홍길동</span></li>
             <li style="padding-top:10px; font-size:15px;"><span style="">서울특별시 종로구</span></li>
+            <li style="padding-top:20px;">☆☆☆☆☆</li>
           </ul>
         </div>
     </div>
-
     <div class="info_wrap">
         <div class="info">
            <div class="extra" style="border-style:solid;">
-              <div style="padding:0px; margin:0px;">
-                <img src="../image/move_bg2.png" style="width:360px; border-radius:20px 20px 0px 0px; padding:0px; margin:0px;" alt="">
+              <div class="" style="width:360px; height:200px; background-color:silver; border-radius:20px 20px 0px 0px;">
+                <table style="text-align:left;">
+                  <tr><td style="padding:10px 0 0 0;">하루돌봄(시터집)</td><td style="padding:10px 0 0 10px;">8만원</td></tr>
+                  <tr><td style="padding:10px 0 0 0;">4시간돌봄(보호자집)</td><td style="padding:10px 0 0 10px;">4만원</td></tr>
+                  <tr><td style="padding:10px 0 0 0;">산책(2시간)</td><td style="padding:10px 0 0 10px;">2만원</td></tr>
+                </table>
               </div>
               <div class="">
                 <table>
                   <tr>
-                    <th>김삼월</th>
-                    <td><button type="button" name="button" style="width:70px; height:30px;"><i class="xi-eye-o" style="margin:0px;"></i>수정</button></td>
+
+                    <td style="padding-top:15px; padding-left:15px;"><button type="button" name="button" style="width:70px; height:30px;"><i class="xi-eye-o" style="margin:0px;"></i>수정</button></td>
                     <!-- 삭제 클릭 시 팝업으로 재확인 후 확인 클릭 시 삭제완료되도록 설정 -->
-                    <td><button type="button" name="button" style="width:70px; height:30px;"><i class="xi-trash-o" style="margin:0px;"></i>삭제</button></td>
+                    <td style="padding-top:15px;"><button type="button" name="button" style="width:70px; height:30px;"><i class="xi-trash-o" style="margin:0px;"></i>삭제</button></td>
                   </tr>
                 </table>
               </div>
             </div>
-
-            <a href="addPet.html"><div class="extra" style="position:relative; bottom:33px;">
-              <!-- 펫 추가 아이콘 -->
-              <i class="xi-plus" style="font-size:60px;"></i>
-              <p>펫</p>
-            </div></a>
         </div>
     </div>
 
     <div class="info_wrap">
         <div class="info">
             <a href="#"><div class="extra">
-              <!-- 사진 추가 아이콘 -->
+
               <i class="xi-plus" style="font-size:60px;"></i>
               <p>사진</p>
             </div></a>
@@ -180,5 +174,6 @@
             </div>
         </div>
     </div>
+
   </body>
 </html>
