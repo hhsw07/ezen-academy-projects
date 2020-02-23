@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>행복한 하루</title>
+<style>
+	table{width:300px; height:300px; margin:100px auto 0px; border-collapse:collapse;}
+	div{text-align:center;}
+	
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+	/*	
+	조별 연습과제(~월)
+	1. 두더지게임 만들기. 3x3에서 임의로 두더지가 시간을 두어 나타났다가 사라지고, 나타났을 때 클릭하면 점수가 올라가게 처리.
+	*/
+	// 변수 설정
+		var h1Obj = document.querySelectorAll("h1");
+		var h2Obj = document.querySelector("h2");
+		var tds = document.querySelectorAll("td");
+		var point;	// 점수
+		var cnt;	// 클릭횟수
+		var time;
+		var start = 0;	// 시작 여부를 확인
+		
+		for( var idx = 0 ; idx < tds.length ; idx++){
+			tds[idx].style.backgroundImage = "url(K-1.jpg)";
+			tds[idx].style.backgroundSize = "100% 100%";
+		}
+		
+		// 시작 누르고 스타트
+		h1Obj[0].onclick = function(){
+			if(start == 0){
+				start++;	// 반복 실행을 방지
+				point = 0;	// 점수 초기화
+				cnt = 0;	// 클릭횟수 초기화
+				time = 10000;
+				h1Obj[0].style.display = "none";
+				h1Obj[1].innerHTML = `점수: ${point} 클릭: ${cnt}`;
+				h2Obj.innerHTML = "10초";
+				
+				var set01 = setInterval(function(){
+					// 두더지 반복 올라옴
+					for( var idx = 0 ; idx < tds.length ; idx++){
+						tds[idx].style.backgroundImage = "url(K-1.jpg)";
+						tds[idx].style.backgroundSize = "100% 100%";
+					}
+					var ranIdx = (parseInt)(Math.random()*tds.length);
+					tds[ranIdx].style.backgroundImage = "url(K-2.jpg)";
+					tds[ranIdx].style.backgroundSize = "100% 100%";
+					
+					// 올라온 두더지 클릭 시 점수(1회 1점만 유효)
+					for(var idx2 = 0; idx2 < tds.length ; idx2++){
+						tds[idx2].innerHTML = idx2;
+						tds[idx2].style.fontSize = "0px";	// 글자 안보이게 설정
+						tds[idx2].onclick = function(){
+							if( ranIdx == this.innerHTML) {
+								this.style.backgroundImage = "url(K-4.jpg)";
+								point++;
+								ranIdx = 100;	// 1회만 인정하기 위해 설정
+							}
+							cnt++;
+							h1Obj[1].innerHTML = `점수: ${point} 클릭: ${cnt}`;
+						};
+					}
+					time -= 1000;
+					h2Obj.innerHTML = time/1000+ "초";
+				},1000);
+				// 게임종료
+				var set02 = setTimeout(function(){
+					start--;
+					h1Obj[0].style.display = "block";
+					h1Obj[0].innerHTML = "다시하기";
+					h2Obj.innerHTML = "게임종료";
+					clearInterval(set01);
+					clearTimeout(set02);
+					for( var idx = 0; idx < tds.length; idx++){
+						tds[idx].onclick = function(){};
+						tds[idx].style.backgroundImage = "url(K-1.jpg)";
+						tds[idx].style.backgroundSize = "100% 100%";
+					}
+				},11000);
+			}
+		};
+	}
+</script>
+</head>
+<body>
+	<div>
+		<table border>
+			<tr><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td></tr>
+			<tr><td></td><td></td><td></td></tr>
+		</table>
+		<h1>시작</h1>
+		<h1>점수</h1>
+		<h2>10초</h2>
+	</div>
+</body>
+</html>
