@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <style media="screen">
+      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
+      ul li{list-style:none;}
+      a{text-decoration:none; color:black;}
+
+      .header{width:1280px; margin:0 auto;  position:relative;}
+        .navbar{width:1280px; position:relative;}
+          .page_logo{display:inline-block; position:relative; top:10px;}
+         .navbar12_wrap{position:relative; width:1036px; left:242px; bottom:44px; border-bottom:1px solid black; padding-bottom:45px;}
+            .navbar_2{display:inline-block; position:relative; float:right;}
+              .navbar_2 i{font-size:25px;}
+              .navbar_2 ul li{display:inline; margin-left:20px;}
+              .navbar_2 ul li:hover{border-bottom:2px solid #9553F3;}
+
+      .top{width:1280px; margin:0 auto; padding:0px;}
+        .menubar{text-align:center; margin-top:40px; border-bottom-style:double; border-top-style:double;}
+          .menubar ul{margin-bottom: 5px; margin-top: 5px;}
+          .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
+          .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
+
+      .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
+        .tab a{border:1px solid black; border-radius:20px;}
+        .tab a:hover{border:1px solid #9553F3; color:#9553F3; }
+
+      .pet_info_list{width:1280px; margin:0 auto;}
+          .list{padding: 0 250px;}
+              .list input[type="button"]{width:300px; height:80px; border-radius:10px; margin-top:10px; border-color:#A4A4A4; font-size:40px; background-color:white; outline:none;}
+              .list input[type="text"]{width:300px; height:50px; border-radius:10px; margin-top:10px; border-color:#A4A4A4; outline:none;}
+              .list .select input[type="button"]{height:50px; font-size:20px;}
+              .list textarea{border-radius:20px; margin-top:5px; outline:none; font-size:20px; border-color:#A4A4A4; padding-left:20px;}
+              .list li button{width:150px; height:50px; margin-right:50px; background-color:white; border-color:#A4A4A4; border-radius:20px; outline:none;}
+              .list li button:hover{background-color:#9553F3;}
+              .list li select{outline:none; font-size:15px; width:295px; height:55px; border-radius: 10px; border-color:black; margin-right: 20px;}
+
+      .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
+      .dropdown{position: relative; display: inline-block;}
+      .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;}
+      .dropdown_content a{color: black; padding: 12px 16px; text-decoration: none; display: block;}
+      .dropdown_content a:hover{background-color: #9553F3;}
+      .dropdown:hover .dropdown_content{display: block;}
+      .dropdown:hover .dropbtn{background-color:;}
+
+
+
+    </style>
+
+    <meta charset="utf-8">
+    <title>HELLO PET SITTER : My Page</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+      function changebg(text){
+			var texts = document.querySelectorAll(text);
+			if(texts[1].style.backgroundColor=="silver"){
+				texts[1].style.backgroundColor=null;
+				texts[0].style.backgroundColor="silver";
+			}else{
+				texts[0].style.backgroundColor="silver";
+			}
+		}
+
+		function changebg2(text){
+			var texts = document.querySelectorAll(text);
+			if(texts[0].style.backgroundColor=="silver"){
+				texts[0].style.backgroundColor=null;
+				texts[1].style.backgroundColor="silver";
+			}else{
+				texts[1].style.backgroundColor="silver";
+			}
+    	}
+    </script>
+
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="navbar">
+          <div class="page_logo">
+              <a href=""><img src="../PETCARE/image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+          </div>
+        <div class="navbar12_wrap">
+          <div class="navbar_2">
+              <ul>
+                <!--xi-bell-o 알람벨 아이콘-->
+                <i class="xi-bell-o"></i>
+                <li><a href="mainPage.html"><i class="xi-log-out"></i>로그아웃</a></li>
+
+                <!-- xi-user 사람 아이콘 -->
+                <div class="dropdown">
+                  <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
+                    <div class="dropdown_content ">
+                      <a href="profile_my_page.html">프로필</a>
+                      <a href="profile_my.html">프로필설정</a>
+                      <a href="#">이용현황</a>
+                    </div>
+                </div>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top">
+      <div class="menubar">
+        <ul>
+          <li><a href="#">시터찾기</a></li>
+          <li><a href="#">장거리이동</a></li>
+          <li><a href="#">프로그램</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab">
+      <a href="profile_my.html" style="padding:5px 10px 5px 10px;">보호자</a>
+      <a href="profile_sitter.html" style="padding:5px 20px 5px 20px;">시터</a>
+    </div>
+
+    <div class="" style="border-bottom:1px dotted black; padding-top:20px; width:1280px; margin:0 auto;"></div>
+
+    <div class="pet_info_list">
+        <div class="list">
+          <ul>
+            <span style="font-size:20px;">서비스 정보를 입력해 주세요.</span><br><br><br> 서비스 가능 펫의 종류를 선택해 주세요
+            <li><input style="margin-right:10px;" type="button" name="" value="Dog" class="select1" onclick="changebg('.select1')">
+            <input style="margin-left:10px;" type="button" name="" value="Cat" class="select1" onclick="changebg2('.select1')"></li>
+          </ul>
+          <ul class="select">
+            선호하는 펫 정보를 선택해주세요.</span><br><br><br> 중성화 수술여부
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select2" onclick="changebg('.select2')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select2" onclick="changebg2('.select2')"></li>
+          </ul>
+          <ul class="select">
+            반려동물 등록제용 인식칩을 삽입 여부
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select3" onclick="changebg('.select3')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select3" onclick="changebg2('.select3')"></li>
+          </ul>
+          <ul class="select">
+            배변훈련 여부
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select4" onclick="changebg('.select4')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select4" onclick="changebg2('.select4')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul class="select">
+            반려동물관리사 자격증 여부
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select4" onclick="changebg('.select4')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select4" onclick="changebg2('.select4')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul class="select">
+            다른 강아지와도 잘 지내나요?
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select5" onclick="changebg('.select5')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select5" onclick="changebg2('.select5')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul class="select">
+            다른 고양이와도 잘 지내나요?
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select6" onclick="changebg('.select6')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select6" onclick="changebg2('.select6')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul class="select">
+            아이와도 잘 지내나요?
+            <li><input style="margin-right:10px;" type="button" name="" value="Yes" class="select7" onclick="changebg('.select7')">
+            <input style="margin-left:10px;" type="button" name="" value="No" class="select7" onclick="changebg2('.select7')"></li>
+            <li> <textarea name="name" rows="4" cols="58.5" placeholder="특이사항 입력"></textarea> </li>
+          </ul>
+          <ul>
+            <span style="font-size:20px;">서비스 목록을 선택해 주세요.</span><br><br><br> 하루돌봄 서비스
+            <li> <select class="" name="">
+              <option value="">선택없음</option>
+              <option value="">시터집</option>
+              <option value="">보호자집</option>
+            </select> <input type="text" name="" value="" placeholder="서비스 가격"> </li>
+          </ul>
+          <ul>
+            시간제 돌봄 서비스
+            <li>
+              <select class="" name="" style="width:189px;">
+              <option value="">선택없음</option>
+              <option value="">시터집</option>
+              <option value="">보호자집</option>
+              </select>
+              <select class="" name="" style="width:189px;">
+                <option value="">선택없음</option>
+                <option value="">1시간</option>
+                <option value="">2시간</option>
+                <option value="">3시간</option>
+                <option value="">4시간</option>
+                <option value="">5시간</option>
+                <option value="">6시간</option>
+                <option value="">7시간</option>
+                <option value="">8시간</option>
+              </select>
+             <input type="text" name="" value="" placeholder="서비스 가격" style="width:189px;"> </li>
+          </ul>
+          <ul>
+            산책
+            <li> <select class="" name="">
+              <option value="">선택없음</option>
+              <option value="">1시간</option>
+              <option value="">2시간</option>
+              <option value="">3시간</option>
+              <option value="">4시간</option>
+            </select> <input type="text" name="" value="" placeholder="서비스 가격"> </li>
+          </ul>
+          <ul>
+            <li>나에 대해서 소개해주세요</li>
+            <li><textarea name="name" rows="8" cols="58.5"></textarea></li>
+          </ul>
+          <ul>
+            <li> <a href="profile_sitter_addservices.html"><button type="button" name="button" >저장</button></a><a href="profile_my.html"><button type="button" name="button">취소</button></a> </li>
+          </ul>
+
+        </div>
+    </div>
+  </body>
+</html>
