@@ -41,6 +41,9 @@
           .extra{border:1px solid black; width:360px; height:260px; margin:20px; border-radius: 20px; border-style:dashed;}
             .extra i{margin-top: 85px;}
 
+      .delete{width:1280px; margin:50px auto;}
+        .delete button{border-radius: 10px; border-color: black; width:100px; height:30px; cursor:pointer; outline:none;}
+
       /* 아래로 내려오는 메뉴바 css */
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
       .dropdown{position: relative; display: inline-block;}
@@ -66,6 +69,8 @@
       browseBtn.addEventListener('click',()=>{
       realInput.click();
       });
+
+       function show() { window.open("delete.html", "a", "width=480, height=225, left=600, top=480"); }
     </script>
 
   </head>
@@ -145,6 +150,10 @@
               <p>사진</p>
             </div></a>
         </div>
+    </div>
+
+    <div class="delete" style="width:1280px; margin:50px auto;">
+        <button type="button" name="button" onclick="show();" style="border-radius: 10px; border-color: black; width:100px; height:30px; cursor:pointer; outline:none;">회원탈퇴</button>
     </div>
   </body>
 </html>
