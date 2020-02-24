@@ -1,8 +1,0 @@
-@charset "UTF-8";
-/*
-배경색상(background-color)은 파랑색, 글자색상(color)은 노랑색
- */
-h2{
-	background-color:blue;
-	color:yellow;
-}
