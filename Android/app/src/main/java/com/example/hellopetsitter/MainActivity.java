@@ -18,9 +18,11 @@ public class MainActivity extends AppCompatActivity {
         Button cs = (Button)findViewById(R.id.go_cs);
         Button fs = (Button)findViewById(R.id.find_sitter);
 
+
         login.setOnClickListener(glListen);
         cs.setOnClickListener(csListen);
         fs.setOnClickListener(fsListen);
+
     }
     View.OnClickListener glListen = new View.OnClickListener() {
         @Override
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent fsl = new Intent(MainActivity.this, findsitter.class);
             startActivity(fsl);
+
         }
     };
 }
