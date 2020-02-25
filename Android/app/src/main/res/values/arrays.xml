@@ -5,4 +5,40 @@
         <item >작성자</item>
         <item >제목+내용</item>
     </string-array>
+
+    <string-array name="select1">
+
+    <item>보호자집</item>
+    <item>시터집</item>
+    </string-array>
+
+    <string-array name="select2">
+
+        <item>보호자집</item>
+        <item>시터집</item>
+    </string-array>
+
+    <string-array name="select3">
+
+    <item>1시간</item>
+    <item>2시간</item>
+    <item>3시간</item>
+    <item>4시간</item>
+    <item>5시간</item>
+    <item>6시간</item>
+    <item>7시간</item>
+    <item>8시간</item>
+    </string-array>
+
+    <string-array name="select4">
+
+        <item>1시간</item>
+        <item>2시간</item>
+        <item>3시간</item>
+        <item>4시간</item>
+        <item>5시간</item>
+        <item>6시간</item>
+        <item>7시간</item>
+        <item>8시간</item>
+    </string-array>
 </resources>
