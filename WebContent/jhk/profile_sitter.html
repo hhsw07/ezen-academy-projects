@@ -44,6 +44,11 @@
           .extra{position:relative;width:270px; height:195px; margin:10px; display:inline-block;}
           .extra2_top{display:inline-block;}
           .extra2{width:135px; height:82px; margin:10px;}
+          .sittable{border-top: 1px solid black; border-left: 1px solid black; border-collapse:collapse; width:270px; height:156px;}
+          .sittable th, .sittable td{border-bottom: 1px solid black;
+	border-right: 1px solid black;}
+			.sit_review{border-top: 1px solid black; border-left: 1px solid black; border-collapse:collapse; margin:10px auto;}
+			.sit_review th, .sit_review td{border-bottom: 1px solid black; border-right: 1px solid black;}
 
       /* 아래로 내려오는 매뉴바 */
       .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
@@ -186,30 +191,44 @@
 	        
 	    </div>
     </div>
-    <div class="info_top">	 
-   	    <div class="info_wrap">
+    <div class="info_top" style="height:450px">	 
+   	    <div class="info_wrap" style="height:450px">
 	        <div class="info">
 				<div class="extra">
 	              <p>시터 스케쥴 캘린터</p>
-	              
+	              <p> << February >> </p>
+	              <table class="sittable">
+	              	<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+	              	<tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+	              	<tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+	              	<tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+	              	<tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+	              </table>
+	              <table style="width:270px; margin-top:23px; margin-bottom:23px;">
+	              	<tr><td></td><td style="width:23px; background-color:green;"></td><td colspan="5">예약가능</td></tr>
+	              	<tr><td></td><td style="width:23px; border:1px solid black; border-collapse:collapse;"></td><td colspan="5">예약불가능</td></tr>
+	              </table>
+	              <span style="width:35px;border:1px solid black; border-radius:20px;
+            padding:5px 20px 5px 20px; text-align:center;">
+		      		예약
+			   </span>
 	            </div>
 	        </div>
 	    </div>
 
-	    <div class="info_wrap">
-	        <div class="info">
-				<div class="extra">
-	              <p>캘린더</p>
-	              <p> << February >> </p>
-	              <table style="border:1px solid black;border-collapse:collapse; width:100%; height:100%">
-	              	<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
-	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-	              	<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-	              </table>
+	    <div class="info_wrap" style="height:450px">
+	        <div class="info" >
+				<div class="extra" style="height:30px">
+	              <p>리뷰</p>
 	            </div>
+	            <table class="sit_review">
+	              	<tr><th>작성자</th><th>내용</th></tr>
+	              	<tr><td>gogil1</td><td>제가 맡겨봤는데 정말 믿을만합니다.</td></tr>
+	              	<tr><td>kimgil1</td><td>저희집 펫이 한번 더 보내달라고 재촉하는것 같네요</td></tr>
+	              	<tr><td>gogil2</td><td>다음에 출장갈때도 맡기도록하겠습니다.</td></tr>
+	              	<tr><td>kimgil2</td><td>애들이 맡긴 이후로 건강이 악화됐습니다;;</td></tr>
+	              </table>
 	        </div>
 	    </div>
     </div>
