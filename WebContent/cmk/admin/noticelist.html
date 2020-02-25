@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 전체 */
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* header */
+	.header{display:block; position:relative; width:100%; margin:0; padding:0;text-align:left; background-color:#E6F3FF;color:inherit; margin:0 auto;}
+	.logo{display:inline; margin:30px;}
+	.logo img{width:250px;}
+	.navbar{display:inline; position:absolute; font-weight:900;table-layout: auto}
+	.menu li{font-size:20px; float:left; text-align:center; display:flex; padding:10px 25px 25px;}
+	.menu li:hover{border-bottom:5px solid #F15F5F;}
+/* aside */
+	.aside{background-color:#E6F3FF; text-align:center; width:18.5%; height:800px; float:left; margin-top:10px; display:inline-block;}
+	.log{padding:30px; border-bottom:2px solid #B2CCFF;}
+/* section */
+	.section{background-color:#E6F3FF; width:81%; height:800px; float:right; margin-top:10px;display:inline-block;}
+	.frame{position:relative; padding:30px}
+	.table{width:100%; margin-bottom:0 !important; background-color:#FCFCFC}
+	.table th{vertical-align:middle; box-sizing:border-box;padding-top: 19px;padding-bottom: 19px;}
+	thead{color:#ffffff; background:#6c7ae0; font-size: 18px;line-height: 1.2;}
+	.table td{vertical-align:middle; box-sizing:border-box; font-size:15px; color:#555555; line-height:1.2; 
+	font-weight:unset !important; border-bottom:1px solid #f2f2f2; padding-left:30px; padding-top:16px; padding-bottom:16px;}
+	tbody tr:hover{background-color:#ececff; cursor: pointer;}
+	#write{display:inline-block;height:59px;padding:0 30px;border-radius:5px;border:1px solid #3d79c2;float:right; margin:20px 0;
+	background:#4485d5;line-height:59px;font-weight:600;font-size:16px;color:#fff;text-align:center;white-space:nowrap}
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<!-- 상단메뉴  -->
+	<header class="header">
+		<div class="logo">
+			<a href="index.html"><img alt="" src="../image/adminlogo.png"></a>
+		</div>
+		<nav class="navbar">
+			<ul class="menu">
+				<li><a href="#">회원관리</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">반려동물 프로그램</a></li>
+				<li><a href="#">장거리 이동 서비스</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+<!-- aside -->
+	<aside class="aside">
+		<div class="log">
+			<p>logged by 관리자</p>
+			<input type="button" value="logout"/>
+		</div>
+		<div id="notice">
+			<h2>공지사항</h2>
+		</div>
+		
+			
+	</aside>
+	
+<!-- section -->	
+	<section class="section">
+		<article class="frame">
+			<input id="write" type="button" value="작성하기"/>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>번호</th><th>중요</th><th>제목</th><th>날짜</th>
+			   		</tr>
+			   	</thead>
+			   	<tbody>
+				   	<tr>
+						<td>4</td><td><input type="checkbox" name="imp" checked/></td><td>펫시터 지원 자격을 알려드려요.</td><td>2020/02/11</td>
+					</tr>
+					<tr>
+						<td>3</td><td><input type="checkbox" name="imp" checked/></td><td>수입 정산 방법입니다.</td><td>2020/02/05</td>
+					</tr>
+					<tr>
+						<td>2</td><td><input type="checkbox" name="imp"/></td><td>설 연휴를 맞이하여 비용에 할증이 발생할 수 있습니다.</td><td>2020/01/22</td>
+					</tr>
+					<tr>
+						<td>1</td><td><input type="checkbox" name="imp"/></td><td>펫시터가 하는 주요 업무</td><td>2020/01/10</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</article>
+	</section>
+
+</body>
+</html>

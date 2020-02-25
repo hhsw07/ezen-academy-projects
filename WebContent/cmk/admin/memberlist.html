@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 전체 */
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* header */
+	.header{display:block; position:relative; width:100%; margin:0; padding:0;text-align:left; background-color:#E6F3FF;color:inherit; margin:0 auto;}
+	.logo{display:inline; margin:30px;}
+	.logo img{width:250px;}
+	.navbar{display:inline; position:absolute; font-weight:900;table-layout: auto}
+	.menu li{font-size:20px; float:left; text-align:center; display:flex; padding:10px 25px 25px;}
+	.menu li:hover{border-bottom:5px solid #F15F5F;}
+/* aside */
+	.aside{background-color:#E6F3FF; text-align:center; width:18.5%; height:800px; float:left; margin-top:10px; display:inline-block;}
+	.log{padding:30px; border-bottom:2px solid #B2CCFF;}
+/* section */
+	.section{background-color:#E6F3FF; width:81%; height:800px; float:right; margin-top:10px;display:inline-block;}
+	.frame{position:relative; padding:30px}
+	.table{width:100%; margin-bottom:0 !important; background-color:#FCFCFC}
+	.table th{vertical-align:middle; box-sizing:border-box;padding-top: 19px;padding-bottom: 19px;}
+	thead{color:#ffffff; background:#6c7ae0; font-size: 18px;line-height: 1.2;}
+	.table td{vertical-align:middle; box-sizing:border-box; font-size:15px; color:#555555; line-height:1.2; 
+	font-weight:unset !important; border-bottom:1px solid #f2f2f2; padding-left:30px; padding-top:16px; padding-bottom:16px;}
+	tbody tr:hover{background-color:#ececff; cursor: pointer;}
+
+</style>
+
+</head>
+<body>
+<!-- 상단메뉴  -->
+	<header class="header">
+		<div class="logo">
+			<a href="index.html"><img alt="" src="../image/adminlogo.png"></a>
+		</div>
+		<nav class="navbar">
+			<ul class="menu">
+				<li><a href="#">회원관리</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">반려동물 프로그램</a></li>
+				<li><a href="#">장거리 이동 서비스</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+<!-- aside -->
+	<aside class="aside">
+		<div class="log">
+			<p>logged by 관리자</p>
+			<input type="button" value="logout"/>
+		</div>
+		<div id="member">
+			<h2>회원관리</h2>
+			<h3>회원목록</h3>
+		</div>
+		
+			
+	</aside>
+	
+<!-- section -->	
+	<section class="section">
+		<article class="frame">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>no</th><th>아이디</th><th>회원명</th><th>휴대폰번호</th><th>이메일</th><th>주소</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>10</td><td>ghdut486</td><td>오길동</td><td>010-1234-5678</td><td>ghdut486@hellopet.com</td><td>서울특별시 종로구 </td>
+					</tr>
+					<tr>
+						<td>9</td><td>dfsak8641</td><td>김길동</td><td>010-1234-5678</td><td>dfsak8641@hellopet.com</td><td>경기도 용인시 수지구</td>
+					</tr>
+					<tr>
+						<td>8</td><td>qogitn58</td><td>마길동</td><td>010-1234-5678</td><td>qogitn58@hellopet.com</td><td>경기도 고양시 덕양구</td>
+					</tr>
+					<tr>
+						<td>7</td><td>qjs24455</td><td>신길동</td><td>010-1234-5678</td><td>qjs24455@hellopet.com</td><td>서울특별시 서초구</td>
+					</tr>
+					<tr>
+						<td>6</td><td>hotno2t</td><td>홍길동</td><td>010-1234-5678</td><td>hotno2t@hellopet.com</td><td>경기도 부천시 삼정로</td>
+					</tr>
+					<tr>
+						<td>5</td><td>ezen507</td><td>김이젠</td><td>010-1234-5678</td><td>ezen509@hellopet.com</td><td>서울특별시 종로구 </td>
+					</tr>
+					<tr>
+						<td>4</td><td>jhk1456</td><td>전현규</td><td>010-1234-5678</td><td>jhk1456@hellopet.com</td><td>서울특별시</td>
+					</tr>
+					<tr>
+						<td>3</td><td>gudwns19</td><td>김형준</td><td>010-1234-5678</td><td>gudwns19@hellopet.com</td><td>경기도 남양주시</td>
+					</tr>
+					<tr>
+						<td>2</td><td>hsw_puppy</td><td>한송우</td><td>010-1234-5678</td><td>hsw_puppy@hellopet.com</td><td>서울특별시</td>
+					</tr>
+					<tr>
+						<td>1</td><td>mk0601</td><td>최민기</td><td>010-1234-5678</td><td>mk0601@hellopet.com</td><td>인천광역시 계양구 계산새로76</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</article>
+	</section>
+	
+</body>
+<script type="text/javascript">
+
+	
+
+</script>
+</html>
