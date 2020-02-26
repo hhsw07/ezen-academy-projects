@@ -230,30 +230,19 @@
                 android:ems="10"
                 android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="중성화 수술을 하였나요?" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button12"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/register2"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="yes" />
-
-                <Button
-                    android:id="@+id/button13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="no" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="등록" />
             </LinearLayout>
 
         </LinearLayout>
