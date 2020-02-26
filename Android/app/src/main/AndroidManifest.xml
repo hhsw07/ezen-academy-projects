@@ -31,6 +31,11 @@
         <activity android:name=".qna"/>
         <activity android:name=".findsitter"/>
         <activity android:name=".findresult"/>
+        <activity android:name=".mypageActivity"/>
+        <activity android:name=".addpetActivity"/>
+        <activity android:name=".sitterpageActivity"/>
+        <activity android:name=".addservicesActivity"/>
+        <activity android:name=".addaccountActivity"/>
     </application>
 
 </manifest>

@@ -17,11 +17,13 @@ public class MainActivity extends AppCompatActivity {
         Button login = (Button)findViewById(R.id.go_login);
         Button cs = (Button)findViewById(R.id.go_cs);
         Button fs = (Button)findViewById(R.id.find_sitter);
+        Button mp = (Button)findViewById(R.id.mypage);
 
 
         login.setOnClickListener(glListen);
         cs.setOnClickListener(csListen);
         fs.setOnClickListener(fsListen);
+        mp.setOnClickListener(mpListen);
 
     }
     View.OnClickListener glListen = new View.OnClickListener() {
@@ -44,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
             Intent fsl = new Intent(MainActivity.this, findsitter.class);
             startActivity(fsl);
 
+        }
+    };
+    View.OnClickListener mpListen = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            Intent mpl = new Intent(MainActivity.this, mypageActivity.class);
+            startActivity(mpl);
         }
     };
 }

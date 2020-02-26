@@ -151,7 +151,7 @@
                 android:text="(-)제외 입력" />
 
             <Button
-                android:id="@+id/button15"
+                android:id="@+id/register1"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"

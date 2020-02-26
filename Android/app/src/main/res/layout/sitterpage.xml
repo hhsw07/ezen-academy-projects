@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/mypage"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginLeft="20dp"
@@ -14,7 +14,7 @@
         android:background="@drawable/mypage_image"/>
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/go_login"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentRight="true"
@@ -24,7 +24,7 @@
         />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView"
         android:layout_width="500dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
@@ -40,7 +40,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/find_sitter"
             android:layout_width="1dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
@@ -49,7 +49,7 @@
             android:background="@drawable/search_image" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/button7"
             android:layout_width="1dp"
             android:layout_height="30dp"
             android:layout_marginRight="40dp"
@@ -57,7 +57,7 @@
             android:background="@drawable/program_image" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/button8"
             android:layout_width="1dp"
             android:layout_height="30dp"
             android:layout_marginRight="40dp"
@@ -65,7 +65,7 @@
             android:background="@drawable/delivery_image" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/go_cs"
             android:layout_width="1dp"
             android:layout_height="30dp"
             android:layout_marginRight="20dp"
@@ -106,7 +106,7 @@
             android:text="장거리이동" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -116,6 +116,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/add_ac"
+            android:layout_width="210dp"
+            android:layout_height="41dp"
+            android:text="+ 계좌 추가"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.705" />
+
+        <Button
+            android:id="@+id/add_sv"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="210dp"
+            android:layout_height="42dp"
+            android:text="+ 서비스 추가"
+            tools:layout_editor_absoluteX="89dp"
+            tools:layout_editor_absoluteY="252dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="138dp"
+            android:layout_height="111dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.23"
+            app:srcCompat="@drawable/profile" />
 
         <RatingBar
             android:id="@+id/ratingBar1"
@@ -128,55 +166,48 @@
             android:rating="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.685"
+            app:layout_constraintHorizontal_bias="0.646"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.285" />
-
-
-
-        <Button
-            android:id="@+id/button7"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="210dp"
-            android:layout_height="42dp"
-            android:text="+ 서비스 추가"
-            tools:layout_editor_absoluteX="89dp"
-            tools:layout_editor_absoluteY="252dp" />
-
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.205"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.18"
-            app:srcCompat="@drawable/profile"
-            android:layout_width="138dp"
-            android:layout_height="111dp"
-            tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="78dp" />
+            app:layout_constraintVertical_bias="0.329" />
 
         <TextView
-            android:id="@+id/textView6"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.639"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.176"
+            android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="홍길동"
             android:textSize="20dp"
-            tools:layout_editor_absoluteX="210dp"
-            tools:layout_editor_absoluteY="111dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.602"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.203" />
+
+
+        <Button
+            android:id="@+id/button24"
+            android:layout_width="65dp"
+            android:layout_height="35dp"
+            android:text="시터"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.254"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <Button
+            android:id="@+id/go_my"
+            android:layout_width="65dp"
+            android:layout_height="35dp"
+            android:text="보호자"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
 
         <TextView
             android:id="@+id/textView7"
@@ -185,13 +216,13 @@
             android:text="서울특별시 종로구"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.746"
+            app:layout_constraintHorizontal_bias="0.703"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224" />
+            app:layout_constraintVertical_bias="0.265" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/button21"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -204,19 +235,7 @@
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="379dp" />
 
-        <Button
-            android:id="@+id/button9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.701"
-            android:layout_width="210dp"
-            android:layout_height="42dp"
-            android:text="+ 계좌 추가"
-            tools:layout_editor_absoluteX="89dp"
-            tools:layout_editor_absoluteY="305dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
