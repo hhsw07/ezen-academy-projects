@@ -23,7 +23,7 @@ public class addservicesActivity extends AppCompatActivity {
     View.OnClickListener rs3Listen = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent rs3l = new Intent(addservicesActivity.this, sitterpageActivity.class);
+            Intent rs3l = new Intent(addservicesActivity.this, sitteraddservicesActivity.class);
             startActivity(rs3l);
         }
     };

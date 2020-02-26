@@ -36,6 +36,9 @@
         <activity android:name=".sitterpageActivity"/>
         <activity android:name=".addservicesActivity"/>
         <activity android:name=".addaccountActivity"/>
+        <activity android:name=".mypageaddpetActivity"/>
+        <activity android:name=".sitteraddaccountActivity"/>
+        <activity android:name=".sitteraddservicesActivity"/>
     </application>
 
 </manifest>

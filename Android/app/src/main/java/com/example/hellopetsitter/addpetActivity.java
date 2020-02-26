@@ -21,7 +21,7 @@ public class addpetActivity extends AppCompatActivity {
     View.OnClickListener rs2Listen = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent rs2l = new Intent(addpetActivity.this, mypageActivity.class);
+            Intent rs2l = new Intent(addpetActivity.this, mypageaddpetActivity.class);
             startActivity(rs2l);
         }
     };

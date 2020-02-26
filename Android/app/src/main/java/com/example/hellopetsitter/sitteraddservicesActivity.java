@@ -8,21 +8,21 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class addaccountActivity extends AppCompatActivity {
+public class sitteraddservicesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addaccount);
+        setContentView(R.layout.sitteraddservices);
 
-        Button rs1 = (Button) findViewById(R.id.register1);
+        Button ac = (Button) findViewById(R.id.add_ac);
 
-        rs1.setOnClickListener(rs1Listen);
+        ac.setOnClickListener(acListen);
     }
-    View.OnClickListener rs1Listen = new View.OnClickListener(){
+    View.OnClickListener acListen = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent rs1l = new Intent(addaccountActivity.this, sitteraddaccountActivity.class);
-            startActivity(rs1l);
+            Intent acl = new Intent(sitteraddservicesActivity.this, addaccountActivity.class);
+            startActivity(acl);
         }
     };
 }
