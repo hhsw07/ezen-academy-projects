@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +17,11 @@ public class mypageActivity extends AppCompatActivity {
 
         Button ap = (Button) findViewById(R.id.add_pet);
         Button gs = (Button) findViewById(R.id.go_sitter);
+        ImageView gma = (ImageView) findViewById(R.id.go_main);
 
         ap.setOnClickListener(apListen);
         gs.setOnClickListener(gsListen);
+        gma.setOnClickListener(gmaListen);
     }
         View.OnClickListener apListen = new View.OnClickListener() {
             @Override
@@ -32,6 +35,13 @@ public class mypageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gsl = new Intent(mypageActivity.this, sitterpageActivity.class);
                 startActivity(gsl);
+            }
+        };
+        View.OnClickListener gmaListen = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent gmal = new Intent(mypageActivity.this,MainActivity.class);
+                startActivity(gmal);
             }
         };
     }
