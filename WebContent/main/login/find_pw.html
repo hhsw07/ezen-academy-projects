@@ -36,18 +36,16 @@
 	.page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
 	.page_info2{float:right; margin-bottom:100px;}
 	.page_info2 ul li{padding:2px 5px; font-size:15px;}
-/* 회원가입 약관동의 */
-	.jc_page{margin-top:100px;}
-	.jc_title{width:440px; margin:20px auto;}
-	.joincheck{width:400px; margin:10px auto 100px; border:2px solid black; padding:20px; }
-	.joincheck hr{border-bottom:2px soild #E6E6E6; width:98%; margin-top:20px;}
-	.jc_btn{width:100%; text-align:center; margin-top:30px;}
-	.jc_btn [name=term]{width:200px; height:50px; margin:10px auto; cursor:pointer;}
-/* 체크박스 */
-	input[type="checkbox"] {-webkit-appearance:none; -moz-appearance:none; -o-appearance:none; appearance:none; outline:none; box-shadow:none;
-    background:#3679A4;border-radius:50%; width:17px; height: 17px; cursor: pointer; display:inline-block; vertical-align:middle;}
-	input[type="checkbox"]:checked {background:url(../image/ck01.png) #3679A4 no-repeat center/17px 17px;}
-	label{vertical-align:middle;}
+/* 비밀번호 찾기 */
+	.find{width:500px; margin:150px auto; border:2px solid black; padding:20px;}
+	.find_title img{width:25px; height:25px; margin-right:10px;}
+	.find_form{margin:10px;width:95%; margin:5px auto;}
+	.find_form label{width:100px; display:inline-block; text-align:right;}
+	.find_form input{width:200px;height:30px;margin:5px auto;}
+	.find_form [name=checkhp]{width:150px; height:35px;}
+	.find_btn{text-align:center; margin:20px;}
+	.find_btn [type=submit]{width:120px; height:40px; font-size:24px;}
+	
 	
 </style>
 
@@ -77,7 +75,7 @@
 	<div class="top">
 		<div class="menubar">
 			<ul>
-				<li><a href="#">시터찾기</a></li>
+				<li><a href="find/findsitter.html">시터찾기</a></li>
 				<li><a href="#">이동</a></li>
 				<li><a href="#">반려인</a></li>
 				<li><a href="#">고객센터</a></li>
@@ -85,50 +83,29 @@
 		</div>
 	</div>
 	
-<!-- 회원가입약관동의 -->
-	<div class="jc_page">
-		<div class="jc_title">
-			<h2>회원가입 약관동의</h2>
+<!-- 비밀번호 찾기 -->
+	<div class="find">
+		<div class="find_title">
+			<h2><img alt="" src="../image/031-search.png">비밀번호찾기</h2>
 		</div>
-		<div class="joincheck">
-			<div>
-				<input type="checkbox" onclick="allck(this)" id="agree00" name="agree"/>
-				<label for="agree00">아래 항목에 전체동의 합니다</label>
-			</div>
-			<hr>
-			<div>
-				<p>
-					<input type="checkbox" id="agree01" name="agree"/>
-					<label for="agree01">본인은 만 14세 이상입니다 (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree02" name="agree"/>
-					<label for="agree02">서비스 이용약관 동의 (<a href="../terms/service.html" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree03" name="agree"/>
-					<label for="agree03">개인정보 수집 이용 동의 (<a href="../terms/personal.html" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree04" name="agree"/>
-					<label for="agree04">안전보상지원 프로그램약관 동의 (<a href="../terms/safe.html" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree05" name="agree"/>
-					<label for="agree05">위치기반서비스 이용약관 동의 (<a href="../terms/gps.html" target="_blank">보기</a>) (필수)</label>
-				</p>
-				<p>
-					<input type="checkbox" id="agree06" name="agree"/>
-					<label for="agree06">이벤트 및 마케팅 정보 수신 동의 (선택)</label>
-				</p>
-			</div>
-			<div class="jc_btn">
-				<a href="join.html"><input type="button" name="term" value="다음"/></a>
-			</div>
+		<div class="find_form">
+			<label for="name">아이디</label>
+			<input type="text" name="name"/>
+		</div>
+		<div class="find_form">
+			<label for="hp">휴대폰 번호</label>
+			<input type="tel" name="hp"/>
+			<input type="button" name="checkhp" onclick="auth()" value="인증번호받기"/>
+		</div>
+		<div class="find_form" id="ckhp">
+			<label for="cknum">인증번호</label>
+			<input type="text" name="cknum"/>
+		</div>
+		<div class="find_btn">
+			<a href="new_pw.html"><input type="submit" value="찾기"/></a>
 		</div>
 	</div>
 	
-
 <!-- 홈페이지 하단 -->
 	<div class="footer">
 		<div class="footer_wrap">
@@ -136,20 +113,20 @@
 				<ul>
 					<li><a href="#">광고/제휴문의</a></li>
 					<li>  |  </li>
-					<li><a href="../terms/service.html">이용약관</a></li>
+					<li><a href="service.html">이용약관</a></li>
 					<li>  |  </li>
-					<li><a href="../terms/personal.html">개인정보취급방침</a></li>
+					<li><a href="#">개인정보취급방침</a></li>
 					<li>  |  </li>
-					<li><a href="../terms/safe.html">안전보상제도 약관</a></li>
+					<li><a href="#">안전보상제도 약관</a></li>
 					<li>  |  </li>
-					<li><a href="../terms/gps.html">위치기반서비스 약관</a></li>
+					<li><a href="#">위치기반서비스 약관</a></li>
 					<li>  |  </li>
 					<li><a href="#">펫시터 약관</a></li>
 				</ul>
 			</div>
 			<div class="info_wrap">
 				<div class="page_info_logo">
-					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px; opacity:0.8;"> </div>
+					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px;"> </div>
 				</div>
 				<div class="page_info2">
 					<ul>
@@ -165,21 +142,16 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-
+	</div>
+	
 </body>
 <script type="text/javascript">
-	function allck(val){
-	    var obj = document.getElementsByName("agree");
-	    if (val.checked == true){
-	        for(var i=0; i<obj.length; i++){
-	         obj[i].checked = true;
-	        }
-	    }else{
-	        for(var i=0; i<obj.length; i++){
-	         obj[i].checked = false;
-	        }
-	    }
+	var ckhp = document.querySelector("#ckhp");
+	ckhp.style.display="none";
+	function auth(){
+		alert('인증번호가 전송되었습니다');
+		ckhp.style.display="inline-block";
+		ckhp.style.margin="0 13px";
 	}
 
 </script>
