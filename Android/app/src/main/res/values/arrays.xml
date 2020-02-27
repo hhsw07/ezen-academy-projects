@@ -7,9 +7,8 @@
     </string-array>
 
     <string-array name="select1">
-
-    <item>보호자집</item>
-    <item>시터집</item>
+        <item>보호자집</item>
+        <item>시터집</item>
     </string-array>
 
     <string-array name="select2">
