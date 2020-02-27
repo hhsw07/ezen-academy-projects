@@ -440,7 +440,7 @@
                         android:layout_weight="1"
 
                         android:gravity="center"
-                        android:text="리뷰작성"
+                        android:text="거절"
                         android:textColor="#000000" />
 
                     <TextView
@@ -1060,7 +1060,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_weight="1"
-                        android:layout_marginTop="30dp" />
+                        android:layout_marginTop="30dp"
+                        android:text="TextView" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>

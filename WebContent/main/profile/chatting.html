@@ -21,13 +21,16 @@
 		
 		var button = document.querySelector("#btn");
 		button.align="right";
+		
+		var h3 = document.querySelector("h3");
+		
 	};
 	
 	function create(){
 		var txt = document.querySelector("#txt");
 		var chat = document.querySelector("#chat");
 		var today = new Date();
-		var now = "0"+(today.getMonth()+1)+"/"+today.getDate()+"/"+today.getHours()+":"+today.getMinutes()
+		var now = "0"+(today.getMonth()+1)+"/"+today.getDate()+"/"+today.getHours()+":"+today.getMinutes();
 		chat.innerHTML += "<h4 class=\"i\">&nbsp;"+txt.value+"</h4><p>"+now+"</p>";
 		txt.value = "";
 	}

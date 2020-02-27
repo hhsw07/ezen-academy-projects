@@ -86,8 +86,9 @@
 		}
 		
 		function chatting(obj){
-			var windowObj = window.open(url="chatting.html","chat","width=400px, height=500px");
-			windowObj.document.querySeletor("h3").innerHTML += "하이";
+			var openWin01 = window.open(url="chatting.html","chat","width=400px, height=500px");
+			openWin01.document.querySelector("h3").innerHTML = "하이";
+				    
 		}
 		
 		function del(obj){
