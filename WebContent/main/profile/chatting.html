@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HELLO PET SITTER</title>
+<style>
+		div {width:330px;}
+		div input[type=text]{width:80%;}
+		div input[type=button] {width:50px; height:30px; border-radius:10px;}
+		.you {text-align:left; border:1px solid black; padding-left:10px;}
+		.you + p{text-align:left; margin-top:-20px;}
+		.i {text-align:right;background-color:yellow; border:1px solid black;padding-right:10px;}
+		.i + p {text-align:right; margin-top:-20px;}	
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var text = document.querySelector("#txt");
+		text.placeholder="입력하세요.";
+		
+		var button = document.querySelector("#btn");
+		button.align="right";
+	};
+	
+	function create(){
+		var txt = document.querySelector("#txt");
+		var chat = document.querySelector("#chat");
+		var today = new Date();
+		var now = "0"+(today.getMonth()+1)+"/"+today.getDate()+"/"+today.getHours()+":"+today.getMinutes()
+		chat.innerHTML += "<h4 class=\"i\">&nbsp;"+txt.value+"</h4><p>"+now+"</p>";
+		txt.value = "";
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+	<div class=middle>
+		<h3 id="tit">채팅 : 홍길동</h3>
+		<div id="chat">
+			<h4 class="you">3월 괜찮나요?</h4>
+			<p>02/25 13:01</p>
+			<h4 class="you">괜찮으면 확인 부탁드려요.</h4>
+			<p>02/25 13:02</p>
+			<h4 class="i">감사합니다.</h4>
+			<p>02/25 15:01</p>
+		</div>
+		<div class="inOut">
+			<input type="text" id="txt"/>
+			<input type="button" id="btn" value="등록" onclick="create()"/>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
