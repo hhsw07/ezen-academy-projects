@@ -68,10 +68,10 @@
 	<script>
 		
 		function changeImg(obj){
-			if(obj.src.match("star1")){
-				obj.src = "../image/star3.png";
+			if(obj.src.match("hhh1")){
+				obj.src = "../image/hhh3.png";
 			}else{
-				obj.src = "../image/star1.png";
+				obj.src = "../image/hhh1.png";
 			}
 		}
 		
@@ -86,9 +86,8 @@
 		}
 		
 		function chatting(obj){
-			var openWin01 = window.open(url="chatting.html","chat","width=400px, height=500px");
-			openWin01.document.querySelector("h3").innerHTML = "하이";
-				    
+			var name = obj.parentNode.childNodes[1].lastChild.previousSibling.innerHTML;
+			var openWin01 = window.open(url="chatting.html?name="+name,"chat","width=400px, height=500px");
 		}
 		
 		function del(obj){
@@ -197,8 +196,8 @@
    					</tr>
     				<tr>
     					<td>
-    						<img src="../image/star1.png" height="15px;" onclick="changeImg(this)"/>
-    						홍길동
+    						<img src="../image/heart1.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>홍길동</span>
     						
    						</td>
     					<td><span>02/29</span></td>
@@ -210,8 +209,8 @@
    					</tr>
     				<tr>
     					<td>
-    						<img src="../image/star3.png" height="15px;" onclick="changeImg(this)"/>
-    						김길동
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>김길동</span>
     					</td>
     					<td>02/20</td>
     					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
@@ -222,8 +221,8 @@
    					</tr>
    					<tr>
     					<td>
-    						<img src="../image/star3.png" height="15px;" onclick="changeImg(this)"/>
-    						고길동
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>고길동</span>
    						</td>
     					<td>02/20</td>
     					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
@@ -234,8 +233,8 @@
    					</tr>
    					<tr>
     					<td>
-    						<img src="../image/star3.png" height="15px;" onclick="changeImg(this)"/>
-    						최길동
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>최길동</span>
    						</td>
     					<td>02/18</td>
     					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
