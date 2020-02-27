@@ -39,14 +39,12 @@
         <activity android:name=".mypageaddpetActivity"/>
         <activity android:name=".sitteraddaccountActivity"/>
         <activity android:name=".sitteraddservicesActivity"/>
-<<<<<<< HEAD
         <activity android:name=".list01" />
-=======
         <activity android:name=".programlistActivity"/>
         <activity android:name=".programdetailActivity"/>
         <activity android:name=".longrangeActivity"/>
         <activity android:name=".sitter_detailActivity"/>
->>>>>>> cd4e3509ccb8e6c5f6f0b1343f417f134276579f
+
     </application>
 
 </manifest>
