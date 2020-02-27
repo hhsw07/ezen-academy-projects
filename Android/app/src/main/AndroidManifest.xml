@@ -39,11 +39,13 @@
         <activity android:name=".mypageaddpetActivity"/>
         <activity android:name=".sitteraddaccountActivity"/>
         <activity android:name=".sitteraddservicesActivity"/>
-        <activity android:name=".list01" />
         <activity android:name=".programlistActivity"/>
         <activity android:name=".programdetailActivity"/>
         <activity android:name=".longrangeActivity"/>
         <activity android:name=".sitter_detailActivity"/>
+        <activity android:name=".list" />
+        <activity android:name=".list_chatting" />
+        <activity android:name=".list_review" />
 
     </application>
 
