@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:src="@drawable/logo"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="L" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_layout"
+        android:padding="10dp"
+        android:text="양천구, 올해부터 반려동물 행동교정 교육프로그램 도입·운영"
+        android:textSize="15dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/border_layout"
+        android:padding="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3월 20일부터 선착순으로 총 20명 모집…온라인 또는 전화로 접수" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/program01" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="양천구(구청장 김수영)는 올해부터 반려견의 문제행동을 교정하는 방법을 알려주는 실습형 ‘반려동물 행동교정 교육’ 프로그램을 운영한다.\n\n구는 반려동물을 키우는 가정이 점점 증가함에 따라 반려인과 반려동물을 키우지 않는 주민 사이에 일어날 수 있는 소음·물림 사고 등으로 인한 갈등과 민원을 줄이고, 올바른 반려동물 양육문화를 만들어가기 위해 반려동물 교육 프로그램을 도입했다.\n\n반려동물 행동교정 교육은 행동교정이 필요한 반려견과 주인이 함께 참여한다. ▲앉아, 이리와, 기다려 배우기 ▲반려견 수첩 만들기 ▲산책연습 ▲1:1 문제행동상담 등 반려견의 문제행동 교정을 위한 이론·실습 교육이 진행된다.\n\n수업은 오는 4월 1일(월)부터 매주 월요일마다 총 5주간, 신정1동에 위치한 애견카페 ‘우리 동네 멍멍이 아지트’(양천구 은행정로 20, 2층)에서 진행된다. 오전반(10시30분~12시)과 오후반(14시~15시30분)으로 나뉘어 각 반당 10명씩, 총 20명을 선착순으로 모집하고 교육비는 무료이다.\n\n반려동물 행동교정 교육에 참여를 원하는 사람은 누구나 3월 20일(수) 오전 10시부터 양천구청 홈페이지 공지사항에 링크된 홈페이지에서 온라인으로 접수하거나 전화로 신청(유기견 없는 도시)하면 된다. 단, 양천구민을 우선적으로 접수받는다.
+\n\n손인숙 일자리경제과장은 “올해부터 처음으로 진행되는 반려동물 문화교실을 통해 반려동물 문제행동으로 인한 갈등을 해소하고, 올바른 동물복지문화가 확산되는 계기가 될 것.”이라며 “관심 있는 구민들의 많은 참여를 바란다.”고 말했다.\n\n" />
+
+            <Button
+                android:id="@+id/programReq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="신청"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
