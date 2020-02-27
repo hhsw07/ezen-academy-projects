@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -27,7 +26,7 @@
           .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
           .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
 
-      .tab{width:1280px; margin:0 auto;  padding-top:20px; font-size:20px;}
+      .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
         .tab a{border:1px solid black; border-radius:20px;}
         .tab a:hover{border:1px solid #9553F3; color:#9553F3; }
 
@@ -37,11 +36,12 @@
           vertical-align:bottom;}
           .profile_name{margin-left:100px; border:1px solid black; width:600px; border-radius: 30px;}
             .profile_image i{margin-top:60px;}
-
+	
 	  .info_top{display:flex;text-align:center; height:300px;margin:30px;}
-      .info_wrap{width:600px; height:300px; background-color: #E4E0E0; margin:10px auto; border-radius: 30px;
+      .info_wrap{width:600px; height:300px; background-color: #F2F2F2; margin:10px auto; border:3px solid gray;border-radius: 30px; 
       display:inline-block;text-align:center;}
         .info{width:600px; margin:10px auto; text-align: center; padding-top:1px;}
+        .info_title{font-size:22px;font-weight: bold;}
           .extra{position:relative;width:270px; height:195px; margin:10px; display:inline-block;}
           .extra2_top{display:inline-block;}
           .extra2{width:135px; height:82px; margin:10px;}
@@ -68,7 +68,16 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+	<script>
+	window.onload = function(){
+		
+		var req = document.querySelector('#req');
+		req.onclick = function(){
+			alert("예약이 완료되었습니다.");
+		}
+		
+	}
+	</script>
 
   </head>
   <body>
@@ -76,7 +85,7 @@
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
-              <a href=""><img src="../../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+              <a href="../mainPageAL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
           </div>
         <div class="navbar12_wrap">
           <div class="navbar_2">
@@ -89,8 +98,8 @@
                 <div class="dropdown">
                   <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
                     <div class="dropdown_content ">
-                      <a href="profile_my_page.html">프로필</a>
-                      <a href="profile_my.html">프로필설정</a>
+                      <a href="myPage.html">프로필</a>
+                      <a href="profile_my_addpet">프로필설정</a>
                       <a href="#">이용현황</a>
                     </div>
                 </div>
@@ -120,7 +129,7 @@
 
     <div class="profile_info">
         <div class="profile_image">
-          <img src="../../image/sitter_hong.jpg" style="width:135px; height:163px; border-radius:50%;">
+          <img src="../image/sitter_hong.jpg" style="width:135px; height:163px; border-radius:50%;">
         </div>
         <div class="profile_name">
           <ul>
@@ -133,15 +142,16 @@
 		      		채팅
 			   </span></a></li>
           </ul>
-
+          
         </div>
     </div>
+ 	<div style="width:1280px; margin:0 auto">
     <div class="info_top">
 	    <div class="info_wrap">
 	        <div class="info">
 				<div class="extra">
 	              <!-- 펫 추가 아이콘 -->
-	                <p>케어 목록</p>
+	                <p class="info_title">케어 목록</p>
 					<p>하루돌봄 - 30,000원</p>
 					<p>산책 - 시간당 3,000원</p>
 	            </div>
@@ -152,18 +162,18 @@
 	        <div class="info">
 				<div class="extra" style="width:500px;">
 	              <!-- 계좌 추가 아이콘 -->
-	              <p>자기소개</p>
+	              <p class="info_title">자기소개</p>
 	              <p>오랜경험과 노하우로 동물들을 내 반려동물처럼 길러줄 수 있습니다.
 	              제 손을 거쳐간 수많은 펫들과 주인분들의 평으로 보증된 홍길동을 믿고 맡겨주십시오.</p>
 	            </div>
 	        </div>
 	    </div>
 	</div>
-	<div class="info_top">
+	<div class="info_top">	 
    	    <div class="info_wrap">
 	        <div class="info">
 				<div class="extra">
-	              <p>케어 가능 반려동물</p>
+	              <p class="info_title">케어 가능 반려동물</p>
 	              <p>종류 : 강아지, 고양이</p>
 	              <p>수용가능 펫 수 : 3</p>
 	              <p>수용가능 펫 무게(kg) : 30</p>
@@ -173,30 +183,30 @@
 
 	    <div class="info_wrap">
 	    	<div class="info">
-	        	<p>사진첩</p>
+	        	<p class="info_title">사진첩</p>
 	            <div class="extra">
 	              <!-- 사진 추가 아이콘 -->
-	              <img src="../../image/sitter1.jpg" style="width:100%; height:100%; border-radius: 20px;">
+	              <img src="../image/sitter1.jpg" style="width:100%; height:100%; border-radius: 20px;">
 	            </div>
 	            <div class="extra2_top">
 		            <div class="extra2">
 		              <!-- 사진 추가 아이콘 -->
-		              <img src="../../image/sitter2.jpg" style="width:100%; height:100%; border-radius: 20px;">
+		              <img src="../image/sitter2.jpg" style="width:100%; height:100%; border-radius: 20px;">
 		            </div>
 		            <div class="extra2">
 		              <!-- 사진 추가 아이콘 -->
-		              <img src="../../image/sitter3.jpg" style="width:100%; height:100%; border-radius: 20px;">
+		              <img src="../image/sitter3.jpg" style="width:100%; height:100%; border-radius: 20px;">
 		            </div>
 	            </div>
 	        </div>
-
+	        
 	    </div>
     </div>
-    <div class="info_top" style="height:450px">
+    <div class="info_top" style="height:450px">	 
    	    <div class="info_wrap" style="height:450px">
 	        <div class="info">
 				<div class="extra">
-	              <p>시터 스케쥴 캘린터</p>
+	              <p class="info_title">시터 스케쥴 캘린더</p>
 	              <p> << February >> </p>
 	              <table class="sittable">
 	              	<tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
@@ -210,8 +220,8 @@
 	              	<tr><td></td><td style="width:23px; background-color:green;"></td><td colspan="5">예약가능</td></tr>
 	              	<tr><td></td><td style="width:23px; border:1px solid black; border-collapse:collapse;"></td><td colspan="5">예약불가능</td></tr>
 	              </table>
-	              <span style="width:35px;border:1px solid black; border-radius:20px;
-            padding:5px 20px 5px 20px; text-align:center;">
+	              <span id="req" style="width:35px;border:1px solid black; border-radius:20px;
+            padding:5px 20px 5px 20px; text-align:center; text-decoration:none;">
 		      		예약
 			   </span>
 	            </div>
@@ -221,7 +231,7 @@
 	    <div class="info_wrap" style="height:450px">
 	        <div class="info" >
 				<div class="extra" style="height:30px">
-	              <p>리뷰</p>
+	              <p class="info_title">리뷰</p>
 	            </div>
 	            <table class="sit_review">
 	              	<tr><th>작성자</th><th>내용</th></tr>
@@ -232,6 +242,7 @@
 	              </table>
 	        </div>
 	    </div>
+    </div>
     </div>
   </body>
 </html>
