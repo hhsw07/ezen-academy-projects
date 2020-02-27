@@ -35,23 +35,34 @@
           .visual{position:relative;}
 
           .visual button{position:absolute; z-index:10; left:78.5%; top:50%; transform:translate(-50%, -50% );
-                        width:71px; height:71px; border-radius:100%; background-color:rgba(0,0,0,.5); border:none;}
-          .visual button:before{font-family:'xeicon'; color:#fff; font-size:45px;}
-          .visual button.slick-prev{left:0px; font-size:0; color:transparent;}
-          .visual button.slick-prev:before{content:"\e93d";}
-          .visual button.slick-next{right:0px; font-size:0; color:transparent;}
-          .visual button.slick-next:before{content:"\e940";}
+                        width:71px; height:71px; border-radius:100%; background-color:rgba(0,0,0,.5); border:none; }
+          .visual button:before{font-family:'xeicon'; color:#fff; font-size:45px; }
+          .visual button.slick-prev{left:0px; font-size:0; color:transparent; outline:none;}
+          .visual button.slick-prev:before{content:"\e93d"; outline:none;}
+          .visual button.slick-next{right:0px; font-size:0; color:transparent; outline:none;}
+          .visual button.slick-next:before{content:"\e940"; outline:none;}
 
         .middle_text{text-align:center;}
           .middle_text p{font-size:30px; margin:60px 0;}
-        .services_list{}
-          .services_list ul li{padding-top:30px;}
-          .services_list ul li img{width:40px;}
-          .services_list span{padding-left: 10px; font-family: sans-serif;}
+        .services_wrap{display:inline-block; }
+          .services{display:flex; padding :20px;}
+            .title_wrap{padding:15px 0 0 20px; font-size:15px;}
+              .title{font-size:20px;}
+                .subtitle{color:gray;}
         .review_1{}
+          .review_1 img{width:300px; border-radius: 20px; border-color:white;
+                        position:absolute; left:70%; top:70%; transform: translate(-20%, -20%);}
+          .review_1_txtBox{border:1px solid gray; width:200px; height:170px; border-radius:5px;
+                        position:absolute; left:90%; top:70%; transform: translate(-20%, -20%);
+                        z-index:10; background-color:white;}
 
       .bottom{width:1080px; margin:0 auto;}
-        .banner{text-align:center; border:2px solid black; height:150px; margin-top:50px;}
+        .review_2_image{margin-top:150px;}
+          .review_2_image img{border-radius:5px; width:1200px; height:550px;
+                              position:relative; transform: translate(-50%, 0%); left:50%; top:100%;}
+          .review_2_txtBox{border:1px solid gray; width:350px; height:200px; border-radius:5px;
+                          position:absolute; left:30%; top:62%; transform: translate(-20%, -20%);
+                          z-index:10; background-color:white;}
 
       .footer{position: relative; width:100%; height:289px; background-color: #E6E6E6;}
         .footer_wrap{width:1080;}
@@ -68,7 +79,7 @@
     </style>
 
     <meta charset="utf-8">
-    <title>HELLO PET SITTER : before login</title>
+    <title>HELLO PET SITTER</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -76,7 +87,7 @@
 
   </head>
   <body>
-<!-- http://192.168.4.163:7080/project03/main/mainPageBL.html -->
+
     <div class="header">
       <div class="navbar">
           <div class="page_logo">
@@ -97,10 +108,10 @@
     <div class="top">
       <div class="menubar">
         <ul>
-          <li><a href="#">시터찾기</a></li>
-          <li><a href="#">장거리이동</a></li>
-          <li><a href="#">프로그램</a></li>
-          <li><a href="#">고객센터</a></li>
+          <li><a href="userService/findsitter.html">시터찾기</a></li>
+          <li><a href="userService/longrangetrans.html">장거리이동</a></li>
+          <li><a href="userService/programlist.html">프로그램</a></li>
+          <li><a href="serviceCenter/sc_notice.html">고객센터</a></li>
         </ul>
       </div>
     </div>
@@ -122,14 +133,82 @@
       <script type="text/javascript">
         $('.visual').slick({
           autoplay: true,
-          autoplaySpeed: 3000
+          autoplaySpeed: 3000,
+          fade: true
         });
       </script>
 
       <div class="middle_text">
-        <p>Services for every dog and cat</p>
+        <p>이세상 모든 강아지와 고양이를 위한 서비스</p>
       </div>
-   
+
+      <div class="services_wrap">
+        <div class="services">
+          <img src="../image/menu1.png" alt="">
+          <div class="title_wrap">
+            <label class="title" for="">dog boarding</label>
+            <div class="subtitle">perfect if you need overnight pet care.</div>
+          </div>
+        </div>
+        <div class="services">
+          <img src="../image/menu2.png" alt="">
+          <div class="title_wrap">
+            <label class="title" for="">House sitting</label>
+            <div class="subtitle">Great if you need overnight pet or house-sitting services</div>
+          </div>
+        </div>
+        <div class="services">
+          <img src="../image/menu3.png" alt="">
+          <div class="title_wrap">
+            <label class="title" for="">Dog walking</label>
+            <div class="subtitle">whenever your dog needs a walk.</div>
+          </div>
+        </div>
+        <div class="services">
+          <img src="../image/menu4.png" alt="">
+          <div class="title_wrap">
+            <label class="title" for="">Doggy Day care</label>
+            <div class="subtitle">Daytime pet care in your sitter's dog-friendly home.</div>
+          </div>
+        </div>
+        <div class="services">
+          <img src="../image/menu5.png" alt="">
+          <div class="title_wrap">
+            <label class="title" for="">Drop-in visits</label>
+            <div class="subtitle">For check-ins and play dates</div>
+          </div>
+        </div>
+     </div>
+
+     <div class="review_1">
+       <img src="../image/review_image1.jpg" alt="">
+     </div>
+     <div class="review_1_txtBox">
+       <div class="" style= "padding:5px 10px;">
+         <div style="border-bottom:1px solid green; width:40px; margin:10px 0 0 20px; "></div>
+         <p>Review</p>
+         <span style="font-size:12px;">댕댕이가 시터님만 만나면 너무 좋아하고
+         즐겁게 시간을 보내는게 보여서 저도 안심하고
+         일을 할 수 있어 너무 좋습니다!</span>
+       </div>
+     </div>
+    </div>
+
+    <div class="bottom">
+      <div class="review_2_image">
+        <img src="../image/move_image7.jpg" alt="">
+      </div>
+      <div class="review_2_txtBox">
+        <div class="" style="padding:5px 10px;">
+          <div class="" style="border-bottom:1px solid green; width:40px; margin:10px 0 0 20px; "></div>
+          <p>Review</p>
+          <span>저희집 강아지가 이제 저보다 시터님을 더 좋아하는거 같아 서운할 정도로 너무 잘 돌봐주셔서 언제든지 믿고 맡길 수 있습니다!!
+          <br>항상 헬로펫시터 잘 이용하고 있고 앞으로도 자주 이용할게요~</span>
+        </div>
+
+      </div>
+    </div>
+
 
     <div class="footer">
       <div class="footer_wrap">
