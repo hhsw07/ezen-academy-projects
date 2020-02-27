@@ -17,10 +17,12 @@ public class mypageActivity extends AppCompatActivity {
 
         Button ap = (Button) findViewById(R.id.add_pet);
         Button gs = (Button) findViewById(R.id.go_sitter);
+        Button gl = (Button) findViewById(R.id.go_list);
         ImageView gma = (ImageView) findViewById(R.id.go_main);
 
         ap.setOnClickListener(apListen);
         gs.setOnClickListener(gsListen);
+        gl.setOnClickListener(glListen);
         gma.setOnClickListener(gmaListen);
     }
         View.OnClickListener apListen = new View.OnClickListener() {
@@ -37,6 +39,13 @@ public class mypageActivity extends AppCompatActivity {
                 startActivity(gsl);
             }
         };
+        View.OnClickListener glListen = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gll = new Intent(mypageActivity.this, list.class);
+                startActivity(gll);
+            }
+        };
         View.OnClickListener gmaListen = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -44,5 +53,7 @@ public class mypageActivity extends AppCompatActivity {
                 startActivity(gmal);
             }
         };
+
+
     }
 

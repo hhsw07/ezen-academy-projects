@@ -133,7 +133,7 @@
 
 
         <Button
-            android:id="@+id/button27"
+            android:id="@+id/go_list"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:text="이용현황"
