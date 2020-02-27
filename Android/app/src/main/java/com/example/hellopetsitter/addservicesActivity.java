@@ -14,7 +14,7 @@ public class addservicesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addservices);
+        setContentView(R.layout.addservices2);
 
         Button rs3 = (Button) findViewById(R.id.register3);
 

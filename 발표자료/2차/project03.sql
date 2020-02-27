@@ -15,7 +15,7 @@ CREATE TABLE pro03_member (
 	mem_name VARCHAR2(15), /* 이름 */
 	mem_phone VARCHAR2(15), /* 핸드폰번호 */
 	mem_email VARCHAR2(30), /* 이메일 */
-	mem_addressnum NUMBER, /* 우편번호 */
+	mem_addressnum CHAR(5), /* 우편번호 */
 	mem_address VARCHAR2(200), /* 주소 */
 	mem_profileshot VARCHAR2(100) /* 프로필사진 */
 );

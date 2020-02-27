@@ -3,22 +3,25 @@ ALTER TABLE pro03_member
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
+
 DROP INDEX PK_pro03_member;
+
 /* 회원(보호자) */
 DROP TABLE pro03_member 
 	CASCADE CONSTRAINTS;
+
 /* 회원(보호자) */
 CREATE TABLE pro03_member (
 	mem_id VARCHAR2(20) NOT NULL, /* 아이디 */
-	mem_kind NUMBER, /* 회원분류 */
 	mem_pass VARCHAR2(20), /* 비밀번호 */
 	mem_name VARCHAR2(15), /* 이름 */
 	mem_phone VARCHAR2(15), /* 핸드폰번호 */
 	mem_email VARCHAR2(30), /* 이메일 */
-	mem_addressnum NUMBER, /* 우편번호 */
+	mem_addressnum CHAR(5), /* 우편번호 */
 	mem_address VARCHAR2(200), /* 주소 */
 	mem_profileshot VARCHAR2(100) /* 프로필사진 */
 );
+
 CREATE UNIQUE INDEX PK_pro03_member
 	ON pro03_member (
 		mem_id ASC
@@ -30,37 +33,11 @@ ALTER TABLE pro03_member
 		PRIMARY KEY (
 			mem_id
 		);
-SELECT * FROM PRO03_MEMBER;
-------
-ALTER TABLE pro03_memberalbum
-	DROP
-		CONSTRAINT FK_pro03_member_TO_pro03_memberalbum
-		CASCADE;
-
-/* 회원사진첩 */
-DROP TABLE pro03_memberalbum 
-	CASCADE CONSTRAINTS;
-
-/* 회원사진첩 */
-CREATE TABLE pro03_memberalbum (
-	memalb_mem_id VARCHAR2(20), /* 아이디 */
-	memalb_info VARCHAR2(100) /* 사진정보 */
-);
-
-ALTER TABLE pro03_memberalbum
-	ADD
-		CONSTRAINT FK_pro03_memberalbum
-		FOREIGN KEY (
-			memalb_mem_id
-		)
-		REFERENCES pro03_member (
-			mem_id
-		);		
-------
+----
 ALTER TABLE pro03_sitter
-DROP
-	CONSTRAINT FK_pro03_sitter
-	CASCADE;
+	DROP
+		CONSTRAINT FK_pro03_member_TO_pro03_sitter
+		CASCADE;
 
 ALTER TABLE pro03_sitter
 	DROP
@@ -80,7 +57,10 @@ CREATE TABLE pro03_sitter (
 	sit_num NUMBER NOT NULL, /* 시터번호 */
 	sit_profileshot VARCHAR2(100), /* 시터프로필사진 */
 	sit_intro VARCHAR2(200), /* 자기소개 */
-	sit_accountnum NUMBER /* 수취계좌 */
+	sit_accountnum NUMBER, /* 수취계좌 */
+	sit_petkind VARCHAR2(10), /* 펫종류 */
+	sit_petspace NUMBER, /* 수용가능펫수 */
+	sit_petweight NUMBER /* 수용가능펫무게 */
 );
 
 CREATE UNIQUE INDEX PK_pro03_sitter
@@ -97,65 +77,14 @@ ALTER TABLE pro03_sitter
 
 ALTER TABLE pro03_sitter
 	ADD
-		CONSTRAINT FK_pro03_sitter
+		CONSTRAINT FK_pro03_member_TO_pro03_sitter
 		FOREIGN KEY (
 			sit_mem_id
 		)
 		REFERENCES pro03_member (
 			mem_id
 		);
-------
-ALTER TABLE pro03_sitteralbum
-	DROP
-		CONSTRAINT FK_pro03_sitter_TO_pro03_sitteralbum
-		CASCADE;
-
-/* 시터사진첩 */
-DROP TABLE pro03_sitteralbum 
-	CASCADE CONSTRAINTS;
-
-/* 시터사진첩 */
-CREATE TABLE pro03_sitteralbum (
-	sitalb_sit_num NUMBER, /* 시터번호 */
-	sitalb_info VARCHAR2(100) /* 사진정보 */
-);
-
-ALTER TABLE pro03_sitteralbum
-	ADD
-		CONSTRAINT FK_pro03_sitteralbum
-		FOREIGN KEY (
-			sitalb_sit_num
-		)
-		REFERENCES pro03_sitter (
-			sit_num
-		);
-------
-ALTER TABLE pro03_calender
-	DROP
-		CONSTRAINT FK_pro03_sitter_TO_pro03_calender
-		CASCADE;
-
-/* 캘린더 */
-DROP TABLE pro03_calender 
-	CASCADE CONSTRAINTS;
-
-/* 캘린더 */
-CREATE TABLE pro03_calender (
-	cal_sit_num NUMBER, /* 시터번호 */
-	cal_startdate DATE, /* 불가능일(시작) */
-	cal_enddate DATE /* 불가능일(종료) */
-);
-
-ALTER TABLE pro03_calender
-	ADD
-		CONSTRAINT FK_pro03_calender
-		FOREIGN KEY (
-			cal_sit_num
-		)
-		REFERENCES pro03_sitter (
-			sit_num
-		);
-------
+----
 ALTER TABLE pro03_pet
 	DROP
 		CONSTRAINT FK_pro03_member_TO_pro03_pet
@@ -186,6 +115,7 @@ CREATE TABLE pro03_pet (
 	pet_disease VARCHAR2(80), /* 질병이력 */
 	pet_allergy VARCHAR2(80) /* 알러지 */
 );
+
 CREATE UNIQUE INDEX PK_pro03_pet
 	ON pro03_pet (
 		pet_num ASC
@@ -200,14 +130,61 @@ ALTER TABLE pro03_pet
 
 ALTER TABLE pro03_pet
 	ADD
-		CONSTRAINT FK_pro03_pet
+		CONSTRAINT FK_pro03_member_TO_pro03_pet
 		FOREIGN KEY (
 			pet_mem_id
 		)
 		REFERENCES pro03_member (
 			mem_id
 		);
-------
+----
+ALTER TABLE pro03_carekind
+	DROP
+		CONSTRAINT FK_pro03_sitter_TO_pro03_carekind
+		CASCADE;
+
+ALTER TABLE pro03_carekind
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+DROP INDEX PK_pro03_carekind;
+
+/* 케어분류 */
+DROP TABLE pro03_carekind 
+	CASCADE CONSTRAINTS;
+
+/* 케어분류 */
+CREATE TABLE pro03_carekind (
+	care_num NUMBER NOT NULL, /* 케어분류번호 */
+	care_sit_num NUMBER, /* 시터번호 */
+	care_kind VARCHAR2(40), /* 케어분류 */
+	care_price NUMBER /* 케어가격 */
+);
+
+CREATE UNIQUE INDEX PK_pro03_carekind
+	ON pro03_carekind (
+		care_num ASC
+	);
+
+ALTER TABLE pro03_carekind
+	ADD
+		CONSTRAINT PK_pro03_carekind
+		PRIMARY KEY (
+			care_num
+		);
+
+ALTER TABLE pro03_carekind
+	ADD
+		CONSTRAINT FK_pro03_sitter_TO_pro03_carekind
+		FOREIGN KEY (
+			care_sit_num
+		)
+		REFERENCES pro03_sitter (
+			sit_num
+		);
+----
 ALTER TABLE pro03_status
 	DROP
 		CONSTRAINT FK_pro03_pet_TO_pro03_status
@@ -238,6 +215,7 @@ CREATE TABLE pro03_status (
 	stat_startdate DATE, /* 시작일 */
 	stat_enddate DATE /* 종료일 */
 );
+
 CREATE UNIQUE INDEX PK_pro03_status
 	ON pro03_status (
 		stat_pet_num ASC
@@ -252,70 +230,24 @@ ALTER TABLE pro03_status
 
 ALTER TABLE pro03_status
 	ADD
-		CONSTRAINT FK_pro03_status
+		CONSTRAINT FK_pro03_pet_TO_pro03_status
 		FOREIGN KEY (
 			stat_pet_num
 		)
 		REFERENCES pro03_pet (
 			pet_num
 		);
---pro03_carekind 테이블 추가후에 해야함
+
 ALTER TABLE pro03_status
 	ADD
-		CONSTRAINT FK_pro03_status02
+		CONSTRAINT FK_pro03_carekind_TO_pro03_status
 		FOREIGN KEY (
 			stat_care_num
 		)
 		REFERENCES pro03_carekind (
 			care_num
 		);
-------
-ALTER TABLE pro03_carekind
-	DROP
-		CONSTRAINT FK_pro03_sitter_TO_pro03_carekind
-		CASCADE;
-
-ALTER TABLE pro03_carekind
-	DROP
-		PRIMARY KEY
-		CASCADE
-		KEEP INDEX;
-
-DROP INDEX PK_pro03_carekind;
-
-/* 케어분류 */
-DROP TABLE pro03_carekind 
-	CASCADE CONSTRAINTS;
-
-/* 케어분류 */
-CREATE TABLE pro03_carekind (
-	care_num NUMBER NOT NULL, /* 케어분류번호 */
-	care_sit_num NUMBER, /* 시터번호 */
-	care_kind VARCHAR2(40), /* 케어분류 */
-	care_price NUMBER /* 케어가격 */
-);
-CREATE UNIQUE INDEX PK_pro03_carekind
-	ON pro03_carekind (
-		care_num ASC
-	);
-
-ALTER TABLE pro03_carekind
-	ADD
-		CONSTRAINT PK_pro03_carekind
-		PRIMARY KEY (
-			care_num
-		);
-
-ALTER TABLE pro03_carekind
-	ADD
-		CONSTRAINT FK_pro03_carekind
-		FOREIGN KEY (
-			care_sit_num
-		)
-		REFERENCES pro03_sitter (
-			sit_num
-		);
-------
+----
 ALTER TABLE pro03_review
 	DROP
 		CONSTRAINT FK_pro03_member_TO_pro03_review
@@ -362,7 +294,7 @@ ALTER TABLE pro03_review
 
 ALTER TABLE pro03_review
 	ADD
-		CONSTRAINT FK_pro03_review
+		CONSTRAINT FK_pro03_member_TO_pro03_review
 		FOREIGN KEY (
 			rev_mem_id
 		)
@@ -372,63 +304,92 @@ ALTER TABLE pro03_review
 
 ALTER TABLE pro03_review
 	ADD
-		CONSTRAINT FK_pro03_review2
+		CONSTRAINT FK_pro03_sitter_TO_pro03_review
 		FOREIGN KEY (
 			rev_sit_num
 		)
 		REFERENCES pro03_sitter (
 			sit_num
 		);
-------
-ALTER TABLE pro03_payment
+----
+ALTER TABLE pro03_memberalbum
 	DROP
-		CONSTRAINT FK_pro03_member_TO_pro03_payment
+		CONSTRAINT FK_pro03_member_TO_pro03_memberalbum
 		CASCADE;
 
-ALTER TABLE pro03_payment
-	DROP
-		PRIMARY KEY
-		CASCADE
-		KEEP INDEX;
-
-DROP INDEX PK_pro03_payment;
-
-/* 결제 */
-DROP TABLE pro03_payment 
+/* 회원사진첩 */
+DROP TABLE pro03_memberalbum 
 	CASCADE CONSTRAINTS;
 
-/* 결제 */
-CREATE TABLE pro03_payment (
-	pay_num NUMBER NOT NULL, /* 결제번호 */
-	pay_mem_id VARCHAR2(20), /* 아이디 */
-	pay_cardnum NUMBER, /* 카드번호 */
-	pay_expired DATE, /* 유효기간 */
-	pay_cvc NUMBER, /* CVC */
-	pay_birth DATE, /* 생년월일 */
-	pay_passfront NUMBER /* 비밀번호앞둘 */
+/* 회원사진첩 */
+CREATE TABLE pro03_memberalbum (
+	memalb_mem_id VARCHAR2(20), /* 아이디 */
+	memalb_info VARCHAR2(100), /* 사진정보 */
+	memalb_date DATE /* 등록일 */
 );
-CREATE UNIQUE INDEX PK_pro03_payment
-	ON pro03_payment (
-		pay_num ASC
-	);
 
-ALTER TABLE pro03_payment
+ALTER TABLE pro03_memberalbum
 	ADD
-		CONSTRAINT PK_pro03_payment
-		PRIMARY KEY (
-			pay_num
-		);
-
-ALTER TABLE pro03_payment
-	ADD
-		CONSTRAINT FK_pro03_payment
+		CONSTRAINT FK_pro03_member_TO_pro03_memberalbum
 		FOREIGN KEY (
-			pay_mem_id
+			memalb_mem_id
 		)
 		REFERENCES pro03_member (
 			mem_id
 		);
-------
+----
+ALTER TABLE pro03_sitteralbum
+	DROP
+		CONSTRAINT FK_pro03_sitter_TO_pro03_sitteralbum
+		CASCADE;
+
+/* 시터사진첩 */
+DROP TABLE pro03_sitteralbum 
+	CASCADE CONSTRAINTS;
+
+/* 시터사진첩 */
+CREATE TABLE pro03_sitteralbum (
+	sitalb_sit_num NUMBER, /* 시터번호 */
+	sitalb_info VARCHAR2(100), /* 사진정보 */
+	sitalb_date DATE /* 등록일 */
+);
+
+ALTER TABLE pro03_sitteralbum
+	ADD
+		CONSTRAINT FK_pro03_sitter_TO_pro03_sitteralbum
+		FOREIGN KEY (
+			sitalb_sit_num
+		)
+		REFERENCES pro03_sitter (
+			sit_num
+		);
+----
+ALTER TABLE pro03_calender
+	DROP
+		CONSTRAINT FK_pro03_sitter_TO_pro03_calender
+		CASCADE;
+
+/* 캘린더 */
+DROP TABLE pro03_calender 
+	CASCADE CONSTRAINTS;
+
+/* 캘린더 */
+CREATE TABLE pro03_calender (
+	cal_sit_num NUMBER, /* 시터번호 */
+	cal_startdate DATE, /* 불가능일(시작) */
+	cal_enddate DATE /* 불가능일(종료) */
+);
+
+ALTER TABLE pro03_calender
+	ADD
+		CONSTRAINT FK_pro03_sitter_TO_pro03_calender
+		FOREIGN KEY (
+			cal_sit_num
+		)
+		REFERENCES pro03_sitter (
+			sit_num
+		);
+----
 ALTER TABLE pro03_transport
 	DROP
 		CONSTRAINT FK_pro03_pet_TO_pro03_transport
@@ -456,6 +417,7 @@ CREATE TABLE pro03_transport (
 	trans_endloc VARCHAR2(200), /* 도착지 */
 	trans_permission CHAR(2) /* 승인상태 */
 );
+
 CREATE UNIQUE INDEX PK_pro03_transport
 	ON pro03_transport (
 		trans_num ASC
@@ -470,19 +432,14 @@ ALTER TABLE pro03_transport
 
 ALTER TABLE pro03_transport
 	ADD
-		CONSTRAINT FK_pro03_transport
+		CONSTRAINT FK_pro03_pet_TO_pro03_transport
 		FOREIGN KEY (
 			trnas_pet_num
 		)
 		REFERENCES pro03_pet (
 			pet_num
 		);
-------
-ALTER TABLE pro03_program
-	DROP
-		CONSTRAINT FK_pro03_member_TO_pro03_program
-		CASCADE;
-
+----
 ALTER TABLE pro03_program
 	DROP
 		PRIMARY KEY
@@ -498,7 +455,6 @@ DROP TABLE pro03_program
 /* 반려동물 프로그램 */
 CREATE TABLE pro03_program (
 	pro_num NUMBER NOT NULL, /* 프로그램번호 */
-	pro_mem_id VARCHAR2(20), /* 아이디 */
 	pro_title VARCHAR2(300), /* 제목 */
 	pro_detail VARCHAR2(900), /* 내용 */
 	pro_date DATE, /* 작성일 */
@@ -518,66 +474,69 @@ ALTER TABLE pro03_program
 		PRIMARY KEY (
 			pro_num
 		);
-
-ALTER TABLE pro03_program
-	ADD
-		CONSTRAINT FK_pro03_program
-		FOREIGN KEY (
-			pro_mem_id
-		)
-		REFERENCES pro03_member (
-			mem_id
-		);
-------
-ALTER TABLE pro03_notice
+----
+ALTER TABLE pro03_program_list
 	DROP
-		CONSTRAINT FK_pro03_member_TO_pro03_notice
+		CONSTRAINT FK_pro03_program_TO_pro03_program_list
 		CASCADE;
 
-ALTER TABLE pro03_notice
+ALTER TABLE pro03_program_list
+	DROP
+		CONSTRAINT FK_pro03_member_TO_pro03_program_list
+		CASCADE;
+
+ALTER TABLE pro03_program_list
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-DROP INDEX PK_pro03_notice;
+DROP INDEX pro03_program_list_pk;
 
-/* 공지사항 */
-DROP TABLE pro03_notice 
+/* 반려동물 프로그램 신청목록 */
+DROP TABLE pro03_program_list 
 	CASCADE CONSTRAINTS;
 
-/* 공지사항 */
-CREATE TABLE pro03_notice (
-	not_num NUMBER NOT NULL, /* 글번호 */
-	not_mem_id VARCHAR2(20), /* 아이디 */
-	not_title VARCHAR2(300), /* 제목 */
-	not_detail VARCHAR2(900), /* 내용 */
-	not_date DATE, /* 작성일 */
-	not_priority NUMBER /* 우선도 */
+/* 반려동물 프로그램 신청목록 */
+CREATE TABLE pro03_program_list (
+	pro_lis_mem_id VARCHAR2(20) NOT NULL, /* 아이디 */
+	pro_lis_pro_num NUMBER NOT NULL /* 프로그램번호 */
 );
 
-CREATE UNIQUE INDEX PK_pro03_notice
-	ON pro03_notice (
-		not_num ASC
+CREATE UNIQUE INDEX pro03_program_list_pk
+	ON pro03_program_list (
+		pro_lis_mem_id ASC,
+		pro_lis_pro_num ASC
 	);
 
-ALTER TABLE pro03_notice
+ALTER TABLE pro03_program_list
 	ADD
-		CONSTRAINT PK_pro03_notice
+		CONSTRAINT pro03_program_list_pk
 		PRIMARY KEY (
-			not_num
+			pro_lis_mem_id,
+			pro_lis_pro_num
 		);
 
-ALTER TABLE pro03_notice
+ALTER TABLE pro03_program_list
 	ADD
-		CONSTRAINT FK_pro03_notice
+		CONSTRAINT FK_pro03_program_TO_pro03_program_list
 		FOREIGN KEY (
-			not_mem_id
+			pro_lis_pro_num
+		)
+		REFERENCES pro03_program (
+			pro_num
+		);
+
+ALTER TABLE pro03_program_list
+	ADD
+		CONSTRAINT FK_pro03_member_TO_pro03_program_list
+		FOREIGN KEY (
+			pro_lis_mem_id
 		)
 		REFERENCES pro03_member (
 			mem_id
 		);
-------
+----
 ALTER TABLE pro03_qna
 	DROP
 		CONSTRAINT FK_pro03_member_TO_pro03_qna
@@ -604,6 +563,7 @@ CREATE TABLE pro03_qna (
 	qna_date DATE, /* 작성일 */
 	qna_answer VARCHAR2(900) /* 답변내용 */
 );
+
 CREATE UNIQUE INDEX PK_pro03_qna
 	ON pro03_qna (
 		qna_num ASC
@@ -618,10 +578,43 @@ ALTER TABLE pro03_qna
 
 ALTER TABLE pro03_qna
 	ADD
-		CONSTRAINT FK_pro03_qna
+		CONSTRAINT FK_pro03_member_TO_pro03_qna
 		FOREIGN KEY (
 			qna_mem_id
 		)
 		REFERENCES pro03_member (
 			mem_id
+		);
+----
+		ALTER TABLE pro03_notice
+	DROP
+		PRIMARY KEY
+		CASCADE
+		KEEP INDEX;
+
+DROP INDEX PK_pro03_notice;
+
+/* 공지사항 */
+DROP TABLE pro03_notice 
+	CASCADE CONSTRAINTS;
+
+/* 공지사항 */
+CREATE TABLE pro03_notice (
+	not_num NUMBER NOT NULL, /* 글번호 */
+	not_title VARCHAR2(300), /* 제목 */
+	not_detail VARCHAR2(900), /* 내용 */
+	not_date DATE, /* 작성일 */
+	not_priority NUMBER /* 우선도 */
+);
+
+CREATE UNIQUE INDEX PK_pro03_notice
+	ON pro03_notice (
+		not_num ASC
+	);
+
+ALTER TABLE pro03_notice
+	ADD
+		CONSTRAINT PK_pro03_notice
+		PRIMARY KEY (
+			not_num
 		);

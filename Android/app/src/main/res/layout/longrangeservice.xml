@@ -58,6 +58,7 @@
                     android:id="@+id/textView39"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20dp"
                     android:text="장거리이동 서비스란?" />
             </TableRow>
 
@@ -80,36 +81,41 @@
                     android:id="@+id/textView47"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20dp"
                     android:text="장거리 이동 서비스 신청" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
+                <LinearLayout>
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:text="날짜" />
 
-                <TextView
-                    android:id="@+id/textView48"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="날짜" />
+                    <EditText
+                        android:id="@+id/editText21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:text="YYYY-MM-DD" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editText21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
+            <LinearLayout>
                 <TextView
                     android:id="@+id/textView49"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18dp"
                     android:text="출발지" />
 
                 <EditText
@@ -118,17 +124,19 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:text="Start location" />
+            </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
+            <LinearLayout>
                 <TextView
                     android:id="@+id/textView50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18dp"
                     android:text="도착지" />
 
                 <EditText
@@ -137,45 +145,54 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:text="End location" />
+            </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
                 <TextView
                     android:id="@+id/textView51"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18dp"
                     android:text="펫 선택" />
 
-                <EditText
-                    android:id="@+id/editText24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
+                    <Spinner
+                        android:id="@+id/spinner2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/select5"/>
+                </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
                 <TextView
                     android:id="@+id/textView52"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18dp"
                     android:text="전달 방식 선택" />
 
-                <EditText
-                    android:id="@+id/editText25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/select6"/>
+
+
+                </LinearLayout>
             </TableRow>
 
             <TableRow
@@ -186,6 +203,7 @@
                     android:id="@+id/button17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="신청" />
             </TableRow>
         </TableLayout>

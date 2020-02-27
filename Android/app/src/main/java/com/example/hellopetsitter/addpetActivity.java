@@ -12,7 +12,7 @@ public class addpetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addpet);
+        setContentView(R.layout.addpet2);
 
         Button rs2 = (Button) findViewById(R.id.register2);
 
