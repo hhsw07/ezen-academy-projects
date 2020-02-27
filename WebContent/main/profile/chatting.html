@@ -27,7 +27,7 @@
 		var txt = document.querySelector("#txt");
 		var chat = document.querySelector("#chat");
 		var today = new Date();
-		var now = today.getMonth()+"/"+today.getDate()+"/"+today.getHours()+":"+today.getMinutes()
+		var now = "0"+(today.getMonth()+1)+"/"+today.getDate()+"/"+today.getHours()+":"+today.getMinutes()
 		chat.innerHTML += "<h4 class=\"i\">&nbsp;"+txt.value+"</h4><p>"+now+"</p>";
 		txt.value = "";
 	}
@@ -38,7 +38,7 @@
 </head>
 <body>
 	<div class=middle>
-		<h3 id="tit">채팅 : </h3>
+		<h3 id="tit">채팅 : 홍길동</h3>
 		<div id="chat">
 			<h4 class="you">3월 괜찮나요?</h4>
 			<p>02/25 13:01</p>
