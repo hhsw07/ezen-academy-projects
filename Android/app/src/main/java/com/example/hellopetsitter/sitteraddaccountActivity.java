@@ -16,9 +16,11 @@ public class sitteraddaccountActivity extends AppCompatActivity {
         setContentView(R.layout.sitteraddaccount);
 
         Button gm = (Button) findViewById(R.id.go_my);
+        Button gl = (Button) findViewById(R.id.go_list);
         ImageView gma = (ImageView) findViewById(R.id.go_main);
 
         gm.setOnClickListener(gmListen);
+        gl.setOnClickListener(glListen);
         gma.setOnClickListener(gmaListen);
     }
     View.OnClickListener gmListen = new View.OnClickListener(){
@@ -26,6 +28,13 @@ public class sitteraddaccountActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent gml = new Intent(sitteraddaccountActivity.this,mypageaddpetActivity.class);
             startActivity(gml);
+        }
+    };
+    View.OnClickListener glListen = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent gll = new Intent(sitteraddaccountActivity.this, list.class);
+            startActivity(gll);
         }
     };
     View.OnClickListener gmaListen = new View.OnClickListener(){

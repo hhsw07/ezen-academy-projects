@@ -19,11 +19,13 @@ public class sitterpageActivity extends AppCompatActivity {
         Button sv = (Button) findViewById(R.id.add_sv);
         Button ac = (Button) findViewById(R.id.add_ac);
         Button gm = (Button) findViewById(R.id.go_my);
+        Button gl = (Button) findViewById(R.id.go_list);
         ImageView gma = (ImageView) findViewById(R.id.go_main);
 
         sv.setOnClickListener(svListen);
         ac.setOnClickListener(acListen);
         gm.setOnClickListener(gmListen);
+        gl.setOnClickListener(glListen);
         gma.setOnClickListener(gmaListen);
 
 
@@ -55,6 +57,13 @@ public class sitterpageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gmal = new Intent(sitterpageActivity.this,MainActivity.class);
                 startActivity(gmal);
+            }
+        };
+        View.OnClickListener glListen = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gll = new Intent(sitterpageActivity.this, list.class);
+                startActivity(gll);
             }
         };
     }
