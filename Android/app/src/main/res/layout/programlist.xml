@@ -53,11 +53,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <ImageView
-                    android:id="@+id/imageView9"
+                <Button
+                    android:id="@+id/proDetail"
                     android:layout_width="140dp"
                     android:layout_height="100dp"
-                    app:srcCompat="@drawable/program01_s" />
+                    android:background="@drawable/program01_s" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
