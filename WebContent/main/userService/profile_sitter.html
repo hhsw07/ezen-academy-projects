@@ -77,6 +77,9 @@
 		}
 		
 	}
+	function chatting(obj){
+		var windowObj = window.open(url="chatting.html","chat","width=400px, height=500px");
+	}
 	</script>
 
   </head>
@@ -136,11 +139,12 @@
             <li><span style="font-size:35px;">홍길동</span></li>
             <li style="padding-top:10px; font-size:15px;"><span style="">서울특별시 종로구</span></li>
             <li style="padding-top:10px;">★★★★☆</li>
-            <li style="padding-top:15px;"><a href="#">
+            <li style="padding-top:15px;">
             <span style="width:35px;border:1px solid black; border-radius:20px;
-            padding:5px 20px 5px 20px; text-align:center;">
+            padding:5px 20px 5px 20px; text-align:center;"
+            onclick="window.open(url='../profile/chatting.html','chat','width=400px, height=500px')">
 		      		채팅
-			   </span></a></li>
+			   </span></li>
           </ul>
           
         </div>
