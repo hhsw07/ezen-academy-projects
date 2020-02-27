@@ -3,8 +3,8 @@ package com.example.hellopetsitter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +16,13 @@ public class list_review extends AppCompatActivity {
         setContentView(R.layout.pro03_list_review);
 
         ImageView logo = (ImageView)findViewById(R.id.logolist);
-        TextView txt = (TextView)findViewById(R.id.goList);
+
+        Button btn1 = (Button)findViewById(R.id.button20);
+        Button btn2 = (Button)findViewById(R.id.button22);
 
         logo.setOnClickListener(maListen);
-        txt.setOnClickListener(liListen);
+        btn1.setOnClickListener(liListen);
+        btn2.setOnClickListener(liListen);
     }
     View.OnClickListener maListen = new View.OnClickListener() {
         @Override
@@ -35,5 +38,6 @@ public class list_review extends AppCompatActivity {
             startActivity(gl);
         }
     };
+
 
 }
