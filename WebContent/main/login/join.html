@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../image/girl_icon.ico" />
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<title>HELLO PET SITTER</title>
+<style media="screen">
+/* 페이지 전체 */
+	body{height:100%; margin:0px; padding:0px; position:relative; min-width:1903px;}
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* 홈페이지 상단 */
+	.header{width:1280px; margin:0 auto;  position:relative;}
+	.navbar{width:1280px; position:relative;}
+	.page_logo{display:inline-block; position:relative; top:10px;}
+	.navbar12_wrap{position:relative; width:1036px; left:242px; bottom:44px; border-bottom:1px solid black; padding-bottom:45px;}
+	.navbar_2{display:inline-block; position:relative; float:right;}
+	.navbar_2 i{font-size:25px;}
+	.navbar_2 ul li{display:inline; margin-left:20px;}
+	.navbar_2 ul li:hover{border-bottom:2px solid #9553F3;}
+/* 사이트 메뉴 */
+	.top{width:1280px; margin:0 auto; padding:0px;}
+	.menubar{text-align:center; margin-top:40px; border-bottom-style:double; border-top-style:double;}
+	.menubar ul{margin-bottom: 5px; margin-top: 5px;}
+	.menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
+	.menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
+/* 홈페이지 하단 */
+	.footer{position: relative; width:100%; height:289px; background-color:#E6E6E6;}
+	.footer_wrap{width:1080;}
+	.page_info_menubar{text-align:center; margin:40px 0px; padding-top:20px;}
+	.page_info_menubar ul li{display:inline; margin:0 10px;}
+	.page_info_menubar a{color:black;}
+	.info_wrap{width:1080px; margin:0 auto;}
+	.page_info_logo{padding-top:40px; float:left; width:200px; height:180px;}
+	.page_info2{float:right; margin-bottom:100px;}
+	.page_info2 ul li{padding:2px 5px; font-size:15px;}
+/* 회원가입 */
+	.join{width:1080px; margin:40px auto;}
+	.joinform{width:800px;margin:30px auto;}
+	.joinform div{margin:20px 0;}
+	.joinform input{height:30px;}
+	.joinform input[type=button]{cursor:pointer;}
+	.joinform label{width:120px; display:inline-block; text-align:right;}
+	.joinform [name=pw]{margin-right:100px;}
+	.joinform [name=post]{width:100px; margin-right:75px;}
+	.joinform #roadAddress{width:275px;}
+	.joinform [name=addrdetail]{width:275px;}
+	.joinbtn{width:200px; margin:50px auto;}
+	.joinbtn input[type=submit]{width:95%;height:50px; font-size:24px; cursor:pointer;}
+</style>
+
+</head>
+<body>
+<!-- 홈페이지 상단 -->
+	<div class="header">
+		<div class="navbar">
+			<div class="page_logo">
+				<a href="mainPageBL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+			</div>
+			<div class="navbar12_wrap">
+				<div class="navbar_1">
+				</div>
+				<div class="navbar_2">
+					<ul>
+						<li><a href="login.html"><i class="xi-log-in"></i>로그인</a></li>
+						<li><a href="term.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+      
+<!-- 사이트 메뉴 -->
+	<div class="top">
+		<div class="menubar">
+			<ul>
+				<li><a href="find/findsitter.html">시터찾기</a></li>
+				<li><a href="#">이동</a></li>
+				<li><a href="#">반려인</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+		</div>
+	</div>
+    
+<!-- 회원가입창 -->
+	<div class="join">
+		<div>
+			<h1><img alt="" src="../image/012-cat.png" style="width:50px;height:50px;">회원가입</h1>
+		</div>
+		<div class="joinform">
+			<form>
+				<div>
+					<label for="id">아이디</label>
+					<input type="text" name="id"/>
+					<input type="button" value="중복확인"/>
+				</div>
+				<div>
+					<span>
+						<label for="pw">비밀번호</label>
+						<input type="password" name="pw"/>
+					</span>
+					<span>
+						<label for="checkpw">비밀번호 확인</label>
+						<input type="password" name="checkpw"/>
+					</span>
+				</div>
+				<div>
+					<label for="name">이름</label>
+					<input type="text" name="name"/>
+				</div>
+				<div>
+					<label for="hp">휴대폰번호</label>
+					<span>
+						<input type="tel" name="hp"/>
+						<input type="button" onclick="auth()" value="인증번호받기"/>
+					</span>
+					<span id="ckhp">
+						<label for="checkhp">인증번호</label>
+						<input type="text" name="checkhp"/>
+					</span>
+					
+				</div>
+				<div>
+					<label for="email">이메일</label>
+					<input type="email" name="email"/>
+				</div>
+				<div>
+					<span>
+						<label for="postcode">우편번호</label>
+						<input type="search" id="postcode" name="post"/>
+					</span>
+					<span onclick="findpost()">
+						<input type="button" value="우편번호찾기"/>
+					</span>
+				</div>
+				<div>
+					<label for="roadAddress">기본주소</label>
+					<input type="text" id="roadAddress"/>
+				</div>
+				<div>
+					<label for="addrdetail">상세주소</label>
+					<input type="text" name="addrdetail"/>
+				</div>
+			</form>
+		</div>
+		<div class="joinbtn">
+			<a href="login.html"><input type="submit" onclick="comp()" value="가입하기"/></a>
+		</div>
+	</div>
+    
+<!-- 홈페이지 하단 -->
+	<div class="footer">
+		<div class="footer_wrap">
+			<div class="page_info_menubar">
+				<ul>
+					<li><a href="#">광고/제휴문의</a></li>
+					<li>  |  </li>
+					<li><a href="../terms/service.html">이용약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">개인정보취급방침</a></li>
+					<li>  |  </li>
+					<li><a href="#">안전보상제도 약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">위치기반서비스 약관</a></li>
+					<li>  |  </li>
+					<li><a href="#">펫시터 약관</a></li>
+				</ul>
+			</div>
+			<div class="info_wrap">
+				<div class="page_info_logo">
+					<div class=""><img src="../image/LOGO.png" alt="" style="width:350px; opacity:0.8;"> </div>
+				</div>
+				<div class="page_info2">
+					<ul>
+						<li>(<span style="font-size:5px;">주</span>)PETcare | 대표:홍길동 | 사업자등록번호:652-000-000000</li>
+						<li>고객센터 : 02-0000-0000 | 이메일 : aaaaa@naver.com | 운영시간(한국) 11시~19시(주말/공휴일 제외)</li>
+						<li>주소 : 서울특별시 종로구 @@@로 0000 @@빌딩0000 | 통신판매업 신고 : 2020 - @@로 - 000호</li>
+					</ul>
+					<ul>
+						<li>자사는 서울특별시@@협회 공제영업보증보험에 가입되어 있습니다.</li>
+						<li>PETcare는 통신판매중개자이며 통신판매의 당사자가 아닙니다.</li>
+						<li>따라서 PETcare는 상품·거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>    
+
+</body>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+	var ckhp = document.querySelector("#ckhp");
+	ckhp.style.visibility="hidden";
+	function auth(){
+		alert('인증번호가 전송되었습니다');
+		ckhp.style.visibility="visible";
+	}
+	
+	 function findpost() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+	                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var roadAddr = data.roadAddress; // 도로명 주소 변수
+	                var extraRoadAddr = ''; // 참고 항목 변수
+
+	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraRoadAddr += data.bname;
+	                }
+	                // 건물명이 있고, 공동주택일 경우 추가한다.
+	                if(data.buildingName !== '' && data.apartment === 'Y'){
+	                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('postcode').value = data.zonecode;
+	                document.getElementById("roadAddress").value = roadAddr;
+	                
+	            }
+	        }).open();
+	    }
+	function comp(){
+		alert('가입이 완료되었습니다');
+	}
+
+</script>
+</html>
