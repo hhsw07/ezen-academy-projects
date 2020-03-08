@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HobbyFactory : class-list</title>
+
+    <style media="screen">
+      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1820px;}
+      ul li{list-style:none;}
+      a{text-decoration:none; color:black;}
+      div{display:block;}
+      p{margin:0px;}
+
+      .category-wrap{width:1820px; margin:0 auto; }
+        .category-list{text-align:center;}
+        .category-list ul li{display:inline; margin:0 15px; font-size:14px; padding-bottom:3px;}
+        .category-list ul li:hover{border-bottom:1px solid #ff3399;}
+        .category-list a{font-weight:900;}
+        .category-list a:hover{color:#ff3399;}
+
+      .class-wrap{width:1820px; margin:0 auto; text-align:center;}
+        .class-box{margin:50px 15px 0px 15px;  display:inline-block; position:relative;}
+          .class-image{width:500px; height:300px; border:1px dashed black; position:relative;}
+          .class-info{position:relative; margin-top:8px;}
+              .host-name{float:left; font-size:12px; color:gray;}
+              .class-name{float:left; font-size:20px; font-weight:900;}
+            .price-wrap1{position:absolute; right:0px; top:2px;}
+            .price-wrap2{position:absolute; right:0px; top:23px;}
+              .day{font-size:12px;}
+              .price{font-size:20px; font-weight:900;}
+
+
+
+    </style>
+
+    <script type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <!-- 카테고리 리스트 -->
+    <div class="category-wrap">
+      <div class="category-list">
+        <ul>
+          <li><a href="#">전체</a></li>
+          <li><a href="#">마크라메</a></li>
+          <li><a href="#">프랑스자수</a></li>
+          <li><a href="#">수채화/드로잉</a></li>
+          <li><a href="#">뜨개질/위빙</a></li>
+          <li><a href="#">가죽공예</a></li>
+          <li><a href="#">쥬얼리/네온사인</a></li>
+          <li><a href="#">다양한 취미</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 클래스 리스트 -->
+    <div class="class-wrap">
+
+      <div class="class-box">
+        <a href="#">
+        <div class="class-image"><img src="" alt=""></div>
+        <div class="class-info">
+          <div><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></div>
+          <div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
+          <div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
+        </div>
+        </a>
+      </div>
+
+    </div>
+  </body>
+</html>
