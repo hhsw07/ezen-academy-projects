@@ -71,10 +71,10 @@ if(lastNo >= memList.size()) lastNo = memList.size();
 		</div>
 		<div class="nav">
 			<ul>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOn">회원 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOff">회원 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOff">클래스 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_store.jsp'" class="ckOff">스토어 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_notice.jsp'" class="ckOff">공지사항 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_notice.jsp'" class="ckOn">공지사항 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_inquiry.jsp'" class="ckOff">문의 관리</li>
 			</ul>
 		</div>
