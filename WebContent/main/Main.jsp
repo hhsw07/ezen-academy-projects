@@ -181,7 +181,6 @@
 			<p class="bottom_intro">© hobbyful Inc. 2018 All Rights Reserved.</p>
 		</div>
 	</div>
-	<jsp:include page=""></jsp:include>
 </body>
 	<script type="text/javascript">
 		//슬라이드 이미지 코드
