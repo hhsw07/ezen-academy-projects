@@ -12,17 +12,17 @@
       div{display:block;}
       p{margin:0px;}
 
-      .wrap{width:1600px; margin:0 auto;}
+      .wrap-refund{width:1600px; margin:0 auto;}
         .trans li{margin-bottom:10px;}
         .change li{margin-bottom:10px;}
         .refund li{margin-bottom:10px;}
-        .line{border-bottom:1px solid gray; width:1533px; display:inline-block; text-align: center; margin:50px 0px 50px 37px;}
+        .line-refund{border-bottom:1px solid gray; width:1300px; display:inline-block; text-align: center; margin:50px 0px 50px 37px;}
           li.title{font-size:35px; font-weight:800; margin-bottom:20px;}
     </style>
   </head>
   <body>
 
-    <div class="wrap">
+    <div class="wrap-refund">
 
 
         <div class="trans">
@@ -37,7 +37,7 @@
           </ul>
         </div>
 
-        <div class="line"></div>
+        <div class="line-refund"></div>
 
         <div class="change">
           <ul>
@@ -49,7 +49,7 @@
           </ul>
         </div>
 
-        <div class="line"></div>
+        <div class="line-refund"></div>
 
         <div class="refund">
           <ul>

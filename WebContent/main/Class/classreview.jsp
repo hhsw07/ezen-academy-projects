@@ -13,22 +13,22 @@
     p{margin:0px;}
     textarea{outline: none; }
 
-      .wrap{width:1520px; margin:0 auto; }
-        .line{border-bottom:1px solid gray; width:1533px; display:inline-block; text-align: center;}
+      .wrap-review{width:1520px; margin:0 auto; }
+        .line-review{border-bottom:1px solid gray; width:1300px; display:inline-block; text-align: center;}
         .title{font-size: 35px; font-weight: 900; margin:20px 0;}
 
         .check{margin-bottom:20px;}
     </style>
   </head>
   <body>
-    <div class="wrap">
+    <div class="wrap-review">
 
 
       <div class="review">
         <p class="title">구매 후기</p>
       </div>
 
-      <div class="line"></div>
+      <div class="line-review"></div>
 
       <div class="">
         <ul>
@@ -38,7 +38,7 @@
         </ul>
       </div>
 
-      <div class="line"></div>
+      <div class="line-review"></div>
 
       <div class="review-write">
         <p class="title">후기 작성</p>
