@@ -16,7 +16,7 @@
 
       .wrap{width:1820px; margin:0 auto;}
         .info-wrap{margin-top:50px;}
-          .class-image{width:900px; height:500px; border:1px solid black; position:relative; left:150px;}
+          .class-image{width:900px; height:500px;  position:relative; left:150px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
               .visual{position:relative;}
               .visual button{position:absolute; z-index:10; left:97%; top:50%; transform:translate(-30%, -50% );
@@ -37,7 +37,12 @@
             .line{border-bottom:1px solid #d2d2d2; width:580px; margin:20px 0;}
               .mileage{font-size:13px; font-weight:900; margin-right:50px;}
               .mileage-point{font-size:13px; font-weight:900; color:gray;}
-            .select-pdt{margin-top:50px; width:580px; height:50px; font-size:20px;}
+            .select-pdt{margin-top:50px; width:580px; height:50px; font-size:20px; outline: none;}
+            .buy{width:524px; height:50px; margin-top:20px; background-color: #FA5882; border:none; font-size:20px;
+                border:1px solid black; outline: none; cursor: pointer;}
+            .star{width:50px; height:50px; border:1px solid gray; background-color: white; outline: none;
+                  cursor: pointer;}
+            .xi-star-o{font-size:22px;}
 
       .tab-wrap{width:1820px; margin:0 auto;}
         .tab{text-align:center; margin-top:100px; font-size:20px; font-weight:400;
@@ -66,12 +71,10 @@
           <div class="class-image">
             <div class="move_image">
               <section class="visual">
-                <div class="bg1"><img src="../../petcare/image/move_bg1.png" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg2"><img src="" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg3"><img src="" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg4"><img src="" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg5"><img src="" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg6"><img src="" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
+                <div class="bg1"><img src="../image/moveimg1.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
+                <div class="bg2"><img src="../image/moveimg2.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
+                <div class="bg3"><img src="../image/moveimg3.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
+                <div class="bg4"><img src="../image/moveimg4.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
               </section>
             </div>
           </div>
@@ -87,22 +90,24 @@
 
           <div class="class-info">
             <ul>
-              <li class="host-name">호스트이름</li>
-              <li class="class-name">클래스이름</li>
-              <li class="price-wrap"><span class="day">일</span><span class="price">00,000</span><span class="day">원</span></li>
+              <li class="host-name">[베란다자수]</li>
+              <li class="class-name">따듯한 한마디 일러스트 글자수</li>
+              <li class="price-wrap"><span class="day">일</span><span class="price">20,000</span><span class="day">원</span></li>
               <li class="date">매주 수요일, 금요일 14시</li>
-              <li><span class="day">월</span><span class="price">000,000</span><span class="day">원</span></li>
+              <li><span class="day">월</span><span class="price">200,000</span><span class="day">원</span></li>
               <li class="date">매주 월요일,화요일,수요일,목요일 10시~16시</li>
               <li class="line"></li>
-              <li><span class="mileage ">적립 마일리지</span><span class="mileage-point">최대0,000p</span></li>
+              <li><span class="mileage ">적립 마일리지</span><span class="mileage-point">최대2,000p</span></li>
               <li>
                 <select class="select-pdt" name="">
                   <option value="">상품을 선택해주세요.</option>
-                  <option value="">[원데이 수요일]00,000원</option>
-                  <option value="">[원데이 금요일]00,000원</option>
-                  <option value="">[정규]000,000원</option>
+                  <option value="">[원데이 수요일]20,000원</option>
+                  <option value="">[원데이 금요일]20,000원</option>
+                  <option value="">[정규]200,000원</option>
                 </select>
               </li>
+              <li><button class="star" type="button" name="button"><i class="xi-star-o"></i></button>
+                  <button class="buy" type="button" name="button">구매하기</button></li>
             </ul>
           <!-- class-info -->
           </div>
@@ -112,15 +117,15 @@
       <div class="tab-wrap">
         <div class="tab">
           <a href="classintro.html" target="iframe-detail">상품소개</a>
-          <a href="classreview" target="iframe-detail">구매후기</a>
-          <a href="classrefund" target="iframe-detail">배송/교환/환불</a>
+          <a href="classreview.html" target="iframe-detail">구매후기</a>
+          <a href="classrefund.html" target="iframe-detail">배송/교환/환불</a>
         <!-- tab -->
         </div>
       <!-- tab-wrap  -->
       </div>
 
       <div class="iframe-wrap">
-          <iframe class="iframe-setting" src="classintro.html" name="iframe-detail" width="1820px" height="4000px" frameborder="0" scrolling="no"></iframe>
+          <iframe class="iframe-setting" src="classintro.html" name="iframe-detail" width="1820px" height="13600px" frameborder="0" scrolling="no"></iframe>
       <!-- iframe-wrap  -->
       </div>
 
