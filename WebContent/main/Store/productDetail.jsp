@@ -57,8 +57,7 @@
                        border-bottom:3px solid black;
                        padding:20px 0px 20px 0px;}
 
-      .iframe-wrap{width:100%;}
-        .iframe-setting{margin:40px 0px 0px 0px; padding:0; outline:none; scroll:none; }
+
 
     </style>
 
