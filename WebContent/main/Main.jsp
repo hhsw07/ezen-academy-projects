@@ -22,40 +22,13 @@
 				.mt_li2{ margin:10px; display:inline-block; font-weight: bold; font-size:14px}
 				.mt_li2 a{color:black;}
 		.middle{width:1280px;position:absolute; background-color: white; padding-bottom:50px;}
-			.ads{position: relative;  margin: auto;  height:400px;}
-			.class-box{margin:50px 15px 0px 15px;  display:inline-block; position:relative;}
-				.class-image{width:390px; height:250px; border:1px dashed black; position:relative;}
-				.class-info{position:relative; margin-top:8px;}
-				.host-name{float:left; font-size:12px; color:gray;}
-				.class-name{float:left; font-size:20px; font-weight:900;}
-				.price-wrap1{position:absolute; right:0px; top:2px;}
-				.price-wrap2{position:absolute; right:0px; top:23px;}
-				.day{font-size:12px;}
-				.price{font-size:20px; font-weight:900;}
+
 		.bottom{position:relative;height:400px; padding:0px 130px 50px 130px; background-color:#424242; z-index:-1;}
 			.btm_article{padding-bottom:15px; border-bottom: 1px solid white}
 			.btm_article span{color:white; cursor: pointer;}
 			.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
 			.bottom_intro{color:white;}
 		
-		.ads_img {display: none}
-		img {vertical-align: middle;}
-		
-		/* Fading animation */
-		.fade {
-		  -webkit-animation-name: fade;
-		  -webkit-animation-duration: 1.5s;
-		  animation-name: fade;
-		  animation-duration: 1.5s;
-		}
-		@-webkit-keyframes fade {
-		  from {opacity: .4} 
-		  to {opacity: 1}
-		}
-		@keyframes fade {
-		  from {opacity: .4} 
-		  to {opacity: 1}
-		}
 	</style>
 	<script type="text/javascript">
 		
@@ -71,13 +44,11 @@
 			
 			top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
 			console.log(top.scrollHeight);
-			middle.scrollHeight = ads.scrollHeight;
 			middle.style.paddingTop = top.scrollHeight+"px";
 			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 			
 			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
-
 		}
 	</script>
 </head>
@@ -86,7 +57,7 @@
 		<div class="top">
 			<div class="user_top">
 				<ul class="ut_ul">
-					<li class="ut_li"><a href="#">로그인</a></li>
+					<li class="ut_li"><a href="?page=pdtintro">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
 					<li class="ut_li"><a href="#">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
@@ -105,65 +76,22 @@
 			</div>
 		</div>
 		<div class="middle">
-<!-- 상세 정보는 이곳에 들어가야함 -->		
-			<div class="ads">
-				<div class="ads_img fade"><img src="../image/ads01_wide.jpg" width="1280px"></div>
-				<div class="ads_img fade"><img src="../image/ads02_wide.jpg" width="1280px"></div>
-				<div class="ads_img fade"><img src="../image/ads03_wide.jpg" width="1280px"></div>
-				<div class="ads_img fade"><img src="../image/ads04_wide.jpg" width="1280px"></div>
-			</div>
-			<!-- 클래스 리스트 -->
-			<div class="class_list">
-				<h2 style="margin:10px 0 0 0 ;">클래스</h2>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
-			</div>
-			<div class="store_list">
-				<h2 style="margin:10px 0 0 0 ;">스토어</h2>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
-			    	</div>
-				</div>
-			</div>
+<!-- 상세 정보는 이곳에 들어가야함 -->	
+<%
+	String pl=null;
+	pl = request.getParameter("page");
+	if(pl==null){
+%>
+	<%@include file="maindetail.jsp" %>
+<%}else{
+		if(pl.equals("pdtintro")){
+%>
+			<%@include file="pdtintro.html" %>
+<%		}
+		
+	} %>
+	
+	
 		</div>
 		<div class="bottom">
 			<div class="btm_article">
@@ -182,22 +110,4 @@
 		</div>
 	</div>
 </body>
-	<script type="text/javascript">
-		//슬라이드 이미지 코드
-		var slideIndex = 0;
-		showSlides();
-	
-		function showSlides() {
-		    var i;
-		    var slides = document.getElementsByClassName("ads_img");
-		    for (i = 0; i < slides.length; i++) {
-		       slides[i].style.display = "none";  
-		    }
-		    slideIndex++;
-		    if (slideIndex > slides.length) {slideIndex = 1}    
-
-		    slides[slideIndex-1].style.display = "block";  
-		    setTimeout(showSlides, 2000); // Change image every 2 seconds
-		}
-	</script>
 </html>
