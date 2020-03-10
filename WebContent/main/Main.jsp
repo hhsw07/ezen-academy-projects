@@ -66,8 +66,8 @@
 			<div class="menu_top">
 				<p class="logo" style="display:inline-block;"> HobbyFactory</p>
 				<ul class="mt_ul">
-					<li class="mt_li"><a href="#">클래스</a></li>
-					<li class="mt_li"><a href="#">스토어</a></li>
+					<li class="mt_li"><a href="?page=classList1">클래스</a></li>
+					<li class="mt_li"><a href="?page=productList">스토어</a></li>
 				</ul>
 				<ul class="mt_ul2">
 					<li class="mt_li2"><a href="#">관심창고</a></li>
@@ -89,6 +89,31 @@
 			<%@include file="pdtintro.html" %>
 <%		}
 		
+		if(pl.equals("classList1")){
+%>
+			<%@include file="Class/classList1.jsp"%>
+<%		}
+		if(pl.equals("classList2")){
+%>
+			<%@include file="Class/classList2.jsp"%>
+<%		}
+		if(pl.equals("classList3")){
+%>
+			<%@include file="Class/classList3.jsp"%>
+<%		}	
+		if(pl.equals("classDetail")){
+%>
+			<%@include file="Class/classDetail.jsp"%>
+<%		}
+		if(pl.equals("productList")){
+%>
+			<%@include file="Store/productList.jsp"%>
+<%		}
+		if(pl.equals("productDetail")){
+%>
+			<%@include file="Store/productDetail.jsp"%>
+<%		}
+
 	} %>
 	
 	
