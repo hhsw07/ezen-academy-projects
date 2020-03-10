@@ -14,9 +14,10 @@
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}
-      p{margin:0px;}
+ 
 
       wrap{width:1280px; margin:0 auto;}
+      wrap p{margin:0px;}
         .info-wrap{margin-top:50px;}
           .class-image{width:900px; height:500px;  position:relative; left:-120px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
