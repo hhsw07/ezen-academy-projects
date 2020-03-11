@@ -11,8 +11,8 @@
 		.all_wrap{width:1280px; margin:0 auto;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
-			.loginPage{position:absolute;top:30%;left:40%; width:400px;height:700px; background-color: #ffffff;}
-		.top{position:fixed; z-index:1; }
+			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:700px; background-color: #ffffff; z-index:4;}
+		.top{position:fixed; z-index:5; }
 			.user_top{width:1280px;height:50px; background-color:#000000; vertical-align:middle; position:relative;}
 				.ut_ul{float:right;list-style:none; margin:0px; padding:5px 5px 5px 5px;}
 				.ut_li{float:left; margin:10px;}
@@ -55,16 +55,19 @@
 			allWrap.style.height = bottom.scrollHeight+"px";
 			loginWrap.style.height = allWrap.scrollHeight+"px"; 
 		}
+		//로그인 창 표시 함수
 		function login(){
-			allWrap.style.backgroundColor = "gray";  
+			loginWrap.style.display = "block";
 		}
 	</script>
 </head>
 <body>
+	<!-- 로그인 div -->
 	<div class="login_wrap">
 		<div class="loginPage">
 		</div>
 	</div>
+	<!--  -->
 	<div class="all_wrap">
 		<div class="top">
 			<div class="user_top">
