@@ -7,37 +7,35 @@
 
  
 <%
+ 	ArrayList<Member> memList = new ArrayList<Member>();
+	Member m01 = new Member("1","himan1","홍길동","7777","M");
+  Member m02 = new Member("2","himan2","김길동","7778","H");
+  memList.add(m01);
+  memList.add(m02);
+  for(int cnt=3;cnt<=16;cnt++){
+  	String strCnt = ""+cnt;
+  	memList.add(new Member(strCnt,"himan3","홍길똥",""+(9800+cnt),"N"));
+  }
+  session.setAttribute("memList", memList);
 
-ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("1","himan1","홍길동","7777","M");
-Member m02 = new Member("2","himan2","김길동","7778","H");
-memList.add(m01);
-memList.add(m02);
-for(int cnt=3;cnt<=16;cnt++){
-	String strCnt = ""+cnt;
-	memList.add(new Member(strCnt,"himan3","홍길똥",""+(9800+cnt),"N"));
-}
-session.setAttribute("memList", memList);
+  /* 페이징 처리
+  Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+  Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
+  */
 
-/* 페이징 처리
-Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-*/
+  int w_size = 5;
+  int p_size = 2;
+  int i_page = 1;
+  if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+  session.setAttribute("i_page",i_page);
 
-int w_size = 5;
-int p_size = 2;
-int i_page = 1;
-if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
-session.setAttribute("i_page",i_page);
+  int lastNo = w_size*i_page;
+  if(lastNo >= memList.size()) lastNo = memList.size();
 
-int lastNo = w_size*i_page;
-if(lastNo >= memList.size()) lastNo = memList.size();
-
-Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-int preNo = pg.getPage_Start()-1;
-int nextNo = pg.getPage_End()+1;
-
-%>
+  Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+  int preNo = pg.getPage_Start()-1;
+  int nextNo = pg.getPage_End()+1;
+ %>
 <!DOCTYPE html>
 <html>
 <head>

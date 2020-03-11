@@ -4,11 +4,8 @@
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
-
- 
 <%
-
-ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
+	ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -27,7 +24,6 @@ if(lastNo >= memList.size()) lastNo = memList.size();
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 int preNo = pg.getPage_Start()-1;
 int nextNo = pg.getPage_End()+1;
-
 %>
 <!DOCTYPE html>
 <html>
@@ -99,6 +95,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=memList.get(idx).getMem_phone() %></td>
 						<td><%=memList.get(idx).getMem_code() %></td>
 						<td onclick="del(<%=idx %>);">수정</td>
+						<!-- 삭제 메서드 : memList.remove(0); -->
 						</tr>
 					<%
 					} %>

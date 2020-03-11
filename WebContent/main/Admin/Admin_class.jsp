@@ -7,12 +7,7 @@
 
 <%
 
-ArrayList<course> coList = new ArrayList<course>();
-
-for(int cnt=0;cnt<=16;cnt++){
-	coList.add(new course(cnt+1, "홍길동","비누만들기"+(cnt+1),"수공예","재밌는 비누만들기",0,10,"2020-03-11",30000,""));
-}
-session.setAttribute("coList", coList);
+ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
