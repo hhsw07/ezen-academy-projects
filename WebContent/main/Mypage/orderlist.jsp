@@ -11,16 +11,16 @@
 	ul li{list-style:none;}
 	a{text-decoration:none; color:black;}
 /* 메뉴 */
-	.mymenu{display:block; position:relative; width:950px; background-color:#151515; color:#FFFFFF; font-size:18px; margin-top:64px; padding:5px;}
+	.mymenu{position:relative; width:950px; background-color:#151515; color:#FFFFFF; font-size:18px; margin:64px auto 0; padding:5px;}
 	.mynav{text-align:left; display:inline;}
 	.mynav ul li{float:left; text-align:center; display:flex; padding-right:30px;}
 	.mynav ul li a{color:#FFFFFF; cursor:pointer;}
 	.myhost{text-align:right; display:inline;}
 	.myhost ul li{padding-right:30px; cursor:pointer;}
-	.mysubmenu{display:block; position:relative; width:950px; padding:4px;}
+	.mysubmenu{display:block; position:relative; width:950px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 주문/배송 조회 */
-	.orderlist{padding:30px; width:870px; height:500px;}
+	.orderlist{padding:30px; width:870px; height:500px;margin:0 auto;}
 	.orderlist article{position:relative; font-size:14px; border-bottom:1px #ddd solid; padding-top:25px;}
 	.o-title{width:70px;display:inline-block; margin-right:5px;}
 	.o-value {color:#a3a3a3; margin-right:15px;}
@@ -37,7 +37,7 @@
 </style>
 </head>
 <body>
-
+<div style="margin:0 auto;">
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
 		<nav class="mynav">
@@ -114,6 +114,6 @@
 	%>
 		
 	</section>
-
+</div>
 </body>
 </html>

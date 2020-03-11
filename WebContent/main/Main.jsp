@@ -95,7 +95,7 @@
 				<ul class="ut_ul">
 					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
-					<li class="ut_li"><a href="#">마이페이지</a></li>
+					<li class="ut_li"><a href="?page=mypage">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
@@ -148,6 +148,10 @@
 		if(pl.equals("productDetail")){
 %>
 			<%@include file="Store/productDetail.jsp"%>
+<%		}
+		if(pl.equals("mypage")){
+%>
+			<%@include file="Mypage/orderlist.jsp"%>
 <%		}
 
 	} %>
