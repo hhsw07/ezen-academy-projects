@@ -11,11 +11,12 @@
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}
-      p{margin:0px;}
+  
       img{width:500px; height:300px;}
 
       /* 상단 상품 카테고리 리스트 */
       .category-wrap{width:1280px; margin:0 auto; }
+      .category-wrap p{margin:0px;}
         .category-list{text-align:center;}
         .category-list ul li{display:inline; margin:0 15px; font-size:13px; padding-bottom:3px;}
         .category-list ul li:hover{border-bottom:1px solid #ff3399;}

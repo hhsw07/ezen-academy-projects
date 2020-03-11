@@ -10,9 +10,10 @@
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}
-      p{margin:0px;}
+
 
       .wrap-refund{width:1600px; margin:0 auto;}
+      .wrap-refund p{margin:0px;}
         .trans li{margin-bottom:10px;}
         .change li{margin-bottom:10px;}
         .refund li{margin-bottom:10px;}

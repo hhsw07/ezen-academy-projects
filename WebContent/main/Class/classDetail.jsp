@@ -14,14 +14,15 @@
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}
-      p{margin:0px;}
+     
 
       .wrap{width:1280px; margin:0 auto;}
+      .wrap p{margin:0px;}
         .info-wrap{margin-top:50px;}
           .class-image{width:900px; height:500px;  position:relative; left:-120px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
               .visual{position:relative;}
-              .visual button{position:absolute; z-index:10; left:97%; top:50%; transform:translate(-30%, -50% );
+              .visual button{position:absolute; z-index:1; left:97%; top:50%; transform:translate(-30%, -50% );
                             width:50px; height:50px; border-radius:100%; background-color:rgba(0,0,0,0); border:none; }
               .visual button:before{font-family:'xeicon'; color:black; font-size:45px; }
               .visual button.slick-prev{left:0px; font-size:0; color:transparent; outline:none;}
@@ -56,16 +57,104 @@
           .tab a:hover{border-top:3px solid black;
                        border-bottom:3px solid black;
                        padding:20px 0px 20px 0px;}
-
-      .iframe-wrap{width:100%;}
-        .iframe-setting{margin:40px 0px 0px 0px; padding:0; }
+	
+     .buy_wrap{position:absolute;width:1920px; left:-320px; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
+			display:none;}
+			.buyPage{position:absolute;top:0%;left:40%; width:400px;height:636px; background-color: #ffffff; z-index:4;}
+			  .buyinfo-wrap{position:relative; height:385px;}
+				.buyPage p{text-align:center; font-size:15px; font-weight:900; color:#FA5882; margin:15px 0px;}
+				.buy-line{border-bottom:1px solid #D8D8D8;}
+				.pdt-box{border:1px solid red; width:380px; height:315px; position:absolute; left:10px; top:45px;}
+					.pdt-box img{width:360px; height:235px; position:absolute; left:10px; top:71px;}
+					.buy-info{font-weight:600; font-size:15px;}
+					.buy-info2{color:#FE2E9A; margin-top:5px; font-size:12px;}
+					
+					.card-num{width:65px; height:25px; text-align:center;}
+					.btn{margin-top:42px;}
+					.btn1{width:197px; height:40px; border:1px solid #FA5882; background-color:#FA5882; color:white; font-weight:900; outline:none; cursor:pointer;}
+					.btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
+			
 
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript">
+    window.onload = function(){
+    buyWrap=document.querySelector(".buy_wrap");
+    allWrap=document.querySelector(".all_wrap");
+	top=document.querySelector(".top");
+		userTop=document.querySelector(".user_top");
+		menuTop=document.querySelector(".menu_top");
+	middle=document.querySelector(".middle");
+		ads=document.querySelector(".ads");
+	bottom=document.querySelector(".bottom");
+	
+	top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
+	console.log(top.scrollHeight);
+	middle.style.paddingTop = top.scrollHeight+"px";
+	bottom.style.paddingTop = 50+middle.scrollHeight+"px";
+	
+	//최상위 Wrap만 이렇게 해야 오류가 안남..
+	allWrap.style.height = bottom.scrollHeight+"px";
+    }
+    
+    function buy(){
+		buyWrap.style.display = "block";
+		document.querySelector("body").style.overflow = "hidden";
+	}
+    function check(msg){
+        alert(msg);
+      
+    }
+    
+    </script>
   </head>
   <body>
+	<div class="buy_wrap">
+		<div class="buyPage">
+		  <div class="buyinfo-wrap">	
+			<p>선택한 상품을 확인해 주세요.</p>
+			<div class="buy-line"></div>
+			<ul>
+				<li class="buy-info">[베란다자수]따뜻한 한마디 일러스트 글자수</li>
+				<li class="buy-info2">정규클래스 매주 월,화,수,목 10~16시</li>
+			</ul>
+			<div class="pdt-box">
+				<img alt="" src="../image/fra1.jpg">
+				<div class="buy-line"></div>
+				<div class="buy-line"></div>
+			</div>
+		  </div>	
+		  <div class="buy-line"></div>	
+		  <div>
+		  	<p><span style="color:black;">클래스 금액</span><span>200,000</span></p>
+		  </div>
+		  <div class="payment">
+		  	<p>결제정보</p>
+		  	<select style="width:80px; height:30px; margin-left:10px;">
+		  		<option>카드선택</option>
+		  		<option>신한카드</option>
+		  		<option>현대카드</option>
+		  		<option>삼성카드</option>
+		  		<option>롯데카드</option>
+		  		<option>하나카드</option>
+		  		<option>국민카드</option>
+		  	</select>
+		  	<input class="card-num" type="text">
+		  	<input class="card-num" type="text">
+		  	<input class="card-num" type="text">
+		  	<input class="card-num" type="text"><br>
+		  	<input class="card-num" style="margin-top:5px; margin-left:96px;" type="text" placeholder="MONTH">
+		  	<input class="card-num" style="margin-top:5px;" type="text" placeholder="YEAR">
+		  	<input class="card-num" style="margin-top:5px;" type="text" placeholder="CVC">
+		  </div>
+		  	<div class=btn>
+				<a href="?page="><button class="btn1" type="button" name="button" >결제하기</button></a>
+				<a href="?page=classDetail"><button class="btn2" type="button" name="button" >취소</button></a>
+			</div>
+		</div>
+	</div>
 
     <div class="wrap">
 
@@ -108,8 +197,8 @@
                   <option value="">[정규]200,000원</option>
                 </select>
               </li>
-              <li><button class="star" type="button" name="button"><i class="xi-star-o"></i></button>
-                  <button class="buy" type="button" name="button">구매하기</button></li>
+              <li><button class="star" type="button" name="button" onclick="check('장바구니 추가완료')"><i class="xi-star-o"></i></button>
+                  <a href="javascript:buy()" onclick=""><button class="buy" type="button" name="button">구매하기</button></a></li>
             </ul>
           <!-- class-info -->
           </div>
