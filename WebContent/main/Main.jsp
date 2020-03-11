@@ -8,7 +8,7 @@
 	<style>
 		body{font-family: Verdana, sans-serif; margin:0}
 		a{text-decoration:none; color:black;}
-		.all_wrap{width:1280px; margin:0;}
+		.all_wrap{width:1280px; margin:0 auto;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
 			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:400px; background-color: #ffffff; z-index:4;}
@@ -79,7 +79,8 @@
 <%		}
 		if(lp.equals("findIdRes")){%>
 			<%@include file="Login/findIdRes.jsp" %>
-<%		}
+<%
+		}
 		if(lp.equals("findPwRes")){%>
 			<%@include file="Login/findPwRes.jsp" %>
 <%		}
