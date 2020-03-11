@@ -11,7 +11,7 @@
 		.all_wrap{width:1280px; margin:0 auto;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
-			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:700px; background-color: #ffffff; z-index:4;}
+			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:600px; background-color: #ffffff; z-index:4;}
 		.top{position:fixed; z-index:5; }
 			.user_top{width:1280px;height:50px; background-color:#000000; vertical-align:middle; position:relative;}
 				.ut_ul{float:right;list-style:none; margin:0px; padding:5px 5px 5px 5px;}
@@ -58,6 +58,7 @@
 		//로그인 창 표시 함수
 		function login(){
 			loginWrap.style.display = "block";
+			document.querySelector("body").style.overflow = "hidden";
 		}
 	</script>
 </head>
