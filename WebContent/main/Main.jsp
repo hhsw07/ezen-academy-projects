@@ -9,6 +9,9 @@
 		body{font-family: Verdana, sans-serif; margin:0}
 		a{text-decoration:none; color:black;}
 		.all_wrap{width:1280px; margin:0 auto;}
+		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
+			display:none;}
+			.loginPage{position:absolute;top:30%;left:40%; width:400px;height:700px; background-color: #ffffff;}
 		.top{position:fixed; z-index:1; }
 			.user_top{width:1280px;height:50px; background-color:#000000; vertical-align:middle; position:relative;}
 				.ut_ul{float:right;list-style:none; margin:0px; padding:5px 5px 5px 5px;}
@@ -34,6 +37,7 @@
 		
 		window.onload = function(){
 			//높이를 동적으로 설정
+			loginWrap=document.querySelector(".login_wrap");
 			allWrap=document.querySelector(".all_wrap");
 			top=document.querySelector(".top");
 				userTop=document.querySelector(".user_top");
@@ -49,22 +53,30 @@
 			
 			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
+			loginWrap.style.height = allWrap.scrollHeight+"px"; 
+		}
+		function login(){
+			allWrap.style.backgroundColor = "gray";  
 		}
 	</script>
 </head>
 <body>
+	<div class="login_wrap">
+		<div class="loginPage">
+		</div>
+	</div>
 	<div class="all_wrap">
 		<div class="top">
 			<div class="user_top">
 				<ul class="ut_ul">
-					<li class="ut_li"><a href="?page=pdtintro">로그인</a></li>
+					<li class="ut_li"><a href="javascript:login()" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
 					<li class="ut_li"><a href="#">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
 			<div class="menu_top">
-				<p class="logo" style="display:inline-block;"> HobbyFactory</p>
+				<p style="display:inline-block;"><a class="logo" href="?maindetail">HobbyFactory</a></p>
 				<ul class="mt_ul">
 					<li class="mt_li"><a href="?page=classList1">클래스</a></li>
 					<li class="mt_li"><a href="?page=productList">스토어</a></li>
@@ -84,9 +96,9 @@
 %>
 	<%@include file="maindetail.jsp" %>
 <%}else{
-		if(pl.equals("pdtintro")){
+		if(pl.equals("maindetail")){
 %>
-			<%@include file="pdtintro.html" %>
+			<%@include file="maindetail.jsp" %>
 <%		}
 		
 		if(pl.equals("classList1")){
