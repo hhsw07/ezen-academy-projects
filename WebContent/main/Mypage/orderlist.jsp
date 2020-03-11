@@ -37,7 +37,6 @@
 </style>
 </head>
 <body>
-<div style="margin:0 auto;">
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
 		<nav class="mynav">
@@ -114,6 +113,5 @@
 	%>
 		
 	</section>
-</div>
 </body>
 </html>

@@ -11,16 +11,16 @@
 	ul li{list-style:none;}
 	a{text-decoration:none; color:black;}
 /* 메뉴 */
-	.mymenu{display:block; position:relative; width:900px; background-color:#151515; color:#FFFFFF; font-size:18px; margin-top:64px; padding:5px;}
+	.mymenu{position:relative; width:950px; background-color:#151515; color:#FFFFFF; font-size:18px; margin:64px auto 0; padding:5px;}
 	.mynav{text-align:left; display:inline;}
 	.mynav ul li{float:left; text-align:center; display:flex; padding-right:30px;}
 	.mynav ul li a{color:#FFFFFF; cursor:pointer;}
 	.myhost{text-align:right; display:inline;}
 	.myhost ul li{padding-right:30px; cursor:pointer;}
-	.mysubmenu{display:block; position:relative; width:900px; padding:4px;}
+	.mysubmenu{display:block; position:relative; width:950px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 클래스목록 */
-	.pre-list{padding-bottom:50px; width:850px;}
+	.pre-list{padding-bottom:50px; width:870px; height:500px; margin:0 auto;}
 	.pre-class{padding:0 10px; color:#4a4a4a; font-size:15px;}
 	.preview{text-align:left;}
 	.c-list{display:inline; float:left; width:390px; margin:0; padding-top:25px; text-align:left;}
@@ -67,12 +67,12 @@
 	<section class="pre-list">
 	<%
 	ArrayList<Myclasses> myclist = new ArrayList<Myclasses>();
-	Myclasses mc1 = new Myclasses("2020.03.04","../image/lemon.jpg","[원데이 클래스] 바이유어핸즈","바이유어핸즈의 상콤 레몬 수세미 뜨기");
-	Myclasses mc2 = new Myclasses("2020.03.10","../image/resize.jpg","[원데이 클래스] 더베러라이프 작가님","밤바다 고래의 꿈 네온사인 클래스");
-	//myclist.add(mc1);
-	//myclist.add(mc2);
-	//myclist.add(mc1);
-	//myclist.add(mc2);
+	Myclasses mc1 = new Myclasses("2020.03.04","image/mypage_ex01.jpg","[원데이 클래스] 바이유어핸즈","바이유어핸즈의 상콤 레몬 수세미 뜨기");
+	Myclasses mc2 = new Myclasses("2020.03.10","image/mypage_ex02.jpg","[원데이 클래스] 더베러라이프 작가님","밤바다 고래의 꿈 네온사인 클래스");
+	myclist.add(mc1);
+	myclist.add(mc2);
+	myclist.add(mc1);
+	myclist.add(mc2);
 	if(myclist!=null){
 	%>
 		<article class="pre-class">
