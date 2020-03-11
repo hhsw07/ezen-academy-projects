@@ -6,35 +6,36 @@
 	String path = request.getContextPath(); %>
 
 <%
+
 ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("1","himan","홍길동","7777","M");
-Member m02 = new Member("2","higirl","김길동","7777","H");
+Member m01 = new Member("1","himan1","홍길동","7777","M");
+Member m02 = new Member("2","himan2","김길동","7778","H");
 memList.add(m01);
 memList.add(m02);
-memList.add(new Member("3","himan3","홍길똥","9883","N"));
-memList.add(new Member("4","himan4","홍길똥","9884","N"));
-memList.add(new Member("5","himan5","홍길똥","9885","N"));
-memList.add(new Member("6","himan6","홍길똥","9886","N"));
-memList.add(new Member("7","himan7","홍길똥","9887","N"));
-memList.add(new Member("8","himan8","홍길똥","9888","N"));
-memList.add(new Member("9","himan9","홍길똥","9889","N"));
-memList.add(new Member("10","himan10","홍길똥","9890","N"));
-memList.add(new Member("11","himan11","홍길똥","9891","N"));
-memList.add(new Member("12","himan12","홍길똥","9892","N"));
-memList.add(new Member("13","himan13","홍길똥","9893","N"));
-memList.add(new Member("14","himan14","홍길똥","9894","N"));
-memList.add(new Member("15","himan15","홍길똥","9895","N"));
-memList.add(new Member("16","himan16","홍길똥","9896","N"));
+for(int cnt=3;cnt<=16;cnt++){
+	String strCnt = ""+cnt;
+	memList.add(new Member(strCnt,"himan3","홍길똥",""+(9800+cnt),"N"));
+}
+session.setAttribute("memList", memList);
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
 */
+
 int w_size = 5;
 int p_size = 2;
 int i_page = 1;
+if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+session.setAttribute("i_page",i_page);
+
 int lastNo = w_size*i_page;
 if(lastNo >= memList.size()) lastNo = memList.size();
+
+Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+int preNo = pg.getPage_Start()-1;
+int nextNo = pg.getPage_End()+1;
+
 %>
 <!DOCTYPE html>
 <html>
@@ -62,6 +63,12 @@ if(lastNo >= memList.size()) lastNo = memList.size();
 	.pageNo {color:#f36359;}
 	
 </style>
+<script type="text/javascript">
+	function del(Mem_no){
+		//memList_no와 같은 행을 삭제한다.
+		alert(Mem_no+1+'수정');
+	}
+</script>
 </head>
 
 <body>
@@ -79,54 +86,54 @@ if(lastNo >= memList.size()) lastNo = memList.size();
 			</ul>
 		</div>
 		<div class="section">
-		
-			<h1>회원 관리</h1>
-			<table border>
-				<tr>
-					<th>No</th>
-					<th>ID</th>
-					<th>이름</th>
-					<th>연락처</th>
-					<th>등급</th>
-					<th>삭제</th>
-				</tr>
-				<%
-				for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
-				%>
+			<div>
+				<h1>문의사항 관리</h1>
+				<table border>
 					<tr>
-					<td><%=memList.get(idx).getMem_no() %></td>
-					<td><%=memList.get(idx).getMem_id() %></td>
-					<td><%=memList.get(idx).getMem_name() %></td>
-					<td><%=memList.get(idx).getMem_phone() %></td>
-					<td><%=memList.get(idx).getMem_code() %></td>
-					<td>X</td>
+						<th>No</th>
+						<th>ID</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>등급</th>
+						<th>삭제</th>
 					</tr>
+					<%
+					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
+					%>
+						<tr>
+						<td><%=memList.get(idx).getMem_no() %></td>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=memList.get(idx).getMem_name() %></td>
+						<td><%=memList.get(idx).getMem_phone() %></td>
+						<td><%=memList.get(idx).getMem_code() %></td>
+						<td onclick="del(<%=idx %>);">수정</td>
+						</tr>
+					<%
+					} %>
+				</table>
+			</div>
+			<div>
+				<h4 class="paging">
 				<%
-				} %>
-			</table>
-			<h4 class="paging">
-			<%
-			Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-			
-			if(pg.isPre()){
-			%>
-				Pre
-			<%
-			}
-			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
-				if(i == i_page){
-			%>
-				<span class="pageNo"><%=i %></span>
-			<%	}else{ %>
-				<span><%=i %></span>	
-			<%	}
-			}
-			if(pg.isNext()){
-			%>
-				Next
-			<%} %>
-			</h4>	
-			
+				if(pg.isPre()){
+				%>
+					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=preNo %>">Pre</a>
+				<%
+				}
+				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
+					if(i == i_page){
+				%>
+					<a class="pageNo" href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=i %>" ><%=i %></a>
+				<%	}else{ %>
+					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=i %>"><%=i %></a>
+				<%	}
+				}
+				if(pg.isNext()){
+				%>
+					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=nextNo %>">Next</a>
+				<%} %>
+				</h4>	
+			</div>
 		</div>
 		
 	</div>
