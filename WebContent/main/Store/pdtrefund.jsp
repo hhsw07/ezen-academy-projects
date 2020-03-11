@@ -14,6 +14,7 @@
 
       .wrap{width:1600px; margin:0 auto;}
       .wrap p{margin:0px;}
+      	.trans{margin-top:120px;}
         .trans li{margin-bottom:10px;}
         .change li{margin-bottom:10px;}
         .refund li{margin-bottom:10px;}

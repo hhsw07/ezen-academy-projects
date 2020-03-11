@@ -14,6 +14,7 @@
 
 
       .wrap-intro{width:800px; margin:0 auto;}
+      .class-intro{margin-top:120px;}
         .img-box{}
         .img-box img{width:700px;}
     </style>

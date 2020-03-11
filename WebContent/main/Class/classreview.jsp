@@ -14,10 +14,10 @@
     textarea{outline: none; }
 
       .wrap-review{width:1520px; margin:0 auto; }
-      .wrap-review{margin:0px;}
+      .review{margin-top:80px;}
         .line-review{border-bottom:1px solid gray; width:1300px; display:inline-block; text-align: center;}
         .title{font-size: 35px; font-weight: 900; margin:20px 0;}
-
+		.review-btn{width: 148px; height: 40px; background-color: white; border: 1px solid #A4A4A4; color: #A4A4A4; cursor:pointer; outline:none; font-weight:1000; margin:20px 0px;}
         .check{margin-bottom:20px;}
     </style>
   </head>
@@ -27,6 +27,7 @@
 
       <div class="review">
         <p class="title">구매 후기</p>
+        <button class="review-btn">후기 작성</button>
       </div>
 
       <div class="line-review"></div>
@@ -35,20 +36,51 @@
         <ul>
           <li>아이디</li>
           <li>작성날짜</li>
-          <p>내용<br><br><br><br><br><br><br><br><br>내용</p>
+          <p>내용<br><br><br><br><br>내용</p>
         </ul>
       </div>
-
+            
       <div class="line-review"></div>
-
-      <div class="review-write">
-        <p class="title">후기 작성</p>
-      </div>
-
+      
       <div class="">
-        <textarea name="name" rows="8" cols="100"></textarea>
-        <input class="check" type="submit" name="" value="등록">
+        <ul>
+          <li>아이디</li>
+          <li>작성날짜</li>
+          <p>내용<br><br><br><br><br>내용</p>
+        </ul>
       </div>
+            
+      <div class="line-review"></div>
+      
+      <div class="">
+        <ul>
+          <li>아이디</li>
+          <li>작성날짜</li>
+          <p>내용<br><br><br><br><br>내용</p>
+        </ul>
+      </div>
+            
+      <div class="line-review"></div>
+      
+      <div class="">
+        <ul>
+          <li>아이디</li>
+          <li>작성날짜</li>
+          <p>내용<br><br><br><br><br>내용</p>
+        </ul>
+      </div>
+            
+      <div class="line-review"></div>
+      
+      <div class="">
+        <ul>
+          <li>아이디</li>
+          <li>작성날짜</li>
+          <p>내용<br><br><br><br><br>내용</p>
+        </ul>
+      </div>
+            
+      <div class="line-review"></div>
 
 
     </div>
