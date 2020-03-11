@@ -8,16 +8,7 @@
  
 <%
 
-ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("1","himan1","홍길동","7777","M");
-Member m02 = new Member("2","himan2","김길동","7778","H");
-memList.add(m01);
-memList.add(m02);
-for(int cnt=3;cnt<=16;cnt++){
-	String strCnt = ""+cnt;
-	memList.add(new Member(strCnt,"himan3","홍길똥",""+(9800+cnt),"N"));
-}
-session.setAttribute("memList", memList);
+ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
