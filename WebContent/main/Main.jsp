@@ -11,7 +11,8 @@
 		.all_wrap{width:1280px; margin:0 auto;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
-			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:600px; background-color: #ffffff; z-index:4;}
+			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:400px; background-color: #ffffff; z-index:4;}
+			.loginPage input{width:300px;height:40px;margin:10px;font-size:15px; padding-left:5px;}
 		.top{position:fixed; z-index:5; }
 			.user_top{width:1280px;height:50px; background-color:#000000; vertical-align:middle; position:relative;}
 				.ut_ul{float:right;list-style:none; margin:0px; padding:5px 5px 5px 5px;}
@@ -37,7 +38,6 @@
 		
 		window.onload = function(){
 			//높이를 동적으로 설정
-			loginWrap=document.querySelector(".login_wrap");
 			allWrap=document.querySelector(".all_wrap");
 			top=document.querySelector(".top");
 				userTop=document.querySelector(".user_top");
@@ -47,25 +47,28 @@
 			bottom=document.querySelector(".bottom");
 			
 			top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
-			console.log(top.scrollHeight);
 			middle.style.paddingTop = top.scrollHeight+"px";
-			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
+			bottom.style.paddingTop = 50+middle.s	crollHeight+"px";
 			
 			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
-			loginWrap.style.height = allWrap.scrollHeight+"px"; 
 		}
-		//로그인 창 표시 함수
-		function login(){
-			loginWrap.style.display = "block";
-			document.querySelector("body").style.overflow = "hidden";
-		}
+
 	</script>
 </head>
 <body>
 	<!-- 로그인 div -->
 	<div class="login_wrap">
-		<div class="loginPage">
+		<div class="loginPage" style="text-align: center;">
+<%	String lp = null;
+	lp = request.getParameter("lp");
+	if(lp==null){
+%>
+<%	}else{ 
+		if(lp.equals("loginmain")){%>	
+			<%@include file="Login/loginmain.jsp" %>
+<%		}
+	} %>	
 		</div>
 	</div>
 	<!--  -->
@@ -73,14 +76,14 @@
 		<div class="top">
 			<div class="user_top">
 				<ul class="ut_ul">
-					<li class="ut_li"><a href="javascript:login()" onclick="">로그인</a></li>
+					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
 					<li class="ut_li"><a href="#">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
 			<div class="menu_top">
-				<p style="display:inline-block;"><a class="logo" href="?maindetail">HobbyFactory</a></p>
+				<p style="display:inline-block;"><a class="logo" href="?page=maindetail">HobbyFactory</a></p>
 				<ul class="mt_ul">
 					<li class="mt_li"><a href="?page=classList1">클래스</a></li>
 					<li class="mt_li"><a href="?page=productList">스토어</a></li>
