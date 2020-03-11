@@ -33,15 +33,15 @@
 <p class="logo" style="padding:20px;">HobbyFactory</p>
 <form id="login" method="post" action="Main.jsp">
 	<input type="hidden" name="page" value="maindetail"/>
+	<input type="hidden" name="lp" value="findPwRes"/>
 	<input type="text" name="uid" placeholder="아이디"/><br>
-	<input type="password" name="upass" placeholder="비밀번호"/><br>
+	<input type="text" name="uemail" placeholder="이메일"/><br>
 	<div style="display:inline-block;cursor:pointer; background-color:#FF4000; margin-top:20px;
 	padding:10px 40px 10px 40px; font-weight:bold; color:black; font-size:20px;" 
-	 onclick="document.querySelector('#login').submit();">로그인</div>
+	 onclick="document.querySelector('#login').submit();">비밀번호 찾기</div>
 </form>
 <div class="login_sub">
-<p>아직 하비팩토리 회원이 아니신가요? <a>회원가입</a></p>
-<p><a>아이디 찾기</a> | <a>비밀번호 찾기</a></p>
+<p>이미 계정이 있으신가요? <a href="Main.jsp?lp=loginmain">로그인</a></p>
 </div>
 </body>
 	<script type="text/javascript">
