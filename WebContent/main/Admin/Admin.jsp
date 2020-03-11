@@ -24,6 +24,8 @@ for(int cnt=3;cnt<=16;cnt++){
 }
 session.setAttribute("memList", memList);
 
+response.sendRedirect("Admin_mem.jsp");
+
 %>
 
 </body>

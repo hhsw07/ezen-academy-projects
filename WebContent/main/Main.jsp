@@ -173,7 +173,7 @@
 </body>
 	<script type="text/javascript">
 		function adminpage(){
-			location.href="Admin/Admin_mem.jsp";
+			location.href="Admin/Admin.jsp";
 		}
 	</script>
 </html>

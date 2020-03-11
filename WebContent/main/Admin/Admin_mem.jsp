@@ -8,7 +8,7 @@
  
 <%
 
-ArrayList<Member> memList = session.getAttribute("memList");
+ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
