@@ -41,8 +41,8 @@
 	 onclick="document.querySelector('#login').submit();">로그인</div>
 </form>
 <div class="login_sub">
-<p>아직 하비팩토리 회원이 아니신가요? <a>회원가입</a></p>
-<p><a>아이디 찾기</a> | <a>비밀번호 찾기</a></p>
+<p>아직 하비팩토리 회원이 아니신가요? <a href="?page=maindetail&lp=memberJoin">회원가입</a></p>
+<p><a href="?page=maindetail&lp=findId">아이디 찾기</a> | <a href="?page=maindetail&lp=findPw">비밀번호 찾기</a></p>
 </div>
 </body>
 	<script type="text/javascript">

@@ -30,7 +30,7 @@
 	</script>
 </head>
 <body>
-아직은 아무것도 없습니다.
+
 </body>
 	<script type="text/javascript">
 	</script>

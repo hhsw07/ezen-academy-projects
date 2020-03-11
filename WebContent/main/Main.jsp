@@ -48,7 +48,7 @@
 			
 			top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
 			middle.style.paddingTop = top.scrollHeight+"px";
-			bottom.style.paddingTop = 50+middle.s	crollHeight+"px";
+			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 			
 			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
@@ -67,6 +67,22 @@
 <%	}else{ 
 		if(lp.equals("loginmain")){%>	
 			<%@include file="Login/loginmain.jsp" %>
+<%		}
+		if(lp.equals("findId")){%>
+			<%@include file="Login/findId.jsp" %>
+<%		}
+		if(lp.equals("findPw")){%>
+			<%@include file="Login/findPw.jsp" %>
+<%		}
+		if(lp.equals("memberJoin")){%>
+			<%@include file="Login/memberJoin.jsp" %>
+<%		}
+		if(lp.equals("findIdRes")){%>
+			<%@include file="Login/findIdRes.jsp" %>
+<%
+		}
+		if(lp.equals("findPwRes")){%>
+			<%@include file="Login/findPwRes.jsp" %>
 <%		}
 	} %>	
 		</div>
