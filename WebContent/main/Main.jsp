@@ -27,7 +27,8 @@
 				.mt_li2 a{color:black;}
 		.middle{width:1280px;position:absolute; background-color: white; padding-bottom:50px;}
 
-		.bottom{position:relative;height:400px; padding:0px 130px 50px 130px; background-color:#424242; z-index:-1;}
+		.bottom{position:relative;height:400px; padding:0px 130px 50px 130px; background-color:#424242;
+		z-index:-1;}
 			.btm_article{padding-bottom:15px; border-bottom: 1px solid white}
 			.btm_article span{color:white; cursor: pointer;}
 			.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
@@ -79,8 +80,7 @@
 <%		}
 		if(lp.equals("findIdRes")){%>
 			<%@include file="Login/findIdRes.jsp" %>
-<%
-		}
+<%		}
 		if(lp.equals("findPwRes")){%>
 			<%@include file="Login/findPwRes.jsp" %>
 <%		}
@@ -91,6 +91,7 @@
 	<div class="all_wrap">
 		<div class="top">
 			<div class="user_top">
+			<span onclick="adminpage()" style="cursor:pointer; padding:30px">관리자</span>	
 				<ul class="ut_ul">
 					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
@@ -170,4 +171,9 @@
 		</div>
 	</div>
 </body>
+	<script type="text/javascript">
+		function adminpage(){
+			location.href="Admin/Admin.jsp";
+		}
+	</script>
 </html>
