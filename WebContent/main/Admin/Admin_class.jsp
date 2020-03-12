@@ -8,11 +8,6 @@
 <%
 	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
 
-/* 페이징 처리
-Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-*/
-
 int w_size = 10;
 int p_size = 5;
 int i_page = 1;
@@ -63,7 +58,7 @@ int nextNo = pg.getPage_End()+1;
 <body>
 	<div class="middle">
 		<div class="top">
-			<p><span class="logo" > HobbyFactory</span> 관리자 전용 페이지</p>
+			<p><a href="<%=path %>/main/Main.jsp" class="logo" > HobbyFactory</a> 관리자 전용 페이지</p>
 		</div>
 		<div class="nav">
 			<ul>
@@ -76,7 +71,7 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 		<div class="section">
 			<div>
-				<h1>클래스 관리 <input type="button" value="등록" onclick="location.href='#'"/></h1>
+				<h1>클래스 관리 <input type="button" value="등록" onclick="location.href='#'" class="btn"/></h1>
 				<table border>
 					<tr>
 						<th>No</th>

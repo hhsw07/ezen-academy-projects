@@ -53,9 +53,9 @@ int nextNo = pg.getPage_End()+1;
 	
 </style>
 <script type="text/javascript">
-	function del(Mem_no){
+	function del(idx){
 		//memList_no와 같은 행을 삭제한다.
-		alert(Mem_no+1+'수정');
+		alert(idx+1+'수정');
 	}
 </script>
 </head>
@@ -63,7 +63,7 @@ int nextNo = pg.getPage_End()+1;
 <body>
 	<div class="middle">
 		<div class="top">
-			<p><span class="logo" > HobbyFactory</span> 관리자 전용 페이지</p>
+			<p><a href="<%=path %>/main/Main.jsp" class="logo" > HobbyFactory</a> 관리자 전용 페이지</p>
 		</div>
 		<div class="nav">
 			<ul>
@@ -76,25 +76,25 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 		<div class="section">
 			<div>
-				<h1>공지사항 관리</h1>
+				<h1>공지사항 관리 <input type="button" value="등록" onclick="location.href='#'" class="btn"/></h1>
 				<table border>
 					<tr>
 						<th>No</th>
-						<th>ID</th>
-						<th>이름</th>
-						<th>연락처</th>
-						<th>등급</th>
-						<th>삭제</th>
+						<th>제목</th>
+						<th>내용</th>
+						<th>등록일</th>
+						<th>중요</th>
+						<th>수정</th>
 					</tr>
 					<%
 					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
 					%>
 						<tr>
-						<td><%=memList.get(idx).getMem_no() %></td>
-						<td><%=memList.get(idx).getMem_id() %></td>
-						<td><%=memList.get(idx).getMem_name() %></td>
-						<td><%=memList.get(idx).getMem_phone() %></td>
-						<td><%=memList.get(idx).getMem_code() %></td>
+						<td><%=notiList.get(idx).getNoti_no() %></td>
+						<td><%=notiList.get(idx).getNoti_title() %></td>
+						<td><%=notiList.get(idx).getNoti_detail() %></td>
+						<td><%=notiList.get(idx).getNoti_date() %></td>
+						<td><%=notiList.get(idx).getNoti_code() %></td>
 						<td onclick="del(<%=idx %>);">수정</td>
 						</tr>
 					<%
@@ -106,20 +106,20 @@ int nextNo = pg.getPage_End()+1;
 				<%
 				if(pg.isPre()){
 				%>
-					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=preNo %>">Pre</a>
+					<a href="<%=path %>/main/Admin/Admin_notice.jsp?i_page=<%=preNo %>">Pre</a>
 				<%
 				}
 				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
 					if(i == i_page){
 				%>
-					<a class="pageNo" href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=i %>" ><%=i %></a>
+					<a class="pageNo" href="<%=path %>/main/Admin/Admin_notice.jsp?i_page=<%=i %>" ><%=i %></a>
 				<%	}else{ %>
-					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=i %>"><%=i %></a>
+					<a href="<%=path %>/main/Admin/Admin_notice.jsp?i_page=<%=i %>"><%=i %></a>
 				<%	}
 				}
 				if(pg.isNext()){
 				%>
-					<a href="<%=path %>/main/Admin/Admin_mem.jsp?i_page=<%=nextNo %>">Next</a>
+					<a href="<%=path %>/main/Admin/Admin_notice.jsp?i_page=<%=nextNo %>">Next</a>
 				<%} %>
 				</h4>	
 			</div>

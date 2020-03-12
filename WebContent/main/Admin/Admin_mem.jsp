@@ -62,7 +62,7 @@ int nextNo = pg.getPage_End()+1;
 <body>
 	<div class="middle">
 		<div class="top">
-			<p><span class="logo" > HobbyFactory</span> 관리자 전용 페이지</p>
+			<p><a href="<%=path %>/main/Main.jsp" class="logo" > HobbyFactory</a> 관리자 전용 페이지</p>
 		</div>
 		<div class="nav">
 			<ul>
