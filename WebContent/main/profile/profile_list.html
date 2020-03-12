@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+    <style media="screen">
+      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1280px;}
+      ul li{list-style:none;}
+      a{text-decoration:none; color:black;}
+
+      .header{width:1280px; margin:0 auto;  position:relative;}
+        .navbar{width:1280px; position:relative;}
+          .page_logo{display:inline-block; position:relative; top:10px;}
+         .navbar12_wrap{position:relative; width:1036px; left:242px; bottom:44px; border-bottom:1px solid black; padding-bottom:45px;}
+            .navbar_2{display:inline-block; position:relative; float:right;}
+              .navbar_2 i{font-size:25px;}
+              .navbar_2 ul li{display:inline; margin-left:20px;}
+              .navbar_2 ul li:hover{border-bottom:2px solid #9553F3;}
+
+      .top{width:1280px; margin:0 auto; padding:0px;}
+        .menubar{text-align:center; margin-top:40px; border-bottom-style:double; border-top-style:double;}
+          .menubar ul{margin-bottom: 5px; margin-top: 5px;}
+          .menubar ul li{display:inline; margin:30px; font-size:18px; padding:5px 0px;}
+          .menubar ul li:hover{border-bottom:3px solid #9553F3; border-top:3px solid #9553F3;}
+
+      .tab{width:1280px; margin:0 auto; padding-top:20px; font-size:20px;}
+         .favSitter{width:130px; margin:0 auto;}
+         
+          .tab button{position:absolute; z-index:10; left:115%; top:50%; transform:translate(-50%, -50% );
+                        width:40px; height:40px; border-radius:100%; background-color:rgba(0,0,0,.5); border:none; }
+          .tab button:before{font-family:'xeicon'; color:#fff; font-size:30px; }
+          .tab button.slick-prev{left:-30px; font-size:0; color:transparent; outline:none;}
+          .tab button.slick-prev:before{content:"\e93d"; outline:none;}
+          .tab button.slick-next{right:0px; font-size:0; color:transparent; outline:none;}
+          .tab button.slick-next:before{content:"\e940"; outline:none;}
+	  	  .tab img {width:50px; height:50px;}
+	  	  .tab img:first-child {}
+	  
+	  
+      .middle{width:1280px; margin: 50px auto; display:flex;}
+        .middle table{text-align:center; width:1080px; margin:0 100px;border-collapse:collapse;}
+          .service th{border-top:3px double black; border-bottom:3px double black;height:40px;}
+          .service td{border-bottom:1px solid black;height:30px;}
+
+      
+	  
+      //아래로 내려오는 메뉴바 css
+      .dropbtn{background-color:white; color:black; border:none; cursor:pointer; font-size:15px;}
+      .dropdown{position: relative; display: inline-block;}
+      .dropdown_content{display: none; position: absolute; background-color: #f9f9f9; min-width: 160px;
+                              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;}
+      .dropdown_content a{color: black; padding: 12px 16px; text-decoration: none; display: block;}
+      .dropdown_content a:hover{background-color: #9553F3;}
+      .dropdown:hover .dropdown_content{display: block;}
+      .dropdown:hover .dropbtn{background-color:;}
+
+
+    </style>
+
+    <meta charset="utf-8">
+    <title>HELLO PET SITTER : My Page</title>
+	
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<script>
+		
+		function changeImg(obj){
+			if(obj.src.match("heart4")){
+				obj.src = "../image/heart1.png";
+			}else{
+				obj.src = "../image/heart4.png";
+			}
+		}
+		
+		function review(obj){
+			if(obj.innerHTML == "리뷰 작성" ){
+				var windowObj = window.open(url="review.html","","width=400px, height=500px");
+			}else if(obj.innerHTML == "거절"){
+				alert("해당 시터에게 거절되었습니다.");
+			}else if(obj.innerHTML == "확인중"){
+				alert("해당 시터가 예약 내용을 확인 하고 있습니다.");
+			}
+		}
+		
+		function chatting(obj){
+			var name = obj.parentNode.childNodes[1].lastChild.previousSibling.innerHTML;
+			var openWin01 = window.open(url="chatting.html?name="+name,"chat","width=400px, height=500px");
+		}
+		
+		function del(obj){
+			if(confirm("삭제하시겠습니까?") == true){
+				obj.parentNode.style.display = "none";
+			}
+		}
+		
+		function yesCk(obj){
+			if(obj.innerHTML == "확인"){
+				if(confirm("해당 예약 내용을 확인하셨습니까?") == true){
+					obj.innerHTML = "예약 완료";
+					var p1 = obj.nextSibling;
+					p1.nextSibling.innerHTML = "-";
+				}
+			}
+		}
+		function noCk(obj){
+			if(obj.innerHTML == "취소"){
+				if(confirm("취소하시겠습니까?") == true){
+					obj.innerHTML = "-";
+					var p1 = obj.previousSibling
+					p1.previousSibling.innerHTML = "예약취소";
+				}
+			}
+		}
+	
+	</script>
+
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="navbar">
+          <div class="page_logo">
+              <a href="../mainPageAL.html"><img src="../image/LOGO.png" alt="" style="width:245px; height:60px;"></a>
+          </div>
+        <div class="navbar12_wrap">
+          <div class="navbar_2">
+              <ul>
+                <!--xi-bell-o 알람벨 아이콘-->
+                <i class="xi-bell-o"></i>
+                <li><a href="mainPage.html"><i class="xi-log-out"></i>로그아웃</a></li>
+                <!-- 아래로 내려오는 메뉴바 -->
+                <div class="dropdown">
+                  <li><button class="dropbtn"><i class="xi-user-o"></i>마이페이지</button></li>
+                    <div class="dropdown_content ">
+                      <a href="profile_my_page.html">프로필</a>
+                      <a href="profile_my_addpet.html">프로필설정</a>
+                      <a href="profile_list.html">이용현황</a>
+                    </div>
+                </div>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top">
+      <div class="menubar">
+        <ul>
+          <li><a href="../userService/findsitter.html">시터찾기</a></li>
+          <li><a href="../userService/longrangetrans.html">장거리이동</a></li>
+          <li><a href="../userService/programlist.html">프로그램</a></li>
+          <li><a href="../serviceCenter/sc_notice.html">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab">
+      <section class="favSitter">
+      	<!-- 좌우로 선택하여 움직이는 시터의 프로필 사진 --> 
+	      <div><img src="../image/sitter1.jpg" class="sitter" ></div>
+	      <div><img src="../image/sitter2.jpg" class="sitter" ></div>
+	      <div><img src="../image/sitter3.jpg" class="sitter" ></div>
+      </section>
+      <script type="text/javascript">
+		$('.favSitter').slick({
+			infinite: true,
+			slidesToShow: 2,
+			slidesToScroll: 1,
+			speed:400
+		});
+	  </script>
+    </div>
+
+    <div class="" style="border-bottom:1px dotted black; padding-top:20px; width:1280px; margin:0 auto;"></div>
+    
+    <div class="middle">
+    	<div class = "service">
+    		<!-- 펫시팅 이용현황 타이틀-->
+    		<div>
+    			<h1>펫시팅 이용현황</h1>
+    		</div>
+	    	<!-- 펫시팅 이용현황 표 -->
+	    	<div>
+	    		<table>
+    				<tr>
+    					<th>이름</th>
+    					<th>기간</th>
+    					<th>반려동물</th>
+    					<th>이용 서비스</th>
+    					<th>이용현황</th>
+    					<th>채팅</th>
+    					<th>삭제</th>
+   					</tr>
+    				<tr>
+    					<td>
+    						<img src="../image/heart1.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>홍길동</span>
+    						
+   						</td>
+    					<td><span>02/29</span></td>
+    					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
+    					<td>산책(2시간) 6,000원</td>
+    					<td class="rebtn" onclick="review(this)">확인중</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+    				<tr>
+    					<td>
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>김길동</span>
+    					</td>
+    					<td>02/20</td>
+    					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
+    					<td>하루돌봄 30,000원</td>
+    					<td class="rebtn" onclick="review(this)">리뷰 작성</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+   					<tr>
+    					<td>
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>고길동</span>
+   						</td>
+    					<td>02/20</td>
+    					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
+    					<td>하루돌봄 30,000원</td>
+    					<td class="rebtn" onclick="review(this)">거절</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+   					<tr>
+    					<td>
+    						<img src="../image/heart4.png" height="15px;" onclick="changeImg(this)"/>
+    						<span>최길동</span>
+   						</td>
+    					<td>02/18</td>
+    					<td><span title="고양이, 4살, 14kg">김삼월</span><span></span></td>
+    					<td>산책(1시간) 5,000원</td>
+    					<td class="rebtn" onclick="review(this)">리뷰 작성</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+    			</table>
+	    	</div>
+	    	
+	    	<!-- 보호자의 펫시팅 신청현황 타이틀-->
+    		<div>
+    			<h1>보호자의 펫시팅 신청현황</h1>
+    		</div>
+	    	<!-- 보호자의 펫시팅 신청현황 표 -->
+	    	<div>
+	    		<table>
+	    			<tr>
+    					<th>이름</th>
+    					<th>기간</th>
+    					<th>반려동물</th>
+    					<th>이용 서비스</th>
+    					<th>예약 확인</th>
+    					<th>예약 취소</th>
+    					<th>채팅</th>
+    					<th>삭제</th>
+   					</tr>
+   					<tr>
+    					<td>유재석</td>
+    					<td>03/01</td>
+    					<td><span title="강아지, 2살, 8kg">나비</span></td>
+    					<td>산책(1시간) 5,000원</td>
+    					<td class="yesCk" onclick="yesCk(this)">확인</td>
+    					<td class="noCk" onclick="noCk(this)">취소</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+   					<tr>
+    					<td>이광수</td>
+    					<td>01/15</td>
+    					<td><span title="강아지, 1살, 5kg">고양이</span></td>
+    					<td>하루돌봄 25,000원</td>
+    					<td class="yesCk" onclick="yesCk(this)">예약 완료</td>
+    					<td class="noCk" onclick="noCk(this)">-</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+   					<tr>
+    					<td>송지효</td>
+    					<td>01/10</td>
+    					<td><span title="강아지, 1살, 3kg">누누</span>, <span title="강아지, 1살, 4kg">구구</span></td>
+    					<td>하루돌봄 25,000원</td>
+    					<td class="yesCk" onclick="yesCk(this)">예약 완료</td>
+    					<td class="noCk" onclick="noCk(this)">-</td>
+    					<td class="chat" onclick="chatting(this)">채팅하기</td>
+    					<td class="del" onclick="del(this)">삭제</td>
+   					</tr>
+				</table>
+	    	</div>
+    	</div>
+    </div>
+  </body>
+</html>
