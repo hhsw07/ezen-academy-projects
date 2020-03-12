@@ -110,7 +110,7 @@
     
     </script>
   </head>
-  <body>
+  <body >
 	<div class="buy_wrap">
 		<div class="buyPage">
 		  <div class="buyinfo-wrap">	

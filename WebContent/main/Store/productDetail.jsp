@@ -77,49 +77,30 @@
 						}
 					.cnt button{border:1px solid black; background-color:white;}
 				 .card-num{width:65px; height:25px; text-align:center;}
-				 .btn{margin-top:11px;}
+				 .btn{margin-top:23px;}
 				 .btn1{width:197px; height:40px; border:1px solid #FA5882; background-color:#FA5882; color:white; font-weight:900; outline:none; cursor:pointer;}
 				 .btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
-			
-
+			form{text-align:center; margin-top:10px;}
+			.btn3{border:1px solid black; background-color: white;}
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript">
-    window.onload = function(){
-    buyWrap=document.querySelector(".buy_wrap");
-    allWrap=document.querySelector(".all_wrap");
-	top=document.querySelector(".top");
-		userTop=document.querySelector(".user_top");
-		menuTop=document.querySelector(".menu_top");
-	middle=document.querySelector(".middle");
-		ads=document.querySelector(".ads");
-	bottom=document.querySelector(".bottom");
-	
-	top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
-	console.log(top.scrollHeight);
-	middle.style.paddingTop = top.scrollHeight+"px";
-	bottom.style.paddingTop = 50+middle.scrollHeight+"px";
-	
-	//최상위 Wrap만 이렇게 해야 오류가 안남..
-	allWrap.style.height = bottom.scrollHeight+"px";
-    }
+
     
     function buy(){
 		buyWrap.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
 	}
     function check(msg){
-        alert(msg);
-      
+        alert(msg);     
     }
-    
     </script>
   </head>
-  <body>
+  <body onload="init();">
 
-	  <div class="buy_wrap">
+	  <div class="buy_wrap"  onload="init();">
 			<div class="buyPage">
 			  <div class="buyinfo-wrap">	
 				<p>선택한 상품을 확인해 주세요.</p>
@@ -135,15 +116,65 @@
 				</div>
 			  </div>	
 			  <div class="buy-line"></div>	
-			  <div>
-			  	<div>
-			  		<div class="cnt">
-			  			<button name="pb">+</button>
-			  			<input name="rn" type="number" min="1" max="99" value="1" style="width:8px; border:1px solid white;">
-			  			<button name="mb">-</button>
-			  		</div>
-			  	</div>
-			  	<p><span style="color:black;">상품 금액</span><span name="rp">21,000</span></p>
+			  <div onload="init();">
+			 	
+			  		<script language="JavaScript">
+						var sell_price; // 상품 가격
+						var amount; // 상품 수량
+						function init () {
+							sell_price = document.form.sell_price.value;
+							amount = document.form.amount.value;
+							document.form.sum.value = sell_price;
+							change();
+						}
+						function add () {
+							hm = document.form.amount;
+							sum = document.form.sum;
+							hm.value ++ ;
+							sum.value = parseInt(hm.value) * sell_price;
+						}
+						function del () {
+							hm = document.form.amount;
+							sum = document.form.sum;
+								if (hm.value > 1) {
+									hm.value -- ;
+									sum.value = parseInt(hm.value) * sell_price;
+								}
+						}
+						function change () {
+							hm = document.form.amount;
+							sum = document.form.sum;
+								if (hm.value < 0) {
+									hm.value = 0;
+								}
+							sum.value = parseInt(hm.value) * sell_price;
+						}
+						 buyWrap=document.querySelector(".buy_wrap");
+						    allWrap=document.querySelector(".all_wrap");
+							top=document.querySelector(".top");
+								userTop=document.querySelector(".user_top");
+								menuTop=document.querySelector(".menu_top");
+							middle=document.querySelector(".middle");
+								ads=document.querySelector(".ads");
+							bottom=document.querySelector(".bottom");
+							
+							top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
+							console.log(top.scrollHeight);
+							middle.style.paddingTop = top.scrollHeight+"px";
+							bottom.style.paddingTop = 50+middle.scrollHeight+"px";
+							
+							//최상위 Wrap만 이렇게 해야 오류가 안남..
+							allWrap.style.height = bottom.scrollHeight+"px";
+					</script>	
+			 	
+			  		<form name="form" method="get">
+						<input type=hidden name="sell_price" value="21000"> 
+						<input type="button" class="btn3" value=" - " onclick="del();">
+						<input type="text" name="amount" value="1" size="3" onchange="change();" style="width:15px; border: 1px solid white;">
+						<input type="button" class="btn3" value=" + " onclick="add();"><br>
+						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 70px;">원
+					</form>
+			
 			  </div>
 			  <div class="payment">
 			  	<p>결제정보</p>
