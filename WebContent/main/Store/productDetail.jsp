@@ -19,10 +19,10 @@
       wrap{width:1280px; margin:0 auto;}
       wrap p{margin:0px;}
         .info-wrap{margin-top:50px;}
-          .class-image{width:900px; height:500px;  position:relative; left:-120px;}
+          .class-image{width:900px; height:500px;  position:relative; left:-1px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
               .visual{position:relative;}
-              .visual button{position:absolute; z-index:10; left:97%; top:50%; transform:translate(-30%, -50% );
+              .visual button{position:absolute; z-index:10; left:84%; top:50%; transform:translate(-30%, -50% );
                             width:50px; height:50px; border-radius:100%; background-color:rgba(0,0,0,0); border:none; }
               .visual button:before{font-family:'xeicon'; color:black; font-size:45px; }
               .visual button.slick-prev{left:0px; font-size:0; color:transparent; outline:none;}
@@ -36,12 +36,12 @@
             .price-wrap{margin-top:20px;}
               .day{font-size:20px; font-weight:400;}
               .price{font-size:35px; font-weight:900;}
-            .line{border-bottom:1px solid #d2d2d2; width:580px; margin:20px 0;}
+            .line{border-bottom:1px solid #d2d2d2; width:481px; margin:20px 0;}
               .mileage{font-size:13px; font-weight:900; margin-right:50px;}
               .mileage-point{font-size:13px; font-weight:900; color:gray;}
               .trans{font-size:13px; font-weight:900; margin-right:93px;}
-            .select-pdt{margin-top:50px; width:580px; height:50px; font-size:20px;}
-            .buy{width:524px; height:50px; margin-top:20px; background-color: #FA5882; border:none; font-size:20px;
+            .select-pdt{margin-top:50px; width:480px; height:50px; font-size:20px;}
+            .buy{width:425px; height:50px; margin-top:20px; background-color: #FA5882; border:none; font-size:20px;
                 border:1px solid black; outline: none; cursor: pointer;}
             .star{width:50px; height:50px; border:1px solid gray; background-color: white; outline: none;
                   cursor: pointer;}
@@ -50,10 +50,10 @@
       .tab-wrap{width:1280px; margin:0 auto;}
         .tab{text-align:center; margin-top:100px; font-size:20px; font-weight:400;
             border-bottom:1px solid #d2d2d2;
-            width:1580px;
-            position:relative; left:-150px;
+            width:1280px;
+            position:relative;
             padding:20px 0px 20px 0px;}
-          .tab a{margin:0px 200px;}
+          .tab a{margin:0px 160px;}
           .tab a:hover{border-top:3px solid black;
                        border-bottom:3px solid black;
                        padding:20px 0px 20px 0px;}
@@ -68,9 +68,16 @@
 				 .pdt-box img{width:360px; height:235px; position:absolute; left:10px; top:71px;}
 				 .buy-info{font-weight:600; font-size:15px;}
 				 .buy-info2{color:#FE2E9A; margin-top:5px; font-size:12px;}
-				
+				 .cnt{text-align:center; margin-top:10px;}
+					 input[type="number"]::-webkit-outer-spin-button,
+						input[type="number"]::-webkit-inner-spin-button {
+						    -webkit-appearance: none;
+						    margin: 0;
+						    border:1px solid white;
+						}
+					.cnt button{border:1px solid black; background-color:white;}
 				 .card-num{width:65px; height:25px; text-align:center;}
-				 .btn{margin-top:42px;}
+				 .btn{margin-top:11px;}
 				 .btn1{width:197px; height:40px; border:1px solid #FA5882; background-color:#FA5882; color:white; font-weight:900; outline:none; cursor:pointer;}
 				 .btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
 			
@@ -111,6 +118,7 @@
     </script>
   </head>
   <body>
+
 	  <div class="buy_wrap">
 			<div class="buyPage">
 			  <div class="buyinfo-wrap">	
@@ -128,7 +136,14 @@
 			  </div>	
 			  <div class="buy-line"></div>	
 			  <div>
-			  	<p><span style="color:black;">상품 금액</span><span>21,000</span></p>
+			  	<div>
+			  		<div class="cnt">
+			  			<button name="pb">+</button>
+			  			<input name="rn" type="number" min="1" max="99" value="1" style="width:8px; border:1px solid white;">
+			  			<button name="mb">-</button>
+			  		</div>
+			  	</div>
+			  	<p><span style="color:black;">상품 금액</span><span name="rp">21,000</span></p>
 			  </div>
 			  <div class="payment">
 			  	<p>결제정보</p>
@@ -162,13 +177,13 @@
           <div class="class-image">
             <div class="move_image">
               <section class="visual">
-                <div class="bg1"><img src="../image/pdtdetail1.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg2"><img src="../image/pdtdetail2.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg3"><img src="../image/pdtdetail3.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg6"><img src="../image/pdtdetail6.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg7"><img src="../image/pdtdetail7.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg8"><img src="../image/pdtdetail8.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
-                <div class="bg9"><img src="../image/pdtdetail9.jpg" style="border:1px solid #fff; height:500px; width:900px;" alt=""></div>
+                <div class="bg1"><img src="../image/pdtdetail1.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg2"><img src="../image/pdtdetail2.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg3"><img src="../image/pdtdetail3.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg6"><img src="../image/pdtdetail6.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg7"><img src="../image/pdtdetail7.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg8"><img src="../image/pdtdetail8.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg9"><img src="../image/pdtdetail9.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
               </section>
             </div>
           </div>
