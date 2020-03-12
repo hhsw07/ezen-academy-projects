@@ -24,6 +24,8 @@ if(lastNo >= memList.size()) lastNo = memList.size();
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 int preNo = pg.getPage_Start()-1;
 int nextNo = pg.getPage_End()+1;
+
+boolean isDel=false;
 %>
 <!DOCTYPE html>
 <html>
@@ -51,12 +53,7 @@ int nextNo = pg.getPage_End()+1;
 	.pageNo {color:#f36359;}
 	
 </style>
-<script type="text/javascript">
-	function del(Mem_no){
-		//memList_no와 같은 행을 삭제한다.
-		alert(Mem_no+1+'수정');
-	}
-</script>
+
 </head>
 
 <body>
@@ -88,15 +85,15 @@ int nextNo = pg.getPage_End()+1;
 					<%
 					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
 					%>
-						<tr>
+					<tr>
 						<td><%=memList.get(idx).getMem_no() %></td>
 						<td><%=memList.get(idx).getMem_id() %></td>
 						<td><%=memList.get(idx).getMem_name() %></td>
 						<td><%=memList.get(idx).getMem_phone() %></td>
 						<td><%=memList.get(idx).getMem_code() %></td>
-						<td onclick="del(<%=idx %>);">수정</td>
+						<td><a href="<%=path %>/main/Admin/Admin_mem_detail.jsp?idx=<%=idx %>">수정</a></td>
 						<!-- 삭제 메서드 : memList.remove(0); -->
-						</tr>
+					</tr>
 					<%
 					} %>
 				</table>
