@@ -95,7 +95,7 @@
 				<ul class="ut_ul">
 					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
-					<li class="ut_li"><a href="?page=mypage">마이페이지</a></li>
+					<li class="ut_li"><a href="?page=mypage_order">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
@@ -149,9 +149,21 @@
 %>
 			<%@include file="Store/productDetail.jsp"%>
 <%		}
-		if(pl.equals("mypage")){
+		if(pl.equals("mypage_order")){
 %>
 			<%@include file="Mypage/orderlist.jsp"%>
+<%		}
+		if(pl.equals("mypage_class")){
+%>
+			<%@include file="Mypage/classes.jsp"%>
+<%		}
+		if(pl.equals("mypage_modiinfo")){
+%>
+			<%@include file="Mypage/changeinfo.jsp"%>
+<%		}
+		if(pl.equals("mypage_modipass")){
+%>
+			<%@include file="Mypage/changepass.jsp"%>
 <%		}
 
 	} %>
