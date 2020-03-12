@@ -95,7 +95,6 @@ boolean isDel=false;
 						<td><%=memList.get(idx).getMem_phone() %></td>
 						<td><%=memList.get(idx).getMem_code() %></td>
 						<td><a href="<%=path %>/main/Admin/Admin_mem_detail.jsp?idx=<%=idx %>">보기</a></td>
-						<!-- 삭제 메서드 : memList.remove(0); -->
 					</tr>
 					<%
 					} %>
