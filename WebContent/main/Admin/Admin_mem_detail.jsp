@@ -57,21 +57,37 @@
 				<h1>회원 관리 (상세정보)</h1>
 				<table border>
 					<tr>
-						<th>No</th>
 						<th>ID</th>
+						<td colspan="3"><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
 						<th>이름</th>
-						<th>연락처</th>
-						<th>등급</th>
-						<th>삭제</th>
-					</tr>
-						<td><%=memList.get(idx).getMem_no() %></td>
 						<td><%=memList.get(idx).getMem_id() %></td>
-						<td><%=memList.get(idx).getMem_name() %></td>
-						<td><%=memList.get(idx).getMem_phone() %></td>
-						<td><%=memList.get(idx).getMem_code() %></td>
-						<td>삭제</td>
+						<th>연락처</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
 					</tr>
-					
+					<tr>
+						<th>이메일</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>닉네임</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>휴대폰</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
+						<th>등급</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>마일리지</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
+						<th>삭제</th>
+						<td  colspan="3"></td>
+					</tr>
 				</table>
 			</div>
 			
