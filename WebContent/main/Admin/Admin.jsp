@@ -35,21 +35,22 @@ session.setAttribute("coList", coList);
 // 스토어 임의 데이터 생성
 ArrayList<Store> sList = new ArrayList<Store>();
 for(int cnt=1; cnt < 22; cnt++){
-	sList.add(new Store(cnt,"himan"+(cnt+1),"수제 비누","M",5000,20,"순하고 부르러워요"+cnt,"20-03-11",""));
+	sList.add(new Store(cnt,"himan"+cnt,"수제 비누","M",5000,20,"순하고 부르러워요"+cnt,"20-03-11",""));
 }
+session.setAttribute("sList", sList);
 
 // 공지 임의 데이터 생성
 ArrayList<Noti> notiList = new ArrayList<Noti>();
 for(int cnt=1; cnt < 22; cnt++){
 	notiList.add(new Noti(cnt,"공지제목"+cnt,"공지내용","20-03-11","N"));
 }
-
+session.setAttribute("notiList", notiList);
 // 문의 임의 데이터 생성
 ArrayList<Inquiry> inquList = new ArrayList<Inquiry>();
 for(int cnt=1; cnt < 17; cnt++){
 	inquList.add(new Inquiry(cnt,"himan"+cnt,"문의 내용","20-03-11","완","문의 답변"));
 }
-
+session.setAttribute("inquList", inquList);
 
 
 

@@ -51,7 +51,6 @@
 			middle.style.paddingTop = top.scrollHeight+"px";
 			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 			
-			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
 		}
 
@@ -93,8 +92,8 @@
 			<div class="user_top">
 			<span onclick="adminpage()" style="cursor:pointer; padding:30px">관리자</span>	
 				<ul class="ut_ul">
-					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
-					<li class="ut_li"><a href="#">회원가입</a></li>
+					<li class="ut_li"><a href="?page=maindetail&lp=loginmain">로그인</a></li>
+					<li class="ut_li"><a href="?page=maindetail&lp=memberJoin">회원가입</a></li>
 					<li class="ut_li"><a href="?page=mypage_order">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
@@ -117,9 +116,10 @@
 	String pl=null;
 	pl = request.getParameter("page");
 	if(pl==null){
+	//기본 페이지 include
 %>
 	<%@include file="maindetail.jsp" %>
-<%}else{
+<%}else{//page파라미터에 따른 페이지 include
 		if(pl.equals("maindetail")){
 %>
 			<%@include file="maindetail.jsp" %>

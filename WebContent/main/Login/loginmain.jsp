@@ -25,6 +25,7 @@
 		bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 		
 		allWrap.style.height = bottom.scrollHeight+"px";
+		//로그인 페이지 표시
 		loginWrap.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
 	}

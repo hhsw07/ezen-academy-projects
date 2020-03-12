@@ -29,6 +29,7 @@
 		bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 		
 		allWrap.style.height = bottom.scrollHeight+"px";
+		//페이지의 스타일 변경
 		loginPage.style.left = 30+"%";
 		loginPage.style.width = 600+"px";
 		loginPage.style.height = 750+"px";
