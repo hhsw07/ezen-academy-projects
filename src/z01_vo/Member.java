@@ -45,5 +45,12 @@ public class Member {
 		this.mem_code = mem_code;
 	}
 	
-	
 }
+
+
+
+
+
+
+
+

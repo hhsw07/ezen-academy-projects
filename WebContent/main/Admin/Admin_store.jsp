@@ -6,25 +6,7 @@
 	String path = request.getContextPath(); %>
 
 <%
-ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("1","himan","홍길동","7777","M");
-Member m02 = new Member("2","higirl","김길동","7777","H");
-memList.add(m01);
-memList.add(m02);
-memList.add(new Member("3","himan3","홍길똥","9883","N"));
-memList.add(new Member("4","himan4","홍길똥","9884","N"));
-memList.add(new Member("5","himan5","홍길똥","9885","N"));
-memList.add(new Member("6","himan6","홍길똥","9886","N"));
-memList.add(new Member("7","himan7","홍길똥","9887","N"));
-memList.add(new Member("8","himan8","홍길똥","9888","N"));
-memList.add(new Member("9","himan9","홍길똥","9889","N"));
-memList.add(new Member("10","himan10","홍길똥","9890","N"));
-memList.add(new Member("11","himan11","홍길똥","9891","N"));
-memList.add(new Member("12","himan12","홍길똥","9892","N"));
-memList.add(new Member("13","himan13","홍길똥","9893","N"));
-memList.add(new Member("14","himan14","홍길똥","9894","N"));
-memList.add(new Member("15","himan15","홍길똥","9895","N"));
-memList.add(new Member("16","himan16","홍길똥","9896","N"));
+	ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

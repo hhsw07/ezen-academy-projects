@@ -8,7 +8,7 @@
 	<style>
 		body{font-family: Verdana, sans-serif; margin:0}
 		a{text-decoration:none; color:black;}
-		.all_wrap{width:1280px; margin:0 auto;}
+		.all_wrap{width:1280px; margin:0;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
 			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:400px; background-color: #ffffff; z-index:4;}
@@ -27,8 +27,7 @@
 				.mt_li2 a{color:black;}
 		.middle{width:1280px;position:absolute; background-color: white; padding-bottom:50px;}
 
-		.bottom{position:relative;height:400px; padding:0px 130px 50px 130px; background-color:#424242;
-		z-index:-1;}
+		.bottom{position:relative;height:400px; padding:0px 130px 50px 130px; background-color:#424242; z-index:-1;}
 			.btm_article{padding-bottom:15px; border-bottom: 1px solid white}
 			.btm_article span{color:white; cursor: pointer;}
 			.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
@@ -91,11 +90,10 @@
 	<div class="all_wrap">
 		<div class="top">
 			<div class="user_top">
-			<span onclick="adminpage()" style="cursor:pointer; padding:30px">관리자</span>	
 				<ul class="ut_ul">
 					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
 					<li class="ut_li"><a href="#">회원가입</a></li>
-					<li class="ut_li"><a href="?page=mypage_order">마이페이지</a></li>
+					<li class="ut_li"><a href="?page=mypage">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
@@ -149,21 +147,9 @@
 %>
 			<%@include file="Store/productDetail.jsp"%>
 <%		}
-		if(pl.equals("mypage_order")){
+		if(pl.equals("mypage")){
 %>
 			<%@include file="Mypage/orderlist.jsp"%>
-<%		}
-		if(pl.equals("mypage_class")){
-%>
-			<%@include file="Mypage/classes.jsp"%>
-<%		}
-		if(pl.equals("mypage_modiinfo")){
-%>
-			<%@include file="Mypage/changeinfo.jsp"%>
-<%		}
-		if(pl.equals("mypage_modipass")){
-%>
-			<%@include file="Mypage/changepass.jsp"%>
 <%		}
 
 	} %>
@@ -187,9 +173,4 @@
 		</div>
 	</div>
 </body>
-	<script type="text/javascript">
-		function adminpage(){
-			location.href="Admin/Admin.jsp";
-		}
-	</script>
 </html>

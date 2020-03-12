@@ -15,6 +15,7 @@
 
       .wrap-intro{width:800px; margin:0 auto;}
       .wrap-intro p{margin:0px;}
+      .class-intro{margin-top:120px;}
         .img-box{width:700px; height:400px;}
         .img-box img{width:800px; height:400px;}
 
