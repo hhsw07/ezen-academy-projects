@@ -51,6 +51,7 @@
 			middle.style.paddingTop = top.scrollHeight+"px";
 			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 			
+			//최상위 Wrap만 이렇게 해야 오류가 안남..
 			allWrap.style.height = bottom.scrollHeight+"px";
 		}
 
@@ -66,22 +67,28 @@
 %>
 <%	}else{ 
 		if(lp.equals("loginmain")){%>	
-			<%@include file="Login/loginmain.jsp" %>
+			<jsp:include page="Login/loginmain.jsp" />
+			
 <%		}
 		if(lp.equals("findId")){%>
-			<%@include file="Login/findId.jsp" %>
+			<jsp:include page="Login/findId.jsp" />
+			
 <%		}
 		if(lp.equals("findPw")){%>
-			<%@include file="Login/findPw.jsp" %>
+			<jsp:include page="Login/findPw.jsp" />
+			
 <%		}
 		if(lp.equals("memberJoin")){%>
-			<%@include file="Login/memberJoin.jsp" %>
+			<jsp:include page="Login/memberJoin.jsp" />
+			
 <%		}
 		if(lp.equals("findIdRes")){%>
-			<%@include file="Login/findIdRes.jsp" %>
+			<jsp:include page="Login/findIdRes.jsp" />
+			
 <%		}
 		if(lp.equals("findPwRes")){%>
-			<%@include file="Login/findPwRes.jsp" %>
+			<jsp:include page="Login/findPwRes.jsp" />
+			
 <%		}
 	} %>	
 		</div>
@@ -92,9 +99,9 @@
 			<div class="user_top">
 			<span onclick="adminpage()" style="cursor:pointer; padding:30px">관리자</span>	
 				<ul class="ut_ul">
-					<li class="ut_li"><a href="?page=maindetail&lp=loginmain">로그인</a></li>
-					<li class="ut_li"><a href="?page=maindetail&lp=memberJoin">회원가입</a></li>
-					<li class="ut_li"><a href="?page=mypage_order">마이페이지</a></li>
+					<li class="ut_li"><a href="?page=maindetail&lp=loginmain" onclick="">로그인</a></li>
+					<li class="ut_li"><a href="#">회원가입</a></li>
+					<li class="ut_li"><a href="?page=mypage">마이페이지</a></li>
 					<li class="ut_li"><a href="#">고객센터</a></li>
 				</ul>
 			</div>
@@ -116,54 +123,41 @@
 	String pl=null;
 	pl = request.getParameter("page");
 	if(pl==null){
-	//기본 페이지 include
 %>
-	<%@include file="maindetail.jsp" %>
-<%}else{//page파라미터에 따른 페이지 include
+	<jsp:include page="maindetail.jsp" />
+<%}else{
 		if(pl.equals("maindetail")){
 %>
-			<%@include file="maindetail.jsp" %>
+			<jsp:include page="maindetail.jsp" />
 <%		}
 		
 		if(pl.equals("classList1")){
 %>
-			<%@include file="Class/classList1.jsp"%>
+			<jsp:include page="Class/classList1.jsp" />
 <%		}
 		if(pl.equals("classList2")){
 %>
-			<%@include file="Class/classList2.jsp"%>
+			<jsp:include page="Class/classList2.jsp" />
 <%		}
 		if(pl.equals("classList3")){
 %>
-			<%@include file="Class/classList3.jsp"%>
+			<jsp:include page="Class/classList3.jsp" />
 <%		}	
 		if(pl.equals("classDetail")){
 %>
-			<%@include file="Class/classDetail.jsp"%>
+			<jsp:include page="Class/classDetail.jsp" />
 <%		}
 		if(pl.equals("productList")){
 %>
-			<%@include file="Store/productList.jsp"%>
+			<jsp:include page="Store/productList.jsp" />
 <%		}
 		if(pl.equals("productDetail")){
 %>
-			<%@include file="Store/productDetail.jsp"%>
+			<jsp:include page="Store/productDetail.jsp" />
 <%		}
-		if(pl.equals("mypage_order")){
+		if(pl.equals("mypage")){
 %>
-			<%@include file="Mypage/orderlist.jsp"%>
-<%		}
-		if(pl.equals("mypage_class")){
-%>
-			<%@include file="Mypage/classes.jsp"%>
-<%		}
-		if(pl.equals("mypage_modiinfo")){
-%>
-			<%@include file="Mypage/changeinfo.jsp"%>
-<%		}
-		if(pl.equals("mypage_modipass")){
-%>
-			<%@include file="Mypage/changepass.jsp"%>
+			<jsp:include page="Mypage/orderlist.jsp" />
 <%		}
 
 	} %>
