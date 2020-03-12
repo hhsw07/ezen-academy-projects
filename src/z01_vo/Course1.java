@@ -1,6 +1,6 @@
 package z01_vo;
 
-public class Course {
+public class Course1 {
 		private int course_no;
 		private String course_host;
 		private String course_name;
@@ -12,7 +12,7 @@ public class Course {
 		private int course_price;
 		private String course_img;
 		
-		public Course(int course_no, String course_host, String course_name, String course_kind, String course_explain,
+		public Course1(int course_no, String course_host, String course_name, String course_kind, String course_explain,
 				int course_nowCnt, int course_totCnt, String course_date, int course_price, String course_img) {
 			super();
 			this.course_no = course_no;
@@ -86,6 +86,6 @@ public class Course {
 		public void setCourse_img(String course_img) {
 			this.course_img = course_img;
 		}
-	
+	 
 
 }
