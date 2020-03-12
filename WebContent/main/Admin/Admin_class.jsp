@@ -6,8 +6,7 @@
 	String path = request.getContextPath(); %>
 
 <%
-
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -26,7 +25,6 @@ if(lastNo >= coList.size()) lastNo = coList.size();
 Paging pg = new Paging(w_size,p_size,coList.size(),i_page);
 int preNo = pg.getPage_Start()-1;
 int nextNo = pg.getPage_End()+1;
-
 %>
 <!DOCTYPE html>
 <html>
