@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="../image/girl_icon.ico" />
+<title>HELLO PET SITTER : ADMIN PAGE</title>
+<style>
+/* 전체 */
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* header */
+	.header{display:block; position:relative; width:100%; margin:0; padding:0;text-align:left; background-color:#E6F3FF;color:inherit; margin:0 auto;}
+	.logo{display:inline; margin:30px;}
+	.logo img{width:250px;}
+	.navbar{display:inline; position:absolute; font-weight:900;table-layout: auto}
+	.menu li{font-size:20px; float:left; text-align:center; display:flex; padding:10px 25px 25px;}
+	.menu li:hover{border-bottom:5px solid #F15F5F;}
+/* aside */
+	.aside{background-color:#E6F3FF; text-align:center; width:18.5%; height:800px; float:left; margin-top:10px; display:inline-block;}
+	.log{padding:30px; border-bottom:2px solid #B2CCFF;}
+/* section */
+	.section{background-color:#E6F3FF; width:81%; height:800px; float:right; margin-top:10px;display:inline-block;}
+	.frame{position:relative; padding:30px}
+	.write{font-size:18px; padding:20px;}
+	#title{height:25px; width:90%; margin:10px 20px;}
+	.textarea{margin:10px 0;}
+	#content{width:90%; margin:0 0 13px 53px; display:inline;}
+	.btn{text-align:center;margin:10px auto;}
+	.btn input{display:inline-block;height:59px;padding:0 30px;border-radius:5px;border:1px solid #3d79c2; margin:20px auto;
+	background:#4485d5;line-height:59px;font-weight:600;font-size:16px;color:#fff;text-align:center;white-space:nowrap}
+	
+	.footer{display:inline-block; position:relative; width:100%; margin:0; padding:0;text-align:center; background-color:#3679A4;color:inherit; margin:10px auto 0;}
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<!-- 상단메뉴  -->
+	<header class="header">
+		<div class="logo">
+			<a href="../mainPageBL.html"><img alt="" src="../image/adminlogo.png"></a>
+		</div>
+		<nav class="navbar">
+			<ul class="menu">
+				<li><a href="memberlist.html">회원관리</a></li>
+				<li><a href="noticelist.html">공지사항</a></li>
+				<li><a href="programlist.html">반려동물 프로그램</a></li>
+				<li><a href="moving.html">장거리 이동 서비스</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+<!-- aside -->
+	<aside class="aside">
+		<div class="log">
+			<p>logged by 관리자</p>
+			<a href="../mainPageBL.html"><input type="button" value="logout"/></a>
+		</div>
+		<div id="notice">
+			<h2>공지사항</h2>
+		</div>
+	</aside>
+	
+<!-- section -->	
+	<section class="section">
+		<article class="frame">
+			<input type="checkbox" id="imp"/><label for="imp">중요 공지</label>
+			<form class="write">
+				<label for="title">제목<input type="text" id="title"/></label>
+				<div class="textarea">
+						<label for="content">내용</label><br>
+						<textarea id="content" rows="30"></textarea>
+				</div>
+			</form>
+			<div class="btn">
+				<a href="noticelist.html"><input type="reset" value="취소"/></a>
+				<a href="noticelist.html"><input type="submit" value="등록"/></a>
+			</div>
+		</article>
+	</section>
+
+	<footer class="footer">
+		<div>
+			<p>HELLO PET SITTER : ADMIN PAGE</p>
+		</div>
+	</footer>
+</body>
+</html>
