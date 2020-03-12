@@ -1,1 +1,1 @@
-{"resources":{"WebContent/hsw/member.sql":{"sql-editor-data-source-id":"oracle_thin-16fcbcf7b44-2f0a2f1ffb3a749c","default-schema":"SCOTT"}}}
+{"resources":{"WebContent/hsw/member.sql":{"default-schema":"SCOTT","sql-editor-data-source-id":"oracle_thin-16fcbcf7b44-2f0a2f1ffb3a749c"}}}

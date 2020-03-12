@@ -46,6 +46,7 @@ int nextNo = pg.getPage_End()+1;
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
 	
+	
 </style>
 <script type="text/javascript">
 	function del(Mem_no){
