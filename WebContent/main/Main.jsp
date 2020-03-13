@@ -57,6 +57,7 @@
 	</script>
 </head>
 <body>
+	<!-- http://192.168.4.163:7080/project04_git/main/Main.jsp -->
 	<!-- 로그인 div -->
 	<div class="login_wrap">
 		<div class="loginPage" style="text-align: center;">
