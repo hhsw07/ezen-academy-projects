@@ -22,12 +22,14 @@ String path = request.getContextPath(); %>
 	.mysubmenu{display:block; position:relative; width:1050px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 회원정보수정 */
-	.modi{padding:30px; width:980px; height:600px; margin:50px auto; display:block;}
-	.m-content{margin:10px 0;}
+	.modi{padding:100px 30px 0; width:980px; height:400px; margin:0px auto; display:block;}
+	.m-content{margin:15px 0;}
 	.m-label{width:70px; display:inline-block; margin-right:5px; text-align:right;}
-	.recieve{padding-left:50px; margin:10px 0;}
+	.m-input{width:300px;height:25px; padding:9px; font-size:16px;}
+	.recieve{padding-left:50px; margin:15px 0;}
 	.recieve span{padding-left:10px;}
-	.m-btn{text-align:center; margin:40px;}
+	.m-btn{text-align:center; margin:50px;}
+	.m-btn [type=submit]{border:2px solid #25383C; width:160px; height:50px; font-size:18px;font-weight:bold; background-color:#BCC6CC;}
 </style>
 </head>
 <body>
@@ -65,21 +67,25 @@ String path = request.getContextPath(); %>
 				<ul>
 					<li class="m-content">
 						<span class="m-label">이름</span>
-						<span><input type="text" name="이름" value="홍길동" readonly="readonly"/></span>
+						<span><input class="m-input" type="text" name="이름" value="홍길동" readonly="readonly"/></span>
 					</li>
 					<li class="m-content">
 						<span class="m-label">생년월일</span>
-						<span><input type="text" name="생년월일" value="1991.02.08" readonly="readonly"/></span>
+						<span><input class="m-input" type="text" name="생년월일" value="1991.02.08" readonly="readonly"/></span>
 					</li>
 					<li class="m-content">
 						<span class="m-label">닉네임</span>
-						<span><input type="text" name="nick"/></span>
+						<span><input class="m-input" type="text" name="nick"/></span>
+					</li>
+					<li class="m-content">
+						<span class="m-label">이메일</span>
+						<span><input class="m-input" type="text" name="mymail"/></span>
 					</li>
 					<li class="m-content">
 						<div>이메일/SMS 수신동의</div>
 						<div class="recieve">
-							<span><input type="checkbox" name="rec" value="email"/>이메일로 받아볼래요</span>
-							<span><input type="checkbox" name="rec" value="sms"/>문자로 받아볼래요</span>
+							<span><input type="checkbox" name="rec" id="email" value="email"/><label for="email">이메일로 받아볼래요</label></span>
+							<span><input type="checkbox" name="rec" id="sms" value="sms"/><label for="sms">문자로 받아볼래요</label></span>
 						</div>
 					</li>
 				</ul>
