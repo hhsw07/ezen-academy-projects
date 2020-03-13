@@ -62,7 +62,7 @@
 	    	display:none;}
 		 .buyPage{position:absolute;top:0%;left:40%; width:400px;height:636px; background-color: #ffffff; z-index:4;}
 		   .buyinfo-wrap{position:relative; height:385px;}
-			 .buyPage p{text-align:center; font-size:15px; font-weight:900; color:#FA5882; margin:15px 0px;}
+			 .buyPage p{text-align:center; font-size:15px; font-weight:900; color:#FA5882; margin:12px 0px;}
 			 .buy-line{border-bottom:1px solid #D8D8D8;}
 			 .pdt-box{border:1px solid red; width:380px; height:315px; position:absolute; left:10px; top:45px;}
 				 .pdt-box img{width:360px; height:235px; position:absolute; left:10px; top:71px;}
@@ -172,7 +172,7 @@
 						<input type="button" class="btn3" value=" - " onclick="del();">
 						<input type="text" name="amount" value="1" size="3" onchange="change();" style="width:15px; border: 1px solid white;">
 						<input type="button" class="btn3" value=" + " onclick="add();"><br>
-						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 70px;">원
+						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 80px; font-size:24px; color:#FA5882;">원
 					</form>
 			
 			  </div>
