@@ -18,7 +18,7 @@
         .trans li{margin-bottom:10px;}
         .change li{margin-bottom:10px;}
         .refund li{margin-bottom:10px;}
-        .line-refund{border-bottom:1px solid gray; width:1300px; display:inline-block; text-align: center; margin:50px 0px 50px 37px;}
+        .line-refund{border-bottom:1px solid gray; width:1280px; display:inline-block; text-align: center; margin:50px 0px 50px 0px;}
           li.title{font-size:35px; font-weight:800; margin-bottom:20px;}
     </style>
   </head>

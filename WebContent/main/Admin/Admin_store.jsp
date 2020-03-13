@@ -84,7 +84,7 @@ int nextNo = pg.getPage_End()+1;
 						<th>호스트</th>
 						<th>신청일</th>
 						<th>승인/취소</th>
-						<th>삭제</th>
+						<th>수정</th>
 					</tr>
 					<%
 					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){

@@ -49,6 +49,9 @@ boolean isDel=false;
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
+	.section table td {}
+  	.section table td a { display:block; width:100%; height:100%;} 
+　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
 	
@@ -80,7 +83,7 @@ boolean isDel=false;
 						<th>이름</th>
 						<th>연락처</th>
 						<th>등급</th>
-						<th>삭제</th>
+						<th>상세보기</th>
 					</tr>
 					<%
 					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
@@ -91,8 +94,7 @@ boolean isDel=false;
 						<td><%=memList.get(idx).getMem_name() %></td>
 						<td><%=memList.get(idx).getMem_phone() %></td>
 						<td><%=memList.get(idx).getMem_code() %></td>
-						<td><a href="<%=path %>/main/Admin/Admin_mem_detail.jsp?idx=<%=idx %>">수정</a></td>
-						<!-- 삭제 메서드 : memList.remove(0); -->
+						<td><a href="<%=path %>/main/Admin/Admin_mem_detail.jsp?idx=<%=idx %>">보기</a></td>
 					</tr>
 					<%
 					} %>

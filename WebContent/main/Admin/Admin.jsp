@@ -21,7 +21,7 @@ memList.add(m01);
 memList.add(m02);
 for(int cnt=3;cnt<=16;cnt++){
 	String strCnt = ""+cnt;
-	memList.add(new Member(strCnt,"himan3","홍길똥",""+(9800+cnt),"N"));
+	memList.add(new Member(strCnt,"himan"+cnt,"홍길똥",""+(9800+cnt),"N"));
 }
 session.setAttribute("memList", memList);
 

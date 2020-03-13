@@ -30,12 +30,25 @@
 	.ckOff {background-color:#ffffff;}
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
-	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
-	.paging {text-align:center;}
-	.pageNo {color:#f36359;}
+	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:50px;}
+	.section table th {height:40px;}
+	.section table td {height:40px;}
+	.section table td a {display:block; width:100%; height:100%;}
 	
 </style>
-
+<script>
+	function ckDel(idx){
+		if(idx != 0){ 
+			var ckConfirm = confirm("정말 삭제하시겠습니까?");
+			 if(ckConfirm){
+				location.href="<%=path %>/main/Admin/Admin_del.jsp?mIdx="+idx;
+			 }
+		}
+		if(idx == 0) {
+			alert("관리자는 삭제 될 수 없습니다.");
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -57,21 +70,34 @@
 				<h1>회원 관리 (상세정보)</h1>
 				<table border>
 					<tr>
-						<th>No</th>
 						<th>ID</th>
-						<th>이름</th>
-						<th>연락처</th>
-						<th>등급</th>
-						<th>삭제</th>
-					</tr>
-						<td><%=memList.get(idx).getMem_no() %></td>
 						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>이름</th>
 						<td><%=memList.get(idx).getMem_name() %></td>
-						<td><%=memList.get(idx).getMem_phone() %></td>
-						<td><%=memList.get(idx).getMem_code() %></td>
-						<td>삭제</td>
 					</tr>
-					
+					<tr>
+						<th>이메일</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>닉네임</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+						<th>휴대폰</th>
+						<td><%=memList.get(idx).getMem_phone() %></td>
+					</tr>
+					<tr>
+						<th>등급</th>
+						<td><%=memList.get(idx).getMem_code() %></td>
+						<th>마일리지</th>
+						<td><%=memList.get(idx).getMem_id() %></td>
+					</tr>
+					<tr>
+						<th colspan="4" >
+						<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>-1)"/>
+						</th>
+					</tr>
 				</table>
 			</div>
 			
