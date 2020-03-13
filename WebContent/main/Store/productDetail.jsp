@@ -172,7 +172,7 @@
 						<input type="button" class="btn3" value=" - " onclick="del();">
 						<input type="text" name="amount" value="1" size="3" onchange="change();" style="width:15px; border: 1px solid white;">
 						<input type="button" class="btn3" value=" + " onclick="add();"><br>
-						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 67px; font-size:24px; color:#FA5882;">원
+						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 80px; font-size:24px; color:#FA5882;">원
 					</form>
 			
 			  </div>
