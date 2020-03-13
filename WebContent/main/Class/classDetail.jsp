@@ -73,7 +73,7 @@
 					.btn{margin-top:42px;}
 					.btn1{width:197px; height:40px; border:1px solid #FA5882; background-color:#FA5882; color:white; font-weight:900; outline:none; cursor:pointer;}
 					.btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
-			
+		.goup i{font-size:60px; position:fixed; left:81%; top:93%; z-index:30; cursor:pointer;}
 
     </style>
 
@@ -156,7 +156,7 @@
 		</div>
 	</div>
 
-    <div class="wrap">
+    <div class="wrap" id="arr">
 
       <div class="info-wrap">
           <div class="class-image">
@@ -217,7 +217,7 @@
         </div>
       <!-- tab-wrap  -->
       </div>
-
+	  <div class="goup"><a href="#arr"><i class="xi-caret-up-square"></i></a></div>
       <div>
 <%
 		String pl2=null;

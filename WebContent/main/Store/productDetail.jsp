@@ -82,6 +82,7 @@
 				 .btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
 			form{text-align:center; margin-top:10px;}
 			.btn3{border:1px solid black; background-color: white;}
+			.goup i{font-size:60px; position:fixed; left:81%; top:93%; z-index:30; cursor:pointer;}
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -202,7 +203,7 @@
 			</div>
 		</div>
 
-    <div class="wrap">
+    <div class="wrap" id="arr">
 
       <div class="info-wrap">
           <div class="class-image">
@@ -259,7 +260,8 @@
         </div>
       <!-- tab-wrap  -->
       </div>
-
+		
+	  <div class="goup"><a href="#arr"><i class="xi-caret-up-square"></i></a></div>
       <div>
 <%
 		String pl2=null;
