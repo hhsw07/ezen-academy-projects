@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>하비팩토리 - 취미를 통해 일상을 가꾸자</title>
 	<style>
 		body{font-family: Verdana, sans-serif; margin:0}
 		a{text-decoration:none; color:black;}
@@ -106,7 +106,7 @@
 					<li class="mt_li"><a href="?page=productList">스토어</a></li>
 				</ul>
 				<ul class="mt_ul2">
-					<li class="mt_li2"><a href="#">관심창고</a></li>
+					<li class="mt_li2"><a href="?page=hb_class">관심창고</a></li>
 					<li class="mt_li2"><a href="#">내 클래스</a></li>
 				</ul>
 			</div>
@@ -166,7 +166,14 @@
 %>
 			<%@include file="Mypage/changepass.jsp"%>
 <%		}
-
+		if(pl.equals("hb_class")){
+%>
+			<%@include file="Hobbybasket/hb_class.jsp"%>			
+<%		}
+		if(pl.equals("hb_product")){
+%>
+			<%@include file="Hobbybasket/hb_product.jsp"%>		
+<%		}
 	} %>
 	
 	
