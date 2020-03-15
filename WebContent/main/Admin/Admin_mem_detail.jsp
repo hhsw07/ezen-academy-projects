@@ -77,13 +77,13 @@
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=memList.get(idx).getMem_mail() %></td>
 						<th>닉네임</th>
-						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=memList.get(idx).getMem_nickname() %></td>
 					</tr>
 					<tr>
 						<th>생년월일</th>
-						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=memList.get(idx).getMem_birth() %></td>
 						<th>휴대폰</th>
 						<td><%=memList.get(idx).getMem_phone() %></td>
 					</tr>
@@ -91,7 +91,7 @@
 						<th>등급</th>
 						<td><%=memList.get(idx).getMem_code() %></td>
 						<th>마일리지</th>
-						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=memList.get(idx).getMem_mileage() %></td>
 					</tr>
 					<tr>
 						<th colspan="4" >

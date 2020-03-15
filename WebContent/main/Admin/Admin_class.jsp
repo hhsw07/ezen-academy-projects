@@ -53,6 +53,9 @@ int nextNo = pg.getPage_End()+1;
 		//memList_no와 같은 행을 삭제한다.
 		alert(Mem_no+1+'수정');
 	}
+	function goInput(){
+		location.href="<%=path %>/main/Admin/Admin_class_input.jsp";
+	}
 </script>
 </head>
 
@@ -72,14 +75,14 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 		<div class="section">
 			<div>
-				<h1>클래스 관리 <input type="button" value="등록" onclick="location.href='#'" class="btn"/></h1>
+				<h1>클래스 관리 <input type="button" value="등록" onclick="goInput()" class="btn"/></h1>
 				<table border>
 					<tr>
 						<th>No</th>
 						<th>클래스명</th>
 						<th>호스트명</th>
 						<th>인원</th>
-						<th>개강일</th>
+						<th>수강일</th>
 						<th>수정</th>
 					</tr>
 					<%
@@ -87,11 +90,11 @@ int nextNo = pg.getPage_End()+1;
 					%>
 						<tr>
 						<td><%=coList.get(idx).getCourse_no() %></td>
-						<td><%=coList.get(idx).getCourse_name() %></td>
-						<td><%=coList.get(idx).getCourse_host() %></td>
+						<td><%=coList.get(idx).getCourse_title() %></td>
+						<td><%=coList.get(idx).getMem_id() %></td>
 						<td><%=coList.get(idx).getCourse_totCnt() %></td>
-						<td><%=coList.get(idx).getCourse_date() %></td>
-						<td onclick="del(<%=idx %>);">수정</td>
+						<td><%=coList.get(idx).getCourse_opendate() %></td>
+						<td><a href="<%=path %>/main/Admin/Admin_class_detail.jsp?cidx=<%=idx %>">수정</td>
 						</tr>
 					<%
 					} %>

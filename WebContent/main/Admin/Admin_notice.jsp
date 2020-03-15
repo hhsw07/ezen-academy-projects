@@ -6,7 +6,7 @@
 	String path = request.getContextPath(); %>
 
 <%
-ArrayList<Noti> notiList = (ArrayList<Noti>)session.getAttribute("notiList");
+ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

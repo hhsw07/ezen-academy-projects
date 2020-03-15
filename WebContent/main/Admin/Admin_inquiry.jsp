@@ -94,7 +94,14 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=inquList.get(idx).getInquiry_detail() %></td>
 						<td><%=inquList.get(idx).getMem_id() %></td>
 						<td><%=inquList.get(idx).getInquiry_date() %></td>
-						<td><%=inquList.get(idx).getInquiry_code() %></td>
+						<% if(inquList.get(idx).getInquiry_re() == null || !inquList.get(idx).getInquiry_re().equals("") ){ %>	
+							<td>Y</td>
+						<%}else{
+						%>
+							<td>N</td>
+						<%}
+						%>
+						
 						<td onclick="del(<%=idx %>);">답변</td>
 						</tr>
 					<%

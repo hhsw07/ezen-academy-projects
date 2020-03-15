@@ -19,6 +19,7 @@ String mIdx = request.getParameter("mIdx");
 if(mIdx!=null){
 memList.remove(Integer.parseInt(mIdx));
 session.setAttribute("memList", memList);
+response.sendRedirect("Admin_mem.jsp");
 }
 
 //course 데이터 삭제 후 list 수정
@@ -27,6 +28,7 @@ String cIdx = request.getParameter("cIdx");
 if(cIdx!=null){
 coList.remove(Integer.parseInt(cIdx));
 session.setAttribute("coList", coList);
+response.sendRedirect("Admin_class.jsp");
 }
 
 //스토어 데이터 삭제 후 list 수정
@@ -35,14 +37,16 @@ String sIdx = request.getParameter("sIdx");
 if(sIdx!=null){
 sList.remove(Integer.parseInt(sIdx));
 session.setAttribute("sList", sList);
+response.sendRedirect("Admin_store.jsp");
 }
 
 //공지 데이터 삭제 후 list 수정
-ArrayList<Noti> notiList = (ArrayList<Noti>)session.getAttribute("notiList");
+ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 String nIdx = request.getParameter("nIdx");
 if(nIdx!=null){
 notiList.remove(Integer.parseInt(nIdx));
 session.setAttribute("notiList", notiList);
+response.sendRedirect("Admin_notice.jsp");
 }
 
 //문의 데이터 삭제 후 list 수정
@@ -51,11 +55,12 @@ String iIdx = request.getParameter("iIdx");
 if(iIdx!=null){
 inquList.remove(Integer.parseInt(iIdx));
 session.setAttribute("inquList", inquList);
+response.sendRedirect("Admin_inquiry.jsp");
 }
 
 
 
-response.sendRedirect("Admin_mem.jsp");
+
 %>
 
 </body>
