@@ -89,7 +89,9 @@
 						<textarea name="course_detail" rows="8" placeholder="내용을 입력하세요."></textarea></td>
 					</tr>
 				</table>
-				<input type="submit" value="등록" class="inputBtn" />
+				<div align="right" style="font-size:15px;" >
+					<input type="submit" value="등록" class="inputBtn" />
+				</div>
 			</form>	
 			<%
 			ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");

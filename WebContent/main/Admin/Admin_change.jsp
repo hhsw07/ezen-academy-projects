@@ -23,6 +23,9 @@ if(cIdx!=null){
 	String mem_id = request.getParameter("mem_id");
 	coList.get(idx).setMem_id(mem_id);
 	
+	String course_title = request.getParameter("course_title");
+	coList.get(idx).setCourse_title(course_title);
+	
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	Date time = new Date();
 	String course_inputdate = format1.format(time);

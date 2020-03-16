@@ -10,18 +10,16 @@ ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
 String strIdx = request.getParameter("cidx");
 int idx = Integer.parseInt(strIdx);
 String course_title = request.getParameter("course_title");
-String mem_id = request.getParameter("mem_id");
-
 if(course_title != null){
 	response.sendRedirect("Admin_change.jsp?cIdx="+idx+
-			"&mem_id="+mem_id+
-			"&course_title="+request.getParameter("course_title")+
+			"&mem_id="+java.net.URLEncoder.encode(request.getParameter("mem_id"))+
+			"&course_title="+java.net.URLEncoder.encode(request.getParameter("course_title"))+
 			"&course_kind="+request.getParameter("course_kind")+
 			"&course_totCnt="+request.getParameter("course_totCnt")+
 			"&course_price="+request.getParameter("course_price")+
 			"&course_opendate="+request.getParameter("course_opendate")+
 			"&course_img="+request.getParameter("course_img")+
-			"&course_detail="+request.getParameter("course_detail") );
+			"&course_detail="+java.net.URLEncoder.encode(request.getParameter("course_detail")) );
 }
 
 %>
@@ -105,15 +103,15 @@ if(course_title != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="course_detail" rows="8" value="<%=coList.get(idx).getCourse_detail() %>"></textarea></td>
+						<textarea name="course_detail" rows="8" ><%=coList.get(idx).getCourse_detail() %></textarea></td>
 					</tr>
 				</table>
+				<div align="right" >
 				<input type="button" value="삭제" onclick="ckDel(<%=coList.get(idx).getCourse_no()%>-1)"/>
 				<input type="submit" value="수정" />
-				
+				</div>
 			</form>	
 		</div>
-		
 	</div>
 </body>
 <script>

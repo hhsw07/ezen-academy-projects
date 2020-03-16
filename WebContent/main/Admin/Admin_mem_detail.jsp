@@ -93,12 +93,11 @@
 						<th>마일리지</th>
 						<td><%=memList.get(idx).getMem_mileage() %></td>
 					</tr>
-					<tr>
-						<th colspan="4" >
-						<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>-1)"/>
-						</th>
-					</tr>
+					
 				</table>
+				<div align="right" style="margin-top:10px; font-size:15px;">
+					<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>-1)"/>
+				</div>
 			</div>
 			
 		</div>
