@@ -38,7 +38,7 @@ int nextNo = pg.getPage_End()+1;
 	.top{position:absolute; width:100%; height:100px;}
 	.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
 	
-	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:500px;}
+	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:520px;}
 	.nav ul {list-style:none; padding:5px;}
 	.nav ul li {height:90px; border:1px solid black; text-align:center; line-height:90px;}
 	.nav ul li:first-child {border-radius:20px 20px 0 0;}
@@ -47,7 +47,10 @@ int nextNo = pg.getPage_End()+1;
 	.ckOff {background-color:#ffffff;}
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
-	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
+	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;table-layout:fixed;}
+	.section table tr {height:30px;}
+	.section table td {overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:0 10px;}
+	.btn {border-radius:5px;}
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
 	
@@ -80,6 +83,14 @@ int nextNo = pg.getPage_End()+1;
 			<div>
 				<h1>공지사항 관리 <input type="button" value="등록" onclick="goInput()" class="btn"/></h1>
 				<table border>
+					<colgroup>
+						<col style="width:8%"/>
+						<col style="width:*"/>
+						<col style="width:25%"/>
+						<col style="width:15%"/>
+						<col style="width:10%"/>
+						<col style="width:8%"/>
+					</colgroup>
 					<tr>
 						<th>No</th>
 						<th>제목</th>

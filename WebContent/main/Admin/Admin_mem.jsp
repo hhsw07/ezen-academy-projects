@@ -39,7 +39,7 @@ boolean isDel=false;
 	.top{position:absolute; width:100%; height:100px;}
 	.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
 	
-	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:500px;}
+	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:520px;}
 	.nav ul {list-style:none; padding:5px;}
 	.nav ul li {height:90px; border:1px solid black; text-align:center; line-height:90px;}
 	.nav ul li:first-child {border-radius:20px 20px 0 0;}
@@ -49,6 +49,7 @@ boolean isDel=false;
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
+  	.section table tr {height:30px;}
   	.section table td a { display:block; width:100%; height:100%;} 
 　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
@@ -76,6 +77,14 @@ boolean isDel=false;
 			<div>
 				<h1>회원 관리</h1>
 				<table border>
+					<colgroup>
+						<col style="width:8%"/>
+						<col style="width:20%"/>
+						<col style="width:20%"/>
+						<col style="width:*"/>
+						<col style="width:10%"/>
+						<col style="width:8%"/>
+					</colgroup>
 					<tr>
 						<th>No</th>
 						<th>ID</th>
