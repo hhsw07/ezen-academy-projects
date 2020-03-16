@@ -104,7 +104,7 @@
 	  <div class="buy_wrap"  onload="init();">
 			<div class="buyPage">
 			  <div class="buyinfo-wrap">	
-				<p>선택한 상품을 확인해 주세요.</p>
+				<p>선택한 상품을 확인해 주세요.<a href="?page=productDetail"><i class="xi-close" style="color:black; margin-left:160px; font-size:20px;"></i></a></p>
 				<div class="buy-line"></div>
 				<ul>
 					<li class="buy-info">[노플랜 노프로젝트]라탄으로 이불 톡톡</li>
@@ -197,8 +197,8 @@
 			  	<input class="card-num" style="margin-top:5px;" type="text" placeholder="CVC">
 			  </div>
 			  	<div class=btn>
-					<a href="?page="><button class="btn1" type="button" name="button" >결제하기</button></a>
-					<a href="?page=productDetail"><button class="btn2" type="button" name="button" >취소</button></a>
+					<a href="?page="><button class="btn1" type="button" name="button" >장바구니</button></a>
+					<a href="?page="><button class="btn2" type="button" name="button" >구매하기</button></a>
 				</div>
 			</div>
 		</div>
