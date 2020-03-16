@@ -41,7 +41,7 @@
               .mileage-point{font-size:13px; font-weight:900; color:gray;}
               .trans{font-size:13px; font-weight:900; margin-right:93px;}
             .select-pdt{margin-top:50px; width:480px; height:50px; font-size:20px;}
-            .buy{width:425px; height:50px; margin-top:20px; background-color: #FA5882; border:none; font-size:20px;
+            .buy{width:480px; height:50px; margin-top:20px; background-color: #FA5882; border:none; font-size:20px;
                 border:1px solid black; outline: none; cursor: pointer;}
             .star{width:50px; height:50px; border:1px solid gray; background-color: white; outline: none;
                   cursor: pointer;}
@@ -60,7 +60,7 @@
 
 	   .buy_wrap{position:absolute;width:1920px; left:-320px; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 	    	display:none;}
-		 .buyPage{position:absolute;top:0%;left:40%; width:400px;height:636px; background-color: #ffffff; z-index:4;}
+		 .buyPage{position:absolute;top:0%;left:40%; width:400px;height:524px; background-color: #ffffff; z-index:4;}
 		   .buyinfo-wrap{position:relative; height:385px;}
 			 .buyPage p{text-align:center; font-size:15px; font-weight:900; color:#FA5882; margin:12px 0px;}
 			 .buy-line{border-bottom:1px solid #D8D8D8;}
@@ -150,7 +150,7 @@
 								}
 							sum.value = parseInt(hm.value) * sell_price;
 						}
-						 buyWrap=document.querySelector(".buy_wrap");
+						    buyWrap=document.querySelector(".buy_wrap");
 						    allWrap=document.querySelector(".all_wrap");
 							top=document.querySelector(".top");
 								userTop=document.querySelector(".user_top");
@@ -177,28 +177,10 @@
 					</form>
 			
 			  </div>
-			  <div class="payment">
-			  	<p>결제정보</p>
-			  	<select style="width:80px; height:30px; margin-left:10px;">
-			  		<option>카드선택</option>
-			  		<option>신한카드</option>
-			  		<option>현대카드</option>
-			  		<option>삼성카드</option>
-			  		<option>롯데카드</option>
-			  		<option>하나카드</option>
-			  		<option>국민카드</option>
-			  	</select>
-			  	<input class="card-num" type="text">
-			  	<input class="card-num" type="text">
-			  	<input class="card-num" type="text">
-			  	<input class="card-num" type="text"><br>
-			  	<input class="card-num" style="margin-top:5px; margin-left:96px;" type="text" placeholder="MONTH">
-			  	<input class="card-num" style="margin-top:5px;" type="text" placeholder="YEAR">
-			  	<input class="card-num" style="margin-top:5px;" type="text" placeholder="CVC">
-			  </div>
+		
 			  	<div class=btn>
-					<a href="?page="><button class="btn1" type="button" name="button" >장바구니</button></a>
-					<a href="?page="><button class="btn2" type="button" name="button" >구매하기</button></a>
+					<a href="?page=productDetail"><button class="btn1" onclick="check('장바구니추가 완료')" type="button" name="button" >장바구니</button></a>
+					<a href="?page=productpayment"><button class="btn2" type="button" name="button" >구매하기</button></a>
 				</div>
 			</div>
 		</div>
@@ -243,7 +225,7 @@
                   <option value="">라탄으로 이불 톡톡</option>
                 </select>
               </li>
-              <li><button class="star" type="button" name="button" onclick="check('장바구니 추가완료')"><i class="xi-star-o"></i></button>
+              <li>
                   <a href="javascript:buy()" onclick=""><button class="buy" type="button" name="button">구매하기</button></a></li>
             </ul>
           <!-- class-info -->
@@ -277,6 +259,10 @@
 		if(pl2.equals("pdtreview")){
 %>
 		<%@include file="pdtreview.jsp"%>
+<%		}
+		if(pl2.equals("productpayment")){
+%>
+		<%@include file="productpayment.jsp"%>
 <%		}
 		if(pl2.equals("pdtrefund")){
 %>
