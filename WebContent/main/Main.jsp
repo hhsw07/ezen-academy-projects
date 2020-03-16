@@ -170,6 +170,14 @@
 %>
 			<%@include file="Hobbybasket/hb_class.jsp"%>			
 <%		}
+		if(pl.equals("productpayment")){
+%>
+			<%@include file="Store/productpayment.jsp"%>			
+<%		}
+		if(pl.equals("classpayment")){
+%>
+			<%@include file="Class/classpayment.jsp"%>			
+<%		}
 		if(pl.equals("hb_product")){
 %>
 			<%@include file="Hobbybasket/hb_product.jsp"%>		
