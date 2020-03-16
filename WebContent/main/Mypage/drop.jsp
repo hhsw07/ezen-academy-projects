@@ -13,7 +13,7 @@ String path = request.getContextPath(); %>
 	ul li{list-style:none;}
 	a{text-decoration:none; color:black;cursor:pointer;}
 /* 메뉴바 */
-	.mymenu{width:1050px; margin:0 auto; background:none; position:relative;}
+	.mymenu{width:1050px; margin:60px auto 0; background:none; position:relative;}
 	.mymenubar{position:relative; height:64px; background:#2a2c34; overflow:hidden;}
 	.mymenubar ul{width:100%; padding:0 10px; overflow:hidden;}
 	.mymenubar ul li{float:left;}

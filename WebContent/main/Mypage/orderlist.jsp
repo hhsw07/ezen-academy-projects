@@ -9,18 +9,24 @@
 <style type="text/css">
 /* 전체 */
 	ul li{list-style:none;}
-	a{text-decoration:none; color:black;}
-/* 메뉴 */
-	.mymenu{position:relative; width:1050px; background-color:#151515; color:#FFFFFF; font-size:18px; margin:64px auto 0; padding:5px;}
+	a{text-decoration:none; color:black;cursor:pointer;}
+/* 메뉴바 */
+	.mymenu{width:1050px; margin:60px auto 0; background:none; position:relative;}
+	.mymenubar{position:relative; height:64px; background:#2a2c34; overflow:hidden;}
+	.mymenubar ul{width:100%; padding:0 10px; overflow:hidden;}
+	.mymenubar ul li{float:left;}
+	.mymenu_btn{padding:4px 18px 23px; font-size:18px; display:block; color:#FFFFFF;}
+	.mymenu_btn-on{font-weight:bold;}
+	.host_btn{width:90px; height:64px; padding-left:89px; color:#FFFFFF; font-size:18px; background-size:19px 18px; text-indent:0;
+	line-height:64px; display:block; position:absolute; top:0; right:0; overflow:hidden;}
+/* 소메뉴 */
 	.mynav{text-align:left; display:inline;}
 	.mynav ul li{float:left; text-align:center; display:flex; padding-right:30px;}
 	.mynav ul li a{color:#FFFFFF; cursor:pointer;}
-	.myhost{text-align:right; display:inline;}
-	.myhost ul li{padding-right:30px; cursor:pointer;}
 	.mysubmenu{display:block; position:relative; width:1050px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 주문/배송 조회 */
-	.orderlist{padding:30px; width:980px; height:500px; margin:0 auto;}
+	.orderlist{padding:30px; width:980px; height:540px; margin:0 auto;}
 	.orderlist article{position:relative; font-size:14px; border-bottom:1px #ddd solid; padding-top:25px;}
 	.o-info{width:300px;}
 	.o-title{width:70px;display:inline-block; margin-right:5px;}
@@ -38,6 +44,9 @@
 /* 페이징 */	
 	.paging {text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
+	.page_num{margin:20px auto 0; padding:110px 10% 0; text-align:center; width:724px; position:absolute; bottom:1px;}
+	.btn_num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
+	.btn_num-on{color:#f1645d; border:1px solid #f1645d;}
 </style>
 </head>
 <%
@@ -70,21 +79,22 @@ int preNo = pg.getPage_Start()-1;
 int nextNo = pg.getPage_End()+1;
 %>
 <body>
-
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
-		<nav class="mynav">
-			<ul>
-				<li style="font-weight:bold;"><a href="?page=mypage_order">주문/배송관리</a></li>
-				<li><a href="#">나의 활동</a></li>
-				<li><a href="?page=mypage_modiinfo">내 정보 관리</a></li>
+		<div class="mymenubar">
+			<ul class="mymenu-list">
+				<li>
+					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
+				</li>
+				<li>
+					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+				</li>
+				<li>
+					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+				</li>
 			</ul>
-		</nav>
-		<nav class="myhost">
-			<ul>
-				<li>HOST</li>
-			</ul>
-		</nav>
+		</div>
+		<a href="#" title="호스트" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -140,7 +150,7 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 	<%}
 	%>	
-	<div class="paging">
+	<div class="page_num">
 			<h4>
 			<%
 			if(pg.isPre()){
@@ -151,9 +161,9 @@ int nextNo = pg.getPage_End()+1;
 			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
 				if(i == i_page){
 			%>
-				<a class="pageNo" href="?page=mypage_order&i_page=<%=i %>" ><%=i %></a>
+				<a class="btn_num btn_num-on" href="?page=mypage_order&i_page=<%=i %>" ><%=i %></a>
 			<%	}else{ %>
-				<a href="?page=mypage_order&i_page=<%=i %>"><%=i %></a>
+				<a class="btn_num" href="?page=mypage_order&i_page=<%=i %>"><%=i %></a>
 			<%	}
 			}
 			if(pg.isNext()){
