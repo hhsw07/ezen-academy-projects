@@ -13,7 +13,7 @@ Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
 */
 
-int w_size = 5;
+int w_size = 10;
 int p_size = 2;
 int i_page = 1;
 if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
