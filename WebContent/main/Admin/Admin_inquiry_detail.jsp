@@ -62,7 +62,7 @@ if(inquiry_detail != null){
 			</ul>
 		</div>
 		<div class="section">
-			<h1>문의 관리 (상세정보)</h1>
+			<h1>문의사항 관리 (상세정보)</h1>
 			<form>
 				<table>
 					<tr>
