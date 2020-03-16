@@ -53,9 +53,11 @@ int nextNo = pg.getPage_End()+1;
 	
 </style>
 <script type="text/javascript">
-	function del(idx){
-		//memList_no와 같은 행을 삭제한다.
-		alert(idx+1+'수정');
+	function goInput(){
+		location.href="<%=path %>/main/Admin/Admin_notice_input.jsp";
+	}
+	function goDetail(idx){
+		location.href="<%=path %>/main/Admin/Admin_notice_detail.jsp?nIdx="+idx;
 	}
 </script>
 </head>
@@ -76,7 +78,7 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 		<div class="section">
 			<div>
-				<h1>공지사항 관리 <input type="button" value="등록" onclick="location.href='#'" class="btn"/></h1>
+				<h1>공지사항 관리 <input type="button" value="등록" onclick="goInput()" class="btn"/></h1>
 				<table border>
 					<tr>
 						<th>No</th>
@@ -95,7 +97,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=notiList.get(idx).getNoti_detail() %></td>
 						<td><%=notiList.get(idx).getNoti_date() %></td>
 						<td><%=notiList.get(idx).getNoti_code() %></td>
-						<td onclick="del(<%=idx %>);">수정</td>
+						<td onclick="goDetail(<%=idx %>)">수정</a></td>
 						</tr>
 					<%
 					} %>

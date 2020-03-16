@@ -94,15 +94,15 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=inquList.get(idx).getInquiry_detail() %></td>
 						<td><%=inquList.get(idx).getMem_id() %></td>
 						<td><%=inquList.get(idx).getInquiry_date() %></td>
-						<% if(inquList.get(idx).getInquiry_re() == null || !inquList.get(idx).getInquiry_re().equals("") ){ %>	
-							<td>Y</td>
+						<% if(inquList.get(idx).getInquiry_re() == null || inquList.get(idx).getInquiry_re().equals("") ){ %>	
+							<td>N</td>
 						<%}else{
 						%>
-							<td>N</td>
+							<td>Y</td>
 						<%}
 						%>
 						
-						<td onclick="del(<%=idx %>);">답변</td>
+						<td><a href="<%=path %>/main/Admin/Admin_inquiry_detail.jsp?iIdx=<%=idx %>">답변</a></td>
 						</tr>
 					<%
 					} %>

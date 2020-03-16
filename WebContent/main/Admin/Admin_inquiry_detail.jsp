@@ -1,27 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*, java.util.Date,
-    java.text.SimpleDateFormat " 
+    import="java.util.ArrayList, z01_vo.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
-String strIdx = request.getParameter("cIdx");
+ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
+String strIdx = request.getParameter("iIdx");
 int idx = Integer.parseInt(strIdx);
-String course_title = request.getParameter("course_title");
-if(course_title != null){
-	response.sendRedirect("Admin_change.jsp?cIdx="+idx+
-			"&mem_id="+java.net.URLEncoder.encode(request.getParameter("mem_id"))+
-			"&course_title="+java.net.URLEncoder.encode(request.getParameter("course_title"))+
-			"&course_kind="+request.getParameter("course_kind")+
-			"&course_totCnt="+request.getParameter("course_totCnt")+
-			"&course_price="+request.getParameter("course_price")+
-			"&course_opendate="+request.getParameter("course_opendate")+
-			"&course_img="+request.getParameter("course_img")+
-			"&course_detail="+java.net.URLEncoder.encode(request.getParameter("course_detail")) );
+
+String inquiry_detail = request.getParameter("inquiry_detail");
+if(inquiry_detail != null){
+	response.sendRedirect("Admin_change.jsp?iIdx="+idx+
+			"&inquiry_re="+java.net.URLEncoder.encode(request.getParameter("inquiry_re")) );
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,51 +55,48 @@ if(course_title != null){
 		<div class="nav">
 			<ul>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOff">회원 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOn">클래스 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOff">클래스 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_store.jsp'" class="ckOff">스토어 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_notice.jsp'" class="ckOff">공지사항 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_inquiry.jsp'" class="ckOff">문의 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_inquiry.jsp'" class="ckOn">문의 관리</li>
 			</ul>
 		</div>
 		<div class="section">
-			<h1>클래스 수정</h1>
+			<h1>문의 관리 (상세정보)</h1>
 			<form>
 				<table>
 					<tr>
-						<th>호스트</th>
-						<td><input type="text" name="mem_id" value="<%=coList.get(idx).getMem_id() %>"/></td>
-						<th></th>
-						<td><input type="text" name="cIdx" value="<%=strIdx %>" style="visibility:hidden;" /></td>
+						<th>문의 번호</th>
+						<td><input type="text" name="inquiry_no" value="<%=inquList.get(idx).getInquiry_no() %>" readonly/></td>
+						<th>아이디 </th>
+						<td><input type="text" name="mem_id" value="<%=inquList.get(idx).getMem_id() %>" readonly /></td>
 					</tr>
 					<tr>
-						<th>클래스명 </th>
-						<td><input type="text" name="course_title" value="<%=coList.get(idx).getCourse_title() %>"/></td>
-						<th>클래스종류</th>
-						<td><label><input type="radio" name="course_kind" id="kind01" value="D"/>원데이클래스</label> 
-							<label><input type="radio" name="course_kind" id="kind02" value="M"/>정기클래스</label></td>
+						<th>등록일</th>
+						<td><input type="date" value="<%=inquList.get(idx).getInquiry_date() %>"  readonly/>
+						<th>답변여부</th>
+						<td><label><input type="radio" id="kind01" disabled />완료</label> 
+							<label><input type="radio" id="kind02" disabled />대기중</label></td>
 					</tr>
 					<tr>
-						<th>인원</th>
-						<td><input type="number" name="course_totCnt" value="<%=coList.get(idx).getCourse_totCnt() %>"></td>
-						<th>가격</th>
-						<td><input type="number" name="course_price" value="<%=coList.get(idx).getCourse_price() %>"></td>
+						<th>문의내용</th>
+						<td colspan="3"></td>
 					</tr>
 					<tr>
-						<th>수강일</th>
-						<td><input type="date" name="course_opendate"  value="<%=coList.get(idx).getCourse_opendate() %>"  /></td>
-						<th>클래스이미지</th>
-						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
+						<td colspan="4">
+						<textarea name="inquiry_detail" rows="5" readonly><%=inquList.get(idx).getInquiry_detail() %></textarea></td>
 					</tr>
 					<tr>
-						<th>상세설명 </th>
+						<th>답변내용</th>
 						<th colspan="3"></th>
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="course_detail" rows="8" ><%=coList.get(idx).getCourse_detail() %></textarea></td>
+						<textarea name="inquiry_re" rows="5" ><%=inquList.get(idx).getInquiry_re() %></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >
+				<input type="text" name="iIdx" value="<%=strIdx %>" style="visibility:hidden;" />
 				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
 				<input type="submit" value="수정" />
 				</div>
@@ -117,15 +108,17 @@ if(course_title != null){
 	function ckDel(idx){
 		var ckConfirm = confirm("정말 삭제하시겠습니까?");
 		 if(ckConfirm){
-			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+idx;
+			location.href="<%=path %>/main/Admin/Admin_del.jsp?iIdx="+idx;
 		}
 	}
 		
-	var course_kind = "<%=coList.get(idx).getCourse_kind() %>";
-	if(course_kind == "D"){
-		document.querySelector('#kind01').checked = true;
-	}else{
+	var inquiry_code = "<%=inquList.get(idx).getInquiry_re() %>";
+	console.log(inquiry_code);
+	
+	if(inquiry_code == null || inquiry_code == ""){
 		document.querySelector('#kind02').checked = true;
+	}else{
+		document.querySelector('#kind01').checked = true;
 	}
 
 

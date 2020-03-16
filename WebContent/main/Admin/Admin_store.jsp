@@ -48,6 +48,8 @@ int nextNo = pg.getPage_End()+1;
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
+  	.section table td a { display:block; width:100%; height:100%;} 
+　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
 	
@@ -95,7 +97,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=sList.get(idx).getMem_id() %></td>
 						<td><%=sList.get(idx).getStrore_date() %></td>
 						<td><%=sList.get(idx).getStore_code() %></td>
-						<td onclick="del(<%=idx %>);">수정</td>
+						<td><a href="<%=path %>/main/Admin/Admin_store_detail.jsp?sidx=<%=idx %>">보기</a></td>
 						</tr>
 					<%
 					} %>

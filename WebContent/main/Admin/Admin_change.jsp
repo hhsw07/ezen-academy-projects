@@ -18,8 +18,8 @@
 //course 데이터 수정 후 list 수정
 ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
 String cIdx = request.getParameter("cIdx");
-int idx = Integer.parseInt(cIdx);
 if(cIdx!=null){
+	int idx = Integer.parseInt(cIdx);
 	String mem_id = request.getParameter("mem_id");
 	coList.get(idx).setMem_id(mem_id);
 	
@@ -53,29 +53,68 @@ if(cIdx!=null){
 	response.sendRedirect("Admin_class.jsp");
 }
 
-//스토어 데이터 삭제 후 list 수정
+//스토어 데이터 수정 후 list 수정
 ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
 String sIdx = request.getParameter("sIdx");
 if(sIdx!=null){
-sList.remove(Integer.parseInt(sIdx));
-session.setAttribute("sList", sList);
+	int idx = Integer.parseInt(sIdx);
+	
+	String mem_id = request.getParameter("mem_id");
+	sList.get(idx).setMem_id(mem_id);
+	String store_title = request.getParameter("store_title");
+	sList.get(idx).setStore_title(store_title);
+	String store_code = request.getParameter("store_code");
+	sList.get(idx).setStore_code(store_code);
+	String store_priceStr = request.getParameter("store_price");
+	int store_price = Integer.parseInt(store_priceStr);
+	sList.get(idx).setStore_price(store_price);
+	String store_totCntStr = request.getParameter("store_totCnt");
+	int store_totCnt = Integer.parseInt(store_totCntStr);
+	sList.get(idx).setStore_totCnt(store_totCnt);
+	String strore_date = request.getParameter("strore_date");
+	sList.get(idx).setStrore_date(strore_date);
+	String store_img = request.getParameter("store_img");
+	sList.get(idx).setStore_img(store_img);
+	String store_detail = request.getParameter("store_detail");
+	sList.get(idx).setStore_detail(store_detail);
+	
+	response.sendRedirect("Admin_store.jsp");
 }
+
+
 
 //공지 데이터 삭제 후 list 수정
 ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 String nIdx = request.getParameter("nIdx");
 if(nIdx!=null){
-notiList.remove(Integer.parseInt(nIdx));
-session.setAttribute("notiList", notiList);
+	int idx = Integer.parseInt(nIdx);
+	
+	String noti_title = request.getParameter("noti_title");
+	notiList.get(idx).setNoti_title(noti_title);
+	String noti_detail = request.getParameter("noti_detail");
+	notiList.get(idx).setNoti_detail(noti_detail);
+	String noti_date = request.getParameter("noti_date");
+	notiList.get(idx).setNoti_date(noti_date);
+	String noti_code = request.getParameter("noti_code");
+	notiList.get(idx).setNoti_code(noti_code);
+
+	response.sendRedirect("Admin_notice.jsp");
 }
 
-//문의 데이터 삭제 후 list 수정
+//문의 데이터 수정 후 list 수정
 ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
 String iIdx = request.getParameter("iIdx");
 if(iIdx!=null){
-inquList.remove(Integer.parseInt(iIdx));
-session.setAttribute("inquList", inquList);
+	int idx = Integer.parseInt(iIdx);
+	
+	String inquiry_re = request.getParameter("inquiry_re");
+	inquList.get(idx).setInquiry_re(inquiry_re);
+	
+	response.sendRedirect("Admin_inquiry.jsp");
 }
+	
+
+
 
 
 %>

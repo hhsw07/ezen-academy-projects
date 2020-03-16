@@ -49,7 +49,6 @@ boolean isDel=false;
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
-	.section table td {}
   	.section table td a { display:block; width:100%; height:100%;} 
 　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
