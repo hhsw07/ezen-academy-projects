@@ -49,12 +49,11 @@ int nextNo = pg.getPage_End()+1;
 	
 </style>
 <script type="text/javascript">
-	function del(Mem_no){
-		//memList_no와 같은 행을 삭제한다.
-		alert(Mem_no+1+'수정');
-	}
 	function goInput(){
 		location.href="<%=path %>/main/Admin/Admin_class_input.jsp";
+	}
+	function goDetail(idx){
+		location.href="<%=path %>/main/Admin/Admin_class_detail.jsp?cIdx="+idx;
 	}
 </script>
 </head>
@@ -94,7 +93,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=coList.get(idx).getMem_id() %></td>
 						<td><%=coList.get(idx).getCourse_totCnt() %></td>
 						<td><%=coList.get(idx).getCourse_opendate() %></td>
-						<td><a href="<%=path %>/main/Admin/Admin_class_detail.jsp?cidx=<%=idx %>">수정</td>
+						<td onclick="goDetail(<%=idx %>)">수정</td>
 						</tr>
 					<%
 					} %>

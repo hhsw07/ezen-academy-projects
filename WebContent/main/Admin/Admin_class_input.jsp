@@ -5,7 +5,36 @@
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
-
+<%
+	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+	String course_title = request.getParameter("course_title");
+	
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+	Date time = new Date();
+	String nowTime = format1.format(time);
+	
+	if(course_title != null){
+		int course_no = coList.size()+1;
+		String mem_id = request.getParameter("mem_id");
+		String course_inputdate = request.getParameter("course_inputdate");
+		String course_kind = request.getParameter("course_kind");
+		String course_detail = request.getParameter("course_detail");
+		int course_curCnt = 0;
+		String strCourse_totCnt = request.getParameter("course_totCnt");
+		int course_totCnt=0;
+		if(strCourse_totCnt != null) course_totCnt = Integer.parseInt(strCourse_totCnt);
+		String strCourse_price = request.getParameter("course_price");
+		int course_price=0;
+		if(strCourse_price != null) course_price = Integer.parseInt(strCourse_price);
+		String course_img = request.getParameter("course_img");
+		String course_opendate = request.getParameter("course_opendate");
+		
+		coList.add(new Course(course_no,mem_id,course_inputdate,course_title,course_kind,
+				course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate));
+		session.setAttribute("coList", coList);
+		response.sendRedirect("Admin_class.jsp");
+	}
+	%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,8 +73,8 @@
 		</div>
 		<div class="nav">
 			<ul>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOn">회원 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOff">클래스 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOff">회원 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOn">클래스 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_store.jsp'" class="ckOff">스토어 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_notice.jsp'" class="ckOff">공지사항 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_inquiry.jsp'" class="ckOff">문의 관리</li>
@@ -76,7 +105,7 @@
 					</tr>
 					<tr>
 						<th>수강일</th>
-						<td><input type="date" name="course_opendate"  value="2020-03-01" /></td>
+						<td><input type="date" name="course_opendate" value="<%=nowTime %>" /></td>
 						<th>클래스이미지</th>
 						<td><input type="file" name="course_img"/></td>
 					</tr>
@@ -93,34 +122,7 @@
 					<input type="submit" value="등록" class="inputBtn" />
 				</div>
 			</form>	
-			<%
-			ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
-			String course_title = request.getParameter("course_title");
 			
-			if(course_title != null){
-				int course_no = coList.size()+1;
-				String mem_id = request.getParameter("mem_id");
-				SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-				Date time = new Date();
-				String course_inputdate = format1.format(time);
-				String course_kind = request.getParameter("course_kind");
-				String course_detail = request.getParameter("course_detail");
-				int course_curCnt = 0;
-				String strCourse_totCnt = request.getParameter("course_totCnt");
-				int course_totCnt=0;
-				if(strCourse_totCnt != null) course_totCnt = Integer.parseInt(strCourse_totCnt);
-				String strCourse_price = request.getParameter("course_price");
-				int course_price=0;
-				if(strCourse_price != null) course_price = Integer.parseInt(strCourse_price);
-				String course_img = request.getParameter("course_img");
-				String course_opendate = request.getParameter("course_opendate");
-				
-				coList.add(new Course(course_no,mem_id,course_inputdate,course_title,course_kind,
-						course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate));
-				session.setAttribute("coList", coList);
-				response.sendRedirect("Admin_class.jsp");
-			}
-			%>	
 			
 		</div>
 		

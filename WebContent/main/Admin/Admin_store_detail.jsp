@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*, java.util.Date,
-    java.text.SimpleDateFormat " 
+    import="java.util.ArrayList, z01_vo.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
-String strIdx = request.getParameter("cIdx");
+ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
+String strIdx = request.getParameter("sidx");
 int idx = Integer.parseInt(strIdx);
-String course_title = request.getParameter("course_title");
-if(course_title != null){
-	response.sendRedirect("Admin_change.jsp?cIdx="+idx+
-			"&mem_id="+java.net.URLEncoder.encode(request.getParameter("mem_id"))+
-			"&course_title="+java.net.URLEncoder.encode(request.getParameter("course_title"))+
-			"&course_kind="+request.getParameter("course_kind")+
-			"&course_totCnt="+request.getParameter("course_totCnt")+
-			"&course_price="+request.getParameter("course_price")+
-			"&course_opendate="+request.getParameter("course_opendate")+
-			"&course_img="+request.getParameter("course_img")+
-			"&course_detail="+java.net.URLEncoder.encode(request.getParameter("course_detail")) );
+
+String store_title = request.getParameter("store_title");
+if(store_title != null){
+	response.sendRedirect("Admin_change.jsp?sIdx="+idx+
+			"&mem_id="+request.getParameter("mem_id")+
+			"&store_title="+java.net.URLEncoder.encode(request.getParameter("store_title"))+
+			"&store_code="+request.getParameter("store_code")+
+			"&store_price="+request.getParameter("store_price")+
+			"&store_totCnt="+request.getParameter("store_totCnt")+
+			"&strore_date="+request.getParameter("strore_date")+
+			"&store_img="+request.getParameter("store_img")+
+			"&store_detail="+java.net.URLEncoder.encode(request.getParameter("store_detail")) );
+
 }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,51 +63,52 @@ if(course_title != null){
 		<div class="nav">
 			<ul>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_mem.jsp'" class="ckOff">회원 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOn">클래스 관리</li>
-				<li onclick="location.href='<%=path %>/main/Admin/Admin_store.jsp'" class="ckOff">스토어 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_class.jsp'" class="ckOff">클래스 관리</li>
+				<li onclick="location.href='<%=path %>/main/Admin/Admin_store.jsp'" class="ckOn">스토어 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_notice.jsp'" class="ckOff">공지사항 관리</li>
 				<li onclick="location.href='<%=path %>/main/Admin/Admin_inquiry.jsp'" class="ckOff">문의 관리</li>
 			</ul>
 		</div>
 		<div class="section">
-			<h1>클래스 수정</h1>
+			<h1>스토어 관리 (상세정보)</h1>
 			<form>
 				<table>
 					<tr>
+						<th>상품번호</th>
+						<td><input type="text" name="store_no" value="<%=sList.get(idx).getStore_no() %>" readonly/></td>
 						<th>호스트</th>
-						<td><input type="text" name="mem_id" value="<%=coList.get(idx).getMem_id() %>"/></td>
-						<th></th>
-						<td><input type="text" name="cIdx" value="<%=strIdx %>" style="visibility:hidden;" /></td>
+						<td><input type="text" name="mem_id" value="<%=sList.get(idx).getMem_id() %>" /></td>
 					</tr>
 					<tr>
-						<th>클래스명 </th>
-						<td><input type="text" name="course_title" value="<%=coList.get(idx).getCourse_title() %>"/></td>
-						<th>클래스종류</th>
-						<td><label><input type="radio" name="course_kind" id="kind01" value="D"/>원데이클래스</label> 
-							<label><input type="radio" name="course_kind" id="kind02" value="M"/>정기클래스</label></td>
+						<th>상품명 </th>
+						<td><input type="text" name="store_title" value="<%=sList.get(idx).getStore_title() %>"/></td>
+						<th>승인상태</th>
+						<td><label><input type="radio" name="store_code" id="kind01" value="N"/>대기</label> 
+							<label><input type="radio" name="store_code" id="kind02" value="Y"/>승인</label></td>
 					</tr>
 					<tr>
-						<th>인원</th>
-						<td><input type="number" name="course_totCnt" value="<%=coList.get(idx).getCourse_totCnt() %>"></td>
+						<th>갯수</th>
+						<td><input type="number" name="store_totCnt" value="<%=sList.get(idx).getStore_totCnt() %>"></td>
 						<th>가격</th>
-						<td><input type="number" name="course_price" value="<%=coList.get(idx).getCourse_price() %>"></td>
+						<td><input type="number" name="store_price" value="<%=sList.get(idx).getStore_price() %>"></td>
 					</tr>
 					<tr>
-						<th>수강일</th>
-						<td><input type="date" name="course_opendate"  value="<%=coList.get(idx).getCourse_opendate() %>"  /></td>
-						<th>클래스이미지</th>
-						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
+						<th>신청일</th>
+						<td><input type="date" name="strore_date"  value="<%=sList.get(idx).getStrore_date() %>" readonly /></td>
+						<th>상품이미지</th>
+						<td><input type="file" name="store_img" value="<%=sList.get(idx).getStore_img() %>"/></td>
 					</tr>
 					<tr>
-						<th>상세설명 </th>
+						<th>상품설명 </th>
 						<th colspan="3"></th>
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="course_detail" rows="8" ><%=coList.get(idx).getCourse_detail() %></textarea></td>
+						<textarea name="store_detail" rows="8" ><%=sList.get(idx).getStore_detail() %></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >
+				<input type="text" name="sidx" value="<%=strIdx %>" style="visibility:hidden;" />
 				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
 				<input type="submit" value="수정" />
 				</div>
@@ -117,12 +120,14 @@ if(course_title != null){
 	function ckDel(idx){
 		var ckConfirm = confirm("정말 삭제하시겠습니까?");
 		 if(ckConfirm){
-			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+idx;
+			location.href="<%=path %>/main/Admin/Admin_del.jsp?sIdx="+idx;
 		}
 	}
 		
-	var course_kind = "<%=coList.get(idx).getCourse_kind() %>";
-	if(course_kind == "D"){
+	var store_code = "<%=sList.get(idx).getStore_code() %>";
+	console.log(store_code);
+
+	if(store_code == "N"){
 		document.querySelector('#kind01').checked = true;
 	}else{
 		document.querySelector('#kind02').checked = true;
