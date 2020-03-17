@@ -30,7 +30,7 @@ int nextNo = pg.getPage_End()+1;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jspexp</title>
+<title>하비팩토리 - 취미를 통해 일상을 가꾸자</title>
 <style type="text/css">
     a{text-decoration:none; color:black;}
 	.middle{position: relative; width:1080px;}
