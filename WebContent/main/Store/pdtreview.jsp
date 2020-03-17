@@ -96,9 +96,6 @@ if(pReview_date==null) pReview_date=timeS;
 int order_no=0; if(order_noS!=null) order_no=Integer.parseInt(order_noS);
 int pReview_star=0; if(pReview_starS!=null) pReview_star=Integer.parseInt(pReview_starS);
 
-System.out.println("###"+pReview_detail);
-
-
 if(!pReview_detail.equals("")){
 	ArrayList<PReview> prevList=null;
 	if(session.getAttribute("prevList")!=null){
