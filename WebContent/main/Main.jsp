@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@
 					<li class="ut_li"><a href="?page=maindetail&lp=loginmain">로그인</a></li>
 					<li class="ut_li"><a href="?page=maindetail&lp=memberJoin">회원가입</a></li>
 					<li class="ut_li"><a href="?page=mypage_order">마이페이지</a></li>
-					<li class="ut_li"><a href="#">고객센터</a></li>
+					<li class="ut_li"><a href="?page=serviceCenter">고객센터</a></li>
 				</ul>
 			</div>
 			<div class="menu_top">
@@ -107,7 +108,7 @@
 				</ul>
 				<ul class="mt_ul2">
 					<li class="mt_li2"><a href="?page=hb_class">관심창고</a></li>
-					<li class="mt_li2"><a href="#">내 클래스</a></li>
+					<li class="mt_li2"><a href="?page=my_class">내 클래스</a></li>
 				</ul>
 			</div>
 		</div>
@@ -174,6 +175,16 @@
 %>
 			<%@include file="Hobbybasket/hb_product.jsp"%>		
 <%		}
+		if(pl.equals("my_class")){
+%>
+			<%@include file="Hobbybasket/my_class.jsp"%>
+<%			
+		}
+		if(pl.equals("serviceCenter")){
+%>
+			<%@include file="ServiceCenter/serviceCenter.jsp"%>
+<%			
+		}
 	} %>
 	
 	
