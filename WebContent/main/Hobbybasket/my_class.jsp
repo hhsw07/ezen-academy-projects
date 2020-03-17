@@ -73,7 +73,7 @@ int nextNo = pg.getPage_End()+1;
 	<div class="mymenu">
 		<nav class="mynav">
 			<ul>
-				<li style="font-weight:bold;">관심창고</li>
+				<li style="font-weight:bold;">내 클래스</li>
 			</ul>
 		</nav>
 	</div>
@@ -82,8 +82,7 @@ int nextNo = pg.getPage_End()+1;
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li style="font-weight:bold;"><a href="?page=hb_class">관심클래스</a></li>
-				<li><a href="?page=hb_product">장바구니</a></li>
+				<li>수강중인 클래스를 살펴보세요</li>
 			</ul>
 		</nav>
 	</div>
@@ -127,20 +126,20 @@ int nextNo = pg.getPage_End()+1;
 			<%
 			if(pg.isPre()){
 			%>
-				<a href="?page=hb_product&i_page=<%=preNo %>">Pre</a>
+				<a href="?page=my_class&i_page=<%=preNo %>">Pre</a>
 			<%
 			}
 			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
 				if(i == i_page){
 			%>
-				<a class="pageNo" href="?page=mypage_class&i_page=<%=i %>" ><%=i %></a>
+				<a class="pageNo" href="?page=my_class&i_page=<%=i %>" ><%=i %></a>
 			<%	}else{ %>
-				<a href="?page=hb_product&i_page=<%=i %>"><%=i %></a>
+				<a href="?page=my_class&i_page=<%=i %>"><%=i %></a>
 			<%	}
 			}
 			if(pg.isNext()){
 			%>
-				<a href="?page=hb_product&i_page=<%=nextNo %>">Next</a>
+				<a href="?page=my_class&i_page=<%=nextNo %>">Next</a>
 			<%} %>
 			</h4>	
 		</div>
