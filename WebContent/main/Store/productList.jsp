@@ -5,13 +5,11 @@
   <head>
     <meta charset="utf-8">
     <title>HobbyFactory : product-list</title>
-
     <style media="screen">
       body{height:100%; margin:0px; padding:0px; position:relative; min-width:1820px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
-      div{display:block;}
-   
+      div{display:block;}  
       img{width:500px; height:300px;}
       /* 상단 카테고리 리스트 */
       .category-wrap{width:1280px; margin:0 auto; }
@@ -21,7 +19,6 @@
         .category-list ul li:hover{border-bottom:1px solid #ff3399;}
         .category-list a{font-weight:900;}
         .category-list a:hover{color:#ff3399;}
-
       /* 하단 클래스 리스트 */
       .class-wrap{width:1280px; margin:0 auto; text-align:center;}
       .class-wrap p{margin:0px;}
@@ -32,13 +29,7 @@
               .class-name{float:left; font-size:20px; font-weight:900;}
             .price-wrap1{position:absolute; right:0px; top:8px;}
               .price{font-size:20px; font-weight:900;}
-
-
-
     </style>
-
-    <script type="text/javascript">
-    </script>
   </head>
   <body>
     <!-- 카테고리 리스트 -->
@@ -59,7 +50,6 @@
     <!-- category-wrap -->
     </div>
 
-
     <!-- 클래스 리스트 -->
     <div class="class-wrap">
 
@@ -68,6 +58,7 @@
       <div class="class-box">
         <a href="?page=productDetail">
         <div class="class-image"><img src="../image/pdt1.jpg" alt=""></div>
+     
         <div class="class-info">
           <div><span class="host-name">[노플랜 프로젝트]</span><br><span class="class-name">라탄으로 이불 톡톡</span></div>
           <div class="price-wrap1"><span class="price">28,000</span>원</div>

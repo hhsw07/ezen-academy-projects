@@ -100,14 +100,14 @@ System.out.println("###"+pReview_detail);
 
 
 if(!pReview_detail.equals("")){
-	ArrayList<PReview> commList=null;
-	if(session.getAttribute("commList")!=null){
-		commList = (ArrayList<PReview>)session.getAttribute("commList");
+	ArrayList<PReview> prevList=null;
+	if(session.getAttribute("prevList")!=null){
+		prevList = (ArrayList<PReview>)session.getAttribute("prevList");
 	}else{
-		commList = new ArrayList<PReview>();
+		prevList = new ArrayList<PReview>();
 	}
-	commList.add(new PReview(order_no,mem_id, pReview_detail, pReview_star, pReview_date));
-	session.setAttribute("commList",commList);
+	prevList.add(new PReview(order_no,mem_id, pReview_detail, pReview_star, pReview_date));
+	session.setAttribute("prevList",prevList);
 }
 %>
 <script type="text/javascript">
@@ -125,19 +125,19 @@ if(!pReview_detail.equals("")){
       <div class="comment-result">
         <ul>
         <%
-		ArrayList<PReview> commList = new ArrayList<PReview>();
-		if(session.getAttribute("commList")!=null){
-			commList = (ArrayList<PReview>)session.getAttribute("commList");
+		ArrayList<PReview> prevList = new ArrayList<PReview>();
+		if(session.getAttribute("prevList")!=null){
+			prevList = (ArrayList<PReview>)session.getAttribute("prevList");
 		}
 		%>
         <%
-		for(int idx=0; idx<commList.size(); idx++){
-		PReview prv = commList.get(idx);
+		for(int idx=0; idx<prevList.size(); idx++){
+		PReview prv = prevList.get(idx);
 		%>
 		<div class="line-review"></div>  
-	    <li name="pReview_detail" ><%=prv.getMem_id()%></li>
-        <li name="pReview_date" style="margin-bottom:10px;"><%=prv.getpReview_date()%></li>
-        <li name="pReview_detail" ><%=prv.getpReview_detail()%></li> 
+	    <li><%=prv.getMem_id()%></li>
+        <li style="margin-bottom:10px;"><%=prv.getpReview_date()%></li>
+        <li><%=prv.getpReview_detail()%></li> 
         <div class="line-review"></div>  
         <%		
 		}
