@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-
-=======
 <% request.setCharacterEncoding("UTF-8"); %>
->>>>>>> branch 'master' of https://github.com/ezenteam3/project04.git
 <!DOCTYPE html>
 <html>
 <head>
