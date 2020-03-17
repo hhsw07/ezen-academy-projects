@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*, z01_vo.*"%>
+<% request.setCharacterEncoding("UTF-8");
+String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +78,9 @@
 			</ul>
 		</nav>
 	</div>
-	
+<%
+ArrayList<Point> points = new ArrayList<Point>();
+%>	
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
 		<article>
@@ -142,7 +147,6 @@
 					<a href="#link" title="1" data-page="1" class="mileage-page-btn btn-num btn-num-on">1</a>
 				</div>
 			</div>
-			<div class="coupon-wrap" style="display:none;"></div>
 		</article>
 	</section>
 
