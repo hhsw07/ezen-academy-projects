@@ -19,8 +19,9 @@ int i_page = 1;
 if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
 session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page;
-if(lastNo >= sList.size()) lastNo = sList.size();
+//내림차순으로 정렬
+int lastNo = sList.size()-1- (w_size*i_page);
+if(lastNo < 0) lastNo = -1;
 
 Paging pg = new Paging(w_size,p_size,sList.size(),i_page);
 int preNo = pg.getPage_Start()-1;
@@ -98,7 +99,7 @@ int nextNo = pg.getPage_End()+1;
 						<th>수정</th>
 					</tr>
 					<%
-					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
+					for(int idx=sList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
 					%>
 						<tr>
 						<td><%=sList.get(idx).getStore_no() %></td>

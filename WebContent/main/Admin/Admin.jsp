@@ -50,6 +50,8 @@ ArrayList<Inquiry> inquList = new ArrayList<Inquiry>();
 for(int cnt=1; cnt < 17; cnt++){
 	inquList.add(new Inquiry(cnt,"himan"+cnt,"문의 내용","2020-03-11","답변"+cnt));
 }
+	inquList.add(new Inquiry(102,"himan3","환불 받고 싶어요","2020-03-11",""));
+	inquList.add(new Inquiry(103,"himan5","기간 연장 어떻게 하나요?","2020-03-11",""));
 session.setAttribute("inquList", inquList);
 
 
