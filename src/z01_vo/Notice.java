@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Notice> notiList = new ArrayList<Notice>();
+//setAttribute("notiList", notiList);
 public class Notice {
 	private int noti_no; // 공지사항번호
 	private String noti_title;     // 공지제목

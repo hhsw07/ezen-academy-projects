@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Addr> addList = new ArrayList<Addr>();
+//setAttribute("addList", addList);
 public class Addr {
 	private int addr_no; // 배송지번호
 	private String mem_id;     // 아이디

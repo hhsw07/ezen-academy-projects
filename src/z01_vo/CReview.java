@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<CReview> commList = new ArrayList<CReview>();
+//setAttribute("commList", commList);
 public class CReview {
 	private int req_no; // 신청번호
 	private String mem_id;     // 회원아이디

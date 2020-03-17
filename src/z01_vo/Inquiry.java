@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Inquiry> inqList = new ArrayList<Inquiry>();
+//setAttribute("inqList", inqList);
 public class Inquiry {
 	private int inquiry_no; // 문의번호
 	private String mem_id;     // 아이디

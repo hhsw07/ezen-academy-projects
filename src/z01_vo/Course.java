@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Course> couList = new ArrayList<Course>();
+//setAttribute("couList", couList);
 public class Course {
 	private int course_no; // 클래스번호
 	private String mem_id;     // 호스트

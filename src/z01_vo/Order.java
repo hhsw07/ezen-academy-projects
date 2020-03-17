@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Order> oList = new ArrayList<Order>();
+//setAttribute("oList", oList);
 public class Order {
 	private int order_no; // 주문번호
 	private String mem_id;     // 아이디

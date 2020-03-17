@@ -53,6 +53,7 @@ if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.get
 session.setAttribute("i_page",i_page);
 
 int lastNo = w_size*i_page; //4
+int cnt = 1+(w_size*(i_page-1)); //1,5, 9, 13..
 if(lastNo >= notiList.size()) lastNo = notiList.size();
 
 Paging pg = new Paging(w_size,p_size,notiList.size(),i_page);
@@ -65,7 +66,7 @@ int nextNo = pg.getPage_End()+1;
 	<section class="orderlist">
 	<%
 	if(notiList!=null){
-		for(int idx=notiList.size()-1 ; idx>lastNo ; idx--){ //17, 4
+		for(int idx=notiList.size()-cnt ; idx>=notiList.size()-lastNo ; idx--){ 
 	%>
 		<article>
 			<div class="o-info">

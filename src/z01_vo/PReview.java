@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<PReview> prevList = new ArrayList<PReview>();
+//setAttribute("prevList", prevList);
 public class PReview {
 	private int order_no; // 주문번호
 	private String mem_id; // 아이디
