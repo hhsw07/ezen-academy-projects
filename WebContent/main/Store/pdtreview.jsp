@@ -3,11 +3,6 @@
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
     java.text.SimpleDateFormat " 
 %>
-<%	request.setCharacterEncoding("UTF-8");
-	String path = request.getContextPath(); %>
-<%
-
-%>
 
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
@@ -36,7 +31,7 @@
 			.btn{margin-top:18px;}
 			.btn1{width:197px; height:40px; border:1px solid #FA5882; background-color:#FA5882; color:white; font-weight:900; outline:none; cursor:pointer;}
 			.btn2{width:197px; height:40px; border:1px solid #FA5882; background-color:white; color:#FA5882; outline:none; cursor:pointer;}
-			
+			.comment-result ul li{margin-bottom:5px;}
     </style>
     
     <script type="text/javascript">
@@ -101,6 +96,9 @@ if(pReview_date==null) pReview_date=timeS;
 int order_no=0; if(order_noS!=null) order_no=Integer.parseInt(order_noS);
 int pReview_star=0; if(pReview_starS!=null) pReview_star=Integer.parseInt(pReview_starS);
 
+System.out.println("###"+pReview_detail);
+
+
 if(!pReview_detail.equals("")){
 	ArrayList<PReview> commList=null;
 	if(session.getAttribute("commList")!=null){
@@ -124,7 +122,7 @@ if(!pReview_detail.equals("")){
         <p class="title">구매 후기</p>
         <a href="javascript:reviwInput(): onclick=""><button class="review-btn" onclick="reviewInput()">후기 작성</button></a>
       </div>
-      <div class="">
+      <div class="comment-result">
         <ul>
         <%
 		ArrayList<PReview> commList = new ArrayList<PReview>();
@@ -138,7 +136,7 @@ if(!pReview_detail.equals("")){
 		%>
 		<div class="line-review"></div>  
 	    <li name="pReview_detail" ><%=prv.getMem_id()%></li>
-        <li name="pReview_date" ><%=prv.getpReview_date()%></li>
+        <li name="pReview_date" style="margin-bottom:10px;"><%=prv.getpReview_date()%></li>
         <li name="pReview_detail" ><%=prv.getpReview_detail()%></li> 
         <div class="line-review"></div>  
         <%		
