@@ -26,10 +26,61 @@
       .payment-btn-wrap{text-align: center;}
       .payment-btn{width: 200px; height: 40px; border: 1px solid black; background-color: white; 
      				 cursor: pointer;  margin: 10px; outline: none;}
+     				 
+	.btn3{border:1px solid black; background-color: white;}
+
     </style>
+    <script language="JavaScript">
+		var sell_price; // 상품 가격
+		var amount; // 상품 수량
+		function init () {
+			sell_price = document.form.sell_price.value;
+			amount = document.form.amount.value;
+			document.form.sum.value = sell_price;
+			change();
+		}
+		function add () {
+			hm = document.form.amount;
+			sum = document.form.sum;
+			hm.value ++ ;
+			sum.value = parseInt(hm.value) * sell_price;
+		}
+		function del () {
+			hm = document.form.amount;
+			sum = document.form.sum;
+				if (hm.value > 1) {
+					hm.value -- ;
+					sum.value = parseInt(hm.value) * sell_price;
+				}
+		}
+		function change () {
+			hm = document.form.amount;
+			sum = document.form.sum;
+				if (hm.value < 0) {
+					hm.value = 0;
+				}
+			sum.value = parseInt(hm.value) * sell_price;
+		}
+		    buyWrap=document.querySelector(".buy_wrap");
+		    allWrap=document.querySelector(".all_wrap");
+			top=document.querySelector(".top");
+				userTop=document.querySelector(".user_top");
+				menuTop=document.querySelector(".menu_top");
+			middle=document.querySelector(".middle");
+				ads=document.querySelector(".ads");
+			bottom=document.querySelector(".bottom");
+			
+			top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
+			console.log(top.scrollHeight);
+			middle.style.paddingTop = top.scrollHeight+"px";
+			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
+			
+			//최상위 Wrap만 이렇게 해야 오류가 안남..
+			allWrap.style.height = bottom.scrollHeight+"px";
+	</script>
 
   </head>
-  <body>
+  <body onload="init();">
 
       <div class="payment-wrap">
       <div class="class-Dinfo">
@@ -43,7 +94,15 @@
               <ul>
                 <li>호스트이름</li>
                 <li>클래스이름</li>
-                <li>수량</li>
+                <li>
+                	<form name="form" method="get">
+						<input type=hidden name="sell_price" value="21000"> 
+						<input type="button" class="btn3" value=" - " onclick="del();">
+						<input type="text" name="amount" value="1" size="3" onchange="change();" style=" width:15px; border: 1px solid white;">
+						<input type="button" class="btn3" value=" + " onclick="add();"><br>
+						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 42px; font-size:13px; color:#FA5882;">원
+					</form>
+                </li>
                 <li>가격</li>
               </ul>
             </td>

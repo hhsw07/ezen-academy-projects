@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Mileage> ptList = new ArrayList<Mileage>();
+//setAttribute("ptList", ptList);
 public class Mileage {
 	private String m_date; // 적립/사용날짜
 	private String m_detail; // 적립/사용내역

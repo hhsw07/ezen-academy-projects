@@ -1,13 +1,16 @@
 package z01_vo;
-
+//ArrayList<PReview> prevList = new ArrayList<PReview>();
+//setAttribute("prevList", prevList);
 public class PReview {
 	private int order_no; // 주문번호
+	private String mem_id; // 아이디
 	private String pReview_detail;     // 후기내용
 	private int pReview_star;     // 평점
 	private String pReview_date;      // 등록일
-	public PReview(int order_no, String pReview_detail, int pReview_star, String pReview_date) {
+	public PReview(int order_no, String mem_id, String pReview_detail, int pReview_star, String pReview_date) {
 		super();
 		this.order_no = order_no;
+		this.mem_id = mem_id;
 		this.pReview_detail = pReview_detail;
 		this.pReview_star = pReview_star;
 		this.pReview_date = pReview_date;
@@ -17,6 +20,12 @@ public class PReview {
 	}
 	public void setOrder_no(int order_no) {
 		this.order_no = order_no;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	public String getpReview_detail() {
 		return pReview_detail;

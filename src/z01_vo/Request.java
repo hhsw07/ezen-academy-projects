@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Request> reqList = new ArrayList<Request>();
+//setAttribute("reqList", reqList);
 public class Request {
 	private int req_no; // 신청번호
 	private int course_no;     // 클래스번호

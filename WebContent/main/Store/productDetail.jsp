@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
@@ -259,10 +260,6 @@
 		if(pl2.equals("pdtreview")){
 %>
 		<%@include file="pdtreview.jsp"%>
-<%		}
-		if(pl2.equals("productpayment")){
-%>
-		<%@include file="productpayment.jsp"%>
 <%		}
 		if(pl2.equals("pdtrefund")){
 %>

@@ -19,8 +19,9 @@ int i_page = 1;
 if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
 session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page;
-if(lastNo >= notiList.size()) lastNo = notiList.size();
+// 내림차순으로 정렬
+int lastNo = notiList.size()-1- (w_size*i_page);
+if(lastNo < 0) lastNo = -1;
 
 Paging pg = new Paging(w_size,p_size,notiList.size(),i_page);
 int preNo = pg.getPage_Start()-1;
@@ -30,7 +31,7 @@ int nextNo = pg.getPage_End()+1;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jspexp</title>
+<title>하비팩토리 - 취미를 통해 일상을 가꾸자</title>
 <style type="text/css">
     a{text-decoration:none; color:black;}
 	.middle{position: relative; width:1080px;}
@@ -100,7 +101,7 @@ int nextNo = pg.getPage_End()+1;
 						<th>수정</th>
 					</tr>
 					<%
-					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
+					for(int idx=notiList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
 					%>
 						<tr>
 						<td><%=notiList.get(idx).getNoti_no() %></td>
@@ -108,7 +109,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=notiList.get(idx).getNoti_detail() %></td>
 						<td><%=notiList.get(idx).getNoti_date() %></td>
 						<td><%=notiList.get(idx).getNoti_code() %></td>
-						<td onclick="goDetail(<%=idx %>)">수정</a></td>
+						<td onclick="goDetail(<%=idx %>)">수정</td>
 						</tr>
 					<%
 					} %>

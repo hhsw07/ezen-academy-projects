@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Member> memList = new ArrayList<Member>();
+//setAttribute("memList", memList);
 public class Member {
 	private String mem_id; // 아이디
 	private int mem_no;     // 회원번호

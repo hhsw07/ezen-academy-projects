@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Course> couList = new ArrayList<Course>();
+//setAttribute("couList", couList);
 public class Course {
 	private int course_no; // 클래스번호
 	private String mem_id;     // 호스트
@@ -12,6 +13,7 @@ public class Course {
 	private int course_price;     // 가격
 	private String course_img;     // 클래스이미지
 	private String course_opendate;      // 수강일
+	
 	public Course(int course_no, String mem_id, String course_inputdate, String course_title, String course_kind,
 			String course_detail, int course_curCnt, int course_totCnt, int course_price, String course_img,
 			String course_opendate) {

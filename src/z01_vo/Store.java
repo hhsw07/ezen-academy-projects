@@ -1,5 +1,6 @@
 package z01_vo;
-
+//ArrayList<Store> sList = new ArrayList<Store>();
+//setAttribute("sList", sList);
 public class Store {
 	private int store_no; // 상품번호
 	private String mem_id;     // 호스트

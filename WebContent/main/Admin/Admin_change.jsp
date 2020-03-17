@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>하비팩토리 - 취미를 통해 일상을 가꾸자</title>
 </head>
 
 <body>
