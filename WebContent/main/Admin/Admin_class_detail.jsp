@@ -6,7 +6,7 @@
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 String strIdx = request.getParameter("cIdx");
 int idx = Integer.parseInt(strIdx);
 String course_title = request.getParameter("course_title");

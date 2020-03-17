@@ -16,39 +16,39 @@
 <%
 
 //course 데이터 수정 후 list 수정
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+ArrayList<Course> couList = (ArrayList<Course>)session.getAttribute("couList");
 String cIdx = request.getParameter("cIdx");
 if(cIdx!=null){
 	int idx = Integer.parseInt(cIdx);
 	String mem_id = request.getParameter("mem_id");
-	coList.get(idx).setMem_id(mem_id);
+	couList.get(idx).setMem_id(mem_id);
 	
 	String course_title = request.getParameter("course_title");
-	coList.get(idx).setCourse_title(course_title);
+	couList.get(idx).setCourse_title(course_title);
 	
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
 	Date time = new Date();
 	String course_inputdate = format1.format(time);
-	coList.get(idx).setCourse_inputdate(course_inputdate);
+	couList.get(idx).setCourse_inputdate(course_inputdate);
 	
 	String course_kind = request.getParameter("course_kind");
-	coList.get(idx).setCourse_kind(course_kind);
+	couList.get(idx).setCourse_kind(course_kind);
 	String course_detail = request.getParameter("course_detail");
-	coList.get(idx).setCourse_detail(course_detail);
+	couList.get(idx).setCourse_detail(course_detail);
 	
 	String strCourse_totCnt = request.getParameter("course_totCnt");
 	int course_totCnt = Integer.parseInt(strCourse_totCnt);
-	coList.get(idx).setCourse_totCnt(course_totCnt);
+	couList.get(idx).setCourse_totCnt(course_totCnt);
 	
 	String strCourse_price = request.getParameter("course_price");
 	int course_price=Integer.parseInt(strCourse_price);
-	coList.get(idx).setCourse_totCnt(course_totCnt);
+	couList.get(idx).setCourse_totCnt(course_totCnt);
 	
 	String course_img = request.getParameter("course_img");
-	coList.get(idx).setCourse_totCnt(course_totCnt);
+	couList.get(idx).setCourse_totCnt(course_totCnt);
 	
 	String course_opendate = request.getParameter("course_opendate");
-	coList.get(idx).setCourse_totCnt(course_totCnt);
+	couList.get(idx).setCourse_totCnt(course_totCnt);
 	
 	response.sendRedirect("Admin_class.jsp");
 }
@@ -102,13 +102,13 @@ if(nIdx!=null){
 }
 
 //문의 데이터 수정 후 list 수정
-ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
+ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 String iIdx = request.getParameter("iIdx");
 if(iIdx!=null){
 	int idx = Integer.parseInt(iIdx);
 	
 	String inquiry_re = request.getParameter("inquiry_re");
-	inquList.get(idx).setInquiry_re(inquiry_re);
+	inqList.get(idx).setInquiry_re(inquiry_re);
 	
 	response.sendRedirect("Admin_inquiry.jsp");
 }

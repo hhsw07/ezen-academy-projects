@@ -15,44 +15,44 @@
 <%
 // Addr 임의 데이터 생성
 /* (int)배송지번호,아이디, 배송지명, 수령인, 연락처, 추가연락처, 우편번호, 주소, 상세주소  */
-ArrayList<Addr> addrList = new ArrayList<Addr>();
+ArrayList<Addr> addList = new ArrayList<Addr>();
 for(int cnt=1;cnt<=16;cnt++){
-	addrList.add(new Addr(cnt, "홍길동"+cnt,"우리집","김길동","010-0001-"+(1000+cnt) ,
+	addList.add(new Addr(cnt, "홍길동"+cnt,"우리집","김길동","010-0001-"+(1000+cnt) ,
 			"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
 }
-session.setAttribute("addrList", addrList);
+session.setAttribute("addList", addList);
 
 
 // Course 임의 데이터 생성
 /* (int)클래스번호, 호스트, 클래스등록일, 클래스명, 클래스종류(D:원데이클래스/M:정기클래스), 상세설명, (int)현인원
 	(int)최대인원, (int)가격, 클래스이미지, 수강일 */
-ArrayList<Course> coList = new ArrayList<Course>();
+ArrayList<Course> couList = new ArrayList<Course>();
 for(int cnt=1;cnt<=16;cnt++){
-	coList.add(new Course(cnt, "홍길동"+cnt,"2020-03-02","비누만들기"+cnt,"D",
+	couList.add(new Course(cnt, "홍길동"+cnt,"2020-03-02","비누만들기"+cnt,"D",
 			"재밌는 비누만들기",0,10,30000,"","2020-03-10"));
 }
-session.setAttribute("coList", coList);
+session.setAttribute("couList", couList);
 
 
 // CReview 임의 데이터 생성
-/* (int)신청번호, 후기내용, 평점, 등록일  */
-ArrayList<CReview> cReList = new ArrayList<CReview>();
+/* (int)신청번호, 회원아이디, 후기내용, 평점, 등록일  */
+ArrayList<CReview> commList = new ArrayList<CReview>();
 for(int cnt=1;cnt<=16;cnt++){
 	int rPt = (int)(Math.random()*6);
-	cReList.add(new CReview(cnt, "재밌어요"+cnt,rPt, "2020-01-01"));
+	commList.add(new CReview(cnt,"홍길동"+cnt, "재밌어요"+cnt,rPt, "2020-01-01"));
 }
-session.setAttribute("cReList", cReList);
+session.setAttribute("commList", commList);
 
 
 // Inquiry 임의 데이터 생성
 /* (int)문의번호, 아이디, 문의내용, 문의날짜, 답변내용 */
-ArrayList<Inquiry> inquList = new ArrayList<Inquiry>();
+ArrayList<Inquiry> inqList = new ArrayList<Inquiry>();
 for(int cnt=1; cnt < 17; cnt++){
-	inquList.add(new Inquiry(cnt,"himan"+cnt,"문의 내용","2020-03-11","답변"+cnt));
+	inqList.add(new Inquiry(cnt,"himan"+cnt,"문의 내용","2020-03-11","답변"+cnt));
 }
-	inquList.add(new Inquiry(102,"himan3","환불 받고 싶어요","2020-03-11",""));
-	inquList.add(new Inquiry(103,"himan5","기간 연장 어떻게 하나요?","2020-03-11",""));
-session.setAttribute("inquList", inquList);
+inqList.add(new Inquiry(102,"himan3","환불 받고 싶어요","2020-03-11",""));
+inqList.add(new Inquiry(103,"himan5","기간 연장 어떻게 하나요?","2020-03-11",""));
+session.setAttribute("inqList", inqList);
 
 
 //Member 임의 데이터 생성
@@ -66,6 +66,18 @@ for(int cnt=3;cnt<=16;cnt++){
 	memList.add(new Member("himan"+cnt,cnt,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N",100+cnt));
 }
 session.setAttribute("memList", memList);
+
+
+//Mileage 임의 데이터 생성
+/* 적립/사용날짜, 적립/사용내역, (int)마일리지 */
+ArrayList<Mileage> ptList = new ArrayList<Mileage>();
+for(int cnt=1; cnt < 5; cnt++){
+	ptList.add(new Mileage("2020-03-11","적립",20+cnt));
+}
+for(int cnt=6; cnt < 10; cnt++){
+	ptList.add(new Mileage("2020-03-11","사용",10+cnt));
+}
+session.setAttribute("ptList", ptList);
 
 
 // Notice 임의 데이터 생성
@@ -96,29 +108,29 @@ session.setAttribute("notiList", notiList);
 
 // Order 임의 데이터 생성
 /* (int)주문번호, 아이디, (int)상품번호, 구매날짜, 주문상태, (int)구매갯수, 택배회사, 운송장번호 */
-ArrayList<Order> orderList = new ArrayList<Order>();
+ArrayList<Order> oList = new ArrayList<Order>();
 for(int cnt=1; cnt < 22; cnt++){
-	orderList.add(new Order(cnt,"himan"+cnt,cnt,"2020-03-11","배송완료",2,"한진","111000"+(100+cnt)));
+	oList.add(new Order(cnt,"himan"+cnt,cnt,"2020-03-11","배송완료",2,"한진","111000"+(100+cnt)));
 }
-session.setAttribute("orderList", orderList);
+session.setAttribute("oList", oList);
 
 
 // PReview 임의 데이터 생성
-/* (int)주문번호, 후기내용, (int)평점, 등록일 */
-ArrayList<PReview> pList = new ArrayList<PReview>();
+/* (int)주문번호, 아이디, 후기내용, (int)평점, 등록일 */
+ArrayList<PReview> prevList = new ArrayList<PReview>();
 for(int cnt=1; cnt < 22; cnt++){
-	pList.add(new PReview(cnt,"좋아요"+cnt,cnt%5,"2020-03-11"));
+	prevList.add(new PReview(cnt,"himan"+cnt,"좋아요"+cnt,cnt%5,"2020-03-11"));
 }
-session.setAttribute("pList", pList);
+session.setAttribute("prevList", prevList);
 
 
 //Request 임의 데이터 생성
 /* (int)신청번호, (int)클래스번호, 아이디, 신청날짜, 신청상태 */
-ArrayList<Request> requestList = new ArrayList<Request>();
+ArrayList<Request> reqList = new ArrayList<Request>();
 for(int cnt=1; cnt < 22; cnt++){
-	requestList.add(new Request(cnt,10+cnt,"himan"+(cnt+1),"2020-03-11","신청완료"));
+	reqList.add(new Request(cnt,10+cnt,"himan"+(cnt+1),"2020-03-11","신청완료"));
 }
-session.setAttribute("requestList", requestList);
+session.setAttribute("reqList", reqList);
 
 
 // Store 임의 데이터 생성

@@ -6,7 +6,7 @@
 	String path = request.getContextPath(); %>
 
 <%
-	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 
 int w_size = 10;
 int p_size = 5;

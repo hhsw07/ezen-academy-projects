@@ -6,7 +6,7 @@
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 	String course_title = request.getParameter("course_title");
 	
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
@@ -31,7 +31,7 @@
 		
 		coList.add(new Course(course_no,mem_id,course_inputdate,course_title,course_kind,
 				course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate));
-		session.setAttribute("coList", coList);
+		session.setAttribute("couList", coList);
 		response.sendRedirect("Admin_class.jsp");
 	}
 	%>	

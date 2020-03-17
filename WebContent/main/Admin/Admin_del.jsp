@@ -23,11 +23,11 @@ response.sendRedirect("Admin_mem.jsp");
 }
 
 //course 데이터 삭제 후 list 수정
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("coList");
+ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 String cIdx = request.getParameter("cIdx");
 if(cIdx!=null){
 coList.remove(Integer.parseInt(cIdx));
-session.setAttribute("coList", coList);
+session.setAttribute("couList", coList);
 response.sendRedirect("Admin_class.jsp");
 }
 
@@ -50,11 +50,11 @@ response.sendRedirect("Admin_notice.jsp");
 }
 
 //문의 데이터 삭제 후 list 수정
-ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
+ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 String iIdx = request.getParameter("iIdx");
 if(iIdx!=null){
-inquList.remove(Integer.parseInt(iIdx));
-session.setAttribute("inquList", inquList);
+	inqList.remove(Integer.parseInt(iIdx));
+session.setAttribute("inqList", inqList);
 response.sendRedirect("Admin_inquiry.jsp");
 }
 

@@ -6,7 +6,7 @@
 	String path = request.getContextPath(); %>
 
 <%
-ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
+ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

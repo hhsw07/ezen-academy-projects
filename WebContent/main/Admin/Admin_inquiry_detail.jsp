@@ -5,7 +5,7 @@
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inquList");
+ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 String strIdx = request.getParameter("iIdx");
 int idx = Integer.parseInt(strIdx);
 
@@ -67,13 +67,13 @@ if(inquiry_detail != null){
 				<table>
 					<tr>
 						<th>문의 번호</th>
-						<td><input type="text" name="inquiry_no" value="<%=inquList.get(idx).getInquiry_no() %>" readonly/></td>
+						<td><input type="text" name="inquiry_no" value="<%=inqList.get(idx).getInquiry_no() %>" readonly/></td>
 						<th>아이디 </th>
-						<td><input type="text" name="mem_id" value="<%=inquList.get(idx).getMem_id() %>" readonly /></td>
+						<td><input type="text" name="mem_id" value="<%=inqList.get(idx).getMem_id() %>" readonly /></td>
 					</tr>
 					<tr>
 						<th>등록일</th>
-						<td><input type="date" value="<%=inquList.get(idx).getInquiry_date() %>"  readonly/>
+						<td><input type="date" value="<%=inqList.get(idx).getInquiry_date() %>"  readonly/>
 						<th>답변여부</th>
 						<td><label><input type="radio" id="kind01" disabled />완료</label> 
 							<label><input type="radio" id="kind02" disabled />대기중</label></td>
@@ -84,7 +84,7 @@ if(inquiry_detail != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="inquiry_detail" rows="5" readonly><%=inquList.get(idx).getInquiry_detail() %></textarea></td>
+						<textarea name="inquiry_detail" rows="5" readonly><%=inqList.get(idx).getInquiry_detail() %></textarea></td>
 					</tr>
 					<tr>
 						<th>답변내용</th>
@@ -92,7 +92,7 @@ if(inquiry_detail != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="inquiry_re" rows="5" ><%=inquList.get(idx).getInquiry_re() %></textarea></td>
+						<textarea name="inquiry_re" rows="5" ><%=inqList.get(idx).getInquiry_re() %></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >
@@ -112,7 +112,7 @@ if(inquiry_detail != null){
 		}
 	}
 		
-	var inquiry_code = "<%=inquList.get(idx).getInquiry_re() %>";
+	var inquiry_code = "<%=inqList.get(idx).getInquiry_re() %>";
 	console.log(inquiry_code);
 	
 	if(inquiry_code == null || inquiry_code == ""){
