@@ -260,10 +260,6 @@
 %>
 		<%@include file="pdtreview.jsp"%>
 <%		}
-		if(pl2.equals("productpayment")){
-%>
-		<%@include file="productpayment.jsp"%>
-<%		}
 		if(pl2.equals("pdtrefund")){
 %>
 		<%@include file="pdtrefund.jsp"%>
