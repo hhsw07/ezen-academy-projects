@@ -31,8 +31,7 @@ String path = request.getContextPath(); %>
 	.point-wrap{padding:0 10%; color:#a1a4a8;}
 	.point_page{width:1050px; margin:0 auto;}
 	.pointinfo-cont{padding:32px 0; margin:40px 0 0; border:5px solid #DFDFDF;}
-	.reply-info-area-type02{line-height:1.71;}
-	.reply-info-area{height:auto; font-size:14px; color:#a1a4a8; overflow:hidden;}
+	.pointinfo_show{line-height:1.71; height:auto; font-size:14px; color:#a1a4a8; overflow:hidden;}
 	.point-info{width:18%; float:left; padding:0;text-align:center;}
 	.point-info-tit{font-size:14px; line-height:2.14;}
 	.point-info-p{margin:2px 0; color:#2f3338; font-size:18px; line-height:1.67;}
@@ -49,40 +48,34 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-	ArrayList<Mileage> ptList = new ArrayList<Mileage>();
-	if(session.getAttribute("ptList")!=null){
-		ptList = (ArrayList<Mileage>)session.getAttribute("ptList");
-	} else{
-		Mileage pt1 = new Mileage("2019.10.13", "회원가입 포인트", 3000);
-		Mileage pt2 = new Mileage("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
-		Mileage pt3 = new Mileage("2020.03.04", "상품구매", -5020);
-		Mileage pt4 = new Mileage("2020.03.04", "주문취소", 5020);
-		ptList.add(pt1);
-		ptList.add(pt2);
-		ptList.add(pt3);
-		ptList.add(pt4);
-		session.setAttribute("ptList", ptList);
-	}
-	
+	//ArrayList<Point> ptList = (ArrayList<Point>)session.getAttribute("ptList");
+ArrayList<Point> ptList = new ArrayList<Point>();
+Point pt1 = new Point("2019.10.13", "회원가입 포인트", 3000);
+Point pt2 = new Point("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
+Point pt3 = new Point("2020.03.04", "상품구매", -5020);
+Point pt4 = new Point("2020.03.04", "주문취소", 5020);
+ptList.add(pt1);
+ptList.add(pt2);
+ptList.add(pt3);
+ptList.add(pt4);
 
-/* 페이징 처리
-Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-*/
+	/* 페이징 처리
+	Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+	Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
+	*/
 
-int w_size = 10;
-int p_size = 2;
-int i_page = 1;
-if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
-session.setAttribute("i_page",i_page);
+	int w_size = 5;
+	int p_size = 2;
+	int i_page = 1;
+	if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+	session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page; //4
-int cnt = 1+(w_size*(i_page-1)); //1,5, 9, 13..
-if(lastNo >= ptList.size()) lastNo = ptList.size();
+	int lastNo = ptList.size()-1- (w_size*i_page);
+	if(lastNo < 0) lastNo = -1;
 
-Paging pg = new Paging(w_size,p_size,ptList.size(),i_page);
-int preNo = pg.getPage_Start()-1;
-int nextNo = pg.getPage_End()+1;
+	Paging pg = new Paging(w_size,p_size,ptList.size(),i_page);
+	int preNo = pg.getPage_Start()-1;
+	int nextNo = pg.getPage_End()+1;
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -119,7 +112,7 @@ int nextNo = pg.getPage_End()+1;
 		<article class="point-wrap">
 			<div class="point_page">
 				<div class="pointinfo-cont">
-					<div class="reply-info-area reply-info-area-type02">
+					<div class="pointinfo_show">
 						<div class="point-info">
 							<div class="point-info-tit">현재 마일리지</div>
 							<div class="point-info-p">5,020P</div>
@@ -153,25 +146,28 @@ int nextNo = pg.getPage_End()+1;
 							</thead>
 							<tbody class="point_list_wrap">
 					<%
-						for(int idx=lastNo; idx > lastNo ; idx--){
+					if(ptList!=null){
+						for(int idx=ptList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
+							Point pt = ptList.get(idx);
 					%>
 								<tr>
-									<td class="point-td"><%=ptList.get(idx).getM_date() %></td>
-									<td class="point-td"><%=ptList.get(idx).getM_detail() %></td>
+									<td class="point-td"><%=pt.getPt_date() %></td>
+									<td class="point-td"><%=pt.getPt_detail() %></td>
 						<%
-							if(ptList.get(idx).getPoint()>=0){
+							if(pt.getPt_mileage()>=0){
 						%>
-									<td class="point-td txt-color-r">+<%=ptList.get(idx).getPoint() %>p</td>
+									<td class="point-td txt-color-r">+<%=ptList.get(idx).getPt_mileage() %>p</td>
 						<%
 							} else{
 						%>
-									<td class="point-td"><%=ptList.get(idx).getPoint() %>p</td>
+									<td class="point-td"><%=pt.getPt_mileage() %>p</td>
 						<%
 							}
 						%>
 								</tr>
 					<%
 						}
+					}
 					%>
 							</tbody>
 						</table>

@@ -24,16 +24,24 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-	ArrayList<Mileage> ptList = new ArrayList<Mileage>();
-	Mileage pt1 = new Mileage("2019.10.13", "회원가입 포인트", 3000);
-	Mileage pt2 = new Mileage("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
-	Mileage pt3 = new Mileage("2020.03.04", "상품구매", -5020);
-	Mileage pt4 = new Mileage("2020.03.04", "주문취소", 5020);
+	ArrayList<Point> ptList = new ArrayList<Point>();
+	Point pt1 = new Point("2019.10.13", "회원가입 포인트", 3000);
+	Point pt2 = new Point("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
+	Point pt3 = new Point("2020.03.04", "상품구매", -5020);
+	Point pt4 = new Point("2020.03.04", "주문취소", 5020);
 	ptList.add(pt1);
 	ptList.add(pt2);
 	ptList.add(pt3);
 	ptList.add(pt4);
 	session.setAttribute("ptList", ptList);
+	
+	// Addr 임의 데이터 생성
+	ArrayList<Shipment> shipList = new ArrayList<Shipment>();
+	for(int cnt=1;cnt<=16;cnt++){
+		shipList.add(new Shipment("우리집","김길동","010-0001-"+(1000+cnt) ,
+				"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
+	}
+	session.setAttribute("shipList", shipList);
 %>
 <body>
 <!-- 메뉴 -->

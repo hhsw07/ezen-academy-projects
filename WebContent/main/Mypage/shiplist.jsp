@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"    
+    import="java.util.*, z01_vo.*"%>
+<% request.setCharacterEncoding("UTF-8");
+String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,9 +50,37 @@
 	.noaddr-tit{font-size:24px;font-weight:bold;color:#3d4248;}
 	.noaddr-txt{margin:5px 0 0;font-size:16px;color:#a1a4a8;}
 	.btn-noaddr{width:260px;height:64px;margin:30px auto 0;font-size:16px;line-height:62px;display:block;color:#f1645d;border:1px solid #f1645d; text-align:center;}
-	
+/* 페이징 */	
+	.paging{text-align:center; width:980px; position:absolute; bottom:10px}
+	.pageNo{color:#f36359;}	
 </style>
 </head>
+<%
+ArrayList<Shipment> shipList = new ArrayList<Shipment>();
+for(int cnt=1;cnt<=16;cnt++){
+	shipList.add(new Shipment("우리집","김길동","010-0001-"+(1000+cnt) ,
+			"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
+}
+//ArrayList<Shipment> shipList = (ArrayList<Shipment>)session.getAttribute("shipList");
+
+/* 페이징 처리
+Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
+*/
+
+int w_size = 5;
+int p_size = 10;
+int i_page = 1;
+if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+session.setAttribute("i_page",i_page);
+
+int lastNo = w_size*i_page;
+if(lastNo >= shipList.size()) lastNo = shipList.size();
+
+Paging pg = new Paging(w_size,p_size,shipList.size(),i_page);
+int preNo = pg.getPage_Start()-1;
+int nextNo = pg.getPage_End()+1;
+%>
 <body>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -83,44 +114,75 @@
 	
 <!-- 배송지 목록 -->
 	<section class="mypage_content">
+	<%
+	if(shipList!=null){
+	%>
 		<article class="shiplist">
+	<%
+		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
+			Shipment s = shipList.get(idx);
+	%>
 			<div class="addrlist-wrap">
 				<div class="addrlist-cont">
-					<div class="addrlist-title">집
+					<div class="addrlist-title"><%=s.getShip_tit() %>
 						<!-- <span class="txt-color-r">[기본]</span> --></div>
 					<div class="addrlist-area addrlist-name">
 						<div class="addrlist-tit">수령인</div>
-						<div class="addrlist-txt">홍길동</div>
+						<div class="addrlist-txt"><%=s.getShip_name() %></div>
 					</div>
 					<div class="addrlist-area addrlist-phone">
 						<div class="addrlist-tit">휴대폰번호</div>
-						<div class="addrlist-txt">01012345678</div>
+						<div class="addrlist-txt"><%=s.getShip_tel() %></div>
 					</div>
 					<div class="addrlist-area addrlist-address">
 						<div class="addrlist-tit">주소지</div>
-						<div class="addrlist-txt">(우편번호) 주소주소주소주소주소주소주소주소</div>
+						<div class="addrlist-txt">(<%=s.getShip_zip() %>) <%=s.getShip_addr() %><%=s.getShip_addr2() %></div>
 					</div>
 					<div class="addrlist-btn">
 						<a href="#link" title="수정" data-arr-idx="0" class="btn-addrlist">수정</a>
 						<a href="#link" title="삭제" data-address-id="14500" class="btn-addrlist">삭제</a>
 					</div>
 				</div>
-				<div class="paging-num-wrap">
-					<a href="#link" title="1" class="btn-num btn-num-on">1</a>
-				</div>
 			</div>
-			<div class="edit-delivery-wrap" style="display:none;"></div>
+			<%} %>
+			<div class="paging">
+				<h4>
+				<%
+				if(pg.isPre()){
+				%>
+					<a href="shiplist.jsp?i_page=<%=preNo %>">Pre</a>
+				<%
+				}
+				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
+					if(i == i_page){
+				%>
+					<a class="pageNo" href="shiplist.jsp?i_page=<%=i %>" ><%=i %></a>
+				<%	}else{ %>
+					<a href="shiplist.jsp?i_page=<%=i %>"><%=i %></a>
+				<%	}
+				}
+				if(pg.isNext()){
+				%>
+					<a href="shiplist.jsp?i_page=<%=nextNo %>">Next</a>
+				<%} %>
+				</h4>	
+			</div>
 		</article>
+	<%} %>
 	<!-- 배송지 없을 때 -->
+	<%
+	if(shipList.size()==0){
+	%>
 		<article class="mymenu-content">
 			<div class="addrlist-wrap">
 				<div class="noaddr-wrap">
 					<div class="noaddr-tit">아직 등록된 배송지가 없습니다.</div>
 					<div class="noaddr-txt">배송지를 등록해주세요.</div>
-					<a href="#delevery" title="배송지 등록하기" class="btn-noaddr">배송지 등록하기</a>
+					<a href="#" title="배송지 등록하기" class="btn-noaddr">배송지 등록하기</a>
 				</div>
 			</div>
 		</article>
+	<%} %>
 	</section>
 
 </body>

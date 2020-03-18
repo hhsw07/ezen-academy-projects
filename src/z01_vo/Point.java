@@ -1,49 +1,38 @@
 package z01_vo;
 
 public class Point {
-	private int point_no; // 포인트코드
-	private String mem_id; // 아이디
-	private String point_date; // 적립/사용날짜
-	private String point_detail; // 적립/사용내역
-	private int point_mileage; // 마일리지
-	public Point(int point_no, String mem_id, String point_date, String point_detail, int point_mileage) {
+	private String pt_date; // 적립/사용날짜
+	private String pt_detail; // 적립/사용내역
+	private int pt_mileage; // 마일리지
+	public Point() {
 		super();
-		this.point_no = point_no;
-		this.mem_id = mem_id;
-		this.point_date = point_date;
-		this.point_detail = point_detail;
-		this.point_mileage = point_mileage;
+		// TODO Auto-generated constructor stub
 	}
-	public int getPoint_no() {
-		return point_no;
+	public Point(String pt_date, String pt_detail, int pt_mileage) {
+		super();
+		this.pt_date = pt_date;
+		this.pt_detail = pt_detail;
+		this.pt_mileage = pt_mileage;
 	}
-	public void setPoint_no(int point_no) {
-		this.point_no = point_no;
+	public String getPt_date() {
+		return pt_date;
 	}
-	public String getMem_id() {
-		return mem_id;
+	public void setPt_date(String pt_date) {
+		this.pt_date = pt_date;
 	}
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
+	public String getPt_detail() {
+		return pt_detail;
 	}
-	public String getPoint_date() {
-		return point_date;
+	public void setPt_detail(String pt_detail) {
+		this.pt_detail = pt_detail;
 	}
-	public void setPoint_date(String point_date) {
-		this.point_date = point_date;
+	public int getPt_mileage() {
+		return pt_mileage;
 	}
-	public String getPoint_detail() {
-		return point_detail;
+	public void setPt_mileage(int pt_mileage) {
+		this.pt_mileage = pt_mileage;
 	}
-	public void setPoint_detail(String point_detail) {
-		this.point_detail = point_detail;
-	}
-	public int getPoint_mileage() {
-		return point_mileage;
-	}
-	public void setPoint_mileage(int point_mileage) {
-		this.point_mileage = point_mileage;
-	}
+	
 	
 
 }
