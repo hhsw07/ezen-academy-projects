@@ -133,7 +133,7 @@
 <%		}
 		if(pl.equals("classDetail")){
 %>
-			<%@include file="Class/classDetail.jsp"%>
+			<%-- <%@include file="Class/classDetail.jsp"%> --%>
 <%		}
 		if(pl.equals("productList")){
 %>
@@ -141,7 +141,7 @@
 <%		}
 		if(pl.equals("productDetail")){
 %>
-			<%@include file="Store/productDetail.jsp"%>
+			<%-- <%@include file="Store/productDetail.jsp"%> --%>
 <%		}
 		if(pl.equals("mypage_order")){
 %>
