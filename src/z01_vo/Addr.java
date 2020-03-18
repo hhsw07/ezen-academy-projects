@@ -12,6 +12,10 @@ public class Addr {
 	private String addr_address;     // 주소
 	private String addr_address2;      // 상세주소
 	
+	public Addr() {
+		super();
+	}
+
 	public Addr(int addr_no, String mem_id, String addr_title, String addr_name, String addr_phone, String addr_phone2,
 			String addr_mailAddr, String addr_address, String addr_address2) {
 		super();

@@ -10,6 +10,11 @@ public class Order {
 	private int order_cnt;     // 구매갯수
 	private String order_delicompany;     // 택배회사
 	private String order_delicode;      // 운송장번호
+	
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Order(int order_no, String mem_id, int store_no, String order_date, String order_code, int order_cnt,
 			String order_delicompany, String order_delicode) {
 		super();

@@ -7,6 +7,11 @@ public class Inquiry {
 	private String inquiry_detail;     // 문의내용
 	private String inquiry_date;     // 문의날짜
 	private String inquiry_re;      // 답변내용
+	
+	public Inquiry() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Inquiry(int inquiry_no, String mem_id, String inquiry_detail, String inquiry_date, String inquiry_re) {
 		super();
 		this.inquiry_no = inquiry_no;

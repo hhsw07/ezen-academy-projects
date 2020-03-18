@@ -40,7 +40,7 @@
 </head>
 
 <body>
-
+<div class="notice_wrap" style="margin:0 auto;">
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
 		<nav class="mynav">
@@ -60,16 +60,23 @@
 			</ul>
 		</nav>
 	</div>
-<%	String sv = null;
-sv = request.getParameter("service");
-if(sv==null){
-%>
-	<%@include file="notice.jsp" %>
-<%	}else{ 
-		if(sv.equals("notice")){%>	
-			<%@include file="notice.jsp" %>
-<%	}
-}
-%>
+	<%	String sv = null;
+	sv = request.getParameter("service");
+	if(sv==null){
+	%>
+		<%@include file="notice.jsp" %>
+	<%	}else{ 
+			if(sv.equals("notice")){
+	%>	
+				<%@include file="notice.jsp" %>
+	<%		}
+			if(sv.equals("noticeDetail")){
+	%>
+				<%@include file="noticeDetail.jsp" %>
+	<%			
+			}
+		}
+	%>
+</div>
 </body>
 </html>

@@ -13,10 +13,15 @@ public class Course {
 	private int course_price;     // 가격
 	private String course_img;     // 클래스이미지
 	private String course_opendate;      // 수강일
+	private String course_category;		// 수업분류
 	
+	public Course() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Course(int course_no, String mem_id, String course_inputdate, String course_title, String course_kind,
 			String course_detail, int course_curCnt, int course_totCnt, int course_price, String course_img,
-			String course_opendate) {
+			String course_opendate, String course_category) {
 		super();
 		this.course_no = course_no;
 		this.mem_id = mem_id;
@@ -29,6 +34,7 @@ public class Course {
 		this.course_price = course_price;
 		this.course_img = course_img;
 		this.course_opendate = course_opendate;
+		this.course_category = course_category;
 	}
 	public int getCourse_no() {
 		return course_no;
@@ -95,6 +101,12 @@ public class Course {
 	}
 	public void setCourse_opendate(String course_opendate) {
 		this.course_opendate = course_opendate;
+	}
+	public String getCourse_category() {
+		return course_category;
+	}
+	public void setCourse_category(String course_category) {
+		this.course_category = course_category;
 	}
 	
 	

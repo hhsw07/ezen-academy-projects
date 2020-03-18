@@ -11,9 +11,13 @@ public class Member {
 	private String mem_birth;     // 생년월일
 	private String mem_phone;     // 휴대폰
 	private String mem_code;     // 등급
-	private int mem_mileage;      // 마일리지
+	
+	public Member() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Member(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
-			String mem_birth, String mem_phone, String mem_code, int mem_mileage) {
+			String mem_birth, String mem_phone, String mem_code) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_no = mem_no;
@@ -24,7 +28,6 @@ public class Member {
 		this.mem_birth = mem_birth;
 		this.mem_phone = mem_phone;
 		this.mem_code = mem_code;
-		this.mem_mileage = mem_mileage;
 	}
 	public String getMem_id() {
 		return mem_id;
@@ -79,12 +82,6 @@ public class Member {
 	}
 	public void setMem_code(String mem_code) {
 		this.mem_code = mem_code;
-	}
-	public int getMem_mileage() {
-		return mem_mileage;
-	}
-	public void setMem_mileage(int mem_mileage) {
-		this.mem_mileage = mem_mileage;
 	}
 	
 	

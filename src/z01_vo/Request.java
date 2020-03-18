@@ -7,6 +7,11 @@ public class Request {
 	private String mem_id;     // 아이디
 	private String req_date;     // 신청날짜
 	private String req_code;      // 신청상태
+	
+	public Request() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Request(int req_no, int course_no, String mem_id, String req_date, String req_code) {
 		super();
 		this.req_no = req_no;

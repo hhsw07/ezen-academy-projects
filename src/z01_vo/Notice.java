@@ -7,6 +7,10 @@ public class Notice {
 	private String noti_detail;     // 공지내용
 	private String noti_date;     // 공지등록일
 	private String noti_code;      // 중요여부
+	
+	public Notice() {
+		super();
+	}
 	public Notice(int noti_no, String noti_title, String noti_detail, String noti_date, String noti_code) {
 		super();
 		this.noti_no = noti_no;
