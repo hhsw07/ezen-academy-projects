@@ -42,11 +42,8 @@
 /* 구매내역 없음 */
 	.o-none{text-align:center; margin-top:50px; width:100%;}	
 /* 페이징 */	
-	.paging {text-align:center; width:980px; position:absolute; bottom:10px}
+	.paging{text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
-	.page_num{margin:20px auto 0; padding:110px 10% 0; text-align:center; width:724px; position:absolute; bottom:1px;}
-	.btn_num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
-	.btn_num-on{color:#f1645d; border:1px solid #f1645d;}
 </style>
 </head>
 <%
@@ -150,7 +147,7 @@ int nextNo = pg.getPage_End()+1;
 		</div>
 	<%}
 	%>	
-	<div class="page_num">
+	<div class="paging">
 			<h4>
 			<%
 			if(pg.isPre()){
@@ -161,9 +158,9 @@ int nextNo = pg.getPage_End()+1;
 			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
 				if(i == i_page){
 			%>
-				<a class="btn_num btn_num-on" href="?page=mypage_order&i_page=<%=i %>" ><%=i %></a>
+				<a class="pageNo" href="?page=mypage_order&i_page=<%=i %>" ><%=i %></a>
 			<%	}else{ %>
-				<a class="btn_num" href="?page=mypage_order&i_page=<%=i %>"><%=i %></a>
+				<a href="?page=mypage_order&i_page=<%=i %>"><%=i %></a>
 			<%	}
 			}
 			if(pg.isNext()){

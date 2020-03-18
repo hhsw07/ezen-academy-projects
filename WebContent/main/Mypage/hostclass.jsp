@@ -35,7 +35,8 @@
 	.hc_listinfo{text-align:left; height:60px; margin:14px 0 0; position:relative;}
 	.hc_listname{margin-top:2px; font-size:16px; line-height:1.38; font-weight:bold; float:left; color:#3d4248; overflow:hidden;
 	text-overflow:ellipsis; white-space:nowrap; word-break:break-all;}
-	.page_num{margin:20px auto 0; padding:0 10% 110px; text-align:center; width:80%; position:absolute; bottom:10px}
+	.paging-cont{width:1050px; text-align:center; margin:0 auto;}
+	.page_num{margin:20px auto 0; padding:0 10% 110px; text-align:center; width:725px; position:absolute; bottom:10px}
 	.btn_num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
 	.btn_num-on{color:#f1645d; border:1px solid #f1645d;}
 </style></head>
@@ -74,7 +75,7 @@
 			<div class="hc_list">
 				<ul>
 					<li>
-						<a href="/product/qkTfrTCs9E" title="상콤 레몬 수세미 뜨기">
+						<a href="#">
 							<div class="hc_list_thumb">
 								<img src="../image/mypage_ex01.jpg" alt="">
 							</div>
@@ -83,8 +84,8 @@
 							</div>
 						</a>
 					</li>
-					<li class="class-list">
-						<a href="/product/digital" title="고래의 꿈 네온사인 클래스">
+					<li>
+						<a href="#">
 							<div class="hc_list_thumb">
 								<img src="../image/mypage_ex02.jpg" alt="">
 							</div>
@@ -94,7 +95,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/product/qkTfrTCs9E" title="상콤 레몬 수세미 뜨기">
+						<a href="#">
 							<div class="hc_list_thumb">
 								<img src="../image/mypage_ex01.jpg" alt="">
 							</div>
@@ -103,8 +104,8 @@
 							</div>
 						</a>
 					</li>
-					<li class="class-list">
-						<a href="/product/digital" title="고래의 꿈 네온사인 클래스">
+					<li>
+						<a href="#">
 							<div class="hc_list_thumb">
 								<img src="../image/mypage_ex02.jpg" alt="">
 							</div>
@@ -116,8 +117,10 @@
 				</ul>
 			</div>
 		</article>
-		<div class="page_num">
-			<a href="#link" title="1" data-page="1" class="btn_num btn_num-on">1</a>
+		<div class="paging-cont">
+			<div class="page_num">
+				<a href="#" title="1" data-page="1" class="btn_num btn_num-on">1</a>
+			</div>
 		</div>
 	</section>
 

@@ -28,7 +28,7 @@ String path = request.getContextPath(); %>
 	.mysubmenu{display:block; position:relative; width:1050px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 마일리지조회 */
-	.point-wrap{padding:0 10%; color:#a1a4a8;}
+	.point-wrap{padding:0 3%; color:#a1a4a8;}
 	.point_page{width:1050px; margin:0 auto;}
 	.pointinfo-cont{padding:32px 0; margin:40px 0 0; border:5px solid #DFDFDF;}
 	.reply-info-area-type02{line-height:1.71;}
@@ -81,8 +81,8 @@ String path = request.getContextPath(); %>
 
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
-		<article>
-			<div class="point_page">
+		<article class="point_page">
+			<div class="point-wrap">
 				<div class="pointinfo-cont">
 					<div class="reply-info-area reply-info-area-type02">
 						<div class="point-info">

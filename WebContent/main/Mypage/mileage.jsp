@@ -43,12 +43,47 @@ String path = request.getContextPath(); %>
     .point-th{color:#2f3338; font-size:14px; border-bottom:2px solid #3d4248; line-height:2; padding-bottom:10px; text-align:center;}
     .point-td{padding:15px 0 18px; color:#2f3338; font-size:14px; line-height:2; vertical-align:middle; border-bottom:1px solid #dfdfdf; text-align:center;}
     .txt-color-r{color:#f1645d !important;}
-	.page_num{margin:20px 0 0; padding:0 10% 110px; text-align:center;}
-	.btn-num-on{color:#f1645d; border:1px solid #f1645d;}
-	.btn-num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
+	.paging {text-align:center; width:980px; position:absolute; bottom:10px}
+	.pageNo{color:#f36359;}
 	
 </style>
 </head>
+<%
+	ArrayList<Mileage> ptList = new ArrayList<Mileage>();
+	if(session.getAttribute("ptList")!=null){
+		ptList = (ArrayList<Mileage>)session.getAttribute("ptList");
+	} else{
+		Mileage pt1 = new Mileage("2019.10.13", "회원가입 포인트", 3000);
+		Mileage pt2 = new Mileage("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
+		Mileage pt3 = new Mileage("2020.03.04", "상품구매", -5020);
+		Mileage pt4 = new Mileage("2020.03.04", "주문취소", 5020);
+		ptList.add(pt1);
+		ptList.add(pt2);
+		ptList.add(pt3);
+		ptList.add(pt4);
+		session.setAttribute("ptList", ptList);
+	}
+	
+
+/* 페이징 처리
+Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
+Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
+*/
+
+int w_size = 10;
+int p_size = 2;
+int i_page = 1;
+if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+session.setAttribute("i_page",i_page);
+
+int lastNo = w_size*i_page; //4
+int cnt = 1+(w_size*(i_page-1)); //1,5, 9, 13..
+if(lastNo >= ptList.size()) lastNo = ptList.size();
+
+Paging pg = new Paging(w_size,p_size,ptList.size(),i_page);
+int preNo = pg.getPage_Start()-1;
+int nextNo = pg.getPage_End()+1;
+%>
 <body>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -81,7 +116,7 @@ String path = request.getContextPath(); %>
 
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
-		<article>
+		<article class="point-wrap">
 			<div class="point_page">
 				<div class="pointinfo-cont">
 					<div class="reply-info-area reply-info-area-type02">
@@ -117,32 +152,52 @@ String path = request.getContextPath(); %>
 								</tr>
 							</thead>
 							<tbody class="point_list_wrap">
+					<%
+						for(int idx=lastNo; idx > lastNo ; idx--){
+					%>
 								<tr>
-									<td class="point-td">2020.03.04</td>
-									<td class="point-td">주문취소</td>
-									<td class="point-td txt-color-r">+5,020p</td>
+									<td class="point-td"><%=ptList.get(idx).getM_date() %></td>
+									<td class="point-td"><%=ptList.get(idx).getM_detail() %></td>
+						<%
+							if(ptList.get(idx).getPoint()>=0){
+						%>
+									<td class="point-td txt-color-r">+<%=ptList.get(idx).getPoint() %>p</td>
+						<%
+							} else{
+						%>
+									<td class="point-td"><%=ptList.get(idx).getPoint() %>p</td>
+						<%
+							}
+						%>
 								</tr>
-								<tr>
-									<td class="point-td">2020.03.04</td>
-									<td class="point-td">상품구매</td>
-									<td class="point-td">-5,020p</td>
-								</tr>
-								<tr>
-									<td class="point-td">2020.01.23</td>
-									<td class="point-td">하비팩토리 세뱃돈! 새해 취미복 많이 받으세요</td>
-									<td class="point-td txt-color-r">+2,020p</td>
-								</tr>
-								<tr>
-									<td class="point-td">2019.10.13</td>
-									<td class="point-td">회원가입 포인트</td>
-									<td class="point-td txt-color-r">+3,000p</td>
-								</tr>
+					<%
+						}
+					%>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div class="page_num">
-					<a href="#" title="1" data-page="1" class="btn-num btn-num-on">1</a>
+				<div class="paging">
+					<h4>
+					<%
+					if(pg.isPre()){
+					%>
+						<a href="mileage.jsp?i_page=<%=preNo %>">Pre</a>
+					<%
+					}
+					for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
+						if(i == i_page){
+					%>
+						<a class="pageNo" href="mileage.jsp?i_page=<%=i %>" ><%=i %></a>
+					<%	}else{ %>
+						<a href="mileage.jsp?i_page=<%=i %>"><%=i %></a>
+					<%	}
+					}
+					if(pg.isNext()){
+					%>
+						<a href="mileage.jsp?i_page=<%=nextNo %>">Next</a>
+					<%} %>
+					</h4>	
 				</div>
 			</div>
 		</article>
