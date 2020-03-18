@@ -71,7 +71,8 @@
 		    <p>리뷰작성</p>
 		  </div>
 		  <div>
-		    <textarea name="pReview_detail" style="width:388px; height:450px; padding:5px;"></textarea>
+		  	<input name="pReview_detail" style="width:386px; height:450px; padding:5px; outline:none;">
+		    
 		  </div>
 		  <div class=btn>
 			<a href="?page=productDetail"><input type="submit" name="addComm" class="btn1" onclick="check('댓글이 등록되었습니다.')" value="등록" ></a>
@@ -131,7 +132,7 @@ if(!pReview_detail.equals("")){
 		for(int idx=0; idx<prevList.size(); idx++){
 		PReview prv = prevList.get(idx);
 		%>
-		<div class="line-review"></div>  
+	
 	    <li><%=prv.getMem_id()%></li>
         <li style="margin-bottom:10px;"><%=prv.getpReview_date()%></li>
         <li><%=prv.getpReview_detail()%></li> 

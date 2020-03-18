@@ -136,8 +136,10 @@ session.setAttribute("reqList", reqList);
 // Store 임의 데이터 생성
 /* (int)상품번호, 호스트, 상품명, 승인상태, (int)가격, (int)총갯수, 상품설명, 신청일, 상품이미지 */
 ArrayList<Store> sList = new ArrayList<Store>();
-for(int cnt=1; cnt < 22; cnt++){
-	sList.add(new Store(cnt,"himan"+cnt,"수제 비누 "+cnt+"호","Y",5000,20+cnt,"순하고 부르러워요"+cnt,"2020-03-11",""));
+sList.add(new Store(1,"김씨","가죽공방","Y",25000,20,"재밌음","2020-03-25","ads01_wide.jpg",2000));
+for(int cnt=2; cnt < 22; cnt++){
+	sList.add(new Store(cnt,"himan"+cnt,"수제 비누 "+cnt+"호","Y",5000,20+cnt,"순하고 부르러워요"+cnt,"2020-03-11","ads01_wide.jpg",1000));
+
 }
 session.setAttribute("sList", sList);
 

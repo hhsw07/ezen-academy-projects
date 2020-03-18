@@ -117,13 +117,21 @@
   
   <body>
     <div class="wrap" id="arr">
-      
+    	
+	    <%
+		ArrayList<Store> sList = new ArrayList<Store>();
+		if(session.getAttribute("sList")!=null){
+			sList = (ArrayList<Store>)session.getAttribute("sList");
+		}
+		String store_noS = request.getParameter("store_no");
+		int store_no=0; if(store_noS!=null) store_no=Integer.parseInt(store_noS);
+		%>
       <div class="info-wrap">
           <div class="class-image">
             <div class="move_image">
               <section class="visual">
                 <div class="bg1"><img name="store_img" src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg2"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg2"><img src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
                 <div class="bg3"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
                 <div class="bg6"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
                 <div class="bg7"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>

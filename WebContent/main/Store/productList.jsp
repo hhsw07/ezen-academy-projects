@@ -194,7 +194,7 @@
 	%>
       <div class="class-box">
       	<!-- 상품 이동 -->
-        <a onclick="go()">
+        <a onclick="go(<%=sL.getStore_no()%>)">
         <div class="class-image">
         	<!-- 상품 이미지  -->
         	<img src="../image/<%=sL.getStore_img()%>" alt="">
@@ -210,6 +210,7 @@
           	<!-- 가격 -->
           	<span class="price"><%=sL.getStore_price()%></span>원
           </div>
+          
         </div>
         </a>
       </div>
@@ -219,7 +220,7 @@
     <!-- 상품상세 페이지가 추가되면 jsp파일도 추가된다? -->
     <script type="text/javascript">
 	function go(num){
-		location.href="productDetail"+num+".jsp";
+		location.href="productDetail_jsp.jsp?store_no="+num;
 	}
 </script>
     <!-- class-wrap -->
