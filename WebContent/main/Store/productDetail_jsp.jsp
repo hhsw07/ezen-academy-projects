@@ -87,6 +87,24 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script type="text/javascript">  
+    
+    buyWrap=document.querySelector(".buy_wrap");
+    allWrap=document.querySelector(".all_wrap");
+	top=document.querySelector(".top");
+		userTop=document.querySelector(".user_top");
+		menuTop=document.querySelector(".menu_top");
+	middle=document.querySelector(".middle");
+		ads=document.querySelector(".ads");
+	bottom=document.querySelector(".bottom");
+	
+	top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
+	console.log(top.scrollHeight);
+	middle.style.paddingTop = top.scrollHeight+"px";
+	bottom.style.paddingTop = 50+middle.scrollHeight+"px";
+	
+	//최상위 Wrap만 이렇게 해야 오류가 안남..
+	allWrap.style.height = bottom.scrollHeight+"px";
+	
     function buy(){
 		buyWrap.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
@@ -96,110 +114,24 @@
     }
     </script>
   </head>
-  <body onload="init();">
   
-
-	  <div class="buy_wrap"  onload="init();">
-			<div class="buyPage">
-			  <div class="buyinfo-wrap">	
-				<p>선택한 상품을 확인해 주세요.<a href="?page=productDetail"><i class="xi-close" style="color:black; margin-left:160px; font-size:20px;"></i></a></p>
-				<div class="buy-line"></div>
-				<ul>
-					<li class="buy-info">[노플랜 노프로젝트]라탄으로 이불 톡톡</li>
-				
-				</ul>
-				<div class="pdt-box">
-					<img alt="" src="../image/pdtdetail3.jpg">
-					<div class="buy-line"></div>
-					<div class="buy-line"></div>
-				</div>
-			  </div>	
-			  <div class="buy-line"></div>	
-			  <div onload="init();">
-			 	
-<script language="JavaScript">
-	var sell_price; // 상품 가격
-	var amount; // 상품 수량
-	function init () {
-		sell_price = document.form.sell_price.value;
-		amount = document.form.amount.value;
-		document.form.sum.value = sell_price;
-		change();
-	}
-	function add () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-		hm.value ++ ;
-		sum.value = parseInt(hm.value) * sell_price;
-	}
-	function del () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-			if (hm.value > 1) {
-				hm.value -- ;
-				sum.value = parseInt(hm.value) * sell_price;
-			}
-	}
-	function change () {
-		hm = document.form.amount;
-		sum = document.form.sum;
-			if (hm.value < 0) {
-				hm.value = 0;
-			}
-		sum.value = parseInt(hm.value) * sell_price;
-	}
-	    buyWrap=document.querySelector(".buy_wrap");
-	    allWrap=document.querySelector(".all_wrap");
-		top=document.querySelector(".top");
-			userTop=document.querySelector(".user_top");
-			menuTop=document.querySelector(".menu_top");
-		middle=document.querySelector(".middle");
-			ads=document.querySelector(".ads");
-		bottom=document.querySelector(".bottom");
-		
-		top.scrollHeight = userTop.scrollHeight + menuTop.scrollHeight;
-		console.log(top.scrollHeight);
-		middle.style.paddingTop = top.scrollHeight+"px";
-		bottom.style.paddingTop = 50+middle.scrollHeight+"px";
-		
-		//최상위 Wrap만 이렇게 해야 오류가 안남..
-		allWrap.style.height = bottom.scrollHeight+"px";
-</script>	
-			 	
-			  		<form name="form" method="get">
-						<input type=hidden name="sell_price" value="21000"> 
-						<input type="button" class="btn3" value=" - " onclick="del();">
-						<input type="text" name="amount" value="1" size="3" onchange="change();" style="width:15px; border: 1px solid white;">
-						<input type="button" class="btn3" value=" + " onclick="add();"><br>
-						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 80px; font-size:24px; color:#FA5882;">원
-					</form>
-			
-			  </div>
-		
-			  	<div class=btn>
-					<a href="?page=productDetail"><button class="btn1" onclick="check('장바구니추가 완료')" type="button" name="button" >장바구니</button></a>
-					<a href="?page=productpayment"><button class="btn2" type="button" name="button" >구매하기</button></a>
-				</div>
-			</div>
-		</div>
-
+  <body>
     <div class="wrap" id="arr">
-
+      
       <div class="info-wrap">
           <div class="class-image">
             <div class="move_image">
               <section class="visual">
-                <div class="bg1"><img src="../image/pdtdetail1.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg2"><img src="../image/pdtdetail2.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg3"><img src="../image/pdtdetail3.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg6"><img src="../image/pdtdetail6.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg7"><img src="../image/pdtdetail7.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg8"><img src="../image/pdtdetail8.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg9"><img src="../image/pdtdetail9.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg1"><img name="store_img" src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg2"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg3"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg6"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg7"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg8"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg9"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
               </section>
             </div>
           </div>
-
           <!--image slied-->
           <script type="text/javascript">
             $('.visual').slick({
@@ -208,23 +140,31 @@
               fade: true
             });
           </script>
-
           <div class="class-info">
             <ul>
-              <li class="host-name">[노플랜 노프로젝트]</li>
-              <li class="class-name">라탄으로 이불 톡톡</li>
-              <li class="price-wrap"><span class="price">21,000</span><span class="day">원</span></li>
+              <!-- 호스트 이름  -->
+              <li class="host-name" name="mem_id"></li>
+              <!-- 상품 이름  -->
+              <li class="class-name"></li>
+              <!-- 상품 가격 -->
+              <li class="price-wrap"><span class="price" name="store_price"></span><span class="day">원</span></li>
               <li class="line"></li>
-              <li><span class="mileage">적립 마일리지</span><span class="mileage-point">최대2,100p</span></li>
+              <!-- 상품 마일리지 -->
+              <li><span>적립 마일리지</span><span class="mileage-point" name="point">p</span></li>
               <li><span class="trans">배송비</span><span class="mileage-point">무료배송(도서산간지역 제외)</span></li>
               <li>
                 <select class="select-pdt" name="">
                   <option value="">상품을 선택해주세요.</option>
-                  <option value="">라탄으로 이불 톡톡</option>
+                  <!-- 상품 옵션 선택 -->
+                  <option value="" name="store_title"></option>
                 </select>
               </li>
               <li>
-                  <a href="javascript:buy()" onclick=""><button class="buy" type="button" name="button">구매하기</button></a></li>
+              	  <input type="submit" name="goCart" value="장바구니">
+                  <a href="javascript:buy()" onclick="">
+                  <input type="submit" name="goPm" value="구매하기">
+                  </a>
+              </li>
             </ul>
           <!-- class-info -->
           </div>
@@ -239,8 +179,7 @@
         <!-- tab  -->
         </div>
       <!-- tab-wrap  -->
-      </div>
-		
+      </div>		
 	  <div class="goup"><a href="#arr"><i class="xi-caret-up-square"></i></a></div>
       <div>
 <%
@@ -268,6 +207,5 @@
       </div>
     <!-- wrap  -->
     </div>
-
   </body>
 </html>

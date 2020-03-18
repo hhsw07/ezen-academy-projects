@@ -11,8 +11,9 @@ public class Store {
 	private String store_detail;     // 상품설명
 	private String strore_date;     // 신청일
 	private String store_img;      // 상품이미지
+	private int point; // 마일리지
 	public Store(int store_no, String mem_id, String store_title, String store_code, int store_price, int store_totCnt,
-			String store_detail, String strore_date, String store_img) {
+			String store_detail, String strore_date, String store_img, int point) {
 		super();
 		this.store_no = store_no;
 		this.mem_id = mem_id;
@@ -23,6 +24,7 @@ public class Store {
 		this.store_detail = store_detail;
 		this.strore_date = strore_date;
 		this.store_img = store_img;
+		this.point = point;
 	}
 	public int getStore_no() {
 		return store_no;
@@ -77,6 +79,12 @@ public class Store {
 	}
 	public void setStore_img(String store_img) {
 		this.store_img = store_img;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	
 	

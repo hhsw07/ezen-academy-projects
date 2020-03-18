@@ -114,7 +114,11 @@
 	<div class="buy_wrap">
 		<div class="buyPage">
 		  <div class="buyinfo-wrap">	
-			<p>선택한 상품을 확인해 주세요.</p>
+			<p>선택한 상품을 확인해 주세요.
+				<a href="?page=classDetail">
+					<i class="xi-close" style="color:black; margin-left:160px; font-size:20px;"></i>
+				</a>
+			</p>
 			<div class="buy-line"></div>
 			<ul>
 				<li class="buy-info">[베란다자수]따뜻한 한마디 일러스트 글자수</li>

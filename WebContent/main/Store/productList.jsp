@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.ArrayList, z01_vo.*, java.util.Date,
+    java.text.SimpleDateFormat " 
+%>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
@@ -167,18 +170,58 @@
         </div>
         </a>
       </div>
-
+     <%
+     String store_no = request.getParameter("store_no");
+     String mem_id = request.getParameter("mem_id");
+     String store_title = request.getParameter("store_title");
+     String store_code = request.getParameter("store_code");
+     String store_price = request.getParameter("store_price");
+     String store_totCnt = request.getParameter("store_totCnt");
+     String store_detail = request.getParameter("store_detail");
+     String strore_date = request.getParameter("strore_date");
+     String store_img = request.getParameter("store_img");
+     String point = request.getParameter("point");
+     %>      
+	<%
+	ArrayList<Store> sList = new ArrayList<Store>();
+	if(session.getAttribute("sList")!=null){
+		sList = (ArrayList<Store>)session.getAttribute("sList");
+	}
+	%>
+	<%
+	for(int idx=0; idx<sList.size(); idx++){
+		Store sL = sList.get(idx);
+	%>
       <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt12.jpg" alt=""></div>
+      	<!-- 상품 이동 -->
+        <a onclick="go()">
+        <div class="class-image">
+        	<!-- 상품 이미지  -->
+        	<img src="../image/<%=sL.getStore_img()%>" alt="">
+        </div>
         <div class="class-info">
-          <div><span class="host-name">[솜씨]</span><br><span class="class-name">포근포근 스웨터 프랑스자수</span></div>
-          <div class="price-wrap1"><span class="price">24,000</span>원</div>
+          <div>
+          	<!-- 호스트 이름 -->
+          	<span class="host-name"><%=sL.getMem_id()%></span><br>
+          	<!-- 상품 이름 -->
+          	<span class="class-name"><%=sL.getStore_title()%></span>
+          </div>
+          <div class="price-wrap1">
+          	<!-- 가격 -->
+          	<span class="price"><%=sL.getStore_price()%></span>원
+          </div>
         </div>
         </a>
       </div>
-
-
+    <%
+    }
+    %>
+    <!-- 상품상세 페이지가 추가되면 jsp파일도 추가된다? -->
+    <script type="text/javascript">
+	function go(num){
+		location.href="productDetail"+num+".jsp";
+	}
+</script>
     <!-- class-wrap -->
     </div>
   </body>
