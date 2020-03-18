@@ -65,8 +65,8 @@ String path = request.getContextPath(); %>
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li><a href="#">회원정보수정</a></li>
-				<li><a href="#">비밀번호변경</a></li>
+				<li><a href="?page=mypage_modiinfo">회원정보수정</a></li>
+				<li><a href="?page=mypage_modipass">비밀번호변경</a></li>
 				<li class="mymenu_btn-on"><a href="#">회원탈퇴</a></li>
 			</ul>
 		</nav>

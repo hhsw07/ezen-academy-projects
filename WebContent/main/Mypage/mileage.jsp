@@ -43,7 +43,7 @@ String path = request.getContextPath(); %>
     .point-th{color:#2f3338; font-size:14px; border-bottom:2px solid #3d4248; line-height:2; padding-bottom:10px; text-align:center;}
     .point-td{padding:15px 0 18px; color:#2f3338; font-size:14px; line-height:2; vertical-align:middle; border-bottom:1px solid #dfdfdf; text-align:center;}
     .txt-color-r{color:#f1645d !important;}
-	.paging_num{margin:20px 0 0; padding:0 10% 110px; text-align:center;}
+	.page_num{margin:20px 0 0; padding:0 10% 110px; text-align:center;}
 	.btn-num-on{color:#f1645d; border:1px solid #f1645d;}
 	.btn-num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
 	
@@ -141,7 +141,7 @@ String path = request.getContextPath(); %>
 						</table>
 					</div>
 				</div>
-				<div class="paging_num">
+				<div class="page_num">
 					<a href="#" title="1" data-page="1" class="btn-num btn-num-on">1</a>
 				</div>
 			</div>

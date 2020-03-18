@@ -103,7 +103,7 @@ int nextNo = pg.getPage_End()+1;
 				<li><a href="?page=mypage_order">주문/배송조회</a></li>
 				<li style="font-weight:bold;"><a href="?page=mypage_class">클래스 보관함</a></li>
 				<li><a href="#">배송지 목록</a></li>
-				<li><a href="#">배송지 관리</a></li>
+				<li><a href="#">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>

@@ -41,17 +41,7 @@ String path = request.getContextPath(); %>
 		</div>
 		<a href="#" title="호스트" class="host_btn">HOST</a>
 	</div>
-<!-- vo객체 생성 -->
-<%
-	ArrayList<Point> points = new ArrayList<Point>();
-	Point pt01 = new Point(0,"", "2019.10.13","회원가입 포인트",3000);
-	Point pt02 = new Point(0,"", "2020.01.23","하비팩토리 세뱃돈! 새해 취미복 많이 받으세요",2020);
-	Point pt03 = new Point(0,"", "2020.03.04","상품구매",-5020);
-	points.add(pt01);
-	points.add(pt02);
-	points.add(pt03);
-	session.setAttribute("points", points);
-%>
+
 
 </body>
 </html>

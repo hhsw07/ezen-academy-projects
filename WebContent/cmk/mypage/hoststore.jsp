@@ -45,13 +45,13 @@
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
+					<a href="#" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
 					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="#" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
