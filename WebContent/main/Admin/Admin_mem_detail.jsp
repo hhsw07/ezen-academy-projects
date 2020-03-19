@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-	ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
+	ArrayList<Mem_mil> memList = (ArrayList<Mem_mil>)session.getAttribute("mem_MilList");
 	String strIdx = request.getParameter("idx");
 	int idx = Integer.parseInt(strIdx);
 %>

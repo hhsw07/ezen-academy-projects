@@ -38,8 +38,18 @@ INCREMENT BY 1
 START WITH 1;
 
 -- 회원 정보 입력 ex) 등급 (M,H,N)
-INSERT INTO p04_member (mem_id, mem_no, mem_pass, mem_name, mem_mail, mem_nickname, mem_birth, mem_phone, mem_code)
-VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','M');
+INSERT INTO p04_member VALUES ('admin', p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','M');
+INSERT INTO p04_member VALUES ('ezen'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','H');
+INSERT INTO p04_member VALUES ('ezen'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','H');
+INSERT INTO p04_member VALUES ('ezen'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','H');
+INSERT INTO p04_member VALUES ('ezen'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','H');
+INSERT INTO p04_member VALUES ('ezen'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','H');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
+INSERT INTO p04_member VALUES ('himan'||p04_member_seq.nextval, p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
 
 SELECT * FROM p04_member;
 DROP SEQUENCE p04_member_seq;
@@ -105,7 +115,7 @@ CREATE SEQUENCE p04_course_seq
 INCREMENT BY 1
 START WITH 1;
 -- 수업 정보 입력
-INSERT INTO p04_course VALUES (p04_course_seq.nextval,"홍길동1",to_date('2020-03-19','YYYY-MM-DD'),"비누만들기"||p04_course_seq.nextval,"원데이","재밌어요.",0,10,50000,"ads01_wide.jpg",to_date('2020-03-30','YYYY-MM-DD'),"다양한 취미");
+INSERT INTO p04_course VALUES (p04_course_seq.nextval,'홍길동1',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'원데이','fradetail1.jpg',0,10,50000,'ads01_wide.jpg',to_date('2020-03-30','YYYY-MM-DD'),'다양한 취미');
 
 SELECT * FROM p04_member;
 DROP SEQUENCE p04_member_seq;
@@ -239,7 +249,7 @@ CREATE SEQUENCE p04_cReview_seq
 INCREMENT BY 1
 START WITH 1;
 -- 수업후기 정보 입력 ex) 등급 (M,H,N)
-INSERT INTO p04_cReview VALUES (p04_cReview_seq.nextval,"재밌어요",5,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_cReview VALUES (p04_cReview_seq.nextval,'재밌어요',5,to_date('2020-03-19','YYYY-MM-DD'));
 
 SELECT * FROM p04_cReview;
 DROP SEQUENCE p04_cReview_seq;
@@ -621,7 +631,19 @@ CREATE SEQUENCE p04_inquiry_seq
 INCREMENT BY 1
 START WITH 1;
 -- 문의 정보 입력
-INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','문의합니다.'||p04_inquiry_seq.nextval,to_date('2020-03-19','YYYY-MM-DD'),'답변이요.'||p04_inquiry_seq.nextval);
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','마일리지 사용에 제한이 있나요?',to_date('2020-03-19','YYYY-MM-DD'),'마일리지는 1원부터 사용 가능하며, 금액 제한은 없습니다.\n마일리지는 발급일로부터 12개월 후 자동 소멸되니, 소멸 전에 사용해주세요!');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','상품을 교환할 때, 배송비는 누가 부담하게 되나요?',to_date('2020-03-19','YYYY-MM-DD'),'물품의 오배송, 파손, 상품의 불량 등의 경우는 하비풀에서 배송비를 부담합니다.\n구매자의 단순변심, 배송 주소지 오류로 반송된 경우 등 상품 문제가 아닌 경우의 왕복 배송비는 고객부담입니다.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','주문을 취소하고 싶어요.',to_date('2020-03-19','YYYY-MM-DD'),'상품 발송 전(결제 대기, 결제 완료 단계)까지는 주문 취소가 가능합니다.\n마이페이지>주문/배송관리>주문/배송 조회’에서 신청하신 클래스의 상세내역을 클릭하신 후,\n주문 취소 버튼을 클릭하면 주문 취소를 신청하실 수 있습니다.\n단, 주문을 취소하는 경우 해당 클래스를 포함한 정기구독 전체가 해지 됩니다.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan3','호스트는 어떻게 신청하나요?',to_date('2020-03-19','YYYY-MM-DD'),'고객센터에서 신청해주세요.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','상품을 교환하고 싶어요.',to_date('2020-03-19','YYYY-MM-DD'),'교환신청은 배송완료 후 7일 이내 가능하며,\n1:1문의(또는 메일문의)/ 대표번호(02-6948-9385)로 연락 주시면 수거 및 교환처리를 도와드리겠습니다.\n※단순 변심 교환 시, 포장 훼손을 하면 환불이 불가능하니 참고해주세요');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan3','하비풀에서의 활동 내역을 볼 수 있나요?',to_date('2020-03-19','YYYY-MM-DD'),'네. ‘마이페이지> 내 활동 내역’ 에 들어가면 \n작성한 클래스 후기, 1:1 문의내역, 마일리지 현황 등\n하비팩토리에서의 활동 내역을 한 눈에 살펴볼 수 있습니다.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan4','호스트가 무엇인가요?',to_date('2020-03-19','YYYY-MM-DD'),'다양한 분야에서 본인의 경험과 노하우가 있으며 이를 바탕으로 하비팩토리에서 모임을 리드하는 사람들을 호스트라고 합니다.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','호스트는 어떻게 신청하나요?',to_date('2020-03-19','YYYY-MM-DD'),'고객센터에서 신청해주세요.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan5','현장에서 결제할 수 있나요?',to_date('2020-03-19','YYYY-MM-DD'),'하비팩토리는 사전에 홈페이지 또는 앱에서만 결제가 가능하며 현장에서는 결제가 불가합니다.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','호스트는 어떻게 신청하나요?',to_date('2020-03-19','YYYY-MM-DD'),'고객센터에서 신청해주세요.');
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','코로나로 취소됐어요. 환불할래요.',to_date('2020-03-19','YYYY-MM-DD'),'취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다.');
+
+
 
 SELECT * FROM p04_inquiry;
 DROP TABLE p04_inquiry;

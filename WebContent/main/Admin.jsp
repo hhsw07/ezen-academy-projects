@@ -167,7 +167,7 @@ session.setAttribute("sList", sList);
 
 
 
-response.sendRedirect("Admin_mem.jsp");
+response.sendRedirect("Main.jsp");
 %>
 
 </body>
