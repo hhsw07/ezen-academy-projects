@@ -28,9 +28,10 @@
 		if(strCourse_price != null) course_price = Integer.parseInt(strCourse_price);
 		String course_img = request.getParameter("course_img");
 		String course_opendate = request.getParameter("course_opendate");
+		String course_category = request.getParameter("course_category");
 		
 		coList.add(new Course(course_no,mem_id,course_inputdate,course_title,course_kind,
-				course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate));
+				course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate,course_category));
 		session.setAttribute("couList", coList);
 		response.sendRedirect("Admin_class.jsp");
 	}

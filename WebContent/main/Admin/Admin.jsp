@@ -34,6 +34,10 @@ for(int cnt=1;cnt<=16;cnt++){
 session.setAttribute("couList", couList);
 
 
+
+
+
+
 // CReview 임의 데이터 생성
 /* (int)신청번호, 회원아이디, 후기내용, 평점, 등록일  */
 ArrayList<CReview> commList = new ArrayList<CReview>();
