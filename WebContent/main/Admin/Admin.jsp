@@ -62,12 +62,13 @@ session.setAttribute("inqList", inqList);
 //Member 임의 데이터 생성
 /* 아이디, (int)회원번호, 비밀번호, 이름, 이메일, 닉네임, 생년월일, 휴대폰, 등급, (int)마일리지 */
 ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("himan1",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M");
-Member m02 = new Member("himan2",2,"7777","김길동","mail02@gmail.com","둘리2","2000-01-01","010-1234-1002","H");
+Member m01 = new Member("admin",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M");
 memList.add(m01);
-memList.add(m02);
-for(int cnt=3;cnt<=16;cnt++){
-	memList.add(new Member("himan"+cnt,cnt,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N"));
+for(int cnt=1;cnt<=5;cnt++){
+	memList.add(new Member("ezen"+cnt,cnt+1,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"H"));
+}
+for(int cnt=6;cnt<=10;cnt++){
+	memList.add(new Member("himan"+cnt,cnt+1,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N"));
 }
 session.setAttribute("memList", memList);
 
