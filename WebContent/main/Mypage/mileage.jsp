@@ -29,7 +29,7 @@ String path = request.getContextPath(); %>
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 마일리지조회 */
 	.point-wrap{padding:0 10%; color:#a1a4a8;}
-	.point_page{width:1050px; margin:0 auto;}
+	.point_page{width:980px; margin:0 auto;}
 	.pointinfo-cont{padding:32px 0; margin:40px 0 0; border:5px solid #DFDFDF;}
 	.pointinfo_show{line-height:1.71; height:auto; font-size:14px; color:#a1a4a8; overflow:hidden;}
 	.point-info{width:18%; float:left; padding:0;text-align:center;}
@@ -38,7 +38,7 @@ String path = request.getContextPath(); %>
 	.point-info-txt{margin:10px 0 0; color:#909397; font-size:14px; line-height:1.8;}
 	.point-cont{margin:40px 0 0;}
 	.point-tit{padding:0 0 10px; font-size:16px; border-bottom:2px solid #3d4248; line-height:1.5; color:#3d4248;}
-    .point-table{margin:10px 0 0; text-align:center;}
+    .point-table{margin:10px 0 50px; text-align:center;}
     .point-th{color:#2f3338; font-size:14px; border-bottom:2px solid #3d4248; line-height:2; padding-bottom:10px; text-align:center;}
     .point-td{padding:15px 0 18px; color:#2f3338; font-size:14px; line-height:2; vertical-align:middle; border-bottom:1px solid #dfdfdf; text-align:center;}
     .txt-color-r{color:#f1645d !important;}
@@ -49,15 +49,7 @@ String path = request.getContextPath(); %>
 </head>
 <%
 	//ArrayList<Point> ptList = (ArrayList<Point>)session.getAttribute("ptList");
-ArrayList<Point> ptList = new ArrayList<Point>();
-Point pt1 = new Point("2019.10.13", "회원가입 포인트", 3000);
-Point pt2 = new Point("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
-Point pt3 = new Point("2020.03.04", "상품구매", -5020);
-Point pt4 = new Point("2020.03.04", "주문취소", 5020);
-ptList.add(pt1);
-ptList.add(pt2);
-ptList.add(pt3);
-ptList.add(pt4);
+	ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
 
 	/* 페이징 처리
 	Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -84,17 +76,17 @@ ptList.add(pt4);
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
+					<a href="?page=mypage_order"class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn mymenu_btn-on">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn mymenu_btn-on">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -102,12 +94,12 @@ ptList.add(pt4);
 		<nav class="mynav">
 			<ul>
 				<li><a href="#">구매후기</a></li>
-				<li><a href="#">1:1문의</a></li>
+				<li><a href="?page=mypage_inquiry">1:1문의</a></li>
 				<li class="mymenu_btn-on"><a href="?page=mypage_mileage">마일리지</a></li>
 			</ul>
 		</nav>
 	</div>
-<%
+<%--
 int tot=0;
 int plus=0;
 int minus=0;
@@ -122,8 +114,7 @@ if(ptList!=null){
 		tot = plus+minus;
 	}
 }
-session.setAttribute("totPoint", tot);
-%>
+--%>
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
 		<article class="point-wrap">
@@ -132,15 +123,15 @@ session.setAttribute("totPoint", tot);
 					<div class="pointinfo_show">
 						<div class="point-info">
 							<div class="point-info-tit">현재 마일리지</div>
-							<div class="point-info-p"><%=tot %> P</div>
+							<div class="point-info-p"><%=session.getAttribute("totPoint") %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">총 적립 마일리지</div>
-							<div class="point-info-p"><%=plus %> P</div>
+							<div class="point-info-p"><%=session.getAttribute("plus") %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">사용한 마일리지</div>
-							<div class="point-info-p"><%=-minus %> P</div>
+							<div class="point-info-p"><%=session.getAttribute("minus") %> P</div>
 						</div>
 					</div>
 				</div>
@@ -173,11 +164,11 @@ session.setAttribute("totPoint", tot);
 						<%
 							if(pt.getPt_mileage()>=0){
 						%>
-									<td class="point-td txt-color-r">+<%=pt.getPt_mileage() %>p</td>
+									<td class="point-td txt-color-r">+<%=pt.getPt_mileage() %> p</td>
 						<%
 							} else{
 						%>
-									<td class="point-td"><%=pt.getPt_mileage() %>p</td>
+									<td class="point-td"><%=pt.getPt_mileage() %> p</td>
 						<%
 							}
 						%>

@@ -49,17 +49,17 @@ String path = request.getContextPath(); %>
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="#" title="내 정보 관리" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" title="호스트" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -68,7 +68,7 @@ String path = request.getContextPath(); %>
 			<ul>
 				<li><a href="?page=mypage_modiinfo">회원정보수정</a></li>
 				<li class="mymenu_btn-on"><a href="?page=mypage_modipass">비밀번호변경</a></li>
-				<li><a href="#">회원탈퇴</a></li>
+				<li><a href="?page=mypage_delete">회원탈퇴</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -109,7 +109,7 @@ String path = request.getContextPath(); %>
 						</table>
 					</div>
 					<div class="change_btn">
-						<a href="#link" title="변경완료" class="change_btndesign">변경완료</a>
+						<a href="#link" class="change_btndesign">변경완료</a>
 					</div>
 				</div>
 			</div>

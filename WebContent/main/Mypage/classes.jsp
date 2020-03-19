@@ -65,13 +65,13 @@ Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,�
 */
 
 int w_size = 6;
-int p_size = 2;
+int p_size = 10;
 int i_page = 1;
 if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
 session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page;
-if(lastNo >= myclist.size()) lastNo = myclist.size();
+int lastNo = myclist.size()-1- (w_size*i_page);
+if(lastNo < 0) lastNo = -1;
 
 Paging pg = new Paging(w_size,p_size,myclist.size(),i_page);
 int preNo = pg.getPage_Start()-1;
@@ -94,7 +94,7 @@ int nextNo = pg.getPage_End()+1;
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" title="호스트" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -117,7 +117,7 @@ int nextNo = pg.getPage_End()+1;
 	%>
 		<article class="pre-class">
 		 	<ul class="preview">
-	<%	for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){ 
+	<%	for(int idx=myclist.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){ 
 		Myclasses mc = myclist.get(idx);
 	%>
 		 		<li class="c-list">

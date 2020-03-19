@@ -29,7 +29,7 @@ String path = request.getContextPath(); %>
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 배송지목록 */
 	.shiplist{width:1050px; margin:0 auto;}
-	.addrlist-wrap{padding:20px 3%;}
+	.addrlist-wrap{padding:20px 7%;}
 	.addrlist-cont{position:relative; padding:30px 43% 30px 23%; border-bottom:1px solid #dfdfdf; color:#a1a4a8;}
 	.addrlist-title{position:absolute; top:50px; left:0; width:10%; margin:0; padding:0; font-size:16px; border-bottom:0; line-height:1.5; text-align:center;}
 	.txt-color-r{display:block; margin:7px 0 0; color:#f1645d !important;}
@@ -97,7 +97,7 @@ int nextNo = pg.getPage_End()+1;
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" title="호스트" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->

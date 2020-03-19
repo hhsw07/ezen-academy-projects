@@ -167,7 +167,6 @@ String path = request.getContextPath(); %>
 		</article>
 	</section>
 	
+
 </body>
-<script type="text/javascript">
-</script>
 </html>

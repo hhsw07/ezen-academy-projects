@@ -46,22 +46,25 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <body>
+<%
+ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
+%>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" title="호스트" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
