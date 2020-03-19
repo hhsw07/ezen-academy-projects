@@ -12,7 +12,7 @@
 	.middle{width:1280px;position:absolute; background-color: white; padding-bottom:50px;}
 	.ads{position: relative;  margin: auto;  height:400px;}
 	.class-box{margin:50px 15px 0px 15px;  display:inline-block; position:relative;}
-		.class-image{width:390px; height:250px; border:1px dashed black; position:relative;}
+		.class-image{width:390px; height:250px; position:relative;}
 		.class-info{position:relative; margin-top:8px;}
 		.host-name{float:left; font-size:12px; color:gray;}
 		.class-name{float:left; font-size:20px; font-weight:900;}
@@ -55,51 +55,65 @@
 			<div class="class_list">
 				<h2 style="margin:10px 0 0 0 ;">클래스</h2>
 				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
-				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
-			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">클래스 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">일</span><span class="price">00,000</span>원</div>
-				    	<div class="price-wrap2"><span class="day">월</span><span class="price">000,000</span>원</div>
-			    	</div>
-				</div>
+        <a href="?page=classDetail">
+        <div class="class-image"><img src="../image/fra1.jpg" width="100%" height="100%" alt=""></div>
+        <div class="class-info">
+          <div><span class="host-name">[베란다자수]</span><br><span class="class-name">따뜻한 한마디 일러스트 글자수</span></div>
+          <div class="price-wrap1"><span class="day">일</span><span class="price">20,000</span>원</div>
+          <div class="price-wrap2"><span class="day">월</span><span class="price">200,000</span>원</div>
+        <!-- class-info  -->
+        </div>
+        </a>
+      <!-- class-box  -->
+      </div>
+
+      <div class="class-box">
+        <a href="#">
+        <div class="class-image"><img src="../image/mac1.jpg" width="100%" height="100%" alt=""></div>
+        <div class="class-info">
+          <div><span class="host-name">[슈에뜨마망]</span><br><span class="class-name">비온뒤맑음 마크라메 월행잉</span></div>
+          <div class="price-wrap1"><span class="day">일</span><span class="price">25,000</span>원</div>
+          <div class="price-wrap2"><span class="day">월</span><span class="price">250,000</span>원</div>
+        <!-- class-info  -->
+        </div>
+        </a>
+      <!-- class-box  -->
+      </div>
+
+      <div class="class-box">
+        <a href="#">
+        <div class="class-image"><img src="../image/fra2.jpg" width="100%" height="100%" alt=""></div>
+        <div class="class-info">
+          <div><span class="host-name">[제니스리]</span><br><span class="class-name">꽃 소풍 프랑스자수</span></div>
+          <div class="price-wrap1"><span class="day">일</span><span class="price">20,000</span>원</div>
+          <div class="price-wrap2"><span class="day">월</span><span class="price">200,000</span>원</div>
+        <!-- class-info  -->
+        </div>
+        </a>
+      <!-- class-box  -->
+      </div>
 			</div>
 			<div class="store_list">
 				<h2 style="margin:10px 0 0 0 ;">스토어</h2>
 				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
+			    	<div class="class-image"><a href="#"><img src="../image/pdt1.jpg" width="100%" height="100%" alt=""></a></div>
 			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
+				    	<div><a href="#"><span class="host-name">[노플랜 프로젝트]</span><br><span class="class-name">라탄으로 이불 톡톡</span></a></div>
+				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">28,000</span>원</div>
 			    	</div>
 				</div>
 				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
+			    	<div class="class-image"><a href="#"><img src="../image/pdt2.jpg" width="100%" height="100%" alt=""></a></div>
 			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
+				    	<div><a href="#"><span class="host-name">[람자수 공방]</span><br><span class="class-name">장미정원 자수 끈 파우치</span></a></div>
+				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">30,000</span>원</div>
 			    	</div>
 				</div>
 				<div class="class-box">
-			    	<div class="class-image"><a href="#"><img src="" alt=""></a></div>
+			    	<div class="class-image"><a href="#"><img src="../image/pdt3.jpg" width="100%" height="100%" alt=""></a></div>
 			    	<div class="class-info">
-				    	<div><a href="#"><span class="host-name">[호스트 이름]</span><br><span class="class-name">상품 이름</span></a></div>
-				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">00,000</span>원</div>
+				    	<div><a href="#"><span class="host-name">[솜씨]</span><br><span class="class-name">플랜트행어</span></a></div>
+				    	<div class="price-wrap1"><span class="day">가격</span><span class="price">13,000</span>원</div>
 			    	</div>
 				</div>
 			</div>
