@@ -135,11 +135,9 @@ if(!cReview_detail.equals("")){
         <%
 		for(int idx=0; idx<commList.size(); idx++){
 		CReview crv = commList.get(idx);
-		%>
-		<div class="line-review"></div>  
-	    <li name="cReview_detail" ></li>
-        <li name="cReview_date" ><%=crv.getcReview_date()%></li>
-        <li name="cReview_detail" ><%=crv.getcReview_detail()%></li> 
+		%>  
+        <li style="margin-bottom:10px;"><%=crv.getcReview_date()%></li>
+        <li ><%=crv.getcReview_detail()%></li> 
         <div class="line-review"></div>  
         <%		
 		}

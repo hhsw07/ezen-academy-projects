@@ -118,9 +118,7 @@ session.setAttribute("oList", oList);
 // PReview 임의 데이터 생성
 /* (int)주문번호, 아이디, 후기내용, (int)평점, 등록일 */
 ArrayList<PReview> prevList = new ArrayList<PReview>();
-for(int cnt=1; cnt < 22; cnt++){
-	prevList.add(new PReview(cnt,"좋아요"+cnt,cnt%5,"2020-03-11"));
-}
+
 session.setAttribute("prevList", prevList);
 
 
@@ -134,13 +132,20 @@ session.setAttribute("reqList", reqList);
 
 
 // Store 임의 데이터 생성
-/* (int)상품번호, 호스트, 상품명, 승인상태, (int)가격, (int)총갯수, 상품설명, 신청일, 상품이미지 */
+/* (int)상품번호, 호스트, 상품명, 승인상태, (int)가격, (int)총갯수, 상품설명, 신청일, 상품이미지, 상품분류 */
 ArrayList<Store> sList = new ArrayList<Store>();
-sList.add(new Store(1,"김씨","가죽공방","Y",25000,20,"재밌음","2020-03-25","ads01_wide.jpg","마크라메"));
-for(int cnt=2; cnt < 22; cnt++){
-	sList.add(new Store(cnt,"himan"+cnt,"수제 비누 "+cnt+"호","Y",5000,20+cnt,"순하고 부르러워요"+cnt,"2020-03-11","ads01_wide.jpg","마크라메"));
 
-}
+
+	sList.add(new Store(1,"[노플랜 프로젝트]","라탄으로 이불 톡톡","Y",28000,20,"재밌음","2020-03-25","pdt1.jpg","마크라메"));
+	sList.add(new Store(2,"[람자수 공방]","장미정원 자수 끈 파우치","Y",30000,20,"재밌음","2020-03-25","pdt2.jpg","마크라메"));
+	sList.add(new Store(3,"[솜씨]","플랜트행어","Y",13000,20,"재밌음","2020-03-25","pdt3.jpg","마크라메"));
+	sList.add(new Store(4,"[하비풀]","프랑스자수","Y",13000,20,"재밌음","2020-03-25","pdt4.jpg","마크라메"));
+	sList.add(new Store(5,"[하비풀]","내맘대로 눈 내리는 스노우볼","Y",27000,20,"재밌음","2020-03-25","pdt5.jpg","마크라메"));
+	sList.add(new Store(6,"[솜씨]","나의 첫 별자리 자수","Y",15000,20,"재밌음","2020-03-25","pdt6.jpg","마크라메"));
+	sList.add(new Store(7,"[코코유리소]","유리조각 캔들홀더","Y",18000,20,"재밌음","2020-03-25","pdt7.jpg","마크라메"));
+	sList.add(new Store(8,"[람자수 공방]","낭만가득 자수 프레임 파우치","Y",33000,20,"재밌음","2020-03-25","pdt8.jpg","마크라메"));
+
+
 session.setAttribute("sList", sList);
 
 

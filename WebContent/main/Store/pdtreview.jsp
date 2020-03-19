@@ -127,6 +127,7 @@ if(!pReview_detail.equals("")){
 		if(session.getAttribute("prevList")!=null){
 			prevList = (ArrayList<PReview>)session.getAttribute("prevList");
 		}
+	
 		%>
         <%
 		for(int idx=0; idx<prevList.size(); idx++){

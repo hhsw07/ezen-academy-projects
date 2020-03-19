@@ -21,13 +21,7 @@
           .class-image{width:900px; height:500px;  position:relative; left:-1px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
               .visual{position:relative;}
-              .visual button{position:absolute; z-index:10; left:84%; top:50%; transform:translate(-30%, -50% );
-                            width:50px; height:50px; border-radius:100%; background-color:rgba(0,0,0,0); border:none; }
-              .visual button:before{font-family:'xeicon'; color:black; font-size:45px; }
-              .visual button.slick-prev{left:0px; font-size:0; color:transparent; outline:none;}
-              .visual button.slick-prev:before{content:"\e93d"; outline:none;}
-              .visual button.slick-next{right:0px; font-size:0; color:transparent; outline:none;}
-              .visual button.slick-next:before{content:"\e940"; outline:none;}
+             
 
           .class-info{position:absolute; left:760px; top:200px;}
             .host-name{color:gray;}
@@ -82,6 +76,8 @@
 			form{text-align:center; margin-top:10px;}
 			.btn3{border:1px solid black; background-color: white;}
 			.goup i{font-size:60px; position:fixed; left:81%; top:93%; z-index:30; cursor:pointer;}
+			.cartcss{width:237px; height:45px; margin-top:30px; border:1px solid black; background-color:white;}
+			.paycss{width:238px; height:45px; margin-top:30px; border:1px solid black; background-color:white;}
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -133,23 +129,10 @@
             <div class="move_image">
               <section class="visual">
                 <div class="bg1"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg2"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg3"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg6"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg7"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg8"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg9"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
               </section>
             </div>
           </div>
-          <!--image slied-->
-          <script type="text/javascript">
-            $('.visual').slick({
-              autoplay: true,
-              autoplaySpeed: 3000,
-              fade: true
-            });
-          </script>
+         
           <div class="class-info">
             <ul>
               <!-- 호스트 이름  -->
@@ -160,7 +143,7 @@
               <li class="price-wrap"><span class="price" ><%=sList.get(store_no-1).getStore_price()%></span><span class="day">원</span></li>
               <li class="line"></li>
               <!-- 상품 마일리지 -->
-              <li><span>적립 마일리지</span><span class="mileage-point">p</span></li>
+              <li><span>적립 마일리지</span><span class="mileage-point">2000p</span></li>
               <li><span class="trans">배송비</span><span class="mileage-point">무료배송(도서산간지역 제외)</span></li>
               <li>
                 <select class="select-pdt" name="">
@@ -170,9 +153,9 @@
                 </select>
               </li>
               <li>
-              	  <input type="submit" name="goCart" value="장바구니">
+              	  <input class="cartcss" type="submit" name="goCart" value="장바구니">
                   <a href="javascript:buy()" onclick="">
-                  <input type="submit" name="goPm" value="구매하기">
+                  <input class="paycss" type="submit" onclick="go(<%=sList.get(store_no-1).getStore_no()%>)" value="구매하기">
                   </a>
               </li>
             </ul>
@@ -180,12 +163,17 @@
           </div>
       <!-- info-wrap  -->
       </div>
+<script type="text/javascript">
+	function go(num){
+	location.href="?page=productpayment&store_no="+num;
+	}
+</script>
 
       <div class="tab-wrap">
         <div class="tab">
-          <a href="?page=productDetail&page2=pdtintro">상품소개</a>
-          <a href="?page=productDetail&page2=pdtreview">구매후기</a>
-          <a href="?page=productDetail&page2=pdtrefund">배송/교환/환불</a>
+          <a href="?page=productDetail_jsp&store_no=<%=request.getParameter("store_no") %>&page2=pdtintro">상품소개</a>
+          <a href="?page=productDetail_jsp&store_no=<%=request.getParameter("store_no") %>&page2=pdtreview">구매후기</a>
+          <a href="?page=productDetail_jsp&store_no=<%=request.getParameter("store_no") %>&page2=pdtrefund">배송/교환/환불</a>
         <!-- tab  -->
         </div>
       <!-- tab-wrap  -->

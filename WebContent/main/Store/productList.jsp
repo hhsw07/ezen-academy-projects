@@ -57,122 +57,9 @@
     <div class="class-wrap">
 
 
-      <!-- class-box복붙 -->
-      <div class="class-box">
-        <a href="?page=productDetail">
-        <div class="class-image"><img src="../image/pdt1.jpg" alt=""></div>
-     
-        <div class="class-info">
-          <div><span class="host-name">[노플랜 프로젝트]</span><br><span class="class-name">라탄으로 이불 톡톡</span></div>
-          <div class="price-wrap1"><span class="price">28,000</span>원</div>
-        <!-- class-info -->
-        </div>
-        </a>
-      <!-- class-box -->
-      </div>
 
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt2.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[림자수 공방]</span><br><span class="class-name">장미정원 자수 끈파우치</span></div>
-          <div class="price-wrap1"><span class="price">30,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt3.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[솜씨]</span><br><span class="class-name">플랜트행어</span></div>
-          <div class="price-wrap1"><span class="price">13,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt4.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[하비풀]</span><br><span class="class-name">프랑스자수</span></div>
-          <div class="price-wrap1"><span class="price">13,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt5.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[하비풀]</span><br><span class="class-name">내맘대로 눈 내리는 스노우볼</span></div>
-          <div class="price-wrap1"><span class="price">27,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt6.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[솜씨]</span><br><span class="class-name">나의 첫 별자리 자수</span></div>
-          <div class="price-wrap1"><span class="price">15,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt7.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[코코유리소]</span><br><span class="class-name">유리조각 캔들홀더</span></div>
-          <div class="price-wrap1"><span class="price">18,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt8.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[림자수공방]</span><br><span class="class-name">낭만가득 자수 프레임 파우치</span></div>
-          <div class="price-wrap1"><span class="price">33,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt9.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[솜씨]</span><br><span class="class-name">나의 첫 스누피 카드케이스 뜨개질</span></div>
-          <div class="price-wrap1"><span class="price">17,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt10.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[하비풀]</span><br><span class="class-name">하비풀 마크라매 행어</span></div>
-          <div class="price-wrap1"><span class="price">12,000</span>원</div>
-        </div>
-        </a>
-      </div>
-
-      <div class="class-box">
-        <a href="#">
-        <div class="class-image"><img src="../image/pdt11.jpg" alt=""></div>
-        <div class="class-info">
-          <div><span class="host-name">[슬로우모먼츠]</span><br><span class="class-name">버블클러치 뜨개질</span></div>
-          <div class="price-wrap1"><span class="price">23,000</span>원</div>
-        </div>
-        </a>
-      </div>
      <%
      String store_no = request.getParameter("store_no");
-     String mem_id = request.getParameter("mem_id");
      String store_title = request.getParameter("store_title");
      String store_code = request.getParameter("store_code");
      String store_price = request.getParameter("store_price");
@@ -180,7 +67,6 @@
      String store_detail = request.getParameter("store_detail");
      String strore_date = request.getParameter("strore_date");
      String store_img = request.getParameter("store_img");
-     String point = request.getParameter("point");
      %>      
 	<%
 	ArrayList<Store> sList = new ArrayList<Store>();
@@ -218,9 +104,9 @@
     }
     %>
     <!-- 상품상세 페이지가 추가되면 jsp파일도 추가된다? -->
-    <script type="text/javascript">
+<script type="text/javascript">
 	function go(num){
-		location.href="productDetail_jsp.jsp?store_no="+num;
+		location.href="?page=productDetail_jsp&store_no="+num;
 	}
 </script>
     <!-- class-wrap -->

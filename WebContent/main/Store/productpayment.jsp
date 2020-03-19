@@ -106,14 +106,14 @@
                 <li><%=sList.get(store_no-1).getStore_title() %></li>
                 <li>
                 	<form name="form" method="get">
-						<input type=hidden name="sell_price" value="21000"> 
+						<input type=hidden name="sell_price" value="<%=sList.get(store_no-1).getStore_price() %>"> 
 						<input type="button" class="btn3" value=" - " onclick="del();">
 						<input type="text" name="amount" value="1" size="3" onchange="change();" style=" width:15px; border: 1px solid white;">
 						<input type="button" class="btn3" value=" + " onclick="add();"><br>
+						<p style="margin:0px; padding:0px;">가격</p>
 						<input type="text" name="sum" size="11" readonly style="border: 1px solid white; width: 42px; font-size:13px; color:#FA5882;">원
 					</form>
                 </li>
-                <li>가격</li>
               </ul>
             </td>
           </tr>
@@ -138,20 +138,20 @@
         <p class="title-name">주문자 정보</p>
         <table>
           <tr>
-            <td class="fix-info"><%=md.getMem_id() %></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td class="fix-info">아이디</td>
+            <td><input class="insert-info" type="text" name="" value="<%=md.getMem_id() %>"></td>
           </tr>
           <tr>
-            <td class="fix-info"><%=md.getMem_name() %></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td class="fix-info">이름</td>
+            <td><input class="insert-info" type="text" name="" value="<%=md.getMem_name() %>"></td>
           </tr>
           <tr>
-            <td class="fix-info"><%=md.getMem_mail() %></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td class="fix-info">이메일</td>
+            <td><input class="insert-info" type="text" name="" value="<%=md.getMem_mail() %>"></td>
           </tr>
           <tr>
-            <td class="fix-info"><%=md.getMem_phone() %></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td class="fix-info">휴대폰 번호</td>
+            <td><input class="insert-info" type="text" name="" value="<%=md.getMem_phone() %>"></td>
           </tr>
         </table>
         <p style="font-size:11px; color:gray;">*구매내역, 환불, 품절 등을 이메일과 sms문자로 안내해드립니다</p>
@@ -221,7 +221,7 @@
             </td>
           </tr>
           <tr>
-            <td class="fix-info"></td><td style="color:red; font-size:12px;">*현재 보유 마일리지 :<span></span>p</td>
+            <td class="fix-info"></td><td style="color:red; font-size:12px;">*현재 보유 마일리지 :<span></span>2000p</td>
           </tr>
           <tr>
             <td class="fix-info">상품금액</td>

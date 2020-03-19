@@ -139,9 +139,9 @@
 %>
 			<%@include file="Store/productList.jsp"%>
 <%		}
-		if(pl.equals("productDetail")){
+		if(pl.equals("productDetail_jsp")){
 %>
-			 <%@include file="Store/productDetail.jsp"%> 
+			 <%@include file="Store/productDetail_jsp.jsp"%> 
 <%		}
 		if(pl.equals("mypage_order")){
 %>
