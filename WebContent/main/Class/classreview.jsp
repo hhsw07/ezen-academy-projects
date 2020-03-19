@@ -108,7 +108,7 @@ if(!cReview_detail.equals("")){
 	}else{
 		commList = new ArrayList<CReview>();
 	}
-	commList.add(new CReview(req_no, mem_id, cReview_detail, cReview_star, cReview_date));
+	commList.add(new CReview(req_no, cReview_detail, cReview_star, cReview_date));
 	session.setAttribute("commList",commList);
 }
 %>
@@ -137,7 +137,7 @@ if(!cReview_detail.equals("")){
 		CReview crv = commList.get(idx);
 		%>
 		<div class="line-review"></div>  
-	    <li name="cReview_detail" ><%=crv.getMem_id()%></li>
+	    <li name="cReview_detail" ></li>
         <li name="cReview_date" ><%=crv.getcReview_date()%></li>
         <li name="cReview_detail" ><%=crv.getcReview_detail()%></li> 
         <div class="line-review"></div>  
