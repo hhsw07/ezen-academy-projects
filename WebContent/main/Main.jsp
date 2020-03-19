@@ -184,7 +184,30 @@
 %>
 			<%@include file="ServiceCenter/serviceCenter.jsp"%>
 <%			
-		}
+		}if(pl.equals("mypage_delete")){
+%>
+			<%@include file="Mypage/drop.jsp"%>
+<%		}
+		if(pl.equals("mypage_mileage")){
+%>
+			<%@include file="Mypage/mileage.jsp"%>
+<%		}
+		if(pl.equals("mypage_shipment")){
+%>
+			<%@include file="Mypage/shiplist.jsp"%>
+<%		}
+		if(pl.equals("mypage_add_shipment")){
+%>
+			<%@include file="Mypage/shipadd.jsp"%>
+<%		}
+		if(pl.equals("host_class")){
+%>
+			<%@include file="Mypage/hostclass.jsp"%>
+<%		}
+		if(pl.equals("host_store")){
+%>
+			<%@include file="Mypage/hoststore.jsp"%>
+<%		}
 	} %>
 	
 	
