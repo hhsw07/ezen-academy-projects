@@ -117,7 +117,9 @@
   
   <body>
     <div class="wrap" id="arr">
-    	
+    <%
+    
+    %>
 	    <%
 		ArrayList<Store> sList = new ArrayList<Store>();
 		if(session.getAttribute("sList")!=null){
@@ -130,13 +132,13 @@
           <div class="class-image">
             <div class="move_image">
               <section class="visual">
-                <div class="bg1"><img name="store_img" src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg2"><img src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg3"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg6"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg7"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg8"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg9"><img src="../image/" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg1"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg2"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg3"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg6"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg7"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg8"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
+                <div class="bg9"><img name="store_img" src="../image/<%=sList.get(store_no-1).getStore_img()%>" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
               </section>
             </div>
           </div>
@@ -151,20 +153,20 @@
           <div class="class-info">
             <ul>
               <!-- 호스트 이름  -->
-              <li class="host-name" name="mem_id"></li>
+              <li class="host-name" ><%=sList.get(store_no-1).getMem_id()%></li>
               <!-- 상품 이름  -->
-              <li class="class-name"></li>
+              <li class="class-name"><%=sList.get(store_no-1).getStore_title()%></li>
               <!-- 상품 가격 -->
-              <li class="price-wrap"><span class="price" name="store_price"></span><span class="day">원</span></li>
+              <li class="price-wrap"><span class="price" ><%=sList.get(store_no-1).getStore_price()%></span><span class="day">원</span></li>
               <li class="line"></li>
               <!-- 상품 마일리지 -->
-              <li><span>적립 마일리지</span><span class="mileage-point" name="point">p</span></li>
+              <li><span>적립 마일리지</span><span class="mileage-point">p</span></li>
               <li><span class="trans">배송비</span><span class="mileage-point">무료배송(도서산간지역 제외)</span></li>
               <li>
                 <select class="select-pdt" name="">
                   <option value="">상품을 선택해주세요.</option>
                   <!-- 상품 옵션 선택 -->
-                  <option value="" name="store_title"></option>
+                  <option value="" ><%=sList.get(store_no-1).getStore_title()%></option>
                 </select>
               </li>
               <li>

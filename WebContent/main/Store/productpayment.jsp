@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.ArrayList, z01_vo.*, java.util.Date,
+    java.text.SimpleDateFormat " 
+    %>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
@@ -81,19 +84,26 @@
 
   </head>
   <body onload="init();">
-
+	    <%
+		ArrayList<Store> sList = new ArrayList<Store>();
+		if(session.getAttribute("sList")!=null){
+			sList = (ArrayList<Store>)session.getAttribute("sList");
+		}
+		String store_noS = request.getParameter("store_no");
+		int store_no=0; if(store_noS!=null) store_no=Integer.parseInt(store_noS);
+		%>
       <div class="payment-wrap">
       <div class="class-Dinfo">
         <p class="title-name">주문할 취미</p>
         <table>
           <tr>
             <td class="fix-info">
-              <img class="" src="../image/fra1.jpg" alt="" style="width:100px; height:80px;">
+              <img class="" src="../image/<%=sList.get(store_no-1).getStore_img() %>" alt="" style="width:100px; height:80px;">
             </td>
             <td>
               <ul>
-                <li>호스트이름</li>
-                <li>클래스이름</li>
+                <li><%=sList.get(store_no-1).getMem_id() %></li>
+                <li><%=sList.get(store_no-1).getStore_title() %></li>
                 <li>
                 	<form name="form" method="get">
 						<input type=hidden name="sell_price" value="21000"> 
@@ -109,30 +119,58 @@
           </tr>
         </table>
       </div>
-
+	  <%
+	  String uid = request.getParameter("uid"); 
+	  session.setAttribute("loginid", uid);
+	  String searchid = (String)session.getAttribute("loginid");
+	  Member md = new Member(); //로그인한 아이디에 해당하는 회원정보를 받아올 객체 ArrayList<Member> memlist = new
+	  ArrayList<Member> mlist = new ArrayList<Member>(); //db에서 불러온 회원객체 리스트가 저장될 리스트
+	  if(session.getAttribute("memList")!=null){ 
+		  mlist = (ArrayList<Member>)session.getAttribute("memList"); //db에 있는 회원객체리스트를 전부 불러옴
+	  } 
+	  for(Member m : mlist){ //m : for문을 돌리기 위한 임시 회원객체
+	  if(m.getMem_id().equals(searchid)){
+		  md = m; //md에 내가 찾는 회원정보 입력
+	   } 
+	  }
+	  %>
       <div class="class-Dinfo">
         <p class="title-name">주문자 정보</p>
         <table>
           <tr>
-            <td class="fix-info">주문자명</td>
+            <td class="fix-info"><%=md.getMem_id() %></td>
             <td><input class="insert-info" type="text" name="" value=""></td>
           </tr>
           <tr>
-            <td class="fix-info">주문자명</td>
+            <td class="fix-info"><%=md.getMem_name() %></td>
             <td><input class="insert-info" type="text" name="" value=""></td>
           </tr>
           <tr>
-            <td class="fix-info">이메일</td>
+            <td class="fix-info"><%=md.getMem_mail() %></td>
             <td><input class="insert-info" type="text" name="" value=""></td>
           </tr>
           <tr>
-            <td class="fix-info">휴대전화</td>
+            <td class="fix-info"><%=md.getMem_phone() %></td>
             <td><input class="insert-info" type="text" name="" value=""></td>
           </tr>
         </table>
         <p style="font-size:11px; color:gray;">*구매내역, 환불, 품절 등을 이메일과 sms문자로 안내해드립니다</p>
       </div>
-
+	  <%
+	  String uad = request.getParameter("uad"); 
+	  session.setAttribute("userad", uad);
+	  String searchad = (String)session.getAttribute("userad");
+	  Addr ad = new Addr(); //로그인한 아이디에 해당하는 회원정보를 받아올 객체 ArrayList<Member> memlist = new
+	  ArrayList<Addr> adlist = new ArrayList<Addr>(); //db에서 불러온 회원객체 리스트가 저장될 리스트
+	  if(session.getAttribute("addrList")!=null){ 
+		  adlist = (ArrayList<Addr>)session.getAttribute("addrList"); //db에 있는 회원객체리스트를 전부 불러옴
+	  } 
+	  for(Addr a : adlist){ //m : for문을 돌리기 위한 임시 회원객체
+	  if(a.getMem_id().equals(searchad)){
+		  ad = a; //md에 내가 찾는 회원정보 입력
+	   } 
+	  }
+	  %>
       <div class="mem-Dinfo">
         <p class="title-name">배송지 정보</p>
         <table>
@@ -148,26 +186,26 @@
           </tr>
           <tr>
             <td class="fix-info">배송지명</td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_title()%>"></td>
           </tr>
           <tr>
             <td class="fix-info">수령자명</td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_name()%>"></td>
           </tr>
           <tr>
             <td class="fix-info">휴대전화</td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_phone()%>"></td>
           </tr>
             <td class="fix-info">주소</td>
-            <td> <input class="insert-info3" type="text" name="" value=""> <button class="ad-btn" type="button" name="button">우편번호</button> </td>
+            <td> <input class="insert-info3" type="text" name="" value="<%=ad.getAddr_mailAddr()%>"> <button class="ad-btn" type="button" name="button">우편번호</button> </td>
           </tr>
           <tr>
             <td class="fix-info"></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_address()%>"></td>
           </tr>
           <tr>
             <td class="fix-info"></td>
-            <td><input class="insert-info" type="text" name="" value=""></td>
+            <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_address2()%>"></td>
           </tr>
         </table>
       </div>
@@ -187,7 +225,7 @@
           </tr>
           <tr>
             <td class="fix-info">상품금액</td>
-            <td class="insert-info2">금액</td>
+            <td class="insert-info2"><%=sList.get(store_no-1).getStore_price() %></td>
           </tr>
           <tr>
             <td class="fix-info">할인금액</td>

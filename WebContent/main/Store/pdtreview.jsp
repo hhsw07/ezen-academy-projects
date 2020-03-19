@@ -104,7 +104,7 @@ if(!pReview_detail.equals("")){
 	}else{
 		prevList = new ArrayList<PReview>();
 	}
-	prevList.add(new PReview(order_no,mem_id, pReview_detail, pReview_star, pReview_date));
+	prevList.add(new PReview(order_no, pReview_detail, pReview_star, pReview_date));
 	session.setAttribute("prevList",prevList);
 }
 %>
@@ -133,7 +133,7 @@ if(!pReview_detail.equals("")){
 		PReview prv = prevList.get(idx);
 		%>
 	
-	    <li><%=prv.getMem_id()%></li>
+	    <li>아이디</li>
         <li style="margin-bottom:10px;"><%=prv.getpReview_date()%></li>
         <li><%=prv.getpReview_detail()%></li> 
         <div class="line-review"></div>  

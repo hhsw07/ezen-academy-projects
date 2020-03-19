@@ -40,7 +40,8 @@ public class updown {
 	 * if(session.getAttribute("memList")!=null){ memlist =
 	 * (ArrayList<Member>)session.getAttribute("memList"); //db에 있는 회원객체리스트를 전부 불러옴
 	 * } for(Member m : memlist){ //m : for문을 돌리기 위한 임시 회원객체
-	 * if(m.getMem_id().equals(searchid)){ md = m; //md에 내가 찾는 회원정보 입력 } }
+	 * if(m.getMem_id().equals(searchid)){ md = m; //md에 내가 찾는 회원정보 입력
+	 *  } }
 	 */
 	 
 }
