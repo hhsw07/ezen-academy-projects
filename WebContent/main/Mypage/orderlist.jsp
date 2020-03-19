@@ -26,7 +26,7 @@
 	.mysubmenu{display:block; position:relative; width:1050px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 주문/배송 조회 */
-	.orderlist{padding:30px; width:980px; height:540px; margin:0 auto;}
+	.orderlist{padding:30px; width:980px; height:640px; margin:0 auto;}
 	.orderlist article{position:relative; font-size:14px; border-bottom:1px #ddd solid; padding-top:25px;}
 	.o-info{width:300px;}
 	.o-title{width:70px;display:inline-block; margin-right:5px;}
@@ -38,7 +38,7 @@
 	.o-option{color:#b6b6b6; font-size:11px; display:block; padding-top:4px;padding-bottom:4px;}
 	.o-status {position:absolute; bottom:5px; right:0; color:#d67061;}
 	.o-qty {bottom:5px; left:70px; color:#b6b6b6; font-size:11px;}
-	.orderlist div{display:inline-block; vertical-align: middle;}
+	.orderinfo div{display:inline-block; vertical-align: middle;}
 /* 구매내역 없음 */
 	.addrlist-wrap{padding:20px 3%;}
 	.noaddr-wrap{padding:70px 0;text-align:center;}
@@ -59,20 +59,47 @@ olist.add(o1);
 olist.add(o2);
 olist.add(o1);
 olist.add(o2);
+// 마일리지
+ArrayList<Point> ptList = new ArrayList<Point>();
+Point pt1 = new Point("2019.10.13", "회원가입 포인트", 3000);
+Point pt2 = new Point("2020.01.23", "하비팩토리 세뱃돈! 새해 취미복 많이 받으세요", 2020);
+Point pt3 = new Point("2020.03.04", "상품구매", -5020);
+Point pt4 = new Point("2020.03.04", "주문취소", 5020);
+ptList.add(pt1);
+ptList.add(pt2);
+ptList.add(pt3);
+ptList.add(pt4);
+session.setAttribute("ptList", ptList);
+// 포인트계산
+int tot = 0;
+int plus = 0;
+int minus = 0;
+for(int idx=0;idx<ptList.size();idx++){
+	Point p = ptList.get(idx);
+	if(p.getPt_mileage()>=0){
+		plus += p.getPt_mileage();
+		session.setAttribute("plus", plus);
+	} else{
+		minus += p.getPt_mileage();
+		session.setAttribute("minus", -minus);
+	}
+	tot = plus + minus;
+}
+session.setAttribute("totPoint", tot);
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
 */
 
-int w_size = 4;
-int p_size = 2;
+int w_size = 5;
+int p_size = 10;
 int i_page = 1;
 if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
 session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page;
-if(lastNo >= olist.size()) lastNo = olist.size();
+int lastNo = olist.size()-1- (w_size*i_page);
+if(lastNo < 0) lastNo = -1;
 
 Paging pg = new Paging(w_size,p_size,olist.size(),i_page);
 int preNo = pg.getPage_Start()-1;
@@ -84,17 +111,17 @@ int nextNo = pg.getPage_End()+1;
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -112,10 +139,10 @@ int nextNo = pg.getPage_End()+1;
 	<section class="orderlist">
 	<%
 	if(olist!=null){
-		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
+		for(int idx=olist.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
 			Orderlist o = olist.get(idx);
 	%>
-		<article>
+		<article class="orderinfo">
 			<div class="o-info">
 				<ul>
 					<li>
@@ -130,7 +157,7 @@ int nextNo = pg.getPage_End()+1;
 				</ul>
 			</div>
 			<div class="o-thumbnail">
-				<img src=<%=o.getO_thum() %> alt="">
+				<img src="<%=o.getO_thum() %>" alt="">
 			</div>
 			<div>
 				<ul>
@@ -141,11 +168,10 @@ int nextNo = pg.getPage_End()+1;
 					<li class="o-qty">수량 : <%=o.getO_qty() %></li>
 				</ul>
 			</div>
-			
 		</article>
 	<%}
-	} %>
-	<div class="paging">
+		%>
+		<div class="paging">
 			<h4>
 			<%
 			if(pg.isPre()){
@@ -167,6 +193,8 @@ int nextNo = pg.getPage_End()+1;
 			<%} %>
 			</h4>	
 		</div>
+<%	} %>
+	
 	<%
 	if(olist.size()==0){%>
 		<article class="mymenu-content">
@@ -179,7 +207,6 @@ int nextNo = pg.getPage_End()+1;
 		</article>
 	<%}
 	%>	
-	
 	</section>
 	
 

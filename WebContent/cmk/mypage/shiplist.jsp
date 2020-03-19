@@ -117,7 +117,7 @@
 				<div class="noaddr-wrap">
 					<div class="noaddr-tit">아직 등록된 배송지가 없습니다.</div>
 					<div class="noaddr-txt">배송지를 등록해주세요.</div>
-					<a href="#delevery" title="배송지 등록하기" class="btn-noaddr">배송지 등록하기</a>
+					<a href="#delevery" class="btn-noaddr">배송지 등록하기</a>
 				</div>
 			</div>
 		</article>

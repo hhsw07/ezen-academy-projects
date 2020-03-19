@@ -65,7 +65,7 @@ String path = request.getContextPath(); %>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn">HOST</a>
+		<a href="?page=host_class" class="host_btn">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
@@ -167,6 +167,7 @@ String path = request.getContextPath(); %>
 		</article>
 	</section>
 	
-
 </body>
+<script type="text/javascript">
+</script>
 </html>

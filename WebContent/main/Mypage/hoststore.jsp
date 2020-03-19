@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.Myclasses"%>
+    import="java.util.*, z01_vo.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,7 @@
 /* 클래스목록 */
 	.hoststore{width:1050px; margin:0 auto; display:block;}
 	.hs_list{padding:0 3%;}
-	.hs_list ul{width:100%;}
+	.hs_list ul{width:100%; padding-left:36px;}
 	.hs_list ul li{display:inline; float:left; margin:0 20px 0 0; padding:30px 0 10px; border:2px soild tomato;}
 	.c-fordate{text-align:left; margin-top:10px;}
 	.c-when{font-size:11px;}
@@ -38,36 +38,61 @@
 	.hs_listinfo{text-align:left; height:60px; margin:14px 0 0; position:relative;}
 	.hs_listname{margin-top:2px; font-size:16px; line-height:1.38; font-weight:bold; float:left; color:#3d4248; overflow:hidden;
 	text-overflow:ellipsis; white-space:nowrap; word-break:break-all;}
-	.paging-cont{width:1050px; text-align:center; margin:0 auto;}
-	.page_num{margin:20px 0 0; padding:20px 10% 70px; width:725px; text-align:center; position:absolute; bottom:10px}
-	.btn_num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
-	.btn_num-on{color:#f1645d; border:1px solid #f1645d;}
+	.paging {text-align:center; width:980px; position:absolute; bottom:10px}
+	.pageNo{color:#f36359;}
 </style></head>
 <body>
+<%
+ArrayList <Orderlist> olist = new ArrayList<Orderlist>();
+Orderlist o1 = new Orderlist(2003040001, "2020.03.04", "image/mypage_ex02.jpg","고래의 꿈 네온사인", "-", 1,"배송완료");
+Orderlist o2 = new Orderlist(2003100001, "2020.03.10", "image/mypage_ex01.jpg","상콤 레몬 수세미", "-", 1,"배송준비중");
+olist.add(o1);
+olist.add(o2);
+olist.add(o1);
+olist.add(o2);
+olist.add(o1);
+olist.add(o2);
+olist.add(o2);
+olist.add(o1);
+olist.add(o2);
+
+int w_size = 6;
+int p_size = 10;
+int i_page = 1;
+if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+session.setAttribute("i_page",i_page);
+
+int lastNo = olist.size()-1- (w_size*i_page);
+if(lastNo < 0) lastNo = -1;
+
+Paging pg = new Paging(w_size,p_size,olist.size(),i_page);
+int preNo = pg.getPage_Start()-1;
+int nextNo = pg.getPage_End()+1;
+%>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="#" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="#" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
-		<a href="#" title="호스트" class="host_btn mymenu_btn-on">HOST</a>
+		<a href="?page=host_class" class="host_btn mymenu_btn-on">HOST</a>
 	</div>
 	
 <!-- 소메뉴 -->
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li class="mymenu_btn-on"><a href="#">스토어</a></li>
-				<li><a href="#">클래스</a></li>
+				<li class="mymenu_btn-on"><a href="?page=host_store">스토어</a></li>
+				<li><a href="?page=host_class">클래스</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -75,68 +100,55 @@
 <!-- 내 클래스 -->
 	<section class="mypage_content">
 		<article class="hoststore">
+		<%
+	if(olist!=null){
+		for(int idx=olist.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
+			Orderlist o = olist.get(idx);
+	%>
 			<div class="hs_list">
 				<ul>
 					<li>
 						<a href="#">
 							<div class="c-fordate">		 					
-				 				<p class="c-when"><span>등록일</span><span class="c-date">등록날짜</span></p>
+				 				<p class="c-when"><span>등록일</span><span class="c-date"><%=o.getO_date() %></span></p>
 			 				</div>
 							<div class="hs_list_thumb">
-								<img src="../image/mypage_ex01.jpg" alt="">
+								<img src="<%=o.getO_thum() %>" alt="">
 							</div>
 							<div class="hs_listinfo">
-								<p class="hs_listname">상콤 레몬 수세미 뜨기</p>
+								<p class="hs_listname"><%=o.getO_name() %></p>
 							</div>
 						</a>
 					</li>
-					<li>
-						<a href="#">
-							<div class="c-fordate">		 					
-				 				<p class="c-when"><span>등록일</span><span class="c-date">등록날짜</span></p>
-			 				</div>
-							<div class="hs_list_thumb">
-								<img src="../image/mypage_ex02.jpg" alt="">
-							</div>
-							<div class="hs_listinfo">
-								<p class="hs_listname">고래의 꿈 네온사인 클래스</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="c-fordate">		 					
-				 				<p class="c-when"><span>등록일</span><span class="c-date">등록날짜</span></p>
-			 				</div>
-							<div class="hs_list_thumb">
-								<img src="../image/mypage_ex01.jpg" alt="">
-							</div>
-							<div class="hs_listinfo">
-								<p class="hs_listname">상콤 레몬 수세미 뜨기</p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="c-fordate">		 					
-				 				<p class="c-when"><span>등록일</span><span class="c-date">등록날짜</span></p>
-			 				</div>
-							<div class="hs_list_thumb">
-								<img src="../image/mypage_ex02.jpg" alt="">
-							</div>
-							<div class="hs_listinfo">
-								<p class="hs_listname">고래의 꿈 네온사인 클래스</p>
-							</div>
-						</a>
-					</li>
+					
 				</ul>
 			</div>
-		</article>
-		<div class="paging-cont">
-			<div class="page_num">
-				<a href="#" title="1" data-page="1" class="btn_num btn_num-on">1</a>
-			</div>
+			<%}
+		%>
+		<div class="paging">
+			<h4>
+			<%
+			if(pg.isPre()){
+			%>
+				<a href="?page=host_store&i_page=<%=preNo %>">Pre</a>
+			<%
+			}
+			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
+				if(i == i_page){
+			%>
+				<a class="pageNo" href="?page=host_store&i_page=<%=i %>" ><%=i %></a>
+			<%	}else{ %>
+				<a href="?page=host_store&i_page=<%=i %>"><%=i %></a>
+			<%	}
+			}
+			if(pg.isNext()){
+			%>
+				<a href="?page=host_store&i_page=<%=nextNo %>">Next</a>
+			<%} %>
+			</h4>	
 		</div>
+<%	} %>
+		</article>
 	</section>
 
 </body>
