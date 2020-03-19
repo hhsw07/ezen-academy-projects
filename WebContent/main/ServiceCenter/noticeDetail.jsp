@@ -42,6 +42,7 @@
 		}
 	</script>
 </head>
+
 <%
 int cn = Integer.parseInt(request.getParameter("cn")); //checkedNotice
 Notice nd = new Notice();//noticeDeatil
