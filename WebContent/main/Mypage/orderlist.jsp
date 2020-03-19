@@ -40,7 +40,10 @@
 	.o-qty {bottom:5px; left:70px; color:#b6b6b6; font-size:11px;}
 	.orderlist div{display:inline-block; vertical-align: middle;}
 /* 구매내역 없음 */
-	.o-none{text-align:center; margin-top:50px; width:100%;}	
+	.addrlist-wrap{padding:20px 3%;}
+	.noaddr-wrap{padding:70px 0;text-align:center;}
+	.noaddr-tit{font-size:24px;font-weight:bold;color:#3d4248;}
+	.noaddr-txt{margin:5px 0 0;font-size:16px;color:#a1a4a8;}
 /* 페이징 */	
 	.paging{text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
@@ -84,7 +87,7 @@ int nextNo = pg.getPage_End()+1;
 					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
@@ -98,10 +101,10 @@ int nextNo = pg.getPage_End()+1;
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li style="font-weight:bold;"><a href="#">주문/배송조회</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_order">주문/배송조회</a></li>
 				<li><a href="?page=mypage_class">클래스 보관함</a></li>
-				<li><a href="#">배송지 목록</a></li>
-				<li><a href="#">배송지 추가</a></li>
+				<li><a href="?page=mypage_shipment">배송지 목록</a></li>
+				<li><a href="?page=mypage_add_shipment">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -110,43 +113,38 @@ int nextNo = pg.getPage_End()+1;
 	<%
 	if(olist!=null){
 		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
+			Orderlist o = olist.get(idx);
 	%>
 		<article>
 			<div class="o-info">
 				<ul>
 					<li>
 						<span class="o-title">주문번호</span> 
-						<span class="o-value"><%=olist.get(idx).getO_num() %></span>
+						<span class="o-value"><%=o.getO_num() %></span>
 					</li>
 					<li>
 						<span class="o-title">신청일</span> 
-						<span class="o-value"><%=olist.get(idx).getO_date() %></span>
+						<span class="o-value"><%=o.getO_date() %></span>
 					</li>
 					<li class="o-btn"><a href="#">주문상세보기</a></li>
 				</ul>
 			</div>
 			<div class="o-thumbnail">
-				<img src=<%=olist.get(idx).getO_thum() %> alt="">
+				<img src=<%=o.getO_thum() %> alt="">
 			</div>
 			<div>
 				<ul>
 					
-					<li class="o-name"><%=olist.get(idx).getO_name() %></li>
-					<li class="o-option"><%=olist.get(idx).getO_opt() %></li>
-					<li class="o-status"><%=olist.get(idx).getO_sta() %></li>
-					<li class="o-qty">수량 : <%=olist.get(idx).getO_qty() %></li>
+					<li class="o-name"><%=o.getO_name() %></li>
+					<li class="o-option"><%=o.getO_opt() %></li>
+					<li class="o-status"><%=o.getO_sta() %></li>
+					<li class="o-qty">수량 : <%=o.getO_qty() %></li>
 				</ul>
 			</div>
+			
 		</article>
 	<%}
 	} %>
-	<%
-	if(olist.size()==0){%>
-		<div class="o-none">
-			주문한 내역이 없습니다.
-		</div>
-	<%}
-	%>	
 	<div class="paging">
 			<h4>
 			<%
@@ -169,6 +167,19 @@ int nextNo = pg.getPage_End()+1;
 			<%} %>
 			</h4>	
 		</div>
+	<%
+	if(olist.size()==0){%>
+		<article class="mymenu-content">
+			<div class="addrlist-wrap">
+				<div class="noaddr-wrap">
+					<div class="noaddr-tit">주문한 내역이 없습니다.</div>
+					<div class="noaddr-txt">스토어에서 구매 후 이용해주세요.</div>
+				</div>
+			</div>
+		</article>
+	<%}
+	%>	
+	
 	</section>
 	
 

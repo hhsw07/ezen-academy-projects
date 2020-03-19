@@ -38,13 +38,14 @@
 	.c-name {margin-top:2px; font-size:14px; line-height:1.38; font-weight:bold;}
 	.c-when{font-size:11px;}
 	.c-date{color:#a1a4a8; margin-left:10px;}
-	.o-none{text-align:center; margin-top:50px; width:100%;}
+/* 수강내역 없을 때 */
+	.addrlist-wrap{padding:20px 3%;}
+	.noaddr-wrap{padding:70px 0;text-align:center;}
+	.noaddr-tit{font-size:24px;font-weight:bold;color:#3d4248;}
+	.noaddr-txt{margin:5px 0 0;font-size:16px;color:#a1a4a8;}
 /* 페이징 */	
 	.paging {text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
-	.page_num{margin:20px auto 0; padding:110px 10% 0; text-align:center; width:724px; position:absolute; bottom:1px;}
-	.btn_num{width:44px; height:44px; margin:0 7px; font-size:14px; line-height:42px; display:inline-block; text-align:center;}
-	.btn_num-on{color:#f1645d; border:1px solid #f1645d;}
 </style></head>
 <%
 ArrayList<Myclasses> myclist = new ArrayList<Myclasses>();
@@ -86,7 +87,7 @@ int nextNo = pg.getPage_End()+1;
 					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
@@ -101,9 +102,9 @@ int nextNo = pg.getPage_End()+1;
 		<nav class="mynav">
 			<ul>
 				<li><a href="?page=mypage_order">주문/배송조회</a></li>
-				<li style="font-weight:bold;"><a href="?page=mypage_class">클래스 보관함</a></li>
-				<li><a href="#">배송지 목록</a></li>
-				<li><a href="#">배송지 추가</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_class">클래스 보관함</a></li>
+				<li><a href="?page=mypage_shipment">배송지 목록</a></li>
+				<li><a href="?page=mypage_add_shipment">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -116,54 +117,62 @@ int nextNo = pg.getPage_End()+1;
 	%>
 		<article class="pre-class">
 		 	<ul class="preview">
-	<%	for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){ %>
+	<%	for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){ 
+		Myclasses mc = myclist.get(idx);
+	%>
 		 		<li class="c-list">
 		 			<a href="#">
 		 				<div class="c-fordate">		 					
-			 				<p class="c-when"><span>수강날짜</span><span class="c-date"><%=myclist.get(idx).getC_date() %></span></p>
+			 				<p class="c-when"><span>수강날짜</span><span class="c-date"><%=mc.getC_date() %></span></p>
 		 				</div>
 		 				<div class="c-thumbnail">
-		 					<img src="<%=myclist.get(idx).getC_thum() %>" alt="">
+		 					<img src="<%=mc.getC_thum() %>" alt="">
 		 				</div>
 		 				<div class="c-listcon">
-			 				<p class="c-lecture"><%=myclist.get(idx).getC_lec() %></p>
-			 				<p class="c-name"><%=myclist.get(idx).getC_name() %></p>
+			 				<p class="c-lecture"><%=mc.getC_lec() %></p>
+			 				<p class="c-name"><%=mc.getC_name() %></p>
 		 				</div>
 		 			</a>
 		 		</li>
 		 <%
 		 } %>
 		 	</ul>
+		 	<div class="paging">
+				<h4>
+				<%
+				if(pg.isPre()){
+				%>
+					<a href="?page=mypage_class&i_page=<%=preNo %>">Pre</a>
+				<%
+				}
+				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
+					if(i == i_page){
+				%>
+					<a class="pageNo" href="?page=mypage_class&i_page=<%=i %>" ><%=i %></a>
+				<%	}else{ %>
+					<a href="?page=mypage_class&i_page=<%=i %>"><%=i %></a>
+				<%	}
+				}
+				if(pg.isNext()){
+				%>
+					<a href="?page=mypage_class&i_page=<%=nextNo %>">Next</a>
+				<%} %>
+				</h4>	
+			</div>
 		</article>
 	<%}%>
 	<%if(myclist.size()==0){ %>
-		<div class="o-none">
-			수강 이력이 없습니다.
-		</div>
+		<article class="mymenu-content">
+			<div class="addrlist-wrap">
+				<div class="noaddr-wrap">
+					<div class="noaddr-tit">아직 수강 내역이 없습니다.</div>
+					<div class="noaddr-txt">클래스 수강 후 이용해주세요.</div>
+				</div>
+			</div>
+		</article>
 	
 	<%} %>
-		<div class="paging">
-			<h4>
-			<%
-			if(pg.isPre()){
-			%>
-				<a href="?page=mypage_class&i_page=<%=preNo %>">Pre</a>
-			<%
-			}
-			for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
-				if(i == i_page){
-			%>
-				<a class="btn_num btn_num-on" href="?page=mypage_class&i_page=<%=i %>" ><%=i %></a>
-			<%	}else{ %>
-				<a class="btn_num" href="?page=mypage_class&i_page=<%=i %>"><%=i %></a>
-			<%	}
-			}
-			if(pg.isNext()){
-			%>
-				<a href="?page=mypage_classr&i_page=<%=nextNo %>">Next</a>
-			<%} %>
-			</h4>	
-		</div>
+		
 	</section>
 
 </body>

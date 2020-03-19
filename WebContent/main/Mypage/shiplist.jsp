@@ -31,7 +31,7 @@ String path = request.getContextPath(); %>
 	.shiplist{width:1050px; margin:0 auto;}
 	.addrlist-wrap{padding:20px 3%;}
 	.addrlist-cont{position:relative; padding:30px 43% 30px 23%; border-bottom:1px solid #dfdfdf; color:#a1a4a8;}
-	.addrlist-title{position:absolute; top:30px; left:0; width:10%; margin:0; padding:0; font-size:16px; border-bottom:0; line-height:1.5; text-align:center;}
+	.addrlist-title{position:absolute; top:50px; left:0; width:10%; margin:0; padding:0; font-size:16px; border-bottom:0; line-height:1.5; text-align:center;}
 	.txt-color-r{display:block; margin:7px 0 0; color:#f1645d !important;}
 	.addrlist-name{left:10%; width:12%; margin:0;}
 	.addrlist-area{position:absolute; top:30px; padding:0; line-height:1.71; text-align:center;}
@@ -87,13 +87,13 @@ int nextNo = pg.getPage_End()+1;
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="#" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage"class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
@@ -106,8 +106,8 @@ int nextNo = pg.getPage_End()+1;
 			<ul>
 				<li><a href="?page=mypage_order">주문/배송조회</a></li>
 				<li><a href="?page=mypage_class">클래스 보관함</a></li>
-				<li class="mymenu_btn-on"><a href="#">배송지 목록</a></li>
-				<li><a href="#">배송지 추가</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_shipment">배송지 목록</a></li>
+				<li><a href="?page=mypage_add_shipment">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -139,8 +139,8 @@ int nextNo = pg.getPage_End()+1;
 						<div class="addrlist-txt">(<%=s.getShip_zip() %>) <%=s.getShip_addr() %><%=s.getShip_addr2() %></div>
 					</div>
 					<div class="addrlist-btn">
-						<a href="#link" title="수정" data-arr-idx="0" class="btn-addrlist">수정</a>
-						<a href="#link" title="삭제" data-address-id="14500" class="btn-addrlist">삭제</a>
+						<a href="#" title="수정" class="btn-addrlist">수정</a>
+						<a href="#" title="삭제" class="btn-addrlist">삭제</a>
 					</div>
 				</div>
 			</div>
@@ -150,20 +150,20 @@ int nextNo = pg.getPage_End()+1;
 				<%
 				if(pg.isPre()){
 				%>
-					<a href="shiplist.jsp?i_page=<%=preNo %>">Pre</a>
+					<a href="?page=mypage_shipment&i_page=<%=preNo %>">Pre</a>
 				<%
 				}
 				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
 					if(i == i_page){
 				%>
-					<a class="pageNo" href="shiplist.jsp?i_page=<%=i %>" ><%=i %></a>
+					<a class="pageNo" href="?page=mypage_shipment&i_page=<%=i %>" ><%=i %></a>
 				<%	}else{ %>
-					<a href="shiplist.jsp?i_page=<%=i %>"><%=i %></a>
+					<a href="?page=mypage_shipment&i_page=<%=i %>"><%=i %></a>
 				<%	}
 				}
 				if(pg.isNext()){
 				%>
-					<a href="shiplist.jsp?i_page=<%=nextNo %>">Next</a>
+					<a href="?page=mypage_shipment&i_page=<%=nextNo %>">Next</a>
 				<%} %>
 				</h4>	
 			</div>
@@ -178,7 +178,7 @@ int nextNo = pg.getPage_End()+1;
 				<div class="noaddr-wrap">
 					<div class="noaddr-tit">아직 등록된 배송지가 없습니다.</div>
 					<div class="noaddr-txt">배송지를 등록해주세요.</div>
-					<a href="#" title="배송지 등록하기" class="btn-noaddr">배송지 등록하기</a>
+					<a href="?page=mypage_add_shipment" class="btn-noaddr">배송지 등록하기</a>
 				</div>
 			</div>
 		</article>

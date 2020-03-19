@@ -55,13 +55,13 @@ String path = request.getContextPath(); %>
 		<div class="mymenubar">
 			<ul class="mymenu-list">
 				<li>
-					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
+					<a href="?page=mypage_order" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
@@ -72,10 +72,10 @@ String path = request.getContextPath(); %>
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li><a href="#">주문/배송조회</a></li>
+				<li><a href="?page=mypage_order">주문/배송조회</a></li>
 				<li><a href="?page=mypage_class">클래스 보관함</a></li>
-				<li><a href="#">배송지 목록</a></li>
-				<li class="mymenu_btn-on"><a href="#">배송지 추가</a></li>
+				<li><a href="?page=mypage_shipment">배송지 목록</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_add_shipment">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>

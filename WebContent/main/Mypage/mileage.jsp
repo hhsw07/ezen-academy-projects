@@ -76,6 +76,7 @@ ptList.add(pt4);
 	Paging pg = new Paging(w_size,p_size,ptList.size(),i_page);
 	int preNo = pg.getPage_Start()-1;
 	int nextNo = pg.getPage_End()+1;
+	
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -86,7 +87,7 @@ ptList.add(pt4);
 					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn mymenu_btn-on">나의 활동</a>
+					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn mymenu_btn-on">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn">내 정보 관리</a>
@@ -102,11 +103,27 @@ ptList.add(pt4);
 			<ul>
 				<li><a href="#">구매후기</a></li>
 				<li><a href="#">1:1문의</a></li>
-				<li class="mymenu_btn-on"><a href="#">마일리지</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_mileage">마일리지</a></li>
 			</ul>
 		</nav>
 	</div>
-
+<%
+int tot=0;
+int plus=0;
+int minus=0;
+if(ptList!=null){
+	for(int idx=ptList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
+		Point pt = ptList.get(idx);
+		if(pt.getPt_mileage()>=0){
+			plus = plus+pt.getPt_mileage();
+		} else{
+			minus = minus+pt.getPt_mileage();
+		}
+		tot = plus+minus;
+	}
+}
+session.setAttribute("totPoint", tot);
+%>
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
 		<article class="point-wrap">
@@ -115,15 +132,15 @@ ptList.add(pt4);
 					<div class="pointinfo_show">
 						<div class="point-info">
 							<div class="point-info-tit">현재 마일리지</div>
-							<div class="point-info-p">5,020P</div>
+							<div class="point-info-p"><%=tot %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">총 적립 마일리지</div>
-							<div class="point-info-p">10,040P</div>
+							<div class="point-info-p"><%=plus %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">사용한 마일리지</div>
-							<div class="point-info-p">5,020P</div>
+							<div class="point-info-p"><%=-minus %> P</div>
 						</div>
 					</div>
 				</div>
@@ -156,7 +173,7 @@ ptList.add(pt4);
 						<%
 							if(pt.getPt_mileage()>=0){
 						%>
-									<td class="point-td txt-color-r">+<%=ptList.get(idx).getPt_mileage() %>p</td>
+									<td class="point-td txt-color-r">+<%=pt.getPt_mileage() %>p</td>
 						<%
 							} else{
 						%>

@@ -11,14 +11,20 @@ String path = request.getContextPath(); %>
 <style type="text/css">
 /* 전체 */
 	ul li{list-style:none;}
-	a{text-decoration:none; color:black;}
-/* 메뉴 */
-	.mymenu{position:relative; width:1050px; background-color:#151515; color:#FFFFFF; font-size:18px; margin:64px auto 0; padding:5px;}
+	a{text-decoration:none; color:black;cursor:pointer;}
+/* 메뉴바 */
+	.mymenu{width:1050px; margin:60px auto 0; background:none; position:relative;}
+	.mymenubar{position:relative; height:64px; background:#2a2c34; overflow:hidden;}
+	.mymenubar ul{width:100%; padding:0 10px; overflow:hidden;}
+	.mymenubar ul li{float:left;}
+	.mymenu_btn{padding:4px 18px 23px; font-size:18px; display:block; color:#FFFFFF;}
+	.mymenu_btn-on{font-weight:bold;}
+	.host_btn{width:90px; height:64px; padding-left:89px; color:#FFFFFF; font-size:18px; background-size:19px 18px; text-indent:0;
+	line-height:64px; display:block; position:absolute; top:0; right:0; overflow:hidden;}
+/* 소메뉴 */
 	.mynav{text-align:left; display:inline;}
 	.mynav ul li{float:left; text-align:center; display:flex; padding-right:30px;}
 	.mynav ul li a{color:#FFFFFF; cursor:pointer;}
-	.myhost{text-align:right; display:inline;}
-	.myhost ul li{padding-right:30px; cursor:pointer;}
 	.mysubmenu{display:block; position:relative; width:1050px; padding:4px; margin:0 auto;}
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 회원정보수정 */
@@ -49,10 +55,10 @@ String path = request.getContextPath(); %>
 					<a href="?page=mypage_order" title="주문/배송관리" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="#" title="나의 활동" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_mileage" title="나의 활동" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
-					<a href="#" title="내 정보 관리" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
+					<a href="?page=mypage_modiinfo" title="내 정보 관리" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
 				</li>
 			</ul>
 		</div>
@@ -65,12 +71,15 @@ String path = request.getContextPath(); %>
 			<ul>
 				<li class="mymenu_btn-on"><a href="?page=mypage_modiinfo">회원정보수정</a></li>
 				<li><a href="?page=mypage_modipass">비밀번호변경</a></li>
-				<li><a href="#">회원탈퇴</a></li>
+				<li><a href="?page=mypage_delete">회원탈퇴</a></li>
 			</ul>
 		</nav>
 	</div>
 	
 <!-- 회원정보 변경 -->
+<%
+	
+%>
 	<section>
 		<article class="myinfo_content">
 			<div class="myinfo_wrap">
@@ -124,7 +133,7 @@ String path = request.getContextPath(); %>
 							</tbody>
 						</table>
 					</div>
-					<div class="myinfo_edit">
+					<div class="myinfo_edit myinfo_line">
 						<table class="myinfo_table">
 							<colgroup>
 								<col width="18%">
@@ -152,6 +161,7 @@ String path = request.getContextPath(); %>
 								</tbody>
 							</table>
 						</div>
+						<!-- 
 						<div class="myinfo_edit myinfo_line">
 							<table class="myinfo_table">
 								<colgroup>
@@ -175,6 +185,7 @@ String path = request.getContextPath(); %>
 								</tbody>
 							</table>
 						</div>
+						 -->
 						<div class="myinfo_btn">
 							<a href="#" title="수정완료" class="btn-myinfo_edit">수정완료</a>
 						</div>
