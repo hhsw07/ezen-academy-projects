@@ -29,7 +29,7 @@ session.setAttribute("addList", addList);
 ArrayList<Course> couList = new ArrayList<Course>();
 for(int cnt=1;cnt<=16;cnt++){
 	couList.add(new Course(cnt, "홍길동"+cnt,"2020-03-02","비누만들기"+cnt,"D",
-			"재밌는 비누만들기",0,10,30000,"","2020-03-10"));
+			"재밌는 비누만들기",0,10,30000,"","2020-03-10","마크라메"));
 }
 session.setAttribute("couList", couList);
 
@@ -39,7 +39,7 @@ session.setAttribute("couList", couList);
 ArrayList<CReview> commList = new ArrayList<CReview>();
 for(int cnt=1;cnt<=16;cnt++){
 	int rPt = (int)(Math.random()*6);
-	commList.add(new CReview(cnt,"홍길동"+cnt, "재밌어요"+cnt,rPt, "2020-01-01"));
+	commList.add(new CReview(cnt,"재밌어요"+cnt,rPt, "2020-01-01"));
 }
 session.setAttribute("commList", commList);
 
@@ -58,12 +58,12 @@ session.setAttribute("inqList", inqList);
 //Member 임의 데이터 생성
 /* 아이디, (int)회원번호, 비밀번호, 이름, 이메일, 닉네임, 생년월일, 휴대폰, 등급, (int)마일리지 */
 ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("himan1",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M",0);
-Member m02 = new Member("himan2",2,"7777","김길동","mail02@gmail.com","둘리2","2000-01-01","010-1234-1002","H",100);
+Member m01 = new Member("himan1",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M");
+Member m02 = new Member("himan2",2,"7777","김길동","mail02@gmail.com","둘리2","2000-01-01","010-1234-1002","H");
 memList.add(m01);
 memList.add(m02);
 for(int cnt=3;cnt<=16;cnt++){
-	memList.add(new Member("himan"+cnt,cnt,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N",100+cnt));
+	memList.add(new Member("himan"+cnt,cnt,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N"));
 }
 session.setAttribute("memList", memList);
 
@@ -72,10 +72,10 @@ session.setAttribute("memList", memList);
 /* 적립/사용날짜, 적립/사용내역, (int)마일리지 */
 ArrayList<Mileage> ptList = new ArrayList<Mileage>();
 for(int cnt=1; cnt < 5; cnt++){
-	ptList.add(new Mileage("2020-03-11","적립",20+cnt));
+	ptList.add(new Mileage(cnt,"himan"+cnt,"2020-03-11","적립",20+cnt));
 }
 for(int cnt=6; cnt < 10; cnt++){
-	ptList.add(new Mileage("2020-03-11","사용",10+cnt));
+	ptList.add(new Mileage(cnt,"himan"+cnt,"2020-03-11","사용",10+cnt));
 }
 session.setAttribute("ptList", ptList);
 
@@ -119,7 +119,7 @@ session.setAttribute("oList", oList);
 /* (int)주문번호, 아이디, 후기내용, (int)평점, 등록일 */
 ArrayList<PReview> prevList = new ArrayList<PReview>();
 for(int cnt=1; cnt < 22; cnt++){
-	prevList.add(new PReview(cnt,"himan"+cnt,"좋아요"+cnt,cnt%5,"2020-03-11"));
+	prevList.add(new PReview(cnt,"좋아요"+cnt,cnt%5,"2020-03-11"));
 }
 session.setAttribute("prevList", prevList);
 
@@ -136,9 +136,9 @@ session.setAttribute("reqList", reqList);
 // Store 임의 데이터 생성
 /* (int)상품번호, 호스트, 상품명, 승인상태, (int)가격, (int)총갯수, 상품설명, 신청일, 상품이미지 */
 ArrayList<Store> sList = new ArrayList<Store>();
-sList.add(new Store(1,"김씨","가죽공방","Y",25000,20,"재밌음","2020-03-25","ads01_wide.jpg",2000));
+sList.add(new Store(1,"김씨","가죽공방","Y",25000,20,"재밌음","2020-03-25","ads01_wide.jpg","마크라메"));
 for(int cnt=2; cnt < 22; cnt++){
-	sList.add(new Store(cnt,"himan"+cnt,"수제 비누 "+cnt+"호","Y",5000,20+cnt,"순하고 부르러워요"+cnt,"2020-03-11","ads01_wide.jpg",1000));
+	sList.add(new Store(cnt,"himan"+cnt,"수제 비누 "+cnt+"호","Y",5000,20+cnt,"순하고 부르러워요"+cnt,"2020-03-11","ads01_wide.jpg","마크라메"));
 
 }
 session.setAttribute("sList", sList);
