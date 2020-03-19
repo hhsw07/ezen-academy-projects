@@ -39,6 +39,7 @@
 </style>
 </head>
 <%
+//장바구니 목록 추가
 ArrayList <Orderlist> olist = new ArrayList<Orderlist>();
 Orderlist o1 = new Orderlist(2003040001, "2020.03.04", "image/mypage_ex02.jpg","고래의 꿈 네온사인", "-", 1,"배송완료");
 Orderlist o2 = new Orderlist(2003100001, "2020.03.10", "image/mypage_ex01.jpg","상콤 레몬 수세미", "-", 1,"배송준비중");

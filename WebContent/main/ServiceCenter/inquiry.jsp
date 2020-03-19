@@ -35,61 +35,41 @@
 			bottom.style.paddingTop = 50+middle.scrollHeight+"px";
 			
 			allWrap.style.height = bottom.scrollHeight+"px"
-			
-			
-			
-			
+		}
+		//문의하기 알림창
+		function inquiry(){
+			alert('문의가 완료되었습니다.');
 		}
 	</script>
 </head>
-
-<%
-//공지사항 상세 연결
-int cn = Integer.parseInt(request.getParameter("cn"));
-//checkedNotice, 공지목록에서 넘겨온 공지코드
-Notice nd = new Notice();//noticeDeatil, 상세공지내용이 담길 공지객체
-ArrayList <Notice> notiList = new ArrayList<Notice>();
-//전체 공지 내용을 담을 리스트
-if(session.getAttribute("notiList")!=null){ //공지사항 리스트가 있을때
-	notiList = (ArrayList<Notice>)session.getAttribute("notiList");
-	//담을 리스트에 공지사항 리스트를 담는다
-}
-for(Notice n : notiList){ //불러온 공지리스트를 전부 체크, n : 임시 공지객체
-	if(n.getNoti_no()==cn){	//넘겨온 공지코드와 일치하는 n-공지번호가 있을때
-		nd = n;	//임시공지객체 n을 상세공지내용이 담길 객체 nd에 담는다.
-	}
-}
-%>
+	
 <body>
+<form>
 <section class="orderlist">
+<div style="padding-top:15px; font-size:20px; font-weight: bold;">궁금하신 사항을 물어보시면 성심성의껏 답해드리겠습니다.
+</div>
 		<article>
 			<div class="o-info">
-				<ul>
-					<li>
-						<span class="o-title">공지번호</span> 
-						<span class="o-value"><%=nd.getNoti_no() %></span>
+				<ul style="padding:15px">
+					<li class="o-name">
+					<input style="padding:10px; font-size:20px; width:900px" type="text"
+					placeholder="제목을 입력해주세요." />
 					</li>
-					<li>
-						<span class="o-title">작성일</span> 
-						<span class="o-value"><%=nd.getNoti_date() %></span>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<ul>
-					<li class="o-name"><%=nd.getNoti_title() %></li>
 				</ul>
 			</div>
 		</article>
 		
 		<div class="o-detail">
-				<%=nd.getNoti_detail() %>
-				<br><br>
-				<div style="display:inline-block;margin:0 auto; padding:10px; border:1px solid black; cursor: pointer;">
-				<a href="?page=serviceCenter&service=notice">목록으로</a></div>
+			<div><textarea style="padding:10px; font-size:20px" rows="20" cols="89"
+			placeholder="문의내용을 입력해주세요."></textarea></div>
+			<div style="display:block; width:200px;margin:0 auto; padding:10px; border:1px solid black; cursor: pointer;
+			text-align: center;">
+				<a href="javascript:inquiry()">문의하기</a></div>				
 		</div>
 </section>
+</form>
 </body>
 	<script type="text/javascript">
+	
 	</script>
 </html>

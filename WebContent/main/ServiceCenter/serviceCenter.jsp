@@ -54,9 +54,9 @@
 		<nav class="mynav">
 			<ul>
 				<li><a href="?page=serviceCenter&service=notice">공지사항</a></li>
-				<li><a href="">FAQ</a></li>
-				<li><a href="">1:1문의</a></li>
-				<li><a href="">호스트 신청</a></li>
+				<li><a href="?page=serviceCenter&service=Faq">FAQ</a></li>
+				<li><a href="?page=serviceCenter&service=inquiry">1:1문의</a></li>
+				<li><a href="?page=serviceCenter&service=hostReq">호스트 신청</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -74,6 +74,21 @@
 	%>
 				<%@include file="noticeDetail.jsp" %>
 	<%			
+			}
+			if(sv.equals("Faq")){
+	%>
+				<%@include file="Faq.jsp" %>
+	<%				
+			}
+			if(sv.equals("inquiry")){
+	%>
+			<%@include file="inquiry.jsp" %>
+	<%				
+			}
+			if(sv.equals("hostReq")){
+	%>
+			<%@include file="hostReq.jsp" %>
+	<%				
 			}
 		}
 	%>

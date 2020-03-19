@@ -12,6 +12,7 @@
 	</script>
 </head>
 <%
+//공지 내용 추가
 ArrayList <Notice> notiList = new ArrayList<Notice>();
 if(session.getAttribute("notiList")!=null){
 	notiList = (ArrayList<Notice>)session.getAttribute("notiList");
@@ -45,15 +46,16 @@ session.setAttribute("notiList", notiList);
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
 */
-
+//페이징-역순
 int w_size = 5;
 int p_size = 2;
 int i_page = 1;
-if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
+if(request.getParameter("i_page") != null) i_page
+= Integer.parseInt(request.getParameter("i_page"));
 session.setAttribute("i_page",i_page);
 
-int lastNo = w_size*i_page; //5
-int cnt = 1+(w_size*(i_page-1)); //1,6, 11, 16..
+int lastNo = w_size*i_page;  //페이지당 표시될 넘버링(마지막)
+int cnt = 1+(w_size*(i_page-1)); //역순 페이지 처리 변수
 if(lastNo >= notiList.size()) lastNo = notiList.size();
 
 Paging pg = new Paging(w_size,p_size,notiList.size(),i_page);
@@ -65,7 +67,8 @@ int nextNo = pg.getPage_End()+1;
 <!-- 주문/배송조회 -->
 	<section class="orderlist">
 	<%
-	if(notiList!=null){
+	//공지내용 표시
+	if(notiList!=null){ //공지 리스트가 있을 경우 불러오서 있는만큼 표시
 		for(int idx=notiList.size()-cnt ; idx>=notiList.size()-lastNo ; idx--){ 
 	%>
 		<article>
@@ -83,6 +86,7 @@ int nextNo = pg.getPage_End()+1;
 			</div>
 			<div>
 				<ul>
+							<%--공지 상세 연결 링크(공지번호에 따른 동적 연결) --%>
 					<li class="o-name"><a href="?page=serviceCenter&service=noticeDetail&cn=<%=notiList.get(idx).getNoti_no() %>">
 					<%=notiList.get(idx).getNoti_title() %></a></li>
 				</ul>
