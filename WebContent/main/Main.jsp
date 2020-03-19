@@ -208,6 +208,10 @@
 %>
 			<%@include file="Mypage/hoststore.jsp"%>
 <%		}
+		if(pl.equals("mypage_inquiry")){
+%>
+			<%@include file="Mypage/myinquiry.jsp"%>
+<%		}
 	} %>
 	
 	
