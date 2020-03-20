@@ -34,6 +34,7 @@
 		loginPage.style.width = 600+"px";
 		loginPage.style.height = 750+"px";
 		loginWrap.style.display = "block";
+		loginPage.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
 	}
 	</script>

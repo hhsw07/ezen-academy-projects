@@ -27,6 +27,7 @@
 		allWrap.style.height = bottom.scrollHeight+"px";
 		loginPage.style.height = 300+"px";
 		loginWrap.style.display = "block";
+		loginPage.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
 	}
 	</script>

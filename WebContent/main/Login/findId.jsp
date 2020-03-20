@@ -11,6 +11,7 @@
 	//모든 페이지에 공통적용
 	window.onload = function(){
 		loginWrap=document.querySelector(".login_wrap");
+		loginPage=document.querySelector(".loginPage");
 		allWrap=document.querySelector(".all_wrap");
 		top=document.querySelector(".top");
 			userTop=document.querySelector(".user_top");
@@ -25,6 +26,7 @@
 		
 		allWrap.style.height = bottom.scrollHeight+"px";
 		loginWrap.style.display = "block";
+		loginPage.style.display = "block";
 		document.querySelector("body").style.overflow = "hidden";
 	}
 	</script>

@@ -120,8 +120,6 @@
         </table>
       </div>
 	  <%
-	  String uid = request.getParameter("uid"); 
-	  session.setAttribute("loginid", uid);
 	  String searchid = (String)session.getAttribute("loginid");
 	  Member md = new Member(); //로그인한 아이디에 해당하는 회원정보를 받아올 객체 ArrayList<Member> memlist = new
 	  ArrayList<Member> mlist = new ArrayList<Member>(); //db에서 불러온 회원객체 리스트가 저장될 리스트
