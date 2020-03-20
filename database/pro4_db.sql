@@ -643,7 +643,7 @@ INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','호스트는 �
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan5','현장에서 결제할 수 있나요?',to_date('2020-03-19','YYYY-MM-DD'),'하비팩토리는 사전에 홈페이지 또는 앱에서만 결제가 가능하며 현장에서는 결제가 불가합니다.');
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','호스트는 어떻게 신청하나요?',to_date('2020-03-19','YYYY-MM-DD'),'고객센터에서 신청해주세요.');
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','코로나로 취소됐어요. 환불할래요.',to_date('2020-03-19','YYYY-MM-DD'),'취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다.');
-
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','코로나로 취소됐어요. 환불할래요.',to_date('2020-03-19','YYYY-MM-DD'),'취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다.');
 
 
 SELECT * FROM p04_inquiry;
