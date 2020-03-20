@@ -1,0 +1,42 @@
+1. 안드로이드 메뉴바 사용
+2. 부모창에 값을 넣어주고 새로고침
+	window.opener.~~~~
+3. 안드로이드 intend이동이 어디서???
+	나도 몰라
+4. 삼항연산자를 이용해서 분류/상태 등을 표현함
+	1:초등
+	2:중딩
+	3:고딩
+	code==1?"초등":( (code==2)?"중딩":고딩 )
+	이런 식
+5. 스플릿으로 쪼개서 배열에 넣어준다.
+
+
+행정안전부 도로명주소 
+window.open 팝업
+call back?? 이용
+
+
+6. 하나의 데이터만 올 때는 ArrayList가 아닌 Member 로 받아서 처리 가능
+ex) select * from emp
+     where empno = "7777";  이런 경우.
+
+
+
+
+
+
+
+
+
+
+String loginID = request.getParameter("loginID ");
+if(loginID == null) loginID ="";
+
+if( loginID.equals("") ) {
+	메인페이지로 이동
+}
+
+
+4조 : 192.168.4.117:7080/project_kira/MAIN/main.jsp
+2조
