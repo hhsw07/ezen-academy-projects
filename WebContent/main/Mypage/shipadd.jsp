@@ -84,92 +84,107 @@ String path = request.getContextPath(); %>
 		<article class="add_addr">
 			<div class="add_addr-wrap">
 				<div class="add_addr-cont">
-					<table class="add_addr-table">
-						<colgroup>
-							<col width="14%">
-							<col width="auto">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th class="add_addr-th">배송지명</th>
-								<td class="add_addr-td">
-									<div class="add_content">
-										<span class="input-wrap">
-											<input type="text" class="input" name="addr_name" value="">
-										</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th class="add_addr-th">수령자명</th>
-								<td class="add_addr-td">
-									<div class="add_content">
-										<span class="input-wrap">
-											<input type="text" class="input" name="recipient" value="">
-										</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th class="add_addr-th">휴대전화</th>
-								<td class="add_addr-td">
-									<div class="add_content">
-										<span class="input-wrap">
-											<input type="text" class="input" name="hp" value="">
-										</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th class="add_addr-th">추가번호<div class="add_addr_sub">(선택)</div></th>
-								<td class="add_addr-td">
-									<div class="add_content">
-										<span class="input-wrap">
-											<input type="text" class="input" name="subhp" value="">
-										</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th class="add_addr-th">주소</th>
-								<td class="add_addr-td">
-									<div class="add_content" onclick="findpost()">
-										<span class="input-wrap input_zip">
-											<input type="text" id="zip" class="input" name="newaddr_zip" value="" readonly="readonly">
-										</span>
-										<a href="#" title="우편번호" class="input_zip_btn">우편번호</a>
-									</div>
-									<div class="add_content input_addr">
-										<span class="input_addr-wrap">
-											<input type="text" id="addr" class="input" name="newaddr" value="" readonly="readonly">
-										</span>
-									</div>
-									<div class="add_content input_addr">
-										<span class="input_addr-wrap">
-											<input type="text" class="input" name="newaddr_detail" value="">
-										</span>
-									</div>
-									<!-- 
-									<div class="add_content">
-										<input type="checkbox" id="basic-addr" class="add_basic">
-										<label for="basic-addr" class="add_basic_label">기본 배송지로 저장</label>
-									</div>
-									 -->
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="add_addr_btn">
-						<a href="#" title="배송지 추가하기" class="btn-addaddr">배송지 추가하기</a>
+					<form method="post">
+						<table class="add_addr-table">
+							<colgroup>
+								<col width="14%">
+								<col width="auto">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="add_addr-th">배송지명</th>
+									<td class="add_addr-td">
+										<div class="add_content">
+											<span class="input-wrap">
+												<input type="text" class="input" name="addr_name" value="">
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="add_addr-th">수령자명</th>
+									<td class="add_addr-td">
+										<div class="add_content">
+											<span class="input-wrap">
+												<input type="text" class="input" name="recipient" value="">
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="add_addr-th">휴대전화</th>
+									<td class="add_addr-td">
+										<div class="add_content">
+											<span class="input-wrap">
+												<input type="text" class="input" name="hp" value="">
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="add_addr-th">추가번호<div class="add_addr_sub">(선택)</div></th>
+									<td class="add_addr-td">
+										<div class="add_content">
+											<span class="input-wrap">
+												<input type="text" class="input" name="subhp" value="">
+											</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th class="add_addr-th">주소</th>
+									<td class="add_addr-td">
+										<div class="add_content" onclick="findpost()">
+											<span class="input-wrap input_zip">
+												<input type="text" id="zip" class="input" name="newaddr_zip" value="" readonly="readonly">
+											</span>
+											<a href="#" class="input_zip_btn">우편번호</a>
+										</div>
+										<div class="add_content input_addr">
+											<span class="input_addr-wrap">
+												<input type="text" id="addr" class="input" name="newaddr" value="" readonly="readonly">
+											</span>
+										</div>
+										<div class="add_content input_addr">
+											<span class="input_addr-wrap">
+												<input type="text" class="input" name="newaddr_detail" value="">
+											</span>
+										</div>
+										<!-- 
+										<div class="add_content">
+											<input type="checkbox" id="basic-addr" class="add_basic">
+											<label for="basic-addr" class="add_basic_label">기본 배송지로 저장</label>
+										</div>
+										 -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+					<div class="add_addr_btn" id="shipadd">
+						<a href="#" class="btn-addaddr">배송지 추가하기</a>
 					</div>
 				</div>
 			</div>
 		</article>
 	</section>
+<%
+	String addr_name = request.getParameter("addr_name");
+	String recipient = request.getParameter("recipient");
+	String hp = request.getParameter("hp");
+	String subhp = request.getParameter("subhp");
+	String newaddr_zip = request.getParameter("newaddr_zip");
+	String newaddr = request.getParameter("newaddr");
+	String newaddr_detail = request.getParameter("newaddr_detail");
+%>	
 	
 </body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+var shipadd = document.querySelector("#shipadd");
+shipadd.onclick = function(){
+	document.querySelector("form").submit();
+}
 function findpost() {
     new daum.Postcode({
         oncomplete: function(data) {
