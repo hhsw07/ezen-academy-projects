@@ -12,8 +12,7 @@
 		.all_wrap{width:1280px; margin:0 auto;}
 		.login_wrap{position:absolute;width:100%; height:100%; background-color:rgba(164,164,164,0.5);z-index:10;
 			display:none;}
-			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:400px; background-color: #ffffff; z-index:15;
-			display:none;}
+			.loginPage{position:absolute;top:10%;left:40%; width:400px;height:400px; background-color: #ffffff; z-index:4;}
 			.loginPage input{width:300px;height:40px;margin:10px;font-size:15px; padding-left:5px;}
 		.top{position:fixed; z-index:5; }
 			.user_top{width:1280px;height:50px; background-color:#000000; vertical-align:middle; position:relative;}
@@ -42,8 +41,6 @@
 		window.onload = function(){
 			//높이를 동적으로 설정
 			allWrap=document.querySelector(".all_wrap");
-			loginWrap=document.querySelector(".login_wrap");
-			loginPage=document.querySelector(".loginPage");
 			top=document.querySelector(".top");
 				userTop=document.querySelector(".user_top");
 				menuTop=document.querySelector(".menu_top");
@@ -57,45 +54,39 @@
 			
 			allWrap.style.height = bottom.scrollHeight+"px";
 		}
-		function disable(){
-			loginWrap.style.display = "none";
-			loginPage.style.display = "none";
-			document.querySelector("body").style.overflow = "scroll";
-		}
+
 	</script>
 </head>
 <body>
 
 	<!-- http://192.168.4.163:7080/project04_git/main/Main.jsp -->
 	<!-- 로그인 div -->
-	<div class="login_allWrap">
-		<div class="login_wrap" onclick="disable()">
-		</div>
+	<div class="login_wrap">
 		<div class="loginPage" style="text-align: center;">
-	<%	String lp = null;
-		lp = request.getParameter("lp");
-		if(lp==null){
-	%>
-	<%	}else{ 
-			if(lp.equals("loginmain")){%>	
-				<%@include file="Login/loginmain.jsp" %>
-	<%		}
-			if(lp.equals("findId")){%>
-				<%@include file="Login/findId.jsp" %>
-	<%		}
-			if(lp.equals("findPw")){%>
-				<%@include file="Login/findPw.jsp" %>
-	<%		}
-			if(lp.equals("memberJoin")){%>
-				<%@include file="Login/memberJoin.jsp" %>
-	<%		}
-			if(lp.equals("findIdRes")){%>
-				<%@include file="Login/findIdRes.jsp" %>
-	<%		}
-			if(lp.equals("findPwRes")){%>
-				<%@include file="Login/findPwRes.jsp" %>
-	<%		}
-		} %>	
+<%	String lp = null;
+	lp = request.getParameter("lp");
+	if(lp==null){
+%>
+<%	}else{ 
+		if(lp.equals("loginmain")){%>	
+			<%@include file="Login/loginmain.jsp" %>
+<%		}
+		if(lp.equals("findId")){%>
+			<%@include file="Login/findId.jsp" %>
+<%		}
+		if(lp.equals("findPw")){%>
+			<%@include file="Login/findPw.jsp" %>
+<%		}
+		if(lp.equals("memberJoin")){%>
+			<%@include file="Login/memberJoin.jsp" %>
+<%		}
+		if(lp.equals("findIdRes")){%>
+			<%@include file="Login/findIdRes.jsp" %>
+<%		}
+		if(lp.equals("findPwRes")){%>
+			<%@include file="Login/findPwRes.jsp" %>
+<%		}
+	} %>	
 		</div>
 	</div>
 	<!--  -->
