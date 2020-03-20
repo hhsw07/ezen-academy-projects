@@ -70,16 +70,11 @@ DROP TABLE p04_course;
 -- 수업
 CREATE TABLE p04_course (
 	course_no        NUMBER         NOT NULL, -- 클래스번호
-	mem_id           varchar2(10)   NULL,     -- 호스트
+	mem_id           varchar2(30)   NULL,     -- 호스트
 	course_inputdate DATE           NULL,     -- 클래스등록일
 	course_title     varchar2(100)  NULL,     -- 클래스명
-	course_kind      varchar2(100)  NULL,     -- 클래스종류
 	course_detail    varchar2(1000) NULL,     -- 상세설명
-	course_curCnt    NUMBER         NULL,     -- 현인원
-	course_totCnt    NUMBER         NULL,     -- 최대인원
-	course_price     NUMBER         NULL,     -- 가격
 	course_img       varchar2(1000) NULL,     -- 클래스이미지
-	course_opendate  DATE           NULL,     -- 수강일
 	coruse_category  varchar2(100)  NULL      -- 수업분류
 );
 
@@ -109,17 +104,79 @@ ALTER TABLE p04_course
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
-
 -- 수업 sequence	
 CREATE SEQUENCE p04_course_seq
 INCREMENT BY 1
 START WITH 1;
 -- 수업 정보 입력
-INSERT INTO p04_course VALUES (p04_course_seq.nextval,'홍길동1',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'원데이','fradetail1.jpg',0,10,50000,'ads01_wide.jpg',to_date('2020-03-30','YYYY-MM-DD'),'다양한 취미');
+INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen2',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 
 SELECT * FROM p04_member;
 DROP SEQUENCE p04_member_seq;
+---------------------------------------------------------------------------------------
+-- 수업종류
+ALTER TABLE p04_ckind
+	DROP CONSTRAINT FK_p04_course_TO_p04_ckind; -- 수업 -> 수업종류
 
+-- 수업종류
+ALTER TABLE p04_ckind
+	DROP CONSTRAINT p04_ckind_pk; -- 수업종류 기본키
+
+-- 수업종류
+DROP TABLE p04_ckind;
+
+-- 수업종류
+CREATE TABLE p04_ckind (
+	ckind_no        NUMBER 				NOT NULL, -- 수업종류코드
+	course_no       NUMBER             NULL,     -- 클래스번호
+	course_kind     varchar2(100)      NULL,     -- 클래스종류
+	course_opendate DATE               NULL,     -- 수강일
+	course_price    NUMBER             NULL,     -- 가격
+	course_totCnt   NUMBER             NULL,     -- 최대인원
+	course_curCnt   NUMBER             NULL      -- 현인원
+);
+
+-- 수업종류 기본키
+CREATE UNIQUE INDEX p04_ckind_pk
+	ON p04_ckind ( -- 수업종류
+		ckind_no ASC -- 수업종류코드
+	);
+
+-- 수업종류
+ALTER TABLE p04_ckind
+	ADD
+		CONSTRAINT p04_ckind_pk -- 수업종류 기본키
+		PRIMARY KEY (
+			ckind_no -- 수업종류코드
+		);
+
+-- 수업종류
+ALTER TABLE p04_ckind
+	ADD
+		CONSTRAINT FK_p04_course_TO_p04_ckind -- 수업 -> 수업종류
+		FOREIGN KEY (
+			course_no -- 클래스번호
+		)
+		REFERENCES p04_course ( -- 수업
+			course_no -- 클래스번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+-- 수업 sequence	
+CREATE SEQUENCE p04_ckind_seq
+INCREMENT BY 1
+START WITH 1;
+-- 수업 정보 입력
+INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-19','YYYY-MM-DD'),20000,10,0);
+INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-26','YYYY-MM-DD'),20000,10,0);
+INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'정규',NULL,200000,10,0);
+INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,2,'정규',NULL,150000,5,0);
+
+SELECT * FROM p04_ckind;
+DROP SEQUENCE p04_ckind_seq;
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 수업신청
 ALTER TABLE p04_request
@@ -127,7 +184,7 @@ ALTER TABLE p04_request
 
 -- 수업신청
 ALTER TABLE p04_request
-	DROP CONSTRAINT FK_p04_course_TO_p04_request; -- 수업 -> 수업신청
+	DROP CONSTRAINT FK_p04_ckind_TO_p04_request; -- 수업종류 -> 수업신청
 
 -- 수업신청
 ALTER TABLE p04_request
@@ -138,11 +195,11 @@ DROP TABLE p04_request;
 
 -- 수업신청
 CREATE TABLE p04_request (
-	req_no    NUMBER       NOT NULL, -- 신청번호
-	course_no NUMBER       NULL,     -- 클래스번호
-	mem_id    varchar2(10) NULL,     -- 아이디
-	req_date  DATE         NULL,     -- 신청날짜
-	req_code  char(1)      NULL      -- 신청상태
+	req_no   NUMBER       NOT NULL, -- 신청번호
+	ckind_no number       NULL,     -- 수업종류코드
+	mem_id   varchar2(30) NULL,     -- 아이디
+	req_date DATE         NULL,     -- 신청날짜
+	req_code varchar2(30) NULL      -- 신청상태
 );
 
 -- 수업신청 기본키
@@ -175,23 +232,27 @@ ALTER TABLE p04_request
 -- 수업신청
 ALTER TABLE p04_request
 	ADD
-		CONSTRAINT FK_p04_course_TO_p04_request -- 수업 -> 수업신청
+		CONSTRAINT FK_p04_ckind_TO_p04_request -- 수업종류 -> 수업신청
 		FOREIGN KEY (
-			course_no -- 클래스번호
+			ckind_no -- 수업종류코드
 		)
-		REFERENCES p04_course ( -- 수업
-			course_no -- 클래스번호
+		REFERENCES p04_ckind ( -- 수업종류
+			ckind_no -- 수업종류코드
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
-
 
 -- 수업신청 sequence	
 CREATE SEQUENCE p04_request_seq
 INCREMENT BY 1
 START WITH 1;
--- 수업신청 정보 입력 ex) code (관심목록:F 신청완료:M 신청취소:C)
-INSERT INTO p04_request VALUES (p04_request_seq.nextval,1,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'M');
+-- 수업신청 정보 입력
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,1,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'관심목록');
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,2,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'관심목록');
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,1,'himan2',to_date('2020-03-19','YYYY-MM-DD'),'신청완료');
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,4,'himan2',to_date('2020-03-19','YYYY-MM-DD'),'신청완료');
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,3,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'신청취소');
+INSERT INTO p04_request VALUES (p04_request_seq.nextval,4,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'신청취소');
 
 SELECT * FROM p04_request;
 DROP SEQUENCE p04_request_seq;
@@ -244,12 +305,9 @@ ALTER TABLE p04_cReview
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
 
--- 수업후기 sequence	
-CREATE SEQUENCE p04_cReview_seq
-INCREMENT BY 1
-START WITH 1;
--- 수업후기 정보 입력 ex) 등급 (M,H,N)
-INSERT INTO p04_cReview VALUES (p04_cReview_seq.nextval,'재밌어요',5,to_date('2020-03-19','YYYY-MM-DD'));
+-- 수업후기 정보 입력
+INSERT INTO p04_cReview VALUES (3,'재밌어요',5,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_cReview VALUES (4,'재미없어요',1,to_date('2020-03-19','YYYY-MM-DD'));
 
 SELECT * FROM p04_cReview;
 DROP SEQUENCE p04_cReview_seq;
@@ -269,9 +327,9 @@ DROP TABLE p04_store;
 -- 상품
 CREATE TABLE p04_store (
 	store_no       NUMBER         NOT NULL, -- 상품번호
-	mem_id         varchar2(10)   NULL,     -- 호스트
+	mem_id         varchar2(30)   NULL,     -- 호스트
 	store_title    varchar2(100)  NULL,     -- 상품명
-	store_code     char(1)        NULL,     -- 승인상태
+	store_code     varchar2(100)  NULL,     -- 승인상태
 	store_price    NUMBER         NULL,     -- 가격
 	store_totCnt   NUMBER         NULL,     -- 총갯수
 	store_detail   varchar2(1000) NULL,     -- 상품설명
@@ -306,14 +364,16 @@ ALTER TABLE p04_store
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
-
 -- 상품 sequence	
 CREATE SEQUENCE p04_store_seq
 INCREMENT BY 1
 START WITH 1;
 -- 상품 정보 입력  ex) code승인상태 Y/N
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','Y',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','Y',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','미승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','미승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
 
 SELECT * FROM p04_store;
 DROP TABLE p04_store;
@@ -323,11 +383,11 @@ DROP SEQUENCE p04_store_seq;
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 주문
 ALTER TABLE p04_order
-	DROP CONSTRAINT FK_p04_member_TO_p04_order; -- 회원 -> 주문
+	DROP CONSTRAINT FK_p04_store_TO_p04_order; -- 상품 -> 주문
 
 -- 주문
 ALTER TABLE p04_order
-	DROP CONSTRAINT FK_p04_store_TO_p04_order; -- 상품 -> 주문
+	DROP CONSTRAINT FK_p04_addr_TO_p04_order; -- 배송지 -> 주문
 
 -- 주문
 ALTER TABLE p04_order
@@ -339,7 +399,7 @@ DROP TABLE p04_order;
 -- 주문
 CREATE TABLE p04_order (
 	order_no          NUMBER        NOT NULL, -- 주문번호
-	mem_id            varchar2(10)  NULL,     -- 아이디
+	addr_no           NUMBER        NULL,     -- 배송지번호
 	store_no          NUMBER        NULL,     -- 상품번호
 	order_date        DATE          NULL,     -- 구매날짜
 	order_code        varchar2(100) NULL,     -- 주문상태
@@ -365,19 +425,6 @@ ALTER TABLE p04_order
 -- 주문
 ALTER TABLE p04_order
 	ADD
-		CONSTRAINT FK_p04_member_TO_p04_order -- 회원 -> 주문
-		FOREIGN KEY (
-			mem_id -- 아이디
-		)
-		REFERENCES p04_member ( -- 회원
-			mem_id -- 아이디
-		)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION;
-
--- 주문
-ALTER TABLE p04_order
-	ADD
 		CONSTRAINT FK_p04_store_TO_p04_order -- 상품 -> 주문
 		FOREIGN KEY (
 			store_no -- 상품번호
@@ -388,12 +435,40 @@ ALTER TABLE p04_order
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
 
+-- 주문
+ALTER TABLE p04_order
+	ADD
+		CONSTRAINT FK_p04_addr_TO_p04_order -- 배송지 -> 주문
+		FOREIGN KEY (
+			addr_no -- 배송지번호
+		)
+		REFERENCES p04_addr ( -- 배송지
+			addr_no -- 배송지번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+
 -- 주문 sequence	
 CREATE SEQUENCE p04_order_seq
 INCREMENT BY 1
 START WITH 1;
+
+order_no          NUMBER        NOT NULL, -- 주문번호
+	addr_no           NUMBER        NULL,     -- 배송지번호
+	store_no          NUMBER        NULL,     -- 상품번호
+	order_date        DATE          NULL,     -- 구매날짜
+	order_code        varchar2(100) NULL,     -- 주문상태
+	order_cnt         NUMBER        NULL,     -- 구매갯수
+	order_delicompany VARCHAR2(50)  NULL,     -- 택배회사
+	order_delicode    VARCHAR2(20)  NULL      -- 운송장번호
+
 -- 주문 정보 입력 ex) 주문상태 (장바구니, 배송중, 배송완료, 배송준비중, 주문완료)
-INSERT INTO p04_order VALUES (202003190000+p04_order_seq.nextval,'himan1',1,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422270');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,1,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422270');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422271');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,3,1,to_date('2020-03-19','YYYY-MM-DD'),'주문완료',1,'한진택배','');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
 
 SELECT * FROM p04_order;
 DROP TABLE p04_order;
@@ -451,7 +526,8 @@ CREATE SEQUENCE p04_pReview_seq
 INCREMENT BY 1
 START WITH 1;
 -- 상품후기 정보 입력 
-INSERT INTO p04_pReview VALUES (p04_pReview_seq.nextval,'좋은 제품입니다.',5,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (1,'좋은 제품입니다.',5,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (2,'그냥 제품입니다.',3,to_date('2020-03-19','YYYY-MM-DD'));
 
 SELECT * FROM p04_pReview;
 DROP TABLE p04_pReview;
@@ -515,6 +591,12 @@ INCREMENT BY 1
 START WITH 1;
 -- 배송지 정보 입력 
 INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan1','우리집','김길동','010-0001-1001','','01525','서울시 종로구','은마아파트 101동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan1','회사','김길동','010-0001-1001','','01525','서울시 강남구','은마아파트 102동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan1','이모','김길동','010-0001-1001','','01525','서울시 노원구','은마아파트 103동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan1','우리집','김길동','010-0001-1001','','01525','서울시 종로구','은마아파트 101동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan2','우리집','김길동','010-0001-1001','','01525','서울시 종로구','은마아파트 101동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan2','우리집','김길동','010-0001-1001','','01525','서울시 종로구','은마아파트 101동 101호');
+INSERT INTO p04_addr VALUES (p04_addr_seq.nextval,'himan2','우리집','김길동','010-0001-1001','','01525','서울시 종로구','은마아파트 101동 101호');
 
 SELECT * FROM p04_addr;
 DROP TABLE p04_addr;
@@ -572,8 +654,19 @@ ALTER TABLE p04_point
 CREATE SEQUENCE p04_point_seq
 INCREMENT BY 1
 START WITH 1;
--- 마일리지 정보 입력 ex) 등급 (M,H,N)
+
+point_no      NUMBER       NOT NULL, -- 포인트코드
+	mem_id        varchar2(10) NULL,     -- 아이디
+	point_date    DATE         NULL,     -- 적립/사용날짜
+	point_detail  VARCHAR(200) NULL,     -- 적립/사용내역
+	point_mileage NUMBER       NULL      -- 마일리지
+
+-- 마일리지 정보 입력 
+INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'회원가입 포인트',3000);
 INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'로그인 포인트',10);
+INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'상품 구매',-10);
+INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'로그인 포인트',10);
+INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan2',to_date('2020-03-19','YYYY-MM-DD'),'로그인 포인트',10);
 
 SELECT * FROM p04_point;
 DROP TABLE p04_point;
@@ -643,7 +736,7 @@ INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','호스트는 �
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan5','현장에서 결제할 수 있나요?',to_date('2020-03-19','YYYY-MM-DD'),'하비팩토리는 사전에 홈페이지 또는 앱에서만 결제가 가능하며 현장에서는 결제가 불가합니다.');
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','호스트는 어떻게 신청하나요?',to_date('2020-03-19','YYYY-MM-DD'),'고객센터에서 신청해주세요.');
 INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan2','코로나로 취소됐어요. 환불할래요.',to_date('2020-03-19','YYYY-MM-DD'),'취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다.');
-
+INSERT INTO p04_inquiry VALUES (p04_inquiry_seq.nextval,'himan1','코로나로 취소됐어요. 환불할래요.',to_date('2020-03-19','YYYY-MM-DD'),'취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다.');
 
 
 SELECT * FROM p04_inquiry;

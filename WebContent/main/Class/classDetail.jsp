@@ -22,14 +22,7 @@
           .class-image{width:900px; height:500px;  position:relative; left:-1px;}
             .move_image{position: relative; left:0px; bottom:61px; height:550px; padding-top:60px;}
               .visual{position:relative;}
-              .visual button{position:absolute; z-index:1; left:84%; top:50%; transform:translate(-30%, -50% );
-                            width:50px; height:50px; border-radius:100%; background-color:rgba(0,0,0,0); border:none; }
-              .visual button:before{font-family:'xeicon'; color:black; font-size:45px; }
-              .visual button.slick-prev{left:0px; font-size:0; color:transparent; outline:none;}
-              .visual button.slick-prev:before{content:"\e93d"; outline:none;}
-              .visual button.slick-next{right:0px; font-size:0; color:transparent; outline:none;}
-              .visual button.slick-next:before{content:"\e940"; outline:none;}
-
+        
           .class-info{position:absolute; left:760px; top:200px;}
             .host-name{color:gray;}
             .class-name{font-size:30px; margin-top:5px;}
@@ -149,23 +142,10 @@
             <div class="move_image">
               <section class="visual">
                 <div class="bg1"><img src="../image/moveimg1.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg2"><img src="../image/moveimg2.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg3"><img src="../image/moveimg3.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
-                <div class="bg4"><img src="../image/moveimg4.jpg" style="border:1px solid #fff; height:442px; width:780px;" alt=""></div>
               </section>
             </div>
           </div>
 
-          <!--image slied-->
-          
-          <script type="text/javascript">
-            $('.visual').slick({
-              autoplay: true,
-              autoplaySpeed: 3000,
-              fade: true
-            });
-          </script>
-			
           <div class="class-info">
             <ul>
               <li class="host-name">[베란다자수]</li>
