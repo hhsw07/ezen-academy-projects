@@ -393,7 +393,7 @@ CREATE SEQUENCE p04_order_seq
 INCREMENT BY 1
 START WITH 1;
 -- 주문 정보 입력 ex) 주문상태 (장바구니, 배송중, 배송완료, 배송준비중, 주문완료)
-INSERT INTO p04_order VALUES (p04_order_seq.nextval,'himan1',1,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422270');
+INSERT INTO p04_order VALUES (202003190000+p04_order_seq.nextval,'himan1',1,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422270');
 
 SELECT * FROM p04_order;
 DROP TABLE p04_order;
