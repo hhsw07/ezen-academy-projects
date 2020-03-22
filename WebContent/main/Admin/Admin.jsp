@@ -13,12 +13,12 @@
 
 <body>
 <%
-// Addr 임의 데이터 생성
+	// Addr 임의 데이터 생성
 /* (int)배송지번호,아이디, 배송지명, 수령인, 연락처, 추가연락처, 우편번호, 주소, 상세주소  */
 ArrayList<Addr> addList = new ArrayList<Addr>();
 for(int cnt=1;cnt<=16;cnt++){
 	addList.add(new Addr(cnt, "홍길동"+cnt,"우리집","김길동","010-0001-"+(1000+cnt) ,
-			"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
+	"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
 }
 session.setAttribute("addList", addList);
 
@@ -29,7 +29,7 @@ session.setAttribute("addList", addList);
 ArrayList<Course> couList = new ArrayList<Course>();
 for(int cnt=1;cnt<=16;cnt++){
 	couList.add(new Course(cnt, "홍길동"+cnt,"2020-03-02","비누만들기"+cnt,"D",
-			"재밌는 비누만들기",0,10,30000,"","2020-03-10","마크라메"));
+	"재밌는 비누만들기",0,10,30000,"","2020-03-10","마크라메"));
 }
 session.setAttribute("couList", couList);
 
@@ -61,29 +61,13 @@ session.setAttribute("inqList", inqList);
 
 //Member 임의 데이터 생성
 /* 아이디, (int)회원번호, 비밀번호, 이름, 이메일, 닉네임, 생년월일, 휴대폰, 등급, (int)마일리지 */
-ArrayList<Member> memList = new ArrayList<Member>();
-Member m01 = new Member("admin",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M");
-memList.add(m01);
-for(int cnt=1;cnt<=5;cnt++){
-	memList.add(new Member("ezen"+cnt,cnt+1,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"H"));
-}
-for(int cnt=6;cnt<=10;cnt++){
-	memList.add(new Member("himan"+cnt,cnt+1,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N"));
-}
-session.setAttribute("memList", memList);
+//A01_Admin dao = new A01_Admin();
+//ArrayList<Member> mList = dao.mList();
 
+//ArrayList<Member> memList = new ArrayList<Member>();
 
-//Mem_mil 임의 데이터 생성
-/* 아이디, (int)회원번호, 비밀번호, 이름, 이메일, 닉네임, 생년월일, 휴대폰, 등급, (int)마일리지 */
-ArrayList<Mem_mil> mem_MilList = new ArrayList<Mem_mil>();
-Mem_mil me01 = new Mem_mil("himan1",1,"7777","홍길동","mail01@gmail.com","둘리1","2000-01-01","010-1234-1001","M");
-Mem_mil me02 = new Mem_mil("himan2",2,"7777","김길동","mail02@gmail.com","둘리2","2000-01-01","010-1234-1002","H");
-mem_MilList.add(me01);
-mem_MilList.add(me02);
-for(int cnt=3;cnt<=16;cnt++){
-	mem_MilList.add(new Mem_mil("himan"+cnt,cnt,"7777","홍길동"+cnt,"mail"+cnt+"@gmail.com","둘리"+cnt,"2000-01-01","010-1234-"+(1000+cnt),"N"));
-}
-session.setAttribute("mem_MilList", mem_MilList);
+//session.setAttribute("memList", memList);
+
 
 
 

@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class A01_Admin {
+import z01_vo.Course;
+
+public class A02_Course {
 	private Connection con;
 	private Statement stmt;
 	private ResultSet rs;
@@ -23,26 +25,25 @@ public class A01_Admin {
 		con = DriverManager.getConnection(info, "scott", "tiger");
 	}
 	
-	public ArrayList<Member> getMList(){
-		ArrayList<Member> mList = new ArrayList<Member>();
+	public ArrayList<Course> getMList(){
+		ArrayList<Course> cList = new ArrayList<Course>();
 		
 		try {
 			setCon();
-			String sql = "select * from p04_member ORDER BY MEM_NO";
+			String sql = "";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
-			
+			// COURSE_NO	|MEM_ID		   |COURSE_INPUTDATE   |
+			// COURSE_TITLE	|COURSE_DETAIL |COURSE_IMG    	   |CORUSE_CATEGORY|
 			while(rs.next()) {
-				mList.add(new Member(
-						rs.getString(1),
-						rs.getInt(2),
-						rs.getString(3),
+				cList.add(new Course(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getDate(3),
 						rs.getString(4),
 						rs.getString(5),
 						rs.getString(6),
-						rs.getDate(7),
-						rs.getString(8),
-						rs.getString(9)
+						rs.getString(7)
 						));
 			}
 			
@@ -55,38 +56,33 @@ public class A01_Admin {
 			e.printStackTrace();
 		}
 		
-		return mList;
+		return cList;
 	}
 	
 	
 	
-	public Member getMember(String mem_id){
-		Member m = null;
+	public Course getCourse(int course_no){
+		Course c = null;
 		
 		try {
 			setCon();
-			String sql = "SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b\r\n" + 
-					"WHERE b.MEM_ID = '"+ mem_id +"') \"mem_mileage\" FROM P04_MEMBER a, P04_POINT b \r\n" + 
-					"WHERE b.MEM_ID = '"+ mem_id +"'\r\n" + 
-					"AND a.MEM_ID = b.MEM_ID";
+			String sql = "";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			// MEM_ID		|MEM_NO		|MEM_PASS	|MEM_NAME|MEM_MAIL
-			// MEM_NICKNAME	|MEM_BIRTH	|MEM_PHONE  |MEM_CODE|mem_mileage
+			// COURSE_NO	|MEM_ID		   |COURSE_INPUTDATE   |
+			// COURSE_TITLE	|COURSE_DETAIL |COURSE_IMG    	   |CORUSE_CATEGORY|
 			
 			while(rs.next()) {
-				m = new Member();
-				m.setMem_id (rs.getString(1));
-				m.setMem_no (rs.getInt(2));
-				m.setMem_pass(rs.getString(3));
-				m.setMem_name(rs.getString(4));
-				m.setMem_mail(rs.getString(5));
-				m.setMem_nickname(rs.getString(6));
-				m.setMem_birth(rs.getDate(7));
-				m.setMem_phone(rs.getString(8));
-				m.setMem_code(rs.getString(9));
-				m.setMem_mileage(rs.getInt(10));
+				c = new Course(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getDate(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getString(6),
+						rs.getString(7)
+						));
 			}
 			
 			rs.close();
@@ -98,20 +94,10 @@ public class A01_Admin {
 			e.printStackTrace();
 		}
 		
-		return m;
+		return c;
 	}
 
 	
-	/*
-	# CRUD ( create, read, update, delete)
-			    등록	 읽기		수정		삭제
-	1. sql 만들기
-	2. Connection 객체의 autocommit 방지
-	3. Statement로 등록 처리
-	4. commit 수행
-	5. 자원해제
-	6. 예외처리에서 rollback 처리 
-	*/
 	public void updateMem(Member upt){
 		try {
 			setCon();
@@ -193,7 +179,7 @@ public class A01_Admin {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		A01_Admin db = new A01_Admin();
+		A02_Course db = new A02_Course();
 		System.out.println("데이터 건수: "+db.getMList().size());
 		
 	}

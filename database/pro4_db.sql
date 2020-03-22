@@ -51,8 +51,24 @@ INSERT INTO p04_member VALUES ('himan4', p04_member_seq.nextval, '7777', '홍길
 INSERT INTO p04_member VALUES ('himan5', p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
 INSERT INTO p04_member VALUES ('himan6', p04_member_seq.nextval, '7777', '홍길동'||p04_member_seq.nextval, 'mail0'||p04_member_seq.nextval||'@gmail.com', '둘리'||p04_member_seq.nextval, to_date('2020-03-19','YYYY-MM-DD'), '010-1234-1001','N');
 
-SELECT * FROM p04_member;
+SELECT * FROM p04_member ORDER BY MEM_NO;
 DROP SEQUENCE p04_member_seq;
+
+UPDATE P04_MEMBER 
+SET mem_id = '@@@',
+	mem_no = 000,
+	MEM_PASS = '@@@',
+	mem_name = '@@@',
+	mem_mail = '@@@',
+	mem_nickname = '@@@',
+	mem_birth = to_date('2020-03-320','YYYY-MM-DD'),
+	mem_phone = '@@@',
+	mem_code = '@'
+WHERE mem_no = 000;
+
+DELETE P04_MEMBER
+WHERE mem_no = 000;
+						
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -114,8 +130,8 @@ INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-1
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen2',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 
-SELECT * FROM p04_member;
-DROP SEQUENCE p04_member_seq;
+SELECT * FROM p04_course;
+DROP SEQUENCE p04_course_seq;
 ---------------------------------------------------------------------------------------
 -- 수업종류
 ALTER TABLE p04_ckind
@@ -453,14 +469,6 @@ CREATE SEQUENCE p04_order_seq
 INCREMENT BY 1
 START WITH 1;
 
-order_no          NUMBER        NOT NULL, -- 주문번호
-	addr_no           NUMBER        NULL,     -- 배송지번호
-	store_no          NUMBER        NULL,     -- 상품번호
-	order_date        DATE          NULL,     -- 구매날짜
-	order_code        varchar2(100) NULL,     -- 주문상태
-	order_cnt         NUMBER        NULL,     -- 구매갯수
-	order_delicompany VARCHAR2(50)  NULL,     -- 택배회사
-	order_delicode    VARCHAR2(20)  NULL      -- 운송장번호
 
 -- 주문 정보 입력 ex) 주문상태 (장바구니, 배송중, 배송완료, 배송준비중, 주문완료)
 INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,1,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422270');
@@ -655,11 +663,6 @@ CREATE SEQUENCE p04_point_seq
 INCREMENT BY 1
 START WITH 1;
 
-point_no      NUMBER       NOT NULL, -- 포인트코드
-	mem_id        varchar2(10) NULL,     -- 아이디
-	point_date    DATE         NULL,     -- 적립/사용날짜
-	point_detail  VARCHAR(200) NULL,     -- 적립/사용내역
-	point_mileage NUMBER       NULL      -- 마일리지
 
 -- 마일리지 정보 입력 
 INSERT INTO p04_point VALUES (p04_point_seq.nextval,'himan1',to_date('2020-03-19','YYYY-MM-DD'),'회원가입 포인트',3000);
@@ -804,3 +807,22 @@ SELECT * FROM p04_notice;
 DROP TABLE p04_notice;
 DROP SEQUENCE p04_notice_seq;
 SELECT '''''''' FROM dual;
+
+-------------------------------------
+select a.MEM_ID
+from p04_member a, p04_point b
+WHERE a.MEM_ID = b.MEM_ID ;
+
+SELECT a.MEM_ID, a.MEM_NO FROM P04_MEMBER a ;
+
+SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b
+WHERE b.MEM_ID = 'himan1';
+
+
+SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b  
+WHERE b.MEM_ID = 'himan1') "mem_mileage" FROM P04_MEMBER a, P04_POINT b 
+WHERE a.MEM_ID = 'himan1'
+AND a.MEM_ID = b.MEM_ID;
+
+
+select * from p04_member;

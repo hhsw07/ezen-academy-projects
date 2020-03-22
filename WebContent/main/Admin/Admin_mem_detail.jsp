@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
+    import="java.util.ArrayList, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-	ArrayList<Mem_mil> memList = (ArrayList<Mem_mil>)session.getAttribute("mem_MilList");
+	//ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("mem_MilList");
+	A01_Admin db = new A01_Admin();
+	ArrayList<Member> memList = db.getMList();
+	
 	String strIdx = request.getParameter("idx");
 	int idx = Integer.parseInt(strIdx);
 %>
@@ -96,7 +99,7 @@
 					
 				</table>
 				<div align="right" style="margin-top:10px; font-size:15px;">
-					<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>-1)"/>
+					<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>)"/>
 				</div>
 			</div>
 			

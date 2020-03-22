@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*,vo_hsw.*" 
+    import="java.util.ArrayList, z01_vo.Paging, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-
-	ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
-	//A01_Admin db = new A01_Admin();
-	//ArrayList<Member> memList = db.mList();
-
+	//ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
+	
+	A01_Admin db = new A01_Admin();
+	ArrayList<Member> memList = db.getMList();
+	
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
 Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
@@ -98,6 +98,7 @@ boolean isDel=false;
 					</tr>
 					<%
 					for(int idx=(w_size*i_page-w_size) ; idx < lastNo ; idx++){
+						
 					%>
 					<tr>
 						<td><%=memList.get(idx).getMem_no() %></td>
