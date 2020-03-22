@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.*" %>
+    import="java.util.*, z01_vo.*, vo_cmk.*" %>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -44,11 +44,38 @@ String path = request.getContextPath(); %>
 	.input_addr-wrap{width:350px !important;line-height:1.4;padding:5px 10px 6px;border:1px solid #dfdfdf;display:inline-block;vertical-align:middle;position:relative;}
 	.add_basic{display:inline-block; margin:10px 20px 0 0;}
 	.add_basic_label{color:#a1a4a8;letter-spacing:-0.3px;font-size:14px;}
+	.btn-addr{text-align:center; margin:50px;}
 	.add_addr_btn{padding:50px 0;}
-	.btn-addaddr{width:260px;height:64px;font-size:16px;line-height:64px;display:block;margin:0 auto;color:#FFFFFF; background:#3d4248;text-align:center;}
+	.btn-addaddr{width:260px;height:64px;font-size:16px;line-height:64px;display:inline-block;margin:0 auto;color:#FFFFFF; background:#3d4248;text-align:center;}
 
 </style>
 </head>
+<%
+	int addr_no = 0;
+	String title = request.getParameter("addr_name");
+	if(title==null) title="";
+	String recipient = request.getParameter("recipient");
+	if(recipient==null) recipient="";
+	String hp = request.getParameter("hp");
+	if(hp==null) hp="";
+	String subhp = request.getParameter("subhp");
+	if(subhp==null) subhp="";
+	String postcode = request.getParameter("newaddr_zip");
+	if(postcode==null) postcode="";
+	String address = request.getParameter("newaddr");
+	if(address==null) address="";
+	String addrdetail = request.getParameter("newaddr_detail");
+	if(addrdetail==null) addrdetail="";
+	String addrBtn = request.getParameter("addrBtn");
+
+	DB_Addr db = new DB_Addr();
+	VO_Addr addr = new VO_Addr();
+	if(addrBtn.equals("upt")){
+		VO_Addr upt = new VO_Addr(title, recipient, hp, subhp, postcode, address, addrdetail);
+		db.updateAddr(upt);
+	}
+	
+%>
 <body>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -74,8 +101,8 @@ String path = request.getContextPath(); %>
 			<ul>
 				<li><a href="?page=mypage_order">주문/배송조회</a></li>
 				<li><a href="?page=mypage_class">클래스 보관함</a></li>
-				<li><a href="?page=mypage_shipment">배송지 목록</a></li>
-				<li class="mymenu_btn-on"><a href="?page=mypage_add_shipment">배송지 추가</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_shipment">배송지 목록</a></li>
+				<li><a href="?page=mypage_add_shipment">배송지 추가</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -84,6 +111,7 @@ String path = request.getContextPath(); %>
 		<article class="add_addr">
 			<div class="add_addr-wrap">
 				<div class="add_addr-cont">
+				<form method="post">
 					<table class="add_addr-table">
 						<colgroup>
 							<col width="14%">
@@ -95,7 +123,7 @@ String path = request.getContextPath(); %>
 								<td class="add_addr-td">
 									<div class="add_content">
 										<span class="input-wrap">
-											<input type="text" class="input" name="addr_name" value="">
+											<input type="text" class="input" name="addr_name" value="<%=addr.getAddr_title()%>">
 										</span>
 									</div>
 								</td>
@@ -105,7 +133,7 @@ String path = request.getContextPath(); %>
 								<td class="add_addr-td">
 									<div class="add_content">
 										<span class="input-wrap">
-											<input type="text" class="input" name="recipient" value="">
+											<input type="text" class="input" name="recipient" value="<%=addr.getAddr_name() %>">
 										</span>
 									</div>
 								</td>
@@ -115,7 +143,7 @@ String path = request.getContextPath(); %>
 								<td class="add_addr-td">
 									<div class="add_content">
 										<span class="input-wrap">
-											<input type="text" class="input" name="hp" value="">
+											<input type="text" class="input" name="hp" value="<%=addr.getAddr_phone() %>">
 										</span>
 									</div>
 								</td>
@@ -125,7 +153,7 @@ String path = request.getContextPath(); %>
 								<td class="add_addr-td">
 									<div class="add_content">
 										<span class="input-wrap">
-											<input type="text" class="input" name="subhp" value="">
+											<input type="text" class="input" name="subhp" value="<%=addr.getAddr_phone2() %>">
 										</span>
 									</div>
 								</td>
@@ -135,18 +163,18 @@ String path = request.getContextPath(); %>
 								<td class="add_addr-td">
 									<div class="add_content">
 										<span class="input-wrap input_zip">
-											<input type="text" class="input" name="newaddr_zip" value="">
+											<input type="text" class="input" name="newaddr_zip" value="<%=addr.getAddr_mailAddr() %>">
 										</span>
-										<a href="#" title="우편번호" class="input_zip_btn">우편번호</a>
+										<a href="#" class="input_zip_btn">우편번호</a>
 									</div>
 									<div class="add_content input_addr">
 										<span class="input_addr-wrap">
-											<input type="text" class="input" name="newaddr" value="">
+											<input type="text" class="input" name="newaddr" value="<%=addr.getAddr_address() %>">
 										</span>
 									</div>
 									<div class="add_content input_addr">
 										<span class="input_addr-wrap">
-											<input type="text" class="input" name="newaddr_detail" value="">
+											<input type="text" class="input" name="newaddr_detail" value="<%=addr.getAddr_address2()%>">
 										</span>
 									</div>
 									<!-- 
@@ -159,14 +187,27 @@ String path = request.getContextPath(); %>
 							</tr>
 						</tbody>
 					</table>
+					<input type="hidden" name="addrBtn" value="cnl"/>
+					</form>
 					<div class="add_addr_btn">
-						<a href="#" title="배송지 추가하기" class="btn-addaddr">배송지 추가하기</a>
+						<a href="#" class="btn-addaddr" id="edit">배송지 수정하기</a>
 					</div>
 				</div>
 			</div>
 		</article>
 	</section>
 	
-
 </body>
+<script type="text/javascript">
+	var addrBtn = "<%=addrBtn%>";
+	if(addrBtn=="edit"){
+		alert("수정이 완료되었습니다");
+		location.href="?page=mypage_shipment";
+	}
+	var edit = document.querySelector("#edit");
+	edit.onclick = function(){
+		document.querySelector("[name=addrBtn]").value = "edit";
+		document.querySelector("form").submit();
+	};
+</script>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"    
-    import="java.util.*, z01_vo.*"%>
+    import="java.util.*, z01_vo.*, vo_cmk.*"%>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -56,12 +56,8 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-ArrayList<Shipment> shipList = new ArrayList<Shipment>();
-for(int cnt=1;cnt<=16;cnt++){
-	shipList.add(new Shipment("우리집","김길동","010-0001-"+(1000+cnt) ,
-			"010-0002-"+(1000+cnt),"01525","서울시 종로구",""));
-}
-//ArrayList<Shipment> shipList = (ArrayList<Shipment>)session.getAttribute("shipList");
+DB_Addr db = new DB_Addr();
+
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -75,9 +71,9 @@ if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.get
 session.setAttribute("i_page",i_page);
 
 int lastNo = w_size*i_page;
-if(lastNo >= shipList.size()) lastNo = shipList.size();
+if(lastNo >= db.getAddrlist().size()) lastNo = db.getAddrlist().size();
 
-Paging pg = new Paging(w_size,p_size,shipList.size(),i_page);
+Paging pg = new Paging(w_size,p_size,db.getAddrlist().size(),i_page);
 int preNo = pg.getPage_Start()-1;
 int nextNo = pg.getPage_End()+1;
 %>
@@ -115,28 +111,28 @@ int nextNo = pg.getPage_End()+1;
 <!-- 배송지 목록 -->
 	<section class="mypage_content">
 	<%
-	if(shipList!=null){
+	if(db.getAddrlist()!=null){
 	%>
 		<article class="shiplist">
 	<%
 		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
-			Shipment s = shipList.get(idx);
+			VO_Addr addr = db.getAddrlist().get(idx);
 	%>
 			<div class="addrlist-wrap">
 				<div class="addrlist-cont">
-					<div class="addrlist-title"><%=s.getShip_tit() %>
+					<div class="addrlist-title"><%=addr.getAddr_title() %>
 						<!-- <span class="txt-color-r">[기본]</span> --></div>
 					<div class="addrlist-area addrlist-name">
 						<div class="addrlist-tit">수령인</div>
-						<div class="addrlist-txt"><%=s.getShip_name() %></div>
-					</div>
-					<div class="addrlist-area addrlist-phone">
-						<div class="addrlist-tit">휴대폰번호</div>
-						<div class="addrlist-txt"><%=s.getShip_tel() %></div>
+						<div class="addrlist-txt"><%=addr.getAddr_name() %></div>
 					</div>
 					<div class="addrlist-area addrlist-address">
 						<div class="addrlist-tit">주소지</div>
-						<div class="addrlist-txt">(<%=s.getShip_zip() %>) <%=s.getShip_addr() %><%=s.getShip_addr2() %></div>
+						<div class="addrlist-txt">(<%=addr.getAddr_mailAddr() %>) <%=addr.getAddr_address() %><%=addr.getAddr_address2() %></div>
+					</div>
+					<div class="addrlist-area addrlist-phone">
+						<div class="addrlist-tit">휴대폰번호</div>
+						<div class="addrlist-txt"><%=addr.getAddr_phone() %></div>
 					</div>
 					<div class="addrlist-btn">
 						<a href="#" title="수정" class="btn-addrlist">수정</a>
@@ -171,7 +167,7 @@ int nextNo = pg.getPage_End()+1;
 	<%} %>
 	<!-- 배송지 없을 때 -->
 	<%
-	if(shipList.size()==0){
+	if(db.getAddrlist().size()==0){
 	%>
 		<article class="mymenu-content">
 			<div class="addrlist-wrap">

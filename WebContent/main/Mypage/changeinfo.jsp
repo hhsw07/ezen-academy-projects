@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*"%>
+    import="java.util.*, vo_cmk.*"%>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -46,6 +46,18 @@ String path = request.getContextPath(); %>
 	.btn-myinfo_edit{width:260px;height:64px;font-size:16px;line-height:64px;display:block;margin:0 auto;color:#FFFFFF;background:#3d4248;text-align:center;}
 </style>
 </head>
+<%
+	DB_Member db = new DB_Member();
+	VO_Member mem = new VO_Member();
+	mem = db.getInfo(mem);
+
+	String nick = request.getParameter("nick");
+	if(nick==null) nick="";
+	String email = request.getParameter("email");
+	if(email==null) email="";
+	String phone = request.getParameter("phone");
+	if(phone==null) phone="";
+%>
 <body>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -77,9 +89,6 @@ String path = request.getContextPath(); %>
 	</div>
 	
 <!-- 회원정보 변경 -->
-<%
-	
-%>
 	<section>
 		<article class="myinfo_content">
 			<div class="myinfo_wrap">
@@ -94,13 +103,13 @@ String path = request.getContextPath(); %>
 							<tbody>
 								<tr>
 									<th class="myinfo_th">아이디</th>
-									<td class="myinfo_td">himan</td>
+									<td class="myinfo_td"><%=mem.getMem_id() %></td>
 								</tr>
 								<tr>
 									<th class="myinfo_th">이름</th>
 									<td class="myinfo_td">
 										<div class="input-wrap">
-											<input class="input" type="text" name="이름" value="홍길동" readonly="readonly"/>
+											<input class="input" type="text" name="이름" value="<%=mem.getMem_name() %>" readonly="readonly"/>
 										</div>
 									</td>
 								</tr>
@@ -108,7 +117,7 @@ String path = request.getContextPath(); %>
 									<th class="myinfo_th">생년월일</th>
 									<td class="myinfo_td">
 										<div class="input-wrap">
-											<input class="input" type="text" name="생년월일" value="1991.02.08" readonly="readonly"/>
+											<input class="input" type="text" name="생년월일" value="<%=mem.getMem_birth() %>" readonly="readonly"/>
 										</div>
 									</td>
 								</tr>
@@ -126,7 +135,7 @@ String path = request.getContextPath(); %>
 									<th class="myinfo_th">닉네임</th>
 									<td class="myinfo_td">
 										<div class="input-wrap">
-											<input type="text" class="input" value="닉네임">
+											<input type="text" class="input" name="nick" value="<%=mem.getMem_nickname() %>">
 										</div>
 									</td>
 								</tr>
@@ -144,7 +153,7 @@ String path = request.getContextPath(); %>
 									<th class="myinfo_th">이메일</th>
 									<td class="myinfo_td">
 										<div class="input-wrap">
-											<input type="text" class="input" value="himan@naver.com">
+											<input type="text" class="input" name="email" value="<%=mem.getMem_mail() %>">
 										</div>
 									</td>
 								</tr>
@@ -153,7 +162,7 @@ String path = request.getContextPath(); %>
 									<td class="myinfo_td">
 										<div>
 											<div class="input-wrap">
-												<input type="tel" class="input" value="01012345678"/>
+												<input type="tel" class="input" name="phone" value="<%=mem.getMem_phone() %>"/>
 											</div>
 											<div class="input_info">입력하신 이메일/ 휴대폰 번호로 비밀번호 찾기 및 재설정을 하실 수 있습니다.</div>
 										</td>
@@ -187,7 +196,7 @@ String path = request.getContextPath(); %>
 						</div>
 						 -->
 						<div class="myinfo_btn">
-							<a href="#" title="수정완료" class="btn-myinfo_edit">수정완료</a>
+							<a href="#" class="btn-myinfo_edit">수정완료</a>
 						</div>
 					</div>
 				</div>

@@ -38,6 +38,17 @@
     .no-view-tit{color:#3d4248; font-size:24px; font-weight:bold;}
     .no-view-txt{margin:5px 0 0; color:#a1a4a8; font-size:16px;}
 
+	.que-wrap{font-size:14px;color:#2f3338; margin: 0 3%;}
+	.que-cont{position:relative;min-height:160px;padding:30px 0;border-bottom:1px solid #DFDFDF;}
+	.que-area{text-align: left;}
+	.que-name{width:63%;margin:0 2%;display: inline-block;}
+	.que-txt{margin: 5px 0 0;color: #2f3338;font-size: 14px;overflow: hidden;font-weight: bold;}
+	.comment-wrap{margin:8px 0 0;padding:15px;background:#f8f8fa;}
+	.comment-tit{position:relative;padding-right:160px;}
+	.comment-info{color:#a1a4a8;font-size:12px;line-height:1.6;}
+	.comment-cont{margin:8px 0 0;color:#3d4248;font-size:14px;word-break:break-all;}
+
+
 </style>
 </head>
 <body>
@@ -85,7 +96,28 @@
 		<div class="iqwrite-wrap">
 			<div class="iqwrite-tit">1:1 문의내역</div>
 		<!-- 문의내역목록 -->
-			
+			<div class="que-wrap">
+					<div class="que-cont">
+						<div class="que-area">
+							<div class="comment-info">
+								<span class="reply-date">2020.03.15</span>
+							</div>
+							<div class="que-name">
+								<div class="que-txt">마일리지 사용에 제한이 있나요?</div>
+							</div>
+						</div>
+						<div >
+							<div class="comment-wrap">
+								<div class="comment-tit">
+									<div>
+										<div>답변</div>
+									</div>
+								</div>
+								<div class="comment-cont">마일리지는 1원부터 사용 가능하며, 금액 제한은 없습니다.<br>마일리지는 발급일로부터 12개월 후 자동 소멸되니, 소멸 전에 사용해주세요!</div>
+							</div>
+						</div>
+					</div>
+				</div>
 		<!--  문의내역 없음 -->
 			<div class="no-view-wrap">
 				<div class="no-view-tit">궁금하신 내용이 있으시면 1:1 문의를 신청해보세요.</div>
