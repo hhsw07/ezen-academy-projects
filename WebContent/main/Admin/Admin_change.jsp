@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.*, java.text.*" 
+    import="java.util.*, vo_hsw.*, java.text.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
@@ -14,9 +14,9 @@
 
 <body>
 <%
-
+A01_Admin db = new A01_Admin();
 //course 데이터 수정 후 list 수정
-ArrayList<Course> couList = (ArrayList<Course>)session.getAttribute("couList");
+/* ArrayList<Course> couList = (ArrayList<Course>)session.getAttribute("couList");
 String cIdx = request.getParameter("cIdx");
 if(cIdx!=null){
 	int idx = Integer.parseInt(cIdx);
@@ -51,10 +51,20 @@ if(cIdx!=null){
 	couList.get(idx).setCourse_totCnt(course_totCnt);
 	
 	response.sendRedirect("Admin_class.jsp");
+} */
+String cIdxS = request.getParameter("cIdx");
+if(cIdxS!=null){
+	int cIdx = new Integer(cIdxS);
+	db.updateCourse(cIdx);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_class.jsp");
 }
 
+
+
+
 //스토어 데이터 수정 후 list 수정
-ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
+/* ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
 String sIdx = request.getParameter("sIdx");
 if(sIdx!=null){
 	int idx = Integer.parseInt(sIdx);
@@ -79,12 +89,18 @@ if(sIdx!=null){
 	sList.get(idx).setStore_detail(store_detail);
 	
 	response.sendRedirect("Admin_store.jsp");
+} */
+String sIdxS = request.getParameter("sIdx");
+if(sIdxS!=null){
+	int sIdx = new Integer(sIdxS);
+	db.updateStore(sIdx);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_store.jsp");
 }
 
 
-
 //공지 데이터 삭제 후 list 수정
-ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
+/* ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 String nIdx = request.getParameter("nIdx");
 if(nIdx!=null){
 	int idx = Integer.parseInt(nIdx);
@@ -99,10 +115,16 @@ if(nIdx!=null){
 	notiList.get(idx).setNoti_code(noti_code);
 
 	response.sendRedirect("Admin_notice.jsp");
+} */
+String nIdxS = request.getParameter("nIdx");
+if(nIdxS!=null){
+	int nIdx = new Integer(nIdxS);
+	db.updateNotice(nIdx);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_notice.jsp");
 }
-
 //문의 데이터 수정 후 list 수정
-ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
+/* ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 String iIdx = request.getParameter("iIdx");
 if(iIdx!=null){
 	int idx = Integer.parseInt(iIdx);
@@ -111,8 +133,14 @@ if(iIdx!=null){
 	inqList.get(idx).setInquiry_re(inquiry_re);
 	
 	response.sendRedirect("Admin_inquiry.jsp");
-}
-	
+} */
+String iIdxS = request.getParameter("iIdx");
+if(nIdxS!=null){
+	int iIdx = new Integer(iIdxS);
+	db.updateNotice(iIdx);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_inquiry.jsp");
+}	
 
 
 
