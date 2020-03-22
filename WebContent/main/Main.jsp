@@ -104,9 +104,16 @@
 			<div class="user_top">
 			<span onclick="adminpage()" style="cursor:pointer; padding:30px">관리자</span>	
 				<ul class="ut_ul">
+					<%
+					String pl=null;
+					pl = request.getParameter("page");
+						
+					if(request.getParameter("page")==null){
+						pl = "maindetail";
+					}%>
 					<%if(session.getAttribute("loginid")==null){ %>
-					<li class="ut_li"><a href="?page=maindetail&lp=loginmain">로그인</a></li>
-					<li class="ut_li"><a href="?page=maindetail&lp=memberJoin">회원가입</a></li>
+					<li class="ut_li"><a href="?page=<%=pl%>&lp=loginmain">로그인</a></li>
+					<li class="ut_li"><a href="?page=<%=pl%>&lp=memberJoin">회원가입</a></li>
 					<%}else{ %>
 					<li class="ut_li"><a href="#"><%=session.getAttribute("loginid") %>님 환영합니다.</a></li>
 					<li class="ut_li"><a href="Login/logout.jsp">로그아웃</a></li>
@@ -130,10 +137,7 @@
 		<div class="middle">
 <!-- 상세 정보는 이곳에 들어가야함 -->	
 <%
-	String pl=null;
-	pl = request.getParameter("page");
 	if(pl==null){
-	//기본 페이지 include
 %>
 	<%@include file="maindetail.jsp" %>
 <%}else{//page파라미터에 따른 페이지 include
