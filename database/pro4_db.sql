@@ -61,7 +61,7 @@ SET mem_id = '@@@',
 	mem_name = '@@@',
 	mem_mail = '@@@',
 	mem_nickname = '@@@',
-	mem_birth = to_date('2020-03-320','YYYY-MM-DD'),
+	mem_birth = to_date('2020-03-20','YYYY-MM-DD'),
 	mem_phone = '@@@',
 	mem_code = '@'
 WHERE mem_no = 000;
@@ -130,23 +130,23 @@ INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-1
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen2',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 
-SELECT * FROM p04_course;
+SELECT * FROM p04_course
 DROP SEQUENCE p04_course_seq;
 
 -- 수업 수정
 UPDATE p04_course 
-SET course_no = 0,
-	mem_id = '@@@',
-	course_inputdate = to_date('2020-03-320','YYYY-MM-DD'),
-	course_title = '@@@',
-	course_detail = '@@@',
-	course_img = '@@@',
-	coruse_category = '@@@'
-WHERE course_no = 000;
+SET course_no = 5,
+	mem_id = 'ezen4',
+	course_inputdate = to_date('2020-03-20','YYYY-MM-DD'),
+	course_title = '비누',
+	course_detail = 'fradetail2.jpg',
+	course_img = 'ads01_wide.jpg',
+	coruse_category = '다양한'
+WHERE course_no = 5;
 
 -- 수업 삭제
 DELETE p04_course
-WHERE course_no = 000;
+WHERE course_no = 5;
 
 ---------------------------------------------------------------------------------------
 -- 수업종류
@@ -209,6 +209,10 @@ INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,2,'정규',NULL,150000,5,0);
 
 SELECT * FROM p04_ckind;
 DROP SEQUENCE p04_ckind_seq;
+
+SELECT * FROM p04_ckind
+WHERE course_no = 1;
+
 
 -- 수업종류 수정
 UPDATE p04_ckind 

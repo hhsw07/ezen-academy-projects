@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
+A01_Admin dao = new A01_Admin();
+ArrayList<Adm_Not> notiList = dao.getNotiList();
+//ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 String strIdx = request.getParameter("nIdx");
 int idx = Integer.parseInt(strIdx);
 

@@ -6,16 +6,11 @@
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
- A01_Admin dao = new A01_Admin();
- String cIdxS = request.getParameter("cIdx");
- int idx = 0; if(cIdxS != null) idx = new Integer(cIdxS);
- ArrayList<Adm_Cou> coList = dao.getCList();
-
-
-//ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
-//String strIdx = request.getParameter("cIdx");
-//int idx = Integer.parseInt(strIdx);
-/*
+// A01_Admin dao = new A01_Admin();
+// ArrayList<Adm_Cou> coList = dao.getCList();
+ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
+String strIdx = request.getParameter("cIdx");
+int idx = Integer.parseInt(strIdx);
 String course_title = request.getParameter("course_title");
 if(course_title != null){
 	response.sendRedirect("Admin_change.jsp?cIdx="+idx+
@@ -27,7 +22,7 @@ if(course_title != null){
 			"&course_opendate="+request.getParameter("course_opendate")+
 			"&course_img="+request.getParameter("course_img")+
 			"&course_detail="+java.net.URLEncoder.encode(request.getParameter("course_detail")) );
-}*/
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -53,8 +48,8 @@ if(course_title != null){
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
 	.section table th, td {height:40px;}
 	.section table td input {width:90%; height:90%;}
-	.section table td input[type=button] {width:45px;}
-	.section table td input[type=submit] {width:45px;}
+	.section table td input[type=radio] {width:15px;height:14px;}
+	.section table td textarea {width:95%; height:90%; resize:none;}
 	.inputBtn {margin:10px 0 0 800px; font-size:15px;}
 </style>
 
@@ -77,58 +72,47 @@ if(course_title != null){
 		<div class="section">
 			<h1>클래스 수정</h1>
 			<form>
-				<table border>
+				<table>
+					<input type="text" name="cIdx" value="<%=strIdx %>" style="visibility:hidden;" />
 					<tr>
 						<th>클래스번호</th>
-						<td><input type="text" name="course_no" value="<%=coList.get(idx).getCourse_no() %>" readonly /></td>
+						<td><input type="text" name="course_no" value="" readonly /></td>
 						<th>호스트</th>
 						<td><input type="text" name="mem_id" value="<%=coList.get(idx).getMem_id() %>"/></td>
 					</tr>
 					<tr>
 						<th>클래스명 </th>
 						<td><input type="text" name="course_title" value="<%=coList.get(idx).getCourse_title() %>"/></td>
-					</tr>
-					<tr>
 						<th>클래스 등록일</th>
-						<td><input type="date" name="course_inputdate" value="<%=coList.get(idx).getCourse_inputdate() %>"/></td>
-						<th>수업분류</th>
-						<td>
-							<select name="course_category" style="width:90%;">
-								<option value="this.innerHTML">마크라메</option>
-								<option value="this.innerHTML">프랑수자수</option>
-								<option value="this.innerHTML">수채화/드로잉</option>
-								<option value="this.innerHTML">뜨개질/위빙</option>
-								<option value="this.innerHTML">가죽공예</option>
-								<option value="this.innerHTML">쥬얼리/네온사인</option>
-								<option value="this.innerHTML">다양한 취미</option>
-							</select>
-						</td>
+						<td><label><input type="radio" name="course_kind" id="kind01" value="D"/>원데이클래스</label> 
+							<label><input type="radio" name="course_kind" id="kind02" value="M"/>정기클래스</label></td>
 					</tr>
 					<tr>
+						<th>인원</th>
+						<td><input type="number" name="course_totCnt" value="<%=coList.get(idx).getCourse_totCnt() %>"></td>
+						<th>가격</th>
+						<td><input type="number" name="course_price" value="<%=coList.get(idx).getCourse_price() %>"></td>
+					</tr>
+					<tr>
+						<th>수강일</th>
+						<td><input type="date" name="course_opendate"  value="<%=coList.get(idx).getCourse_opendate() %>"  /></td>
 						<th>클래스이미지</th>
 						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
-						<th>상세설명 </th>
-						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
 					</tr>
 					<tr>
-						<td colspan="4" style="text-aling:right; " >
-							<input type="button" value="등록" onclick="ins(<%=idx %>)" />
-							<input type="button" value="삭제" onclick="ckDel(<%=idx %>)" />
-							<input type="submit" value="수정" />
-						</td>
+						<th>상세설명 </th>
+						<th colspan="3"></th>
+					</tr>
+					<tr>
+						<td colspan="4">
+						<textarea name="course_detail" rows="8" ><%=coList.get(idx).getCourse_detail() %></textarea></td>
 					</tr>
 				</table>
-			</form>
-			<!-- <form>
-				<table>
-					수업종류코드
-					클래스종류 (원데이/정기)
-					수강일
-					가격
-					최대인원
-					
-				</table>
-			</form> -->	
+				<div align="right" >
+				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
+				<input type="submit" value="수정" />
+				</div>
+			</form>	
 		</div>
 	</div>
 </body>
@@ -136,17 +120,17 @@ if(course_title != null){
 	function ckDel(idx){
 		var ckConfirm = confirm("정말 삭제하시겠습니까?");
 		 if(ckConfirm){
-			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+<%=idx %>;
+			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+idx;
 		}
 	}
 		
-	var course_kind = "<%=coList.get(idx).getCourse_category() %>";
+	var course_kind = "<%=coList.get(idx).getCourse_kind() %>";
 	if(course_kind == "D"){
 		document.querySelector('#kind01').checked = true;
 	}else{
 		document.querySelector('#kind02').checked = true;
 	}
-	
+
 
 </script>
 </html>
