@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*, java.util.Date,
+    import="java.util.ArrayList, z01_vo.*, java.util.Date, vo_hsw.*,
     java.text.SimpleDateFormat " 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
-String noti_title = request.getParameter("noti_title");
-SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-Date time = new Date();
-String nowTime = format1.format(time);
+A01_Admin dao = new A01_Admin();
 
-if(noti_title != null){
-	int noti_no = notiList.size()+1;
-	String noti_detail = request.getParameter("noti_detail");
-	String noti_date = request.getParameter("noti_date");
-	String noti_code = request.getParameter("noti_code");
-	
-	notiList.add(new Notice(noti_no,noti_title,noti_detail,noti_date,noti_code));
-	session.setAttribute("notiList", notiList);
-	response.sendRedirect("Admin_notice.jsp");
+String noti_title = request.getParameter("noti_title"); if(noti_title==null)noti_title="";
+String noti_detail = request.getParameter("noti_detail"); if(noti_detail==null)noti_detail="";
+String noti_code = request.getParameter("noti_code"); if(noti_code==null)noti_code="";
+if(noti_title !=null && !noti_title.equals("")){
+Adm_Not ins = new Adm_Not(noti_title,noti_detail,noti_code);
+dao.insertNot(ins);
+Thread.sleep(500);
+response.sendRedirect("Admin_notice.jsp");
 }
 %>
 <!DOCTYPE html>
@@ -73,17 +68,11 @@ if(noti_title != null){
 			<form>
 				<table>
 					<tr>
-						<th>공지등록일 </th>
-						<td><input type="date" name="noti_date" value="<%=nowTime %>"/></td>
-						<th>중요</th>
-						<td><label><input type="radio" name="noti_code" id="kind01" value="Y"/>중요</label> 
-							<label><input type="radio" name="noti_code" id="kind02" value="N" checked />일반</label></td>
-					</tr>
-					<tr>
 						<th>공지제목</th>
-						<td><input type="text" name="noti_title" placeholder="제목을 입력하세요." /></td>
-						<th></th>
-						<td></td>
+						<td><input type="text" name="noti_title"  value=""  /></td>
+						<th>중요</th>
+						<td><label><input type="radio" name="noti_code" id="kind01" value="Y" checked/>중요</label> 
+							<label><input type="radio" name="noti_code" id="kind02" value="N"/>일반</label></td>
 					</tr>
 					<tr>
 						<th>공지내용 </th>
@@ -91,7 +80,7 @@ if(noti_title != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="noti_detail" rows="8" placeholder="내용을 입력하세요."></textarea></td>
+						<textarea name="noti_detail" rows="8" ></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >

@@ -7,12 +7,11 @@
 	String path = request.getContextPath(); %>
 <%
 A01_Admin dao = new A01_Admin();
-String cIdxS = request.getParameter("cIdx");
-int idx = 0; if(cIdxS != null) idx = new Integer(cIdxS)-1;
-ArrayList<Adm_Cou> coList = dao.getCList();
+String course_noS = request.getParameter("cIdx");
+int course_no = 1; if(course_noS != null) course_no = new Integer(course_noS);
+Adm_Cou co = dao.getCourse(course_no);
 
 String proc = request.getParameter("proc"); if(proc == null) proc="";
-
 //COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
 // COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
 if(proc.equals("upt")){
@@ -22,9 +21,10 @@ if(proc.equals("upt")){
 			null,request.getParameter("course_title"),
 			request.getParameter("course_detail"),request.getParameter("course_img"),
 			request.getParameter("course_category"));
-	System.out.print("proc=upt");
-	dao.updateCou(upt);
 	
+	dao.updateCou(upt);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_class.jsp");
 }
 
 //ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
@@ -91,23 +91,24 @@ if(course_title != null){
 		</div>
 		<div class="section">
 			<h1>클래스 수정</h1>
-			<form>
-				<input type="hidden" name="cIdx" value="<%=coList.get(idx).getCourse_no() %>" />
-				<input type="hidden" name="proc" value="<%=proc %>" />
+			<form method="get">
+				<input type="hidden" name="proc" value="upt" />
 				<table border>
 					<tr>
 						<th>클래스번호</th>
-						<td><input type="text" name="course_no" value="<%=coList.get(idx).getCourse_no() %>" readonly /></td>
-						<th>호스트</th>
-						<td><input type="text" name="mem_id" value="<%=coList.get(idx).getMem_id() %>"/></td>
-					</tr>
-					<tr>
-						<th>클래스명 </th>
-						<td><input type="text" name="course_title" value="<%=coList.get(idx).getCourse_title() %>"/></td>
+						<td><input type="text" name="course_no" value="<%=co.getCourse_no() %>" readonly /></td>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>클래스 등록일</th>
-						<td><input type="date" name="course_inputdate" value="<%=coList.get(idx).getCourse_inputdate() %>"readonly /></td>
+						<td><input type="date" name="course_inputdate" value="<%=co.getCourse_inputdate() %>"readonly /></td>
+						<th>호스트</th>
+						<td><input type="text" name="mem_id" value="<%=co.getMem_id() %>"/></td>
+					</tr>
+					<tr>
+						<th>클래스명 </th>
+						<td><input type="text" name="course_title" value="<%=co.getCourse_title() %>"/></td>
 						<th>수업분류</th>
 						<td>
 							<select name="course_category" style="width:90%;">
@@ -123,13 +124,14 @@ if(course_title != null){
 					</tr>
 					<tr>
 						<th>클래스이미지</th>
-						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
+						<td><input type="file" name="course_img" value="<%=co.getCourse_img() %>"/></td>
 						<th>상세설명 </th>
-						<td><input type="file" name="course_img" value="<%=coList.get(idx).getCourse_img() %>"/></td>
+						<td><input type="file" name="course_img" value="<%=co.getCourse_img() %>"/></td>
 					</tr>
 					<tr>
 						<td colspan="4" style="text-aling:right; " >
-							<input type="button" value="삭제" onclick="ckDel(<%=coList.get(idx).getCourse_no() %>)" />
+							<input type="hidden" name="cIdx" value="<%=course_no %>"  />
+							<input type="button" value="삭제" onclick="ckDel(<%=course_no %>)" />
 							<input type="submit" value="수정" />
 						</td>
 					</tr>

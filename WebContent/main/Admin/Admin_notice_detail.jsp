@@ -6,19 +6,26 @@
 	String path = request.getContextPath(); %>
 <%
 A01_Admin dao = new A01_Admin();
-ArrayList<Adm_Not> notiList = dao.getNotiList();
 //ArrayList<Notice> notiList = (ArrayList<Notice>)session.getAttribute("notiList");
 String strIdx = request.getParameter("nIdx");
-int idx = Integer.parseInt(strIdx);
+int idx = 1; if(strIdx != null) idx =Integer.parseInt(strIdx); 
+Adm_Not noti = dao.getNotice(idx);
 
+String noti_noS = request.getParameter("noti_no");
+int noti_no=0; if(noti_noS !=null) noti_no = Integer.parseInt(noti_noS);
+String noti_title = request.getParameter("noti_title"); if(noti_title == null) noti_title="";
+String noti_date = request.getParameter("noti_date"); if(noti_date == null) noti_date="";
+String noti_code = request.getParameter("noti_code"); if(noti_code == null) noti_code="";
+String noti_detail = request.getParameter("noti_detail"); if(noti_detail == null) noti_detail="";
 
-String noti_title = request.getParameter("noti_title");
-if(noti_title != null){
-	response.sendRedirect("Admin_change.jsp?nIdx="+idx+
-			"&noti_title="+java.net.URLEncoder.encode(request.getParameter("noti_title"))+
-			"&noti_detail="+java.net.URLEncoder.encode(request.getParameter("noti_detail"))+
-			"&noti_date="+request.getParameter("noti_date")+
-			"&noti_code="+request.getParameter("noti_code") );
+String proc = request.getParameter("proc");
+if(proc == null) proc="";
+if(proc.equals("upt")){
+	Adm_Not upt = new Adm_Not(noti_no, noti_title, noti_detail,noti_code);
+	System.out.println(upt.getNoti_no());
+	dao.updateNoti(upt);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_notice.jsp");
 }
 %>
 
@@ -69,24 +76,24 @@ if(noti_title != null){
 		</div>
 		<div class="section">
 			<h1>공지사항 관리 (상세정보)</h1>
-			<form>
+			<form method="post">
 				<table>
 					<tr>
 						<th>공지사항 번호</th>
-						<td><input type="text" name="store_no" value="<%=notiList.get(idx).getNoti_no() %>" readonly/></td>
+						<td><input type="text" name="noti_no" value="<%=noti.getNoti_no() %>" readonly/></td>
 						<th></th>
 						<td></td>
 					</tr>
 					<tr>
 						<th>공지등록일 </th>
-						<td><input type="date" name="noti_date"  value="<%=notiList.get(idx).getNoti_date() %>"  /></td>
+						<td><input type="date" name="noti_date"  value="<%=noti.getNoti_date() %>"  /></td>
 						<th>중요</th>
 						<td><label><input type="radio" name="noti_code" id="kind01" value="Y"/>중요</label> 
 							<label><input type="radio" name="noti_code" id="kind02" value="N"/>일반</label></td>
 					</tr>
 					<tr>
 						<th>공지제목</th>
-						<td><input type="text" name="noti_title"  value="<%=notiList.get(idx).getNoti_title() %>"  /></td>
+						<td><input type="text" name="noti_title"  value="<%=noti.getNoti_title() %>"  /></td>
 						<th></th>
 						<td></td>
 					</tr>
@@ -96,12 +103,13 @@ if(noti_title != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="noti_detail" rows="8" ><%=notiList.get(idx).getNoti_detail() %></textarea></td>
+						<textarea name="noti_detail" rows="8" ><%=noti.getNoti_detail() %></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >
-				<input type="text" name="nIdx" value="<%=strIdx %>" style="visibility:hidden;" />
-				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
+				<input type="hidden" name="nIdx" value="<%=strIdx %>"  />
+				<input type="hidden" name="proc" value="upt"  />
+				<input type="button" value="삭제" onclick="ckDel(<%=noti.getNoti_no() %>)"/>
 				<input type="submit" value="수정" />
 				</div>
 			</form>	
@@ -116,7 +124,7 @@ if(noti_title != null){
 		}
 	}
 		
-	var noti_code = "<%=notiList.get(idx).getNoti_code() %>";
+	var noti_code = "<%=noti.getNoti_code() %>";
 	console.log(noti_code);
 
 	if(noti_code == "Y"){

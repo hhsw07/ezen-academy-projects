@@ -1,18 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
-String strIdx = request.getParameter("iIdx");
-int idx = Integer.parseInt(strIdx);
+A01_Admin dao = new A01_Admin();
 
-String inquiry_detail = request.getParameter("inquiry_detail");
-if(inquiry_detail != null){
-	response.sendRedirect("Admin_change.jsp?iIdx="+idx+
-			"&inquiry_re="+java.net.URLEncoder.encode(request.getParameter("inquiry_re")) );
+//ArrayList<Inquiry> inqList = (ArrayList<Inquiry>)session.getAttribute("inqList");
+String inquiry_noS = request.getParameter("iIdx");
+int inquiry_no =1; if(inquiry_noS!=null)inquiry_no = Integer.parseInt(inquiry_noS);
+Adm_Inq inq = dao.getInquiry(inquiry_no);
+
+String re = inq.getInquiry_re();
+if(re==null) re="";
+
+
+String proc = request.getParameter("proc");
+if(proc == null) proc="";
+if(proc.equals("upt")){
+	String inquiry_re = request.getParameter("inquiry_re");
+	Adm_Inq upt = new Adm_Inq(inquiry_no,inquiry_re);
+	dao.updateInq(upt);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_inquiry.jsp");
 }
 %>
 
@@ -63,20 +74,19 @@ if(inquiry_detail != null){
 		</div>
 		<div class="section">
 			<h1>문의사항 관리 (상세정보)</h1>
-			<form>
+			<form method="post">
 				<table>
 					<tr>
 						<th>문의 번호</th>
-						<td><input type="text" name="inquiry_no" value="<%=inqList.get(idx).getInquiry_no() %>" readonly/></td>
+						<td><input type="text" name="inquiry_no" value="<%=inq.getInquiry_no() %>" readonly/></td>
 						<th>아이디 </th>
-						<td><input type="text" name="mem_id" value="<%=inqList.get(idx).getMem_id() %>" readonly /></td>
+						<td><input type="text" name="mem_id" value="<%=inq.getMem_id() %>" readonly /></td>
 					</tr>
 					<tr>
 						<th>등록일</th>
-						<td><input type="date" value="<%=inqList.get(idx).getInquiry_date() %>"  readonly/>
-						<th>답변여부</th>
-						<td><label><input type="radio" id="kind01" disabled />완료</label> 
-							<label><input type="radio" id="kind02" disabled />대기중</label></td>
+						<td><input type="date" value="<%=inq.getInquiry_date() %>"  readonly/>
+						<th></th>
+						<td></td>
 					</tr>
 					<tr>
 						<th>문의내용</th>
@@ -84,7 +94,7 @@ if(inquiry_detail != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="inquiry_detail" rows="5" readonly><%=inqList.get(idx).getInquiry_detail() %></textarea></td>
+						<textarea name="inquiry_detail" rows="5" readonly><%=inq.getInquiry_detail() %></textarea></td>
 					</tr>
 					<tr>
 						<th>답변내용</th>
@@ -92,13 +102,13 @@ if(inquiry_detail != null){
 					</tr>
 					<tr>
 						<td colspan="4">
-						<textarea name="inquiry_re" rows="5" ><%=inqList.get(idx).getInquiry_re() %></textarea></td>
+						<textarea name="inquiry_re" rows="5" ><%=re %></textarea></td>
 					</tr>
 				</table>
 				<div align="right" >
-				<input type="text" name="iIdx" value="<%=strIdx %>" style="visibility:hidden;" />
-				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
-				<input type="submit" value="수정" />
+				<input type="hidden" name="proc" value="upt" />
+				<input type="button" value="삭제" onclick="ckDel(<%=inq.getInquiry_no() %>)"/>
+				<input type="submit" value="답변등록" />
 				</div>
 			</form>	
 		</div>
@@ -111,16 +121,6 @@ if(inquiry_detail != null){
 			location.href="<%=path %>/main/Admin/Admin_del.jsp?iIdx="+idx;
 		}
 	}
-		
-	var inquiry_code = "<%=inqList.get(idx).getInquiry_re() %>";
-	console.log(inquiry_code);
-	
-	if(inquiry_code == null || inquiry_code == ""){
-		document.querySelector('#kind02').checked = true;
-	}else{
-		document.querySelector('#kind01').checked = true;
-	}
-
 
 </script>
 </html>

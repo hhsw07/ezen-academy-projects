@@ -37,3 +37,29 @@ SET course_no = 00
 WHERE course_no = "+upt.getCourse_no() ;
 
 SELECT * FROM P04_NOTICE;
+
+
+
+SELECT * FROM p04_notice
+WHERE noti_no = 18;
+
+-- 18|고객센터 전화상담 운영 임시중단 안내|안녕하세요. 하비팩토리입니다.\n\n하비팩토리는 고객과 임직원의 코로나19 감염 예방을 위해, 전직원 재택 근무를 결정하였습니다.\n\n\n\n이에 따라 고객센터 전화상담 운영을 임시 중단하오니, 1:1 문의 및 채팅 상담을 이용해주시기 바랍니다.\n\n※ 전화상담 중단 기간 : 2월 25일 ~ 추후 공지\n\n\n\n전화상담 외에 모든 업무는 정상 진행됨을 알려드리며, 이용에 불편을 드리게 된 점 죄송한 말씀드립니다.\n\n하루 빨리 사태가 마무리되고|2020-02-25 00:00:00|Y        |
+UPDATE p04_notice
+SET noti_no = 18, 
+	noti_title = '고객',
+	noti_detail = '답변',
+	noti_code = 'Y' 
+WHERE noti_no = 18;
+
+SELECT * FROM p04_notice;
+INSERT INTO p04_notice values(p04_notice_seq.nextval,
+'제목','내용',sysdate,'Y');
+
+SELECT * FROM P04_COURSE;
+UPDATE p04_course 
+SET mem_id = 'ezen4',
+course_title = '부채', 
+course_detail = 'star1.jpg', 
+course_img = 'star1.jpg', 
+coruse_category = '다양한 취미' 
+WHERE course_no = 4;

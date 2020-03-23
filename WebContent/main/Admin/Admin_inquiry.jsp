@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 
 <%
-ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inqList");
+A01_Admin dao = new A01_Admin();
+ArrayList<Adm_Inq> inquList = dao.getInquList();
+
+
+//ArrayList<Inquiry> inquList = (ArrayList<Inquiry>)session.getAttribute("inqList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -52,7 +56,7 @@ int nextNo = pg.getPage_End()+1;
 	.section table tr {height:30px;}
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
-	
+	.txt {text-align:left; padding-left:10px;}
 </style>
 <script type="text/javascript">
 	function del(Mem_no){
@@ -101,7 +105,7 @@ int nextNo = pg.getPage_End()+1;
 					%>
 						<tr>
 						<td><%=inquList.get(idx).getInquiry_no() %></td>
-						<td><%=inquList.get(idx).getInquiry_detail() %></td>
+						<td class="txt"><%=inquList.get(idx).getInquiry_detail() %></td>
 						<td><%=inquList.get(idx).getMem_id() %></td>
 						<td><%=inquList.get(idx).getInquiry_date() %></td>
 						<% if(inquList.get(idx).getInquiry_re() == null || inquList.get(idx).getInquiry_re().equals("") ){ %>	
@@ -112,7 +116,7 @@ int nextNo = pg.getPage_End()+1;
 						<%}
 						%>
 						
-						<td><a href="<%=path %>/main/Admin/Admin_inquiry_detail.jsp?iIdx=<%=idx %>">답변</a></td>
+						<td><a href="<%=path %>/main/Admin/Admin_inquiry_detail.jsp?iIdx=<%=inquList.get(idx).getInquiry_no() %>">답변</a></td>
 						</tr>
 					<%
 					} %>
