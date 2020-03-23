@@ -29,7 +29,7 @@ String path = request.getContextPath(); %>
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 배송지목록 */
 	.shiplist{width:1050px; margin:0 auto;}
-	.addrlist-wrap{padding:20px 7%;}
+	.addrlist-wrap{padding:20px 5%;}
 	.addrlist-cont{position:relative; padding:30px 43% 30px 23%; border-bottom:1px solid #dfdfdf; color:#a1a4a8;}
 	.addrlist-title{position:absolute; top:50px; left:0; width:10%; margin:0; padding:0; font-size:16px; border-bottom:0; line-height:1.5; text-align:center;}
 	.txt-color-r{display:block; margin:7px 0 0; color:#f1645d !important;}
@@ -37,7 +37,7 @@ String path = request.getContextPath(); %>
 	.addrlist-area{position:absolute; top:30px; padding:0; line-height:1.71; text-align:center;}
 	.addrlist-tit{position:static; font-size:14px; text-align:center; top:0; left:0;}
 	.addrlist-txt{margin:7px 0 0; font-size:16px; text-align:center; color:#2f3338;}
-	.addrlist-phone{right:214px; width:17%; margin:0;}
+	.addrlist-phone{right:230px; width:17%; margin:0;}
 	.addrlist-address{position:static; margin:0;}
 	.addrlist-btn{position:absolute; top:50px; right:0; margin:0; text-align:center;}
 	.btn-addrlist{width:100px; height:35px; font-size:14px; line-height:33px; display:inline-block; color:#202127; border:1px solid #3d4248; text-align:center;}
@@ -56,26 +56,8 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-DB_Addr db = new DB_Addr();
+	DB_Addr db = new DB_Addr();
 
-
-/* 페이징 처리
-Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-*/
-
-int w_size = 5;
-int p_size = 10;
-int i_page = 1;
-if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
-session.setAttribute("i_page",i_page);
-
-int lastNo = w_size*i_page;
-if(lastNo >= db.getAddrlist().size()) lastNo = db.getAddrlist().size();
-
-Paging pg = new Paging(w_size,p_size,db.getAddrlist().size(),i_page);
-int preNo = pg.getPage_Start()-1;
-int nextNo = pg.getPage_End()+1;
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -111,12 +93,11 @@ int nextNo = pg.getPage_End()+1;
 <!-- 배송지 목록 -->
 	<section class="mypage_content">
 	<%
-	if(db.getAddrlist()!=null){
+	if(db.getAddrlist().size()!=0){
 	%>
 		<article class="shiplist">
 	<%
-		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
-			VO_Addr addr = db.getAddrlist().get(idx);
+		for(VO_Addr addr:db.getAddrlist()){
 	%>
 			<div class="addrlist-wrap">
 				<div class="addrlist-cont">
@@ -135,34 +116,12 @@ int nextNo = pg.getPage_End()+1;
 						<div class="addrlist-txt"><%=addr.getAddr_phone() %></div>
 					</div>
 					<div class="addrlist-btn">
-						<a href="#" title="수정" class="btn-addrlist">수정</a>
+						<a href="?page=mypage_add_shipment?addr_no=<%=addr.getAddr_no() %>" title="수정" class="btn-addrlist">수정</a>
 						<a href="#" title="삭제" class="btn-addrlist">삭제</a>
 					</div>
 				</div>
 			</div>
 			<%} %>
-			<div class="paging">
-				<h4>
-				<%
-				if(pg.isPre()){
-				%>
-					<a href="?page=mypage_shipment&i_page=<%=preNo %>">Pre</a>
-				<%
-				}
-				for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
-					if(i == i_page){
-				%>
-					<a class="pageNo" href="?page=mypage_shipment&i_page=<%=i %>" ><%=i %></a>
-				<%	}else{ %>
-					<a href="?page=mypage_shipment&i_page=<%=i %>"><%=i %></a>
-				<%	}
-				}
-				if(pg.isNext()){
-				%>
-					<a href="?page=mypage_shipment&i_page=<%=nextNo %>">Next</a>
-				<%} %>
-				</h4>	
-			</div>
 		</article>
 	<%} %>
 	<!-- 배송지 없을 때 -->

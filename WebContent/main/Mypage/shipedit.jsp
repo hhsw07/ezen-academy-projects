@@ -70,7 +70,8 @@ String path = request.getContextPath(); %>
 
 	DB_Addr db = new DB_Addr();
 	VO_Addr addr = new VO_Addr();
-	if(addrBtn.equals("upt")){
+	addr = db.getAddr(addr_no);
+	if(addrBtn.equals("edit")){
 		VO_Addr upt = new VO_Addr(title, recipient, hp, subhp, postcode, address, addrdetail);
 		db.updateAddr(upt);
 	}

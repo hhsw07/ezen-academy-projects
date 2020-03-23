@@ -15,6 +15,14 @@ public class VO_Member {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public VO_Member(String mem_mail, String mem_nickname, String mem_phone) {
+		super();
+		this.mem_mail = mem_mail;
+		this.mem_nickname = mem_nickname;
+		this.mem_phone = mem_phone;
+	}
+
 	public VO_Member(String mem_id, String mem_name, String mem_mail, String mem_nickname, Date mem_birth,
 			String mem_phone) {
 		super();

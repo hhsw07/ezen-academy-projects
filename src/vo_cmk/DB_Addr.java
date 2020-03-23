@@ -8,7 +8,7 @@ public class DB_Addr {
 	private Statement stat;
 	private ResultSet rs;
 	
-	public void setConn() throws SQLException {
+	private void setConn() throws SQLException {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -24,15 +24,14 @@ public class DB_Addr {
 		ArrayList<VO_Addr> addrlist = new ArrayList<VO_Addr>();
 		try {
 			setConn();
-			String sql = "SELECT addr_title, addr_name, addr_phone, \r\n" + 
+			String sql = "SELECT addr_no, addr_title, addr_name, addr_phone, \r\n" + 
 					"	addr_mailAddr, addr_address, addr_address2\r\n" + 
 					"FROM P04_ADDR\r\n" + 
 					"WHERE MEM_ID = 'himan1'";
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			while(rs.next()) {
-				addrlist.add(new VO_Addr(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-						rs.getString(5),rs.getString(6),rs.getString(7)));
+				addrlist.add(new VO_Addr(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7)));
 			}
 			rs.close();
 			stat.close();
@@ -167,7 +166,6 @@ public class DB_Addr {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DB_Addr db = new DB_Addr();
-
 	}
 
 }

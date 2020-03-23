@@ -749,7 +749,6 @@ DROP SEQUENCE p04_inquiry_seq;
 SELECT order_no, order_date, store_img, store_title, order_cnt, order_code
 FROM P04_ORDER o, P04_STORE s
 WHERE o.STORE_NO = s.STORE_NO
-
 AND NOT o.ORDER_CODE='장바구니';
 
 SELECT order_no, mem_id
@@ -757,19 +756,22 @@ FROM P04_ADDR pa, P04_ORDER po
 WHERE MEM_ID = 'himan';
 
 -- 배송지목록
-SELECT addr_title, addr_name, addr_phone, 
+SELECT addr_no, addr_title, addr_name, addr_phone, 
 	addr_mailAddr, addr_address, addr_address2
 FROM P04_ADDR
 WHERE MEM_ID = 'himan1';
+
 -- 배송지 상세보기 
 SELECT addr_title, addr_name, addr_phone, addr_mailAddr, addr_address, addr_address2
 FROM P04_ADDR
 WHERE MEM_ID = 'himan1' AND addr_no=1;
+
 -- 배송지 수정
 UPDATE P04_ADDR SET ADDR_TITLE='배송지명', ADDR_NAME='수령인',
 	ADDR_PHONE='연락처', ADDR_PHONE2='추가연락처',
 	ADDR_MAILADDR='우편번호', ADDR_ADDRESS='기본주소', ADDR_ADDRESS2='상세주소'
 WHERE ADDR_NO=1
+
 -- 배송지 삭제
 DELETE P04_ADDR 
 WHERE addr_no=1 
@@ -783,3 +785,19 @@ WHERE MEM_ID = 'himan1';
 UPDATE P04_MEMBER 
 SET MEM_NICKNAME='닉네임', MEM_MAIL='이메일', MEM_PHONE='연락처'
 WHERE MEM_ID='himan1'
+
+-- 마일리지 조회
+SELECT point_date, point_detail, point_mileage
+FROM P04_POINT
+WHERE MEM_ID = 'himan1'
+ORDER BY point_no DESC;
+
+-- 나의 문의 조회
+SELECT inquiry_date, inquiry_detail, inquiry_re
+FROM P04_INQUIRY
+WHERE MEM_ID = 'himan1'
+ORDER BY INQUIRY_NO DESC;
+
+-- 클래스 조회
+SELECT 
+

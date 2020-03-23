@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.*"%>
+    import="java.util.*, z01_vo.*, vo_cmk.*"%>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -48,27 +48,9 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-	//ArrayList<Point> ptList = (ArrayList<Point>)session.getAttribute("ptList");
-	ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
+	DB_Mileage db = new DB_Mileage();
 
-	/* 페이징 처리
-	Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
-	Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-	*/
 
-	int w_size = 5;
-	int p_size = 2;
-	int i_page = 1;
-	if(request.getParameter("i_page") != null) i_page = Integer.parseInt(request.getParameter("i_page"));
-	session.setAttribute("i_page",i_page);
-
-	int lastNo = ptList.size()-1- (w_size*i_page);
-	if(lastNo < 0) lastNo = -1;
-
-	Paging pg = new Paging(w_size,p_size,ptList.size(),i_page);
-	int preNo = pg.getPage_Start()-1;
-	int nextNo = pg.getPage_End()+1;
-	
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -99,22 +81,21 @@ String path = request.getContextPath(); %>
 			</ul>
 		</nav>
 	</div>
-<%--
+<%
 int tot=0;
 int plus=0;
 int minus=0;
-if(ptList!=null){
-	for(int idx=ptList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
-		Point pt = ptList.get(idx);
-		if(pt.getPt_mileage()>=0){
-			plus = plus+pt.getPt_mileage();
+if(db.getPtlist()!=null){
+	for(VO_Mileage pt:db.getPtlist()){
+		if(pt.getPoint_mileage()>=0){
+			plus = plus+pt.getPoint_mileage();
 		} else{
-			minus = minus+pt.getPt_mileage();
+			minus = minus+pt.getPoint_mileage();
 		}
 		tot = plus+minus;
 	}
 }
---%>
+%>
 <!-- 마일리지조회 -->
 	<section class="mypage_content">
 		<article class="point-wrap">
@@ -123,15 +104,15 @@ if(ptList!=null){
 					<div class="pointinfo_show">
 						<div class="point-info">
 							<div class="point-info-tit">현재 마일리지</div>
-							<div class="point-info-p"><%=session.getAttribute("totPoint") %> P</div>
+							<div class="point-info-p"><%=tot %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">총 적립 마일리지</div>
-							<div class="point-info-p"><%=session.getAttribute("plus") %> P</div>
+							<div class="point-info-p"><%=plus %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">사용한 마일리지</div>
-							<div class="point-info-p"><%=session.getAttribute("minus") %> P</div>
+							<div class="point-info-p"><%=-minus %> P</div>
 						</div>
 					</div>
 				</div>
@@ -154,55 +135,32 @@ if(ptList!=null){
 							</thead>
 							<tbody class="point_list_wrap">
 					<%
-					if(ptList!=null){
-						for(int idx=ptList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
-							Point pt = ptList.get(idx);
+						for(VO_Mileage pt:db.getPtlist()){
 					%>
 								<tr>
-									<td class="point-td"><%=pt.getPt_date() %></td>
-									<td class="point-td"><%=pt.getPt_detail() %></td>
+									<td class="point-td"><%=pt.getPoint_date() %></td>
+									<td class="point-td"><%=pt.getPoint_detail() %></td>
 						<%
-							if(pt.getPt_mileage()>=0){
+							if(pt.getPoint_mileage()>=0){
 						%>
-									<td class="point-td txt-color-r">+<%=pt.getPt_mileage() %> p</td>
+									<td class="point-td txt-color-r">+<%=pt.getPoint_mileage() %> p</td>
 						<%
 							} else{
 						%>
-									<td class="point-td"><%=pt.getPt_mileage() %> p</td>
+									<td class="point-td"><%=pt.getPoint_mileage() %> p</td>
 						<%
 							}
 						%>
 								</tr>
 					<%
 						}
-					}
+					
 					%>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div class="paging">
-					<h4>
-					<%
-					if(pg.isPre()){
-					%>
-						<a href="mileage.jsp?i_page=<%=preNo %>">Pre</a>
-					<%
-					}
-					for(int i = pg.getPage_Start(); i <= pg.getPage_End();i++){
-						if(i == i_page){
-					%>
-						<a class="pageNo" href="mileage.jsp?i_page=<%=i %>" ><%=i %></a>
-					<%	}else{ %>
-						<a href="mileage.jsp?i_page=<%=i %>"><%=i %></a>
-					<%	}
-					}
-					if(pg.isNext()){
-					%>
-						<a href="mileage.jsp?i_page=<%=nextNo %>">Next</a>
-					<%} %>
-					</h4>	
-				</div>
+				
 			</div>
 		</article>
 	</section>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*, vo_cmk.*"%>
+<% request.setCharacterEncoding("UTF-8");
+String path = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +42,7 @@
     .no-view-txt{margin:5px 0 0; color:#a1a4a8; font-size:16px;}
 
 	.que-wrap{font-size:14px;color:#2f3338; margin: 0 3%;}
-	.que-cont{position:relative;min-height:160px;padding:30px 0;border-bottom:1px solid #DFDFDF;}
+	.que-cont{position:relative;min-height:160px;padding:15px 0 10px;border-bottom:1px solid #DFDFDF;}
 	.que-area{text-align: left;}
 	.que-name{width:63%;margin:0 2%;display: inline-block;}
 	.que-txt{margin: 5px 0 0;color: #2f3338;font-size: 14px;overflow: hidden;font-weight: bold;}
@@ -51,6 +54,9 @@
 
 </style>
 </head>
+<%
+DB_Inquiry db = new DB_Inquiry();
+%>
 <body>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -91,19 +97,24 @@
 		</div>
 	</div>
 	</article>
-	
+
 	<article class="myinquiry">
 		<div class="iqwrite-wrap">
 			<div class="iqwrite-tit">1:1 문의내역</div>
 		<!-- 문의내역목록 -->
+		<%
+		if(db.getInqlist().size()!=0){
+			for(VO_Inquiry inq:db.getInqlist()){
+	
+		%>
 			<div class="que-wrap">
 					<div class="que-cont">
 						<div class="que-area">
 							<div class="comment-info">
-								<span class="reply-date">2020.03.15</span>
+								<span class="reply-date"><%=inq.getInquiry_date() %></span>
 							</div>
 							<div class="que-name">
-								<div class="que-txt">마일리지 사용에 제한이 있나요?</div>
+								<div class="que-txt"><%=inq.getInquiry_detail() %></div>
 							</div>
 						</div>
 						<div >
@@ -113,17 +124,23 @@
 										<div>답변</div>
 									</div>
 								</div>
-								<div class="comment-cont">마일리지는 1원부터 사용 가능하며, 금액 제한은 없습니다.<br>마일리지는 발급일로부터 12개월 후 자동 소멸되니, 소멸 전에 사용해주세요!</div>
+								<div class="comment-cont"><%=inq.getInquiry_re() %></div>
 							</div>
 						</div>
 					</div>
 				</div>
+		<%}
+		} %>
 		<!--  문의내역 없음 -->
+		<%
+		if(db.getInqlist().size()==0){
+		%>
 			<div class="no-view-wrap">
 				<div class="no-view-tit">궁금하신 내용이 있으시면 1:1 문의를 신청해보세요.</div>
 				<div class="no-view-txt">하비팩토리 서비스 이용시 궁금하신 내용이 있으시면 1:1 문의를 이용해보세요.<br>친절하고 빠르게 문제 해결을 도와드리겠습니다.</div>
 				<a href="#" class="btn-noaddr">1:1 문의 작성하러가기</a>
 			</div>
+		<%} %>
 		</div>
 	</article>
 </section>

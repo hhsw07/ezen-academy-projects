@@ -15,6 +15,18 @@ public class VO_Addr {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public VO_Addr(int addr_no, String addr_title, String addr_name, String addr_phone, String addr_mailAddr,
+			String addr_address, String addr_address2) {
+		super();
+		this.addr_no = addr_no;
+		this.addr_title = addr_title;
+		this.addr_name = addr_name;
+		this.addr_phone = addr_phone;
+		this.addr_mailAddr = addr_mailAddr;
+		this.addr_address = addr_address;
+		this.addr_address2 = addr_address2;
+	}
+
 	public VO_Addr(String addr_title, String addr_name, String addr_phone, String addr_phone2, String addr_mailAddr,
 			String addr_address, String addr_address2) {
 		super();
