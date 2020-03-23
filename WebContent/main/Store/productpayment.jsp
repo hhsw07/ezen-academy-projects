@@ -1,9 +1,15 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
-    java.text.SimpleDateFormat " 
-    %>
+    java.text.SimpleDateFormat,z01_vo.*, vo_khj.*,vo_cmk.* " 
+    
+%>
 <!DOCTYPE html>
+<%
+S_Pdt dao = new S_Pdt();
+DB_Addr db = new DB_Addr();
+%>
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -85,9 +91,10 @@
   </head>
   <body onload="init();">
 	    <%
+	    DecimalFormat formatter = new DecimalFormat("###,###");
 		ArrayList<Store> sList = new ArrayList<Store>();
+	    sList = dao.getStoreList();
 		if(session.getAttribute("sList")!=null){
-			sList = (ArrayList<Store>)session.getAttribute("sList");
 		}
 		String store_noS = request.getParameter("store_no");
 		int store_no=0; if(store_noS!=null) store_no=Integer.parseInt(store_noS);
@@ -160,8 +167,9 @@
 	  String searchad = (String)session.getAttribute("userad");
 	  Addr ad = new Addr(); //로그인한 아이디에 해당하는 회원정보를 받아올 객체 ArrayList<Member> memlist = new
 	  ArrayList<Addr> adlist = new ArrayList<Addr>(); //db에서 불러온 회원객체 리스트가 저장될 리스트
+	  
 	  if(session.getAttribute("addrList")!=null){ 
-		  adlist = (ArrayList<Addr>)session.getAttribute("addrList"); //db에 있는 회원객체리스트를 전부 불러옴
+		 
 	  } 
 	  for(Addr a : adlist){ //m : for문을 돌리기 위한 임시 회원객체
 	  if(a.getMem_id().equals(searchad)){

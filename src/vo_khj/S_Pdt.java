@@ -46,7 +46,7 @@ public class S_Pdt {
 			setCon();
 			String sql ="SELECT * \r\n" + 
 					"FROM p04_store\r\n" + 
-					"ORDER BY store_no DESC";
+					"ORDER BY store_no";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {

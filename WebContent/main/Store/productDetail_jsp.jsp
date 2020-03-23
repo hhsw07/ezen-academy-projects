@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
@@ -121,6 +122,7 @@ S_Pdt dao = new S_Pdt();
     
     %>
 	    <%
+	    DecimalFormat formatter = new DecimalFormat("###,###");
 		ArrayList<Store> sList = new ArrayList<Store>();
 	    sList = dao.getStoreList();
 		if(session.getAttribute("sList")!=null){
@@ -145,7 +147,7 @@ S_Pdt dao = new S_Pdt();
               <!-- 상품 이름  -->
               <li class="class-name"><%=sList.get(store_no-1).getStore_title()%></li>
               <!-- 상품 가격 -->
-              <li class="price-wrap"><span class="price" ><%=sList.get(store_no-1).getStore_price()%></span><span class="day">원</span></li>
+              <li class="price-wrap"><span class="price" ><%=formatter.format(sList.get(store_no-1).getStore_price())%></span><span class="day">원</span></li>
               <li class="line"></li>
               <!-- 상품 마일리지 -->
               <li><span>적립 마일리지</span><span class="mileage-point">2000p</span></li>

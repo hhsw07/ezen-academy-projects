@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
@@ -61,6 +62,7 @@ S_Pdt dao = new S_Pdt();
     <div class="class-wrap">
     
 	<%
+	DecimalFormat formatter = new DecimalFormat("###,###");
 	ArrayList<Store> sList = new ArrayList<Store>();
 	sList = dao.getStoreList();
 	if(session.getAttribute("sList")!=null){
@@ -87,7 +89,7 @@ S_Pdt dao = new S_Pdt();
           </div>
           <div class="price-wrap1">
           	<!-- 가격 -->
-          	<span class="price"><%=sL.getStore_price()%></span>원
+          	<span class="price"><%=formatter.format(sL.getStore_price())%></span>원
           </div>
           
         </div>

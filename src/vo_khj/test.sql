@@ -385,7 +385,7 @@ CREATE SEQUENCE p04_store_seq
 INCREMENT BY 1
 START WITH 1;
 -- 상품 정보 입력  ex) code승인상태 Y/N
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt1.jpg','마크라메');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',	28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt1.jpg','마크라메');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen2','장미정원 자수 끈파우치 ','승인',18000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt2.jpg','프랑스자수');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen3','나의 첫 마크라메 플랜트행어','승인',22000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt3.jpg','뜨개질/위빙');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen4','몬스테라가 있는 오후 프랑스자수','승인',13000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt4.jpg','프랑스자수');
@@ -398,7 +398,7 @@ INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen4','마크라메 샘플
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen5','버블클러치 뜨개질','승인',16000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt11.jpg','뜨개질/위빙');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen6','포근포근 스웨터 프랑스자수','승인',20000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt12.jpg','프랑스자수');
 SELECT * FROM p04_store
-ORDER BY store_no DESC;
+ORDER BY store_no;
 
 DELETE FROM p04_store
 WHERE store_no = 12;
