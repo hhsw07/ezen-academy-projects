@@ -14,6 +14,24 @@ public class Adm_Not {
 	public Adm_Not() {
 		super();
 	}
+	
+	
+	public Adm_Not(String noti_title, String noti_detail, String noti_code) {
+		super();
+		this.noti_title = noti_title;
+		this.noti_detail = noti_detail;
+		this.noti_code = noti_code;
+	}
+
+
+	public Adm_Not(int noti_no, String noti_title, String noti_detail, String noti_code) {
+		super();
+		this.noti_no = noti_no;
+		this.noti_title = noti_title;
+		this.noti_detail = noti_detail;
+		this.noti_code = noti_code;
+	}
+
 	public Adm_Not(int noti_no, String noti_title, String noti_detail, Date noti_date, String noti_code) {
 		super();
 		this.noti_no = noti_no;

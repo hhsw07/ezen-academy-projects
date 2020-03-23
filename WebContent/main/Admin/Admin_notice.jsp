@@ -57,6 +57,7 @@ int nextNo = pg.getPage_End()+1;
 	.btn {border-radius:5px;}
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
+	.txt {text-align:left; padding-left:10px;}
 	
 </style>
 <script type="text/javascript">
@@ -90,7 +91,6 @@ int nextNo = pg.getPage_End()+1;
 					<colgroup>
 						<col style="width:8%"/>
 						<col style="width:*"/>
-						<col style="width:25%"/>
 						<col style="width:15%"/>
 						<col style="width:10%"/>
 						<col style="width:8%"/>
@@ -98,7 +98,6 @@ int nextNo = pg.getPage_End()+1;
 					<tr>
 						<th>No</th>
 						<th>제목</th>
-						<th>내용</th>
 						<th>등록일</th>
 						<th>중요</th>
 						<th>수정</th>
@@ -108,11 +107,10 @@ int nextNo = pg.getPage_End()+1;
 					%>
 						<tr>
 						<td><%=notiList.get(idx).getNoti_no() %></td>
-						<td><%=notiList.get(idx).getNoti_title() %></td>
-						<td><%=notiList.get(idx).getNoti_detail() %></td>
+						<td class="txt"><%=notiList.get(idx).getNoti_title() %></td>
 						<td><%=notiList.get(idx).getNoti_date() %></td>
 						<td><%=notiList.get(idx).getNoti_code() %></td>
-						<td onclick="goDetail(<%=idx %>)">수정</td>
+						<td onclick="goDetail(<%=notiList.get(idx).getNoti_no() %>)">수정</td>
 						</tr>
 					<%
 					} %>

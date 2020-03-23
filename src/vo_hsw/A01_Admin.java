@@ -305,11 +305,11 @@ public class A01_Admin {
 			
 			String sql = "UPDATE p04_course \r\n" + 
 					"SET mem_id = '"+upt.getMem_id()+"',\r\n" + 
-					"	course_title = '"+upt.getCourse_title()+"',\r\n" + 
-					"	course_detail = '"+upt.getCourse_detail()+"',\r\n" + 
-					"	course_img = '"+upt.getCourse_img()+"',\r\n" + 
-					"	coruse_category = '"+upt.getCourse_category()+"'\r\n" + 
-					"WHERE course_no = "+upt.getCourse_no();
+					"course_title = '"+upt.getCourse_title()+"', \r\n" + 
+					"course_detail = '"+upt.getCourse_detail()+"', \r\n" + 
+					"course_img = '"+upt.getCourse_img()+"', \r\n" + 
+					"coruse_category = '"+upt.getCourse_category()+"' \r\n" + 
+					"WHERE course_no = "+upt.getCourse_no()+"";
 			System.out.println("##update sql##");
 			System.out.println(sql);
 			// autocommit 방식
@@ -608,7 +608,7 @@ public class A01_Admin {
 		try {
 			setCon();
 			String sql = "SELECT * FROM p04_notice\r\n" + 
-					"WHERE notice_no ="+notice_no;
+					"WHERE noti_no = "+notice_no+"";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -637,7 +637,7 @@ public class A01_Admin {
 		try {
 			setCon();
 			
-			String sql = "INSERT INTO p04_notice values(p04_notice.nextval,'"+
+			String sql = "INSERT INTO p04_notice values(p04_notice_seq.nextval,'"+
 					ins.getNoti_title()+"','"+ins.getNoti_detail()+"',sysdate,'"+
 					ins.getNoti_code()+"')";
 			System.out.println("##insert sql##");
@@ -673,13 +673,12 @@ public class A01_Admin {
 		try {
 			setCon();
 			
-			String sql = "UPDATE p04_notice \r\n" + 
-					"SET noti_no = "+upt.getNoti_no()+",\r\n" + 
+			String sql = "UPDATE p04_notice\r\n" + 
+					"SET noti_no = "+upt.getNoti_no()+", \r\n" + 
 					"	noti_title = '"+upt.getNoti_title()+"',\r\n" + 
 					"	noti_detail = '"+upt.getNoti_detail()+"',\r\n" + 
-					"	noti_date = to_date('"+upt.getNoti_date()+"','YYYY-MM-DD'),\r\n" + 
-					"	noti_code = '"+upt.getNoti_code()+"'\r\n" + 
-					"WHERE course_no = "+upt.getNoti_no();
+					"	noti_code = '"+upt.getNoti_code()+"' \r\n" + 
+					"WHERE noti_no = "+upt.getNoti_no()+"";
 			System.out.println("##update sql##");
 			System.out.println(sql);
 			// autocommit 방식
@@ -715,7 +714,7 @@ public class A01_Admin {
 			setCon();
 			
 			String sql = "DELETE p04_notice\r\n" + 
-					"WHERE notice_no = "+del;
+					"WHERE noti_no = "+del;
 			System.out.println("##delete sql##");
 			System.out.println(sql);
 			// autocommit 방식
@@ -810,7 +809,7 @@ public class A01_Admin {
 		try {
 			setCon();
 			//INQUIRY_NO|MEM_ID|INQUIRY_DETAIL  |INQUIRY_DATE       |INQUIRY_RE
-			String sql = "INSERT INTO p04_inquiry values(p04_inquiry.nextval,'"+
+			String sql = "INSERT INTO p04_inquiry values(p04_inquiry_seq.nextval,'"+
 					ins.getMem_id()+"','"+ins.getInquiry_detail()+"',sysdate,'"+
 					ins.getInquiry_re()+"')";
 			System.out.println("##insert sql##");
@@ -917,6 +916,7 @@ public class A01_Admin {
 		// TODO Auto-generated method stub
 		A01_Admin db = new A01_Admin();
 		System.out.println("데이터 건수: "+db.getMList().size());
+		
 		
 	}
 

@@ -7,7 +7,7 @@
 
 <%
 	A01_Admin dao = new A01_Admin();
-	ArrayList<Adm_Cou> coList = dao.getCList();
+	ArrayList<Adm_Cou>  coList = dao.getCList();
 //ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 
 int w_size = 10;
@@ -50,7 +50,7 @@ int nextNo = pg.getPage_End()+1;
 	.btn {border-radius:5px;}
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
-	
+	.txt {text-align:left; padding-left:10px;}
 	
 </style>
 <script type="text/javascript">
@@ -102,7 +102,7 @@ int nextNo = pg.getPage_End()+1;
 					%>
 						<tr>
 						<td><%=coList.get(idx).getCourse_no() %></td>
-						<td><%=coList.get(idx).getCourse_title() %></td>
+						<td class="txt"><%=coList.get(idx).getCourse_title() %></td>
 						<td><%=coList.get(idx).getMem_id() %></td>
 						<td><%=coList.get(idx).getCourse_category() %></td>
 						<td><%=coList.get(idx).getCourse_inputdate() %></td>
