@@ -749,6 +749,7 @@ DROP SEQUENCE p04_inquiry_seq;
 SELECT order_no, order_date, store_img, store_title, order_cnt, order_code
 FROM P04_ORDER o, P04_STORE s
 WHERE o.STORE_NO = s.STORE_NO
+
 AND NOT o.ORDER_CODE='장바구니';
 
 SELECT order_no, mem_id
