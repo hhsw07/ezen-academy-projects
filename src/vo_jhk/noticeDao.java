@@ -25,7 +25,7 @@ public class noticeDao {
 		System.out.println("정상 접속 성공"); //DB접속 확인 알람
 	}
 	
-	public ArrayList<Notice> mlist(){
+	public ArrayList<Notice> nlist(){
 		ArrayList<Notice> nlist = new ArrayList<Notice>();
 		try {
 			setCon();
@@ -37,7 +37,7 @@ public class noticeDao {
 				nlist.add(new Notice(rs.getInt("noti_no"),
 									rs.getString("noti_title"),
 									rs.getString("noti_detail"),
-									rs.getString("noti_date"),
+									rs.getDate("noti_date"),
 									rs.getString("noti_code")
 						)
 						);
@@ -50,6 +50,30 @@ public class noticeDao {
 		return nlist;
 	}
 	
+	public Notice nlist(int cn){
+		Notice sch = new Notice();
+		try {
+			setCon();
+			String sql = "SELECT * FROM p04_notice";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				sch = new Notice(rs.getInt("noti_no"),
+									rs.getString("noti_title"),
+									rs.getString("noti_detail"),
+									rs.getDate("noti_date"),
+									rs.getString("noti_code")
+						);
+			}
+			rs.close(); stmt.close(); con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sch;
+	}
+
 	public static void main(String[] args) {
 		noticeDao ndao = new noticeDao();
 	}

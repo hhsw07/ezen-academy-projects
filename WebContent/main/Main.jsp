@@ -258,7 +258,7 @@
 </body>
 	<script type="text/javascript">
 		function adminpage(){
-			location.href="Admin/Admin.jsp";
+			location.href="Admin/Admin_mem.jsp";
 		}
 	</script>
 </html>
