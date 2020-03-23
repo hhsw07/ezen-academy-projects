@@ -755,7 +755,7 @@ SELECT order_no, mem_id
 FROM P04_ADDR pa, P04_ORDER po 
 WHERE MEM_ID = 'himan';
 
--- 배송지목록
+-- 배송지목록 (완료)
 SELECT addr_no, addr_title, addr_name, addr_phone, 
 	addr_mailAddr, addr_address, addr_address2
 FROM P04_ADDR
@@ -772,6 +772,10 @@ UPDATE P04_ADDR SET ADDR_TITLE='배송지명', ADDR_NAME='수령인',
 	ADDR_MAILADDR='우편번호', ADDR_ADDRESS='기본주소', ADDR_ADDRESS2='상세주소'
 WHERE ADDR_NO=1
 
+-- 배송지 추가 
+INSERT INTO P04_ADDR
+VALUES('배송지명', '수령자명','휴대전화','추가번호','우편번호','기본주소','상세주소');
+
 -- 배송지 삭제
 DELETE P04_ADDR 
 WHERE addr_no=1 
@@ -786,18 +790,27 @@ UPDATE P04_MEMBER
 SET MEM_NICKNAME='닉네임', MEM_MAIL='이메일', MEM_PHONE='연락처'
 WHERE MEM_ID='himan1'
 
--- 마일리지 조회
+-- 마일리지 조회 (완료)
 SELECT point_date, point_detail, point_mileage
 FROM P04_POINT
 WHERE MEM_ID = 'himan1'
 ORDER BY point_no DESC;
 
--- 나의 문의 조회
+-- 나의 문의 조회 (완료)
 SELECT inquiry_date, inquiry_detail, inquiry_re
 FROM P04_INQUIRY
 WHERE MEM_ID = 'himan1'
 ORDER BY INQUIRY_NO DESC;
 
 -- 클래스 조회
-SELECT 
+SELECT * FROM P04_COURSE;
+SELECT * FROM P04_CKIND;
+SELECT * FROM P04_REQUEST;
+
+-- 호스트 클래스
+SELECT course_img, course_title
+FROM P04_COURSE
+WHERE MEM_ID = 'ezen1'
+ORDER BY COURSE_NO DESC;
+
 
