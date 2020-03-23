@@ -12,14 +12,14 @@
 </head>
 <%
 	A01_Admin dao = new A01_Admin();
-ArrayList<Member> mlist = dao.getMList();
+ArrayList<Adm_Mem> mlist = dao.getMList();
 %>
 
 <body>
 	<h1>member리스트</h1>
 	<table border>
 		<%
-			for(Member m : mlist){
+			for(Adm_Mem m : mlist){
 		%>
 		<tr>
 			<td><%=m.getMem_no()  %></td>

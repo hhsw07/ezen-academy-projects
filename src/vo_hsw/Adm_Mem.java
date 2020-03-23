@@ -4,7 +4,7 @@ import java.util.Date;
 
 //ArrayList<Member> memList = new ArrayList<Member>();
 //setAttribute("memList", memList);
-public class Member {
+public class Adm_Mem {
 	private String mem_id; // 아이디
 	private int mem_no;     // 회원번호
 	private String mem_pass;     // 비밀번호
@@ -16,12 +16,12 @@ public class Member {
 	private String mem_code;     // 등급
 	private int mem_mileage; // 마일리지
 	
-	public Member() {
+	public Adm_Mem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
+	public Adm_Mem(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
 			Date mem_birth, String mem_phone, String mem_code, int mem_mileage) {
 		super();
 		this.mem_id = mem_id;
@@ -36,7 +36,7 @@ public class Member {
 		this.mem_mileage = mem_mileage;
 	}
 
-	public Member(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
+	public Adm_Mem(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
 			Date mem_birth, String mem_phone, String mem_code) {
 		super();
 		this.mem_id = mem_id;

@@ -132,6 +132,22 @@ INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-1
 
 SELECT * FROM p04_course;
 DROP SEQUENCE p04_course_seq;
+
+-- 수업 수정
+UPDATE p04_course 
+SET course_no = 0,
+	mem_id = '@@@',
+	course_inputdate = to_date('2020-03-320','YYYY-MM-DD'),
+	course_title = '@@@',
+	course_detail = '@@@',
+	course_img = '@@@',
+	coruse_category = '@@@'
+WHERE course_no = 000;
+
+-- 수업 삭제
+DELETE p04_course
+WHERE course_no = 000;
+
 ---------------------------------------------------------------------------------------
 -- 수업종류
 ALTER TABLE p04_ckind
@@ -181,11 +197,11 @@ ALTER TABLE p04_ckind
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
--- 수업 sequence	
+-- 수업종류 sequence	
 CREATE SEQUENCE p04_ckind_seq
 INCREMENT BY 1
 START WITH 1;
--- 수업 정보 입력
+-- 수업종류 입력
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-19','YYYY-MM-DD'),20000,10,0);
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-26','YYYY-MM-DD'),20000,10,0);
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'정규',NULL,200000,10,0);
@@ -193,6 +209,22 @@ INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,2,'정규',NULL,150000,5,0);
 
 SELECT * FROM p04_ckind;
 DROP SEQUENCE p04_ckind_seq;
+
+-- 수업종류 수정
+UPDATE p04_ckind 
+SET ckind_no = 0,
+	course_no = '@@@',
+	course_kind ='@@@',
+	course_opendate = to_date('2020-03-320','YYYY-MM-DD'),
+	course_price = 0,
+	course_totCnt = 0,
+	course_curCnt = 0
+WHERE ckind_no = 000;
+
+-- 수업종류 삭제
+DELETE p04_ckind
+WHERE ckind_no = 000;
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 수업신청
 ALTER TABLE p04_request
@@ -815,23 +847,5 @@ insert into p04_notice values (p04_notice_seq.nextval, '고객센터 전화상�
 SELECT * FROM p04_notice;
 DROP TABLE p04_notice;
 DROP SEQUENCE p04_notice_seq;
-SELECT '''''''' FROM dual;
 
 -------------------------------------
-select a.MEM_ID
-from p04_member a, p04_point b
-WHERE a.MEM_ID = b.MEM_ID ;
-
-SELECT a.MEM_ID, a.MEM_NO FROM P04_MEMBER a ;
-
-SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b
-WHERE b.MEM_ID = 'himan1';
-
-
-SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b  
-WHERE b.MEM_ID = 'himan1') "mem_mileage" FROM P04_MEMBER a, P04_POINT b 
-WHERE a.MEM_ID = 'himan1'
-AND a.MEM_ID = b.MEM_ID;
-
-
-select * from p04_member;

@@ -8,7 +8,7 @@
 	//ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("memList");
 	
 	A01_Admin db = new A01_Admin();
-	ArrayList<Member> memList = db.getMList();
+	ArrayList<Adm_Mem> memList = db.getMList();
 	
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

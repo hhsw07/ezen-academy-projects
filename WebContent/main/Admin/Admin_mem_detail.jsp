@@ -7,7 +7,7 @@
 <%
 	//ArrayList<Member> memList = (ArrayList<Member>)session.getAttribute("mem_MilList");
 	A01_Admin db = new A01_Admin();
-	ArrayList<Member> memList = db.getMList();
+	ArrayList<Adm_Mem> memList = db.getMList();
 	
 	String strIdx = request.getParameter("idx");
 	int idx = Integer.parseInt(strIdx);

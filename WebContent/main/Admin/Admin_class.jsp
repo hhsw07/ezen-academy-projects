@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 
 <%
-	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
+	//A01_Admin dao = new A01_Admin();
+	//ArrayList<Adm_Cou> coList = dao.getCList();
+ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 
 int w_size = 10;
 int p_size = 5;
@@ -91,8 +93,8 @@ int nextNo = pg.getPage_End()+1;
 						<th>No</th>
 						<th>클래스명</th>
 						<th>호스트명</th>
-						<th>인원</th>
-						<th>수강일</th>
+						<th>수업분류</th>
+						<th>등록일</th>
 						<th>수정</th>
 					</tr>
 					<%
@@ -102,8 +104,8 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=coList.get(idx).getCourse_no() %></td>
 						<td><%=coList.get(idx).getCourse_title() %></td>
 						<td><%=coList.get(idx).getMem_id() %></td>
-						<td><%=coList.get(idx).getCourse_totCnt() %></td>
-						<td><%=coList.get(idx).getCourse_opendate() %></td>
+						<td><%=coList.get(idx).getCourse_category() %></td>
+						<td><%=coList.get(idx).getCourse_inputdate() %></td>
 						<td onclick="goDetail(<%=idx %>)">수정</td>
 						</tr>
 					<%
