@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
-    java.text.SimpleDateFormat " 
+    java.text.SimpleDateFormat,z01_vo.*, vo_khj.* " 
+    
 %>
 <!DOCTYPE html>
+<%
+S_Pdt dao = new S_Pdt();
+%>
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -55,23 +59,12 @@
 
     <!-- 클래스 리스트 -->
     <div class="class-wrap">
-
-
-
-     <%
-     String store_no = request.getParameter("store_no");
-     String store_title = request.getParameter("store_title");
-     String store_code = request.getParameter("store_code");
-     String store_price = request.getParameter("store_price");
-     String store_totCnt = request.getParameter("store_totCnt");
-     String store_detail = request.getParameter("store_detail");
-     String strore_date = request.getParameter("strore_date");
-     String store_img = request.getParameter("store_img");
-     %>      
+    
 	<%
 	ArrayList<Store> sList = new ArrayList<Store>();
+	sList = dao.getStoreList();
 	if(session.getAttribute("sList")!=null){
-		sList = (ArrayList<Store>)session.getAttribute("sList");
+		
 	}
 	%>
 	<%
@@ -102,8 +95,7 @@
       </div>
     <%
     }
-    %>
-    <!-- 상품상세 페이지가 추가되면 jsp파일도 추가된다? -->
+    %>	
 <script type="text/javascript">
 	function go(num){
 		location.href="?page=productDetail_jsp&store_no="+num;

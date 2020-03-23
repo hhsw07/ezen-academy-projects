@@ -1,18 +1,21 @@
 package vo_hsw;
+
+import java.util.Date;
+
 //ArrayList<Inquiry> inqList = new ArrayList<Inquiry>();
 //setAttribute("inqList", inqList);
 public class Adm_Inq {
 	private int inquiry_no; // 문의번호
 	private String mem_id;     // 아이디
 	private String inquiry_detail;     // 문의내용
-	private String inquiry_date;     // 문의날짜
+	private Date inquiry_date;     // 문의날짜
 	private String inquiry_re;      // 답변내용
 	
 	public Adm_Inq() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Adm_Inq(int inquiry_no, String mem_id, String inquiry_detail, String inquiry_date, String inquiry_re) {
+	public Adm_Inq(int inquiry_no, String mem_id, String inquiry_detail, Date inquiry_date, String inquiry_re) {
 		super();
 		this.inquiry_no = inquiry_no;
 		this.mem_id = mem_id;
@@ -38,10 +41,10 @@ public class Adm_Inq {
 	public void setInquiry_detail(String inquiry_detail) {
 		this.inquiry_detail = inquiry_detail;
 	}
-	public String getInquiry_date() {
+	public Date getInquiry_date() {
 		return inquiry_date;
 	}
-	public void setInquiry_date(String inquiry_date) {
+	public void setInquiry_date(Date inquiry_date) {
 		this.inquiry_date = inquiry_date;
 	}
 	public String getInquiry_re() {

@@ -1,17 +1,20 @@
 package z01_vo;
+
+import java.util.Date;
+
 //ArrayList<Notice> notiList = new ArrayList<Notice>();
 //setAttribute("notiList", notiList);
 public class Notice {
 	private int noti_no; // 공지사항번호
 	private String noti_title;     // 공지제목
 	private String noti_detail;     // 공지내용
-	private String noti_date;     // 공지등록일
+	private Date noti_date;     // 공지등록일
 	private String noti_code;      // 중요여부
 	
 	public Notice() {
 		super();
 	}
-	public Notice(int noti_no, String noti_title, String noti_detail, String noti_date, String noti_code) {
+	public Notice(int noti_no, String noti_title, String noti_detail, Date noti_date, String noti_code) {
 		super();
 		this.noti_no = noti_no;
 		this.noti_title = noti_title;
@@ -37,10 +40,10 @@ public class Notice {
 	public void setNoti_detail(String noti_detail) {
 		this.noti_detail = noti_detail;
 	}
-	public String getNoti_date() {
+	public Date getNoti_date() {
 		return noti_date;
 	}
-	public void setNoti_date(String noti_date) {
+	public void setNoti_date(Date noti_date) {
 		this.noti_date = noti_date;
 	}
 	public String getNoti_code() {

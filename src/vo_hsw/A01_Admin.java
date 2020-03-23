@@ -224,31 +224,94 @@ public class A01_Admin {
 		return cList;
 	}
 
-	/*
-	# CRUD ( create, read, update, delete)
-			    등록	 읽기		수정		삭제
-	1. sql 만들기
-	2. Connection 객체의 autocommit 방지
-	3. Statement로 등록 처리
-	4. commit 수행
-	5. 자원해제
-	6. 예외처리에서 rollback 처리 
-	*/
+	
+	public Adm_Cou getCourse(int course_no){
+		Adm_Cou m = null;
+		
+		try {
+			setCon();
+			String sql = "SELECT * FROM p04_course\r\n" + 
+					"WHERE COURSE_NO ="+course_no;
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			// COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
+			// COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
+			
+			if(rs.next()) {
+				m = new Adm_Cou(rs.getInt(1),
+								rs.getString(2),
+								rs.getDate(3),
+								rs.getString(4),
+								rs.getString(5),
+								rs.getString(6),
+								rs.getString(7)
+						);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return m;
+	}
+
+	public void insertCourse(Adm_Cou ins){
+		
+		try {
+			setCon();
+			// COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
+			// COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
+			String sql = "INSERT INTO p04_course values(p04_course_seq.nextval,sysdate,'"+
+					ins.getCourse_title()+"','"+ins.getCourse_detail()+
+					ins.getCourse_img()+"','"+ins.getCourse_category()+"')";
+			System.out.println("##insert sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			System.out.println("수정완료");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public void updateCou(Adm_Cou upt){
 		try {
 			setCon();
 			
-			String sql = "UPDATE P04_MEMBER \r\n" + 
-						"SET mem_id = '"+upt.getMem_id()+"',\r\n" + 
-						"	mem_no = "+upt.getMem_no()+",\r\n" + 
-						"	MEM_PASS = '"+upt.getMem_pass()+"',\r\n" + 
-						"	mem_name = '"+upt.getMem_name()+"',\r\n" + 
-						"	mem_mail = '"+upt.getMem_mail()+"',\r\n" + 
-						"	mem_nickname = '"+upt.getMem_nickname()+"',\r\n" + 
-						"	mem_birth = to_date('"+ upt.getMem_birth() +"','YYYY-MM-DD'),\r\n" + 
-						"	mem_phone = '"+upt.getMem_phone() +"',\r\n" + 
-						"	mem_code = '"+upt.getMem_code()+"'\r\n" + 
-						"WHERE mem_no = "+upt.getMem_no();
+			String sql = "UPDATE p04_course \r\n" + 
+					"SET course_no = "+upt.getCourse_no()+",\r\n" + 
+					"	mem_id = '"+upt.getMem_id()+"',\r\n" + 
+					"	course_inputdate = to_date('"+upt.getCourse_inputdate()+"','YYYY-MM-DD'),\r\n" + 
+					"	course_title = '"+upt.getCourse_title()+"',\r\n" + 
+					"	course_detail = '"+upt.getCourse_detail()+"',\r\n" + 
+					"	course_img = '"+upt.getCourse_img()+"',\r\n" + 
+					"	coruse_category = '"+upt.getCourse_category()+"'\r\n" + 
+					"WHERE course_no = "+upt.getCourse_no();
 			System.out.println("##update sql##");
 			System.out.println(sql);
 			// autocommit 방식
@@ -283,8 +346,354 @@ public class A01_Admin {
 		try {
 			setCon();
 			
-			String sql = "DELETE P04_MEMBER\r\n" + 
-					"WHERE mem_no = "+del;
+			String sql = "DELETE p04_course\r\n" + 
+					"WHERE course_no = "+del;
+			System.out.println("##delete sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public ArrayList<Adm_Not> getNotiList(){
+		ArrayList<Adm_Not> notiList = new ArrayList<Adm_Not>();
+		
+		try {
+			setCon();
+			String sql = "select * from p04_notice";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				notiList.add(new Adm_Not(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getDate(4),
+						rs.getString(5)
+						));
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return notiList;
+	}
+
+	public Adm_Not getNotice(int notice_no){
+		Adm_Not noti = null;
+		
+		try {
+			setCon();
+			String sql = "SELECT * FROM p04_notice\r\n" + 
+					"WHERE notice_no ="+notice_no;
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				noti = new Adm_Not(rs.getInt(1),
+								rs.getString(2),
+								rs.getString(3),
+								rs.getDate(4),
+								rs.getString(5)
+						);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return noti;
+	}
+
+	public void insertNot(Adm_Not ins){
+		try {
+			setCon();
+			
+			String sql = "INSERT INTO p04_notice values(p04_notice.nextval,'"+
+					ins.getNoti_title()+"','"+ins.getNoti_detail()+"',sysdate,'"+
+					ins.getNoti_code()+"')";
+			System.out.println("##insert sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			System.out.println("수정완료");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void updateNoti(Adm_Not upt){
+		try {
+			setCon();
+			
+			String sql = "UPDATE p04_notice \r\n" + 
+					"SET noti_no = "+upt.getNoti_no()+",\r\n" + 
+					"	noti_title = '"+upt.getNoti_title()+"',\r\n" + 
+					"	noti_detail = '"+upt.getNoti_detail()+"',\r\n" + 
+					"	noti_date = to_date('"+upt.getNoti_date()+"','YYYY-MM-DD'),\r\n" + 
+					"	noti_code = '"+upt.getNoti_code()+"'\r\n" + 
+					"WHERE course_no = "+upt.getNoti_no();
+			System.out.println("##update sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			System.out.println("수정코드");
+			System.out.println(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void deleteNoti(int del){
+		try {
+			setCon();
+			
+			String sql = "DELETE p04_notice\r\n" + 
+					"WHERE notice_no = "+del;
+			System.out.println("##delete sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public ArrayList<Adm_Inq> getInquiry(){
+		ArrayList<Adm_Inq> inquList = new ArrayList<Adm_Inq>();
+		
+		try {
+			setCon();
+			String sql = "select * from p04_inquiry";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			//INQUIRY_NO|MEM_ID|INQUIRY_DETAIL |INQUIRY_DATE   |INQUIRY_RE
+			while(rs.next()) {
+				inquList.add(new Adm_Inq(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getDate(4),
+						rs.getString(5)
+						));
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return inquList;
+	}
+
+	public Adm_Not getNotice(int notice_no){
+		Adm_Not noti = null;
+		
+		try {
+			setCon();
+			String sql = "SELECT * FROM p04_notice\r\n" + 
+					"WHERE notice_no ="+notice_no;
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				noti = new Adm_Not(rs.getInt(1),
+								rs.getString(2),
+								rs.getString(3),
+								rs.getDate(4),
+								rs.getString(5)
+						);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return noti;
+	}
+
+	public void insertNot(Adm_Not ins){
+		try {
+			setCon();
+			
+			String sql = "INSERT INTO p04_notice values(p04_notice.nextval,'"+
+					ins.getNoti_title()+"','"+ins.getNoti_detail()+"',sysdate,'"+
+					ins.getNoti_code()+"')";
+			System.out.println("##insert sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			System.out.println("수정완료");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void updateNoti(Adm_Not upt){
+		try {
+			setCon();
+			
+			String sql = "UPDATE p04_notice \r\n" + 
+					"SET noti_no = "+upt.getNoti_no()+",\r\n" + 
+					"	noti_title = '"+upt.getNoti_title()+"',\r\n" + 
+					"	noti_detail = '"+upt.getNoti_detail()+"',\r\n" + 
+					"	noti_date = to_date('"+upt.getNoti_date()+"','YYYY-MM-DD'),\r\n" + 
+					"	noti_code = '"+upt.getNoti_code()+"'\r\n" + 
+					"WHERE course_no = "+upt.getNoti_no();
+			System.out.println("##update sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			// 실행 및 commit
+			stmt.executeQuery(sql);
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			System.out.println("수정코드");
+			System.out.println(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void deleteInq(int del){
+		try {
+			setCon();
+			 
+			String sql = "DELETE p04_inquiry\r\n" + 
+					"WHERE inquiry_no = "+del;
 			System.out.println("##delete sql##");
 			System.out.println(sql);
 			// autocommit 방식

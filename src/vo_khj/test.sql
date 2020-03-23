@@ -61,7 +61,7 @@ SET mem_id = '@@@',
 	mem_name = '@@@',
 	mem_mail = '@@@',
 	mem_nickname = '@@@',
-	mem_birth = to_date('2020-03-20','YYYY-MM-DD'),
+	mem_birth = to_date('2020-03-320','YYYY-MM-DD'),
 	mem_phone = '@@@',
 	mem_code = '@'
 WHERE mem_no = 000;
@@ -130,24 +130,8 @@ INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-1
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen2',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 
-SELECT * FROM p04_course
+SELECT * FROM p04_course;
 DROP SEQUENCE p04_course_seq;
-
--- 수업 수정
-UPDATE p04_course 
-SET course_no = 5,
-	mem_id = 'ezen4',
-	course_inputdate = to_date('2020-03-20','YYYY-MM-DD'),
-	course_title = '비누',
-	course_detail = 'fradetail2.jpg',
-	course_img = 'ads01_wide.jpg',
-	coruse_category = '다양한'
-WHERE course_no = 5;
-
--- 수업 삭제
-DELETE p04_course
-WHERE course_no = 5;
-
 ---------------------------------------------------------------------------------------
 -- 수업종류
 ALTER TABLE p04_ckind
@@ -197,11 +181,11 @@ ALTER TABLE p04_ckind
 		)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION;
--- 수업종류 sequence	
+-- 수업 sequence	
 CREATE SEQUENCE p04_ckind_seq
 INCREMENT BY 1
 START WITH 1;
--- 수업종류 입력
+-- 수업 정보 입력
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-19','YYYY-MM-DD'),20000,10,0);
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'원데이',to_date('2020-03-26','YYYY-MM-DD'),20000,10,0);
 INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,1,'정규',NULL,200000,10,0);
@@ -209,26 +193,6 @@ INSERT INTO p04_ckind VALUES (p04_ckind_seq.nextval,2,'정규',NULL,150000,5,0);
 
 SELECT * FROM p04_ckind;
 DROP SEQUENCE p04_ckind_seq;
-
-SELECT * FROM p04_ckind
-WHERE course_no = 1;
-
-
--- 수업종류 수정
-UPDATE p04_ckind 
-SET ckind_no = 0,
-	course_no = '@@@',
-	course_kind ='@@@',
-	course_opendate = to_date('2020-03-320','YYYY-MM-DD'),
-	course_price = 0,
-	course_totCnt = 0,
-	course_curCnt = 0
-WHERE ckind_no = 000;
-
--- 수업종류 삭제
-DELETE p04_ckind
-WHERE ckind_no = 000;
-
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 수업신청
 ALTER TABLE p04_request
@@ -421,13 +385,24 @@ CREATE SEQUENCE p04_store_seq
 INCREMENT BY 1
 START WITH 1;
 -- 상품 정보 입력  ex) code승인상태 Y/N
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','미승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','미승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
-INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt1.jpg','마크라메');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen2','장미정원 자수 끈파우치 ','승인',18000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt2.jpg','프랑스자수');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen3','나의 첫 마크라메 플랜트행어','승인',22000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt3.jpg','뜨개질/위빙');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen4','몬스테라가 있는 오후 프랑스자수','승인',13000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt4.jpg','프랑스자수');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen5','내맘대로 눈 내리는 스노우볼','승인',15000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt5.jpg','기타');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen6','나의 첫 별자리 자수','승인',22000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt6.jpg','프랑스자수');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','유리조각 캔들 홀더','승인',17000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt7.jpg','비누/캔들');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen2','낭만가득 자수 프레임 파우치','승인',21000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt8.jpg','프랑스자수');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen3','나의 첫 스누피 카드케이스 뜨개질','승인',33000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt9.jpg','뜨개질/위빙');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen4','마크라메 샘플러','승인',12000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt10.jpg','기타');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen5','버블클러치 뜨개질','승인',16000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt11.jpg','뜨개질/위빙');
+INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen6','포근포근 스웨터 프랑스자수','승인',20000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'pdt12.jpg','프랑스자수');
+SELECT * FROM p04_store
+ORDER BY store_no DESC;
 
-SELECT * FROM p04_store;
+DELETE FROM p04_store
+WHERE store_no = 12;
+
 DROP TABLE p04_store;
 DROP SEQUENCE p04_store_seq;
 
@@ -851,5 +826,23 @@ insert into p04_notice values (p04_notice_seq.nextval, '고객센터 전화상�
 SELECT * FROM p04_notice;
 DROP TABLE p04_notice;
 DROP SEQUENCE p04_notice_seq;
+SELECT '''''''' FROM dual;
 
 -------------------------------------
+select a.MEM_ID
+from p04_member a, p04_point b
+WHERE a.MEM_ID = b.MEM_ID ;
+
+SELECT a.MEM_ID, a.MEM_NO FROM P04_MEMBER a ;
+
+SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b
+WHERE b.MEM_ID = 'himan1';
+
+
+SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b  
+WHERE b.MEM_ID = 'himan1') "mem_mileage" FROM P04_MEMBER a, P04_POINT b 
+WHERE a.MEM_ID = 'himan1'
+AND a.MEM_ID = b.MEM_ID;
+
+
+select * from p04_member;

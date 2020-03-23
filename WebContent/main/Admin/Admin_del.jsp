@@ -45,7 +45,7 @@ response.sendRedirect("Admin_class.jsp");
 String cIdxS = request.getParameter("cIdx");
 if(cIdxS!=null){
 	int cIdx = new Integer(cIdxS);
-	db.deleteCourse(cIdx);
+	db.deleteCou(cIdx);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_class.jsp");
 }
@@ -79,7 +79,7 @@ response.sendRedirect("Admin_notice.jsp");
 String nIdxS = request.getParameter("nIdx");
 if(nIdxS!=null){
 	int nIdx = new Integer(nIdxS);
-	db.deleteNotice(nIdx);
+	db.deleteNot(nIdx);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_notice.jsp");
 }
@@ -96,7 +96,7 @@ response.sendRedirect("Admin_inquiry.jsp");
 String iIdxS = request.getParameter("iIdx");
 if(iIdxS!=null){
 	int iIdx = new Integer(iIdxS);
-	db.deleteInquiry(iIdx);
+	db.deleteInq(iIdx);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_inquiry.jsp");
 }

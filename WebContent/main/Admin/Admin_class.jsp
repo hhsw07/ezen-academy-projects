@@ -6,9 +6,9 @@
 	String path = request.getContextPath(); %>
 
 <%
-	//A01_Admin dao = new A01_Admin();
-	//ArrayList<Adm_Cou> coList = dao.getCList();
-ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
+	A01_Admin dao = new A01_Admin();
+	ArrayList<Adm_Cou> coList = dao.getCList();
+//ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 
 int w_size = 10;
 int p_size = 5;
@@ -106,7 +106,7 @@ int nextNo = pg.getPage_End()+1;
 						<td><%=coList.get(idx).getMem_id() %></td>
 						<td><%=coList.get(idx).getCourse_category() %></td>
 						<td><%=coList.get(idx).getCourse_inputdate() %></td>
-						<td onclick="goDetail(<%=idx %>)">수정</td>
+						<td onclick="goDetail(<%=coList.get(idx).getCourse_no() %>)">수정</td>
 						</tr>
 					<%
 					} %>

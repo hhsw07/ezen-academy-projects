@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.ArrayList, z01_vo.*, java.util.Date,
-    java.text.SimpleDateFormat " 
+    java.text.SimpleDateFormat,z01_vo.*, vo_khj.* " 
+    
 %>
 <!DOCTYPE html>
+<%
+S_Pdt dao = new S_Pdt();
+%>
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -118,8 +122,9 @@
     %>
 	    <%
 		ArrayList<Store> sList = new ArrayList<Store>();
+	    sList = dao.getStoreList();
 		if(session.getAttribute("sList")!=null){
-			sList = (ArrayList<Store>)session.getAttribute("sList");
+			
 		}
 		String store_noS = request.getParameter("store_no");
 		int store_no=0; if(store_noS!=null) store_no=Integer.parseInt(store_noS);
