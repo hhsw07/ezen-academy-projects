@@ -231,6 +231,10 @@
 %>
 			<%@include file="Mypage/myinquiry.jsp"%>
 <%		}
+		if(pl.equals("mypage_edit_shipment")){
+%>
+			<%@include file="Mypage/shipedit.jsp"%>
+<%		}
 	} %>
 	
 	
