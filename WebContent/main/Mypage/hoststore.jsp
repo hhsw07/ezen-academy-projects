@@ -27,6 +27,9 @@
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 클래스목록 */
 	.hoststore{width:1050px; margin:0 auto; display:block;}
+	.go-apply-tit {margin: 50px 0 0;padding: 17px 0 10px;font-size: 16px;line-height: 1.5;color: #3d4248;position: relative;}
+	.go-apply-btn {width: 144px;height: 35px;font-size: 14px;line-height: 33px;display: block;position: absolute;
+    top: 0;right: 0;color: #202127;border: 1px solid #3d4248;text-align: center; font-weight: normal;}
 	.hs_list{padding:0 3%;}
 	.hs_list ul{width:100%; padding-left:36px;}
 	.hs_list ul li{display:inline; float:left; margin:0 20px 0 0; padding:30px 0 10px; border:2px soild tomato;}
@@ -100,6 +103,9 @@ int nextNo = pg.getPage_End()+1;
 <!-- 내 클래스 -->
 	<section class="mypage_content">
 		<article class="hoststore">
+		<div class="go-apply-tit">
+			<a href="#" class="go-apply-btn">상품등록신청하기</a>
+		</div>
 		<%
 	if(olist!=null){
 		for(int idx=olist.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){

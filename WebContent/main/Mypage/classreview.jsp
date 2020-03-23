@@ -53,6 +53,10 @@ String path = request.getContextPath(); %>
 	.btn-edit-cr{margin:0 5px;color:#a1a4a8;}
 	.btn-del-cr{color:#a1a4a8;margin:0 0 0 5px;}
 	.comment-cont{margin:8px 0 0;color:#3d4248;font-size:14px;word-break:break-all;}
+	.reviewsub-wrap {width: 182px;margin: 20px auto 0;display: block;}
+	.reviewsub-wrap ul li{float:left;}
+	.btn-sub-tab {display:block;width: 91px; height: 28px;color: #a1a4a8;font-size: 12px;border: 1px solid #DFDFDF;letter-spacing: -0.5px;line-height: 26px;text-align: center;}
+	.btn-sub-on {color: #FFFFFF;background: #3d4248;border: 0;line-height: 28px;}
 /* 페이지 */
 	.paging{text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
@@ -107,13 +111,23 @@ String path = request.getContextPath(); %>
 				</div>
 			</div>
 		</div>
+		<div class="reviewsub-wrap">
+			<ul class="mymenu-sub-tab-list">
+				<li class="mymenu-sub-tab">
+					<a href="#" class="btn-sub-tab btn-sub-on">클래스 후기</a>
+				</li>
+				<li class="mymenu-sub-tab">
+					<a href="#" class="btn-sub-tab">스토어 후기</a>
+				</li>
+			</ul>
+		</div>
 	<!-- 구매후기 없을 때 -->
 		<article class="mymenu-content">
 			<div class="review-wrap">
 				<div class="noreview-wrap">
-					<div class="noreview-tit">아직 작성하신 구매 후기가 없어요.</div>
-					<div class="noreview-txt">취미 클래스에 대한 후기를 남겨 주세요!<br>소중한 후기를 남겨주신 분들께<br>마일리지를 선물로 드립니다.</div>
-					<a href="#" class="btn-noreview">구매 후기 작성</a>
+					<div class="noreview-tit">아직 작성하신 클래스 후기가 없어요.</div>
+					<div class="noreview-txt">클래스에 대한 후기를 남겨 주세요!<br>소중한 후기를 남겨주신 분들께<br>마일리지를 선물로 드립니다.</div>
+					<a href="#" class="btn-noreview">클래스 후기 작성</a>
 				</div>
 			</div>
 		</article>
