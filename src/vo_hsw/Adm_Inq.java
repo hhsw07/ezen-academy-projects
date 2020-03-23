@@ -15,6 +15,12 @@ public class Adm_Inq {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Adm_Inq(int inquiry_no) {
+		super();
+		this.inquiry_no = inquiry_no;
+	}
+
 	public Adm_Inq(int inquiry_no, String mem_id, String inquiry_detail, Date inquiry_date, String inquiry_re) {
 		super();
 		this.inquiry_no = inquiry_no;

@@ -18,7 +18,11 @@ public class Adm_Cou {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public Adm_Cou(int course_no) {
+		super();
+		this.course_no = course_no;
+	}
+
 	public Adm_Cou(int course_no, String mem_id, Date course_inputdate, String course_title, String course_detail,
 			String course_img, String course_category) {
 		super();

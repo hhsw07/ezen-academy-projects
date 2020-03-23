@@ -62,7 +62,7 @@ response.sendRedirect("Admin_store.jsp");
 String sIdxS = request.getParameter("sIdx");
 if(sIdxS!=null){
 	int sIdx = new Integer(sIdxS);
-	db.deleteStore(sIdx);
+	db.deleteSto(sIdx);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_store.jsp");
 }
@@ -79,7 +79,7 @@ response.sendRedirect("Admin_notice.jsp");
 String nIdxS = request.getParameter("nIdx");
 if(nIdxS!=null){
 	int nIdx = new Integer(nIdxS);
-	db.deleteNot(nIdx);
+	db.deleteNoti(nIdx);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_notice.jsp");
 }

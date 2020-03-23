@@ -6,11 +6,26 @@
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
- A01_Admin dao = new A01_Admin();
- String cIdxS = request.getParameter("cIdx");
- int idx = 0; if(cIdxS != null) idx = new Integer(cIdxS);
- ArrayList<Adm_Cou> coList = dao.getCList();
+A01_Admin dao = new A01_Admin();
+String cIdxS = request.getParameter("cIdx");
+int idx = 0; if(cIdxS != null) idx = new Integer(cIdxS)-1;
+ArrayList<Adm_Cou> coList = dao.getCList();
 
+String proc = request.getParameter("proc"); if(proc == null) proc="";
+
+//COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
+// COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
+if(proc.equals("upt")){
+	String noS = request.getParameter("course_no");
+	int no = new Integer(noS);
+	Adm_Cou upt = new Adm_Cou(no,request.getParameter("mem_id"),
+			null,request.getParameter("course_title"),
+			request.getParameter("course_detail"),request.getParameter("course_img"),
+			request.getParameter("course_category"));
+	System.out.print("proc=upt");
+	dao.updateCou(upt);
+	
+}
 
 //ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
 //String strIdx = request.getParameter("cIdx");
@@ -77,6 +92,8 @@ if(course_title != null){
 		<div class="section">
 			<h1>클래스 수정</h1>
 			<form>
+				<input type="hidden" name="cIdx" value="<%=coList.get(idx).getCourse_no() %>" />
+				<input type="hidden" name="proc" value="<%=proc %>" />
 				<table border>
 					<tr>
 						<th>클래스번호</th>
@@ -90,17 +107,17 @@ if(course_title != null){
 					</tr>
 					<tr>
 						<th>클래스 등록일</th>
-						<td><input type="date" name="course_inputdate" value="<%=coList.get(idx).getCourse_inputdate() %>"/></td>
+						<td><input type="date" name="course_inputdate" value="<%=coList.get(idx).getCourse_inputdate() %>"readonly /></td>
 						<th>수업분류</th>
 						<td>
 							<select name="course_category" style="width:90%;">
-								<option value="this.innerHTML">마크라메</option>
-								<option value="this.innerHTML">프랑수자수</option>
-								<option value="this.innerHTML">수채화/드로잉</option>
-								<option value="this.innerHTML">뜨개질/위빙</option>
-								<option value="this.innerHTML">가죽공예</option>
-								<option value="this.innerHTML">쥬얼리/네온사인</option>
-								<option value="this.innerHTML">다양한 취미</option>
+								<option value="마크라메">마크라메</option>
+								<option value="프랑수자수">프랑수자수</option>
+								<option value="수채화/드로잉">수채화/드로잉</option>
+								<option value="뜨개질/위빙">뜨개질/위빙</option>
+								<option value="가죽공예">가죽공예</option>
+								<option value="쥬얼리/네온사인">쥬얼리/네온사인</option>
+								<option value="다양한 취미">다양한 취미</option>
 							</select>
 						</td>
 					</tr>
@@ -112,8 +129,7 @@ if(course_title != null){
 					</tr>
 					<tr>
 						<td colspan="4" style="text-aling:right; " >
-							<input type="button" value="등록" onclick="ins(<%=idx %>)" />
-							<input type="button" value="삭제" onclick="ckDel(<%=idx %>)" />
+							<input type="button" value="삭제" onclick="ckDel(<%=coList.get(idx).getCourse_no() %>)" />
 							<input type="submit" value="수정" />
 						</td>
 					</tr>
@@ -136,16 +152,10 @@ if(course_title != null){
 	function ckDel(idx){
 		var ckConfirm = confirm("정말 삭제하시겠습니까?");
 		 if(ckConfirm){
-			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+<%=idx %>;
+			location.href="<%=path %>/main/Admin/Admin_del.jsp?cIdx="+idx;
 		}
 	}
-		
-	var course_kind = "<%=coList.get(idx).getCourse_category() %>";
-	if(course_kind == "D"){
-		document.querySelector('#kind01').checked = true;
-	}else{
-		document.querySelector('#kind02').checked = true;
-	}
+	
 	
 
 </script>

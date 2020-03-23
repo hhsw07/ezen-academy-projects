@@ -1,4 +1,7 @@
 package vo_hsw;
+
+import java.util.Date;
+
 //ArrayList<Store> sList = new ArrayList<Store>();
 //setAttribute("sList", sList);
 public class Adm_Sto {
@@ -9,7 +12,7 @@ public class Adm_Sto {
 	private int store_price;     // 가격
 	private int store_totCnt;     // 총갯수
 	private String store_detail;     // 상품설명
-	private String strore_date;     // 신청일
+	private Date strore_date;     // 신청일
 	private String store_img;      // 상품이미지
 	private String store_category;	// 상품분류
 	//point는 뺐습니다. 필요에 따라서 넣어주세요
@@ -18,7 +21,7 @@ public class Adm_Sto {
 		// TODO Auto-generated constructor stub
 	}
 	public Adm_Sto(int store_no, String mem_id, String store_title, String store_code, int store_price, int store_totCnt,
-			String store_detail, String strore_date, String store_img, String store_category) {
+			String store_detail, Date strore_date, String store_img, String store_category) {
 		super();
 		this.store_no = store_no;
 		this.mem_id = mem_id;
@@ -73,10 +76,10 @@ public class Adm_Sto {
 	public void setStore_detail(String store_detail) {
 		this.store_detail = store_detail;
 	}
-	public String getStrore_date() {
+	public Date getStrore_date() {
 		return strore_date;
 	}
-	public void setStrore_date(String strore_date) {
+	public void setStrore_date(Date strore_date) {
 		this.strore_date = strore_date;
 	}
 	public String getStore_img() {

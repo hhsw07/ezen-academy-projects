@@ -55,7 +55,8 @@ if(cIdx!=null){
 String cIdxS = request.getParameter("cIdx");
 if(cIdxS!=null){
 	int cIdx = new Integer(cIdxS);
-	db.updateCourse(cIdx);
+	Adm_Cou upt = new Adm_Cou(cIdx);
+	db.updateCou(upt);
 	Thread.sleep(500);
 	response.sendRedirect("Admin_class.jsp");
 }
