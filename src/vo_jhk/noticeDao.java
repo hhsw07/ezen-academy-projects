@@ -54,7 +54,10 @@ public class noticeDao {
 		Notice sch = new Notice();
 		try {
 			setCon();
-			String sql = "SELECT * FROM p04_notice";
+			String sql = "SELECT noti_no, noti_title,\r\n" + 
+					"REPLACE(noti_detail,'\\n', '<br>') noti_detail, noti_date, noti_code\r\n" + 
+					"FROM p04_notice\r\n" + 
+					"WHERE noti_no = "+cn;
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -76,6 +79,13 @@ public class noticeDao {
 
 	public static void main(String[] args) {
 		noticeDao ndao = new noticeDao();
+		Notice n = ndao.nlist(18);
+		System.out.print(n.getNoti_no()+"\t");
+		System.out.print(n.getNoti_title()+"\t");
+		System.out.print(n.getNoti_detail()+"\t");
+		System.out.print(n.getNoti_date()+"\t");
+		System.out.print(n.getNoti_code()+"\n");
+		
 	}
 
 }

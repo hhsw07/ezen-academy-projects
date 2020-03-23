@@ -49,14 +49,7 @@ noticeDao ndao = new noticeDao();
 //공지사항 상세 연결
 int cn = Integer.parseInt(request.getParameter("cn"));
 //checkedNotice, 공지목록에서 넘겨온 공지코드
-Notice nd = new Notice();//noticeDeatil, 상세공지내용이 담길 공지객체
-ArrayList <Notice> notiList = ndao.nlist();
-//전체 공지 내용을 담을 리스트
-for(Notice n : notiList){ //불러온 공지리스트를 전부 체크, n : 임시 공지객체
-	if(n.getNoti_no()==cn){	//넘겨온 공지코드와 일치하는 n-공지번호가 있을때
-		nd = n;	//임시공지객체 n을 상세공지내용이 담길 객체 nd에 담는다.
-	}
-}
+Notice nd = ndao.nlist(cn);//noticeDeatil, 상세공지내용이 담길 공지객체
 %>
 <body>
 <section class="orderlist">
