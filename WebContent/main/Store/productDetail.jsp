@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <style media="screen">
-      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1820px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}

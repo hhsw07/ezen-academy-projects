@@ -7,7 +7,6 @@
     <title>HobbyFactory : class-list</title>
 
     <style media="screen">
-      body{height:100%; margin:0px; padding:0px; position:relative; min-width:1820px;}
       ul li{list-style:none;}
       a{text-decoration:none; color:black;}
       div{display:block;}
