@@ -181,16 +181,6 @@ DB_Addr db = new DB_Addr();
         <p class="title-name">배송지 정보</p>
         <table>
           <tr>
-            <td class="fix-info"></td>
-            <td>
-              <div style="font-size:15px;"><input type="radio" name="ch" value="">새로운 배송지 입력</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="fix-info"></td>
-            <td><div style="font-size:15px;"><input type="radio" name="ch" value="">배송지 불러오기</div></td>
-          </tr>
-          <tr>
             <td class="fix-info">배송지명</td>
             <td><input class="insert-info" type="text" name="" value="<%=ad.getAddr_title()%>"></td>
           </tr>
