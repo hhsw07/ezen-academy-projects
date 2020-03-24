@@ -11,6 +11,9 @@
 	
 	String strIdx = request.getParameter("idx");
 	int idx = Integer.parseInt(strIdx);
+	String mem_id = memList.get(idx).getMem_id();
+	Adm_Mem mem = db.getMember(mem_id);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +37,7 @@
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:50px;}
-	.section table th {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
 	.section table td {height:40px;}
 	.section table td a {display:block; width:100%; height:100%;}
 	
@@ -74,32 +77,32 @@
 				<table border>
 					<tr>
 						<th>ID</th>
-						<td><%=memList.get(idx).getMem_id() %></td>
+						<td><%=mem.getMem_id() %></td>
 						<th>이름</th>
-						<td><%=memList.get(idx).getMem_name() %></td>
+						<td><%=mem.getMem_name() %></td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><%=memList.get(idx).getMem_mail() %></td>
+						<td><%=mem.getMem_mail() %></td>
 						<th>닉네임</th>
-						<td><%=memList.get(idx).getMem_nickname() %></td>
+						<td><%=mem.getMem_nickname() %></td>
 					</tr>
 					<tr>
 						<th>생년월일</th>
-						<td><%=memList.get(idx).getMem_birth() %></td>
+						<td><%=mem.getMem_birth() %></td>
 						<th>휴대폰</th>
-						<td><%=memList.get(idx).getMem_phone() %></td>
+						<td><%=mem.getMem_phone() %></td>
 					</tr>
 					<tr>
 						<th>등급</th>
-						<td><%=memList.get(idx).getMem_code() %></td>
+						<td><%=mem.getMem_code() %></td>
 						<th>마일리지</th>
-						<td><%=memList.get(idx).getMem_mileage() %></td>
+						<td><%=mem.getMem_mileage() %></td>
 					</tr>
 					
 				</table>
 				<div align="right" style="margin-top:10px; font-size:15px;">
-					<input type="button" value="삭제" onclick="ckDel(<%=memList.get(idx).getMem_no()%>)"/>
+					<input type="button" value="삭제" onclick="ckDel(<%=mem.getMem_no()%>)"/>
 				</div>
 			</div>
 			

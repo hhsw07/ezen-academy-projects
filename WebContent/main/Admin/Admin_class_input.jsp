@@ -1,40 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*, java.util.Date,
+    import="java.util.ArrayList, z01_vo.*, java.util.Date,vo_hsw.*,
     java.text.SimpleDateFormat " 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-	ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
-	String course_title = request.getParameter("course_title");
+A01_Admin dao = new A01_Admin();
+
+SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+Date time = new Date();
+String nowTime = format1.format(time);
+
+String proc = request.getParameter("proc"); if(proc == null) proc ="";
+if(proc.equals("ins")){
+String course_title = request.getParameter("course_title");
+String mem_id = request.getParameter("mem_id");
+String course_category = request.getParameter("course_category");
+String course_img = request.getParameter("course_img");
+String course_detail = request.getParameter("course_detail");
+
+Adm_Cou ins = new Adm_Cou(0,mem_id,null,course_title,course_detail,course_img,course_category);
+dao.insertCourse(ins);
+Thread.sleep(500);
+response.sendRedirect("Admin_class.jsp");
+}
 	
-	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-	Date time = new Date();
-	String nowTime = format1.format(time);
-	
-	if(course_title != null){
-		int course_no = coList.size()+1;
-		String mem_id = request.getParameter("mem_id");
-		String course_inputdate = request.getParameter("course_inputdate");
-		String course_kind = request.getParameter("course_kind");
-		String course_detail = request.getParameter("course_detail");
-		int course_curCnt = 0;
-		String strCourse_totCnt = request.getParameter("course_totCnt");
-		int course_totCnt=0;
-		if(strCourse_totCnt != null) course_totCnt = Integer.parseInt(strCourse_totCnt);
-		String strCourse_price = request.getParameter("course_price");
-		int course_price=0;
-		if(strCourse_price != null) course_price = Integer.parseInt(strCourse_price);
-		String course_img = request.getParameter("course_img");
-		String course_opendate = request.getParameter("course_opendate");
-		String course_category = request.getParameter("course_category");
-		
-		coList.add(new Course(course_no,mem_id,course_inputdate,course_title,course_kind,
-				course_detail,course_curCnt,course_totCnt,course_price,course_img,course_opendate,course_category));
-		session.setAttribute("couList", coList);
-		response.sendRedirect("Admin_class.jsp");
-	}
 	%>	
 <!DOCTYPE html>
 <html>
@@ -58,10 +49,12 @@
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
-	.section table th, td {height:40px;}
+	.section table td {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
 	.section table td input {width:90%; height:90%;}
 	.section table td input[type=radio] {width:15px;height:14px;}
-	.section table td textarea {width:95%; height:90%; resize:none;}
+	.section table td input[type=button] {width:45px;}
+	.section table td input[type=submit] {width:45px;}
 	.inputBtn {margin:10px 0 0 800px; font-size:15px;}
 </style>
 
@@ -83,50 +76,51 @@
 		</div>
 		<div class="section">
 			<h1>클래스 등록</h1>
-			<form>
-				<table>
+			<form method="post">
+				<table border>
 					<tr>
 						<th>호스트</th>
 						<td><input type="text" name="mem_id" /></td>
-						<th></th>
+						<td></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th>클래스명 </th>
-						<td><input type="text" name="course_title" placeholder="클래스명을 입력하세요."/></td>
-						<th>클래스종류</th>
-						<td><label><input type="radio" name="course_kind" value="원데이" checked/>원데이</label> 
-							<label><input type="radio" name="course_kind" value="정기"/>정기</label></td>
+						<td><input type="text" name="course_title" /></td>
+						<th>수업분류</th>
+						<td>
+							<select name="course_category" style="width:90%;">
+								<option value="마크라메">마크라메</option>
+								<option value="프랑수자수">프랑수자수</option>
+								<option value="수채화/드로잉">수채화/드로잉</option>
+								<option value="뜨개질/위빙">뜨개질/위빙</option>
+								<option value="가죽공예">가죽공예</option>
+								<option value="쥬얼리/네온사인">쥬얼리/네온사인</option>
+								<option value="다양한 취미">다양한 취미</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
-						<th>인원</th>
-						<td><input type="number" name="course_totCnt" value="5"></td>
-						<th>가격</th>
-						<td><input type="number" name="course_price" value="10000"></td>
-					</tr>
-					<tr>
-						<th>수강일</th>
-						<td><input type="date" name="course_opendate" value="<%=nowTime %>" /></td>
 						<th>클래스이미지</th>
-						<td><input type="file" name="course_img"/></td>
-					</tr>
-					<tr>
+						<td><input type="file" name="course_img" /></td>
 						<th>상세설명 </th>
-						<th colspan="3"></th>
+						<td><input type="file" name="course_detail" /></td>
 					</tr>
 					<tr>
-						<td colspan="4">
-						<textarea name="course_detail" rows="8" placeholder="내용을 입력하세요."></textarea></td>
+						<td colspan="4" style="text-aling:right; " >
+							<input type="hidden" name="proc" value="ins" />
+							<input type="submit" value="등록" />
+							<input type="button" value="취소" onclick="golist()" />
+						</td>
 					</tr>
 				</table>
-				<div align="right" style="font-size:15px;" >
-					<input type="submit" value="등록" class="inputBtn" />
-				</div>
 			</form>	
-			
-			
 		</div>
-		
 	</div>
 </body>
+<script type="text/javascript">
+	function golist(){
+		location.href="Admin_class.jsp";
+	}
+</script>
 </html>

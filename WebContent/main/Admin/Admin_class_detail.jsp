@@ -10,6 +10,7 @@ A01_Admin dao = new A01_Admin();
 String course_noS = request.getParameter("cIdx");
 int course_no = 1; if(course_noS != null) course_no = new Integer(course_noS);
 Adm_Cou co = dao.getCourse(course_no);
+ArrayList<Adm_Ckind> ckList = dao.getCkList(course_no);
 
 String proc = request.getParameter("proc"); if(proc == null) proc="";
 //COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
@@ -27,22 +28,6 @@ if(proc.equals("upt")){
 	response.sendRedirect("Admin_class.jsp");
 }
 
-//ArrayList<Course> coList = (ArrayList<Course>)session.getAttribute("couList");
-//String strIdx = request.getParameter("cIdx");
-//int idx = Integer.parseInt(strIdx);
-/*
-String course_title = request.getParameter("course_title");
-if(course_title != null){
-	response.sendRedirect("Admin_change.jsp?cIdx="+idx+
-			"&mem_id="+java.net.URLEncoder.encode(request.getParameter("mem_id"))+
-			"&course_title="+java.net.URLEncoder.encode(request.getParameter("course_title"))+
-			"&course_kind="+request.getParameter("course_kind")+
-			"&course_totCnt="+request.getParameter("course_totCnt")+
-			"&course_price="+request.getParameter("course_price")+
-			"&course_opendate="+request.getParameter("course_opendate")+
-			"&course_img="+request.getParameter("course_img")+
-			"&course_detail="+java.net.URLEncoder.encode(request.getParameter("course_detail")) );
-}*/
 %>
 <!DOCTYPE html>
 <html>
@@ -66,8 +51,11 @@ if(course_title != null){
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
-	.section table th, td {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
+	.section table td {height:40px;}
+	
 	.section table td input {width:90%; height:90%;}
+	.section table td input[type=file]{ height:20%;}
 	.section table td input[type=button] {width:45px;}
 	.section table td input[type=submit] {width:45px;}
 	.inputBtn {margin:10px 0 0 800px; font-size:15px;}
@@ -124,9 +112,13 @@ if(course_title != null){
 					</tr>
 					<tr>
 						<th>클래스이미지</th>
-						<td><input type="file" name="course_img" value="<%=co.getCourse_img() %>"/></td>
+						<td>
+							<div style="height:80px; margin-bottom:10px; overflow:hidden;"><img src="../image/<%=co.getCourse_img() %>" style="max-width:250px;"/></div>
+							<input type="file" name="course_img" /></td>
 						<th>상세설명 </th>
-						<td><input type="file" name="course_img" value="<%=co.getCourse_img() %>"/></td>
+						<td>
+							<div style="height:80px; margin-bottom:10px;overflow:hidden;"><img src="../image/<%=co.getCourse_detail() %>" style="max-width:250px;"/></div>
+							<input type="file" name="course_detail" /></td>
 					</tr>
 					<tr>
 						<td colspan="4" style="text-aling:right; " >

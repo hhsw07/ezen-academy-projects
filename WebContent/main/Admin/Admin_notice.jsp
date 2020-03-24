@@ -53,6 +53,7 @@ int nextNo = pg.getPage_End()+1;
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;table-layout:fixed;}
 	.section table tr {height:30px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
 	.section table td {overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:0 10px;}
 	.btn {border-radius:5px;}
 	.paging {text-align:center;}

@@ -49,7 +49,8 @@ if(proc.equals("upt")){
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
-	.section table th, td {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
+	.section table td {height:40px;}
 	.section table td input {width:90%; height:90%;}
 	.section table td input[type=radio] {width:15px;height:14px;}
 	.section table td textarea {width:95%; height:90%; resize:none;}
@@ -75,7 +76,7 @@ if(proc.equals("upt")){
 		<div class="section">
 			<h1>문의사항 관리 (상세정보)</h1>
 			<form method="post">
-				<table>
+				<table border>
 					<tr>
 						<th>문의 번호</th>
 						<td><input type="text" name="inquiry_no" value="<%=inq.getInquiry_no() %>" readonly/></td>
@@ -98,7 +99,7 @@ if(proc.equals("upt")){
 					</tr>
 					<tr>
 						<th>답변내용</th>
-						<th colspan="3"></th>
+						<td colspan="3"></td>
 					</tr>
 					<tr>
 						<td colspan="4">

@@ -20,6 +20,13 @@ public class Adm_Sto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Adm_Sto(int store_no, String store_code) {
+		super();
+		this.store_no = store_no;
+		this.store_code = store_code;
+	}
+
 	public Adm_Sto(int store_no, String mem_id, String store_title, String store_code, int store_price, int store_totCnt,
 			String store_detail, Date strore_date, String store_img, String store_category) {
 		super();

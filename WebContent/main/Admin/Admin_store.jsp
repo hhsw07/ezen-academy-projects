@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*, vo_hsw.*" 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 
 <%
-	ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
+A01_Admin dao = new A01_Admin();
+ArrayList<Adm_Sto> sList = dao.getSList();
+	//ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -49,19 +51,15 @@ int nextNo = pg.getPage_End()+1;
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
+  	.section table th {height:40px;background-color:#F5A9A9;}
   	.section table tr {height:30px;}
   	.section table td a { display:block; width:100%; height:100%;} 
 　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
 	.pageNo {color:#f36359;}
+	.txt {text-align:left; padding-left:10px;}
 	
 </style>
-<script type="text/javascript">
-	function del(idx){
-		//memList_no와 같은 행을 삭제한다.
-		alert(idx+1+'수정');
-	}
-</script>
 </head>
 
 <body>
@@ -103,11 +101,11 @@ int nextNo = pg.getPage_End()+1;
 					%>
 						<tr>
 						<td><%=sList.get(idx).getStore_no() %></td>
-						<td><%=sList.get(idx).getStore_title() %></td>
+						<td class="txt"><%=sList.get(idx).getStore_title() %></td>
 						<td><%=sList.get(idx).getMem_id() %></td>
 						<td><%=sList.get(idx).getStrore_date() %></td>
 						<td><%=sList.get(idx).getStore_code() %></td>
-						<td><a href="<%=path %>/main/Admin/Admin_store_detail.jsp?sidx=<%=idx %>">보기</a></td>
+						<td><a href="<%=path %>/main/Admin/Admin_store_detail.jsp?sidx=<%=sList.get(idx).getStore_no() %>">보기</a></td>
 						</tr>
 					<%
 					} %>

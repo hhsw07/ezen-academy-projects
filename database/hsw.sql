@@ -63,3 +63,22 @@ course_detail = 'star1.jpg',
 course_img = 'star1.jpg', 
 coruse_category = '다양한 취미' 
 WHERE course_no = 4;
+
+SELECT * FROM p04_store
+WHERE store_no=8;
+
+UPDATE p04_store 
+SET store_code = '미승인'
+WHERE store_no = 8;
+
+SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b
+WHERE b.MEM_ID = 'ezen1') "mem_mileage" FROM P04_MEMBER a, P04_POINT b
+WHERE b.MEM_ID = 'ezen1'
+AND a.MEM_ID = b.MEM_ID;
+
+SELECT * FROM p04_course a, p04_ckind b
+where a.COURSE_NO = b.COURSE_NO
+AND 1=1
+AND a.COURSE_NO = 1;
+
+

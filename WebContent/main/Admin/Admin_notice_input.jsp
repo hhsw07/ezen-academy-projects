@@ -40,7 +40,8 @@ response.sendRedirect("Admin_notice.jsp");
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
-	.section table th, td {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
+	.section table td {height:40px;}
 	.section table td input {width:90%; height:90%;}
 	.section table td input[type=radio] {width:15px;height:14px;}
 	.section table td textarea {width:95%; height:90%; resize:none;}
@@ -65,8 +66,8 @@ response.sendRedirect("Admin_notice.jsp");
 		</div>
 		<div class="section">
 			<h1>공지사항 등록</h1>
-			<form>
-				<table>
+			<form method="post">
+				<table border>
 					<tr>
 						<th>공지제목</th>
 						<td><input type="text" name="noti_title"  value=""  /></td>

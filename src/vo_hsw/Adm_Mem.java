@@ -22,6 +22,12 @@ public class Adm_Mem {
 	}
 	
 	
+	public Adm_Mem(String mem_id) {
+		super();
+		this.mem_id = mem_id;
+	}
+
+
 	public Adm_Mem(String mem_id, int mem_no, String mem_pass, String mem_name, String mem_mail, String mem_nickname,
 			Date mem_birth, String mem_phone, String mem_code, int mem_mileage) {
 		super();

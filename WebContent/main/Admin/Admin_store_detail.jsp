@@ -1,27 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*" 
+    import="java.util.ArrayList, z01_vo.*,vo_hsw.* " 
 %>
 <%	request.setCharacterEncoding("utf-8");
 	String path = request.getContextPath(); %>
 <%
-ArrayList<Store> sList = (ArrayList<Store>)session.getAttribute("sList");
-String strIdx = request.getParameter("sidx");
-int idx = Integer.parseInt(strIdx);
+A01_Admin dao = new A01_Admin();
 
-String store_title = request.getParameter("store_title");
-if(store_title != null){
-	response.sendRedirect("Admin_change.jsp?sIdx="+idx+
-			"&mem_id="+request.getParameter("mem_id")+
-			"&store_title="+java.net.URLEncoder.encode(request.getParameter("store_title"))+
-			"&store_code="+request.getParameter("store_code")+
-			"&store_price="+request.getParameter("store_price")+
-			"&store_totCnt="+request.getParameter("store_totCnt")+
-			"&strore_date="+request.getParameter("strore_date")+
-			"&store_img="+request.getParameter("store_img")+
-			"&store_detail="+java.net.URLEncoder.encode(request.getParameter("store_detail")) );
+String store_noS = request.getParameter("sidx");
+int store_no = Integer.parseInt(store_noS);
+Adm_Sto sto = dao.getStore(store_no);
 
+String proc = request.getParameter("proc"); if(proc == null) proc ="";
+String store_code = request.getParameter("store_code"); if(store_code==null) store_code="";
+
+if(proc.equals("upt")){
+	Adm_Sto upt = new Adm_Sto(store_no, store_code);
+	System.out.println(store_no+", "+store_code);
+	dao.updateSto(upt);
+	Thread.sleep(500);
+	response.sendRedirect("Admin_store.jsp");
 }
+
+
 %>
 
 <!DOCTYPE html>
@@ -47,6 +48,7 @@ if(store_title != null){
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
 	.section table th, td {height:40px;}
+	.section table th {height:40px;background-color:#F5A9A9;}
 	.section table td input {width:90%; height:90%;}
 	.section table td input[type=radio] {width:15px;height:14px;}
 	.section table td textarea {width:95%; height:90%; resize:none;}
@@ -71,45 +73,43 @@ if(store_title != null){
 		</div>
 		<div class="section">
 			<h1>스토어 관리 (상세정보)</h1>
-			<form>
-				<table>
+			<form method="post">
+				<table border>
 					<tr>
 						<th>상품번호</th>
-						<td><input type="text" name="store_no" value="<%=sList.get(idx).getStore_no() %>" readonly/></td>
+						<td><%=sto.getStore_no() %></td>
 						<th>호스트</th>
-						<td><input type="text" name="mem_id" value="<%=sList.get(idx).getMem_id() %>" /></td>
+						<td><%=sto.getMem_id() %></td>
 					</tr>
 					<tr>
 						<th>상품명 </th>
-						<td><input type="text" name="store_title" value="<%=sList.get(idx).getStore_title() %>"/></td>
-						<th>승인상태</th>
-						<td><label><input type="radio" name="store_code" id="kind01" value="N"/>대기</label> 
-							<label><input type="radio" name="store_code" id="kind02" value="Y"/>승인</label></td>
+						<td colspan="3" style="text-align:left; padding-left:10px;"><%=sto.getStore_title() %></td>
+						
 					</tr>
 					<tr>
 						<th>갯수</th>
-						<td><input type="number" name="store_totCnt" value="<%=sList.get(idx).getStore_totCnt() %>"></td>
+						<td><%=sto.getStore_totCnt() %></td>
 						<th>가격</th>
-						<td><input type="number" name="store_price" value="<%=sList.get(idx).getStore_price() %>"></td>
+						<td><%=sto.getStore_price() %></td>
 					</tr>
 					<tr>
 						<th>신청일</th>
-						<td><input type="date" name="strore_date"  value="<%=sList.get(idx).getStrore_date() %>" readonly /></td>
+						<td><%=sto.getStrore_date() %></td>
+						<th>승인상태</th>
+						<td><label><input type="radio" name="store_code" id="kind01" value="미승인"/>미승인</label> 
+							<label><input type="radio" name="store_code" id="kind02" value="승인"/>승인</label></td>
+					</tr>
+					<tr>
 						<th>상품이미지</th>
-						<td><input type="file" name="store_img" value="<%=sList.get(idx).getStore_img() %>"/></td>
-					</tr>
-					<tr>
+						<td><img src="../image/<%=sto.getStore_img() %>" style="max-width:250px;"/></td>
 						<th>상품설명 </th>
-						<th colspan="3"></th>
-					</tr>
-					<tr>
-						<td colspan="4">
-						<textarea name="store_detail" rows="8" ><%=sList.get(idx).getStore_detail() %></textarea></td>
+						<td><img src="../image/<%=sto.getStore_detail() %>" style="max-width:250px;"/></td>
 					</tr>
 				</table>
 				<div align="right" >
-				<input type="text" name="sidx" value="<%=strIdx %>" style="visibility:hidden;" />
-				<input type="button" value="삭제" onclick="ckDel(<%=idx %>)"/>
+				<input type="hidden" name="sidx" value="<%=sto.getStore_no() %>"  />
+				<input type="hidden" name="proc" value="upt"  />
+				<input type="button" value="삭제" onclick="ckDel(<%=sto.getStore_no() %>)"/>
 				<input type="submit" value="수정" />
 				</div>
 			</form>	
@@ -124,10 +124,10 @@ if(store_title != null){
 		}
 	}
 		
-	var store_code = "<%=sList.get(idx).getStore_code() %>";
+	var store_code = "<%=sto.getStore_code() %>";
 	console.log(store_code);
 
-	if(store_code == "N"){
+	if(store_code == "미승인"){
 		document.querySelector('#kind01').checked = true;
 	}else{
 		document.querySelector('#kind02').checked = true;

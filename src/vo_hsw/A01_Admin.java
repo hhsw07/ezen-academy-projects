@@ -2,14 +2,17 @@ package vo_hsw;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class A01_Admin {
 	private Connection con;
 	private Statement stmt;
+	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
 	private void setCon() throws SQLException {
@@ -61,21 +64,25 @@ public class A01_Admin {
 	
 	
 	public Adm_Mem getMember(String mem_id){
-		Adm_Mem m = null;
+		Adm_Mem m = new Adm_Mem();
 		
 		try {
 			setCon();
 			String sql = "SELECT DISTINCT a.* ,(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b\r\n" + 
-					"WHERE b.MEM_ID = '"+ mem_id +"') \"mem_mileage\" FROM P04_MEMBER a, P04_POINT b \r\n" + 
-					"WHERE b.MEM_ID = '"+ mem_id +"'\r\n" + 
+					"WHERE b.MEM_ID = ?) \"mem_mileage\" FROM P04_MEMBER a, P04_POINT b\r\n" + 
+					"WHERE b.MEM_ID = ?\r\n" + 
 					"AND a.MEM_ID = b.MEM_ID";
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
+			pstmt = con.prepareStatement(sql);
+			// ?의 순서에 따른 데이터 입력 처리
+			// sql을 먼저 넘기고 param로 값을 매핑처리
+			pstmt.setString(1, mem_id);
+			pstmt.setString(2, mem_id);
+
+			rs = pstmt.executeQuery();
 			
 			// MEM_ID		|MEM_NO		|MEM_PASS	|MEM_NAME|MEM_MAIL
 			// MEM_NICKNAME	|MEM_BIRTH	|MEM_PHONE  |MEM_CODE|mem_mileage
-			
-			while(rs.next()) {
+			/*if(rs.next()) {
 				m = new Adm_Mem();
 				m.setMem_id (rs.getString(1));
 				m.setMem_no (rs.getInt(2));
@@ -87,10 +94,26 @@ public class A01_Admin {
 				m.setMem_phone(rs.getString(8));
 				m.setMem_code(rs.getString(9));
 				m.setMem_mileage(rs.getInt(10));
+			}*/
+			// String mem_id, int mem_no, String mem_pass, String mem_name, 
+			// String mem_mail, String mem_nickname,
+			// Date mem_birth, String mem_phone, String mem_code, int mem_mileage
+			if(rs.next()) {
+				m = new Adm_Mem( rs.getString(1),
+				rs.getInt(2),
+				rs.getString(3),
+				rs.getString(4),
+				rs.getString(5),
+				rs.getString(6),
+				rs.getDate(7),
+				rs.getString(8),
+				rs.getString(9),
+				rs.getInt(10));
 			}
 			
+			
 			rs.close();
-			stmt.close();
+			pstmt.close();
 			con.close();
 			
 		} catch (SQLException e) {
@@ -196,7 +219,7 @@ public class A01_Admin {
 		
 		try {
 			setCon();
-			String sql = "select * from p04_course";
+			String sql = "select * from p04_course order by COURSE_NO";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -267,8 +290,8 @@ public class A01_Admin {
 			setCon();
 			// COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
 			// COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
-			String sql = "INSERT INTO p04_course values(p04_course_seq.nextval,sysdate,'"+
-					ins.getCourse_title()+"','"+ins.getCourse_detail()+"','"+
+			String sql = "INSERT INTO p04_course values(p04_course_seq.nextval,'"+ins.getMem_id()+
+					"',sysdate,'"+ins.getCourse_title()+"','"+ins.getCourse_detail()+"','"+
 					ins.getCourse_img()+"','"+ins.getCourse_category()+"')";
 			System.out.println("##insert sql##");
 			System.out.println(sql);
@@ -378,7 +401,7 @@ public class A01_Admin {
 		ArrayList<Adm_Sto> sList = new ArrayList<Adm_Sto>();
 		try {
 			setCon();
-			String sql = "select * from p04_store";
+			String sql = "select * from p04_store order by store_no";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			// STORE_NO		  |MEM_ID |STORE_TITLE|STORE_CODE|STORE_PRICE|STORE_TOTCNT|
@@ -495,16 +518,7 @@ public class A01_Admin {
 			// STORE_NO		  |MEM_ID |STORE_TITLE|STORE_CODE|STORE_PRICE|STORE_TOTCNT|
 			// STORE_DETAIL   |STRORE_DATE        |STORE_IMG     |STORE_CATEGORY
 			String sql = "UPDATE p04_store \r\n" + 
-						"SET store_no = "+upt.getStore_no()+",\r\n" + 
-						"mem_id = '"+upt.getMem_id()+"',\r\n" + 
-						"store_title = '"+upt.getStore_title()+"',\r\n" + 
-						"store_code = '"+upt.getStore_code()+"',\r\n" + 
-						"store_price = '"+upt.getStore_price()+"',\r\n" + 
-						"store_totcnt = '"+upt.getStore_totCnt()+"',\r\n" + 
-						"store_detail = '"+upt.getStore_detail()+"',\r\n" + 
-						"store_date = to_date('"+upt.getStrore_date()+"','YYYY-MM-DD'),\r\n" + 
-						"store_img = '"+upt.getStore_img()+"',\r\n" + 
-						"store_category = '"+upt.getStore_category()+"'\r\n" + 
+						"SET store_code = '"+upt.getStore_code()+"'\r\n" + 
 						"WHERE store_no = "+upt.getStore_no();
 			System.out.println("##update sql##");
 			System.out.println(sql);
@@ -576,7 +590,7 @@ public class A01_Admin {
 		
 		try {
 			setCon();
-			String sql = "select * from p04_notice";
+			String sql = "select * from p04_notice order by noti_no";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -912,12 +926,56 @@ public class A01_Admin {
 		}
 	}
 
+	public ArrayList<Adm_Ckind> getCkList(int course_no){
+		ArrayList<Adm_Ckind> ckList = new ArrayList<Adm_Ckind>();
+		
+		try {
+			setCon();
+			String sql = "SELECT b.* FROM p04_course a, p04_ckind b\r\n" + 
+					"where a.COURSE_NO = b.COURSE_NO\r\n" + 
+					"AND a.COURSE_NO = ?";
+			// CKIND_NO|COURSE_NO|COURSE_KIND|COURSE_OPENDATE    |COURSE_PRICE|COURSE_TOTCNT|COURSE_CURCNT|
+			pstmt = con.prepareStatement(sql);
+			// ?의 순서에 따른 데이터 입력 처리
+			// sql을 먼저 넘기고 param로 값을 매핑처리
+			pstmt.setInt(1, course_no);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ckList.add(new Adm_Ckind(
+						rs.getInt(1),
+						rs.getInt(2),
+						rs.getString(3),
+						rs.getDate(4),
+						rs.getInt(5),
+						rs.getInt(6),
+						rs.getInt(7)
+						));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ckList;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A01_Admin db = new A01_Admin();
 		System.out.println("데이터 건수: "+db.getMList().size());
-		
-		
+		String id = "himan1";
+		int idx = 1;
+		ArrayList<Adm_Ckind> m = db.getCkList(idx);
+		for(Adm_Ckind c : m) {
+			System.out.println(c.getCkind_no()+" : "+c.getCourse_kind());
+		}
 	}
 
 }

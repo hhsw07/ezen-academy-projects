@@ -420,7 +420,7 @@ ALTER TABLE p04_store
 CREATE SEQUENCE p04_store_seq
 INCREMENT BY 1
 START WITH 1;
--- 상품 정보 입력  ex) code승인상태 Y/N
+-- 상품 정보 입력  ex) code승인상태 승인/미승인
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_store VALUES (p04_store_seq.nextval,'ezen1','라탄으로 이불 톡톡','미승인',28000,30,'ads01_wide.jpg',to_date('2020-03-19','YYYY-MM-DD'),'ads01_wide.jpg','다양한 취미');
