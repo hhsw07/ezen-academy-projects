@@ -69,7 +69,7 @@ WHERE mem_no = 000;
 DELETE P04_MEMBER
 WHERE mem_no = 000;
 						
-
+SELECT * FROM p04_member where mem_id = '';
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 -- 수업
@@ -439,7 +439,11 @@ ORDER BY STORE_NO DESC;
 DROP TABLE p04_store;
 DROP SEQUENCE p04_store_seq;
 
-
+SELECT * 
+FROM p04_store ps, p04_order po, p04_addr pa
+WHERE ps.store_no = po.store_no
+AND po.addr_no = pa.addr_no
+AND pa.mem_id='himan1' AND order_code='장바구니';
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 주문
 ALTER TABLE p04_order
@@ -525,7 +529,11 @@ INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YY
 SELECT * FROM p04_order;
 DROP TABLE p04_order;
 DROP SEQUENCE p04_order_seq;
-
+SELECT * FROM 
+(SELECT *
+FROM p04_order po, P04_STORE ps
+WHERE po.STORE_NO = ps.STORE_NO
+AND ORDER_CODE = '장바구니') cart, p04_addr
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 상품후기
 ALTER TABLE p04_pReview

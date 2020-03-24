@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*, z01_vo.*, vo_jhk.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,10 +44,10 @@
 <p class="logo" style="padding:20px;">HobbyFactory</p>
 <form id="login" method="post" action="Main.jsp">
 	<table id="joinFrm">
-	<tr><th>아이디</th><td><input type="text" name="uname" placeholder="아이디"/></td>
+	<tr><th>아이디</th><td><input type="text" id="uid" name="uid" placeholder="아이디"/></td>
 	<th><div style="display:inline-block;cursor:pointer; background-color:#000000;
 	padding:10px 10px 10px 10px; color:white; font-size:15px;" 
-	 onclick="">중복확인</div></th></tr>
+	 onclick="checkId()">중복확인</div></th></tr>
 	<tr><th>비밀번호</th><td><input type="password" name="upass1" placeholder="비밀번호"/></td>
 	<th rowspan="7"><div class="profile_image">
           <p>+<p>
@@ -68,5 +69,14 @@
 <p class="join_sub" style="font-size:12px;">본인은 만 14세 이상이며, 회원 가입하면 하비팩토리의 서비스 이용약관, 개인정보 취급방침에 동의하는 것입니다.</p>
 </body>
 	<script type="text/javascript">
+		function checkId(){
+			var uid = document.querySelector("#uid").value;
+			if(uid==''){
+				alert('아이디를 입력해주세요');
+			}else{
+			window.open("../main/Login/checkId.jsp?uid="+uid,
+					"checkId","width=300,height=120,left=800,top=300,location=no");
+			}
+		}
 	</script>
 </html>
