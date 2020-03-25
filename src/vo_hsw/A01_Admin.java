@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class A01_Admin {
 	private Connection con;
@@ -933,7 +932,7 @@ public class A01_Admin {
 			setCon();
 			String sql = "SELECT b.* FROM p04_course a, p04_ckind b\r\n" + 
 					"where a.COURSE_NO = b.COURSE_NO\r\n" + 
-					"AND a.COURSE_NO = ?";
+					"AND a.COURSE_NO = ? order by ckind_no";
 			// CKIND_NO|COURSE_NO|COURSE_KIND|COURSE_OPENDATE    |COURSE_PRICE|COURSE_TOTCNT|COURSE_CURCNT|
 			pstmt = con.prepareStatement(sql);
 			// ?의 순서에 따른 데이터 입력 처리
@@ -966,16 +965,135 @@ public class A01_Admin {
 		return ckList;
 	}
 
+	public void insertCkind(Adm_Ckind ins){
+		
+		try {
+			setCon();
+			// COURSE_NO|MEM_ID|COURSE_INPUTDATE   |COURSE_TITLE|
+			// COURSE_DETAIL |COURSE_IMG    |CORUSE_CATEGORY|
+			String sql = "INSERT INTO p04_ckind\r\n" + 
+					"values(p04_ckind_seq.nextval, ?,?,?,?,?,0)";
+			System.out.println("##insert sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ins.getCourse_no());
+			pstmt.setString(2, ins.getCourse_kind());
+			java.util.Date utilDate = ins.getCourse_opendate();
+		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			pstmt.setDate(3,sqlDate);
+			pstmt.setInt(4, ins.getCourse_price());
+			pstmt.setInt(5, ins.getCourse_totcnt());
+			
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("수정완료");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void updateCkind(Adm_Ckind upt){
+		try {
+			setCon();
+			
+			String sql = "UPDATE P04_CKIND\r\n" + 
+					"SET COURSE_KIND = ?,\r\n" + 
+					"COURSE_OPENDATE = ?,\r\n" + 
+					"COURSE_PRICE =?,\r\n" + 
+					"COURSE_TOTCNT = ?\r\n" + 
+					"WHERE CKIND_NO = ?";
+			System.out.println("##update sql##");
+			// autocommit 방식
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, upt.getCourse_kind());
+			java.util.Date utilDate = upt.getCourse_opendate();
+		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			pstmt.setDate(2,sqlDate);
+			pstmt.setInt(3, upt.getCourse_price());
+			pstmt.setInt(4, upt.getCourse_totcnt());
+			pstmt.setInt(5, upt.getCkind_no());
+			
+			System.out.println(sql);
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("해제");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void deleteCkind(int del){
+		try {
+			setCon();
+			
+			String sql = "DELETE p04_ckind\r\n" + 
+					"WHERE ckind_no = ?";
+			System.out.println("##delete sql##");
+			System.out.println(sql);
+			// autocommit 방식
+			con.setAutoCommit(false);
+			pstmt= con.prepareStatement(sql);
+			pstmt.setInt(1, del);
+			
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			stmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 문제 발생시 rollback 처리
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A01_Admin db = new A01_Admin();
 		System.out.println("데이터 건수: "+db.getMList().size());
-		String id = "himan1";
-		int idx = 1;
-		ArrayList<Adm_Ckind> m = db.getCkList(idx);
-		for(Adm_Ckind c : m) {
-			System.out.println(c.getCkind_no()+" : "+c.getCourse_kind());
-		}
+		
 	}
 
 }
