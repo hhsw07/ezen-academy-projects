@@ -19,7 +19,7 @@
 	.mysubmenu ul li a{color:#000000; cursor:pointer;}
 /* 주문/배송 조회 */
 	.orderlist{padding:30px; width:980px; height:500px; margin:0 auto;}
-	.orderlist article{position:relative; font-size:14px; border-bottom:1px #ddd solid; padding-top:25px;}
+	.orderlist article{position:relative; font-size:20px; border-bottom:1px #ddd solid; padding-top:25px;}
 	.o-info{width:300px;}
 	.o-title{width:70px;display:inline-block; margin-right:5px;}
 	.o-value {color:#a3a3a3; margin-right:15px;}
@@ -95,19 +95,6 @@ int nextNo = pg.getPage_End()+1;
 		for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){
 	%>
 		<article>
-			<div class="o-info">
-				<ul>
-					<li>
-						<span class="o-title">주문번호</span> 
-						<span class="o-value"><%=olist.get(idx).getO_num() %></span>
-					</li>
-					<li>
-						<span class="o-title">신청일</span> 
-						<span class="o-value"><%=olist.get(idx).getO_date() %></span>
-					</li>
-					<li class="o-btn"><a href="#">주문상세보기</a></li>
-				</ul>
-			</div>
 			<div class="o-thumbnail">
 				<img src=<%=olist.get(idx).getO_thum() %> alt="">
 			</div>
@@ -115,9 +102,6 @@ int nextNo = pg.getPage_End()+1;
 				<ul>
 					
 					<li class="o-name"><%=olist.get(idx).getO_name() %></li>
-					<li class="o-option"><%=olist.get(idx).getO_opt() %></li>
-					<li class="o-status"><%=olist.get(idx).getO_sta() %></li>
-					<li class="o-qty">수량 : <%=olist.get(idx).getO_qty() %></li>
 				</ul>
 			</div>
 		</article>

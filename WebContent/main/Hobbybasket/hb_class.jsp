@@ -100,9 +100,6 @@ int nextNo = pg.getPage_End()+1;
 	<%	for(int idx=(w_size*i_page-w_size) ; idx<lastNo ; idx++){ %>
 		 		<li class="c-list">
 		 			<a href="#">
-		 				<div class="c-fordate">		 					
-			 				<p class="c-when"><span>수강날짜</span><span class="c-date"><%=myclist.get(idx).getC_date() %></span></p>
-		 				</div>
 		 				<div class="c-thumbnail">
 		 					<img src="<%=myclist.get(idx).getC_thum() %>" alt="">
 		 				</div>

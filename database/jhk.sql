@@ -444,6 +444,19 @@ FROM p04_store ps, p04_order po, p04_addr pa
 WHERE ps.store_no = po.store_no
 AND po.addr_no = pa.addr_no
 AND pa.mem_id='himan1' AND order_code='장바구니';
+
+SELECT mem_id, po.order_no, PREVIEW_DATE, 
+PREVIEW_DETAIL, PREVIEW_STAR 
+FROM p04_addr pa, p04_order po, p04_pReview ppr
+WHERE pa.addr_no = po.addr_no
+AND po.order_no = ppr.order_no;
+
+SELECT mem_id, po.order_no, PREVIEW_DATE, 
+PREVIEW_DETAIL, PREVIEW_STAR, store_no
+FROM p04_addr pa, p04_order po, p04_pReview ppr
+WHERE pa.addr_no = po.addr_no
+AND po.order_no = ppr.order_no;
+AND store_no=2;
 ----------------------------------------------------------------------------------------------------------------------------------------
 -- 주문
 ALTER TABLE p04_order
@@ -525,6 +538,7 @@ INSERT INTO p04_order VALUES (p04_order_seq.nextval,3,1,to_date('2020-03-19','YY
 INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
 INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
 INSERT INTO p04_order VALUES (p04_order_seq.nextval,1,2,to_date('2020-03-19','YYYY-MM-DD'),'장바구니',1,'한진택배','');
+INSERT INTO p04_order VALUES (p04_order_seq.nextval,3,2,to_date('2020-03-19','YYYY-MM-DD'),'배송완료',1,'한진택배','617600422272');
 
 SELECT * FROM p04_order;
 DROP TABLE p04_order;
@@ -588,7 +602,9 @@ START WITH 1;
 -- 상품후기 정보 입력 
 INSERT INTO p04_pReview VALUES (1,'좋은 제품입니다.',5,to_date('2020-03-19','YYYY-MM-DD'));
 INSERT INTO p04_pReview VALUES (2,'그냥 제품입니다.',3,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (7,'와 이걸 어떻게 쓰냐;;',2,to_date('2020-03-19','YYYY-MM-DD'));
 
+DELETE FROM P04_PREVIEW WHERE ORDER_NO = 3;
 SELECT * FROM p04_pReview;
 DROP TABLE p04_pReview;
 DROP SEQUENCE p04_pReview_seq;
