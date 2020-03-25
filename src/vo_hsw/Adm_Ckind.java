@@ -20,6 +20,14 @@ public class Adm_Ckind {
 	}
 
 
+	public Adm_Ckind(int ckind_no, int course_no, String course_kind) {
+		super();
+		this.ckind_no = ckind_no;
+		this.course_no = course_no;
+		this.course_kind = course_kind;
+	}
+
+
 	public Adm_Ckind(int ckind_no, int course_no, String course_kind, Date course_opendate, int course_price,
 			int course_totcnt, int course_curcnt) {
 		super();

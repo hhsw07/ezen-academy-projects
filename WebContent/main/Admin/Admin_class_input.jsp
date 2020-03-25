@@ -81,8 +81,7 @@ response.sendRedirect("Admin_class.jsp");
 					<tr>
 						<th>호스트</th>
 						<td><input type="text" name="mem_id" /></td>
-						<td></td>
-						<td></td>
+						<td colspan="2"></td>
 					</tr>
 					<tr>
 						<th>클래스명 </th>
@@ -116,6 +115,8 @@ response.sendRedirect("Admin_class.jsp");
 				</table>
 			</form>	
 		</div>
+		
+		
 	</div>
 </body>
 <script type="text/javascript">

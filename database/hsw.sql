@@ -85,3 +85,20 @@ INSERT INTO p04_course values(p04_course_seq.nextval,sysdate,'
 제목','"내용','이미지','카테로리');
 SELECT * FROM P04_NOTICE pn WHERE noti_no=17;
 안녕하세요. 하비팩토리입니다.¶¶하비팩토리는 고객과 임직원의 코로나19 감염 예방을 위해, 전직원 재택 근무를 결정하였습니다.¶¶¶¶이에 따라 고객센터 전화상담 운영을 임시 중단하오니, 1:1 문의 및 채팅 상담을 이용해주시기 바랍니다.\n\n※ 전화상담 중단 기간 : 2월 25일 ~ 추후 공지\n\n\n\n전화상담 외에 모든 업무는 정상 진행됨을 알려드리며, 이용에 불편을 드리게 된 점 죄송한 말씀드립니다
+
+
+SELECT * FROM P04_CKIND pc ORDER BY CKIND_NO;
+
+INSERT INTO p04_ckind
+values(p04_ckind_seq.nextval, 1,'정규',NULL,10000,5,0);
+
+UPDATE P04_CKIND
+SET COURSE_KIND = '원데이',
+COURSE_OPENDATE = to_date('2020-03-25','YYYY-MM-DD'),
+COURSE_PRICE =1010,
+COURSE_TOTCNT = 20
+WHERE CKIND_NO = 5;
+
+DELETE p04_ckind
+WHERE ckind_no = 5;
+
