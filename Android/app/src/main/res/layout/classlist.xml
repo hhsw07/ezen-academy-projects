@@ -149,7 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="[원데이]   30,000원" />
+                        android:text="[원데이]   20,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
