@@ -51,15 +51,6 @@
                             android:text="마크라메" />
 
                         <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingRight="15dp"
-                            android:textColor="#E91E63"
-                            android:text="TextView" />
-
-                        <TextView
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -151,14 +142,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="따뜻한 한마디 일러스트 글자수" />
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="10000000" />
+                        android:text="[원데이]   20,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -185,14 +176,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="꽃 소풍 프랑스 자수" />
 
                     <TextView
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]   20,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -219,14 +210,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="풀꽃 양말 프랑스 자수" />
 
                     <TextView
                         android:id="@+id/textView18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]   15,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -253,14 +244,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="커피프레즐 키링 프랑스 자수" />
 
                     <TextView
                         android:id="@+id/textView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이] 15,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -287,14 +278,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="프랑스자수 밤의 숲 수놓기" />
 
                     <TextView
                         android:id="@+id/textView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]19,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -321,14 +312,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="비온뒤 맑음 마크라메 월행어" />
 
                     <TextView
                         android:id="@+id/textView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]25,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -355,14 +346,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="감성 리빙 마크라메" />
 
                     <TextView
                         android:id="@+id/textView26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]18,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -389,14 +380,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="초록잎 선캐처 마크라메" />
 
                     <TextView
                         android:id="@+id/textView28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="[원데이]17,000원" />
                 </LinearLayout>
             </LinearLayout>
 

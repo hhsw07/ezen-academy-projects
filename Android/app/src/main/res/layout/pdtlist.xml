@@ -51,15 +51,6 @@
                             android:text="마크라메" />
 
                         <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingRight="15dp"
-                            android:textColor="#E91E63"
-                            android:text="TextView" />
-
-                        <TextView
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -151,14 +142,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="라탄으로 이불 톡톡" />
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="10000000" />
+                        android:text="28,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -185,14 +176,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="장미정원 자수 끈 파우치" />
 
                     <TextView
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="18,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -219,14 +210,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="나의 첫 마크라메 플랜트행어" />
 
                     <TextView
                         android:id="@+id/textView18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="22,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -253,14 +244,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="몬스테라가 있는 오후 프랑스 자수" />
 
                     <TextView
                         android:id="@+id/textView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="12,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -287,14 +278,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="내마음대로 눈 내리는 스노우볼" />
 
                     <TextView
                         android:id="@+id/textView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="22,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -321,14 +312,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="나의 첫 별자리 자수" />
 
                     <TextView
                         android:id="@+id/textView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="14,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -355,14 +346,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="유리조각 캔들 홀더" />
 
                     <TextView
                         android:id="@+id/textView26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="16,000원" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -389,14 +380,14 @@
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
-                        android:text="클래스 이름" />
+                        android:text="낭만가득 자수 프레임 파우치" />
 
                     <TextView
                         android:id="@+id/textView28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:text="가격" />
+                        android:text="20,000원" />
                 </LinearLayout>
             </LinearLayout>
 

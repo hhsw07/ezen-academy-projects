@@ -41,21 +41,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="호스트" />
+                    android:text="[라탄맨]" />
 
                 <TextView
                     android:id="@+id/textView53"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="이름" />
+                    android:text="라탄으로 이불 톡톡" />
 
                 <TextView
                     android:id="@+id/textView54"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="가격" />
+                    android:layout_gravity="right"
+                    android:text="28,000원" />
             </LinearLayout>
 
             <LinearLayout
@@ -275,7 +275,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="금액" />
+                        android:layout_marginLeft="30dp"
+                        android:text="28,000원" />
 
                 </LinearLayout>
 
@@ -298,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="금액" />
+                        android:text="0원" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -333,14 +334,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="전추 주문금액" />
+                        android:text="전체 주문금액" />
 
                     <TextView
                         android:id="@+id/textView76"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="전체금액" />
+                        android:text="28,000원" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -2,9 +2,9 @@
 <resources>
     <string-array name="s_class">
         <item>클래스 선택</item>
-        <item >원데이클래스 4월1일</item>
-        <item >원데이클래스 4월10일</item>
-        <item >정규클래스</item>
+        <item >원데이클래스 30,000원 4월1일</item>
+        <item >원데이클래스 30,000원 4월10일</item>
+        <item >정규클래스 250,000원</item>
     </string-array>
     <string-array name="s_pdt">
         <item >상품 선택</item>
