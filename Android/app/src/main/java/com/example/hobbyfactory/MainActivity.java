@@ -12,13 +12,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myclasslist);
+        setContentView(R.layout.main);
 
         Button gc = (Button)findViewById(R.id.go_cl);
         Button gp = (Button)findViewById(R.id.go_pl);
 
-        gc.OnClickListener(gclListen);
-        gp.OnClickListener(gplListen);
+        gc.setOnClickListener(gclListen);
+        gp.setOnClickListener(gplListen);
     }
     View.OnClickListener gclListen = new View.OnClickListener(){
         @Override
