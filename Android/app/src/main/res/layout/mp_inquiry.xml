@@ -154,6 +154,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1:1 문의내역"
+                android:layout_marginVertical="5dp"
+                android:paddingTop="5dp"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -170,7 +172,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/textView30"
@@ -182,18 +185,173 @@
                         android:id="@+id/textView73"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="코로나로 취소됐어요. 환불할래요." />
+                        android:text="코로나로 취소됐어요. 환불할래요."
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView74"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#ABD8D8D8"
+                        android:background="#8DE4E4E4"
+                        android:padding="5dp"
                         android:text="취소/환불 조치 진행하겠습니다. 건강 관리 잘 하시길 바랍니다." />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView78"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2020-03-19" />
+
+                    <TextView
+                        android:id="@+id/textView80"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="호스트는 어떻게 신청하나요?"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView81"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="고객센터에서 신청해주세요."
+                        android:background="#8DE4E4E4"
+                        android:padding="5dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView82"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2020-03-19" />
+
+                    <TextView
+                        android:id="@+id/textView83"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold"
+                        android:text="상품을 교환하고 싶어요." />
+
+                    <TextView
+                        android:id="@+id/textView84"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#8DE4E4E4"
+                        android:padding="5dp"
+                        android:text="교환신청은 배송완료 후 7일 이내 가능하며,\n1:1문의(또는 메일문의)/ 대표번호(02-6948-9385)로 연락 주시면 수거 및 교환처리를 도와드리겠습니다.\n※단순 변심 교환 시, 포장 훼손을 하면 환불이 불가능하니 참고해주세요" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView85"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2020-03-19" />
+
+                    <TextView
+                        android:id="@+id/textView86"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="마일리지 사용에 제한이 있나요?"
+                        android:layout_margin="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView87"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#8DE4E4E4"
+                        android:padding="5dp"
+                        android:text="마일리지는 1원부터 사용 가능하며, 금액 제한은 없습니다.\n마일리지는 발급일로부터 12개월 후 자동 소멸되니, 소멸 전에 사용해주세요!" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/go_cls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="마이페이지"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/go_pls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="관심창고"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/go_dd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="장바구니"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+        <Button
+            android:id="@+id/go_ddd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="고객센터"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
 
 
 </LinearLayout>
