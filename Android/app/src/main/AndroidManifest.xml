@@ -18,6 +18,10 @@
         </activity>
         <activity android:name=".CLA"/>
         <activity android:name=".PLA"/>
+        <activity android:name=".Cdetail"/>
+        <activity android:name=".Pdetail"/>
+        <activity android:name=".Cpayment"/>
+        <activity android:name=".Ppayment"/>
     </application>
 
 </manifest>

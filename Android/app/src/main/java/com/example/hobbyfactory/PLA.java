@@ -14,15 +14,15 @@ public class PLA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pdtlist);
 
-        Button gd = (Button) findViewById(R.id.go_pld)
+        Button gopd = (Button) findViewById(R.id.go_pld);
 
-        gd.setOnClickListener(gpdListen);
+        gopd.setOnClickListener(gpdListen);
     }
 
     View.OnClickListener gpdListen = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent gpd= new Intent(PLA.this, Ppayment.class );
+            Intent gpd= new Intent(PLA.this, Pdetail.class );
             startActivity(gpd);
         }
     };
