@@ -545,10 +545,29 @@ CREATE SEQUENCE p04_pReview_seq
 INCREMENT BY 1
 START WITH 1;
 -- 상품후기 정보 입력 
-INSERT INTO p04_pReview VALUES (1,'좋은 제품입니다.',5,to_date('2020-03-19','YYYY-MM-DD'));
-INSERT INTO p04_pReview VALUES (2,'그냥 제품입니다.',3,to_date('2020-03-19','YYYY-MM-DD'));
-
+INSERT INTO p04_pReview VALUES (P04_PREVIEW_seq.nextval,'좋은 제품입니다.',5,to_date('2020-03-12','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (P04_PREVIEW_seq.nextval,'그럭저럭.',2,to_date('2020-03-14','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (P04_PREVIEW_seq.nextval,'쓸만합니다.',3,to_date('2020-03-14','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (P04_PREVIEW_seq.nextval,'배송빨라요.',4,to_date('2020-03-19','YYYY-MM-DD'));
+INSERT INTO p04_pReview VALUES (P04_PREVIEW_seq.nextval,'마감이별로에요.',2,to_date('2020-03-24','YYYY-MM-DD'));
 SELECT * FROM p04_pReview;
+
+SELECT po.order_no, mem_id, preview_date,
+preview_detail
+FROM p04_addr pa, p04_order po, p04_pReview ppr
+WHERE pa.addr_no = po.addr_no
+AND po.order_no = ppr.order_no
+AND store_no = 1;
+
+SELECT * FROM p04_pReview WHERE order_no = 1;
+
+UPDATE P04_PREVIEW 
+	SET PREVIEW_DETAIL = '수정' 
+	WHERE order_no = 1;
+DELETE FROM P04_PREVIEW
+	WHERE order_no = 1;
+
+
 DROP TABLE p04_pReview;
 DROP SEQUENCE p04_pReview_seq;
 	
