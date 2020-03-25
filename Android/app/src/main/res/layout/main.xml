@@ -207,13 +207,13 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-50dp"
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                app:srcCompat="@drawable/fra1" />
+                app:srcCompat="@drawable/pdt1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -255,12 +255,12 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                app:srcCompat="@drawable/fra2" />
+                app:srcCompat="@drawable/pdt2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
