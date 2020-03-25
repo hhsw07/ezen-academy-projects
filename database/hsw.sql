@@ -97,8 +97,19 @@ SET COURSE_KIND = '원데이',
 COURSE_OPENDATE = to_date('2020-03-25','YYYY-MM-DD'),
 COURSE_PRICE =1010,
 COURSE_TOTCNT = 20
-WHERE CKIND_NO = 5;
+WHERE CKIND_NO = 6;
 
 DELETE p04_ckind
 WHERE ckind_no = 5;
 
+SELECT b.* FROM p04_course a, p04_ckind b
+					where a.COURSE_NO = b.COURSE_NO
+					AND a.COURSE_NO = 1 order by ckind_no;
+					
+				UPDATE P04_CKIND 
+					SET COURSE_KIND = '정규', 
+					COURSE_PRICE =33, 
+					COURSE_TOTCNT = 33 
+					WHERE CKIND_NO = 11;
+					
+				SELECT * FROM P04_CKIND pc ORDER BY CKIND_NO;

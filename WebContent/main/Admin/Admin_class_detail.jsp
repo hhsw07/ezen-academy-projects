@@ -216,11 +216,11 @@ if(proc.equals("upt")){
 					</tr>
 					<tr>
 						<th>가격</th>
-						<td><input type="text" name="course_price<%=ckno %>" value="<%=ck.getCourse_price() %>" /></td>
+						<td><input type="text" name="course_price<%=ckno %>" value="<%=ck.getCourse_price() %>" onKeyup="numAutoComma(this);"/></td>
 						<th>신청인원</th>
 						<td><input type="text" name="course_curcnt<%=ckno %>" value="<%=ck.getCourse_curcnt() %>" readonly/></td>
 						<th>총인원</th>
-						<td><input type="text" name="course_totcnt<%=ckno %>" value="<%=ck.getCourse_totcnt() %>" /></td>
+						<td><input type="text" name="course_totcnt<%=ckno %>" value="<%=ck.getCourse_totcnt() %>" onKeyup="numAutoComma(this);"/></td>
 					</tr>
 				</table>
 				<%  
@@ -249,11 +249,11 @@ if(proc.equals("upt")){
 					</tr>
 					<tr>
 						<th>가격</th>
-						<td><input type="text" name="course_price" value="100" /></td>
+						<td><input type="text" name="course_price" value="100" onKeyup="numAutoComma(this);" /></td>
 						<th>신청인원</th>
 						<td><input type="text" name="course_curcnt" value="0" readonly /></td>
 						<th>총인원</th>
-						<td><input type="text" name="course_totcnt" value="10" /></td>
+						<td><input type="text" name="course_totcnt" value="10" onKeyup="numAutoComma(this);" /></td>
 					</tr>
 				</table>
 				<input type="hidden" name="newCk" value="newCk" />
@@ -280,6 +280,49 @@ if(proc.equals("upt")){
 		}
 	}
 	
+	// onKeyup="numAutoComma(this);"
+	function numAutoComma(obj) {
+	    
+	    var number = obj.value;
+	    var integer = obj.value;
+	    var chekcd = "";
+
+	    // 정수형의 콤마를 제거한다.
+	    integer = integer.replace(/\,/g, "");
+	    chekcd = inputNumberisFinit(integer);
+
+	    if(chekcd == "N") {
+	        alert("문자는 입력하실 수 없습니다.");
+	        obj.value = "";
+	        return false;
+	    }
+
+	    // 정수형을 한번더 점검한다.
+	    integer = inputNumberWithComma(inputNumberRemoveComma(integer));
+	    obj.value = integer;
+	    
+	}
+
+	// 천단위 이상의 숫자에 콤마( , )를 삽입하는 함수
+	function inputNumberWithComma(str) {
+	    str = String(str);
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
+	}
+
+	// 콤마( , )가 들어간 값에 콤마를 제거하는 함수
+	function inputNumberRemoveComma(str) {
+	    str = String(str);
+	    return str.replace(/[^\d]+/g, "");
+	}
+
+	//문자 여부를 확인하고 문자가 존재하면 N, 존재하지 않으면 Y를 리턴한다.
+	function inputNumberisFinit(str) {
+	    if(isFinite(str) == false) {
+	        return "N";
+	    } else {
+	        return "Y";
+	    }
+	}
 	
 </script>
 <%-- var course_kind = "<%=ck.getCourse_kind() %>";
