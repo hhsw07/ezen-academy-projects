@@ -69,5 +69,5 @@ public class mypOrder extends AppCompatActivity {
             Intent add01 = new Intent(mypOrder.this, mypAdd.class);
             startActivity(add01);
         }
-    }
+    };
 }

@@ -22,6 +22,17 @@
         <activity android:name=".Pdetail"/>
         <activity android:name=".Cpayment"/>
         <activity android:name=".Ppayment"/>
+        <activity android:name=".mypAdd"/>
+        <activity android:name=".mypOrder"/>
+        <activity android:name=".mypClass"/>
+        <activity android:name=".mypAddr"/>
+        <activity android:name=".mypCreview"/>
+        <activity android:name=".mypSreview"/>
+        <activity android:name=".mypInquiry"/>
+        <activity android:name=".mypMileage"/>
+        <activity android:name=".mypInfo"/>
+        <activity android:name=".mypPass"/>
+        <activity android:name=".mypDrop"/>
     </application>
 
 </manifest>
