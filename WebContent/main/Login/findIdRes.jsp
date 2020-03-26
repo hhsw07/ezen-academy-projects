@@ -37,7 +37,7 @@
 <form id="login" method="post" action="Main.jsp">
 	<input type="hidden" name="page" value="maindetail"/>
 	<input type="hidden" name="lp" value="loginmain"/>
-	<p>귀하의 아이디는 [아이디]입니다.</p>
+	<p>귀하의 아이디는 [himan1]입니다.</p>
 	<div style="display:inline-block;cursor:pointer; background-color:#FF4000; margin-top:20px;
 	padding:10px 40px 10px 40px; font-weight:bold; color:black; font-size:20px;" 
 	 onclick="document.querySelector('#login').submit();">확인</div>
