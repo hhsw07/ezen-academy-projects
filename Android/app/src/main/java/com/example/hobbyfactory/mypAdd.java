@@ -14,6 +14,7 @@ public class mypAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp_addaddr);
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my02 = (Button)findViewById(R.id.btn_my02);
         Button btn_my03 = (Button)findViewById(R.id.btn_my03);
         Button btn_01mo = (Button)findViewById(R.id.btn_01mo);
@@ -21,6 +22,7 @@ public class mypAdd extends AppCompatActivity {
         Button btn_01addr = (Button)findViewById(R.id.btn_01addr);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my02.setOnClickListener(toMy02);
         btn_my03.setOnClickListener(toMy03);
         btn_01mo.setOnClickListener(to01mo);
@@ -32,6 +34,13 @@ public class mypAdd extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypAdd.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypAdd.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy02 = new View.OnClickListener() {

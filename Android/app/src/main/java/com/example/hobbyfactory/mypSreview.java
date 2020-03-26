@@ -15,6 +15,7 @@ public class mypSreview extends AppCompatActivity {
         setContentView(R.layout.mp_sreview);
 
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my01 = (Button)findViewById(R.id.btn_my01);
         Button btn_my03 = (Button)findViewById(R.id.btn_my03);
         Button btn_02inquiry = (Button)findViewById(R.id.btn_02inquiry);
@@ -22,6 +23,7 @@ public class mypSreview extends AppCompatActivity {
         Button btn_02cr = (Button)findViewById(R.id.btn_02cr);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my01.setOnClickListener(toMy01);
         btn_my03.setOnClickListener(toMy03);
         btn_02inquiry.setOnClickListener(to02Inq);
@@ -33,6 +35,13 @@ public class mypSreview extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypSreview.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypSreview.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy01 = new View.OnClickListener() {

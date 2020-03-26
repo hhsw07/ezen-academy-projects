@@ -15,12 +15,14 @@ public class mypPass extends AppCompatActivity {
         setContentView(R.layout.mp_changepw);
 
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my01 = (Button)findViewById(R.id.btn_my01);
         Button btn_my02 = (Button)findViewById(R.id.btn_my02);
         Button btn_03edit = (Button)findViewById(R.id.btn_03edit);
         Button btn_03drop = (Button)findViewById(R.id.btn_03drop);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my01.setOnClickListener(toMy01);
         btn_my02.setOnClickListener(toMy02);
         btn_03edit.setOnClickListener(to03edit);
@@ -31,6 +33,13 @@ public class mypPass extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypPass.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypPass.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy01 = new View.OnClickListener() {

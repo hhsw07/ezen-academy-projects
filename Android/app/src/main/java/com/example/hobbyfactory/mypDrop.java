@@ -15,12 +15,14 @@ public class mypDrop extends AppCompatActivity {
         setContentView(R.layout.mp_dropout);
 
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my01 = (Button)findViewById(R.id.btn_my01);
         Button btn_my02 = (Button)findViewById(R.id.btn_my02);
         Button btn_03edit = (Button)findViewById(R.id.btn_03edit);
         Button btn_03pw = (Button)findViewById(R.id.btn_03pw);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my01.setOnClickListener(toMy01);
         btn_my02.setOnClickListener(toMy02);
         btn_03edit.setOnClickListener(to03edit);
@@ -31,6 +33,13 @@ public class mypDrop extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypDrop.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypDrop.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy01 = new View.OnClickListener() {

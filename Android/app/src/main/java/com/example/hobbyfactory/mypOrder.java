@@ -14,6 +14,7 @@ public class mypOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp_orderlist);
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my02 = (Button)findViewById(R.id.btn_my02);
         Button btn_my03 = (Button)findViewById(R.id.btn_my03);
         Button btn_01mc = (Button)findViewById(R.id.btn_01mc);
@@ -21,6 +22,7 @@ public class mypOrder extends AppCompatActivity {
         Button btn_01add = (Button)findViewById(R.id.btn_01add);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my02.setOnClickListener(toMy02);
         btn_my03.setOnClickListener(toMy03);
         btn_01mc.setOnClickListener(to01mc);
@@ -33,6 +35,13 @@ public class mypOrder extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypOrder.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypOrder.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy02 = new View.OnClickListener() {

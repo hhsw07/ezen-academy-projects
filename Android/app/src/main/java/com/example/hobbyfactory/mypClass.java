@@ -14,6 +14,7 @@ public class mypClass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp_classlist);
         Button btn_home = (Button)findViewById(R.id.btn_home);
+        Button btn_host = (Button)findViewById(R.id.btn_host);
         Button btn_my02 = (Button)findViewById(R.id.btn_my02);
         Button btn_my03 = (Button)findViewById(R.id.btn_my03);
         Button btn_01mo = (Button)findViewById(R.id.btn_01mo);
@@ -21,6 +22,7 @@ public class mypClass extends AppCompatActivity {
         Button btn_01add = (Button)findViewById(R.id.btn_01add);
 
         btn_home.setOnClickListener(home);
+        btn_host.setOnClickListener(toHost);
         btn_my02.setOnClickListener(toMy02);
         btn_my03.setOnClickListener(toMy03);
         btn_01mo.setOnClickListener(to01mo);
@@ -32,6 +34,13 @@ public class mypClass extends AppCompatActivity {
         public void onClick(View v) {
             Intent main = new Intent(mypClass.this, MainActivity.class);
             startActivity(main);
+        }
+    };
+    View.OnClickListener toHost = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent host = new Intent(mypClass.this, mypHostC.class);
+            startActivity(host);
         }
     };
     View.OnClickListener toMy02 = new View.OnClickListener() {
