@@ -1,411 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_home"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/back" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="마이페이지"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="#00FFFFFF" />
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/go_title5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/hobbyfactory_logo"
+            />
     </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#E2FFD2CF"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_my01"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:text="주문/배송관리" />
-
-                <View
-                    android:id="@+id/divider6"
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:paddingVertical="5dp"
-                    android:background="?android:attr/listDivider" />
-
-                <Button
-                    android:id="@+id/btn_my02"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:text="나의 활동" />
-
-                <View
-                    android:id="@+id/divider7"
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="?android:attr/listDivider" />
-
-                <Button
-                    android:id="@+id/btn_my03"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:text="내 정보 관리" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_01mo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="주문/배송조회" />
-
-                <Button
-                    android:id="@+id/btn_01mc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="클래스 보관함" />
-
-                <Button
-                    android:id="@+id/btn_01addr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="배송지 목록" />
-
-                <Button
-                    android:id="@+id/btn_01add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="배송지 추가" />
-            </LinearLayout>
-        </LinearLayout>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:orientation="vertical" >
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E2FFD2CF"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_hb015"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:padding="5dp">
+                android:layout_weight="1"
+                android:background="#000000"
+                android:text="관심클래스"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/no_title1"
-                                    android:layout_width="70dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="주문번호" />
-
-                                <TextView
-                                    android:id="@+id/order_no1"
-                                    android:layout_width="120dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="2003240001" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/date_title1"
-                                    android:layout_width="70dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="신청일" />
-
-                                <TextView
-                                    android:id="@+id/order_date1"
-                                    android:layout_width="120dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="2020.03.24" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/detailBtn1"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="end"
-                            android:text="주문상세보기" />
-
-                    </LinearLayout>
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/order_img1"
-                            android:layout_width="100dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/resize" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:padding="10dp"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/order_name1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="밤바다 고래의 꿈 네온사인" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/qty_title1"
-                                    android:layout_width="40dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="수량 : " />
-
-                                <TextView
-                                    android:id="@+id/order_qty1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="1" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/order_stu1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:gravity="end"
-                                android:text="주문완료"
-                                android:textColor="#FF5722" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btn_hb025"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:padding="5dp">
+                android:layout_weight="1"
+                android:background="#000000"
+                android:text="장바구니"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/no_title2"
-                                    android:layout_width="70dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="주문번호" />
-
-                                <TextView
-                                    android:id="@+id/order_no2"
-                                    android:layout_width="120dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="2003040001" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/date_title2"
-                                    android:layout_width="70dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="신청일" />
-
-                                <TextView
-                                    android:id="@+id/order_date2"
-                                    android:layout_width="120dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="2020.03.04" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/detailBtn2"
-                            android:layout_width="120dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="end"
-                            android:text="주문상세보기" />
-
-                    </LinearLayout>
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/order_img2"
-                            android:layout_width="100dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/lemon" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/order_name2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="상콤 레몬 수세미" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/qty_title2"
-                                    android:layout_width="40dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="수량 : " />
-
-                                <TextView
-                                    android:id="@+id/order_qty2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="1" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/order_stu2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:gravity="end"
-                                android:text="배송완료"
-                                android:textColor="#FF5722" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </ScrollView>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/order_img1"
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/resize" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/order_name1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="밤바다 고래의 꿈 네온사인"
+                                    android:textSize="20sp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/order_img2"
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/lemon" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/order_name2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="상콤 레몬 수세미"
+                                    android:textSize="20sp"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="bottom"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
         <Button
-            android:id="@+id/go_cls"
+            android:id="@+id/go_cls5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -416,7 +213,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/go_pls"
+            android:id="@+id/go_hbc5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -427,7 +224,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/go_dd"
+            android:id="@+id/go_mycls5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -436,8 +233,9 @@
             android:text="내클래스"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
+
         <Button
-            android:id="@+id/go_sv"
+            android:id="@+id/go_sv5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -447,6 +245,4 @@
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
     </LinearLayout>
-
-
 </LinearLayout>
