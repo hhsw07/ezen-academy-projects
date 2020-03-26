@@ -6,7 +6,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -14,10 +15,13 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageButton"
                 android:layout_width="match_parent"
-                android:layout_height="91dp"
-                app:srcCompat="@drawable/logo" />
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                app:srcCompat="@drawable/hobbyfactory_logo" />
 
             <TextView
                 android:id="@+id/textView"
@@ -63,7 +67,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="QnA" />
+                    android:text="1:1문의" />
+
+                <TextView
+                    android:id="@+id/title_req"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="호스트 신청" />
             </LinearLayout>
 
             <TableLayout
@@ -129,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="예약은 어디에서 하나요?"
+                        android:text="스타터 키트가 무엇인가요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -145,7 +157,7 @@
                         android:layout_column="1"
                         android:layout_weight="1"
                         android:paddingRight="20dp"
-                        android:text="예약은 시터 찾기를 통해 희망하는 시터에게 간단하고 쉽게 예약을 진행할 수 있습니다."
+                        android:text="스타터키트는 취미를 즐기기 위해 꼭 필요하면서 반복적으로 사용되는 기초 도구 키트입니다."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -181,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="헬로 펫시터는 어떤 서비스를 제공하나요?"
+                        android:text="하비팩토리 취미 클래스 작가로 신청하고 싶어요. 어떻게 하면 되나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -197,7 +209,7 @@
                         android:layout_column="1"
                         android:layout_weight="1"
                         android:paddingRight="20dp"
-                        android:text="저희는 국내 최고 반려동물 전문가들의 교육을 받은 펫시터분들의 1:1 케어와 픽업 서비스 등 이용가능한 다양한 서비스 옵션을 제공하고 있습니다. 또한, 프리미엄 안전보장 프로그램과 모바일 앱을 통해 간단하고 쉽게 서비스를 이용할 수 있습니다."
+                        android:text="하비팩토리 취미 클래스 작가가 될 기회는 누구에게나 열려있습니다! 간단한 작가님 소개와 포트폴리오, 하비풀에서 진행하고자 하는 클래스 정보를 기재하여 artist@hobbyfactory.co.kr 로 보내주세요."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -232,7 +244,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="호텔이나 병원에 맡기는 것과 다른 점은 무엇인가요?"
+                        android:text="하비팩토리에서의 활동 내역을 볼 수 있나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -248,7 +260,7 @@
                         android:layout_column="1"
                         android:layout_weight="1"
                         android:paddingRight="20dp"
-                        android:text="호텔이나 병원의 경우 여러 마리의 반려동물을 수용하여야 하기 때문에 24시간 맞춤케어가 힘든 단점이 있습니다. 헬로 펫시터의 펫시팅 서비스는 1:1 반려동물 케어를 원칙으로 하며, 반려동물이 펫시터의 가정집에서 있는 동안 안전하게 지낼 수 있도록 합니다."
+                        android:text="네. ‘마이페이지> 내 활동 내역’ 에 들어가면 하비팩토리에서의 활동 내역을 한 눈에 살펴볼 수 있습니다."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -282,7 +294,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="타 펫시팅 서비스와 다른 점은 무엇인가요?"
+                        android:text="탈퇴하고 싶어요."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -316,7 +328,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="헬로 펫시터 믿을 수 있는 업체인가요?"
+                        android:text="마일리지 사용에 제한이 있나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -351,7 +363,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="펫시팅 비용이 얼마인가요?"
+                        android:text="상품을 반품할 때, 배송비는 누가 부담하게 되나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -386,7 +398,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="고양이도 가능한가요?"
+                        android:text="주문을 취소하고 싶어요."
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -421,7 +433,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="추가비용 발생은 무엇인가요?"
+                        android:text="마일리지가 생겼습니다. 어떻게 사용하나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -456,7 +468,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="서비스에 대한 비용 결제는 언제되나요?"
+                        android:text="쿠폰을 등록했습니다. 어떻게 사용하나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -491,7 +503,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="결제수단 (카드) 변경 및 관리는 어디서하나요?"
+                        android:text="쿠폰을 받았습니다. 어떻게 등록하나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -526,7 +538,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="15dp"
-                        android:text="예약 취소 및 환불 규정은 어떻게 되나요?"
+                        android:text="신용/체크카드로 결제하고 싶은데 공인인증서가 없으면 어떻게 하나요?"
                         android:textColor="#000000" />
 
                 </TableRow>
@@ -548,4 +560,53 @@
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/go_cls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="마이페이지"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/go_hbc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="관심창고"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/go_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="장바구니"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+        <Button
+            android:id="@+id/go_sv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="고객센터"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
 </LinearLayout>
