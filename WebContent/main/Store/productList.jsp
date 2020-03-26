@@ -64,8 +64,7 @@ S_Pdt dao = new S_Pdt();
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	ArrayList<Store> sList = new ArrayList<Store>();
 	sList = dao.getStoreList();
-	if(session.getAttribute("sList")!=null){
-		
+	if(session.getAttribute("sList")!=null){	
 	}
 	%>
 	<%
@@ -89,10 +88,8 @@ S_Pdt dao = new S_Pdt();
           <div class="price-wrap1">
           	<!-- 가격 -->
           	<span class="price"><%=formatter.format(sL.getStore_price())%></span>원
-          </div>
-          
-        </div>
-        </a>
+          </div>  
+        </div></a>
       </div>
     <%
     }
