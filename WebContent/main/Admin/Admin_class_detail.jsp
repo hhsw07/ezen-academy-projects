@@ -91,7 +91,7 @@ if(proc.equals("upt")){
 	.top{position:absolute; width:100%; height:100px;}
 	.logo{font-family:sans-serif;font-size:35px;color:#FF4000;font-weight:bold; margin:0;}
 	
-	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:500px;}
+	.nav{background-color:#f8f8fa; position:absolute; top:100px; width:200px;height:1000px;}
 	.nav ul {list-style:none; padding:5px;}
 	.nav ul li {height:90px; border:1px solid black; text-align:center; line-height:90px;}
 	.nav ul li:first-child {border-radius:20px 20px 0 0;}
@@ -99,7 +99,7 @@ if(proc.equals("upt")){
 	.ckOn {background-color:#f36359; color:#ffffff;}
 	.ckOff {background-color:#ffffff;}
 	
-	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
+	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:1000px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff; margin-top:30px;}
 	.section table th {height:40px;background-color:#F5A9A9;}
 	.section table td {height:40px;}

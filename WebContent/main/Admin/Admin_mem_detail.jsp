@@ -90,7 +90,7 @@
 					<tr>
 						<th>생년월일</th>
 						<td><%=mem.getMem_birth() %></td>
-						<th>휴대폰</th>
+						<th>연락처</th>
 						<td><%=mem.getMem_phone() %></td>
 					</tr>
 					<tr>

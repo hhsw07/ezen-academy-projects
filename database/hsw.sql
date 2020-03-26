@@ -113,3 +113,80 @@ SELECT b.* FROM p04_course a, p04_ckind b
 					WHERE CKIND_NO = 11;
 					
 				SELECT * FROM P04_CKIND pc ORDER BY CKIND_NO;
+				
+			
+			
+SELECT a.MEM_NO "No", a.MEM_ID "ID", a.MEM_NAME "이름",
+	   a.MEM_PHONE "연락처", a.MEM_CODE "등급"
+FROM P04_MEMBER a
+WHERE MEM_ID = 'himan1';
+
+SELECT DISTINCT a.MEM_NO "No", a.MEM_ID "ID", a.MEM_NAME "이름",
+a.MEM_MAIL "이메일", a.MEM_NICKNAME "닉네임", a.MEM_BIRTH "생년월일",	   
+a.MEM_PHONE "연락처", a.MEM_CODE "등급",
+(SELECT sum(b.POINT_MILEAGE ) FROM P04_POINT b 
+WHERE b.MEM_ID = 'himan1' ) "마일리지" 
+FROM P04_MEMBER a, P04_POINT b 
+WHERE b.MEM_ID = 'himan1' 
+AND a.MEM_ID = b.MEM_ID;
+
+SELECT COURSE_NO "No", COURSE_TITLE "클래스명", MEM_ID "호스트명",
+CORUSE_CATEGORY "수업분류",COURSE_INPUTDATE "등록일"
+FROM P04_COURSE ORDER BY COURSE_NO DESC;
+
+SELECT * FROM P04_COURSE ORDER BY COURSE_NO DESC;
+
+SELECT * FROM p04_course 
+WHERE COURSE_NO =1;
+
+SELECT COURSE_NO "클래스번호",COURSE_INPUTDATE "등록일",
+MEM_ID "호스트명", COURSE_TITLE "클래스명", CORUSE_CATEGORY "수업분류",
+COURSE_IMG "클래스이미지", COURSE_DETAIL "상세설명"
+FROM P04_COURSE
+WHERE COURSE_NO =1;
+
+SELECT STORE_NO "상품번호", MEM_ID "호스트",
+		STORE_TITLE "제품명", STORE_TOTCNT "개수",
+		STORE_PRICE "가격", STRORE_DATE "신청일",
+		STORE_CODE "승인상태", STORE_IMG "상품이미지",
+		STORE_DETAIL "상품설명"
+FROM P04_STORE WHERE STORE_NO = 1;
+
+SELECT COURSE_KIND "클래스종류", COURSE_OPENDATE "수강일",
+COURSE_PRICE "가격", COURSE_CURCNT "신청인원", COURSE_TOTCNT "총인원"
+FROM P04_CKIND
+WHERE COURSE_NO = 1 ORDER BY CKIND_NO;
+
+INSERT INTO p04_store values(p04_store_seq.nextval,'ezen1',
+'비누만들기','미승인',10000,0,'star.jpg',sysdate,
+'star.jpg','다양한 취미');
+
+INSERT INTO p04_course values(p04_course_seq.nextval,'호스트명',sysdate,
+'클래스명','상세설명','클래스이미지','마크라메');
+
+UPDATE P04_STORE
+SET STORE_CODE = '승인'
+WHERE STORE_NO = 1;
+
+SELECT NOTI_NO "공지사항 번호", NOTI_DATE "공지등록일",	NOTI_CODE "중요", 
+		NOTI_TITLE "공지제목",	NOTI_DETAIL "공지내용"
+FROM P04_NOTICE WHERE NOTI_NO =18;
+
+
+INSERT INTO p04_notice values(p04_notice_seq.nextval,
+'제목','내용',sysdate,'N');
+
+UPDATE p04_notice 
+SET noti_title = '제목수정',
+	noti_detail = '공지수정', 
+	noti_code = 'Y' 
+WHERE noti_no = 1;
+
+SELECT INQUIRY_NO "문의 번호", MEM_ID "아이디", INQUIRY_DATE "등록일",
+INQUIRY_DETAIL "문의내용", INQUIRY_RE "답변내용"
+FROM P04_INQUIRY
+WHERE INQUIRY_NO = 13;
+
+UPDATE P04_INQUIRY
+SET INQUIRY_RE = '답변'
+WHERE INQUIRY_NO = 13;
