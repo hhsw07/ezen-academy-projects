@@ -26,10 +26,10 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_host"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="#00FFFFFF" />
+            android:background="@drawable/scrum" />
     </LinearLayout>
 
 
@@ -340,11 +340,11 @@
             android:layout_weight="1"
             android:background="#000000"
             android:gravity="center"
-            android:text="내클래스"
+            android:text="장바구니"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
         <Button
-            android:id="@+id/go_sv"
+            android:id="@+id/go_ddd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

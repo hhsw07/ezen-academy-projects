@@ -33,6 +33,8 @@
         <activity android:name=".mypInfo"/>
         <activity android:name=".mypPass"/>
         <activity android:name=".mypDrop"/>
+        <activity android:name=".mypHostC"/>
+        <activity android:name=".mypHostS"/>
     </application>
 
 </manifest>
