@@ -16,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button gc = (Button)findViewById(R.id.go_cl);
         Button gp = (Button)findViewById(R.id.go_pl);
+        Button mp = (Button)findViewById(R.id.go_cls);
 
         gc.setOnClickListener(gclListen);
         gp.setOnClickListener(gplListen);
+        mp.setOnClickListener(mpListen);
     }
     View.OnClickListener gclListen = new View.OnClickListener(){
         @Override
@@ -32,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent gpl = new Intent(MainActivity.this, PLA.class);
             startActivity(gpl);
+        }
+    };
+    View.OnClickListener mpListen = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent mp = new Intent(MainActivity.this, mypOrder.class);
+            startActivity(mp);
         }
     };
 
