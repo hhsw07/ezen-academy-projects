@@ -60,7 +60,7 @@ public class Sreqhost extends AppCompatActivity {
     View.OnClickListener gsListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent gs = new Intent(Sreqhost.this, Sreqhost.class);
+            Intent gs = new Intent(Sreqhost.this, Snotice.class);
             startActivity(gs);
         }
     };
@@ -74,7 +74,7 @@ public class Sreqhost extends AppCompatActivity {
     View.OnClickListener tnListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent tn = new Intent(Sreqhost.this, Sreqhost.class);
+            Intent tn = new Intent(Sreqhost.this, Snotice.class);
             startActivity(tn);
         }
     };

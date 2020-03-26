@@ -60,7 +60,7 @@ public class SFAQ extends AppCompatActivity {
     View.OnClickListener gsListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent gs = new Intent(SFAQ.this, SFAQ.class);
+            Intent gs = new Intent(SFAQ.this, Snotice.class);
             startActivity(gs);
         }
     };
@@ -74,7 +74,7 @@ public class SFAQ extends AppCompatActivity {
     View.OnClickListener tnListen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent tn = new Intent(SFAQ.this, SFAQ.class);
+            Intent tn = new Intent(SFAQ.this, Snotice.class);
             startActivity(tn);
         }
     };
