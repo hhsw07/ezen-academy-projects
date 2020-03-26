@@ -3,7 +3,7 @@ package vo_jhk;
 import java.sql.*;
 import java.util.ArrayList;
 
-import z01_vo.Member;
+import z01_vo.Notice;
 
 public class memberDao {
 	private Connection con;
@@ -37,28 +37,6 @@ public class memberDao {
 			e.printStackTrace();
 		}
 		return isValid;
-	}
-	
-	public void insertMember(Member ins) {
-		try {
-			setCon();
-
-			String sql = "INSERT INTO p04_member VALUES (?, p04_member_seq.nextval, ?, ?, ?, ?,"
-					+ " to_date(?,'YYYY-MM-DD'), ?,'M')";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, ins.getMem_id());
-			pstmt.setString(2, ins.getMem_pass());
-			pstmt.setString(3, ins.getMem_name());
-			pstmt.setString(4, ins.getMem_mail()); //이메일
-			pstmt.setString(5, ins.getMem_nickname()); //닉네임
-			pstmt.setString(6, ins.getMem_birth()); //생년월일
-			pstmt.setString(7, ins.getMem_phone()); //휴대폰
-			
-			pstmt.close(); con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public static void main(String[] args) {

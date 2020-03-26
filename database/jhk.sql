@@ -130,7 +130,7 @@ INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen1',to_date('2020-03-1
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen2',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 INSERT INTO p04_course VALUES (p04_course_seq.nextval,'ezen3',to_date('2020-03-19','YYYY-MM-DD'),'비누만들기'||p04_course_seq.nextval,'fradetail1.jpg','ads01_wide.jpg','다양한 취미');
 
-SELECT * FROM p04_course;
+SELECT * FROM p04_course
 DROP SEQUENCE p04_course_seq;
 
 -- 수업 수정
