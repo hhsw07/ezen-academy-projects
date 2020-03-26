@@ -264,7 +264,7 @@
             android:layout_weight="1"
             android:background="#000000"
             android:gravity="center"
-            android:text="장바구니"
+            android:text="내클래스"
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
         <Button
