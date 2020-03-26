@@ -66,7 +66,7 @@ DB_Inquiry db = new DB_Inquiry();
 					<a href="?page=mypage_order"class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" class="mymenu_btn mymenu_btn-on">나의 활동</a>
+					<a href="?page=mypage_classreview" class="mymenu_btn mymenu_btn-on">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
@@ -80,7 +80,7 @@ DB_Inquiry db = new DB_Inquiry();
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li><a href="#">구매후기</a></li>
+				<li><a href="?page=mypage_classreview">구매후기</a></li>
 				<li class="mymenu_btn-on"><a href="?page=mypage_inquiry">1:1문의</a></li>
 				<li><a href="?page=mypage_mileage">마일리지</a></li>
 			</ul>

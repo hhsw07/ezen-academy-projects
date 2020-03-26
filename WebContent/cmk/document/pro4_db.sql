@@ -780,15 +780,27 @@ VALUES('배송지명', '수령자명','휴대전화','추가번호','우편번�
 DELETE P04_ADDR 
 WHERE addr_no=1 
 
--- himan1 회원정보
+-- himan1 회원정보 (완료)
 SELECT mem_id, mem_name, mem_mail,mem_nickname,mem_birth,mem_phone
 FROM P04_MEMBER
 WHERE MEM_ID = 'himan1';
 
--- 회원정보 수정
+-- 회원정보 수정 (완료)
+SELECT MEM_ID, MEM_NAME, MEM_BIRTH, MEM_NICKNAME, MEM_MAIL, MEM_PHONE 
+FROM P04_MEMBER
+WHERE MEM_ID='himan1';
+
 UPDATE P04_MEMBER 
 SET MEM_NICKNAME='닉네임', MEM_MAIL='이메일', MEM_PHONE='연락처'
 WHERE MEM_ID='himan1'
+
+-- 탈퇴 (완료)
+SELECT sum(POINT_MILEAGE )
+FROM P04_POINT
+WHERE MEM_ID = 'himan1';
+
+DELETE P04_MEMBER
+WHERE mem_id = 'himan1'
 
 -- 마일리지 조회 (완료)
 SELECT point_date, point_detail, point_mileage
@@ -807,7 +819,7 @@ SELECT * FROM P04_COURSE;
 SELECT * FROM P04_CKIND;
 SELECT * FROM P04_REQUEST;
 
--- 호스트 클래스
+-- 호스트 클래스 (완료)
 SELECT course_img, course_title
 FROM P04_COURSE
 WHERE MEM_ID = 'ezen1'

@@ -29,7 +29,8 @@
 	.hoststore{width:1050px; margin:0 auto; display:block;}
 	.apply-cont{padding:40px 3% 0;}
 	.in-wrap{position:relative; padding:7px 10px 9px; border:1px solid #eaeaea;}
-	.in-wrap input{width:850px; color:#3d4248; background:none; border:0;}
+	.in-wrap-title{width:850px; color:#3d4248; background:none; border:0;}
+	.in-wrap-cont{width:100%;color:#3d4248; background:none; border:0;}
 	.ck.ck-editor{min-width:900px;max-width: 900px;}
 	.ck-editor__editable{min-height:700px;}
 	.apply-con{padding:10px 0;}
@@ -48,7 +49,7 @@
 					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_classreview" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
@@ -74,19 +75,29 @@
 			<table>
 				<tr>
 					<th class="apply-tit">상품명</th>
-			    	<td class="apply-con">
-			    		<div class="in-wrap"><input type="text" name="aptitle"/></div>
+			    	<td class="apply-con" colspan="3">
+			    		<div class="in-wrap"><input class="in-wrap-title" type="text" name="aptitle"/></div>
 			    	</td>
 				</tr>
 				<tr>
 			    	<th class="apply-tit">상품사진</th>
-			    	<td class="apply-con">
+			    	<td class="apply-con" colspan="3">
 			    		<input type="file" name="pic" />
 			    	</td>
 			    </tr>
+			    <tr>
+					<th class="apply-tit">가격</th>
+			    	<td class="apply-con">
+			    		<div class="in-wrap"><input class="in-wrap-cont" type="text" name="apprice"/></div>
+			    	</td>
+					<th class="apply-tit">수량</th>
+			    	<td class="apply-con">
+			    		<div class="in-wrap"><input class="in-wrap-cont" type="text" name="apcnt"/></div>
+			    	</td>
+				</tr>
 				<tr>
 					<th></th>
-			    	<td class="apply-con"><textarea name="content" id="editor"></textarea></td>
+			    	<td class="apply-con" colspan="3"><textarea name="content" id="editor"></textarea></td>
 				</tr>	   		  		  					
 			</table>
 			<div class="myinfo_btn">

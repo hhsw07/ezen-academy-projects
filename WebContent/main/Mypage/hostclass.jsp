@@ -78,7 +78,7 @@ int nextNo = pg.getPage_End()+1;
 					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_classreview" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>

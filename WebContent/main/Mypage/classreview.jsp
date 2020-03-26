@@ -64,8 +64,10 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-	
-	
+ArrayList <MpReview> mrlist = new ArrayList<MpReview>();
+mrlist.add(new MpReview("../image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인 클래스", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
+mrlist.add(new MpReview("../image/mypage_ex01.jpg","바이유어핸즈의 상콤 레몬 수세미 뜨기", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
+
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -90,7 +92,7 @@ String path = request.getContextPath(); %>
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li class="mymenu_btn-on"><a href="#">구매후기</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_classreview">구매후기</a></li>
 				<li><a href="?page=mypage_inquiry">1:1문의</a></li>
 				<li><a href="?page=mypage_mileage">마일리지</a></li>
 			</ul>
@@ -112,37 +114,43 @@ String path = request.getContextPath(); %>
 			</div>
 		</div>
 		<div class="reviewsub-wrap">
-			<ul class="mymenu-sub-tab-list">
-				<li class="mymenu-sub-tab">
-					<a href="#" class="btn-sub-tab btn-sub-on">클래스 후기</a>
-				</li>
-				<li class="mymenu-sub-tab">
-					<a href="#" class="btn-sub-tab">스토어 후기</a>
-				</li>
-			</ul>
+			<table>
+				<tr>
+					<th><a href="?page=mypage_classreview" class="btn-sub-tab btn-sub-on">클래스 후기</a></th>
+					<th><a href="?page=mypage_storereview" class="btn-sub-tab">상품 후기</a></th>
+				</tr>
+			</table>
 		</div>
 	<!-- 구매후기 없을 때 -->
+	<%
+	if(mrlist==null){
+	%>
 		<article class="mymenu-content">
 			<div class="review-wrap">
 				<div class="noreview-wrap">
 					<div class="noreview-tit">아직 작성하신 클래스 후기가 없어요.</div>
 					<div class="noreview-txt">클래스에 대한 후기를 남겨 주세요!<br>소중한 후기를 남겨주신 분들께<br>마일리지를 선물로 드립니다.</div>
-					<a href="#" class="btn-noreview">클래스 후기 작성</a>
+					<!-- <a href="#" class="btn-noreview">클래스 후기 작성</a> -->
 				</div>
 			</div>
 		</article>
+	<%} %>
 	<!-- 후기 있을 때 -->
+	<%if(mrlist!=null){
+		%>
+	
 		<article class="review-content">
-			<div >
+			<div>
+			<%for(MpReview mr:mrlist){ %>
 				<div class="review-wrap">
 					<div class="c-review-cont">
 						<div class="c-review-area">
 							<div class="c-review-thumb">
-								<img src="../image/mypage_ex01.jpg" alt="" >
+								<img src="<%=mr.getMr_thum() %>" alt="" >
 							</div>
 							<div class="c-review-name">
 								<div class="c-review-tit">클래스명</div>
-								<div class="c-review-txt">바이유어핸즈의 상콤 레몬 수세미 뜨기</div>
+								<div class="c-review-txt"><%=mr.getMr_name() %></div>
 							</div>
 						</div>
 						<div >
@@ -152,17 +160,19 @@ String path = request.getContextPath(); %>
 										<div class="review-star-on">9별</div>
 									</div>
 									<div class="comment-info">
-										<span class="reply-date">2020.03.15</span>
+										<span class="reply-date"><%=mr.getMr_date() %></span>
 										<a href="#link" title="수정" class="btn-edit-cr">수정</a>
 										<em>|</em>
 										<a href="#link" title="삭제"  class="btn-del-cr">삭제</a>
 									</div>
 								</div>
-								<div class="comment-cont">선생님이 친절하게 알려주신대로 따라하니까 금방 만들었어요<br>만들기 전 연습할 수 있는 시간이 있어서 더 따라하기 쉬웠던거 같아요</div>
+								<div class="comment-cont"><%=mr.getMr_review() %></div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<%}
+			}%>
 				<div class="paging">
 					
 				</div>

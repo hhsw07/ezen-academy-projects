@@ -53,6 +53,10 @@ String path = request.getContextPath(); %>
 	.btn-edit-cr{margin:0 5px;color:#a1a4a8;}
 	.btn-del-cr{color:#a1a4a8;margin:0 0 0 5px;}
 	.comment-cont{margin:8px 0 0;color:#3d4248;font-size:14px;word-break:break-all;}
+	.reviewsub-wrap {width: 182px;margin: 20px auto 0;display: block;}
+	.reviewsub-wrap ul li{float:left;margin:1px;}
+	.btn-sub-tab {display:block;width: 91px; height: 28px;color: #a1a4a8;font-size: 12px;border: 1px solid #DFDFDF;letter-spacing: -0.5px;line-height: 26px;text-align: center;}
+	.btn-sub-on {color: #FFFFFF;background: #3d4248;border: 0;line-height: 28px;}
 /* 페이지 */
 	.paging{text-align:center; width:980px; position:absolute; bottom:10px}
 	.pageNo{color:#f36359;}
@@ -60,8 +64,10 @@ String path = request.getContextPath(); %>
 </style>
 </head>
 <%
-	
-	
+ArrayList <MpReview> mslist = new ArrayList<MpReview>();
+mslist.add(new MpReview("../image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인", "2020.03.04", "분위기 있어요"));
+mslist.add(new MpReview("../image/mypage_ex01.jpg","상콤 레몬 수세미", "2020.03.04", "설거지할 맛 납니다"));
+
 %>
 <body>
 <!-- 마이페이지 메뉴 -->
@@ -86,7 +92,7 @@ String path = request.getContextPath(); %>
 	<div class="mysubmenu">
 		<nav class="mynav">
 			<ul>
-				<li class="mymenu_btn-on"><a href="#">구매후기</a></li>
+				<li class="mymenu_btn-on"><a href="?page=mypage_classreview">구매후기</a></li>
 				<li><a href="?page=mypage_inquiry">1:1문의</a></li>
 				<li><a href="?page=mypage_mileage">마일리지</a></li>
 			</ul>
@@ -107,28 +113,42 @@ String path = request.getContextPath(); %>
 				</div>
 			</div>
 		</div>
+		<div class="reviewsub-wrap">
+			<table>
+				<tr>
+					<th><a href="?page=mypage_classreview" class="btn-sub-tab">클래스 후기</a></th>
+					<th><a href="?page=mypage_storereview" class="btn-sub-tab btn-sub-on">상품 후기</a></th>
+				</tr>
+			</table>
+		</div>
 	<!-- 구매후기 없을 때 -->
+	<%
+	if(mslist==null){
+	%>
 		<article class="mymenu-content">
 			<div class="review-wrap">
 				<div class="noreview-wrap">
 					<div class="noreview-tit">아직 작성하신 구매 후기가 없어요.</div>
-					<div class="noreview-txt">취미 클래스에 대한 후기를 남겨 주세요!<br>소중한 후기를 남겨주신 분들께<br>마일리지를 선물로 드립니다.</div>
-					<a href="#" class="btn-noreview">구매 후기 작성</a>
+					<div class="noreview-txt">구매 상품에 대한 후기를 남겨 주세요!<br>소중한 후기를 남겨주신 분들께<br>마일리지를 선물로 드립니다.</div>
+					<!-- <a href="#" class="btn-noreview">구매 후기 작성</a> -->
 				</div>
 			</div>
 		</article>
+	<%} %>
 	<!-- 후기 있을 때 -->
+	<% if(mslist!=null){ %>
 		<article class="review-content">
 			<div >
+			<%for(MpReview mpr:mslist){ %>
 				<div class="review-wrap">
 					<div class="c-review-cont">
 						<div class="c-review-area">
 							<div class="c-review-thumb">
-								<img src="../image/mypage_ex01.jpg" alt="" >
+								<img src="<%=mpr.getMr_thum() %>" alt="" >
 							</div>
 							<div class="c-review-name">
-								<div class="c-review-tit">클래스명</div>
-								<div class="c-review-txt">바이유어핸즈의 상콤 레몬 수세미 뜨기</div>
+								<div class="c-review-tit">상품명</div>
+								<div class="c-review-txt"><%=mpr.getMr_name() %></div>
 							</div>
 						</div>
 						<div >
@@ -138,22 +158,24 @@ String path = request.getContextPath(); %>
 										<div class="review-star-on">9별</div>
 									</div>
 									<div class="comment-info">
-										<span class="reply-date">2020.03.15</span>
+										<span class="reply-date"><%=mpr.getMr_date() %></span>
 										<a href="#link" title="수정" class="btn-edit-cr">수정</a>
 										<em>|</em>
 										<a href="#link" title="삭제"  class="btn-del-cr">삭제</a>
 									</div>
 								</div>
-								<div class="comment-cont">선생님이 친절하게 알려주신대로 따라하니까 금방 만들었어요<br>만들기 전 연습할 수 있는 시간이 있어서 더 따라하기 쉬웠던거 같아요</div>
+								<div class="comment-cont"><%=mpr.getMr_review() %></div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<%} %>
 				<div class="paging">
 					
 				</div>
 			</div>
 		</article>
+		<%} %>
 	</section>
 </body>
 </html>

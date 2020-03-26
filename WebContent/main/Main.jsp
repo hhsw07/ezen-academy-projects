@@ -235,6 +235,18 @@
 %>
 			<%@include file="Mypage/shipedit.jsp"%>
 <%		}
+		if(pl.equals("mypage_classreview")){
+%>
+			<%@include file="Mypage/classreview.jsp"%>
+<%		}
+		if(pl.equals("mypage_storereview")){
+%>
+			<%@include file="Mypage/storereview.jsp"%>
+<%		}
+		if(pl.equals("mypage_applystore")){
+%>
+			<%@include file="Mypage/apply.jsp"%>
+<%		}
 	} %>
 	
 	

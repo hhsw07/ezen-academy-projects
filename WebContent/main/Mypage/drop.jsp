@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.ArrayList, z01_vo.*"%>
+    import="java.util.ArrayList, z01_vo.*,vo_cmk.*"%>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -47,7 +47,20 @@ String path = request.getContextPath(); %>
 </head>
 <body>
 <%
-ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
+DB_Mileage db = new DB_Mileage();
+int tot=0;
+int plus=0;
+int minus=0;
+if(db.getPtlist()!=null){
+	for(VO_Mileage pt:db.getPtlist()){
+		if(pt.getPoint_mileage()>=0){
+			plus = plus+pt.getPoint_mileage();
+		} else{
+			minus = minus+pt.getPoint_mileage();
+		}
+		tot = plus+minus;
+	}
+}
 %>
 <!-- 마이페이지 메뉴 -->
 	<div class="mymenu">
@@ -57,7 +70,7 @@ ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
 					<a href="?page=mypage_order" class="mymenu_btn">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_classreview" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" class="mymenu_btn mymenu_btn-on">내 정보 관리</a>
@@ -96,7 +109,7 @@ ArrayList<Point> ptList =(ArrayList<Point>)session.getAttribute("ptList");
 					• 주문이 진행 중인 경우나 수강 미도래 클래스가 있는 경우에는 탈퇴가 불가능하며, 취소/반품이 완료된 이후 가능합니다.<br>
 					• 탈퇴 후 24시간 동안 기존에 사용하신 이메일과 휴대폰 번호로는 재가입이 불가능합니다.
 				</div>
-				<div class="d-point">현재 고객님의 사용 가능 마일리지는 <br><span class="d-mileage"><%=session.getAttribute("totPoint") %> P</span>입니다</div>
+				<div class="d-point">현재 고객님의 사용 가능 마일리지는 <br><span class="d-mileage"><%=tot %> P</span>입니다</div>
 			</div>
 			<div class="d-write">
 				<div class="w-title">비밀번호</div>

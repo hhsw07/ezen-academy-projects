@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.*" %>
+    import="java.util.*, z01_vo.*,vo_cmk.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,21 +71,7 @@ ptList.add(pt3);
 ptList.add(pt4);
 session.setAttribute("ptList", ptList);
 // 포인트계산
-int tot = 0;
-int plus = 0;
-int minus = 0;
-for(int idx=0;idx<ptList.size();idx++){
-	Point p = ptList.get(idx);
-	if(p.getPt_mileage()>=0){
-		plus += p.getPt_mileage();
-		session.setAttribute("plus", plus);
-	} else{
-		minus += p.getPt_mileage();
-		session.setAttribute("minus", -minus);
-	}
-	tot = plus + minus;
-}
-session.setAttribute("totPoint", tot);
+
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);
@@ -114,7 +100,7 @@ int nextNo = pg.getPage_End()+1;
 					<a href="?page=mypage_order" class="mymenu_btn mymenu_btn-on">주문/배송관리</a>
 				</li>
 				<li>
-					<a href="?page=mypage_mileage" class="mymenu_btn">나의 활동</a>
+					<a href="?page=mypage_classreview" class="mymenu_btn">나의 활동</a>
 				</li>
 				<li>
 					<a href="?page=mypage_modiinfo" class="mymenu_btn">내 정보 관리</a>
