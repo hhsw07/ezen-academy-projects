@@ -879,13 +879,69 @@ insert into p04_notice values (p04_notice_seq.nextval, '설 연휴 배송 일정
 insert into p04_notice values (p04_notice_seq.nextval, '고객센터 전화상담 운영 임시중단 안내', '안녕하세요. 하비팩토리입니다.\n\n하비팩토리는 고객과 임직원의 코로나19 감염 예방을 위해, 전직원 재택 근무를 결정하였습니다.\n\n\n\n이에 따라 고객센터 전화상담 운영을 임시 중단하오니, 1:1 문의 및 채팅 상담을 이용해주시기 바랍니다.\n\n※ 전화상담 중단 기간 : 2월 25일 ~ 추후 공지\n\n\n\n전화상담 외에 모든 업무는 정상 진행됨을 알려드리며, 이용에 불편을 드리게 된 점 죄송한 말씀드립니다.\n\n하루 빨리 사태가 마무리되고, 고객 여러분 모두 건강지키시길 기원하겠습니다.\n\n\n\n감사합니다.\n\n하비팩토리 드림\n', to_date('2020-02-25','YYYY-MM-DD'), 'Y');
 
 
-
+-- 공지사항 목록
 SELECT * FROM p04_notice;
 DROP TABLE p04_notice;
 DROP SEQUENCE p04_notice_seq;
-
+-- 공지사항 상세
 SELECT noti_no, noti_title,
 REPLACE(noti_detail,'\n', '<br>') noti_detail, noti_date, noti_code
 FROM p04_notice
 WHERE noti_no = 1;
 -------------------------------------
+--메인페이지 스토어 상품 출력
+SELECT * FROM P04_STORE ORDER BY STORE_NO DESC;
+--메인페이지 클래스 상품 출력 
+SELECT DISTINCT PC.COURSE_NO, PC.MEM_ID, PC.COURSE_TITLE,
+PC.COURSE_IMG, PCK.COURSE_PRICE
+FROM P04_COURSE PC LEFT OUTER JOIN P04_CKIND PCK
+ON PC.COURSE_NO = PCK.COURSE_NO 
+ORDER BY PC.COURSE_NO DESC;
+-- 아이디 중복검사
+SELECT mem_id FROM P04_MEMBER
+WHERE mem_id='himan1';
+-- 로그인 검증 
+SELECT mem_id FROM P04_MEMBER
+WHERE mem_id='himan1'
+AND MEM_PASS='8888'; 
+-- 아이디 찾기
+SELECT mem_id FROM P04_MEMBER
+WHERE mem_name='홍길동7' AND mem_mail='mail07@gmail.com';
+-- 비밀번호 찾기
+SELECT * FROM P04_MEMBER
+WHERE mem_id='himan1' AND mem_mail='mail07@gmail.com';
+-- 비밀번호 변경
+UPDATE p04_member
+SET mem_pass = '9999'
+WHERE MEM_ID = 'himan1';
+-- 회원가입
+INSERT INTO p04_member VALUES ('himan1', p04_member_seq.nextval, '7777', 
+'홍길동', 'mail@gmail.com', '둘리' to_date('2020-03-19','YYYY-MM-DD'),
+'010-1234-1001','N');
+-- 장바구니 출력
+SELECT *
+FROM p04_order po, P04_STORE ps, p04_addr pa
+WHERE po.STORE_NO = ps.STORE_NO
+AND po.ADDR_NO = pa.ADDR_NO
+AND pa.MEM_ID = 'himan1'
+AND order_code='장바구니';
+-- 주문완료 출력?
+SELECT *
+FROM p04_order po, P04_STORE ps, p04_addr pa
+WHERE po.STORE_NO = ps.STORE_NO
+AND po.ADDR_NO = pa.ADDR_NO
+AND order_code='주문완료';
+-- 관심목록 출력
+SELECT *
+FROM p04_course pc, p04_ckind pck, p04_request pr
+WHERE pc.COURSE_NO = pck.COURSE_NO 
+AND pck.CKIND_NO = pr.CKIND_NO 
+AND pr.mem_id = 'himan1'
+AND pr.REQ_CODE = '관심목록';
+-- 내클래스 출력
+SELECT *
+FROM p04_course pc, p04_ckind pck, p04_request pr
+WHERE pc.COURSE_NO = pck.COURSE_NO 
+AND pck.CKIND_NO = pr.CKIND_NO 
+AND pr.mem_id = 'himan1'
+AND pr.REQ_CODE = '신청완료';
