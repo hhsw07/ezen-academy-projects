@@ -44,7 +44,7 @@
 <p class="logo" style="padding:20px;">HobbyFactory</p>
 <form id="login" method="post" action="Main.jsp">
 	<table id="joinFrm">
-	<tr><th>아이디</th><td><input type="text" id="uid" name="uid" placeholder="아이디"/></td>
+	<tr><th>아이디</th><td><input type="text" id="uid" name="userid" placeholder="아이디"/></td>
 	<th><div style="display:inline-block;cursor:pointer; background-color:#000000;
 	padding:10px 10px 10px 10px; color:white; font-size:15px;" 
 	 onclick="checkId()">중복확인</div></th></tr>
