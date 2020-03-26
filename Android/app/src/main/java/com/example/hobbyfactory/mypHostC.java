@@ -14,10 +14,10 @@ public class mypHostC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp_hostclass);
         Button btn_home = (Button)findViewById(R.id.btn_home);
-        Button btn_host01 = (Button)findViewById(R.id.btn_host01);
+        Button btn_host02 = (Button)findViewById(R.id.btn_host02);
 
         btn_home.setOnClickListener(home);
-        btn_host01.setOnClickListener(toHStore);
+        btn_host02.setOnClickListener(toHStore);
     }
 
     View.OnClickListener home =new View.OnClickListener() {
