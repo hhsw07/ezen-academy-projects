@@ -35,6 +35,19 @@
         <activity android:name=".mypDrop"/>
         <activity android:name=".mypHostC"/>
         <activity android:name=".mypHostS"/>
+        <activity android:name=".login"/>
+        <activity android:name=".join"/>
+        <activity android:name=".findPw"/>
+        <activity android:name=".findId"/>
+        <activity android:name=".found"/>
+        <activity android:name=".new_pass"/>
+        <activity android:name=".hb_myclass"/>
+        <activity android:name=".hb_cart"/>
+        <activity android:name=".hb_faclass"/>
+        <activity android:name=".Sreqhost"/>
+        <activity android:name=".Snewqna"/>
+        <activity android:name=".SFAQ"/>
+        <activity android:name=".Snotice"/>
     </application>
 
 </manifest>

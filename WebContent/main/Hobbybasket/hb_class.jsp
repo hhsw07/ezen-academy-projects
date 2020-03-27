@@ -40,15 +40,7 @@
 <%
 //관심클래스 내용 입력
 ArrayList<Myclasses> myclist = new ArrayList<Myclasses>();
-Myclasses mc1 = new Myclasses("2020.03.04","image/mypage_ex01.jpg","[원데이 클래스] 바이유어핸즈","바이유어핸즈의 상콤 레몬 수세미 뜨기");
 Myclasses mc2 = new Myclasses("2020.03.10","image/mypage_ex02.jpg","[원데이 클래스] 더베러라이프 작가님","밤바다 고래의 꿈 네온사인 클래스");
-myclist.add(mc1);
-myclist.add(mc2);
-myclist.add(mc1);
-myclist.add(mc2);
-myclist.add(mc1);
-myclist.add(mc2);
-myclist.add(mc1);
 myclist.add(mc2);
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

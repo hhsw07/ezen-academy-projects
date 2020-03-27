@@ -21,7 +21,7 @@
             android:paddingLeft="40dp"
             app:srcCompat="@drawable/hobbyfactory_logo" />
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/toLogin"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
@@ -333,7 +333,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/go_cart"
+            android:id="@+id/go_mycls"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

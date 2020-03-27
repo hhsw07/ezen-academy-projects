@@ -45,10 +45,6 @@ Orderlist o1 = new Orderlist(2003040001, "2020.03.04", "image/mypage_ex02.jpg","
 Orderlist o2 = new Orderlist(2003100001, "2020.03.10", "image/mypage_ex01.jpg","상콤 레몬 수세미", "-", 1,"배송준비중");
 olist.add(o1);
 olist.add(o2);
-olist.add(o1);
-olist.add(o2);
-olist.add(o1);
-olist.add(o2);
 
 /* 페이징 처리
 Paging pg = new Paging(w_size,p_size,memList.size(),i_page);

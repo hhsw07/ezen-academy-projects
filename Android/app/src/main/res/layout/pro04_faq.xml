@@ -14,14 +14,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/imageButton"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                app:srcCompat="@drawable/hobbyfactory_logo" />
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/go_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/hobbyfactory_logo"
+                    />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView"
@@ -45,32 +51,32 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/title_notice"
+                <Button
+                    android:id="@+id/title_notice1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="공지사항" />
 
-                <TextView
-                    android:id="@+id/title_faq"
+                <Button
+                    android:id="@+id/title_faq1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="FAQ" />
 
-                <TextView
-                    android:id="@+id/title_qna"
+                <Button
+                    android:id="@+id/title_qna1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="1:1문의" />
 
-                <TextView
-                    android:id="@+id/title_req"
+                <Button
+                    android:id="@+id/title_req1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -567,7 +573,7 @@
         android:gravity="bottom">
 
         <Button
-            android:id="@+id/go_cls"
+            android:id="@+id/go_cls1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -578,7 +584,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/go_hbc"
+            android:id="@+id/go_hbc1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -589,7 +595,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/go_cart"
+            android:id="@+id/go_mycls1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -599,7 +605,7 @@
             android:textColor="#FFFFFF"
             android:textSize="15sp" />
         <Button
-            android:id="@+id/go_sv"
+            android:id="@+id/go_sv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

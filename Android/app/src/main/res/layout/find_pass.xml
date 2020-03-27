@@ -16,15 +16,9 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             app:srcCompat="@drawable/hobbyfactory_logo" />
 
-        <Button
-            android:id="@+id/go_login"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/login_btn" />
     </LinearLayout>
 
     <LinearLayout
