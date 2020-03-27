@@ -945,3 +945,5 @@ WHERE pc.COURSE_NO = pck.COURSE_NO
 AND pck.CKIND_NO = pr.CKIND_NO 
 AND pr.mem_id = 'himan1'
 AND pr.REQ_CODE = '신청완료';
+
+SELECT * FROM p04_ckind;
