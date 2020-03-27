@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.util.*, z01_vo.*, vo_cmk.*"%>
+    import="java.util.*, z01_vo.*, vo_cmk.*,java.text.*"%>
 <% request.setCharacterEncoding("UTF-8");
 String path = request.getContextPath(); %>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ String path = request.getContextPath(); %>
 </head>
 <%
 	DB_Mileage db = new DB_Mileage();
-
+	DecimalFormat formatter = new DecimalFormat("###,###");
 
 %>
 <body>
@@ -104,15 +104,15 @@ if(db.getPtlist()!=null){
 					<div class="pointinfo_show">
 						<div class="point-info">
 							<div class="point-info-tit">현재 마일리지</div>
-							<div class="point-info-p"><%=tot %> P</div>
+							<div class="point-info-p"><%=formatter.format(tot) %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">총 적립 마일리지</div>
-							<div class="point-info-p"><%=plus %> P</div>
+							<div class="point-info-p"><%=formatter.format(plus) %> P</div>
 						</div>
 						<div class="point-info">
 							<div class="point-info-tit">사용한 마일리지</div>
-							<div class="point-info-p"><%=-minus %> P</div>
+							<div class="point-info-p"><%=formatter.format(-minus) %> P</div>
 						</div>
 					</div>
 				</div>
@@ -134,28 +134,17 @@ if(db.getPtlist()!=null){
 								</tr>
 							</thead>
 							<tbody class="point_list_wrap">
-					<%
-						for(VO_Mileage pt:db.getPtlist()){
-					%>
+					<%for(VO_Mileage pt:db.getPtlist()){%>
 								<tr>
 									<td class="point-td"><%=pt.getPoint_date() %></td>
 									<td class="point-td"><%=pt.getPoint_detail() %></td>
-						<%
-							if(pt.getPoint_mileage()>=0){
-						%>
-									<td class="point-td txt-color-r">+<%=pt.getPoint_mileage() %> p</td>
-						<%
-							} else{
-						%>
-									<td class="point-td"><%=pt.getPoint_mileage() %> p</td>
-						<%
-							}
-						%>
+						<%if(pt.getPoint_mileage()>=0){%>
+									<td class="point-td txt-color-r">+<%=formatter.format(pt.getPoint_mileage()) %> p</td>
+						<%} else{%>
+									<td class="point-td"><%=formatter.format(pt.getPoint_mileage()) %> p</td>
+						<%}%>
 								</tr>
-					<%
-						}
-					
-					%>
+					<%}%>
 							</tbody>
 						</table>
 					</div>

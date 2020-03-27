@@ -111,9 +111,9 @@
 </body>
 <script type="text/javascript">
 ClassicEditor
-.create( document.querySelector( '#editor' ) )
-.catch( error => {
+.create(document.querySelector('#editor'))
+.catch(error=>{
     console.error( error );
-} );
+});
 </script>
 </html>
