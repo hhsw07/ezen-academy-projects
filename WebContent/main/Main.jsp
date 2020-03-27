@@ -57,6 +57,7 @@
 			
 			allWrap.style.height = bottom.scrollHeight+"px";
 		}
+		//로그인 창 이외의 부분을 클릭했을 때, 창이 사라지는 기능
 		function disable(){
 			loginWrap.style.display = "none";
 			loginPage.style.display = "none";
@@ -111,7 +112,8 @@
 					if(request.getParameter("page")==null){
 						pl = "maindetail";
 					}%>
-					<%if(session.getAttribute("loginid")==null){ %>
+					<%if(session.getAttribute("loginid")==null){
+					//로그인 여부에 따라서 나오는 내용의 변경, pl:페이지 파라미터로 로그인창을 해당 페이지에서 불러올 수 있다.%>
 					<li class="ut_li"><a href="?page=<%=pl%>&lp=loginmain">로그인</a></li>
 					<li class="ut_li"><a href="?page=<%=pl%>&lp=memberJoin">회원가입</a></li>
 					<%}else{ %>
