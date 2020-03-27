@@ -100,8 +100,8 @@
 			    	<td class="apply-con" colspan="3"><textarea name="content" id="editor"></textarea></td>
 				</tr>	   		  		  					
 			</table>
-			<div class="myinfo_btn">
-				<a href="#" class="btn-myinfo_edit">신청하기</a>
+			<div class="myinfo_btn" id="apply">
+				<a href="?page=host_store" class="btn-myinfo_edit">신청하기</a>
 			</div>
 		</div>
 			
@@ -110,6 +110,10 @@
 	
 </body>
 <script type="text/javascript">
+var apply = document.querySelector("#apply");
+apply.onclick=function(){
+	alert("신청완료되었습니다");
+}
 ClassicEditor
 .create(document.querySelector('#editor'))
 .catch(error=>{
