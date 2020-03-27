@@ -20,7 +20,7 @@ public class memberDao {
 		System.out.println("정상 접속 성공");
 		
 	}
-	
+	//아이디 중복확인 기능
 	public Boolean checkId(String schid){
 		boolean isValid = false;
 		try {

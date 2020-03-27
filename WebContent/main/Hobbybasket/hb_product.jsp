@@ -96,7 +96,6 @@ int nextNo = pg.getPage_End()+1;
 			</div>
 			<div>
 				<ul>
-					
 					<li class="o-name"><%=olist.get(idx).getO_name() %></li>
 				</ul>
 			</div>

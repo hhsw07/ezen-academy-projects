@@ -65,8 +65,8 @@ String path = request.getContextPath(); %>
 </head>
 <%
 ArrayList <MpReview> mrlist = new ArrayList<MpReview>();
-mrlist.add(new MpReview("../image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인 클래스", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
-mrlist.add(new MpReview("../image/mypage_ex01.jpg","바이유어핸즈의 상콤 레몬 수세미 뜨기", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
+mrlist.add(new MpReview("image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인 클래스", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
+mrlist.add(new MpReview("image/mypage_ex01.jpg","바이유어핸즈의 상콤 레몬 수세미 뜨기", "2020.03.04", "처음 해보는 거였는데 재미있었어요!"));
 
 %>
 <body>
@@ -157,7 +157,7 @@ mrlist.add(new MpReview("../image/mypage_ex01.jpg","바이유어핸즈의 상콤
 							<div class="comment-wrap">
 								<div class="comment-tit">
 									<div class="review-star">
-										<div class="review-star-on">9별</div>
+										<div class="review-star-on">4별</div>
 									</div>
 									<div class="comment-info">
 										<span class="reply-date"><%=mr.getMr_date() %></span>

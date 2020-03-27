@@ -65,8 +65,8 @@ String path = request.getContextPath(); %>
 </head>
 <%
 ArrayList <MpReview> mslist = new ArrayList<MpReview>();
-mslist.add(new MpReview("../image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인", "2020.03.04", "분위기 있어요"));
-mslist.add(new MpReview("../image/mypage_ex01.jpg","상콤 레몬 수세미", "2020.03.04", "설거지할 맛 납니다"));
+mslist.add(new MpReview("image/mypage_ex02.jpg","밤바다 고래의 꿈 네온사인", "2020.03.04", "분위기 있어요"));
+mslist.add(new MpReview("image/mypage_ex01.jpg","상콤 레몬 수세미", "2020.03.04", "설거지할 맛 납니다"));
 
 %>
 <body>

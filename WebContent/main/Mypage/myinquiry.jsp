@@ -105,7 +105,6 @@ DB_Inquiry db = new DB_Inquiry();
 		<%
 		if(db.getInqlist().size()!=0){
 			for(VO_Inquiry inq:db.getInqlist()){
-	
 		%>
 			<div class="que-wrap">
 					<div class="que-cont">

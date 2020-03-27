@@ -745,15 +745,53 @@ DROP SEQUENCE p04_inquiry_seq;
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------
--- 주문배송조회
-SELECT order_no, order_date, store_img, store_title, order_cnt, order_code
-FROM P04_ORDER o, P04_STORE s
-WHERE o.STORE_NO = s.STORE_NO
-AND NOT o.ORDER_CODE='장바구니';
+-- 주문배송조회 
+SELECT * FROM P04_ORDER;
+
+SELECT DISTINCT a.order_no, a.order_date, b.store_img, b.store_title, a.order_cnt, a.order_code
+FROM P04_ORDER a, P04_STORE b, P04_ADDR c
+WHERE a.STORE_NO = b.STORE_NO AND c.MEM_ID ='himan1'
+AND NOT a.ORDER_CODE='장바구니'
+ORDER BY ORDER_DATE DESC;
 
 SELECT order_no, mem_id
-FROM P04_ADDR pa, P04_ORDER po 
-WHERE MEM_ID = 'himan';
+FROM P04_ADDR a, P04_ORDER b
+WHERE MEM_ID = 'himan1' AND a.ADDR_NO = b.ADDR_NO AND NOT b.ORDER_CODE ='장바구니';
+
+-- 클래스 조회
+SELECT * FROM P04_COURSE;
+SELECT * FROM P04_CKIND;
+SELECT * FROM P04_REQUEST;
+
+SELECT mem_id, ckind_no, req_code
+FROM P04_REQUEST
+WHERE MEM_ID = 'himan1' AND REQ_CODE = '신청완료';--CKIND_NO = 6
+
+SELECT course_no, course_opendate, course_kind
+FROM P04_CKIND
+WHERE CKIND_NO = 6; --COURSE_NO:4
+
+SELECT course_img, course_title, mem_id
+FROM P04_COURSE
+WHERE COURSE_NO = 4; --MEM_ID = 'ezen3
+
+SELECT mem_nickname
+FROM P04_MEMBER
+WHERE MEM_ID = 'ezen3';
+
+SELECT a.course_img, a.course_title, b.mem_nickname
+FROM P04_COURSE a, P04_MEMBER b
+WHERE a.MEM_ID = b.MEM_ID;
+
+SELECT DISTINCT b.course_opendate, a.course_img, b.course_kind, c.mem_nickname, a.course_title, d.MEM_ID, d.REQ_CODE 
+FROM P04_COURSE a, P04_CKIND b, P04_MEMBER c, P04_REQUEST d
+WHERE a.COURSE_NO = b.COURSE_NO AND a.MEM_ID = c.MEM_ID AND b.CKIND_NO = d.CKIND_NO
+AND d.MEM_ID = 'himan1' AND d.REQ_CODE = '신청완료';
+
+SELECT DISTINCT b.course_opendate, a.course_img, b.course_kind, c.mem_nickname, a.course_title, d.MEM_ID, d.REQ_CODE 
+FROM P04_COURSE a, P04_CKIND b, P04_MEMBER c, P04_REQUEST d
+WHERE a.COURSE_NO = b.COURSE_NO AND a.MEM_ID = c.MEM_ID
+AND d.MEM_ID = 'himan1' AND d.REQ_CODE = '신청완료';
 
 -- 배송지목록 (완료)
 SELECT addr_no, addr_title, addr_name, addr_phone, 
@@ -766,17 +804,17 @@ SELECT addr_title, addr_name, addr_phone, addr_mailAddr, addr_address, addr_addr
 FROM P04_ADDR
 WHERE MEM_ID = 'himan1' AND addr_no=1;
 
--- 배송지 수정
+-- 배송지 수정 (완료)
 UPDATE P04_ADDR SET ADDR_TITLE='배송지명', ADDR_NAME='수령인',
 	ADDR_PHONE='연락처', ADDR_PHONE2='추가연락처',
 	ADDR_MAILADDR='우편번호', ADDR_ADDRESS='기본주소', ADDR_ADDRESS2='상세주소'
 WHERE ADDR_NO=1
 
--- 배송지 추가 
+-- 배송지 추가  (완료)
 INSERT INTO P04_ADDR
 VALUES('배송지명', '수령자명','휴대전화','추가번호','우편번호','기본주소','상세주소');
 
--- 배송지 삭제
+-- 배송지 삭제 (완료)
 DELETE P04_ADDR 
 WHERE addr_no=1 
 
@@ -793,6 +831,11 @@ WHERE MEM_ID='himan1';
 UPDATE P04_MEMBER 
 SET MEM_NICKNAME='닉네임', MEM_MAIL='이메일', MEM_PHONE='연락처'
 WHERE MEM_ID='himan1'
+
+-- 비밀번호 변경 (완료)
+UPDATE P04_MEMBER 
+SET MEM_PASS = '새비밀번호'
+WHERE MEM_ID = 'himan1'
 
 -- 탈퇴 (완료)
 SELECT sum(POINT_MILEAGE )
@@ -814,10 +857,13 @@ FROM P04_INQUIRY
 WHERE MEM_ID = 'himan1'
 ORDER BY INQUIRY_NO DESC;
 
--- 클래스 조회
-SELECT * FROM P04_COURSE;
-SELECT * FROM P04_CKIND;
-SELECT * FROM P04_REQUEST;
+-- 후기 조회 (완료)
+SELECT * FROM P04_CREVIEW;
+
+SELECT a.course_img, a.course_title, b.cReview_star, b.cReview_date, b.cReview_detail
+FROM P04_COURSE a, P04_CREVIEW b, P04_REQUEST c, P04_CKIND d 
+WHERE a.COURSE_NO = d.COURSE_NO AND d.CKIND_NO = c.CKIND_NO AND c.REQ_NO = b.REQ_NO 
+AND c.MEM_ID = 'himan1';
 
 -- 호스트 클래스 (완료)
 SELECT course_img, course_title
@@ -825,4 +871,14 @@ FROM P04_COURSE
 WHERE MEM_ID = 'ezen1'
 ORDER BY COURSE_NO DESC;
 
+-- 호스트 상품 (완료)
+SELECT strore_date, store_img, store_title
+FROM P04_STORE
+WHERE MEM_ID='ezen1'
+AND STORE_CODE = '승인'
+ORDER BY STORE_NO DESC;
+
+-- 호스트 상품신청 (완료)
+INSERT INTO P04_STORE 
+VALUES(p04_store_seq.nextval,'ezen1','상품이름','미승인',28000,100,'상품설명',sysdate,'상품타이틀사진','')
 
