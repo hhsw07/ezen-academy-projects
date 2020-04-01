@@ -47,13 +47,13 @@ boolean isDel=false;
 	.nav ul li {height:90px; border:1px solid black; text-align:center; line-height:90px;}
 	.nav ul li:first-child {border-radius:20px 20px 0 0;}
 	.nav ul li:last-child {border-radius:0 0 20px 20px;}
-	.ckOn {background-color:#f36359; color:#ffffff;}
+	.ckOn {background-color:black; color:#ffffff;}
 	.ckOff {background-color:#ffffff;}
 	
 	.section{background-color:#f8f8fa;position:absolute; top:100px;left:200px; width:880px;height:500px; padding:10px;}
 	.section table {width:100%; text-align:center;border-collapse:collapse;background-color:#ffffff;}
   	.section table tr {height:30px;}
-  	.section table th {height:40px;background-color:#F5A9A9;}
+  	.section table th {height:40px;background-color:black; color:white;}
   	.section table td a { display:block; width:100%; height:100%;} 
 　 	.section table td a:hover {background-color:#f8f8fa; }
 	.paging {text-align:center;}
@@ -64,7 +64,7 @@ boolean isDel=false;
 </head>
 
 <body>
-	<div class="middle">
+	<div class="middle" style="margin:0 auto;">
 		<div class="top">
 			<p><a href="<%=path %>/main/Main.jsp" class="logo" > HobbyFactory</a> 관리자 전용 페이지</p>
 		</div>
