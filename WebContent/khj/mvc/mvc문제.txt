@@ -1,0 +1,13 @@
+# 등록 ID 여부 확인
+ID[	][확인]
+확인 클릭시, 등록된 id인지 여부확인
+MVC 패턴
+select count(*) from member2
+where id=?
+
+DAO 메서드
+public int isMember(String id){
+	int num = 0;
+
+	return num;	
+}
