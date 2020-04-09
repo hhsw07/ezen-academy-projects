@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.util.*"
-    %>
+    pageEncoding="UTF-8" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
@@ -11,13 +10,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<style>
+<style>
+
 body{margin:0; padding:0; overflow-x:hidden;}
 a{text-decoration:none;}
 ul{margin:0; padding:0;}
 ul li{list-style:none;}
 
-.all-wrap{}
 /*상단 메뉴바 시작*/
 	.menu-wrap{width:100%;}
 		.menu-1{width:1280px; margin:0 auto; height:25px; padding:5px 0;
@@ -32,9 +31,6 @@ ul li{list-style:none;}
 
 
 </style>
-<link rel="stylesheet" 
-	href="path/a00_com/a00_com.css">
-<!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -69,5 +65,6 @@ ul li{list-style:none;}
 			</div>
 		</div>
 <!-- 상단 메뉴바 끝 -->
+
 </body>
 </html>
