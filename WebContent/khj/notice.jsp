@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    %>
+    pageEncoding="UTF-8" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<c:set var="path" value="${pageContext.request.contextPath }"/>
+<fmt:requestEncoding value="utf-8"/>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +41,9 @@
 </script>
 </head>
 <body>
+
+<jsp:include page="top.jsp"/>
+
 <div class="wrap">
 <h2>서비스센터</h2>
 <!-- 게시판 목록 -->
@@ -88,5 +92,8 @@
 	</tr>
 </table>
 </div>
+
+<jsp:include page="bottom.jsp"/>
+
 </body>
 </html>

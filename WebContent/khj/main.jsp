@@ -15,7 +15,7 @@ ul{margin:0; padding:0;}
 ul li{list-style:none;}
 
 .all-wrap{}
-/*상단 메뉴바 시작*/
+
 	.menu-wrap{width:100%;}
 		.menu-1{width:1280px; margin:0 auto; height:25px; padding:5px 0;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
@@ -25,7 +25,7 @@ ul li{list-style:none;}
 			.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
 				.menu-2 li{display:inline; font-size:25px; margin:0 15px;}
-/*상단 메뉴바 끝*/
+
 
 						
 		.policy{width:1280px; margin:0 auto;}
@@ -33,14 +33,14 @@ ul li{list-style:none;}
        		.visual button{position:absolute; right:1000%;}
 
 
-/*풋터 시작*/       		
+   		
      .footer-wrap{background-color:#65645E;}  		
 	    .bottom{width:1280px; margin:0 auto; text-align:center;}
 				.btm_article{padding:10px 0; border-bottom: 1px solid white}
 				.btm_article span{color:white; cursor: pointer;}
 				.logo{font-family:sans-serif; font-size:35px; color:#FF4000;font-weight:bold; margin:0; padding:5px 0;}
 				.bottom_intro{color:white;}
-/*풋터 끝*/
+
 
 	</style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -48,8 +48,7 @@ ul li{list-style:none;}
 </head>
 <body>
 	<div class="all-wrap">
-	
-<!-- 상단 메뉴바 시작 -->
+
 		<div class="menu-wrap">
 			<div class="menu-1">
 				<ul>
@@ -70,7 +69,7 @@ ul li{list-style:none;}
 				</div>
 			</div>
 		</div>
-<!-- 상단 메뉴바 끝 -->
+
 
 		<div class="policy">
 			<img alt="" src="../image/main/policy1.jpg">
@@ -97,7 +96,7 @@ ul li{list-style:none;}
         });
   	    </script>
 
-<!-- 풋터 시작 -->
+
   	    <div class="footer-wrap">
 			<div class="bottom">
 				<div class="btm_article">
@@ -115,7 +114,7 @@ ul li{list-style:none;}
 				</ul>
 			</div>
 		</div>
-<!-- 풋터 끝 -->
+
 
 	</div>
 </body>
