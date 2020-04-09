@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.cart-cont{min-height:800px;}
+	.cart-cont{min-height:750px;}
 
 	.cart-title{width:1050px; margin:0 auto;}
 	.cart-thead tr th{padding:12px 10px; font-weight:700;}
