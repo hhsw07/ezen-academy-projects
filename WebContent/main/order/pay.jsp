@@ -17,7 +17,7 @@
 	.pay-tbody tr td{padding:12px 10px;}
 	.pay-wrap{width:1050px; margin:0 auto;}
 	.pay-table-th{width:100%; border-top:3px solid #cacaca;}
-	.pay-table-td{width:100%; border-top:1px solid #cacaca;}
+	.pay-table-td{width:100%; border-top:1px solid #cacaca; border-collapse:collapse;}
 	.pay-order{width:1050px; margin:20px auto; border:2px solid #63145F;}
 	.pay-delivery{width:1050px; margin:20px auto; border:2px solid #63145F;}
 	.pay-info{width:1050px; margin:20px auto; border:2px solid #63145F;}
@@ -25,7 +25,7 @@
 	.fmtnum{text-align:right;}
 	
 /* 버튼 */
-	.pay-btn{width:1050px; margin:20px auto; text-align:center;}
+	.pay-btn{width:1050px; margin:20px auto 50px; text-align:center;}
 	.btn{background:#63145F; color:#fff; border:none; position:relative; height:60px; font-size:1.5em; padding:0 2em; cursor:pointer;
 	transition:800ms ease all; outline:none;}
 	.btn:hover{background:#fff; color:#63145F;}
@@ -37,9 +37,6 @@
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-	<%-- 
-		
-	--%>
 		$("h2").text("결제하기");
 	});
 </script>
@@ -150,7 +147,15 @@
 					<input type="radio" name="payment" value=""/>카드결제
 				</td>
 			</tr>
-		</table>
+			<tr>
+				<th>적립금 사용</th>
+				<td>
+					<input type="text" name="point" value=""/>
+					<input type="button" value="사용"/>
+					('포인트'원 사용가능)
+				</td>
+			</tr>
+		</table>	
 	</div>
 	
 	<div class="pay-price">
