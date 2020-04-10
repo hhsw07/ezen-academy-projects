@@ -158,12 +158,24 @@
 			<h3>PC주요부품</h3>
 			<div style="height:400px; overflow:auto;">
 				<table>
-					<col width="18%">
-					<col width="57%">
+					<col width="20%">
+					<col width="55%">
 					<col width="7%">
 					<col width="18%">
 					<tr>
 						<td>CPU</td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+					</tr>
+					<tr>
+						<td></td>
 						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
 						<td><input type="number" name="cnt" value="1"/></td>
 						<td class="ordR">99,170원</td>
@@ -187,11 +199,12 @@
 						<td class="ordR"><span>55,370원</span></td>
 					</tr>
 					<tr>
-						<td>그래픽카드</td>
 						<td></td>
-						<td></td>
-						<td class="ordR"></td>
+						<td>삼성전자 DDR4 8G PC4-19200(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR"><span>55,370원</span></td>
 					</tr>
+					
 					<tr>
 						<td>SSD</td>
 						<td></td>
