@@ -95,7 +95,9 @@ ul li{list-style:none;}
           fade: true
         });
   	    </script>
-
+<div style="height:200px;">
+	<h1 align="center">메인페이지 추가로 들어갈 공간</h1>
+</div>
 
   	    <div class="footer-wrap">
 			<div class="bottom">
