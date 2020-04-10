@@ -1,4 +1,8 @@
-SELECT * FROM emp;
+SELECT * FROM "REPCAT$_SITES_NEW" rsn ;
+CREATE TABLE product3(
+	NO number
+);
+SELECT * FROM PRODUCT3;
 
 SELECT * FROM emp2
 WHERE deptno=10;
