@@ -48,7 +48,7 @@
 				<th colspan="3" class="logo-text">PC냥이</th>
 			</tr>
 			<tr>
-				<th colspan="3"><img src="../image/main/logo.png"></th>
+				<th colspan="3"><img src="image/main/logo.png"></th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="input-id" type="text" placeholder="아이디"/></th>
