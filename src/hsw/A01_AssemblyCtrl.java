@@ -37,7 +37,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		// 2. 모델
 		
 		// 3. view
-		String page = "hsw//a01_assembly.jsp";
+		String page = "main\\estimate\\estimate.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
