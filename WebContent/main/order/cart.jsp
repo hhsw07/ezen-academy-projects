@@ -18,7 +18,7 @@
 	.cart-tbody tr td{padding:12px 10px;}
 	.cart-wrap{width:1050px; margin:0 auto;}
 	.cart-table-th{width:100%; border-top:3px solid #cacaca;}
-	.cart-table-td{width:100%; border-top:1px solid #cacaca;}
+	.cart-table-td{width:100%; border-top:1px solid #cacaca; border-collapse:collapse;}
 	.cart-price{width:1050px; margin:20px auto; border:2px solid #63145F; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
 	
@@ -76,7 +76,7 @@
 						<td>
 							<span>상품이미지 고민중</span><span>상품명</span>
 						</td>
-						<td>수량</td>
+						<td>수량. 수량변경</td>
 						<td class="fmtnum">가격</td>
 						<td class="fmtnum">합계금액</td>
 						<td>적립금</td>

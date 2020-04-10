@@ -27,11 +27,39 @@
 		A01_AssemblyCtrl.java(controller)
 		A01_AssemblyService.java(service)
 		A01_AssemblyDao.java(dao) - public ArrayList<Part> partList = new ArrayList<Part>(카테고리); 
-		A01_Assembly.jsp(view)
+		a01_assembly.jsp(view)
+	// 초기화면
 	1) sql
-		
+		SELECT parts_img, parts_name, part_price, parts_no FROM product2
+		WHERE parts_mc = 'cpu'
+		AND parts_sc1 LIKE '%'||''||'%'
+		AND parts_sc2 LIKE '%'||''||'%'
+		AND parts_sc3 LIKE '%'||''||'%'
+		AND parts_sc4 LIKE '%'||''||'%'
+		AND parts_sc5 LIKE '%'||''||'%'
+		AND parts_sc6 LIKE '%'||''||'%';
 	2) dao
 		
 	3) controller1 (A01_AssemblyCtrl.java)
+		proc.equals("sch") 일 때
+		service.plist(request);
+		page = a01_assemble.jsp
 		
-	4) view1 (A01_Assembly.jsp)
+	4) view1 (a01_assembly.jsp)
+		화면
+	
+	// 소분류 변경
+	1) sql
+		동일
+	2) dao
+	3) controller
+		Parts sch 객체에 소분류값을 넣어 전달
+	4) view
+	
+	// 대분류 변경
+	카트에서 대분류 클릭시 sch객체에 parts_mc 값만 넣어 전달
+	 
+	
+	
+	
+	

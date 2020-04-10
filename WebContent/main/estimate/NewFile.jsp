@@ -20,7 +20,7 @@
 <%--
 
 --%>
-		$("h2").text("시작");
+		$("h2").text("시작 : ${param.proc}");
 	});
 	$( function() {
 	    var spinner = $( "#spinner" ).spinner();
@@ -47,26 +47,35 @@
 	    });
 	 
 	    $( "button" ).button();
+	    
+	    $("#btn1").click(function(){
+	    	$("#form1").submit();
+	    });
+	    $("#btn2").click(function(){
+	    	$("#form2").submit();
+	    });
+	    
 	  } );
+	
+	
+	
 </script>
 </head>
 
 <body>
 <h2 align="center"></h2>
  
-<p>
-  <label for="spinner">Select a value:</label>
-  <input id="spinner" name="value">
-</p>
- 
-<p>
-  <button id="disable">Toggle disable/enable</button>
-  <button id="destroy">Toggle widget</button>
-</p>
- 
-<p>
-  <button id="getvalue">Get value</button>
-  <button id="setvalue">Set value to 5</button>
-</p>
+<form id="form1">
+	<input type="hidden" name="proc" value="폼1" />
+	<input type="submit" value="폼1" />
+</form>
+<form id="form2">
+	<input type="hidden" name="proc" value="폼2" />
+	<input type="submit" value="폼2" />
+</form>
+
+<h1 id="btn1">버튼1</h1>
+<h1 id="btn2">버튼2</h1>
+
 </body>
 </html>
