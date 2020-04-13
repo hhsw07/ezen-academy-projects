@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 	<style>
 body{margin:0; padding:0; overflow-x:hidden;}
-a{text-decoration:none;}
+a{text-decoration:none; color:black;}
 ul{margin:0; padding:0;}
 ul li{list-style:none;}
 

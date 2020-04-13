@@ -17,11 +17,11 @@
 		table{cursor:pointer;}
 		.logo-text{font-family:sans-serif; font-size:60px; color:#F2B809; font-weight:bold;}
 		img{width:150px; height:130px; margin-bottom:40px;}
-.input-id{width:420px; height:40px; font-size:15px; padding:10px;}
-.input-ps{width:420px; height:40px; font-size:15px; padding:10px; margin-bottom:20px;}
-.login-btn{width:445px; height:65px; font-size:20px; font-weight:800; 
-		background-color:black; color:white; border:3px solid purple;
-		cursor:pointer; margin-bottom:20px;}
+.input-box{width:400px; height:40px; padding:5px;}
+.reg-box{width:556px; height:70px; margin-top:20px; font-size:30px;
+		background-color:black; color:white;
+		border:3px solid purple;
+		cursor:pointer;}
 		
 </style>
 <title>Insert title here</title>
@@ -50,21 +50,49 @@
 			<tr>
 				<th colspan="3"><img src="../image/main/logo.png"></th>
 			</tr>
-			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">로그인</th></tr>
+			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">회원가입</th></tr>
 			<tr>
-				<th colspan="3"><input class="input-id" type="text" placeholder="아이디"/></th>
+				<td>아이디</td>
+				<td><input type="text" class="input-box" placeholder="아이디" /></td>
+			</tr>
+			
+			<tr>
+				<td></td><td>ajax중복확인란</td>
+			</tr>
+			
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="text" class="input-box" placeholder="비밀번호" /></td>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="input-ps" type="text" placeholder="비밀번호"/></th>
+				<td>비밀번호 재입력</td>
+				<td><input type="text" class="input-box" placeholder="비밀번호 재입력" /></td>
+			</tr>
+			
+			<tr>
+				<td></td><td>ajax비밀번호 일치확인란</td>
+			</tr>
+			
+			<tr>
+				<td>이름</td>
+				<td><input type="text" class="input-box" placeholder="이름" /></td>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="login-btn" type="submit" value="로그인"/></th>
+				<td>생년월일</td>
+				<td><input type="text" class="input-box" placeholder="'-'제외 6자리(ex:901102)" /></td>
 			</tr>
 			<tr>
-				<th>아이디 찾기</th>
-				<th>비밀번호 찾기</th>
-				<th>회원가입</th>
+				<td>이메일</td>
+				<td><input type="text" class="input-box" placeholder="이메일" /></td>
 			</tr>
+			<tr>
+				<td>휴대폰</td>
+				<td><input type="text" class="input-box" placeholder="'-'제외 11자리" /></td>
+			</tr>
+			<tr>
+				<th colspan="2"><input type="submit" class="reg-box" value="가입하기"/></th>
+			</tr>
+			
 		</table>
 	</form>
 	</div>
