@@ -20,6 +20,11 @@
 	.as-thead tr th{padding:12px 10px; font-weight:700;}
 	.as-tbody tr td{padding:12px 10px; border-bottom:1px solid gray;}
 	.as-code{text-align:center;}
+	.as-search{width:1080px; margin:20px auto; vertical-align:center;}
+	
+	.input-box{width:250px; height:35px; outline:none; padding:0; margin:0; cursor:pointer;}
+	.search-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
+	.reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
 	
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
@@ -78,6 +83,16 @@
 				<td class="as-code">등록일</td>
 			</tr>
 		</table>
+	</div>
+	
+	<div class="as-search">
+		<span style="margin-right:150px">
+			<input class="input-box" type="text">
+			<input class="search-btn" type="submit" value="검색">
+		</span>
+		<span class="as-write" style="margin-left:500px">
+			<input class="reg-btn" type="button" value="글쓰기">
+		</span>
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>

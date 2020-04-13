@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.* "%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+<fmt:requestEncoding value="UTF-8"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){		
+		$("h2").text("");
+	});
+</script>
+</head>
+<body>
+	<jsp:include page="../top.jsp"/>
+	<h2></h2>
+	<div>
+		<table>
+			<tr>
+				<th></th>
+			</tr>
+		</table>
+	</div>
+	
+	<jsp:include page="../bottom.jsp"/>
+	
+</body>
+</html>
