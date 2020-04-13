@@ -43,8 +43,8 @@ ul li{list-style:none;}
 		<div class="menu-wrap">
 			<div class="menu-1">
 				<ul>
-					<li><a href="notice.jsp">고객센터</a></li>
-					<li><a href="login.jsp">로그인</a></li>
+					<li><a href="SCenter">고객센터</a></li>
+					<li><a href="login">로그인</a></li>
 				</ul>				
 			</div>
 			<div class="menu-div"></div>
