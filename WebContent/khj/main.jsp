@@ -47,29 +47,9 @@ ul li{list-style:none;}
 <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
-	<div class="all-wrap">
+<div class="all-wrap">
 
-		<div class="menu-wrap">
-			<div class="menu-1">
-				<ul>
-					<li>고객센터</li>
-					<li>로그인</li>
-				</ul>				
-			</div>
-			<div class="menu-div"></div>
-			<div class="menu-2-wrap">
-				<div class="menu-2">
-					<ul>
-						<li style="margin-right:290px; color:#F2B809">PC냥이</li>
-						<li>조립컴퓨터</li>
-						<li>컴퓨터부품</li>
-						<li>견적컴퓨터</li>
-						<li style="margin-left:290px;">장바구니</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
+<jsp:include page="top.jsp"/>
 
 		<div class="policy">
 			<img alt="" src="../image/main/policy1.jpg">
@@ -89,7 +69,7 @@ ul li{list-style:none;}
 		    </div>
 		</div>
 		<script type="text/javascript">
-        $('.visual').slick({
+		jQuery.noConflict('.visual').slick({
           autoplay: true,
           autoplaySpeed: 2000,
           fade: true
@@ -99,25 +79,10 @@ ul li{list-style:none;}
 	<h1 align="center">메인페이지 추가로 들어갈 공간</h1>
 </div>
 
-  	    <div class="footer-wrap">
-			<div class="bottom">
-				<div class="btm_article">
-					<span>서비스이용약관</span>
-					<span>개인정보취급방침</span>
-				</div>
-				<ul>
-					<li class="logo">PC냥이</li>
-					<li class="bottom_intro" style="font-weight:bold;">㈜PC냥이</li>
-					<li class="bottom_intro">대한민국 서울특별시 종로구 미려빌딩6층</li>
-					<li class="bottom_intro">대표자: 김이젠ㅣ사업자등록증번호:717-88-00777</li>
-					<li class="bottom_intro">통신판매 신고번호: 2017-서울성동-0584호</li>
-					<li class="bottom_intro">호스팅서비스: (주)PC냥이</li>
-					<li class="bottom_intro">02-6214-0529 (문의시간 : 10:00 ~ 17:00 / 점심시간 : 13:00 ~ 14:00)</li>		
-				</ul>
-			</div>
-		</div>
+<jsp:include page="bottom.jsp"/>
 
 
-	</div>
+</div>
 </body>
+
 </html>
