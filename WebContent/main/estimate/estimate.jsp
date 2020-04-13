@@ -45,7 +45,51 @@
 		$("img").width("60px");
 		$(".regCart").val("카트담기");
 		
+		var proc = "${param.proc}";
+		if(proc == ""||proc == "sch"){
+			// 검색화면
+			var parts_mc = "${sch.parts_mc}";
+			if(parts_mc == "") parts_mc = "cpu";
+			if(parts_mc == "cpu"){
+				//alert("parts_mc : "+parts_mc);
+			}
+			if(parts_mc == "메인보드"){}
+			if(parts_mc == "메모리"){}
+			if(parts_mc == "그래픽카드"){}
+			if(parts_mc == "SSD"){}
+			if(parts_mc == "HDD"){}
+			if(parts_mc == "케이스"){}
+			if(parts_mc == "파워"){}
+			
+		}else{
+			// proc를 sch로 해서 다시 컨트롤로 보내기.
+		}
+		
+		$("#title").append(parts_mc);
+		
+		// 카테고리 검색 버튼 클릭시
+		$("#schBtn").click(function(){
+			alert("카테고리 검색")
+		});
+		// 중분류 버튼 클릭시
+		 $(".mcCho").click(function(){
+			 var mc = $(".mcCho").text();
+			 alert("중분류 검색 : "+mc);
+			 
+		 });
+		
+		// .regCart 버튼 클릭시 카트에 부품 등록
+		$(".regCart").click(function(){
+			//$("[name=proc]").val("ins");
+			alert("추가");
+			
+		});
+		// #delcart(idx) 버튼 클릭시 카트에서 부품 제거
+		
+		// @@@ 버튼 클릭시 카트에서 전체 제거, 견적문의, 구매하기
 	});
+	
+	
 </script>
 </head>
 
@@ -61,24 +105,25 @@
 		<!-- 견적표 -->
 		<div id="e_nav" >
 			<div id="e_nav_top">
-				<h3>PC주요부품 > CPU</h3>
-				<form method="post">
+				<h3 id="title">PC주요부품 > </h3>
+				<form method="post" name="schFrm">
+				<input type="hidden" name="proc" />
 				<table>
 					<tr>
 						<td>
-							<select>
+							<select name="parts_sc1">
 								<option>제조사</option>
 								<option>인텔</option>
 								<option>AMD</option>
 							</select>
-							<select>
+							<select name="parts_sc2">
 								<option>설계 전력</option>
 								<option>65W</option>
 								<option>95W</option>
 								<option>105W</option>
 								<option>165W</option>
 							</select>
-							<select>
+							<select name="parts_sc3">
 								<option>브랜드 분류</option>
 								<option>인텔(코어i3-9세대)</option>
 								<option>인텔(코어i5-9세대)</option>
@@ -94,7 +139,7 @@
 					</tr>
 					<tr>
 						<td>
-							<select>
+							<select name="parts_sc4">
 								<option>코어형태</option>
 								<option>4코어</option>
 								<option>6코어</option>
@@ -102,13 +147,13 @@
 								<option>10코어</option>
 								<option>12코어</option>
 							</select>
-							<select>
+							<select name="parts_sc5">
 								<option>동작속도</option>
 								<option>2.5~2.99 GHz</option>
 								<option>3.0~3.49 GHz</option>
 								<option>3.5~3.99 GHz</option>
 							</select>
-							<select>
+							<select name="parts_sc6">
 								<option>패키지 형식</option>
 								<option>정품</option>
 								<option>벌크</option>
@@ -117,7 +162,7 @@
 					</tr>
 					<tr>
 						<td class="ordR" style="padding-right:30px;" >
-							<input type="button" value="검색" />
+							<input type="button" id="schBtn" value="검색" />
 						</td>
 					</tr>
 				</table>
@@ -125,7 +170,8 @@
 			</div>
 			
 			<div id="e_nav_list">
-				<form>
+				<form method="post" name="partsFrm">
+				<input type="hidden" name="proc"/>
 				<table>
 					<col width="20%">
 					<col width="50%">
@@ -181,14 +227,16 @@
 		<div id="e_cart">
 			<h3>PC주요부품</h3>
 			<div style="height:400px; overflow:auto;">
+				<form method="post" name="cartFrm">
+				<input type="hidden" name="proc"/>
 				<table>
-					<col width="20%">
-					<col width="51%">
+					<col width="18%">
+					<col >
 					<col width="7%">
 					<col width="18%">
 					<col width="4%">
 					<tr>
-						<td>CPU</td>
+						<td class="mcCho">CPU</td>
 						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
 						<td><input type="number" name="cnt" value="1"/></td>
 						<td class="ordR">99,170원</td>
@@ -209,14 +257,14 @@
 						<td id="delCart(3)">X</td>
 					</tr>
 					<tr>
-						<td>메인보드</td>
+						<td class="mcCho">메인보드</td>
 						<td>ASRock A320M-HDV R4.0</td> 
 						<td><input type="number" name="cnt" value="1"/></td>
 						<td class="ordR">73,000원</td>
 						<td id="delCart(4)">X</td>
 					</tr>
 					<tr>
-						<td>메모리</td>
+						<td class="mcCho">메모리</td>
 						<td>삼성전자 DDR4 4G PC4-21300(정품)</td> 
 						<td><input type="number" name="cnt" value="1"/></td>
 						<td class="ordR"><span>21,130원</span></td>
@@ -237,47 +285,51 @@
 						<td id="delCart(7)">X</td>
 					</tr>
 					<tr>
-						<td>그래픽카드</td>
+						<td class="mcCho">그래픽카드</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>SSD</td>
+						<td class="mcCho">SSD</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>HDD</td>
+						<td class="mcCho">HDD</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>케이스</td>
+						<td class="mcCho">케이스</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>파워</td>
+						<td class="mcCho">파워</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
 				</table>
+				</form>
 			</div>
 			<hr>
 			<div style="text-align:center;">
+				<form method="post" name="regFrm">
+				<input type="hidden" name="proc"/>
 				<input type="button" value="견적초기화" style="width:30%"/>
 				<input type="button" value="견적문의" style="width:30%"/>
 				<input type="button" value="구매하기" style="width:30%"/>
+				</form>
 			</div>
 		</div>
 	</div>

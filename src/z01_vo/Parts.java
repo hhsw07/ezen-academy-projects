@@ -4,7 +4,7 @@ public class Parts {
 	private int parts_no;
 	private String parts_name;
 	private int parts_price;
-	private int parts__stock;
+	private int parts_stock;
 	private String parts_img;
 	private String parts_detail;
 	private String parts_mc;
@@ -14,6 +14,7 @@ public class Parts {
 	private String parts_sc4;
 	private String parts_sc5;
 	private String parts_sc6;
+	private int parts_com;
 	
 	public Parts() {
 		super();
@@ -26,7 +27,11 @@ public class Parts {
 		this.parts_mc = parts_mc;
 	}
 	
-	
+	public Parts(int parts_com,int parts_no) {
+		super();
+		this.parts_com = parts_com;
+		this.parts_no = parts_no;
+	}
 
 	public Parts(String parts_mc, String parts_sc1, String parts_sc2, String parts_sc3, String parts_sc4,
 			String parts_sc5, String parts_sc6) {
@@ -47,7 +52,7 @@ public class Parts {
 		this.parts_no = parts_no;
 		this.parts_name = parts_name;
 		this.parts_price = parts_price;
-		this.parts__stock = parts__stock;
+		this.parts_stock = parts_stock;
 		this.parts_img = parts_img;
 		this.parts_detail = parts_detail;
 		this.parts_mc = parts_mc;
@@ -98,18 +103,7 @@ public class Parts {
 	public void setParts_price(int parts_price) {
 		this.parts_price = parts_price;
 	}
-	/**
-	 * @return the parts__stock
-	 */
-	public int getParts__stock() {
-		return parts__stock;
-	}
-	/**
-	 * @param parts__stock the parts__stock to set
-	 */
-	public void setParts__stock(int parts__stock) {
-		this.parts__stock = parts__stock;
-	}
+	
 	/**
 	 * @return the parts_img
 	 */
@@ -218,5 +212,34 @@ public class Parts {
 	public void setParts_sc6(String parts_sc6) {
 		this.parts_sc6 = parts_sc6;
 	}
+
+	/**
+	 * @return the parts_stock
+	 */
+	public int getParts_stock() {
+		return parts_stock;
+	}
+
+	/**
+	 * @param parts_stock the parts_stock to set
+	 */
+	public void setParts_stock(int parts_stock) {
+		this.parts_stock = parts_stock;
+	}
+
+	/**
+	 * @return the parts_com
+	 */
+	public int getParts_com() {
+		return parts_com;
+	}
+
+	/**
+	 * @param parts_com the parts_com to set
+	 */
+	public void setParts_com(int parts_com) {
+		this.parts_com = parts_com;
+	}
+	
 	
 }

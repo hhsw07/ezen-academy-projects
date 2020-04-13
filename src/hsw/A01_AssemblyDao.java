@@ -25,7 +25,34 @@ public class A01_AssemblyDao {
 		con = DriverManager.getConnection(info,"Scott","tiger");
 	}
 	
-	// 대분류별 조회 화면
+	
+	public ArrayList<Parts> pList(){
+		ArrayList<Parts> pList = new ArrayList<Parts>();
+		
+		try {
+			setcon();
+			String sql = "SELECT parts_img, parts_name, part_price, parts_no FROM product2\r\n" + 
+					"WHERE parts_mc = cpu";
+			
+			pstmt = con.prepareStatement(sql);
+						
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				pList.add(new Parts());
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pList;
+	}
+	
+	
+	// proc sch => 검색화면
 	public ArrayList<Parts> pList(Parts sch){
 		ArrayList<Parts> pList = new ArrayList<Parts>();
 		
@@ -64,11 +91,136 @@ public class A01_AssemblyDao {
 		}
 		return pList;
 	}
+
+
+	// proc ins => 카트에 추가
+	public void insertCart(Parts ins) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "INSERT INTO @@조립목록@@ values(?,?)";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "컴퓨터번호");
+			pstmt.setString(2, "부품번호");
+			
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("등록 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	
-	// 리스트에서 선택된 부품을 카트에 담기
+	// proc del => 카트에서 제거
+	public void deleteCart(Parts del) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "delete INTO @@조립목록@@ where 컴퓨터번호 = ? and 부품번호 = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "컴퓨터명");
+			pstmt.setString(2, "부품명");
+			
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("등록 성공!!");
 	
-	// 카트에서 선택된 부품을 카트에서 제거
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	// proc delAll => 카트에서 모두제거
+	public void deleteAllCart() {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "DELETE @@조립목록@@ WHERE 컴퓨터번호 = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "컴퓨터명");
+			pstmt.setString(2, "부품명");
+			
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("등록 성공!!");
 	
-	// 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	// proc reg => 견적목록에 추가
+	public void regEstimate(Parts reg) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "INSERT INTO @@견적목록@@ values(?)";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "컴퓨터명");
+			
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("등록 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}	
+		
+	
+	
+	
+	 
 }
