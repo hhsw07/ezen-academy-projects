@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 	<style>
 body{margin:0; padding:0; overflow-x:hidden;}
-a{text-decoration:none;}
+a{text-decoration:none; color:black;}
 ul{margin:0; padding:0;}
 ul li{list-style:none;}
 
@@ -43,8 +43,8 @@ ul li{list-style:none;}
 		<div class="menu-wrap">
 			<div class="menu-1">
 				<ul>
-					<li>고객센터</li>
-					<li>로그인</li>
+					<li><a href="SCenter">고객센터</a></li>
+					<li><a href="login">로그인</a></li>
 				</ul>				
 			</div>
 			<div class="menu-div"></div>
