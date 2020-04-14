@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-/* 마일리지조회 */
+/* 포인트조회 */
 	table tr{border-collape:collape;}
 	.point-wrap{padding:0 10%; color:#a1a4a8;}
 	.point_page{width:980px; margin:0 auto;}
@@ -45,24 +45,24 @@
 				<div class="pointinfo-cont">
 					<div class="pointinfo_show">
 						<div class="point-info">
-							<div class="point-info-tit">현재 마일리지</div>
+							<div class="point-info-tit">현재 포인트</div>
 							<div class="point-info-p">0000 P</div>
 						</div>
 						<div class="point-info">
-							<div class="point-info-tit">총 적립 마일리지</div>
+							<div class="point-info-tit">총 적립 포인트</div>
 							<div class="point-info-p">0000 P</div>
 						</div>
 						<div class="point-info">
-							<div class="point-info-tit">사용한 마일리지</div>
+							<div class="point-info-tit">사용한 포인트</div>
 							<div class="point-info-p">0000 P</div>
 						</div>
 					</div>
 				</div>
 				
-				<div class="point-info-txt">•  마일리지는 주문 시 사용하실 수 있습니다.<br></div>
+				<div class="point-info-txt">•  포인트는 주문 시 사용하실 수 있습니다.<br></div>
 				
 				<div class="point-cont">
-					<div class="point-tit">마일리지 적립/사용 내역</div>
+					<div class="point-tit">포인트 적립/사용 내역</div>
 					<div class="point-table">
 						<table width="100%">
 							<colgroup>
@@ -74,7 +74,7 @@
 								<tr>
 									<th class="point-th">적립날짜</th>
 									<th class="point-th">내역</th>
-									<th class="point-th">마일리지</th>
+									<th class="point-th">포인트</th>
 								</tr>
 							</thead>
 							<tbody class="point_list_wrap">

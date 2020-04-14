@@ -14,15 +14,27 @@
 /* 구매하기 */
 	.pay-title{width:1050px; margin:0 auto;}
 	.pay-thead tr th{padding:12px 10px; font-weight:700;}
-	.pay-tbody tr td{padding:12px 10px;}
+	.pay-tbody tr td{padding:12px 10px; border-bottom:1px solid #cacaca; }
 	.pay-wrap{width:1050px; margin:0 auto;}
 	.pay-table-th{width:100%; border-top:3px solid #cacaca;}
 	.pay-table-td{width:100%; border-top:1px solid #cacaca; border-collapse:collapse;}
-	.pay-order{width:1050px; margin:20px auto; border:2px solid #63145F;}
-	.pay-delivery{width:1050px; margin:20px auto; border:2px solid #63145F;}
-	.pay-info{width:1050px; margin:20px auto; border:2px solid #63145F;}
-	.pay-price{width:1050px; margin:20px auto; border:2px solid #63145F; text-align:right; padding:20px 10px;}
+	.pay-order{width:1050px; margin:20px auto;}
+	.pay-delivery{width:1050px; margin:20px auto;}
+	.pay-info{width:1050px; margin:20px auto;}
+	.pay-price{width:1050px; margin:20px auto; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
+	
+	fieldset{border:2px solid #63145F;}
+	legend{padding:5px 10px; font-weight:700; font-size:1.2em;}
+	.pay-tit{heigth:35px;}
+	.input-table{width:100%;}
+	.input-wrap{width:220px; padding:7px 10px 9px;border:1px solid #dfdfdf;display:inline-block;vertical-align:middle;position:relative;}
+	.input{width:100%;color:#3d4248;background:none; border:0;}
+	.input-post{width:120px !important;}
+	.input-btn{width:93px; margin:0;height:34px;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px;background:#63145F;text-align:center;vertical-align:middle;
+	 outline:none; border:none;}
+	 .input-addr{margin-top:4px; width:400px !important;line-height:1.4;padding:5px 10px 6px;border:1px solid #dfdfdf;display:block;vertical-align:middle;position:relative;}
+	.request{width:400px !important;; height:50px; padding:7px 10px 9px; border:1px solid #dfdfdf;vertical-align:middle;position:relative;}
 	
 /* 버튼 */
 	.pay-btn{width:1050px; margin:20px auto 50px; text-align:center;}
@@ -59,7 +71,7 @@
 			</colgroup>
 			<thead class="pay-thead">
 				<tr>
-					<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립금</th>
+					<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>포인트</th>
 				</tr>
 			</thead>
 		</table>
@@ -81,85 +93,133 @@
 					<td>수량</td>
 					<td class="fmtnum">가격</td>
 					<td class="fmtnum">합계금액</td>
-					<td>적립금</td>
+					<td>포인트</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<span>상품이미지 고민중.. </span><span>상품명</span>
+					</td>
+					<td>수량</td>
+					<td class="fmtnum">가격</td>
+					<td class="fmtnum">합계금액</td>
+					<td>포인트</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	
 	<div class="pay-order">
-		<table>
-			<caption>주문자 정보 확인</caption>
-			<tr>
-				<th>이름</th><td><input type="text" name="name"/></td>
-			</tr>
-			<tr>
-				<th>전화번호</th><td><input type="text" name="tel"/></td>
-			</tr>
-			<tr>
-				<th>이메일</th><td><input type="email" name="email"/></td>
-			</tr>
-		</table>
+		<fieldset>
+			<legend>주문자 정보 확인</legend>
+			<table class="input-table">
+				<col width="17%">
+				<col width="83%">
+				<tr>
+					<th>이름</th>
+					<td>
+						<div class="input-wrap"><input class="input" type="text" name="name"/></div>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>
+						<div class="input-wrap"><input class="input" type="text" name="tel"/></div>
+					</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>
+						<div class="input-wrap"><input class="input" type="email" name="email"/></div>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
 	</div>
 	
 	<div class="pay-delivery">
-		<table>
-			<cation>배송정보입력</cation>
-			<tr>
-				<th>배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
-			</tr>
-			<tr>
-				<th>수령인</th><td><input type="text" name="recipient"/></td>
-			</tr>
-			<tr>
-				<th>연락처</th><td><input type="text" name="hp"/></td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td>
-					<div>
-						<input type="text" name="post"/><input type="button" value="우편번호찾기"/>
-					</div>
-					<div>
-						<input type="text" name="road_addr"/>
-					</div>
-					<div>
-						<input type="text" name="detail_addr"/>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>주문 요청사항</th>
-				<td>
-					<textarea style="width:400px; height:50px; resize:none;" scrolling="yes"></textarea>
-				</td>
-			</tr>
-		</table>
+		<fieldset>
+			<legend>배송정보입력</legend>
+			<table class="input-table">
+				<col width="17%">
+				<col width="83%">
+				<tr>
+					<th class="pay-tit">배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
+				</tr>
+				<tr>
+					<th>수령인</th>
+					<td>
+						<div class="input-wrap"><input class="input" type="text" name="recipient"/></div>
+					</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>
+						<div class="input-wrap"><input class="input" type="text" name="hp"/></div>
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>
+						<div>
+							<span class="input-wrap input-post">
+								<input type="text" id="zip" class="input" name="postcode" value="" readonly="readonly">
+							</span>
+							<input class="input-btn" type="button" value="우편번호찾기"/>
+						</div>
+						<div class="input-addr">
+							<input type="text" id="addr" class="input" name="newaddr" value="" readonly="readonly">
+						</div>
+						<div class="input-addr">
+							<input type="text" class="input" name="detail_addr"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>주문 요청사항</th>
+					<td>
+						<div class="request">
+							<textarea style="width:100%; border:none; height:100%; resize:none;" scrolling="yes"></textarea>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
 	</div>
 	
 	<div class="pay-info">
-		<table>
-			<caption>결제정보선택</caption>
-			<tr>
-				<th>결제 방법 선택</th>
-				<td>
-					<input type="radio" name="payment" value=""/>무통장입금
-					<input type="radio" name="payment" value=""/>카드결제
-				</td>
-			</tr>
-			<tr>
-				<th>적립금 사용</th>
-				<td>
-					<input type="text" name="point" value=""/>
-					<input type="button" value="사용"/>
-					('포인트'원 사용가능)
-				</td>
-			</tr>
-		</table>	
+		<fieldset>
+			<legend>결제/할인 선택</legend>
+			<table class="input-table">
+				<col width="17%">
+				<col width="83%">
+				<tr>
+					<th>결제 방법 선택</th>
+					<td>
+						<input type="radio" name="payment" value=""/>무통장입금
+						<input type="radio" name="payment" value=""/>카드결제
+					</td>
+				</tr>
+				<tr>
+					<th>포인트 사용</th>
+					<td>
+						<span class="input-wrap input-post">
+							<input type="text" class="input" name="point" value=""/>
+						</span>
+						<input class="input-btn" type="button" value="사용"/>
+						('포인트'원 사용가능)
+					</td>
+				</tr>
+			</table>
+		</fieldset>
 	</div>
 	
 	<div class="pay-price">
-		<h1>결제금액</h1>
+		<fieldset>
+			<h3>총 금액</h3>
+			<h3>할인금액</h3>
+			<h1>최종결제금액</h1>
+		</fieldset>
 	</div>
 	
 	<div class="pay-btn">

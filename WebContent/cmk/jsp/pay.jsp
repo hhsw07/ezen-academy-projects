@@ -20,9 +20,26 @@
 	.pay-table-td{width:100%; border-top:1px solid #cacaca;}
 	.pay-order{width:1050px; margin:20px auto; border:2px solid #1AAB8A;}
 	.pay-delivery{width:1050px; margin:20px auto; border:2px solid #1AAB8A;}
-	.pay-info{width:1050px; margin:20px auto; border:2px solid #1AAB8A;}
 	.pay-price{width:1050px; margin:20px auto; border:2px solid #1AAB8A; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
+	
+	
+	[data-layout=_r] {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}[data-layout^="_r"] {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+}[data-layout*=ec-n3] {
+    margin-right: 18.75%;flex: 0 0 31.25%;
+}[data-layout=_r] > div {
+    padding: 0 1rem 1rem 1rem;
+}[data-layout*=ec-half] {
+    flex: 0 0 50%;
+}
+	
 	
 /* 버튼 */
 	.pay-btn{width:1050px; margin:20px auto; text-align:center;}
@@ -89,75 +106,65 @@
 		</table>
 	</div>
 	
-	<div class="pay-order">
-		<table>
-			<caption>주문자 정보 확인</caption>
-			<tr>
-				<th>이름</th><td><input type="text" name="name"/></td>
-			</tr>
-			<tr>
-				<th>전화번호</th><td><input type="text" name="tel"/></td>
-			</tr>
-			<tr>
-				<th>이메일</th><td><input type="email" name="email"/></td>
-			</tr>
-		</table>
-	</div>
-	
-	<div class="pay-delivery">
-		<table>
-			<cation>배송정보입력</cation>
-			<tr>
-				<th>배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
-			</tr>
-			<tr>
-				<th>수령인</th><td><input type="text" name="recipient"/></td>
-			</tr>
-			<tr>
-				<th>연락처</th><td><input type="text" name="hp"/></td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td>
-					<div>
-						<input type="text" name="post"/><input type="button" value="우편번호찾기"/>
-					</div>
-					<div>
-						<input type="text" name="road_addr"/>
-					</div>
-					<div>
-						<input type="text" name="detail_addr"/>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>주문 요청사항</th>
-				<td>
-					<textarea style="width:400px; height:50px; resize:none;" scrolling="yes"></textarea>
-				</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div class="pay-info">
-		<table>
-			<caption>결제정보선택</caption>
-			<tr>
-				<th>결제 방법 선택</th>
-				<td>
-					<input type="radio" name="payment" value=""/>무통장입금
-					<input type="radio" name="payment" value=""/>카드결제
-				</td>
-			</tr>
-		</table>
-	</div>
+	<section>
+		<div data-layout="_r">
+			<div data-layout="de6 ec5 ec-n3">
+				<table>
+					<caption>주문자 정보 확인</caption>
+					<tr>
+						<th>이름</th><td><input type="text" name="name"></td>
+					</tr>
+					<tr>
+						<th>전화번호</th><td><input type="text" name="tel"></td>
+					</tr>
+					<tr>
+						<th>이메일</th><td><input type="email" name="email"></td>
+					</tr>
+				</table>
+			</div>
+			<div data-layout="de10 ec-half">
+				<div class="pay-delivery">
+					<table>
+						<cation>배송정보입력</cation>
+						<tr>
+							<th>배송지선택</th><td><input type="radio" name="delivery" value="old">최근 배송지<input type="radio" name="delivery" value="new">새 배송지</td>
+						</tr>
+						<tr>
+							<th>수령인</th><td><input type="text" name="recipient"></td>
+						</tr>
+						<tr>
+							<th>연락처</th><td><input type="text" name="hp"></td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>
+								<div>
+									<input type="text" name="post"><input type="button" value="우편번호찾기">
+								</div>
+								<div>
+									<input type="text" name="road_addr">
+								</div>
+								<div>
+									<input type="text" name="detail_addr">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>주문 요청사항</th><td><textarea style="width:400px; height:50px; resize:none;" scrolling="yes"></textarea></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	<div class="pay-price">
-		<h1>결제금액</h1>
+		<h1>최종결제금액</h1>
 	</div>
 	
 	<div class="pay-btn">
-		<input class="btn" type="button" name="payBtn" value="결제하기"/>
+		<input class="btn" type="button" name="selBtn" value="선택주문"/>
+		<input class="btn" type="button" name="allBtn" value="전체주문"/>
 	</div>
 	
 </body>

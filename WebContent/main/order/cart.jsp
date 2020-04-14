@@ -15,7 +15,7 @@
 
 	.cart-title{width:1050px; margin:0 auto;}
 	.cart-thead tr th{padding:12px 10px; font-weight:700;}
-	.cart-tbody tr td{padding:12px 10px;}
+	.cart-tbody tr td{padding:12px 10px;border-bottom:1px solid #cacaca; }
 	.cart-wrap{width:1050px; margin:0 auto;}
 	.cart-table-th{width:100%; border-top:3px solid #cacaca;}
 	.cart-table-td{width:100%; border-top:1px solid #cacaca; border-collapse:collapse;}
