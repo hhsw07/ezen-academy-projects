@@ -16,7 +16,7 @@
 .wrap{width:1080px; margin:0 auto;}
           table{border-collapse:collapse; cursor:pointer; border-bottom:3px solid black;}
           table tr{border-top:1px solid gray;}
-          table tr:first-child{visibility:visible;border-top:3px solid black;border-bottom:3px solid black;}
+          table tr:first-child{visibility:visible; border-top:3px solid black; border-bottom:3px solid black;}
           table tr td,th {padding:10px 10px;} 
           
           select{width:160px; height:40px; outline:none; margin-bottom:20px; font-size:20px;}
@@ -42,7 +42,7 @@
 </head>
 <body>
 
-<jsp:include page="top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 <div class="all-wrap">
 	<div class="wrap">
@@ -96,7 +96,7 @@
 	</div>
 </div>
 
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>
