@@ -45,12 +45,9 @@
 <jsp:include page="../../main/top.jsp"/>
 
 <div class="all-wrap">
-	<div class="title"><h1>마이페이지</h1></div>
-	<div class="menu-wrap">
-		<div class="menu-bar">
-			<a>내정보관리</a><a>포인트</a><a>주문/배송관리</a>
-		</div>
-	</div>
+
+	<jsp:include page="../../main/myPageTop.jsp"/>
+
 	<div class="info-wrap">
 	<form>
 		<table>
