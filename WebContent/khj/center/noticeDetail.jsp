@@ -22,7 +22,7 @@
 				.title-date{color:gray; font-size:12px;}
 		.content{padding:10px;}
 		.comment-box{width:790px; margin:10px auto; border:1px solid black;}
-			.comment-regArea{width:750px; border-bottom:1px dotted gray; padding-left:10px; margin:10px 0px; padding-bottom:10px;}
+			.comment-regArea{width:750px; border-bottom:1px dotted gray; padding-left:10px; margin:10px auto; padding-bottom:10px;}
 				.reg-name{font-size:20px;}
 				.reg-date{font-size:15px; padding-left:10px; color:gray;}
 			.comment-reg{width:780px; height:100px; border:1px solid gray; margin:5px auto;}

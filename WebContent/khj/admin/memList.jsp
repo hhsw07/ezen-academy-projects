@@ -21,17 +21,10 @@ ul li{list-style:none;}
 </head>
 <body>
 
-<!-- 공통 header -->
-<jsp:include page="top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
-<!-- 공통 footer -->
-<jsp:include page="bottom.jsp"/>
 
-<!--  mypage menubar -->
-<jsp:include page="myPageTop.jsp"/>
-
-<!-- admin header -->
-<jsp:include page="admintop.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>
