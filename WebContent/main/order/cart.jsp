@@ -22,8 +22,19 @@
 	.cart-price{width:1050px; margin:20px auto; border:2px solid #63145F; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
 	
+	
 /* 버튼 */
-	.cart-btn{width:1050px; margin:20px auto; text-align:right;}
+	.btn-order-ctrl {width:1080px; margin:0 auto;overflow: hidden;padding: 30px 0 0;} 
+	.btn0 {float: left;width: 50%;text-align: left;}
+	.box_btn {display: inline-block;text-align: center;vertical-align: top;}
+	.box_btn * {width: 140px;margin: 0 10px 0 0;}
+	.box_btn.white * {  border: 1px solid #e5e5e5; background: #fff;color: #333 !important;}
+	.box_btn.huge > * { padding: 18px !important; font-size: 16px !important;}
+	.box_btn > * {display: inline-block;outline: none;font-weight: 300;ext-align: center;vertical-align: middle;
+    line-height: 1.4; white-space: nowrap;cursor: pointer; -webkit-appearance: none;transition: all .2s ease;}
+    .btn1 {float: right; width: 50%; text-align: right;}
+    .box_btn.gray * {border-color: #f2f2f2;background: #f2f2f2;color: #333 !important;}
+    
 	.btn{background:#63145F; color:#fff; border:none; position:relative; height:60px; font-size:1.5em; padding:0 2em; cursor:pointer;
 	transition:800ms ease all; outline:none;}
 	.btn:hover{background:#fff; color:#63145F;}
@@ -36,7 +47,28 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("장바구니");
+		// 천단위 콤마 붙이기
+		String.prototype.number_format = function() {
+		    return this.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,');
+		};
+		Number.prototype.number_format = function() {
+		    return this.toString().number_format();
+		};
+
 	});
+	var cnt = 1;
+	function count(obj){
+		// 구매수량, 수량에 따른 가격 처리
+		if(obj == "+"){
+			cnt++;
+			document.querySelector("#cnt").innerHTML= cnt;
+		}else if(obj =="-"){
+			if(cnt > 1){
+				cnt--;
+			}
+			document.querySelector("#cnt").innerHTML= cnt;
+		}
+	}
 </script>
 </head>
 <body>
@@ -76,7 +108,13 @@
 						<td>
 							<span>상품이미지 고민중</span><span>상품명</span>
 						</td>
-						<td>수량. 수량변경</td>
+						<td>
+							<div class="pd_count">
+								<button type="button" onclick="count(this.innerHTML)">-</button>
+								<span id="cnt">1</span>
+								<button type="button" onclick="count(this.innerHTML)">+</button>
+							</div>
+						</td>
 						<td class="fmtnum">가격</td>
 						<td class="fmtnum">합계금액</td>
 						<td>적립금</td>
@@ -90,10 +128,18 @@
 				<p>결제예정금액</p>
 			</div>
 		</div>
-		<div class="cart-btn">
-			<input class="btn" type="button" name="selBtn" value="선택주문"/>
-			<input class="btn" type="button" name="allBtn" value="전체주문"/>
+		
+		<div class="btn-order-ctrl">
+			<div class="btn0">
+				<div class="box_btn white huge"><a href="javascript:basket_multidel()">선택삭제</a></div>
+			</div>
+			<div class="btn1">
+				<input class="btn" type="button" name="selBtn" value="선택주문"/>
+				<input class="btn" type="button" name="allBtn" value="전체주문"/>
+			</div>
 		</div>
+		
+		
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>

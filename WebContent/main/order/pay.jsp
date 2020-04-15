@@ -32,9 +32,9 @@
 	.input{width:100%;color:#3d4248;background:none; border:0;}
 	.input-post{width:120px !important;}
 	.input-btn{width:93px; margin:0;height:34px;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px;background:#63145F;text-align:center;vertical-align:middle;
-	 outline:none; border:none;}
-	 .input-addr{margin-top:4px; width:400px !important;line-height:1.4;padding:5px 10px 6px;border:1px solid #dfdfdf;display:block;vertical-align:middle;position:relative;}
-	.request{width:400px !important;; height:50px; padding:7px 10px 9px; border:1px solid #dfdfdf;vertical-align:middle;position:relative;}
+	outline:none; border:none;}
+	.input-addr{margin-top:4px; width:400px !important;line-height:1.4;padding:5px 10px 6px;border:1px solid #dfdfdf;display:block;vertical-align:middle;position:relative;}
+	.request{width:400px !important; height:50px; padding:7px 10px 9px; border:1px solid #dfdfdf;vertical-align:middle;position:relative;}
 	
 /* 버튼 */
 	.pay-btn{width:1050px; margin:20px auto 50px; text-align:center;}

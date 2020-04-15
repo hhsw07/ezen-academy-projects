@@ -13,13 +13,14 @@
 <link rel="stylesheet" href="${path}/a00_com/a00_com.css">
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){		
-		$("h2").text("시작");
+	$(document).ready(function(){	
 	});
 </script>
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
+	
+	<jsp:include page="../myPageTop.jsp"/>
 	<h2></h2>
 	
 	<jsp:include page="../bottom.jsp"/>

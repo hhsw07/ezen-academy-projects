@@ -11,6 +11,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	header{width:1080px; margin:0 auto;}
+/* 신청 */
+	.apply-cont{width:1080px; margin:20px auto;}
+	.apply-table{width:100%;}
+	.apply-schon{width:93px; margin:0;height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
+	outline:none; border:none;}
+	select{height:34px;width:93px;}
+
 /* 버튼 */
 	.apply-btn{width:1050px; margin:20px auto 50px; text-align:center;}
 	.btn{background:#63145F; color:#fff; border:none; position:relative; height:60px; font-size:1.5em; padding:0 2em; cursor:pointer;
@@ -34,8 +42,8 @@
 		<h2></h2>
 	</header>
 	
-	<div>
-		<table>
+	<div class="apply-cont">
+		<table class="apply-table">
 			<tr>
 				<th>분류</th>
 				<td>
@@ -49,11 +57,12 @@
 			<tr>
 				<th>주문번호</th>
 				<td>
-					<input type="button" name="schOrder" value="선택"/> <span></span>
+					XXXXXXXXX
+					<span><input class="apply-schon btn" type="button" name="schOrder" value="선택"/></span>
 				</td>
 			</tr>
 			<tr>
-				<th>상품명</th><td></td>
+				<th>상품명</th><td>XXXXXXXXX</td>
 			</tr>
 			<tr>
 				<th>내용</th>

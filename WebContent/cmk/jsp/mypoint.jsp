@@ -38,6 +38,7 @@
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
+	<jsp:include page="../myPageTop.jsp"/>
 	<h2></h2>
 	<section class="mypage_content">
 		<article class="point-wrap">
