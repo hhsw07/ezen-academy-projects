@@ -305,7 +305,25 @@ CREATE SEQUENCE p5_computer_seq
 START WITH 1001
 INCREMENT BY 1
 ;
-INSERT INTO p5_computer VALUES ();
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-HAO01','가정/사무용','PCCAT-HAO01.jpg','',275000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-HAO02','가정/사무용','PCCAT-HAO02.jpg','',420000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-HAO03','가정/사무용','PCCAT-HAO03.jpg','',525000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-HAO04','가정/사무용','PCCAT-HAO04.jpg','',515000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-GM01','게임용','PCCAT-GM01.jpg','',555000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-GM02','게임용','PCCAT-GM02.jpg','',873000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-GM03','게임용','PCCAT-GM03.jpg','',735000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-GM04','게임용','PCCAT-GM04.jpg','',1435000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME01','영상작업용','PCCAT-SAME01.jpg','',770000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME02','영상작업용','PCCAT-SAME02.jpg','',859000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME03','영상작업용','PCCAT-SAME03.jpg','',854000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME04','영상작업용','PCCAT-SAME04.jpg','',947000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS01','워크스테이션','PCCAT-WS01.jpg','',1664000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS02','워크스테이션','PCCAT-WS02.jpg','',2873000);
+--개인사양은 논의 필요
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1000000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER02.jpg','',1100000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER03.jpg','',1200000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER04.jpg','',1500000);
 SELECT * FROM p5_computer;
 --------------------------------------
 /* 견적 */
