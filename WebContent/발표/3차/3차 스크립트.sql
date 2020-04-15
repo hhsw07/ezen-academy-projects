@@ -386,9 +386,12 @@ ALTER TABLE p5_assque
 		);
 CREATE SEQUENCE p5_assque_seq
 START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_assque VALUES ();
+INCREMENT BY 1;
+
+INSERT INTO p5_assque VALUES (p5_assque_seq.nextval,1,'견적어때요1?','이거 어떰1?',sysdate,'','');
+INSERT INTO p5_assque VALUES (p5_assque_seq.nextval,1,'견적어때요1?','이거 어떰2?',sysdate,'','');
+INSERT INTO p5_assque VALUES (p5_assque_seq.nextval,1,'견적어때요1?','이거 어떰3?',sysdate,'','');
+
 SELECT * FROM p5_assque;
 --------------------------------------
 /* 포인트 */
