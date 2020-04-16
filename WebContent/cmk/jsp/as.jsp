@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	.cs-content{min-height:750px;}
 	.as-title{width:1080px; margin:0 auto;}
 	.cs-wrap{width:1080px; margin:0 auto;}
 	.cs-menu{width:160px; height:40px; outline:none; margin-bottom:20px; font-size:20px;}
@@ -36,63 +37,65 @@
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
-	<header class="as-title">
-		<h2></h2>
-	</header>
-	<div class="cs-wrap">
-		<select name="cs-menu" class="cs-menu">
-	      <option>공지사항</option>
-	      <option>문의사항</option>
-	      <option>상품후기</option>
-	      <option selected="selected">AS신청</option>
-	    </select>
-	</div>
-	<div class="as-table">
-		<table class="as-thead">
-			<colgroup>
-				<col width="12%">
-				<col width="8%">
-				<col width="53%">
-				<col width="12%">
-				<col width="15%">
-			</colgroup>
-			<tr>
-				<th>글번호</th><th>분류</th><th>제목</th><th>작성자</th><th>등록일</th>
-			</tr>
-		</table>
-		<table class="as-tbody">
-			<colgroup>
-				<col width="12%">
-				<col width="8%">
-				<col width="53%">
-				<col width="12%">
-				<col width="15%">
-			</colgroup>
-			<tr>
-				<td class="as-code">글번호</td>
-				<td class="as-code">분류</td>
-				<td>제목</td>
-				<td class="as-code">작성자</td>
-				<td class="as-code">등록일</td>
-			</tr>
-			<tr>
-				<td class="as-code">글번호</td>
-				<td class="as-code">분류</td>
-				<td>제목</td>
-				<td class="as-code">작성자</td>
-				<td class="as-code">등록일</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div class="as-search">
-		<span style="margin-right:150px">
-			<input class="input-box" type="text">
-			<input class="search-btn" type="submit" value="검색">
-		</span>
-		<span class="as-write" style="margin-left:500px">
-			<input class="reg-btn" type="button" value="글쓰기">
-		</span>
+	<div class="cs-content">
+		<header class="as-title">
+			<h2></h2>
+		</header>
+		<div class="cs-wrap">
+			<select name="cs-menu" class="cs-menu">
+		      <option>공지사항</option>
+		      <option>문의사항</option>
+		      <option>상품후기</option>
+		      <option selected="selected">AS신청</option>
+		    </select>
+		</div>
+		<div class="as-table">
+			<table class="as-thead">
+				<colgroup>
+					<col width="12%">
+					<col width="8%">
+					<col width="53%">
+					<col width="12%">
+					<col width="15%">
+				</colgroup>
+				<tr>
+					<th>글번호</th><th>분류</th><th>제목</th><th>작성자</th><th>등록일</th>
+				</tr>
+			</table>
+			<table class="as-tbody">
+				<colgroup>
+					<col width="12%">
+					<col width="8%">
+					<col width="53%">
+					<col width="12%">
+					<col width="15%">
+				</colgroup>
+				<tr>
+					<td class="as-code">글번호</td>
+					<td class="as-code">분류</td>
+					<td>제목</td>
+					<td class="as-code">작성자</td>
+					<td class="as-code">등록일</td>
+				</tr>
+				<tr>
+					<td class="as-code">글번호</td>
+					<td class="as-code">분류</td>
+					<td>제목</td>
+					<td class="as-code">작성자</td>
+					<td class="as-code">등록일</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="as-search">
+			<span style="margin-right:150px">
+				<input class="input-box" type="text">
+				<input class="search-btn" type="submit" value="검색">
+			</span>
+			<span class="as-write" style="margin-left:500px">
+				<input class="reg-btn" type="button" value="글쓰기">
+			</span>
+		</div>
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>
