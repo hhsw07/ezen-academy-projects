@@ -21,6 +21,14 @@ public class Parts {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Parts(int parts_no, String parts_name, int parts_price, String parts_img) {
+		super();
+		this.parts_no = parts_no;
+		this.parts_name = parts_name;
+		this.parts_price = parts_price;
+		this.parts_img = parts_img;
+	}
+
 	public Parts(int parts_no, String parts_mc) {
 		super();
 		this.parts_no = parts_no;
@@ -45,7 +53,7 @@ public class Parts {
 		this.parts_sc6 = parts_sc6;
 	}
 
-	public Parts(int parts_no, String parts_name, int parts_price, int parts__stock, String parts_img,
+	public Parts(int parts_no, String parts_name, int parts_price, int parts_stock, String parts_img,
 			String parts_detail, String parts_mc, String parts_sc1, String parts_sc2, String parts_sc3,
 			String parts_sc4, String parts_sc5, String parts_sc6) {
 		super();
@@ -64,7 +72,7 @@ public class Parts {
 		this.parts_sc6 = parts_sc6;
 	}
 
-
+	
 
 
 	/**
