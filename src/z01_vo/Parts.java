@@ -15,6 +15,7 @@ public class Parts {
 	private String parts_sc5;
 	private String parts_sc6;
 	private int parts_com;
+	private int parts_cnt;
 	
 	public Parts() {
 		super();
@@ -35,6 +36,13 @@ public class Parts {
 		this.parts_mc = parts_mc;
 	}
 	
+	public Parts(int parts_com, int parts_no, int parts_cnt) {
+		super();
+		this.parts_com = parts_com;
+		this.parts_no = parts_no;
+		this.parts_cnt = parts_cnt;
+	}
+
 	public Parts(int parts_com,int parts_no) {
 		super();
 		this.parts_com = parts_com;
@@ -247,6 +255,14 @@ public class Parts {
 	 */
 	public void setParts_com(int parts_com) {
 		this.parts_com = parts_com;
+	}
+
+	public int getParts_cnt() {
+		return parts_cnt;
+	}
+
+	public void setParts_cnt(int parts_cnt) {
+		this.parts_cnt = parts_cnt;
 	}
 	
 	

@@ -105,11 +105,12 @@ public class A01_AssemblyDao {
 	public void insertCart(Parts ins) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
-			String sql = "INSERT INTO @@조립목록@@ values(?,?)";
+			String sql = "INSERT INTO p5_assembly values(?,?,?)";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "컴퓨터번호");
-			pstmt.setString(2, "부품번호");
+			pstmt.setInt(1, ins.getParts_com());
+			pstmt.setInt(2, ins.getParts_no());
+			pstmt.setInt(3, ins.getParts_cnt());
 			
 			pstmt.executeUpdate();
 			con.commit();

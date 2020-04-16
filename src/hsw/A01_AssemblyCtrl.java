@@ -1,6 +1,7 @@
 package hsw;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +41,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		String proc = Nk.toStr(request.getParameter("proc"),"first");
 		String parts_mc = Nk.toStr(request.getParameter("parts_mc"),"CPU");
 		HttpSession session = request.getSession();
+		if(session.getAttribute("cart")==null) {
+			session.setAttribute("cart", new ArrayList<Parts>());
+		}
 		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
