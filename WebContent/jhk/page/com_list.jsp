@@ -16,8 +16,13 @@ body{margin:0; padding:0; overflow-x:hidden;}
 a{text-decoration:none;}
 ul{margin:0; padding:0;}
 ul li{list-style:none;}
+	.menu-wrap{width:100%;}
+	.menu-2-wrap{background-color:#63145F;}
+		.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
+				border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
+			.menu-2 li{display:inline; font-size:25px; margin:0 15px;}
 				
-	#market_wrap{padding:50px; position: relative; width:1280px; height:2000px; margin:0 auto;}
+	#market_wrap{position: relative; width:1280px; height:2000px; margin:0 auto;}
 	#market_title{border-bottom:1px solid black; padding:10px; font-size:20px;}
 	.com{width:220px;float: left; margin:15px;}
 	.com_img{width:220px;height:220px;}
@@ -30,11 +35,23 @@ ul li{list-style:none;}
 <body>
 
 <jsp:include page="top.jsp"/>
-
-<div id="market_wrap">
-	<div id="market_menu">
-		
+	<div class="menu-wrap">
+		<div class="menu-2-wrap">
+			<div class="menu-2">
+				<ul>
+					<li>CPU</li>
+					<li>메인보드</li>
+					<li>RAM</li>
+					<li>그래픽카드</li>
+					<li>SSD</li>
+					<li>HDD</li>
+					<li>케이스</li>
+					<li>파워</li>
+				</ul>
+			</div>
+		</div>
 	</div>
+<div id="market_wrap">
 	<p id="market_title">조립컴퓨터</p>
 	<ul id="market_list">
 		<c:forEach begin="1" end="9" varStatus="sts">
