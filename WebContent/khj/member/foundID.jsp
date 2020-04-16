@@ -17,11 +17,11 @@
 		table{cursor:pointer;}
 		.logo-text{font-family:sans-serif; font-size:60px; color:#F2B809; font-weight:bold;}
 		img{width:150px; height:130px; margin-bottom:40px;}
-.id-result{padding:100px 0; color:orange;}
+.input-id{width:420px; height:40px; font-size:15px; padding:10px;}
+.input-ps{width:420px; height:40px; font-size:15px; padding:10px; margin-bottom:20px;}
 .login-btn{width:445px; height:65px; font-size:20px; font-weight:800; 
 		background-color:black; color:white; border:3px solid purple;
 		cursor:pointer; margin-bottom:20px;}
-		
 		
 </style>
 <title>Insert title here</title>
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<jsp:include page="../main/top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 <div class="all-wrap">
 	<div class="wrap">
@@ -50,9 +50,12 @@
 			<tr>
 				<th colspan="3"><img src="../image/main/logo.png"></th>
 			</tr>
-			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">비밀번호 찾기</th></tr>
+			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">아이디 찾기</th></tr>
 			<tr>
-				<th colspan="3" class="id-result">귀하의 비밀번호는[] 입니다.</th>
+				<th colspan="3"><input class="input-id" type="text" placeholder="이름"/></th>
+			</tr>
+			<tr>
+				<th colspan="3"><input class="input-ps" type="text" placeholder="이메일"/></th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="login-btn" type="submit" value="확인"/></th>
@@ -64,7 +67,7 @@
 
 
 
-<jsp:include page="../main/bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>

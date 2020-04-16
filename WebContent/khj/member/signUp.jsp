@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<jsp:include page="../main/top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 <div class="all-wrap">
 	<div class="wrap">
@@ -100,7 +100,7 @@
 
 
 
-<jsp:include page="../main/bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>

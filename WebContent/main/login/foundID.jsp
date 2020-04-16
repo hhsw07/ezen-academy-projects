@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<jsp:include page="../main/top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 <div class="all-wrap">
 	<div class="wrap">
@@ -50,9 +50,9 @@
 			<tr>
 				<th colspan="3"><img src="../image/main/logo.png"></th>
 			</tr>
-			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">비밀번호 찾기</th></tr>
+			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">아이디 찾기</th></tr>
 			<tr>
-				<th colspan="3"><input class="input-id" type="text" placeholder="아이디"/></th>
+				<th colspan="3"><input class="input-id" type="text" placeholder="이름"/></th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="input-ps" type="text" placeholder="이메일"/></th>
@@ -67,7 +67,7 @@
 
 
 
-<jsp:include page="../main/bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>
