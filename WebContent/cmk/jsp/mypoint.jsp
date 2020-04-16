@@ -12,7 +12,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 /* 포인트조회 */
-	table tr{border-collape:collape;}
+	table{border-collape:collape;}
+	.point-cont-wrap{min-height:600px;}
 	.point-wrap{padding:0 10%; color:#a1a4a8;}
 	.point_page{width:980px; margin:0 auto;}
 	.pointinfo-cont{padding:32px 0; margin:40px 0 0; border:5px solid #DFDFDF;}
@@ -39,64 +40,66 @@
 <body>
 	<jsp:include page="../top.jsp"/>
 	<jsp:include page="../myPageTop.jsp"/>
-	<h2></h2>
-	<section class="mypage_content">
-		<article class="point-wrap">
-			<div class="point_page">
-				<div class="pointinfo-cont">
-					<div class="pointinfo_show">
-						<div class="point-info">
-							<div class="point-info-tit">현재 포인트</div>
-							<div class="point-info-p">0000 P</div>
-						</div>
-						<div class="point-info">
-							<div class="point-info-tit">총 적립 포인트</div>
-							<div class="point-info-p">0000 P</div>
-						</div>
-						<div class="point-info">
-							<div class="point-info-tit">사용한 포인트</div>
-							<div class="point-info-p">0000 P</div>
+	<div class="point-cont-wrap">
+		<h2></h2>
+		<section class="mypage_content">
+			<article class="point-wrap">
+				<div class="point_page">
+					<div class="pointinfo-cont">
+						<div class="pointinfo_show">
+							<div class="point-info">
+								<div class="point-info-tit">현재 포인트</div>
+								<div class="point-info-p">0000 P</div>
+							</div>
+							<div class="point-info">
+								<div class="point-info-tit">총 적립 포인트</div>
+								<div class="point-info-p">0000 P</div>
+							</div>
+							<div class="point-info">
+								<div class="point-info-tit">사용한 포인트</div>
+								<div class="point-info-p">0000 P</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="point-info-txt">•  포인트는 주문 시 사용하실 수 있습니다.<br></div>
-				
-				<div class="point-cont">
-					<div class="point-tit">포인트 적립/사용 내역</div>
-					<div class="point-table">
-						<table width="100%">
-							<colgroup>
-								<col width="28%">
-								<col width="44%">
-								<col width="28%">
-							</colgroup>
-							<thead>
-								<tr>
-									<th class="point-th">적립날짜</th>
-									<th class="point-th">내역</th>
-									<th class="point-th">포인트</th>
-								</tr>
-							</thead>
-							<tbody class="point_list_wrap">
-								<tr>
-									<td class="point-td">2020/00/00</td>
-									<td class="point-td">포인트 사용</td>
-									<td class="point-td">-0000 p</td>
-								</tr>
-								<tr>
-									<td class="point-td">2020/00/00</td>
-									<td class="point-td">회원가입 포인트</td>
-									<td class="point-td txt-color-r">+0000 p</td>
-								</tr>
-							</tbody>
-						</table>
+					
+					<div class="point-info-txt">•  포인트는 주문 시 사용하실 수 있습니다.<br></div>
+					
+					<div class="point-cont">
+						<div class="point-tit">포인트 적립/사용 내역</div>
+						<div class="point-table">
+							<table width="100%">
+								<colgroup>
+									<col width="28%">
+									<col width="44%">
+									<col width="28%">
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="point-th">적립날짜</th>
+										<th class="point-th">내역</th>
+										<th class="point-th">포인트</th>
+									</tr>
+								</thead>
+								<tbody class="point_list_wrap">
+									<tr>
+										<td class="point-td">2020/00/00</td>
+										<td class="point-td">포인트 사용</td>
+										<td class="point-td">-0000 p</td>
+									</tr>
+									<tr>
+										<td class="point-td">2020/00/00</td>
+										<td class="point-td">회원가입 포인트</td>
+										<td class="point-td txt-color-r">+0000 p</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
+					
 				</div>
-				
-			</div>
-		</article>
-	</section>
+			</article>
+		</section>
+	</div>
 	
 	<jsp:include page="../bottom.jsp"/>
 	

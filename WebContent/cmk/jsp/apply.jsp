@@ -12,12 +12,14 @@
 <title>Insert title here</title>
 <style type="text/css">
 	header{width:1080px; margin:0 auto;}
+	.cs-content{min-height:750px;}
 /* 신청 */
 	.apply-cont{width:1080px; margin:20px auto;}
 	.apply-table{width:100%;}
 	.apply-schon{width:93px; margin:0;height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
 	outline:none; border:none;}
 	select{height:34px;width:93px;}
+	textarea {padding: 5px 6px; border: 1px solid #d5d5d5; line-height: 1.5;height:500px;background: #fff; width:90%; resize:none;}
 
 /* 버튼 */
 	.apply-btn{width:1050px; margin:20px auto 50px; text-align:center;}
@@ -38,41 +40,46 @@
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
-	<header>
-		<h2></h2>
-	</header>
 	
-	<div class="apply-cont">
-		<table class="apply-table">
-			<tr>
-				<th>분류</th>
-				<td>
-					<select>
-						<option>AS</option>
-						<option>교환</option>
-						<option>반품</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>주문번호</th>
-				<td>
-					XXXXXXXXX
-					<span><input class="apply-schon btn" type="button" name="schOrder" value="선택"/></span>
-				</td>
-			</tr>
-			<tr>
-				<th>상품명</th><td>XXXXXXXXX</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea></textarea></td>
-			</tr>
-		</table>
-	</div>
-	
-	<div class="apply-btn">
-		<input class="btn" type="button" name="applyBtn" value="신청하기"/>
+	<div class="cs-content">
+		<header>
+			<h2></h2>
+		</header>
+		
+		<div class="apply-cont">
+			<table class="apply-table">
+				<col width="10%">
+				<col width="90%">
+				<tr>
+					<th>분류</th>
+					<td>
+						<select>
+							<option>AS</option>
+							<option>교환</option>
+							<option>반품</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>주문번호</th>
+					<td>
+						XXXXXXXXX
+						<span><input class="apply-schon btn" type="button" name="schOrder" value="선택"/></span>
+					</td>
+				</tr>
+				<tr>
+					<th>상품명</th><td>XXXXXXXXX</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea></textarea></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="apply-btn">
+			<input class="btn" type="button" name="applyBtn" value="신청하기"/>
+		</div>
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>
