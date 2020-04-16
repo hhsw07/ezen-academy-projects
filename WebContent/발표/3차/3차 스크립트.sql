@@ -24,11 +24,11 @@ CREATE SEQUENCE p5_member_seq
 	INCREMENT BY 1
 ;
 --
-INSERT INTO p5_member VALUES ('admin','admin','관리자',to_date('1990-01-01','YYYY-MM-DD'),'admin@naver.com','010-0000-0000',sysdate);
-INSERT INTO p5_member VALUES ('ezen01','ezen01','김형준',to_date('1991-01-06','YYYY-MM-DD'),'ezen01@naver.com','010-1010-6015',sysdate);
-INSERT INTO p5_member VALUES ('ezen02','ezen02','전현규',to_date('1992-02-07','YYYY-MM-DD'),'ezen02@naver.com','010-2011-7016',sysdate);
-INSERT INTO p5_member VALUES ('ezen03','ezen03','최민기',to_date('1993-03-08','YYYY-MM-DD'),'ezen03@naver.com','010-3012-8017',sysdate);
-INSERT INTO p5_member VALUES ('ezen04','ezen04','한송우',to_date('1994-04-09','YYYY-MM-DD'),'ezen04@naver.com','010-4013-9018',sysdate);
+INSERT INTO p5_member VALUES ('admin','admin','관리자',to_date('1990-01-01','YYYY-MM-DD'),'admin@naver.com','010-0000-0000',to_date('2020-01-01','YYYY-MM-DD'));
+INSERT INTO p5_member VALUES ('ezen01','ezen01','김형준',to_date('1991-01-06','YYYY-MM-DD'),'ezen01@naver.com','010-1010-6015',to_date('2020-01-15','YYYY-MM-DD'));
+INSERT INTO p5_member VALUES ('ezen02','ezen02','전현규',to_date('1992-02-07','YYYY-MM-DD'),'ezen02@naver.com','010-2011-7016',to_date('2020-02-24','YYYY-MM-DD'));
+INSERT INTO p5_member VALUES ('ezen03','ezen03','최민기',to_date('1993-03-08','YYYY-MM-DD'),'ezen03@naver.com','010-3012-8017',to_date('2020-03-06','YYYY-MM-DD'));
+INSERT INTO p5_member VALUES ('ezen04','ezen04','한송우',to_date('1994-04-09','YYYY-MM-DD'),'ezen04@naver.com','010-4013-9018',to_date('2020-03-31','YYYY-MM-DD'));
 INSERT INTO p5_member VALUES ('ezen05','ezen05','홍길동',to_date('1995-05-10','YYYY-MM-DD'),'ezen05@naver.com','010-5014-1019',sysdate);
 
 
@@ -179,55 +179,55 @@ insert into p5_parts values (p5_parts_seq.nextval,'이엠텍 지포스 RTX 2060 
 insert into p5_parts values (p5_parts_seq.nextval,'이엠텍 지포스 RTX 2060 STORM X Dual OC D6 6GB',486030,100,'이엠텍 지포스 RTX 2060 STORM X Dual OC D6 6GB.jpg','이엠텍 지포스 RTX 2060 STORM X Dual OC D6 6GB_detail.jpg','그래픽카드','이엠텍','NVIDIA',' ',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'이엠텍 지포스 RTX 2080 Ti BLACK EDITION V2 OC D6 11GB',1620000,100,'이엠텍 지포스 RTX 2080 Ti BLACK EDITION V2 OC D6 11GB.jpg','이엠텍 지포스 RTX 2080 Ti BLACK EDITION V2 OC D6 11GB_detail.jpg','그래픽카드','이엠텍','NVIDIA',' ',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'이엠텍 지포스 RTX 2080 Ti D6 11GB BLOWER',1531000,100,'이엠텍 지포스 RTX 2080 Ti D6 11GB BLOWER.jpg','이엠텍 지포스 RTX 2080 Ti D6 11GB BLOWER_detail.jpg','그래픽카드','이엠텍','NVIDIA',' ',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate Maxtor Z1 SSD(240GB)',54190,100,'Seagate Maxtor Z1 SSD(240GB).jpg','Seagate Maxtor Z1 SSD(240GB)_detail.jpg','SSD','Seagate','240GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(1TB)',184130,100,'Seagate 바라쿠다 120 SSD(1TB).jpg','Seagate 바라쿠다 120 SSD(1TB)_detail.jpg','SSD','Seagate','1TB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(2TB)',356760,100,'Seagate 바라쿠다 120 SSD(2TB).jpg','Seagate 바라쿠다 120 SSD(2TB)_detail.jpg','SSD','Seagate','2TB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(250GB)',68490,100,'Seagate 바라쿠다 120 SSD(250GB).jpg','Seagate 바라쿠다 120 SSD(250GB)_detail.jpg','SSD','Seagate','250GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(500GB)',102460,100,'Seagate 바라쿠다 120 SSD(500GB).jpg','Seagate 바라쿠다 120 SSD(500GB)_detail.jpg','SSD','Seagate','500GB','2.5' ' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate Maxtor Z1 SSD(240GB)',54190,100,'Seagate Maxtor Z1 SSD(240GB).jpg','Seagate Maxtor Z1 SSD(240GB)_detail.jpg','SSD','Seagate','240GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(1TB)',184130,100,'Seagate 바라쿠다 120 SSD(1TB).jpg','Seagate 바라쿠다 120 SSD(1TB)_detail.jpg','SSD','Seagate','1TB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(2TB)',356760,100,'Seagate 바라쿠다 120 SSD(2TB).jpg','Seagate 바라쿠다 120 SSD(2TB)_detail.jpg','SSD','Seagate','2TB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(250GB)',68490,100,'Seagate 바라쿠다 120 SSD(250GB).jpg','Seagate 바라쿠다 120 SSD(250GB)_detail.jpg','SSD','Seagate','250GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 바라쿠다 120 SSD(500GB)',102460,100,'Seagate 바라쿠다 120 SSD(500GB).jpg','Seagate 바라쿠다 120 SSD(500GB)_detail.jpg','SSD','Seagate','500GB','2.5'' SSD',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'Seagate 파이어쿠다 520 M.2 SSD(1TB)',389000,100,'Seagate 파이어쿠다 520 M.2 SSD(1TB).jpg','Seagate 파이어쿠다 520 M.2 SSD(1TB)_detail.jpg','SSD','Seagate','1TB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'Seagate 파이어쿠다 520 M.2 SSD(500GB)',199000,100,'Seagate 파이어쿠다 520 M.2 SSD(500GB).jpg','Seagate 파이어쿠다 520 M.2 SSD(500GB)_detail.jpg','SSD','Seagate','500GB','M.2',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(1TB)',184360,100,'Western Digital WD Blue 3D SSD(1TB).jpg','Western Digital WD Blue 3D SSD(1TB)_detail.jpg','SSD','WD','1TB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(250GB)',67040,100,'Western Digital WD Blue 3D SSD(250GB).jpg','Western Digital WD Blue 3D SSD(250GB)_detail.jpg','SSD','WD','250GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(500GB)',100560,100,'Western Digital WD Blue 3D SSD(500GB).jpg','Western Digital WD Blue 3D SSD(500GB)_detail.jpg','SSD','WD','500GB','2.5' ' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(1TB)',184360,100,'Western Digital WD Blue 3D SSD(1TB).jpg','Western Digital WD Blue 3D SSD(1TB)_detail.jpg','SSD','WD','1TB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(250GB)',67040,100,'Western Digital WD Blue 3D SSD(250GB).jpg','Western Digital WD Blue 3D SSD(250GB)_detail.jpg','SSD','WD','250GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue 3D SSD(500GB)',100560,100,'Western Digital WD Blue 3D SSD(500GB).jpg','Western Digital WD Blue 3D SSD(500GB)_detail.jpg','SSD','WD','500GB','2.5'' SSD',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue SN550 M.2 2280(1TB)',184360,100,'Western Digital WD Blue SN550 M.2 2280(1TB).jpg','Western Digital WD Blue SN550 M.2 2280(1TB)_detail.jpg','SSD','WD','1TB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Blue SN550 M.2 2280(500GB)',105030,100,'Western Digital WD Blue SN550 M.2 2280(500GB).jpg','Western Digital WD Blue SN550 M.2 2280(500GB)_detail.jpg','SSD','WD','500GB','M.2',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Green SSD(120GB)',36870,100,'Western Digital WD Green SSD(120GB).jpg','Western Digital WD Green SSD(120GB)_detail.jpg','SSD','WD','120GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Green SSD(240GB)',53500,100,'Western Digital WD Green SSD(240GB).jpg','Western Digital WD Green SSD(240GB)_detail.jpg','SSD','WD','240GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial BX500 (120GB)',37990,100,'마이크론 Crucial BX500 (120GB).jpg','마이크론 Crucial BX500 (120GB)_detail.jpg','SSD','마이크론','120GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial BX500 (240GB)',55870,100,'마이크론 Crucial BX500 (240GB).jpg','마이크론 Crucial BX500 (240GB)_detail.jpg','SSD','마이크론','240GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (1TB)',179890,100,'마이크론 Crucial MX500 (1TB).jpg','마이크론 Crucial MX500 (1TB)_detail.jpg','SSD','마이크론','1TB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (250GB)',63690,100,'마이크론 Crucial MX500 (250GB).jpg','마이크론 Crucial MX500 (250GB)_detail.jpg','SSD','마이크론','250GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (500GB)',94970,100,'마이크론 Crucial MX500 (500GB).jpg','마이크론 Crucial MX500 (500GB)_detail.jpg','SSD','마이크론','500GB','2.5' ' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Green SSD(120GB)',36870,100,'Western Digital WD Green SSD(120GB).jpg','Western Digital WD Green SSD(120GB)_detail.jpg','SSD','WD','120GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD Green SSD(240GB)',53500,100,'Western Digital WD Green SSD(240GB).jpg','Western Digital WD Green SSD(240GB)_detail.jpg','SSD','WD','240GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial BX500 (120GB)',37990,100,'마이크론 Crucial BX500 (120GB).jpg','마이크론 Crucial BX500 (120GB)_detail.jpg','SSD','마이크론','120GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial BX500 (240GB)',55870,100,'마이크론 Crucial BX500 (240GB).jpg','마이크론 Crucial BX500 (240GB)_detail.jpg','SSD','마이크론','240GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (1TB)',179890,100,'마이크론 Crucial MX500 (1TB).jpg','마이크론 Crucial MX500 (1TB)_detail.jpg','SSD','마이크론','1TB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (250GB)',63690,100,'마이크론 Crucial MX500 (250GB).jpg','마이크론 Crucial MX500 (250GB)_detail.jpg','SSD','마이크론','250GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 (500GB)',94970,100,'마이크론 Crucial MX500 (500GB).jpg','마이크론 Crucial MX500 (500GB)_detail.jpg','SSD','마이크론','500GB','2.5'' SSD',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial MX500 M.2 2280 (250GB)',61450,100,'마이크론 Crucial MX500 M.2 2280 (250GB).jpg','마이크론 Crucial MX500 M.2 2280 (250GB)_detail.jpg','SSD','마이크론','250GB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'마이크론 Crucial P1 M.2 2280 (500GB)',98320,100,'마이크론 Crucial P1 M.2 2280 (500GB).jpg','마이크론 Crucial P1 M.2 2280 (500GB)_detail.jpg','SSD','마이크론','500GB','M.2',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(1TB)',244690,100,'삼성전자 860 EVO(1TB).jpg','삼성전자 860 EVO(1TB)_detail.jpg','SSD','삼성전자','1TB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(250GB)',75980,100,'삼성전자 860 EVO(250GB).jpg','삼성전자 860 EVO(250GB)_detail.jpg','SSD','삼성전자','250GB','2.5' ' SSD',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(500GB)',122910,100,'삼성전자 860 EVO(500GB).jpg','삼성전자 860 EVO(500GB)_detail.jpg','SSD','삼성전자','500GB','2.5' ' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(1TB)',244690,100,'삼성전자 860 EVO(1TB).jpg','삼성전자 860 EVO(1TB)_detail.jpg','SSD','삼성전자','1TB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(250GB)',75980,100,'삼성전자 860 EVO(250GB).jpg','삼성전자 860 EVO(250GB)_detail.jpg','SSD','삼성전자','250GB','2.5'' SSD',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 860 EVO(500GB)',122910,100,'삼성전자 860 EVO(500GB).jpg','삼성전자 860 EVO(500GB)_detail.jpg','SSD','삼성전자','500GB','2.5'' SSD',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 970 EVO M.2 2280(1TB)',290500,100,'삼성전자 970 EVO M.2 2280(1TB).jpg','삼성전자 970 EVO M.2 2280(1TB)_detail.jpg','SSD','삼성전자','1TB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 970 EVO M.2 2280(500GB)',149720,100,'삼성전자 970 EVO M.2 2280(500GB).jpg','삼성전자 970 EVO M.2 2280(500GB)_detail.jpg','SSD','삼성전자','500GB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 970 EVO Plus M.2 2280(1TB)',340780,100,'삼성전자 970 EVO Plus M.2 2280(1TB).jpg','삼성전자 970 EVO Plus M.2 2280(1TB)_detail.jpg','SSD','삼성전자','1TB','M.2',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'삼성전자 970 EVO Plus M.2 2280(500GB)',178770,100,'삼성전자 970 EVO Plus M.2 2280(500GB).jpg','삼성전자 970 EVO Plus M.2 2280(500GB)_detail.jpg','SSD','삼성전자','500GB','M.2',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 1TB BarraCuda ST1000DM010 (SATA3/7200/64M)',61000,100,'Seagate 1TB BarraCuda ST1000DM010 (SATA3/7200/64M).jpg','Seagate 1TB BarraCuda ST1000DM010 (SATA3/7200/64M)_detail.jpg','HDD','Seagate','1TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 2TB BarraCuda ST2000DM008 (SATA3/7200/256M)',79440,100,'Seagate 2TB BarraCuda ST2000DM008 (SATA3/7200/256M).jpg','Seagate 2TB BarraCuda ST2000DM008 (SATA3/7200/256M)_detail.jpg','HDD','Seagate','2TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 3TB BarraCuda ST3000DM007 (SATA3/5400/256M)',109000,100,'Seagate 3TB BarraCuda ST3000DM007 (SATA3/5400/256M).jpg','Seagate 3TB BarraCuda ST3000DM007 (SATA3/5400/256M)_detail.jpg','HDD','Seagate','3TB','5,400 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB BarraCuda ST4000DM004 (SATA3/5400/256M)',126000,100,'Seagate 4TB BarraCuda ST4000DM004 (SATA3/5400/256M).jpg','Seagate 4TB BarraCuda ST4000DM004 (SATA3/5400/256M)_detail.jpg','HDD','Seagate','4TB','5,400 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB IronWolf Pro ST4000NE001 (SATA3/7200/128M)',259000,100,'Seagate 4TB IronWolf Pro ST4000NE001 (SATA3/7200/128M).jpg','Seagate 4TB IronWolf Pro ST4000NE001 (SATA3/7200/128M)_detail.jpg','HDD','Seagate','4TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB IronWolf ST4000VN008 (SATA3/5900/64M)',165000,100,'Seagate 4TB IronWolf ST4000VN008 (SATA3/5900/64M).jpg','Seagate 4TB IronWolf ST4000VN008 (SATA3/5900/64M)_detail.jpg','HDD','Seagate','4TB','5,900 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Seagate 8TB BarraCuda ST8000DM004 (SATA3/5400/256M)',275000,100,'Seagate 8TB BarraCuda ST8000DM004 (SATA3/5400/256M).jpg','Seagate 8TB BarraCuda ST8000DM004 (SATA3/5400/256M)_detail.jpg','HDD','Seagate','8TB','5,400 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 1TB P300 HDWD110 (SATA3/7200/64M)',57000,100,'Toshiba 1TB P300 HDWD110 (SATA3/7200/64M).jpg','Toshiba 1TB P300 HDWD110 (SATA3/7200/64M)_detail.jpg','HDD','Toshiva','1TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 2TB P300 HDWD120 (SATA3/7200/64M)',74000,100,'Toshiba 2TB P300 HDWD120 (SATA3/7200/64M).jpg','Toshiba 2TB P300 HDWD120 (SATA3/7200/64M)_detail.jpg','HDD','Toshiva','2TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 3TB DT01ACA300 (SATA3/7200/64M)',103910,100,'Toshiba 3TB DT01ACA300 (SATA3/7200/64M).jpg','Toshiba 3TB DT01ACA300 (SATA3/7200/64M)_detail.jpg','HDD','Toshiva','3TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 3TB P300 HDWD130 (SATA3/7200/64M)',103000,100,'Toshiba 3TB P300 HDWD130 (SATA3/7200/64M).jpg','Toshiba 3TB P300 HDWD130 (SATA3/7200/64M)_detail.jpg','HDD','Toshiva','3TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 4TB N300 HDWQ140 (SATA3/7200/128M)',155000,100,'Toshiba 4TB N300 HDWQ140 (SATA3/7200/128M).jpg','Toshiba 4TB N300 HDWQ140 (SATA3/7200/128M)_detail.jpg','HDD','Toshiva','4TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 4TB X300 HDWE140 (SATA3/7200/128M)',145000,100,'Toshiba 4TB X300 HDWE140 (SATA3/7200/128M).jpg','Toshiba 4TB X300 HDWE140 (SATA3/7200/128M)_detail.jpg','HDD','Toshiva','4TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 10TB X300 HDWR11A (SATA3/7200/256M)',410000,100,'Toshiba 10TB X300 HDWR11A (SATA3/7200/256M).jpg','Toshiba 10TB X300 HDWR11A (SATA3/7200/256M)_detail.jpg','HDD','Toshiva','10TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3/7200/256M)',189940,100,'Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3/7200/256M).jpg','Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3/7200/256M)_detail.jpg','HDD','WD','4TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3/7200/256M)',465120,100,'Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3/7200/256M).jpg','Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3/7200/256M)_detail.jpg','HDD','WD','10TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3/7200/256M/2PACK)',1050000,100,'Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3/7200/256M/2PACK).jpg','Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3/7200/256M/2PACK)_detail.jpg','HDD','WD','12TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 1TB BLUE WD10EZEX (SATA3/7200/64M)',62000,100,'Western Digital WD 1TB BLUE WD10EZEX (SATA3/7200/64M).jpg','Western Digital WD 1TB BLUE WD10EZEX (SATA3/7200/64M)_detail.jpg','HDD','WD','1TB','7,200 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 2TB BLUE WD20EZAZ (SATA3/5400/256M)',78000,100,'Western Digital WD 2TB BLUE WD20EZAZ (SATA3/5400/256M).jpg','Western Digital WD 2TB BLUE WD20EZAZ (SATA3/5400/256M)_detail.jpg','HDD','WD','2TB','5,400 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 4TB BLUE WD40EZRZ (SATA3/5400/64M)',129000,100,'Western Digital WD 4TB BLUE WD40EZRZ (SATA3/5400/64M).jpg','Western Digital WD 4TB BLUE WD40EZRZ (SATA3/5400/64M)_detail.jpg','HDD','WD','4TB','5,400 RPM',' ',' ',' ');
-insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 4TB Red WD40EFRX (SATA3/5400/64M)',174590,100,'Western Digital WD 4TB Red WD40EFRX (SATA3/5400/64M).jpg','Western Digital WD 4TB Red WD40EFRX (SATA3/5400/64M)_detail.jpg','HDD','WD','4TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 1TB BarraCuda ST1000DM010 (SATA3-7200-64M)',61000,100,'Seagate 1TB BarraCuda ST1000DM010 (SATA3-7200-64M).jpg','Seagate 1TB BarraCuda ST1000DM010 (SATA3-7200-64M)_detail.jpg','HDD','Seagate','1TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 2TB BarraCuda ST2000DM008 (SATA3-7200-256M)',79440,100,'Seagate 2TB BarraCuda ST2000DM008 (SATA3-7200-256M).jpg','Seagate 2TB BarraCuda ST2000DM008 (SATA3-7200-256M)_detail.jpg','HDD','Seagate','2TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 3TB BarraCuda ST3000DM007 (SATA3-5400-256M)',109000,100,'Seagate 3TB BarraCuda ST3000DM007 (SATA3-5400-256M).jpg','Seagate 3TB BarraCuda ST3000DM007 (SATA3-5400-256M)_detail.jpg','HDD','Seagate','3TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB BarraCuda ST4000DM004 (SATA3-5400-256M)',126000,100,'Seagate 4TB BarraCuda ST4000DM004 (SATA3-5400-256M).jpg','Seagate 4TB BarraCuda ST4000DM004 (SATA3-5400-256M)_detail.jpg','HDD','Seagate','4TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB IronWolf Pro ST4000NE001 (SATA3-7200-128M)',259000,100,'Seagate 4TB IronWolf Pro ST4000NE001 (SATA3-7200-128M).jpg','Seagate 4TB IronWolf Pro ST4000NE001 (SATA3-7200-128M)_detail.jpg','HDD','Seagate','4TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 4TB IronWolf ST4000VN008 (SATA3-5900-64M)',165000,100,'Seagate 4TB IronWolf ST4000VN008 (SATA3-5900-64M).jpg','Seagate 4TB IronWolf ST4000VN008 (SATA3-5900-64M)_detail.jpg','HDD','Seagate','4TB','5,900 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Seagate 8TB BarraCuda ST8000DM004 (SATA3-5400-256M)',275000,100,'Seagate 8TB BarraCuda ST8000DM004 (SATA3-5400-256M).jpg','Seagate 8TB BarraCuda ST8000DM004 (SATA3-5400-256M)_detail.jpg','HDD','Seagate','8TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 1TB P300 HDWD110 (SATA3-7200-64M)',57000,100,'Toshiba 1TB P300 HDWD110 (SATA3-7200-64M).jpg','Toshiba 1TB P300 HDWD110 (SATA3-7200-64M)_detail.jpg','HDD','Toshiva','1TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 2TB P300 HDWD120 (SATA3-7200-64M)',74000,100,'Toshiba 2TB P300 HDWD120 (SATA3-7200-64M).jpg','Toshiba 2TB P300 HDWD120 (SATA3-7200-64M)_detail.jpg','HDD','Toshiva','2TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 3TB DT01ACA300 (SATA3-7200-64M)',103910,100,'Toshiba 3TB DT01ACA300 (SATA3-7200-64M).jpg','Toshiba 3TB DT01ACA300 (SATA3-7200-64M)_detail.jpg','HDD','Toshiva','3TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 3TB P300 HDWD130 (SATA3-7200-64M)',103000,100,'Toshiba 3TB P300 HDWD130 (SATA3-7200-64M).jpg','Toshiba 3TB P300 HDWD130 (SATA3-7200-64M)_detail.jpg','HDD','Toshiva','3TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 4TB N300 HDWQ140 (SATA3-7200-128M)',155000,100,'Toshiba 4TB N300 HDWQ140 (SATA3-7200-128M).jpg','Toshiba 4TB N300 HDWQ140 (SATA3-7200-128M)_detail.jpg','HDD','Toshiva','4TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 4TB X300 HDWE140 (SATA3-7200-128M)',145000,100,'Toshiba 4TB X300 HDWE140 (SATA3-7200-128M).jpg','Toshiba 4TB X300 HDWE140 (SATA3-7200-128M)_detail.jpg','HDD','Toshiva','4TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Toshiba 10TB X300 HDWR11A (SATA3-7200-256M)',410000,100,'Toshiba 10TB X300 HDWR11A (SATA3-7200-256M).jpg','Toshiba 10TB X300 HDWR11A (SATA3-7200-256M)_detail.jpg','HDD','Toshiva','10TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3-7200-256M)',189940,100,'Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3-7200-256M).jpg','Western Digital 4TB Ultrastar DC HC310 HUS726T4TALA6L4 패키지 (SATA3-7200-256M)_detail.jpg','HDD','WD','4TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3-7200-256M)',465120,100,'Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3-7200-256M).jpg','Western Digital 10TB Ultrastar DC HC330 WUS721010ALE6L4 (SATA3-7200-256M)_detail.jpg','HDD','WD','10TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3-7200-256M-2PACK)',1050000,100,'Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3-7200-256M-2PACK).jpg','Western Digital 12TB Ultrastar DC HC520 HUH721212ALE600 패키지 (SATA3-7200-256M-2PACK)_detail.jpg','HDD','WD','12TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 1TB BLUE WD10EZEX (SATA3-7200-64M)',62000,100,'Western Digital WD 1TB BLUE WD10EZEX (SATA3-7200-64M).jpg','Western Digital WD 1TB BLUE WD10EZEX (SATA3-7200-64M)_detail.jpg','HDD','WD','1TB','7,200 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 2TB BLUE WD20EZAZ (SATA3-5400-256M)',78000,100,'Western Digital WD 2TB BLUE WD20EZAZ (SATA3-5400-256M).jpg','Western Digital WD 2TB BLUE WD20EZAZ (SATA3-5400-256M)_detail.jpg','HDD','WD','2TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 4TB BLUE WD40EZRZ (SATA3-5400-64M)',129000,100,'Western Digital WD 4TB BLUE WD40EZRZ (SATA3-5400-64M).jpg','Western Digital WD 4TB BLUE WD40EZRZ (SATA3-5400-64M)_detail.jpg','HDD','WD','4TB','5,400 RPM',' ',' ',' ');
+insert into p5_parts values (p5_parts_seq.nextval,'Western Digital WD 4TB Red WD40EFRX (SATA3-5400-64M)',174590,100,'Western Digital WD 4TB Red WD40EFRX (SATA3-5400-64M).jpg','Western Digital WD 4TB Red WD40EFRX (SATA3-5400-64M)_detail.jpg','HDD','WD','4TB','5,400 RPM',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'ABKO NCORE 미라클 강화유리 LUMIA',59000,100,'ABKO NCORE 미라클 강화유리 LUMIA.jpg','ABKO NCORE 미라클 강화유리 LUMIA_detail.jpg','케이스','ABKO','미들타워','3',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'ABKO NCORE 새턴 풀 아크릴 슬렌더',40670,100,'ABKO NCORE 새턴 풀 아크릴 슬렌더.jpg','ABKO NCORE 새턴 풀 아크릴 슬렌더_detail.jpg','케이스','ABKO','미들타워','3',' ',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'ABKO NCORE 식스팬 풀 아크릴 LUNAR(블랙)',33000,100,'ABKO NCORE 식스팬 풀 아크릴 LUNAR(블랙).jpg','ABKO NCORE 식스팬 풀 아크릴 LUNAR(블랙)_detail.jpg','케이스','ABKO','미들타워','2',' ',' ',' ');
@@ -453,7 +453,14 @@ CREATE SEQUENCE p5_point_seq
 START WITH 1
 INCREMENT BY 1
 ;
-INSERT INTO p5_point VALUES ();
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-15','YYYY-MM-DD'),'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen02',to_date('2020-02-24','YYYY-MM-DD'),'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen03',to_date('2020-03-06','YYYY-MM-DD'),'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen04',to_date('2020-03-31','YYYY-MM-DD'),'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen05',sysdate,'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-22','YYYY-MM-DD'),'상품구매 사용', -3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-29','YYYY-MM-DD'),'상품구매 적립', CEIL(1000000*0.07));
+
 SELECT * FROM p5_point;
 --------------------------------------
 /* 주문 */
@@ -495,7 +502,9 @@ CREATE SEQUENCE p5_order_seq
 START WITH 1
 INCREMENT BY 1
 ;
-INSERT INTO p5_order VALUES ();
+
+INSERT INTO p5_order VALUES (200122||p5_order_seq.nextval,'ezen01',to_date('2020-01-22','YYYY-MM-DD'),'김형준','010-1010-6015','03190','서울 종로구 종로 78','미려빌딩 6층','배송 전 연락부탁드립니다','배송완료',355766247001);
+
 SELECT * FROM p5_order;
 --------------------------------------
 /* 상품주문 */
