@@ -16,7 +16,7 @@ body{margin:0; padding:0; overflow-x:hidden;}
 a{text-decoration:none;}
 ul{margin:0; padding:0;}
 ul li{list-style:none;}
-				
+
 	#market_wrap{padding:50px; position: relative; width:1280px; height:2000px; margin:0 auto;}
 	#market_title{border-bottom:1px solid black; padding:10px; font-size:20px;}
 	.parts{width:220px;float: left; margin:15px;}
@@ -24,7 +24,7 @@ ul li{list-style:none;}
 	.parts_intro{width:100%; border:1px solid black; border-collapse:collapse;}	
 	.parts_intro .parts_title{border:1px solid black; text-align:center;}
 	.parts_intro .parts_assem{border:1px solid black;}
-	
+						
 </style>
 </head>
 <body>
@@ -47,8 +47,6 @@ ul li{list-style:none;}
 </div>
 
 <jsp:include page="bottom.jsp"/>
-	<%-- <c:forEach>
-			
-	</c:forEach> --%>
+
 </body>
 </html>
