@@ -1,10 +1,10 @@
 /* 회원 */
-DROP TABLE p5_member 
+DROP TABLE p5_member; 
 	CASCADE CONSTRAINTS;
 
 /* 회원 */
 CREATE TABLE p5_member (
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	mem_pw VARCHAR2(100) NOT NULL, /* 비밀번호 */
 	mem_name VARCHAR2(100) NOT NULL, /* 이름 */
 	mem_birth DATE NOT NULL, /* 생년월일 */
@@ -17,13 +17,22 @@ ALTER TABLE p5_member
 	ADD
 		CONSTRAINT p5_member_pk
 		PRIMARY KEY (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_member_seq
 	START WITH 1
 	INCREMENT BY 1
 ;
-INSERT INTO p5_member VALUES ();
+--
+INSERT INTO p5_member VALUES ('admin','admin','관리자',to_date('1990-01-01','YYYY-MM-DD'),'admin@naver.com','010-0000-0000',sysdate);
+INSERT INTO p5_member VALUES ('ezen01','ezen01','김형준',to_date('1991-01-06','YYYY-MM-DD'),'ezen01@naver.com','010-1010-6015',sysdate);
+INSERT INTO p5_member VALUES ('ezen02','ezen02','전현규',to_date('1992-02-07','YYYY-MM-DD'),'ezen02@naver.com','010-2011-7016',sysdate);
+INSERT INTO p5_member VALUES ('ezen03','ezen03','최민기',to_date('1993-03-08','YYYY-MM-DD'),'ezen03@naver.com','010-3012-8017',sysdate);
+INSERT INTO p5_member VALUES ('ezen04','ezen04','한송우',to_date('1994-04-09','YYYY-MM-DD'),'ezen04@naver.com','010-4013-9018',sysdate);
+INSERT INTO p5_member VALUES ('ezen05','ezen05','홍길동',to_date('1995-05-10','YYYY-MM-DD'),'ezen05@naver.com','010-5014-1019',sysdate);
+
+
+
 SELECT * FROM p5_member;
 
 --------------------------------------------
@@ -277,7 +286,7 @@ DROP TABLE p5_computer
 /* 컴퓨터 */
 CREATE TABLE p5_computer (
 	com_no NUMBER NOT NULL, /* 컴퓨터번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	com_name VARCHAR2(200) NOT NULL, /* 컴퓨터명 */
 	com_kind VARCHAR2(200) NOT NULL, /* 컴퓨터용도 */
 	com_img VARCHAR2(200), /* 컴퓨터썸네일 */
@@ -296,10 +305,10 @@ ALTER TABLE p5_computer
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_computer
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_computer_seq
 START WITH 1001
@@ -419,7 +428,7 @@ DROP TABLE p5_point
 /* 포인트 */
 CREATE TABLE p5_point (
 	point_no NUMBER NOT NULL, /* 포인트번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	point_date DATE NOT NULL, /* 적립/사용일 */
 	point_detail VARCHAR2(500) NOT NULL, /* 적립/사용내용 */
 	point_pt NUMBER NOT NULL /* 적립/사용마일리지 */
@@ -436,10 +445,10 @@ ALTER TABLE p5_point
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_point
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_point_seq
 START WITH 1
@@ -455,7 +464,7 @@ DROP TABLE p5_order
 /* 주문 */
 CREATE TABLE p5_order (
 	ord_no NUMBER NOT NULL, /* 주문번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	ord_date DATE NOT NULL, /* 주문일 */
 	ord_name VARCHAR2(100) NOT NULL, /* 수령인 */
 	ord_tel VARCHAR2(100) NOT NULL, /* 수령인연락처 */
@@ -478,10 +487,10 @@ ALTER TABLE p5_order
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_order
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_order_seq
 START WITH 1
@@ -633,7 +642,7 @@ DROP TABLE p5_review
 /* 상품후기 */
 CREATE TABLE p5_review (
 	rev_no NUMBER NOT NULL, /* 후기번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	rev_name VARCHAR2(500) NOT NULL, /* 후기제목 */
 	rev_detail VARCHAR2(3000) NOT NULL, /* 후기내용 */
 	rev_date DATE NOT NULL /* 후기등록일 */
@@ -649,10 +658,10 @@ ALTER TABLE p5_review
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_review
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_review_seq
 START WITH 1
@@ -669,7 +678,7 @@ DROP TABLE p5_revcomm
 CREATE TABLE p5_revcomm (
 	revc_no NUMBER NOT NULL, /* 후기댓글번호 */
 	rev_no NUMBER NOT NULL, /* 후기번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	revc_detail VARCHAR2(3000) NOT NULL, /* 후기댓글내용 */
 	revc_date DATE NOT NULL /* 후기댓글등록일 */
 );
@@ -694,10 +703,10 @@ ALTER TABLE p5_revcomm
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_revcomm
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_revcomm_seq
 START WITH 1
@@ -713,7 +722,7 @@ DROP TABLE p5_question
 /* 문의사항 */
 CREATE TABLE p5_question (
 	que_no NUMBER NOT NULL, /* 문의번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	que_name VARCHAR2(500) NOT NULL, /* 문의제목 */
 	que_detail VARCHAR2(3000) NOT NULL, /* 문의내용 */
 	que_date DATE NOT NULL /* 문의등록일 */
@@ -729,10 +738,10 @@ ALTER TABLE p5_question
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_question
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_question_seq
 START WITH 1
@@ -749,7 +758,7 @@ DROP TABLE p5_quecomm
 CREATE TABLE p5_quecomm (
 	quec_no NUMBER NOT NULL, /* 문의댓글번호 */
 	que_no NUMBER NOT NULL, /* 문의번호 */
-	mem_no VARCHAR2(100) NOT NULL, /* 아이디 */
+	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
 	quec_detail VARCHAR2(3000) NOT NULL, /* 문의댓글내용 */
 	quec_date DATE NOT NULL /* 문의댓글등록일 */
 );
@@ -774,10 +783,10 @@ ALTER TABLE p5_quecomm
 	ADD
 		CONSTRAINT FK_p5_member_TO_p5_quecomm
 		FOREIGN KEY (
-			mem_no
+			mem_id
 		)
 		REFERENCES p5_member (
-			mem_no
+			mem_id
 		);
 CREATE SEQUENCE p5_quecomm_seq
 START WITH 1

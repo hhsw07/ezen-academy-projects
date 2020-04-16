@@ -59,17 +59,17 @@
 		
 	<!-- 타이틀 -->
 		<tr>
-			<th>회원번호</th>
 			<th>이름</th>
 			<th>아이디</th>
+			<th>이메일</th>
 			<th>연락처</th>
 		</tr>
 		
 	<!-- 글목록  -->	
 		<tr>
-			<th>1</th>
 			<th>홍길동</th>
 			<th>ezen01</th>
+			<th>ezen01@naver.com</th>
 			<th>010-0000-0000</th>
 		</tr>
 	
