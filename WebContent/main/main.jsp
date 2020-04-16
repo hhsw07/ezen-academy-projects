@@ -45,17 +45,17 @@ ul li{list-style:none;}
 <jsp:include page="../main/top.jsp"/>
 
 	<div class="policy">
-		<img alt="" src="../image/main/policy1.jpg">
-		<img alt="" src="../image/main/policy2.jpg">
-		<img alt="" src="../image/main/policy3.jpg">
-		<img alt="" src="../image/main/policy4.jpg">
+		<img alt="" src="image/main/policy1.jpg">
+		<img alt="" src="image/main/policy2.jpg">
+		<img alt="" src="image/main/policy3.jpg">
+		<img alt="" src="image/main/policy4.jpg">
 	</div>
 	
 	<div class="menu-img">
-        <div class="mImg fade"><img src="../image/main/main1.jpg" alt=""></div>
-        <div class="mImg fade"><img src="../image/main/main2.jpg" alt=""></div>
-        <div class="mImg fade"><img src="../image/main/main3.jpg" alt=""></div>
-        <div class="mImg fade"><img src="../image/main/main4.jpg" alt=""></div>
+        <div class="mImg fade"><img src="image/main/main1.jpg" alt=""></div>
+        <div class="mImg fade"><img src="image/main/main2.jpg" alt=""></div>
+        <div class="mImg fade"><img src="image/main/main3.jpg" alt=""></div>
+        <div class="mImg fade"><img src="image/main/main4.jpg" alt=""></div>
 	</div>
 	
 	<div class="pdt-wrap">

@@ -28,12 +28,20 @@
 
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
-	});
+// 로그인 성공 여부 확인
+$(document).ready(function(){
+	var mem_id = "${mem.mem_id}";
+	if(mem_id!=""){
+		alert("로그인 성공");
+		$("[name=proc]").val("main");
+		$("form").submit();
+	}else{
+		if("${param.mem_id}"!=""){
+			alert("인증된 계정이 아닙니다.");
+			$("[name=mem_id]").focus();
+		}
+	}
+});
 </script>
 </head>
 <body>
@@ -43,19 +51,20 @@
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
-		<table align="center">
+		<input type="hidden" name="proc" value="login"/>
+	<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
 			</tr>
 			<tr>
-				<th colspan="3"><img src="../image/main/logo.png"></th>
+				<th colspan="3"><img src="image/main/logo.png"></th>
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">로그인</th></tr>
 			<tr>
-				<th colspan="3"><input class="input-id" type="text" placeholder="아이디"/></th>
+				<th colspan="3"><input class="input-id" type="text" name="mem_id" placeholder="아이디"/></th>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="input-ps" type="text" placeholder="비밀번호"/></th>
+				<th colspan="3"><input class="input-ps" type="password" name="mem_pw" placeholder="비밀번호"/></th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="login-btn" type="submit" value="로그인"/></th>
@@ -65,12 +74,10 @@
 				<th>비밀번호 찾기</th>
 				<th>회원가입</th>
 			</tr>
-		</table>
+	</table>
 	</form>
 	</div>
 </div>
-
-
 
 <jsp:include page="../../main/bottom.jsp"/>
 

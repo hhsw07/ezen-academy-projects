@@ -16,6 +16,12 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Member(String mem_id, String mem_pw) {
+		super();
+		this.mem_id = mem_id;
+		this.mem_pw = mem_pw;
+	}
+
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel,
 			Date mem_jdate) {
 		super();
