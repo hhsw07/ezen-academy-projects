@@ -48,7 +48,7 @@
 				<th colspan="3" class="logo-text">PC냥이</th>
 			</tr>
 			<tr>
-				<th colspan="3"><img src="../image/main/logo.png"></th>
+				<th colspan="3"><img src="../../image/main/logo.png"></th>
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">로그인</th></tr>
 			<tr>

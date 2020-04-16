@@ -1,6 +1,7 @@
 package hsw;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,60 +17,43 @@ import z01_vo.Parts;
 /**
  * Servlet implementation class A01_Assembly
  */
-@WebServlet(name = "assembly", urlPatterns = { "/assembly" })
-public class A01_AssemblyCtrl extends HttpServlet {
+@WebServlet(name = "assembly3", urlPatterns = { "/assembly3" })
+public class A01_plist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private A01_AssemblyService service;   
+    private A01_AssemblyService service; 
+    private A01_AssemblyDao dao;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public A01_AssemblyCtrl() {
+    public A01_plist() {
         super();
         // TODO Auto-generated constructor stub
         service = new A01_AssemblyService();
+        dao = new A01_AssemblyDao();
     }
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 0. 한글 encoding
 		request.setCharacterEncoding("utf-8");
 		// 1. 요청
 		String proc = Nk.toStr(request.getParameter("proc"),"first");
-		String parts_mc = Nk.toStr(request.getParameter("parts_mc"),"CPU");
 		HttpSession session = request.getSession();
-		
+		A01_AssemblyDao dao = new A01_AssemblyDao();
 		// 2. 모델
-		request.setAttribute("parts_mc",parts_mc);
-		request.setAttribute("plist", service.plist(request));
-		
-		
-		// proc ins => 카트에 추가
-		if(proc.equals("ins")) {
-			service.insertCart(request);
+		// proc first => 초기화면 , 카트 새로만들기
+		if(proc.equals("first")) {
+			request.setAttribute("plist", service.plist() );
 		}
 		
-		// proc del => 카트에서 제거
-		if(proc.equals("del")) {
-			service.deleteCart(request);
-		}
-		
-		// proc delAll => 카트에서 모두제거
-		if(proc.equals("delAll")) {
-			service.deleteAllCart(request);
-		}
-		// proc reg => 견적목록에 추가
-		if(proc.equals("reg")) {
-			service.regEstimate(request);
-		}
-
 		
 		// 3. view
-		String page = "main\\estimate\\estimate.jsp";
+		String page = "main\\estimate\\NewFile1.jsp";
 		
-		RequestDispatcher rd= request.getRequestDispatcher(page);
+		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
 

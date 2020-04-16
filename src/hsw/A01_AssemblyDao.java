@@ -14,7 +14,7 @@ public class A01_AssemblyDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	public void setcon() throws SQLException {
+	private void setcon() throws SQLException {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -22,7 +22,8 @@ public class A01_AssemblyDao {
 			e.printStackTrace();
 		}
 		String info = "jdbc:oracle:thin:@localhost:1521:xe";
-		con = DriverManager.getConnection(info,"Scott","tiger");
+		con = DriverManager.getConnection(info, "scott", "tiger");
+		System.out.println("정상 접속 성공!");
 	}
 	
 	
@@ -31,14 +32,18 @@ public class A01_AssemblyDao {
 		
 		try {
 			setcon();
-			String sql = "SELECT parts_img, parts_name, part_price, parts_no FROM product2\r\n" + 
-					"WHERE parts_mc = cpu";
+			String sql = "SELECT parts_no, parts_name, parts_price, parts_img FROM p5_parts\r\n" + 
+					"WHERE parts_mc = 'CPU'";
 			
 			pstmt = con.prepareStatement(sql);
 						
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pList.add(new Parts());
+				pList.add(new Parts(rs.getInt(1),
+								    rs.getString(2),
+								    rs.getInt(3),
+								    rs.getString(4)
+						));
 			}
 			
 			rs.close();
@@ -58,7 +63,7 @@ public class A01_AssemblyDao {
 		
 		try {
 			setcon();
-			String sql = "SELECT parts_img, parts_name, part_price, parts_no FROM product2\r\n" + 
+			String sql = "SELECT parts_no, parts_name, parts_price, parts_img FROM p5_parts\r\n" + 
 					"WHERE parts_mc = ?\r\n" + 
 					"AND parts_sc1 LIKE '%'||?||'%'\r\n" + 
 					"AND parts_sc2 LIKE '%'||?||'%'\r\n" + 
@@ -78,7 +83,10 @@ public class A01_AssemblyDao {
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pList.add(new Parts());
+				pList.add(new Parts(rs.getInt(1),
+								    rs.getString(2),
+								    rs.getInt(3),
+								    rs.getString(4)));
 				
 			}
 			
