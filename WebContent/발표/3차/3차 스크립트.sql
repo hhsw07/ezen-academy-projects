@@ -600,7 +600,8 @@ CREATE TABLE p5_mgr (
 	as_no NUMBER NOT NULL, /* AS신청번호 */
 	mgr_date DATE, /* 입고일 */
 	mgr_stat VARCHAR2(100) NOT NULL, /* 진행상태 */
-	mgr_note VARCHAR2(3000) /* 비고 */
+	mgr_note VARCHAR2(3000), /* 비고 */
+	mgr_price NUMBER	/* AS가격*/
 );
 ALTER TABLE p5_mgr
 	ADD
