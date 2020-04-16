@@ -43,14 +43,14 @@
 		$("[type=number]").width("100%");
 		$("select").width("30%");
 		$("img").width("60px");
-		$(".regCart").val("카트담기");
+		$("#e_nav_list [name=parts_no]").val("카트담기");
 		
 		var proc = "${param.proc}";
+		var parts_mc = "${parts_mc}";
+		if(parts_mc == "") parts_mc = "CPU";
 		if(proc == ""||proc == "sch"){
 			// 검색화면
-			var parts_mc = "${sch.parts_mc}";
-			if(parts_mc == "") parts_mc = "cpu";
-			if(parts_mc == "cpu"){
+			if(parts_mc == "CPU"){
 				//alert("parts_mc : "+parts_mc);
 			}
 			if(parts_mc == "메인보드"){}
@@ -69,12 +69,15 @@
 		
 		// 카테고리 검색 버튼 클릭시
 		$("#schBtn").click(function(){
-			alert("카테고리 검색")
+			$("[name=proc]").val("sch");
+			$("[name=schFrm]").submit();
 		});
 		// 중분류 버튼 클릭시
 		 $(".mcCho").click(function(){
-			 var mc = $(".mcCho").text();
-			 alert("중분류 검색 : "+mc);
+			 var mc = $(this).text();
+			 $("[name=proc]").val("sch");
+			 $("[name=parts_mc]").val(mc);
+			 $("[name=cartFrm]").submit();
 			 
 		 });
 		
@@ -88,7 +91,13 @@
 		
 		// @@@ 버튼 클릭시 카트에서 전체 제거, 견적문의, 구매하기
 	});
-	
+	function regCart(sno){
+		$("[name=proc]").val("ins");
+		$("[name=parts_mc]").val("${parts_mc}");
+		$("[name=insNo]").val(sno);
+		alert(sno);
+		$("[name=partsFrm]").submit();
+	}
 	
 </script>
 </head>
@@ -106,60 +115,95 @@
 		<div id="e_nav" >
 			<div id="e_nav_top">
 				<h3 id="title">PC주요부품 > </h3>
-				<form method="post" name="schFrm">
+				<form method="get" name="schFrm">
 				<input type="hidden" name="proc" />
 				<table>
-					<tr>
-						<td>
-							<select name="parts_sc1">
-								<option>제조사</option>
-								<option>인텔</option>
-								<option>AMD</option>
-							</select>
-							<select name="parts_sc2">
-								<option>설계 전력</option>
-								<option>65W</option>
-								<option>95W</option>
-								<option>105W</option>
-								<option>165W</option>
-							</select>
-							<select name="parts_sc3">
-								<option>브랜드 분류</option>
-								<option>인텔(코어i3-9세대)</option>
-								<option>인텔(코어i5-9세대)</option>
-								<option>인텔(코어i7-9세대)</option>
-								<option>인텔(코어i9-9세대)</option>
-								<option>인텔(코어X-시리즈)</option>
-								<option>AMD(라이젠 3)</option>
-								<option>AMD(라이젠 5)</option>
-								<option>AMD(라이젠 8)</option>
-								<option>AMD(라이젠 9)</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<select name="parts_sc4">
-								<option>코어형태</option>
-								<option>4코어</option>
-								<option>6코어</option>
-								<option>8코어</option>
-								<option>10코어</option>
-								<option>12코어</option>
-							</select>
-							<select name="parts_sc5">
-								<option>동작속도</option>
-								<option>2.5~2.99 GHz</option>
-								<option>3.0~3.49 GHz</option>
-								<option>3.5~3.99 GHz</option>
-							</select>
-							<select name="parts_sc6">
-								<option>패키지 형식</option>
-								<option>정품</option>
-								<option>벌크</option>
-							</select>
-						</td>
-					</tr>
+					<c:choose>
+						<c:when test="${parts_mc=='CPU'}">
+							<tr>
+								<td>
+									<select name="parts_sc1">
+										<option value="">제조사</option>
+										<option value="인텔">인텔</option>
+										<option value="AMD">AMD</option>
+									</select>
+									<select name="parts_sc2">
+										<option value="">설계 전력</option>
+										<option value="65W">65W</option>
+										<option value="95W">95W</option>
+										<option value="105W">105W</option>
+										<option value="165W">165W</option>
+									</select>
+									<select name="parts_sc3">
+										<option value="">브랜드 분류</option>
+										<option value="인텔(코어i3-9세대)">인텔(코어i3-9세대)</option>
+										<option value="인텔(코어i5-9세대)">인텔(코어i5-9세대)</option>
+										<option value="인텔(코어i7-9세대)">인텔(코어i7-9세대)</option>
+										<option value="인텔(코어i9-9세대)">인텔(코어i9-9세대)</option>
+										<option value="인텔(코어X-시리즈)">인텔(코어X-시리즈)</option>
+										<option value="AMD(라이젠 3)">AMD(라이젠 3)</option>
+										<option value="AMD(라이젠 5)">AMD(라이젠 5)</option>
+										<option value="AMD(라이젠 8)">AMD(라이젠 8)</option>
+										<option value="AMD(라이젠 9)">AMD(라이젠 9)</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="parts_sc4">
+										<option value="">코어형태</option>
+										<option value="코어">4코어</option>
+										<option value="코어">6코어</option>
+										<option value="코어">8코어</option>
+										<option value="코어">10코어</option>
+										<option value="12">12코어</option>
+									</select>
+									<select name="parts_sc5">
+										<option value="">동작속도</option>
+										<option value="2.5~2.99 GHz">2.5~2.99 GHz</option>
+										<option value="3.0~3.49 GHz">3.0~3.49 GHz</option>
+										<option value="3.5~3.99 GHz">3.5~3.99 GHz</option>
+									</select>
+									<select name="parts_sc6">
+										<option value="">패키지 형식</option>
+										<option value="정품">정품</option>
+										<option value="벌크">벌크</option>
+									</select>
+								</td>
+							</tr>
+						</c:when>
+						<c:when test="${parts_mc=='메인보드'}">
+							<tr>
+								<td>
+									<select name="parts_sc4">
+										<option value="">코어형태</option>
+										<option value="코어">4코어</option>
+										<option value="코어">6코어</option>
+										<option value="코어">8코어</option>
+										<option value="코어">10코어</option>
+										<option value="12">12코어</option>
+									</select>
+									<select name="parts_sc5">
+										<option value="">동작속도</option>
+										<option value="2.5~2.99 GHz">2.5~2.99 GHz</option>
+										<option value="3.0~3.49 GHz">3.0~3.49 GHz</option>
+										<option value="3.5~3.99 GHz">3.5~3.99 GHz</option>
+									</select>
+									<select name="parts_sc6">
+										<option value="">패키지 형식</option>
+										<option value="정품">정품</option>
+										<option value="벌크">벌크</option>
+									</select>
+								</td>
+							</tr>
+						</c:when>
+						<c:when test="${parts_mc=='메모리'}"></c:when>
+						<c:when test="${parts_mc=='그래픽카드'}"></c:when>
+						<c:when test="${parts_mc=='SSD'}"></c:when>
+						<c:when test="${parts_mc=='HDD'}"></c:when>
+						<c:when test="${parts_mc=='케이스'}"></c:when>
+						<c:when test="${parts_mc=='파워'}"></c:when>
+					</c:choose>
 					<tr>
 						<td class="ordR" style="padding-right:30px;" >
 							<input type="button" id="schBtn" value="검색" />
@@ -170,55 +214,24 @@
 			</div>
 			
 			<div id="e_nav_list">
-				<form method="post" name="partsFrm">
+				<form method="get" name="partsFrm">
 				<input type="hidden" name="proc"/>
+				<input type="hidden" name="parts_mc"/>
+				<input type="hidden" name="insNo"/>
 				<table>
 					<col width="20%">
 					<col width="50%">
 					<col width="20%">
 					<col width="10%">
+					
+					<c:forEach var="prod" items="${plist}">
 					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%"/></td>
+						<td><img src="${path}/image/cpu/${prod.parts_img}" style="width:60px;"/></td>
+						<td>${prod.parts_name}</td>
+						<td><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
+						<td><input type="button" onclick="regCart(${prod.parts_no})" name="parts_no" style="width:100%"/></td>
 					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%" /></td>
-					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%" /></td>
-					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%"/></td>
-					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%"/></td>
-					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%"/></td>
-					</tr>
-					<tr>
-						<td><img src="${path}/image/cpu/인텔 코어i3-9세대 9100F (커피레이크-R)(정품).jpg" style="width:60px;"/></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td>
-						<td>99,170원</td>
-						<td><input type="button" class="regCart" style="width:100%"/></td>
-					</tr>
+					</c:forEach>
 				</table>
 				</form>
 			</div>
@@ -227,8 +240,9 @@
 		<div id="e_cart">
 			<h3>PC주요부품</h3>
 			<div style="height:400px; overflow:auto;">
-				<form method="post" name="cartFrm">
+				<form method="get" name="cartFrm">
 				<input type="hidden" name="proc"/>
+				<input type="hidden" name="parts_mc"/>
 				<table>
 					<col width="18%">
 					<col >
