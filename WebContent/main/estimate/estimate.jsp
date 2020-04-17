@@ -48,19 +48,18 @@
 		$("select").width("30%");
 		$("img").width("60px");
 		$("#e_nav_list [type=button]").val("카트담기");
+		$("#title").append(parts_mc);
+		
 		
 		if(parts_mc == "") parts_mc = "CPU";
 		if(proc == ""||proc == "sch"){
-			// 검색화면
-			if(parts_mc == "CPU"){
-				//alert("parts_mc : "+parts_mc);
-			}
+			// 정상진행
 		}else{
 			// proc를 sch로 해서 다시 컨트롤로 보내기.
+			$("[name=proc]").val("sch");
+			$("[name=parts_mc]").val(parts_mc);
+			$("form").submit();
 		}
-		
-		
-		$("#title").append(parts_mc);
 		
 		// 카테고리 검색 버튼 클릭시
 		$("#schBtn").click(function(){
@@ -77,8 +76,6 @@
 			 
 		 });
 		
-		
-		// @@@ 버튼 클릭시 카트에서 전체 제거, 견적문의, 구매하기
 	});
 	// regCart 버튼 클릭시 카트에 부품 등록
 	function regCart(sno){
@@ -92,10 +89,33 @@
 		$("[name=proc]").val("del");
 		$("[name=parts_mc]").val(parts_mc);
 		$("[name=parts_no]").val(sno);
-		alert(""+parts_mc+sno);
 		$("form").submit();
 	}
 	
+	// delAll 버튼 클릭시 카트에서 모든 부품 제거
+	function delAll(){
+		if(confirm("모든 부품을 삭제하시겠습니가?")){
+			$("[name=proc]").val("delAll");
+			$("[name=parts_mc]").val(parts_mc);
+			$("form").submit();
+		}
+	}
+	// 견적문의 버튼클릭시
+	function assque(){
+		if(confirm("견적문의로 이동하시겠습니까?")){
+			$("[name=proc]").val("assque");
+			$("[name=parts_mc]").val(parts_mc);
+			$("form").submit();
+		}
+	}
+	// 구매 버튼 클릭시
+	function buy(){
+		if(confirm("구매하시겠습니까?")){
+			$("[name=proc]").val("buy");
+			$("[name=parts_mc]").val(parts_mc);
+			$("form").submit();
+		}
+	}
 	
 </script>
 </head>
@@ -110,12 +130,13 @@
 	</div>
 	<div id="e_mid">
 		<!-- 견적표 -->
-		<form method="get">
+		<form method="post">
 		<div id="e_nav" >
 			<div id="e_nav_top">
 				<h3 id="title">PC주요부품 > </h3>
 				<input type="hidden" name="proc" />
 				<input type="hidden" name="parts_mc"/>
+				<input type="hidden" name="parts_no"/>
 				<table>
 					<c:choose>
 						<c:when test="${parts_mc=='CPU'}">
@@ -453,7 +474,6 @@
 				</table>
 			</div>
 			<div id="e_nav_list">
-				<input type="hidden" name="parts_no"/>
 				<table>
 					<col width="20%">
 					<col width="50%">
@@ -630,9 +650,9 @@
 			</div>
 			<hr>
 			<div style="text-align:center;">
-				<input type="button" value="견적초기화" style="width:30%"/>
-				<input type="button" value="견적문의" style="width:30%"/>
-				<input type="button" value="구매하기" style="width:30%"/>
+				<input type="button" value="견적초기화" onclick="delAll()" style="width:30%"/>
+				<input type="button" value="견적문의" onclick="assque()" style="width:30%"/>
+				<input type="button" value="구매하기" onclick="buy()" style="width:30%"/>
 			</div>
 		</div>
 		</form>

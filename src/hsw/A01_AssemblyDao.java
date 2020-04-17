@@ -171,20 +171,22 @@ public class A01_AssemblyDao {
 
 
 	// proc del => 카트에서 제거
-	public void deleteCart(Parts del) {
+	public void deleteCart(int com_no, int parts_no) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
-			String sql = "delete INTO @@조립목록@@ where 컴퓨터번호 = ? and 부품번호 = ?";
+			String sql = "DELETE p5_assembly \r\n" + 
+					"WHERE com_no = ?\r\n" + 
+					"AND parts_no = ?";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "컴퓨터명");
-			pstmt.setString(2, "부품명");
+			pstmt.setInt(1, com_no);
+			pstmt.setInt(2, parts_no);
 			
 			pstmt.executeUpdate();
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("삭제 성공!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -202,14 +204,13 @@ public class A01_AssemblyDao {
 		}
 	}
 	// proc delAll => 카트에서 모두제거
-	public void deleteAllCart() {
+	public void deleteAllCart(int com_no) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
-			String sql = "DELETE @@조립목록@@ WHERE 컴퓨터번호 = ?";
+			String sql = "DELETE p5_assembly WHERE com_no = ?";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "컴퓨터명");
-			pstmt.setString(2, "부품명");
+			pstmt.setInt(1, com_no);
 			
 			pstmt.executeUpdate();
 			con.commit();

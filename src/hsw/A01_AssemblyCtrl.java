@@ -1,7 +1,6 @@
 package hsw;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import z01_vo.Nk;
-import z01_vo.Parts;
 
 /**
  * Servlet implementation class A01_Assembly
@@ -42,8 +40,12 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		String proc = Nk.toStr(request.getParameter("proc"),"first");
 		String parts_mc = Nk.toStr(request.getParameter("parts_mc"),"CPU");
-		int com_no = (int)session.getAttribute("com_no");
-		
+		int com_no = 0;
+		if(session.getAttribute("com_no") != null) {
+			com_no = (int)session.getAttribute("com_no");
+		}
+		System.out.println("com_no:"+com_no);
+		System.out.println("proc: "+proc);
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
 		request.setAttribute("plist", service.plist(request));
@@ -60,6 +62,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 					// 견적용 컴퓨터 번호
 					com_no = service.comNo(mem);
 					session.setAttribute("com_no", com_no);
+				}else {
+					service.deleteAllCart(com_no);
+					System.out.println("카트비우고 시작");
 				}
 			}else {
 				String mem = (String)session.getAttribute("mem");
@@ -74,6 +79,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		// proc ins => 카트에 추가
 		if(proc.equals("ins")) {
+			
 			// 견적테이블에 추가
 			service.insertCart(request, com_no);
 			// 견적테이블 불러오기
@@ -86,24 +92,25 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		// proc del => 카트에서 제거
 		if(proc.equals("del")) {
-			// 세션에서 삭제
-			ArrayList<Parts> cart = (ArrayList<Parts>)session.getAttribute("cart");
-			//cart.remove(service.insertCart(request));
-			session.setAttribute("cart", cart);
-			System.out.println("카트세션에서 삭제");
-			// service.deleteCart(request);
+			service.deleteCart(com_no, Nk.toInt(request.getParameter("parts_no")));
+			session.setAttribute("cart", service.cartList(com_no));
+			
 		}
 		
 		// proc delAll => 카트에서 모두제거
 		if(proc.equals("delAll")) {
-			// 세션 모두 삭제
-			ArrayList<Parts> cart = new ArrayList<Parts>();
-			session.setAttribute("cart", cart);
-			// service.deleteAllCart(request);
+			service.deleteAllCart(com_no);
+			session.setAttribute("cart", service.cartList(com_no));
+			System.out.println("카트비우기 버튼");	
 		}
 		// proc reg => 견적목록에 추가
-		if(proc.equals("reg")) {
+		if(proc.equals("assque")) {
 			service.regEstimate(request);
+			System.out.println("견적문의버튼");
+		}
+		if(proc.equals("buy")) {
+			service.regEstimate(request);
+			System.out.println("구매버튼");
 		}
 
 		

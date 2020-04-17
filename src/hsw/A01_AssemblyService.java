@@ -53,22 +53,14 @@ public class A01_AssemblyService {
 	
 
 	// proc del => 카트에서 제거
-		
-	/*
-	 * public void deleteCart(HttpServletRequest request) { int parts_no =
-	 * Nk.toInt(request.getParameter("parts_no")); int parts_com =
-	 * Nk.toInt(request.getParameter("parts_com")); Parts ins = new Parts(parts_com,
-	 * parts_no);
-	 * 
-	 * dao.insertCart(ins); }
-	 */
+	public void deleteCart(int com_no,int parts_no) {
+		dao.deleteCart(com_no,parts_no);
+	}	
+	
+	
 	// proc delAll => 카트에서 모두제거
-	public void deleteAllCart(HttpServletRequest request) {
-		int parts_no = Nk.toInt(request.getParameter("parts_no"));
-		int parts_com = Nk.toInt(request.getParameter("parts_com"));
-		Parts ins = new Parts(parts_com, parts_no);
-		
-		dao.insertCart(ins);
+	public void deleteAllCart(int com_no) {
+		dao.deleteAllCart(com_no);
 	}
 	// proc reg => 견적목록에 추가
 	public void regEstimate(HttpServletRequest request) {
