@@ -53,23 +53,17 @@
 			if(parts_mc == "CPU"){
 				//alert("parts_mc : "+parts_mc);
 			}
-			if(parts_mc == "메인보드"){}
-			if(parts_mc == "RAM"){}
-			if(parts_mc == "그래픽카드"){}
-			if(parts_mc == "SSD"){}
-			if(parts_mc == "HDD"){}
-			if(parts_mc == "케이스"){}
-			if(parts_mc == "파워"){}
-			
 		}else{
 			// proc를 sch로 해서 다시 컨트롤로 보내기.
 		}
+		
 		
 		$("#title").append(parts_mc);
 		
 		// 카테고리 검색 버튼 클릭시
 		$("#schBtn").click(function(){
 			$("[name=proc]").val("sch");
+			$("[name=parts_mc]").val(parts_mc);
 			$("[name=schFrm]").submit();
 		});
 		// 중분류 버튼 클릭시
@@ -94,7 +88,7 @@
 	function regCart(sno){
 		$("[name=proc]").val("ins");
 		$("[name=parts_mc]").val("${parts_mc}");
-		$("[name=insNo]").val(sno);
+		$("[name=parts_no]").val(sno);
 		alert(sno);
 		$("[name=partsFrm]").submit();
 	}
@@ -459,7 +453,7 @@
 				<form method="method" name="partsFrm">
 				<input type="hidden" name="proc"/>
 				<input type="hidden" name="parts_mc"/>
-				<input type="hidden" name="insNo"/>
+				<input type="hidden" name="parts_no"/>
 				<table>
 					<col width="20%">
 					<col width="50%">
@@ -491,55 +485,61 @@
 					<col width="7%">
 					<col width="18%">
 					<col width="4%">
+					
 					<tr>
 						<td class="mcCho">CPU</td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR">99,170원</td>
-						<td id="delCart(1)">X</td>
-					</tr>
-					<tr>
+						<td></td> 
 						<td></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR">99,170원</td>
-						<td id="delCart(2)">X</td>
-					</tr>
-					<tr>
 						<td></td>
-						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR">99,170원</td>
-						<td id="delCart(3)">X</td>
+						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == 'CPU'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">메인보드</td>
-						<td>ASRock A320M-HDV R4.0</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR">73,000원</td>
-						<td id="delCart(4)">X</td>
+						<td></td> 
+						<td></td>
+						<td></td>
+						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == '메인보드'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">RAM</td>
-						<td>삼성전자 DDR4 4G PC4-21300(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR"><span>21,130원</span></td>
-						<td id="delCart(5)">X</td>
-					</tr>
-					<tr>
+						<td></td> 
 						<td></td>
-						<td>삼성전자 DDR4 8G PC4-19200(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR"><span>55,370원</span></td>
-						<td id="delCart(6)">X</td>
-					</tr>
-					<tr>
 						<td></td>
-						<td>삼성전자 DDR4 8G PC4-19200(정품)</td> 
-						<td><input type="number" name="cnt" value="1"/></td>
-						<td class="ordR"><span>55,370원</span></td>
-						<td id="delCart(7)">X</td>
+						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == 'RAM'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">그래픽카드</td>
 						<td></td>
@@ -547,6 +547,17 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == '그래픽카드'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">SSD</td>
 						<td></td>
@@ -554,6 +565,17 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == 'SSD'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">HDD</td>
 						<td></td>
@@ -561,6 +583,17 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == 'HDD'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
 						<td class="mcCho">케이스</td>
 						<td></td>
@@ -568,13 +601,46 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == '케이스'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
 					<tr>
-						<td class="mcCho">파워</td>
+						<td class="mcCho">케이스</td>
 						<td></td>
 						<td></td>
 						<td></td>
 						<td></td>
 					</tr>
+					<c:forEach var="prod" items="${cart}">
+						<c:if test="${prod.parts_mc == '파워'}" >
+							<tr>
+								<td></td>
+								<td>${prod.parts_name}</td> 
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+						
+					
+					<c:forEach var="prod" items="${cart}">
+						<tr>
+							<td class="mcCho">${prod.parts_mc}</td>
+							<td>${prod.parts_name}</td> 
+							<td><input type="number" name="cnt" value="1"/></td>
+							<td class="ordR">${prod.parts_price}</td>
+							<td id="delCart(${prod.parts_no})">X</td>
+						</tr>
+					</c:forEach>
 				</table>
 				</form>
 			</div>
