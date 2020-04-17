@@ -328,10 +328,10 @@ INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME04',
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS01','워크스테이션','PCCAT-WS01.jpg','PCCAT_COMDETAIL.jpg',1664000);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS02','워크스테이션','PCCAT-WS02.jpg','PCCAT_COMDETAIL.jpg',2873000);
 --개인사양은 논의 필요
-INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1000000);
-INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER02.jpg','',1100000);
-INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER03.jpg','',1200000);
-INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER04.jpg','',1500000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',978460);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER02.jpg','',1333860);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER03.jpg','',1690660);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER04.jpg','',2819420);
 SELECT * FROM p5_computer;
 --------------------------------------
 /* 견적 */
@@ -455,7 +455,7 @@ INCREMENT BY 1
 ;
 NSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-15','YYYY-MM-DD'),'회원가입 포인트', 3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-22','YYYY-MM-DD'),'상품구매 사용', -3000);
-INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-29','YYYY-MM-DD'),'상품구매 적립', CEIL((1000000-3000)*0.008));
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-29','YYYY-MM-DD'),'상품구매 적립', CEIL((978460-3000)*0.008));
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-02-17','YYYY-MM-DD'),'상품구매 사용', -7976);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen02',to_date('2020-02-24','YYYY-MM-DD'),'회원가입 포인트', 3000);
 -- MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져',1809000
@@ -463,12 +463,12 @@ INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-02-25','
 
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen02',to_date('2020-02-28','YYYY-MM-DD'),'상품구매 사용', -3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen03',to_date('2020-03-06','YYYY-MM-DD'),'회원가입 포인트', 3000); 
-INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen02',to_date('2020-03-06','YYYY-MM-DD'),'상품구매 적립', CEIL((1100000-3000)*0.008));
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen02',to_date('2020-03-06','YYYY-MM-DD'),'상품구매 적립', CEIL((1333860-3000)*0.008));
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen03',to_date('2020-03-17','YYYY-MM-DD'),'상품구매 사용', -3000);
-INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen03',to_date('2020-03-25','YYYY-MM-DD'),'상품구매 적립', CEIL((1200000-3000)*0.008));
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen03',to_date('2020-03-25','YYYY-MM-DD'),'상품구매 적립', CEIL((1690660-3000)*0.008));
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen04',to_date('2020-03-31','YYYY-MM-DD'),'회원가입 포인트', 3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen04',to_date('2020-04-06','YYYY-MM-DD'),'상품구매 사용', -3000);
-INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen04',to_date('2020-04-13','YYYY-MM-DD'),'상품구매 적립', CEIL((1500000-3000)*0.008));
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen04',to_date('2020-04-13','YYYY-MM-DD'),'상품구매 적립', CEIL((2819420-3000)*0.008));
 
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen05',sysdate,'회원가입 포인트', 3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen05',sysdate,'상품구매사용', -3000);
