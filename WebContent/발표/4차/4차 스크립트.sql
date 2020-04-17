@@ -805,7 +805,7 @@ CREATE SEQUENCE p5_question_seq
 START WITH 1
 INCREMENT BY 1
 ;
-INSERT INTO p5_question VALUES ();
+INSERT INTO p5_question VALUES (p5_question_sql.nextval,'ezen01','','',sysdate);
 SELECT * FROM p5_question;
 --------------------------------------
 /* 문의사항댓글 */
@@ -873,8 +873,8 @@ ALTER TABLE p5_notice
 		);
 CREATE SEQUENCE p5_notice_seq
 START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_notice VALUES ();
+INCREMENT BY 1;
+
+INSERT INTO p5_notice VALUES (p5_notice_seq.nextval,'','',sysdate);
 SELECT * FROM p5_notice;
 --------------------------------------

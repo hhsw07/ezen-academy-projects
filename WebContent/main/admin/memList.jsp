@@ -67,10 +67,10 @@
 		
 	<!-- 글목록  -->	
 		<tr>
-			<th>홍길동</th>
-			<th>ezen01</th>
-			<th>ezen01@naver.com</th>
-			<th>010-0000-0000</th>
+			<td>홍길동</td>
+			<td>ezen01</td>
+			<td>ezen01@naver.com</td>
+			<td>010-0000-0000</td>
 		</tr>
 	
 	<!-- 목록페이징 -->	

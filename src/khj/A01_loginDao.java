@@ -67,6 +67,7 @@ public class A01_loginDao {
 			String sql = "SELECT * FROM p5_member "
 					+ "WHERE mem_id = '"+mem.getMem_id()+"' "
 					+ "AND mem_pw='"+mem.getMem_pw()+"' ";
+
 			System.out.println(sql);
 			stmt = con.createStatement();
 			rs=stmt.executeQuery(sql);

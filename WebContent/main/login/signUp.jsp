@@ -17,8 +17,9 @@
 		table{cursor:pointer;}
 		.logo-text{font-family:sans-serif; font-size:60px; color:#F2B809; font-weight:bold;}
 		img{width:150px; height:130px; margin-bottom:40px;}
-.input-box{width:400px; height:40px; padding:5px;}
-.reg-box{width:556px; height:70px; margin-top:20px; font-size:30px;
+		.import{color:red; opacity:0.6; font-size:10px;}
+.input-box{width:330px; height:40px; padding:5px;}
+.reg-box{width:530px; height:70px; margin-top:20px; font-size:30px;
 		background-color:black; color:white;
 		border:3px solid purple;
 		cursor:pointer;}
@@ -79,7 +80,7 @@ $(document).ready(function(){
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">회원가입</th></tr>
 			<tr>
-				<td>아이디</td>
+				<td>아이디<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" id="id" placeholder="아이디" /></td>
 			</tr>
 			
@@ -88,11 +89,11 @@ $(document).ready(function(){
 			</tr>
 			
 			<tr>
-				<td>비밀번호</td>
+				<td>비밀번호<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="비밀번호" /></td>
 			</tr>
 			<tr>
-				<td>비밀번호 재입력</td>
+				<td>비밀번호 재입력<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="비밀번호 재입력" /></td>
 			</tr>
 			
@@ -101,19 +102,19 @@ $(document).ready(function(){
 			</tr>
 			
 			<tr>
-				<td>이름</td>
+				<td>이름<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="이름" /></td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
+				<td>생년월일<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="'-'제외 6자리(ex:901102)" /></td>
 			</tr>
 			<tr>
-				<td>이메일</td>
+				<td>이메일<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="이메일" /></td>
 			</tr>
 			<tr>
-				<td>휴대폰</td>
+				<td>휴대폰<span class="import">*필수입력</span></td>
 				<td><input type="text" class="input-box" placeholder="'-'제외 11자리" /></td>
 			</tr>
 			<tr>
