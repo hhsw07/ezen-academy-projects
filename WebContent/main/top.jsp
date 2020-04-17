@@ -28,6 +28,7 @@ ul li{list-style:none;}
 			.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
 				.menu-2 li{display:inline; font-size:25px; margin:0 15px;}
+				.menu-2 a{text-decoration:none; color:white;}
 /*상단 메뉴바 끝*/
 
 
@@ -51,11 +52,11 @@ ul li{list-style:none;}
 			<div class="menu-2-wrap">
 				<div class="menu-2">
 					<ul>
-						<li style="margin-right:290px; color:#F2B809">PC냥이</li>
-						<li>조립컴퓨터</li>
-						<li>컴퓨터부품</li>
-						<li>견적컴퓨터</li>
-						<li style="margin-left:290px;">장바구니</li>
+						<li style="margin-right:290px; color:#F2B809"><a href="main" style="color:orange;">PC냥이</a></li>
+						<li><a href="comlist">조립컴퓨터</a></li>
+						<li><a href="partslist">컴퓨터부품</a></li>
+						<li><a href="assembly">견적컴퓨터</a></li>
+						<li style="margin-left:290px;"><a href="order">장바구니</a></li>
 					</ul>
 				</div>
 			</div>

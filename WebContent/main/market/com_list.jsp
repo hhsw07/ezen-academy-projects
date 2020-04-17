@@ -30,12 +30,13 @@ ul li{list-style:none;}
 	.com_intro{width:100%; border:1px solid black; border-collapse:collapse;}	
 	.com_intro .com_title{border:1px solid black; text-align:center;}
 	.com_intro .com_assem{border:1px solid black;}
+	.com_intro .com_assem2{border-bottom:1px solid white;}
 	
 </style>
 </head>
 <body>
 
-<jsp:include page="top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 	<div class="menu-wrap">
 		<div class="menu-2-wrap">
 			<div class="menu-2">
@@ -57,17 +58,24 @@ ul li{list-style:none;}
 	<ul id="market_list">
 		<c:forEach begin="1" end="9" varStatus="sts">
 			<li class="com">
-				<a href="#"><img src="#" class="com_img"></a>
+				<a href="comdetail"><img src="image/Computer/PCCAT-HAO01.jpg" class="com_img"></a>
 				<table class="com_intro" border>
-					<tr><td class="com_title">타이틀</td></tr>
-					<tr><td class="com_assem">견적</td></tr>
+					<tr><td class="com_title">PCCAT-HAO01</td></tr>
+					<tr><td class="com_assem2">CPU</td></tr>
+					<tr><td class="com_assem2">메인보드</td></tr>
+					<tr><td class="com_assem2">RAM</td></tr>
+					<tr><td class="com_assem2">그래픽카드</td></tr>
+					<tr><td class="com_assem2">SSD</td></tr>
+					<tr><td class="com_assem2">HDD</td></tr>
+					<tr><td class="com_assem2">케이스</td></tr>
+					<tr><td>파워</td></tr>
 				</table>
 			</li>
 		</c:forEach>
 	</ul>
 </div>
 
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 	<%-- <c:forEach>
 			
 	</c:forEach> --%>

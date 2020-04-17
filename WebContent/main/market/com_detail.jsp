@@ -23,8 +23,9 @@ ul li{list-style:none;}
 	.com{width:220px; margin:15px; }
 	.com_img{width:300px;height:300px; float: left;}
 	.com_intro{width:600px; height:300px; border:1px solid black; border-collapse:collapse;}
-	.com_title{height:50px;}
+	.com_title{height:50px; padding-left:20px;}
 	.com_assem{height:250px;}
+	.com_intro .com_assem2{border-bottom:1px solid white; padding-left:20px;}
 	.com_opt{border-collapse:collapse; width:995px; height:200px;}
 	#com_info{border:1px solid black; margin-top:50px; margin-left:20px; width:995px; height:1000px;}
 	#com_infotitle {position:relative;border-bottom:1px solid black; height:100px; margin:0 auto;}
@@ -39,19 +40,26 @@ ul li{list-style:none;}
 </head>
 <body>
 
-<jsp:include page="top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 <div id="market_wrap">
 	<p id="market_title">조립컴퓨터</p>
 	<form>
 		<ul id="market_detail">
 			<li class="com">
-				<a href="#"><img src="#" class="com_img"></a>
+				<img src="image/Computer/PCCAT-HAO01.jpg" class="com_img">
 			</li>
 			<li class="com" style="padding-left:400px">
 				<table class="com_intro" border>
-					<tr><td class="com_title">타이틀</td></tr>
-					<tr><td class="com_assem">견적</td></tr>
+					<tr><td class="com_title">PCCAT-HAO01</td></tr>
+					<tr><td class="com_assem2">CPU</td></tr>
+					<tr><td class="com_assem2">메인보드</td></tr>
+					<tr><td class="com_assem2">RAM</td></tr>
+					<tr><td class="com_assem2">그래픽카드</td></tr>
+					<tr><td class="com_assem2">SSD</td></tr>
+					<tr><td class="com_assem2">HDD</td></tr>
+					<tr><td class="com_assem2">케이스</td></tr>
+					<tr><td style=" padding-left:20px;">파워</td></tr>
 				</table>
 			</li>
 			<li style="padding:20px 0 0 20px;">
@@ -126,7 +134,7 @@ ul li{list-style:none;}
 	</form>
 </div>
 
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package main;
+package jhk;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class P05_MainCtrl
+ * Servlet implementation class MarketCtrl
  */
-@WebServlet(name = "SCenter", urlPatterns = { "/SCenter" })
-public class P05_SCenterCtrl extends HttpServlet {
+@WebServlet(name = "partslist", urlPatterns = { "/partslist" })
+public class MarketParts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public P05_SCenterCtrl() {
+    public MarketParts() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,10 +28,12 @@ public class P05_SCenterCtrl extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = "main/serviceCenter/notice.jsp";
+		// TODO Auto-generated method stub
+		String page = "main/market/parts_list.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
+		
 	}
 
 }

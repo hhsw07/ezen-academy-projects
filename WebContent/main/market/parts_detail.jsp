@@ -21,10 +21,10 @@ ul li{list-style:none;}
 </head>
 <body>
 
-<jsp:include page="top.jsp"/>
+<jsp:include page="../../main/top.jsp"/>
 
 
-<jsp:include page="bottom.jsp"/>
+<jsp:include page="../../main/bottom.jsp"/>
 
 </body>
 </html>
