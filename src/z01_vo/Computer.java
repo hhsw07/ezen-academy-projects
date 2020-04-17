@@ -24,6 +24,13 @@ public class Computer {
 		this.com_detail = com_detail;
 		this.com_price = com_price;
 	}
+	
+	public Computer(int com_no, String mem_id) {
+		super();
+		this.com_no = com_no;
+		this.mem_id = mem_id;
+	}
+	
 	public int getCom_no() {
 		return com_no;
 	}

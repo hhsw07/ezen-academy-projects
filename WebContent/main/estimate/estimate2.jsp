@@ -35,10 +35,6 @@
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-	var proc = "${param.proc}";
-	var parts_mc = "${parts_mc}";
-	var parts_com = "${parts_com}";
-	
 	$(document).ready(function(){
 <%--
 
@@ -47,8 +43,10 @@
 		$("[type=number]").width("100%");
 		$("select").width("30%");
 		$("img").width("60px");
-		$("#e_nav_list [type=button]").val("카트담기");
+		$("#e_nav_list [name=parts_no]").val("카트담기");
 		
+		var proc = "${param.proc}";
+		var parts_mc = "${parts_mc}";
 		if(parts_mc == "") parts_mc = "CPU";
 		if(proc == ""||proc == "sch"){
 			// 검색화면
@@ -65,37 +63,34 @@
 		// 카테고리 검색 버튼 클릭시
 		$("#schBtn").click(function(){
 			$("[name=proc]").val("sch");
-			$("[name=parts_mc]").val(parts_mc);
-			$("form").submit();
+			$("[name=schFrm]").submit();
 		});
 		// 중분류 버튼 클릭시
 		 $(".mcCho").click(function(){
 			 var mc = $(this).text();
 			 $("[name=proc]").val("sch");
 			 $("[name=parts_mc]").val(mc);
-			 $("form").submit();
+			 $("[name=cartFrm]").submit();
 			 
 		 });
 		
+		// .regCart 버튼 클릭시 카트에 부품 등록
+		$(".regCart").click(function(){
+			//$("[name=proc]").val("ins");
+			alert("추가");
+			
+		});
+		// #delcart(idx) 버튼 클릭시 카트에서 부품 제거
 		
 		// @@@ 버튼 클릭시 카트에서 전체 제거, 견적문의, 구매하기
 	});
-	// regCart 버튼 클릭시 카트에 부품 등록
 	function regCart(sno){
 		$("[name=proc]").val("ins");
-		$("[name=parts_mc]").val(parts_mc);
+		$("[name=parts_mc]").val("${parts_mc}");
 		$("[name=parts_no]").val(sno);
-		$("form").submit();
+		alert(sno);
+		$("[name=partsFrm]").submit();
 	}
-	// #delcart(idx) 버튼 클릭시 카트에서 부품 제거
-	function delCart(sno){
-		$("[name=proc]").val("del");
-		$("[name=parts_mc]").val(parts_mc);
-		$("[name=parts_no]").val(sno);
-		alert(""+parts_mc+sno);
-		$("form").submit();
-	}
-	
 	
 </script>
 </head>
@@ -110,12 +105,11 @@
 	</div>
 	<div id="e_mid">
 		<!-- 견적표 -->
-		<form method="get">
 		<div id="e_nav" >
 			<div id="e_nav_top">
 				<h3 id="title">PC주요부품 > </h3>
+				<form method="method" name="schFrm">
 				<input type="hidden" name="proc" />
-				<input type="hidden" name="parts_mc"/>
 				<table>
 					<c:choose>
 						<c:when test="${parts_mc=='CPU'}">
@@ -451,8 +445,13 @@
 						</td>
 					</tr>
 				</table>
+				</form>
 			</div>
+			
 			<div id="e_nav_list">
+				<form method="method" name="partsFrm">
+				<input type="hidden" name="proc"/>
+				<input type="hidden" name="parts_mc"/>
 				<input type="hidden" name="parts_no"/>
 				<table>
 					<col width="20%">
@@ -465,16 +464,20 @@
 						<td><img src="${path}/image/parts/${prod.parts_img}" style="width:60px;"/></td>
 						<td>${prod.parts_name}</td>
 						<td><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
-						<td><input type="button" onclick="regCart(${prod.parts_no})" style="width:100%"/></td>
+						<td><input type="button" onclick="regCart(${prod.parts_no})" name="parts_no" style="width:100%"/></td>
 					</tr>
 					</c:forEach>
 				</table>
+				</form>
 			</div>
 		</div>
 		<!-- 카트 -->
 		<div id="e_cart">
 			<h3>PC주요부품</h3>
 			<div style="height:400px; overflow:auto;">
+				<form method="get" name="cartFrm">
+				<input type="hidden" name="proc"/>
+				<input type="hidden" name="parts_mc"/>
 				<table>
 					<col width="18%">
 					<col >
@@ -484,58 +487,60 @@
 					
 					<tr>
 						<td class="mcCho">CPU</td>
-						<td></td> 
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+						<td id="delCart(1)">X</td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == 'CPU'}" >
-							<tr>
-								<td></td>
-								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원								</td>
-								<td onclick="delCart(${prod.parts_no})">X</td>
-							</tr>
-						</c:if>
-					</c:forEach>
+					<tr>
+						<td class="mcCho">CPU</td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+						<td id="delCart(1)">X</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+						<td id="delCart(2)">X</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>인텔 코어i3-9세대 9100F (커피레이크-R)(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">99,170원</td>
+						<td id="delCart(3)">X</td>
+					</tr>
 					<tr>
 						<td class="mcCho">메인보드</td>
-						<td></td> 
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>ASRock A320M-HDV R4.0</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR">73,000원</td>
+						<td id="delCart(4)">X</td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == '메인보드'}" >
-							<tr>
-								<td></td>
-								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
-							</tr>
-						</c:if>
-					</c:forEach>
 					<tr>
 						<td class="mcCho">RAM</td>
-						<td></td> 
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>삼성전자 DDR4 4G PC4-21300(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR"><span>21,130원</span></td>
+						<td id="delCart(5)">X</td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == 'RAM'}" >
-							<tr>
-								<td></td>
-								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
-							</tr>
-						</c:if>
-					</c:forEach>
+					<tr>
+						<td></td>
+						<td>삼성전자 DDR4 8G PC4-19200(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR"><span>55,370원</span></td>
+						<td id="delCart(6)">X</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>삼성전자 DDR4 8G PC4-19200(정품)</td> 
+						<td><input type="number" name="cnt" value="1"/></td>
+						<td class="ordR"><span>55,370원</span></td>
+						<td id="delCart(7)">X</td>
+					</tr>
 					<tr>
 						<td class="mcCho">그래픽카드</td>
 						<td></td>
@@ -544,13 +549,13 @@
 						<td></td>
 					</tr>
 					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == '그래픽카드'}" >
+						<c:if test="${prod.parts_mc == '케이스'}" >
 							<tr>
 								<td></td>
 								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -562,13 +567,13 @@
 						<td></td>
 					</tr>
 					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == 'SSD'}" >
+						<c:if test="${prod.parts_mc == '케이스'}" >
 							<tr>
 								<td></td>
 								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -580,13 +585,13 @@
 						<td></td>
 					</tr>
 					<c:forEach var="prod" items="${cart}">
-						<c:if test="${prod.parts_mc == 'HDD'}" >
+						<c:if test="${prod.parts_mc == '케이스'}" >
 							<tr>
 								<td></td>
 								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -602,9 +607,9 @@
 							<tr>
 								<td></td>
 								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -620,22 +625,37 @@
 							<tr>
 								<td></td>
 								<td>${prod.parts_name}</td> 
-								<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-								<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-								<td onclick="delCart(${prod.parts_no})">X</td>
+								<td><input type="number" name="cnt" value="1"/></td>
+								<td class="ordR">${prod.parts_price}</td>
+								<td id="delCart(${prod.parts_no})">X</td>
 							</tr>
 						</c:if>
 					</c:forEach>
+						
+					
+					<c:forEach var="prod" items="${cart}">
+						<tr>
+							<td class="mcCho">${prod.parts_mc}</td>
+							<td>${prod.parts_name}</td> 
+							<td><input type="number" name="cnt" value="1"/></td>
+							<td class="ordR">${prod.parts_price}</td>
+							<td id="delCart(${prod.parts_no})">X</td>
+						</tr>
+					</c:forEach>
 				</table>
+				</form>
 			</div>
 			<hr>
 			<div style="text-align:center;">
+				<form method="post" name="regFrm">
+				<input type="hidden" name="proc"/>
+				<input type="hidden" name="parts_mc"/>
 				<input type="button" value="견적초기화" style="width:30%"/>
 				<input type="button" value="견적문의" style="width:30%"/>
 				<input type="button" value="구매하기" style="width:30%"/>
+				</form>
 			</div>
 		</div>
-		</form>
 	</div>
 	<!-- 견적 문의 리스트 -->
 	<div id="e_bottom">

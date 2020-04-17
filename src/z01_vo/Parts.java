@@ -29,6 +29,14 @@ public class Parts {
 		this.parts_price = parts_price;
 		this.parts_img = parts_img;
 	}
+	public Parts(int parts_no, String parts_mc, String parts_name, int parts_price) {
+		super();
+		this.parts_no = parts_no;
+		this.parts_mc = parts_mc;
+		this.parts_name = parts_name;
+		this.parts_price = parts_price;
+	}
+	
 
 	public Parts(int parts_no, String parts_mc) {
 		super();
