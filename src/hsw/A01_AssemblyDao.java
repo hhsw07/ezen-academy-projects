@@ -146,7 +146,8 @@ public class A01_AssemblyDao {
 					"AND b.PARTS_NO = a.PARTS_NO";
 			
 			pstmt = con.prepareStatement(sql);
-						
+			pstmt.setInt(1, com_no);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				cartList.add(new Parts(rs.getInt(1),
