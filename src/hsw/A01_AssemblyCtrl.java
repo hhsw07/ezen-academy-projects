@@ -64,30 +64,41 @@ public class A01_AssemblyCtrl extends HttpServlet {
 					session.setAttribute("com_no", com_no);
 				}else {
 					service.deleteAllCart(com_no);
+					session.setAttribute("cart", service.cartList(com_no));
 					System.out.println("카트비우고 시작");
 				}
 			}else {
 				String mem = (String)session.getAttribute("mem");
-				// 견적용 컴퓨터 만들기
-				service.regCom(mem);
-				// 견적용 컴퓨터 번호
+				// 견적용 컴퓨터 번호 찾기
 				com_no = service.comNo(mem);
+				if(!service.ckCom(com_no)) {
+					// 견적용 컴퓨터가 없다면 새로 만들기 
+					// 있다면 새로 만들지 않음
+					service.regCom(mem);
+					com_no = service.comNo(mem);
+				}
 				session.setAttribute("com_no", com_no);
+				// 카트를 비우고 시작
+				service.deleteAllCart(com_no);
+				session.setAttribute("cart", service.cartList(com_no));
+				System.out.println("카트비우고 시작");
 			}
 		}
 		
 		
 		// proc ins => 카트에 추가
 		if(proc.equals("ins")) {
-			
-			// 견적테이블에 추가
-			service.insertCart(request, com_no);
+			if(service.isCart(request, com_no)) {
+				System.out.println("있다"+service.isCart(request, com_no));
+				// 카트에 있을 때 수량 추가
+				service.updateCart(request, com_no);
+			}else {
+				System.out.println("없다."+service.isCart(request, com_no));
+				// 견적테이블에 추가
+				service.insertCart(request, com_no);
+			}
 			// 견적테이블 불러오기
 			session.setAttribute("cart", service.cartList(com_no));
-			
-			// 카트에 있을 때
-			// 수량 추가
-			
 		}
 		
 		// proc del => 카트에서 제거

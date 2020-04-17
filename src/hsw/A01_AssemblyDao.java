@@ -116,7 +116,7 @@ public class A01_AssemblyDao {
 			
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("견적테이블에 추가(기본1개) 성공!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -135,6 +135,35 @@ public class A01_AssemblyDao {
 	}
 	
 	
+	// proc ins => 데이터 존재 유무
+	public boolean cList(Assembly ins){
+		boolean isItem = false;
+		
+		try {
+			setcon();
+			String sql = "SELECT * FROM P5_ASSEMBLY\r\n" + 
+					"WHERE parts_no = ?\r\n" + 
+					"AND com_no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ins.getCom_no() );
+			pstmt.setInt(2, ins.getParts_no());
+			
+			rs = pstmt.executeQuery();
+			
+			isItem = rs.next();
+			System.out.println("ins 데이터 유무: "+isItem);
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isItem;
+	}
+
+
 	public ArrayList<Parts> cartList(int com_no){
 		ArrayList<Parts> cartList = new ArrayList<Parts>();
 		
@@ -186,7 +215,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("삭제 성공!!");
+			System.out.println("카트에서 삭제 성공!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -216,7 +245,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("카트에서 모두 삭제!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -246,7 +275,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("견적목록 추가!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -280,7 +309,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("견적에 데이터 추가!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -312,7 +341,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("비회원 임시id!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -335,7 +364,7 @@ public class A01_AssemblyDao {
 	public void regCom(String mem) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
-			String sql = "INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, ?,'guest님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1000000)";
+			String sql = "INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, ?,'guest님의 컴퓨터','임시견적','PCCAT-USER01.jpg','',1000000)";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem);
@@ -344,7 +373,7 @@ public class A01_AssemblyDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록 성공!!");
+			System.out.println("임시견적 컴퓨터 추가!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -360,6 +389,40 @@ public class A01_AssemblyDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+
+	// proc first => 회원 견적용 computer 여부 확인
+	public boolean ckCom(int com_no) {
+		boolean ckCom = false;
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "SELECT com_kind FROM P5_COMPUTER WHERE com_no = ? AND com_kind = '임시견적'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, com_no);
+			rs = pstmt.executeQuery();
+			ckCom = rs.next();
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			System.out.println("검색 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return ckCom;
 	}
 
 
@@ -386,6 +449,43 @@ public class A01_AssemblyDao {
 			e.printStackTrace();
 		}
 		return com_no;
+	}
+
+
+	public void updateCart(Assembly upt) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "UPDATE P5_ASSEMBLY\r\n" + 
+					"SET PARTS_CNT = PARTS_CNT+1\r\n" + 
+					"WHERE COM_NO=?\r\n" + 
+					"AND PARTS_NO = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, upt.getCom_no());
+			pstmt.setInt(2, upt.getParts_no());
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("수정 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}	
 		
 	
