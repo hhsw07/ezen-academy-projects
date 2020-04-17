@@ -135,22 +135,26 @@ public class A01_AssemblyDao {
 	}
 	
 	
-	public ArrayList<Parts> cartList(){
+	public ArrayList<Parts> cartList(int com_no){
 		ArrayList<Parts> cartList = new ArrayList<Parts>();
 		
 		try {
 			setcon();
-			String sql = "SELECT parts_no, parts_name, parts_price, parts_img FROM p5_parts\r\n" + 
-					"WHERE parts_mc = 'CPU'";
+			String sql = "SELECT b.COM_NO, a.PARTS_NO ,a.PARTS_NAME ,a.PARTS_PRICE, b.PARTS_CNT, a.PARTS_MC \r\n" + 
+					"FROM p5_parts a, P5_ASSEMBLY b\r\n" + 
+					"WHERE b.COM_NO = ?\r\n" + 
+					"AND b.PARTS_NO = a.PARTS_NO";
 			
 			pstmt = con.prepareStatement(sql);
 						
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pList.add(new Parts(rs.getInt(1),
-								    rs.getString(2),
-								    rs.getInt(3),
-								    rs.getString(4)
+				cartList.add(new Parts(rs.getInt(1),
+								    rs.getInt(2),
+								    rs.getString(3),
+								    rs.getInt(4),
+								    rs.getInt(5),
+								    rs.getString(6)
 						));
 			}
 			

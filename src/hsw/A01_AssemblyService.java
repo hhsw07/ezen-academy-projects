@@ -46,9 +46,9 @@ public class A01_AssemblyService {
 		dao.insertCart(ins);
 	}
 	// proc ins => 견적테이블 불러오기
-	public ArrayList<Parts> plist(int com_no){
+	public ArrayList<Parts> cartList(int com_no){
 		
-		return dao.pList(new Parts(parts_mc,parts_sc1,parts_sc2,parts_sc3,parts_sc4,parts_sc5,parts_sc6));
+		return dao.cartList(com_no);
 	}
 	
 

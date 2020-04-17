@@ -42,7 +42,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		String proc = Nk.toStr(request.getParameter("proc"),"first");
 		String parts_mc = Nk.toStr(request.getParameter("parts_mc"),"CPU");
-		int com_no = Nk.toInt((String)session.getAttribute("com_no"));
+		int com_no = (int)session.getAttribute("com_no");
 		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
@@ -76,17 +76,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		if(proc.equals("ins")) {
 			// 견적테이블에 추가
 			service.insertCart(request, com_no);
-			
 			// 견적테이블 불러오기
+			session.setAttribute("cart", service.cartList(com_no));
 			
-			
-			request.setAttribute("cart", cart);
-			
-			
-			ArrayList<Parts> cart = (ArrayList<Parts>)session.getAttribute("cart");
-			// 카트에 없을 때
-			cart.add(service.insertCart(request));
-			session.setAttribute("cart", cart);
 			// 카트에 있을 때
 			// 수량 추가
 			
@@ -96,7 +88,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		if(proc.equals("del")) {
 			// 세션에서 삭제
 			ArrayList<Parts> cart = (ArrayList<Parts>)session.getAttribute("cart");
-			cart.remove(service.insertCart(request));
+			//cart.remove(service.insertCart(request));
 			session.setAttribute("cart", cart);
 			System.out.println("카트세션에서 삭제");
 			// service.deleteCart(request);

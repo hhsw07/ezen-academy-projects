@@ -44,11 +44,14 @@ public class Parts {
 		this.parts_mc = parts_mc;
 	}
 	
-	public Parts(int parts_com, int parts_no, int parts_cnt) {
+	public Parts(int parts_com, int parts_no, String parts_name,int parts_price, int parts_cnt, String parts_mc) {
 		super();
 		this.parts_com = parts_com;
 		this.parts_no = parts_no;
+		this.parts_name = parts_name;
+		this.parts_price = parts_price;
 		this.parts_cnt = parts_cnt;
+		this.parts_mc = parts_mc;
 	}
 
 	public Parts(int parts_com,int parts_no) {
