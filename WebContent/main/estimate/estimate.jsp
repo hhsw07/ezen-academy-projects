@@ -111,6 +111,7 @@
 				<h3 id="title">PC주요부품 > </h3>
 				<form method="method" name="schFrm">
 				<input type="hidden" name="proc" />
+				<input type="hidden" name="parts_mc"/>
 				<table>
 					<c:choose>
 						<c:when test="${parts_mc=='CPU'}">
