@@ -20,10 +20,7 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
 		
-		--%>
-		$("h2").text("시작");
 	});
 </script>
 </head>

@@ -9,10 +9,13 @@ public class Point {
 	private String point_detail;
 	private int point_pt;
 	
+	private int tot;
+	
 	public Point() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	public Point(int point_no, String mem_id, Date point_date, String point_detail, int point_pt) {
 		super();
@@ -22,6 +25,21 @@ public class Point {
 		this.point_detail = point_detail;
 		this.point_pt = point_pt;
 	}
+
+	// 포인트조회
+	public Point(Date point_date, String point_detail, int point_pt) {
+		super();
+		this.point_date = point_date;
+		this.point_detail = point_detail;
+		this.point_pt = point_pt;
+	}
+	
+	// 포인트 계산
+	public Point(int point_pt) {
+		super();
+		this.point_pt = point_pt;
+	}
+
 
 	public int getPoint_no() {
 		return point_no;
@@ -61,6 +79,16 @@ public class Point {
 
 	public void setPoint_pt(int point_pt) {
 		this.point_pt = point_pt;
+	}
+
+
+	public int getTot() {
+		return tot;
+	}
+
+
+	public void setTot(int tot) {
+		this.tot = tot;
 	}
 	
 	

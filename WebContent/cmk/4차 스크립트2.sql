@@ -19,10 +19,7 @@ ALTER TABLE p5_member
 		PRIMARY KEY (
 			mem_id
 		);
-CREATE SEQUENCE p5_member_seq
-	START WITH 1
-	INCREMENT BY 1
-;
+
 --
 INSERT INTO p5_member VALUES ('admin','admin','관리자',to_date('1990-01-01','YYYY-MM-DD'),'admin@naver.com','010-0000-0000',to_date('2020-01-01','YYYY-MM-DD'));
 INSERT INTO p5_member VALUES ('ezen01','ezen01','김형준',to_date('1991-01-06','YYYY-MM-DD'),'ezen01@naver.com','010-1010-6015',to_date('2020-01-15','YYYY-MM-DD'));
@@ -274,8 +271,8 @@ insert into p5_parts values (p5_parts_seq.nextval,'잘만 MegaMax 500W 80PLUS ST
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 MegaMax 600W 80PLUS STANDARD',48000,100,'잘만 MegaMax 600W 80PLUS STANDARD.jpg','잘만 MegaMax 600W 80PLUS STANDARD_detail.jpg','파워','잘만','600W 이상','20핀+4핀','80 PLUS 스탠다드',' ',' ');
 
 SELECT * FROM p5_parts;
-DROP TABLE p5_parts;
-DROP sequence p5_parts_seq;
+--DROP TABLE p5_parts;
+--DROP sequence p5_parts_seq;
 
 --------------------------------------
 /* 컴퓨터 */
@@ -494,8 +491,8 @@ ORDER BY ord_no asc;
 
 --------------------------------------
 /* 주문 */
-DROP TABLE p5_order 
-	CASCADE CONSTRAINTS;
+--DROP TABLE p5_order 
+--	CASCADE CONSTRAINTS;
 
 /* 주문 */
 CREATE TABLE p5_order (
@@ -566,17 +563,6 @@ ALTER TABLE p5_request
 		REFERENCES p5_order (
 			ord_no
 		);
-/*
-2001221001 (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1000000);
-2002171002  (p5_parts_seq.nextval,'MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져',1809000,100,'MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져.jpg','MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져_detail.jpg','그래픽카드','MSI','NVIDIA',' ',' ',' ',' ');
-2002281003 (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER02.jpg','',1100000);
-2003171004 (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER03.jpg','',1200000);
-2004061005 (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER04.jpg','',1500000);
-
-to_number(to_char(sysdate,'yymmdd'))1006  (p5_parts_seq.nextval,'삼성전자 970 EVO Plus M.2 2280(1TB)',340780,100,'삼성전자 970 EVO Plus M.2 2280(1TB).jpg','삼성전자 970 EVO Plus M.2 2280(1TB)_detail.jpg','SSD','삼성전자','1TB','M.2',' ',' ',' ');
-										 (p5_parts_seq.nextval,'인텔 코어i7-9세대 9700K (커피레이크-R) (정품)',558660,100,'인텔 코어i7-9세대 9700K (커피레이크-R) (정품).jpg','인텔 코어i7-9세대 9700K (커피레이크-R) (정품)_detail.jpg','CPU','인텔','95W','인텔(코어i7-9세대)','8코어','정품','3.5 ~ 3.99 GHz');
-
- */
 
 INSERT INTO p5_request VALUES (2001221001, 1001, 1, 0);
 INSERT INTO p5_request VALUES (2001221001, 1, 1, 0);
@@ -626,15 +612,6 @@ CREATE SEQUENCE p5_pay_seq
 START WITH 1
 INCREMENT BY 1
 ;
-/*
-2001221001 (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1000000);
-2002171002  (p5_parts_seq.nextval,'MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져',1809000,100,'MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져.jpg','MSI 지포스 RTX 2080 Ti 게이밍 X 트리오 D6 11GB 트라이프로져_detail.jpg','그래픽카드','MSI','NVIDIA',' ',' ',' ',' ');
-2002281003 (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER02.jpg','',1100000);
-2003171004 (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER03.jpg','',1200000);
-2004061005 (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER04.jpg','',1500000);
-
-to_number(to_char(sysdate,'yymmdd'))1006
- */
 
 INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,2001221001,'신용카드',3000,(1091450-3000));
 INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,2002171002,'신용카드',10885,(714350-10885));
@@ -726,190 +703,4 @@ INCREMENT BY 1
 INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 1, to_date('2020-02-26','YYYY-MM-DD'), '완료','유선을 통한 점검 후 AS진행',0);
 INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 2, to_date('2020-03-05','YYYY-MM-DD'), '환불완료','고객변심으로 인한 환불',0);
 SELECT * FROM p5_mgr;
---------------------------------------
---보라컴 카페에서 긁어오기(5개씩)
-/* 상품후기 */
-DROP TABLE p5_review 
-	CASCADE CONSTRAINTS;
-
-/* 상품후기 */
-CREATE TABLE p5_review (
-	rev_no NUMBER NOT NULL, /* 후기번호 */
-	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
-	rev_name VARCHAR2(500) NOT NULL, /* 후기제목 */
-	rev_detail VARCHAR2(3000) NOT NULL, /* 후기내용 */
-	rev_date DATE NOT NULL /* 후기등록일 */
-);
-ALTER TABLE p5_review
-	ADD
-		CONSTRAINT p5_review_pk
-		PRIMARY KEY (
-			rev_no
-		);
-
-ALTER TABLE p5_review
-	ADD
-		CONSTRAINT FK_p5_member_TO_p5_review
-		FOREIGN KEY (
-			mem_id
-		)
-		REFERENCES p5_member (
-			mem_id
-		);
-CREATE SEQUENCE p5_review_seq
-START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_review VALUES ();
-SELECT * FROM p5_review;
---------------------------------------
-/* 상품후기댓글 */
-DROP TABLE p5_revcomm 
-	CASCADE CONSTRAINTS;
-
-/* 상품후기댓글 */
-CREATE TABLE p5_revcomm (
-	revc_no NUMBER NOT NULL, /* 후기댓글번호 */
-	rev_no NUMBER NOT NULL, /* 후기번호 */
-	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
-	revc_detail VARCHAR2(3000) NOT NULL, /* 후기댓글내용 */
-	revc_date DATE NOT NULL /* 후기댓글등록일 */
-);
-ALTER TABLE p5_revcomm
-	ADD
-		CONSTRAINT p5_revcomm_pk
-		PRIMARY KEY (
-			revc_no
-		);
-
-ALTER TABLE p5_revcomm
-	ADD
-		CONSTRAINT FK_p5_review_TO_p5_revcomm
-		FOREIGN KEY (
-			rev_no
-		)
-		REFERENCES p5_review (
-			rev_no
-		);
-
-ALTER TABLE p5_revcomm
-	ADD
-		CONSTRAINT FK_p5_member_TO_p5_revcomm
-		FOREIGN KEY (
-			mem_id
-		)
-		REFERENCES p5_member (
-			mem_id
-		);
-CREATE SEQUENCE p5_revcomm_seq
-START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_revcomm VALUES ();
-SELECT * FROM p5_revcomm;
---------------------------------------
-/* 문의사항 */
-DROP TABLE p5_question 
-	CASCADE CONSTRAINTS;
-
-/* 문의사항 */
-CREATE TABLE p5_question (
-	que_no NUMBER NOT NULL, /* 문의번호 */
-	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
-	que_name VARCHAR2(500) NOT NULL, /* 문의제목 */
-	que_detail VARCHAR2(3000) NOT NULL, /* 문의내용 */
-	que_date DATE NOT NULL /* 문의등록일 */
-);
-ALTER TABLE p5_question
-	ADD
-		CONSTRAINT p5_question_pk
-		PRIMARY KEY (
-			que_no
-		);
-
-ALTER TABLE p5_question
-	ADD
-		CONSTRAINT FK_p5_member_TO_p5_question
-		FOREIGN KEY (
-			mem_id
-		)
-		REFERENCES p5_member (
-			mem_id
-		);
-CREATE SEQUENCE p5_question_seq
-START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_question VALUES ();
-SELECT * FROM p5_question;
---------------------------------------
-/* 문의사항댓글 */
-DROP TABLE p5_quecomm 
-	CASCADE CONSTRAINTS;
-
-/* 문의사항댓글 */
-CREATE TABLE p5_quecomm (
-	quec_no NUMBER NOT NULL, /* 문의댓글번호 */
-	que_no NUMBER NOT NULL, /* 문의번호 */
-	mem_id VARCHAR2(100) NOT NULL, /* 아이디 */
-	quec_detail VARCHAR2(3000) NOT NULL, /* 문의댓글내용 */
-	quec_date DATE NOT NULL /* 문의댓글등록일 */
-);
-ALTER TABLE p5_quecomm
-	ADD
-		CONSTRAINT p5_quecomm_pk
-		PRIMARY KEY (
-			quec_no
-		);
-
-ALTER TABLE p5_quecomm
-	ADD
-		CONSTRAINT FK_p5_question_TO_p5_quecomm
-		FOREIGN KEY (
-			que_no
-		)
-		REFERENCES p5_question (
-			que_no
-		);
-
-ALTER TABLE p5_quecomm
-	ADD
-		CONSTRAINT FK_p5_member_TO_p5_quecomm
-		FOREIGN KEY (
-			mem_id
-		)
-		REFERENCES p5_member (
-			mem_id
-		);
-CREATE SEQUENCE p5_quecomm_seq
-START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_quecomm VALUES ();
-SELECT * FROM p5_quecomm;
---------------------------------------
-/* 공지사항 */
-DROP TABLE p5_notice 
-	CASCADE CONSTRAINTS;
-
-/* 공지사항 */
-CREATE TABLE p5_notice (
-	noti_no NUMBER NOT NULL, /* 공지번호 */
-	noti_name VARCHAR2(500) NOT NULL, /* 공지제목 */
-	noti_detail VARCHAR2(3000) NOT NULL, /* 공지내용 */
-	noti_date DATE NOT NULL /* 공지등록일 */
-);
-
-ALTER TABLE p5_notice
-	ADD
-		CONSTRAINT p5_notice_pk
-		PRIMARY KEY (
-			noti_no
-		);
-CREATE SEQUENCE p5_notice_seq
-START WITH 1
-INCREMENT BY 1
-;
-INSERT INTO p5_notice VALUES ();
-SELECT * FROM p5_notice;
 --------------------------------------

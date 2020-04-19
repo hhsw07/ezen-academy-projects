@@ -7,23 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import z01_vo.Nk;
-
 /**
- * Servlet implementation class OrderCtrl
+ * Servlet implementation class PayCtrl
  */
 @WebServlet(name = "order", urlPatterns = { "/order" })
-public class OrderCtrl extends HttpServlet {
+public class PayCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private OrderService service;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrderCtrl() {
+    public PayCtrl() {
         super();
         // TODO Auto-generated constructor stub
-        service = new OrderService();
     }
 
 	/**
@@ -31,13 +27,6 @@ public class OrderCtrl extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// 1. 요청
-		String proc = Nk.toStr(request.getParameter("proc"),"cart");
-		// 2. Modele
-		// 3. 화면
-		String page = "main\\order\\cart.jsp";
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 }

@@ -70,20 +70,17 @@
 					<col width="12%">
 					<col width="15%">
 				</colgroup>
+			<c:if test="${not empty asList}">
+				<c:forEach var="as" items="${asList}">
 				<tr>
-					<td class="as-code">글번호</td>
-					<td class="as-code">분류</td>
-					<td>제목</td>
-					<td class="as-code">작성자</td>
-					<td class="as-code">등록일</td>
+					<td class="as-code">${as.as_no}</td>
+					<td class="as-code">${as.as_cate}</td>
+					<td>AS 관련 문의드립니다</td>
+					<td class="as-code">${as.mem_id}</td>
+					<td class="as-code">${as.as_date}</td>
 				</tr>
-				<tr>
-					<td class="as-code">글번호</td>
-					<td class="as-code">분류</td>
-					<td>제목</td>
-					<td class="as-code">작성자</td>
-					<td class="as-code">등록일</td>
-				</tr>
+				</c:forEach>
+			</c:if>
 			</table>
 		</div>
 		

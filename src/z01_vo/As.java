@@ -9,6 +9,8 @@ public class As {
 	private String as_detail;
 	private Date as_date;
 	
+	private String mem_id;
+	
 	public As() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -21,6 +23,14 @@ public class As {
 		this.as_cate = as_cate;
 		this.as_detail = as_detail;
 		this.as_date = as_date;
+	}
+
+	public As(int as_no, String as_cate, Date as_date, String mem_id) {
+		super();
+		this.as_no = as_no;
+		this.as_cate = as_cate;
+		this.as_date = as_date;
+		this.mem_id = mem_id;
 	}
 
 	public int getAs_no() {
@@ -61,6 +71,14 @@ public class As {
 
 	public void setAs_date(Date as_date) {
 		this.as_date = as_date;
+	}
+
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	
 	
