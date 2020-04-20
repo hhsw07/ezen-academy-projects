@@ -41,16 +41,21 @@ $(document).ready(function(){
 			$("[name=mem_id]").focus();
 		}
 	}
-	
+	// 아이디찾기 이동
 	$("[name=findId]").click(function(){
 		$("[name=proc]").val("findID");
 		$("form").submit();
 	});
+	// 비밀번호찾기 이동
+	$("[name=findPS]").click(function(){
+		$("[name=proc]").val("findPS");
+		$("form").submit();
+	});
+	// 회원가입 이동
 	$("[name=signUp]").click(function(){
 		$("[name=proc]").val("signUp");
 		$("form").submit();
 	});
-	
 });
 </script>
 </head>
@@ -81,7 +86,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<th name="findId">아이디 찾기</th>
-				<th><a href="findPS">비밀번호 찾기</a></th>
+				<th name="findPS">비밀번호 찾기</th>
 				<th name="signUp">회원가입</th>
 			</tr>
 	</table>

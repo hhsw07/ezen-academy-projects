@@ -52,9 +52,10 @@
 	<table align="center">
 		<colgroup>
 			<col style="width:150px;"/>
-			<col style="width:310px;"/>
-			<col style="width:310px;"/>
-			<col style="width:310px;"/>
+			<col style="width:260px;"/>
+			<col style="width:260px;"/>
+			<col style="width:260px;"/>
+			<col style="width:150px;"/>
 		</colgroup>
 		
 	<!-- 타이틀 -->
@@ -63,6 +64,7 @@
 			<th>아이디</th>
 			<th>이메일</th>
 			<th>연락처</th>
+			<th>상세보기</th>
 		</tr>
 		
 	<!-- 글목록  -->	
@@ -71,11 +73,12 @@
 			<td>ezen01</td>
 			<td>ezen01@naver.com</td>
 			<td>010-0000-0000</td>
+			<td>상세보기</td>
 		</tr>
 	
 	<!-- 목록페이징 -->	
 		<tr>
-			<th colspan="4"> 1 2 3 4 5 </th>
+			<th colspan="5"> 1 2 3 4 5 </th>
 		</tr>	
 		
 	</table>
