@@ -30,12 +30,12 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var mem_id = "${mem.mem_id}";
-	if(mem_id!=""){
+
+	$("#regbtn").click(function(){
 		alert("회원가입 성공");
-		$("[name=proc]").val("login");
+		$("[name=proc]").val("insMem");
 		$("form").submit();
-	}
+	});
 });
 </script>
 </head>
@@ -46,6 +46,7 @@ $(document).ready(function(){
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
+		<input type="hidden" name="proc" value=""/>
 		<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
@@ -82,7 +83,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td>생년월일<span class="import">*필수입력</span></td>
-				<td><input type="text" name="mem_birth" class="input-box" placeholder="'-'제외 6자리(ex:901102)" /></td>
+				<td><input type="date" name="mem_birth" class="input-box" placeholder="'-'제외 6자리(ex:901102)" /></td>
 			</tr>
 			<tr>
 				<td>이메일<span class="import">*필수입력</span></td>
@@ -93,7 +94,7 @@ $(document).ready(function(){
 				<td><input type="text" name="mem_tel" class="input-box" placeholder="'-'제외 11자리" /></td>
 			</tr>
 			<tr>
-				<th colspan="2"><input type="submit" class="reg-box" value="가입하기"/></th>
+				<th colspan="2"><input type="button" id="regbtn" class="reg-box" value="가입하기"/></th>
 			</tr>
 			
 		</table>

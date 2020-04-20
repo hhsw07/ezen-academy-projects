@@ -1,7 +1,7 @@
 package khj;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -110,7 +110,20 @@ public class A01_loginDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getMem_id());
 			pstmt.setString(2, mem.getMem_pw());
+			System.out.println(sql);
 			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				m = new Member(
+							rs.getString(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getDate(4),
+							rs.getString(5),
+							rs.getString(6),
+							rs.getDate(7) );
+			}			
+			
 			rs.close();
 			pstmt.close();
 			con.close();
@@ -128,13 +141,13 @@ public class A01_loginDao {
 	public void insSignUpMember(Member ins) {
 		try {
 			setCon();
-			String sql = "INSERT INTO p5_member VALUES (?,?,?,?,?,?,?,sysdate))";
+			String sql = "INSERT INTO p5_member VALUES (?,?,?,?,?,?,sysdate)";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ins.getMem_id());
 			pstmt.setString(2, ins.getMem_pw());
 			pstmt.setString(3, ins.getMem_name());
-			pstmt.setDate(4, (Date) ins.getMem_birth());
+			pstmt.setDate(4, Nk.convert(ins.getMem_birth()));
 			pstmt.setString(5, ins.getMem_email());
 			pstmt.setString(6, ins.getMem_tel());
 			pstmt.executeUpdate();

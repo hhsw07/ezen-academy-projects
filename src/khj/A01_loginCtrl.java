@@ -37,7 +37,7 @@ public class A01_loginCtrl extends HttpServlet {
 		// 1. 요청
 		String proc = request.getParameter("proc");
 		if(proc==null) proc="";
-
+		System.out.println("proc확인"+proc);
 		// 2. 모델
 		//    1) 로그인 했을 때..
 		if(proc.equals("login")) {
@@ -59,10 +59,17 @@ public class A01_loginCtrl extends HttpServlet {
 		if(proc.equals("main")) {
 			page="main/main.jsp";
 		}
-		// 회원가입
+		// 로그인 페이지에서 회원가입버튼 클릭
 		if(proc.equals("signUp")) {
 			page="main/login/signUp.jsp";
 		}
+		// 회원테이블에 입력값 저장
+		if(proc.equals("insMem")) {
+			System.out.println("저장확인");
+			service.insMem(request);
+			page="main/login/login.jsp";
+		}
+		
 		// 아이디 찾기
 		if(proc.equals("findID")) {
 			page="main/login/findID.jsp";

@@ -41,6 +41,16 @@ $(document).ready(function(){
 			$("[name=mem_id]").focus();
 		}
 	}
+	
+	$("[name=findId]").click(function(){
+		$("[name=proc]").val("findID");
+		$("form").submit();
+	});
+	$("[name=signUp]").click(function(){
+		$("[name=proc]").val("signUp");
+		$("form").submit();
+	});
+	
 });
 </script>
 </head>
@@ -70,9 +80,9 @@ $(document).ready(function(){
 				<th colspan="3"><input class="login-btn" type="submit" value="로그인"/></th>
 			</tr>
 			<tr>
-				<th><a href="?proc=findID">아이디 찾기</a></th>
+				<th name="findId">아이디 찾기</th>
 				<th><a href="findPS">비밀번호 찾기</a></th>
-				<th><a href="?proc=signUp">회원가입</a></th>
+				<th name="signUp">회원가입</th>
 			</tr>
 	</table>
 	</form>

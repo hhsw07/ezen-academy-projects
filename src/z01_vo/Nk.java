@@ -25,5 +25,9 @@ public class Nk {
 	public static Double toDbl(String dblS, Double init) {
 		return dblS==null||dblS.equals("")?init:new Double(dblS);
 	}
+    public static java.sql.Date convert(java.util.Date uDate) {
+        java.sql.Date sDate = new java.sql.Date(uDate.getTime());
+        return sDate;
+    }
 	
 }
