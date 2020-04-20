@@ -70,9 +70,9 @@ $(document).ready(function(){
 				<th colspan="3"><input class="login-btn" type="submit" value="로그인"/></th>
 			</tr>
 			<tr>
-				<th>아이디 찾기</th>
-				<th>비밀번호 찾기</th>
-				<th>회원가입</th>
+				<th><a href="?proc=findID">아이디 찾기</a></th>
+				<th><a href="findPS">비밀번호 찾기</a></th>
+				<th><a href="?proc=signUp">회원가입</a></th>
 			</tr>
 	</table>
 	</form>

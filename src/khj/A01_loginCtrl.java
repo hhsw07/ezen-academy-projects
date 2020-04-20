@@ -55,8 +55,21 @@ public class A01_loginCtrl extends HttpServlet {
 		}
 		// 3. 화면 main\\login\\login.jsp
 		String page="main/login/login.jsp";
+		// 메인페이지
 		if(proc.equals("main")) {
 			page="main/main.jsp";
+		}
+		// 회원가입
+		if(proc.equals("signUp")) {
+			page="main/login/signUp.jsp";
+		}
+		// 아이디 찾기
+		if(proc.equals("findID")) {
+			page="main/login/findID.jsp";
+		}
+		// 비밀번호 찾기
+		if(proc.equals("findPS")) {
+			page="main/login/findPS.jsp";
 		}
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

@@ -1,6 +1,7 @@
 package khj;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +34,8 @@ public class A01_loginDao {
 		try {
 			setCon(); // Connection 객체가 메모리 로딩.
 			String sql = "SELECT * FROM FROM p5_member ";
+			pstmt = con.prepareStatement(sql);
+			
 			stmt = con.createStatement();
 			rs=stmt.executeQuery(sql);
 			while(rs.next()) {
@@ -60,6 +63,7 @@ public class A01_loginDao {
 		return mList;
 	}	
 	// A04_MemberDao.login(Member mem)	
+	/*
 	public Member login(Member mem){
 		Member m=null;
 		try {
@@ -93,6 +97,65 @@ public class A01_loginDao {
 		}
 		
 		return m;
+	}
+	*/
+	
+	public Member login(Member mem){
+		Member m=null;
+		try {
+			setCon(); // Connection 객체가 메모리 로딩.
+			String sql = "SELECT * FROM p5_member "
+					+ "WHERE mem_id = ? "
+					+ "AND mem_pw= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem.getMem_id());
+			pstmt.setString(2, mem.getMem_pw());
+			rs = pstmt.executeQuery();
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return m;
+	}
+	
+	public void insSignUpMember(Member ins) {
+		try {
+			setCon();
+			String sql = "INSERT INTO p5_member VALUES (?,?,?,?,?,?,?,sysdate))";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, ins.getMem_id());
+			pstmt.setString(2, ins.getMem_pw());
+			pstmt.setString(3, ins.getMem_name());
+			pstmt.setDate(4, (Date) ins.getMem_birth());
+			pstmt.setString(5, ins.getMem_email());
+			pstmt.setString(6, ins.getMem_tel());
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("회원등록");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());			
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	// member가 등록된 여부 check
 	public boolean memberCk(String id){
