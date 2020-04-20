@@ -66,8 +66,11 @@
 						</tr>
 					</c:if>
 			</c:forEach>
-			<c:forEach> var="" </c:forEach>
-			<tr><td colspan="6"> 1 2 3 4 5 </td></tr>
+			
+			<tr><td colspan="6">
+				<c:forEach var="a" begin="1" end="5" varStatus="status">
+					${status.count}
+				</c:forEach></td></tr>
 		</table>
 	</div>
 </div>
