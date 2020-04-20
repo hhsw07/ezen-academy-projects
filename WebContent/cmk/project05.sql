@@ -45,10 +45,35 @@ SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) FROM p5_request pr,
 UNION
 SELECT com_no, com_name, com_price FROM p5_computer) a
 WHERE pr.REQ_NO = a.parts_no
-GROUP BY ord_no
+GROUP BY ord_n
 ORDER BY ord_no asc;
 
 -----------------------------------------------------------------------
+-- 주문/배송 조회
+SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ord_date, c.ord_stat 
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,
+	(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) total FROM p5_request pr, 
+		(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
+		UNION
+		SELECT com_no, com_name, com_price FROM p5_computer) a
+	WHERE pr.REQ_NO = a.parts_no
+	GROUP BY ord_no
+	ORDER BY ord_no ASC) d
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no 
+AND c.mem_id='ezen01'
+ORDER BY ord_no asc;
+
+(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) FROM p5_request pr, 
+(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
+UNION
+SELECT com_no, com_name, com_price FROM p5_computer) a
+WHERE pr.REQ_NO = a.parts_no
+GROUP BY ord_no
+ORDER BY ord_no ASC) d;
+
+
 -- 포인트조회
 SELECT point_date, point_detail, point_pt
 FROM p5_point
@@ -65,6 +90,7 @@ AND POINT_PT>=0;
 SELECT sum(point_pt) FROM P5_POINT
 WHERE mem_id = 'ezen01'
 AND POINT_PT<0;
+
 
 -- AS 리스트
 SELECT as_no, as_cate, mem_id, as_date

@@ -24,9 +24,9 @@
 	.point-info-txt{margin:10px 0 0; color:#909397; font-size:14px; line-height:1.8;}
 	.point-cont{margin:40px 0 0;}
 	.point-tit{padding:0 0 10px; font-size:16px; border-bottom:2px solid #3d4248; line-height:1.5; color:#3d4248;}
-    .point-table{margin:10px 0 50px; text-align:center;}
+    .point-table{margin:10px 0 50px;}
     .point-th{color:#2f3338; font-size:14px; border-bottom:2px solid #3d4248; line-height:2; padding-bottom:10px; text-align:center;}
-    .point-td{padding:15px 0 18px; color:#2f3338; font-size:14px; line-height:2; vertical-align:middle; border-bottom:1px solid #dfdfdf; text-align:center;}
+    .point-td{padding:15px 0 18px; color:#2f3338; font-size:14px; line-height:2; vertical-align:middle; border-bottom:1px solid #dfdfdf;}
     .txt-color-r{color:#f1645d !important;}
     
 </style>
@@ -34,6 +34,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("");
+		var tot = 0;
+		var plus = 0;
+		var minus = 0;
+		
+		
 	});
 </script>
 </head>
@@ -50,15 +55,15 @@
 						<div class="pointinfo_show">
 							<div class="point-info">
 								<div class="point-info-tit">사용가능 포인트</div>
-								<div class="point-info-p">0000 P</div>
+								<div class="point-info-p"><fmt:formatNumber value="7035"/> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">총 적립 포인트</div>
-								<div class="point-info-p">0000 P</div>
+								<div class="point-info-p"><fmt:formatNumber value="20920"/> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">사용한 포인트</div>
-								<div class="point-info-p">0000 P</div>
+								<div class="point-info-p"><fmt:formatNumber value="-13885"/> p</div>
 							</div>
 						</div>
 					</div>
@@ -85,14 +90,14 @@
 								<tbody class="point_list_wrap">
 								<c:forEach var="pt" items="${ptList}">
 									<tr>
-										<td class="point-td">${pt.point_date}</td>
-										<td class="point-td">${pt.point_detail}</td>
+										<td style="text-align:center;" class="point-td">${pt.point_date}</td>
+										<td class="point-td" style="padding-left:50px;">${pt.point_detail}</td>
 									<c:choose>
 										<c:when test="${pt.point_pt<0}">
-											<td class="point-td"><fmt:formatNumber value="${pt.point_pt}"/> p</td>
+											<td style="text-align:right; padding-right:100px;" class="point-td"><fmt:formatNumber value="${pt.point_pt}"/> p</td>
 										</c:when>
 										<c:when test="${pt.point_pt>=0}">
-											<td class="point-td txt-color-r">+<fmt:formatNumber value="${pt.point_pt}"/> p</td>
+											<td style="text-align:right; padding-right:100px;" class="point-td txt-color-r" >+<fmt:formatNumber value="${pt.point_pt}"/> p</td>
 										</c:when>
 									</c:choose>
 									</tr>

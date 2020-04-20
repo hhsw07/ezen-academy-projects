@@ -36,8 +36,58 @@
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+/*
 	$(document).ready(function(){	
+		var xhr = new XMLHttpRequest();
+		xhr.open("get", "${path}/myorder",true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var olist = eval("("+xhr.responseText+")");
+				var mos = null;
+				$.each(olist, function(idx, mo){
+					if(idx==0){
+						mos += "<tr>"+
+					"<td class='date' rowspan=''>"+
+						"<a href='#주문상세내역'>"+
+							"<div class='ordernum-container'>"+
+								"<div class='order-date'>"+mo.ord_date+"</div>"+
+								<div class='order-num'>${olist.ord_no}</div>
+							</div>
+						</a>
+					</td>
+					<td class='product'>
+						<div class='product-img' >${olist.parts_img}</div>
+						<a href='#상품페이지'>
+							<div class='product-name'>
+								<div class='main'>${olist.parts_name}</div>
+							</div>
+						</a>
+					</td>
+					<td class='quantity'>${olist.req_cnt}</td>
+					<td class='price'>${olist.req}</td>
+					<td class='total-price' rowspan="6">${olist.total}</td>
+					<td class="service" rowspan="6">
+						<div>${olist.ord_stat}</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="product">
+						<div class="product-img" >상품이미지고민</div>
+						<a href="#상품페이지">
+							<div class="product-name">
+								<div class="main">상품명 상품명 상품명</div>
+							</div>
+						</a>
+					</td>
+					<td class="quantity">수량</td>
+					<td class="price">가격*수량금액</td>
+				</tr>"
+					}
+				});
+			}
+		}
 	});
+*/
 </script>
 </head>
 <body>
@@ -66,44 +116,37 @@
 					<th class="state">주문처리상태</th>
 				</tr>
 			</thead>
-			<tbody>
+			<!-- 
+			<c:if test="${not empty olist}">
+			<tbody id="list">
+				<c:forEach var="olist" items="${olist}">
 				<tr>
-					<td class="date" rowspan="6">
+					<td class="date">
 						<a href="#주문상세내역">
 							<div class="ordernum-container">
-								<div class="order-date">2020.02.15</div>
-								<div class="order-num">20200215-0000735</div>
+								<div class="order-date">${olist.ord_date}</div>
+								<div class="order-num">${olist.ord_no}</div>
 							</div>
 						</a>
 					</td>
 					<td class="product">
-						<div class="product-img" >상품이미지고민</div>
+						<div class="product-img" >${olist.parts_img}</div>
 						<a href="#상품페이지">
 							<div class="product-name">
-								<div class="main">상품명 상품명 상품명</div>
+								<div class="main">${olist.parts_name}</div>
 							</div>
 						</a>
 					</td>
-					<td class="quantity">수량</td>
-					<td class="price">가격*수량금액</td>
-					<td class="total-price" rowspan="6">총 결제금액</td>
-					<td class="service" rowspan="6">
-						<div>배송완료</div>
+					<td class="quantity">${olist.req_cnt}</td>
+					<td class="price">${olist.req}</td>
+					<td class="total-price">${olist.total}</td>
+					<td class="service">
+						<div>${olist.ord_stat}</div>
 					</td>
 				</tr>
-				<tr>
-					<td class="product">
-						<div class="product-img" >상품이미지고민</div>
-						<a href="#상품페이지">
-							<div class="product-name">
-								<div class="main">상품명 상품명 상품명</div>
-							</div>
-						</a>
-					</td>
-					<td class="quantity">수량</td>
-					<td class="price">가격*수량금액</td>
-				</tr>
+				</c:forEach>
 			</tbody>
+			</c:if> -->
 		</table>
 	</div>
 	
