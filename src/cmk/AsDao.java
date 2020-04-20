@@ -46,6 +46,35 @@ public class AsDao {
 		return asList;
 	}
 	
+	public void applyAs(As ins) {
+		try {
+			setCon();
+			String sql = "INSERT INTO p5_as VALUES (p5_as_seq.nextval, ?,?,?,sysdate,null,null)";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ins.getOrd_no());
+			pstmt.setString(2, ins.getAs_cate());
+			pstmt.setString(3, ins.getAs_detail());
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			System.out.println("등록성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	public As getAs(int as_no) {
 		As as = new As();
 		try {

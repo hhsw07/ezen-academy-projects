@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PointCtrl
  */
-@WebServlet(name = "mypage", urlPatterns = { "/mypage" })
+@WebServlet(name = "point", urlPatterns = { "/point" })
 public class PointCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private MypageService service;
+	private PointService service;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -21,7 +21,7 @@ public class PointCtrl extends HttpServlet {
     public PointCtrl() {
         super();
         // TODO Auto-generated constructor stub
-        service = new MypageService();
+        service = new PointService();
     }
 
 	/**
