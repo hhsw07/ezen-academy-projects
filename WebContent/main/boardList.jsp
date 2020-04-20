@@ -37,7 +37,33 @@
 		
 		--%>
 		$("h2").text("서비스센터");
+		
+		
+		var w_size = 10; // 화면에 나오는 글수
+		var p_size = 5; // 한번에보이는 페이지수
+		var t_size = "${fn:length(plist)}"; // 글의 최대개수
+		var i_page = "${param.i_page}"; // 현재 위치한 페이지
+		if(i_page == "") i_page = 1;
+		
+		// 내림차순으로 정렬
+		var lastNo = t_size -1 -(w_size*i_page);
+		if(lastNo < 0) lastNo = -1;
+		
+		
+		
+		var pg = new Paging(w_size,p_size,notiList.size(),i_page);
+		// Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
+		var preNo = pg.getPage_Start()-1;
+		var nextNo = pg.getPage_End()+1;
+		
+		// 내림차순(큰수부터 작은수로)
+		for(int idx=notiList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
+		// 올림차순(작은수부터 큰수로)
+			
 	});
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 </script>
 </head>
 <body>
@@ -76,12 +102,29 @@
 		
 <!-- 글목록  -->	
 <!-- 타이틀 추가된만큼 같이 추가 -->
-		<tr>
-			<th>1</th>
-			<td>제목이 출력되는곳</td>
-			<td>작성자가 출력되는곳</td>
-			<th>등록날짜</th>
-		</tr>
+		
+		
+		<c:forEach var="prod" items="${plist}" varStatus="status">
+			
+			
+			int p_idx = 1;
+			${status.end} : 끝번호
+			${status.start}
+			<c:choose>
+				<c:when test=""></c:when>
+				<c:when test=""></c:when>
+				<c:when test=""></c:when>
+			</c:choose>
+			<tr>
+				<th>1</th>
+				<td>제목이 출력되는곳</td>
+				<td>작성자가 출력되는곳</td>
+				<th>등록날짜</th>
+			</tr>
+		</c:forEach>
+		
+		
+		
 	
 <!-- 목록페이징 -->	
 <!-- 목록 페이징 코드 먼저 짜시는분 계시면 공유부탁드립니다  -->

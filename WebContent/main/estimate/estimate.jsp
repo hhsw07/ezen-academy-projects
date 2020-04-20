@@ -31,7 +31,20 @@
 		#e_cart table{border-collapse:collapse;}
 		#e_cart table td{padding:3px 3px;} 
 		#e_cart tr td:first-child{background-color:black;color:white;}
-	#e_bottom{width:100%; clear:both; margin-top:50px;background-color:gray;}
+	#e_bottom{width:100%; clear:both; margin-top:50px;}
+	/*
+	.all-wrap{margin-top:100px; margin-bottom:200px;}
+	.wrap{width:1080px; margin:0 auto;}
+	 */
+	#e_bottom table{border-collapse:collapse; cursor:pointer; border-bottom:3px solid black;}
+	#e_bottom table tr{border-top:1px solid gray;}
+	#e_bottom table tr:first-child{visibility:visible; border-top:3px solid black; border-bottom:3px solid black;}
+	#e_bottom table tr td,th {padding:10px 10px;} 
+	#e_bottom .input-box{width:250px; height:45px; outline:none; padding:0; margin:0; cursor:pointer;}
+	#e_bottom .search-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
+	          outline:none; padding:0; margin:0; cursor:pointer;}
+	#e_bottom .reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
+	          outline:none; padding:0; margin:0; cursor:pointer;}
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -49,7 +62,6 @@
 		$("img").width("60px");
 		$("#e_nav_list [type=button]").val("카트담기");
 		$("#title").append(parts_mc);
-		
 		
 		if(parts_mc == "") parts_mc = "CPU";
 		if(proc == ""||proc == "sch"){
@@ -660,7 +672,46 @@
 	<!-- 견적 문의 리스트 -->
 	<div id="e_bottom">
 		<h3>견적 문의 목록</h3>
-		<h3 align="center">작성예정중</h3>
+			<table align="center">
+				<colgroup>
+					<col style="width:100px;"/>
+					<col style="width:600px;"/>
+					<col style="width:200px;"/>
+					<col style="width:180px;"/>
+				</colgroup>
+		<!-- 타이틀 -->
+		<!-- 필요한 타이틀만큼 추가해서 사용 -->
+				<tr>
+					<th>글번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>등록일</th>
+				</tr>
+		<!-- 글목록  -->	
+		<!-- 타이틀 추가된만큼 같이 추가 -->
+				<tr>
+					<th>1</th>
+					<td>제목이 출력되는곳</td>
+					<td>작성자가 출력되는곳</td>
+					<th>등록날짜</th>
+				</tr>
+		<!-- 목록페이징 -->	
+		<!-- 목록 페이징 코드 먼저 짜시는분 계시면 공유부탁드립니다  -->
+				<tr>
+					<th colspan="4"> 1 2 3 4 5 </th>
+				</tr>	
+				
+		<!-- 검색 + 글등록 -->
+				<tr style="border:none;">
+					<td colspan="3">
+		<!-- 검색은 필요하신분들 사용 -->
+					<input class="input-box" type="text"/>
+					<input class="search-btn" type="submit" value="검색"/>
+					</td>		
+		<!-- 버튼 이름은 각자 필요에 맞게 수정  -->
+					<th><input class="reg-btn" type="button" value="글쓰기"/></th>
+				</tr>
+			</table>
 		<br>
 		<br>
 		<br>
