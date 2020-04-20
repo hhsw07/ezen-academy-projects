@@ -1,3 +1,46 @@
+/* 견적 */
+DROP TABLE p5_assembly 
+	CASCADE CONSTRAINTS;
+
+/* 견적 */
+CREATE TABLE p5_assembly (
+	com_no NUMBER NOT NULL, /* 컴퓨터번호 */
+	parts_no NUMBER NOT NULL, /* 부품번호 */
+	parts_cnt NUMBER NOT NULL /* 조립부품 수량 */
+);
+
+ALTER TABLE p5_assembly
+	ADD
+		CONSTRAINT p5_assembly_pk
+		PRIMARY KEY (
+			com_no,
+			parts_no
+		);
+
+ALTER TABLE p5_assembly
+	ADD
+		CONSTRAINT FK_p5_parts_TO_p5_assembly
+		FOREIGN KEY (
+			parts_no
+		)
+		REFERENCES p5_parts (
+			parts_no
+		);
+
+ALTER TABLE p5_assembly
+	ADD
+		CONSTRAINT FK_p5_computer_TO_p5_assembly
+		FOREIGN KEY (
+			com_no
+		)
+		REFERENCES p5_computer (
+			com_no
+		);
+CREATE SEQUENCE p5_assembly_seq
+START WITH 1
+INCREMENT BY 1
+;
+
 --1번 컴퓨터
 INSERT INTO p5_assembly VALUES (1001,1,1);
 INSERT INTO p5_assembly VALUES (1001,15,1);
