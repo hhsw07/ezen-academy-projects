@@ -453,7 +453,7 @@ CREATE SEQUENCE p5_point_seq
 START WITH 1
 INCREMENT BY 1
 ;
-NSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-15','YYYY-MM-DD'),'회원가입 포인트', 3000);
+INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-15','YYYY-MM-DD'),'회원가입 포인트', 3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-22','YYYY-MM-DD'),'상품구매 사용', -3000);
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-01-29','YYYY-MM-DD'),'상품구매 적립', CEIL((978460-3000)*0.008));
 INSERT INTO p5_point VALUES(p5_point_seq.nextval,'ezen01',to_date('2020-02-17','YYYY-MM-DD'),'상품구매 사용', -7976);

@@ -1,3 +1,5 @@
 /build/
 .dbeaver/.project-metadata.json.bak
 .dbeaver/.project-metadata.json.bak
+.dbeaver/project-metadata.json
+.dbeaver/.project-metadata.json.bak

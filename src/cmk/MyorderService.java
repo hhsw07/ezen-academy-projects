@@ -12,7 +12,7 @@ public class MyorderService {
 	}
 	
 	public ArrayList<Myorder> olist(){
-		
+		System.out.println("서비스단 확인");
 		
 		return dao.olist();
 	}

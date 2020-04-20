@@ -66,6 +66,7 @@
 						</tr>
 					</c:if>
 			</c:forEach>
+			<c:forEach> var="" </c:forEach>
 			<tr><td colspan="6"> 1 2 3 4 5 </td></tr>
 		</table>
 	</div>
