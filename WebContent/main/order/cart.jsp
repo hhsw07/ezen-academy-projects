@@ -103,22 +103,29 @@
 					<col width="10%">
 				</colgroup>
 				<tbody class="cart-tbody">
+					<c:forEach var="cart" items="${cart}">
+					
+									
 					<tr>
 						<td><input type="checkbox" name="cart"/></td>
 						<td>
-							<span>상품이미지 고민중</span><span>상품명</span>
+							<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
 						</td>
 						<td>
 							<div class="pd_count">
 								<button type="button" onclick="count(this.innerHTML)">-</button>
-								<span id="cnt">1</span>
+								<span id="cnt">${cart.req_cnt}</span>
 								<button type="button" onclick="count(this.innerHTML)">+</button>
 							</div>
 						</td>
-						<td class="fmtnum">가격</td>
+						<td class="fmtnum">${cart.parts_price}</td>
 						<td class="fmtnum">합계금액</td>
 						<td>포인트</td>
 					</tr>
+					
+					
+					
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
