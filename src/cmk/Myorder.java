@@ -15,8 +15,8 @@ public class Myorder {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Myorder(int ord_no, String parts_img, String parts_name, int req_cnt, int req, int total,
-			Date ord_date, String ord_stat) {
+	public Myorder(int ord_no, String parts_img, String parts_name, int req_cnt, int req, int total, Date ord_date,
+			String ord_stat) {
 		super();
 		this.ord_no = ord_no;
 		this.parts_img = parts_img;

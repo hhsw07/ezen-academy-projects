@@ -32,10 +32,10 @@ public class MyorderCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 1. 요청
 		// 2. Model
-		request.setAttribute("olist", service.olist());
+		//request.setAttribute("olist", service.olist());
 		// 3. View
-		String page = "cmk\\jsp\\myorder.jsp";
-		request.getRequestDispatcher(page).forward(request, response);
+		String page = "cmk\\jsp\\myorder.jsp";  
+		request.getRequestDispatcher(page).forward(request, response); 
 	}
 
 }

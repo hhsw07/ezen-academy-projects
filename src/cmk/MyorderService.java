@@ -13,7 +13,6 @@ public class MyorderService {
 	
 	public ArrayList<Myorder> olist(){
 		
-		
 		return dao.olist();
 	}
 
