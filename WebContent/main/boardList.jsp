@@ -31,39 +31,17 @@
 	href="path/a00_com/a00_com.css">
 <!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		<%-- 
 		
 		--%>
 		$("h2").text("서비스센터");
-		
-		
-		var w_size = 10; // 화면에 나오는 글수
-		var p_size = 5; // 한번에보이는 페이지수
-		var t_size = "${fn:length(plist)}"; // 글의 최대개수
-		var i_page = "${param.i_page}"; // 현재 위치한 페이지
-		if(i_page == "") i_page = 1;
-		
-		// 내림차순으로 정렬
-		var lastNo = t_size -1 -(w_size*i_page);
-		if(lastNo < 0) lastNo = -1;
-		
-		
-		
-		var pg = new Paging(w_size,p_size,notiList.size(),i_page);
-		// Paging pg = new Paging(화면에나오는글수,한번에보이는페이지수,글의최대개수,현재위치한페이지);
-		var preNo = pg.getPage_Start()-1;
-		var nextNo = pg.getPage_End()+1;
-		
-		// 내림차순(큰수부터 작은수로)
-		for(int idx=notiList.size()-1 -(w_size*(i_page-1)); idx > lastNo ; idx--){
-		// 올림차순(작은수부터 큰수로)
 			
 	});
-	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
+
 </script>
 </head>
 <body>
@@ -102,35 +80,37 @@
 		
 <!-- 글목록  -->	
 <!-- 타이틀 추가된만큼 같이 추가 -->
-		
-		
-		<c:forEach var="prod" items="${plist}" varStatus="status">
-			
-			
-			int p_idx = 1;
-			${status.end} : 끝번호
-			${status.start}
-			<c:choose>
-				<c:when test=""></c:when>
-				<c:when test=""></c:when>
-				<c:when test=""></c:when>
-			</c:choose>
-			<tr>
-				<th>1</th>
-				<td>제목이 출력되는곳</td>
-				<td>작성자가 출력되는곳</td>
-				<th>등록날짜</th>
-			</tr>
-		</c:forEach>
-		
-		
-		
+		<table>
+			<c:forEach var="prod" items="${plist}" varStatus="state">
+					<!-- 1번부터 5번 글을 리스트화 하여 출력 -->
+					<c:if  test="${state.count < 6}">	
+						<tr>
+							<th>1</th>
+							<td>제목이 출력되는곳</td>
+							<td>작성자가 출력되는곳</td>
+							<th>등록날짜</th>
+						</tr>
+						<!-- 
+						<tr>
+							<td><img src="${path}/image/parts/${prod.parts_img}" style="width:60px;"/></td>
+							<td>${prod.parts_name}</td>
+							<td><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
+							<td>idx${state.index} : cnt${state.count}</td>
+							<td class="ad">end${state.end.parts_name } :s${status.begin} : js</td>
+							<td>${fn:length(plist)}</td>
+						</tr>
+						 -->
+					</c:if>
+			</c:forEach>
 	
 <!-- 목록페이징 -->	
 <!-- 목록 페이징 코드 먼저 짜시는분 계시면 공유부탁드립니다  -->
-		<tr>
-			<th colspan="4"> 1 2 3 4 5 </th>
-		</tr>	
+		<tr><td colspan="6">
+				<!-- 1부터 5 까지 페이지 번호를 출력 -->
+				<c:forEach var="a" begin="1" end="5" varStatus="status">
+					${status.count}
+				</c:forEach></td></tr>
+
 		
 <!-- 검색 + 글등록 -->
 		<tr style="border:none;">

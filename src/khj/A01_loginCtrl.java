@@ -36,6 +36,9 @@ public class A01_loginCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		// 1. 요청
 		String proc = request.getParameter("proc");
+		// 아이디 중복 확인 요청
+		String mem_id = request.getParameter("mem_id");
+		
 		if(proc==null) proc="";
 		System.out.println("proc확인"+proc);
 		// 2. 모델
@@ -49,8 +52,14 @@ public class A01_loginCtrl extends HttpServlet {
 				session.setAttribute("mem", mem);
 			}
 		}
+		// 회원가입 아이디 중복 확인
+		if(mem_id!=null&& !mem_id.equals("")) {
+			// id 있는지 여부 service에서 확인..
+			request.setAttribute("isMember", service.checkReg(mem_id));
+		}
+		
 		if(proc.equals("logout")) {
-			// 로그 아웃 클릭시, session값을 없애는 처리..
+			// 로그아웃 클릭시, session값을 없애는 처리..
 			request.getSession().invalidate();
 		}
 		// 3. 화면 main\\login\\login.jsp
@@ -59,7 +68,7 @@ public class A01_loginCtrl extends HttpServlet {
 		if(proc.equals("main")) {
 			page="main/main.jsp";
 		}
-		// 로그인 페이지에서 회원가입버튼 클릭
+		// 로그인페이지 -> 회원가입
 		if(proc.equals("signUp")) {
 			page="main/login/signUp.jsp";
 		}
@@ -70,16 +79,19 @@ public class A01_loginCtrl extends HttpServlet {
 			page="main/login/login.jsp";
 		}
 		
-		// 아이디 찾기
+		// 로그인페이지 -> 아이디 찾기
 		if(proc.equals("findID")) {
 			page="main/login/findID.jsp";
 		}
-		// 비밀번호 찾기
+		// 로그인페이지 -> 비밀번호 찾기
 		if(proc.equals("findPS")) {
 			page="main/login/findPS.jsp";
 		}
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);
+		// 중복확인
+		RequestDispatcher rd2 = request.getRequestDispatcher("main/login/signUp.jsp");
+		rd2.forward(request, response);
 		
 	}
 }

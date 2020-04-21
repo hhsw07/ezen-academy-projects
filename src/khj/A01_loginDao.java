@@ -138,6 +138,7 @@ public class A01_loginDao {
 		return m;
 	}
 	
+	// 회원가입 
 	public void insSignUpMember(Member ins) {
 		try {
 			setCon();
@@ -171,7 +172,7 @@ public class A01_loginDao {
 		
 	}
 	// member가 등록된 여부 check
-	public boolean memberCk(String id){
+	public boolean memberCk(String mem_id){
 		boolean isMember=false;
 		try {
 			setCon(); // Connection 객체가 메모리 로딩.
@@ -179,7 +180,7 @@ public class A01_loginDao {
 						 "		WHERE mem_id=?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
+			pstmt.setString(1, mem_id);
 			rs=pstmt.executeQuery();		
 			// rs.next() : 데이터가 있을 때, true
 			// if(rs.next()) rs.getString("id") (X)

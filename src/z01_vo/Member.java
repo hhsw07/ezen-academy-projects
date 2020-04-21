@@ -22,6 +22,11 @@ public class Member {
 		this.mem_pw = mem_pw;
 	}
 
+	public Member(String mem_id) {
+		super();
+		this.mem_id = mem_id;
+	}
+// 회원가입
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel) {
 		super();
 		this.mem_id = mem_id;

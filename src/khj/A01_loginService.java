@@ -24,9 +24,8 @@ public class A01_loginService {
 		if(mem_pw==null) mem_pw="";
 		// 요청값을 통한, db객체 확인
 		return dao.login(new Member(mem_id,mem_pw));	
-		
-		
 	}
+	// 회원가입
 	public void insMem(HttpServletRequest request) {
 		String mem_id = Nk.toStr(request.getParameter("mem_id"));
 		String mem_pw = Nk.toStr(request.getParameter("mem_pw"));
@@ -48,5 +47,9 @@ public class A01_loginService {
 		Member ins = new Member(mem_id, mem_pw, mem_name, mem_birth, mem_email, mem_tel);
 				
 		dao.insSignUpMember(ins);
+	}
+	// 회원가입 아이디 중복확인
+	public boolean checkReg(String id){
+		return dao.memberCk(id);
 	}
 }

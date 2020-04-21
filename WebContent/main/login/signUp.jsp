@@ -36,6 +36,23 @@ $(document).ready(function(){
 		$("[name=proc]").val("insMem");
 		$("form").submit();
 	});
+	var mem_id = "${param.mem_id}";
+	
+	// id를 입력하고, controller단 호출 후..
+	if(mem_id!=""){
+		var isMember = "${isMember}";
+		if(isMember=="true"){ /// true이면..
+			alert("등록된 ID입니다!");
+			$("[name=mem_id]").focus();
+		}else{
+			alert("등록가능합니다.")
+			$("[name=mem_id]").val(mem_id);
+		}
+	}
+	$("#regCkBtn").click(function(){
+		//alert($("[name=id]").val());
+		$("form").submit();
+	});
 });
 </script>
 </head>
@@ -61,9 +78,9 @@ $(document).ready(function(){
 			</tr>
 			
 			<tr>
-				<td></td><td><span></span></td>
+				<td></td><td><input type="button" value="중복확인" id="regCkBtn"/></td>
 			</tr>
-			
+						
 			<tr>
 				<td>비밀번호<span class="import">*필수입력</span></td>
 				<td><input type="password" name="mem_pw" class="input-box" placeholder="비밀번호" /></td>
@@ -74,7 +91,7 @@ $(document).ready(function(){
 			</tr>
 			
 			<tr>
-				<td></td><td>ajax비밀번호 일치확인란</td>
+				<td></td><td>비밀번호 일치확인란</td>
 			</tr>
 			
 			<tr>

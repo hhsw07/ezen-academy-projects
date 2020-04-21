@@ -75,8 +75,12 @@ public class MyorderDao {
 			pstmt.setString(1, "ezen01");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				olist.add(new Myorder(rs.getInt(0),rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getDate(6),rs.getString(7)));
+				olist.add(new Myorder(rs.getInt(1),
+									  rs.getString(2),
+									  rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),
+									  rs.getDate(7),rs.getString(8)));
 			}
+			System.out.println("dao단 확인");
 			rs.close();
 			pstmt.close();
 			con.close();
