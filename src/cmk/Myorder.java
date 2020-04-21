@@ -11,6 +11,7 @@ public class Myorder {
 	private int total;
 	private Date ord_date;
 	private String ord_stat;
+	
 	public Myorder() {
 		super();
 		// TODO Auto-generated constructor stub

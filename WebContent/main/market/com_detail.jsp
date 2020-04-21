@@ -37,6 +37,14 @@ ul li{list-style:none;}
 	.buyPro {width:200px;text-align:center; border:1px solid black; display:inline-block; margin:10px; padding:20px;	}
 							
 </style>
+<script type="text/javascript">
+function addCart(){
+	$("[name=proc]").val("cart");
+	$("[name=req_no]").val("1");
+	$("[name=req_cnt]").val("1");
+	$("form").submit();
+}
+</script>
 </head>
 <body>
 
@@ -44,7 +52,10 @@ ul li{list-style:none;}
 
 <div id="market_wrap">
 	<p id="market_title">조립컴퓨터</p>
-	<form>
+	<form action="${path}/order">
+		<input type="hidden" name="proc">
+		<input type="hidden" name="req_no">
+		<input type="hidden" name="req_cnt">
 		<ul id="market_detail">
 			<li class="com">
 				<img src="image/Computer/PCCAT-HAO01.jpg" class="com_img">
@@ -113,7 +124,7 @@ ul li{list-style:none;}
 					</td>
 					<td>가격</td>
 					</tr>
-					<tr><td align="center"><div class="buyPro">장바구니</div><div class="buyPro">바로구매</div></td></tr>
+					<tr><td align="center"><div class="buyPro" id="addCart" onclick="addCart()">장바구니</div><div class="buyPro">바로구매</div></td></tr>
 				</table>
 			</li>
 			<li>

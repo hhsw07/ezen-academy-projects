@@ -91,7 +91,7 @@
 								<c:forEach var="pt" items="${ptList}">
 									<tr>
 										<td style="text-align:center;" class="point-td">${pt.point_date}</td>
-										<td class="point-td" style="padding-left:50px;">${pt.point_detail}</td>
+										<td class="point-td" style="padding-left:70px;">${pt.point_detail}</td>
 									<c:choose>
 										<c:when test="${pt.point_pt<0}">
 											<td style="text-align:right; padding-right:100px;" class="point-td"><fmt:formatNumber value="${pt.point_pt}"/> p</td>

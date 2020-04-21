@@ -65,6 +65,20 @@ WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no
 AND c.mem_id='ezen01'
 ORDER BY ord_no asc;
 
+-- 주문/배송 상세정보
+
+
+-- 주문하기
+INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval
+--INSERT INTO p5_order VALUES (200417||p5_order_seq.nextval,'ezen05',to_date('2020-04-17','YYYY-MM-DD'),'홍길동','010-5014-1019','06611','서울 서초구 서초대로77길 54','서초더블유타워 13층','배송 전 연락부탁드립니다','결제완료',null);
+
+-- 카트담기
+SELECT parts_no, parts_img, parts_name, parts_price 
+FROM (SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) 
+WHERE parts_no=10;
+
+
 (SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) FROM p5_request pr, 
 (SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
 UNION
@@ -98,4 +112,3 @@ FROM p5_as a, P5_ORDER b
 WHERE a.ORD_NO = b.ORD_NO
 ORDER BY as_no DESC;
 -- AS 상세조회
-SELECT as_no, as_cate, mem_id, as_date

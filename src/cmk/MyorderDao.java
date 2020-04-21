@@ -3,6 +3,8 @@ package cmk;
 import java.sql.*;
 import java.util.ArrayList;
 
+import z01_vo.Order;
+
 public class MyorderDao {
 	private Connection con;
 	private PreparedStatement pstmt;
@@ -90,6 +92,20 @@ public class MyorderDao {
 		}
 		return olist;
 	}
+	
+	public Myorder getOrder(int ord_no) {
+		Myorder mo = new Myorder();
+		try {
+			setCon();
+			String sql = "";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mo;
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
