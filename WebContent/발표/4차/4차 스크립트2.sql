@@ -355,6 +355,20 @@ com_name, com_kind, com_img, com_detail, com_price
 FROM p5_assembly pa, p5_parts pp, p5_computer pc
 WHERE pa.parts_no = pp.parts_no
 AND pa.com_no = pc.com_no;
+-- 컴퓨터 분류에 따른 목록
+SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
+com_name, com_kind, com_img, com_detail, com_price
+FROM p5_assembly pa, p5_parts pp, p5_computer pc
+WHERE pa.parts_no = pp.parts_no
+AND pa.com_no = pc.com_no
+AND pc.com_kind = '가정/사무용';
+--특정 컴퓨터 상세
+SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
+com_name, com_kind, com_img, com_detail, com_price
+FROM p5_assembly pa, p5_parts pp, p5_computer pc
+WHERE pa.parts_no = pp.parts_no
+AND pa.com_no = pc.com_no
+AND pa.com_no = 1001;
 --------------------------------------
 /* 견적 */
 DROP TABLE p5_assembly 
