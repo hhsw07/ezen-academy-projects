@@ -36,18 +36,11 @@ public class MyorderCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		// 1. 요청
-		ArrayList<Request> cartList = new ArrayList<Request>();
-		cartList.add(new Request(1, 1));
-		cartList.add(new Request(2, 1));
-		cartList.add(new Request(3, 1));
 		String proc = Nk.toStr(request.getParameter("proc"));
 		// 2. Model
 		request.setAttribute("olist", service.olist());
 		// 3. View
-		String page = "cmk\\jsp\\myorder.jsp";  
-		if(proc.equals("cart")) {
-			page = "main\\order\\cart.jsp";
-		}
+		String page = "main\\mypage\\myorder.jsp";  
 		request.getRequestDispatcher(page).forward(request, response); 
 	}
 

@@ -47,14 +47,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("장바구니");
-		// 천단위 콤마 붙이기
-		String.prototype.number_format = function() {
-		    return this.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,');
-		};
-		Number.prototype.number_format = function() {
-		    return this.toString().number_format();
-		};
-
 	});
 	var cnt = 1;
 	function count(obj){
@@ -89,7 +81,7 @@
 				</colgroup>
 				<thead class="cart-thead">
 					<tr>
-						<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>포인트</th>
+						<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립예정 포인트</th>
 					</tr>
 				</thead>
 			</table>
@@ -111,16 +103,20 @@
 						<td>
 							<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
 						</td>
-						<td>
+						<td style="text-align:center">
 							<div class="pd_count">
 								<button type="button" onclick="count(this.innerHTML)">-</button>
-								<span id="cnt">${cart.req_cnt}</span>
+								<c:set var="cnt" value="1" />
+								<span id="cnt">${cnt}</span>
 								<button type="button" onclick="count(this.innerHTML)">+</button>
 							</div>
 						</td>
-						<td class="fmtnum">${cart.parts_price}</td>
-						<td class="fmtnum">합계금액</td>
-						<td>포인트</td>
+						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/>원</td>
+						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cnt}"/>원</td>
+						<td class="fmtnum">
+							<c:set var="point" value="${cart.parts_price*0.01}"/>
+							<fmt:formatNumber type="number" value="${point+((point%1>0.5)?(1-(point%1))%1:-(point%1))}"/> p
+						</td>
 					</tr>
 					
 					
