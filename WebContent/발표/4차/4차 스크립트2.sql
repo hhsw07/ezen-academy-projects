@@ -1,5 +1,5 @@
 /* 회원 */
-DROP TABLE p5_member; 
+DROP TABLE p5_member
 	CASCADE CONSTRAINTS;
 
 /* 회원 */
