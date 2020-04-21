@@ -62,10 +62,10 @@
 		<div id="cusestimateview">
 			<div class="bbsbox">
 				<div class="bbstitle">
-					<strong>문의내용</strong>
+					<strong>컴퓨터 견적을 의뢰하는 경우★필독</strong>
 				</div>
 				<div class="bbsinfo">
-					<span class="writedate">작성일 : 2020-00-00</span> / <span class="writer">작성자 : 작성자</span>
+					<span class="writedate">작성일 : 2018-12-16</span> / <span class="writer">작성자 : 관리자</span>
 				</div>
 				<!-- 내용 시작 -->
 				<table summary="OrderList" class="bbslist">
@@ -81,13 +81,13 @@
 					</table>
 					<!-- 문의글 시작 -->
 					<div class="bbscontents">
-						내용<br>
-						내용<br>
-						내용<br>
-						내용<br>
-						내용<br>
-						내용<br>
-						내용<br>
+						고객님의 컴퓨터 견적을 가지고 컴퓨터 제작만 의뢰하는 경우에 대한 세 가지 안내사항을 전달합니다.<br>
+						★ 완성됨 상품을 구매하는 경우에 본 내용을 보지 않으셔도 됩니다.<br>
+						(1) 출장방문 A/S 를 포함하여 구매하시는 것을 권장합니다. (11,000원~12,000원)<br>
+						(2) 박스를 추가 구매하시는 것을 권장합니다. (3,000원)<br>
+						(3) 구매를 원하시는 견적과 판매중인 컴퓨터의 견적을 비교해주세요.<br>
+						★ 위 내용이 기본 적용되는 곳이 있고, 추가해야 적용되는 곳이 있습니다.<br>
+						해당 사이트의 상세페이지를 확인한 후 추가해주세요.<br>
 					</div>
 				<!-- 문의글 끝 -->
 				</div>
