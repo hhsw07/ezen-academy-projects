@@ -113,9 +113,9 @@
 		}
 	}
 	// 견적문의 버튼클릭시
-	function assque(){
+	function regAsq(){
 		if(confirm("견적문의로 이동하시겠습니까?")){
-			$("[name=proc]").val("assque");
+			$("[name=proc]").val("regAsq");
 			$("[name=parts_mc]").val(parts_mc);
 			$("form").submit();
 		}
@@ -527,7 +527,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == 'CPU'}" >
 							<tr>
 								<td></td>
@@ -545,7 +545,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == '메인보드'}" >
 							<tr>
 								<td></td>
@@ -563,7 +563,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == 'RAM'}" >
 							<tr>
 								<td></td>
@@ -581,7 +581,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == '그래픽카드'}" >
 							<tr>
 								<td></td>
@@ -599,7 +599,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == 'SSD'}" >
 							<tr>
 								<td></td>
@@ -617,7 +617,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == 'HDD'}" >
 							<tr>
 								<td></td>
@@ -635,7 +635,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == '케이스'}" >
 							<tr>
 								<td></td>
@@ -653,7 +653,7 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<c:forEach var="prod" items="${cart}">
+					<c:forEach var="prod" items="${ecart}">
 						<c:if test="${prod.parts_mc == '파워'}" >
 							<tr>
 								<td></td>
@@ -669,7 +669,7 @@
 			<hr>
 			<div style="text-align:center;">
 				<input type="button" value="견적초기화" onclick="delAll()" style="width:30%"/>
-				<input type="button" value="견적문의" onclick="assque()" style="width:30%"/>
+				<input type="button" value="견적문의" onclick="regAsq()" style="width:30%"/>
 				<input type="button" value="구매하기" onclick="buy()" style="width:30%"/>
 			</div>
 		</div>

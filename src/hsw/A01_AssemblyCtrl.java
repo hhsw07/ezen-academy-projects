@@ -65,7 +65,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 					session.setAttribute("com_no", com_no);
 				}else {
 					service.deleteAllCart(com_no);
-					session.setAttribute("cart", service.cartList(com_no));
+					session.setAttribute("ecart", service.cartList(com_no));
 					System.out.println("카트비우고 시작");
 				}
 			}else {
@@ -81,7 +81,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 				session.setAttribute("com_no", com_no);
 				// 카트를 비우고 시작
 				service.deleteAllCart(com_no);
-				session.setAttribute("cart", service.cartList(com_no));
+				session.setAttribute("ecart", service.cartList(com_no));
 				System.out.println("카트비우고 시작");
 			}
 		}
@@ -99,45 +99,59 @@ public class A01_AssemblyCtrl extends HttpServlet {
 				service.insertCart(request, com_no);
 			}
 			// 견적테이블 불러오기
-			session.setAttribute("cart", service.cartList(com_no));
+			session.setAttribute("ecart", service.cartList(com_no));
 		}
 		
 		// proc del => 카트에서 제거
 		if(proc.equals("del")) {
 			service.deleteCart(com_no, Nk.toInt(request.getParameter("parts_no")));
-			session.setAttribute("cart", service.cartList(com_no));
+			session.setAttribute("ecart", service.cartList(com_no));
 		}
 		
 		// proc delAll => 카트에서 모두제거
 		if(proc.equals("delAll")) {
 			service.deleteAllCart(com_no);
-			session.setAttribute("cart", service.cartList(com_no));
+			session.setAttribute("ecart", service.cartList(com_no));
 			System.out.println("카트비우기 버튼");	
 		}
-		// proc reg => 견적목록에 추가
-		if(proc.equals("assque")) {
+		// proc assque => 견적목록에 추가
+		if(proc.equals("regAsq")) {
+			System.out.println("견적문의 등록");
 			service.regEstimate(request);
-			System.out.println("견적문의버튼");
+			// com 상태 변경.
+			service.updateCom(request);
 		}
+		
 		if(proc.equals("buy")) {
-			service.regEstimate(request);
 			System.out.println("구매버튼");
+			if(session.getAttribute("mem") != null) {
+				service.regEstimate(request);
+				// com 상태 변경.
+				service.updateCom(request);
+				System.out.println("mem 있음");
+			}else {
+				System.out.println("mem 없음");
+			}
 		}
-		
-		
 		
 		
 		// 3. view
 		String page = "main\\estimate\\estimate.jsp";
 		
 		if(proc.equals("goAsq")) {
-			// asq 하나
-			int asq_no = Nk.toInt(request.getParameter("asq_no"));
-			// asq  객체 불러오기
-			// request.setAttribute("asq", service.
-			page = "견적문의글";
+			// asq 객체 불러오기
+			request.setAttribute("asq", service.asqSch(request));
+			request.setAttribute("assemble", service.assList(request) ); 
+			page = "main\\estimate\\assque.jsp";
 		}
 		
+		if(proc.equals("buy")) {
+			if(session.getAttribute("mem") == null) {
+				page = "main\\estimate\\NewFile.jsp?name=이름없음";
+			}else {
+				page = "main\\estimate\\NewFile.jsp";
+			}
+		}
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}

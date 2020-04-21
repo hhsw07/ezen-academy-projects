@@ -263,13 +263,15 @@ public class A01_AssemblyDao {
 		}
 	}
 	// proc reg => 견적목록에 추가
-	public void regEstimate(Parts reg) {
+	public void regEstimate(Assque reg) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
-			String sql = "INSERT INTO @@견적목록@@ values(?)";
+			String sql = "INSERT INTO P5_ASSQUE values(p5_assque_seq.nextval, ?, ?, ?, sysdate,'','')";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "컴퓨터명");
+			pstmt.setInt(1, reg.getCom_no());
+			pstmt.setString(2, reg.getAsq_name());
+			pstmt.setString(3, reg.getAsq_detail());
 			
 			pstmt.executeUpdate();
 			con.commit();
@@ -520,24 +522,28 @@ public class A01_AssemblyDao {
 	}
 
 
-	public ArrayList<Assque> asqList(int asq_no){
-		ArrayList<Assque> asqList = new ArrayList<Assque>();
+	public Assque asqSch(int asq_no){
+		Assque asq = new Assque();
 		
 		try {
 			setcon();
-			String sql = "SELECT a.ASQ_NO, a.ASQ_NAME ,c.MEM_ID ,a.ASQ_REQDATE\r\n" + 
+			String sql = "SELECT a.ASQ_NO, a.ASQ_NAME ,a.ASQ_DETAIL ,a.ASQ_REQDATE, a.ASQ_COMM ,a.ASQ_COMDATE, c.MEM_ID  \r\n" + 
 					"FROM P5_ASSQUE a, P5_COMPUTER b, P5_MEMBER c\r\n" + 
-					"WHERE a.COM_NO = b.COM_NO \r\n" + 
-					"AND b.MEM_ID = c.MEM_ID";
+					"WHERE a.COM_NO = b.COM_NO\r\n" + 
+					"AND b.MEM_ID = c.MEM_ID  \r\n" + 
+					"AND a.ASQ_NO = ?";
 			
 			pstmt = con.prepareStatement(sql);
-						
+			pstmt.setInt(1, asq_no);			
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				asqList.add(new Assque(rs.getInt(1),
-									   rs.getString(2),
-									   rs.getString(3),
-									   rs.getDate(4)));
+			if(rs.next()) {
+				asq = new Assque(rs.getInt(1),
+							     rs.getString(2),
+							     rs.getString(3),
+							     rs.getDate(4),
+							     rs.getString(5),
+							     rs.getDate(6),
+							     rs.getString(7) );
 			}
 			
 			rs.close();
@@ -547,7 +553,78 @@ public class A01_AssemblyDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return asqList;
+		return asq;
+	}
+
+
+	public ArrayList<Parts> assList(int asq_no){
+		ArrayList<Parts> assList = new ArrayList<Parts>();
+		
+		try {
+			setcon();
+			String sql = "SELECT a.COM_NO, b.PARTS_NO, b.PARTS_NAME, (b.PARTS_PRICE*a.PARTS_CNT), a.PARTS_CNT, b.PARTS_MC \r\n" + 
+					"FROM P5_ASSEMBLY a, P5_PARTS b, P5_ASSQUE c\r\n" + 
+					"WHERE a.PARTS_NO = b.PARTS_NO \r\n" + 
+					"AND a.COM_NO = c.COM_NO \r\n" + 
+					"AND c.ASQ_NO = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, asq_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				assList.add(new Parts(rs.getInt(1),
+								    rs.getInt(2),
+								    rs.getString(3),
+								    rs.getInt(4),
+								    rs.getInt(5),
+								    rs.getString(6)
+						));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return assList;
+	}
+
+
+	public void updateCom(int upt) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "UPDATE P5_COMPUTER\r\n" + 
+					"SET COM_KIND = '개인사양'\r\n" + 
+					"WHERE COM_NO = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, upt);
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("수정 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}	
 		
 	

@@ -124,7 +124,7 @@ CREATE TABLE p5_assque (
 	asq_detail VARCHAR2(3000) NOT NULL, /* 견적문의내용 */
 	asq_reqdate DATE NOT NULL, /* 견적문의등록일 */
 	asq_comm VARCHAR2(3000), /* 견적문의댓글 */
-	asq_comcate DATE /* 견적댓글등록일 */
+	asq_comdate DATE /* 견적댓글등록일 */
 );
 
 ALTER TABLE p5_assque

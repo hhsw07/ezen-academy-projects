@@ -83,9 +83,17 @@ public class A01_AssemblyService {
 	}
 	// proc reg => 견적문의 테이블에 추가
 	public void regEstimate(HttpServletRequest request) {
-		int parts_com = Nk.toInt(request.getParameter("parts_com"));
-		Parts reg = new Parts(parts_com,1);
+		int com_no = Nk.toInt(request.getParameter("com_no"));
+		String asq_name = Nk.toStr(request.getParameter("asq_name"));
+		String asq_detail= Nk.toStr(request.getParameter("asq_detail"));
+		
+		Assque reg = new Assque(com_no, asq_name, asq_detail);
 		dao.regEstimate(reg);
+	}
+	public void updateCom(HttpServletRequest request) {
+		int upt = Nk.toInt(request.getParameter("com_no"));
+		
+		dao.updateCom(upt);
 	}
 	// 수정 처리
 	public void updateCart(HttpServletRequest request, int com_no) {
@@ -100,10 +108,19 @@ public class A01_AssemblyService {
 		return dao.asqList();
 	}
 	
-	public ArrayList<Assque> asqlist(HttpServletRequest request){
+	// 클릭된 견적문의 글에 대한 정보
+	public Assque asqSch(HttpServletRequest request){
 		int asq_no = Nk.toInt(request.getParameter("asq_no"));
 		
-		return dao.asqList(asq_no);
+		return dao.asqSch(asq_no);
 	}
+	// 클릭된 견적문의 글에 대한 부품정보
+	public ArrayList<Parts> assList(HttpServletRequest request){
+		int asq_no = Nk.toInt(request.getParameter("asq_no"));
+		
+		return dao.assList(asq_no);
+	}
+	
+	
 	
 }

@@ -24,6 +24,27 @@ public class Assque {
 		this.mem_id = mem_id;
 		this.asq_reqdate = asq_reqdate;
 	}
+	
+	
+	
+	public Assque(int com_no, String asq_name, String asq_detail) {
+		super();
+		this.com_no = com_no;
+		this.asq_name = asq_name;
+		this.asq_detail = asq_detail;
+	}
+
+	public Assque(int asq_no, String asq_name, String asq_detail, Date asq_reqdate, String asq_comm, Date asq_comdate,
+			String mem_id) {
+		super();
+		this.asq_no = asq_no;
+		this.asq_name = asq_name;
+		this.asq_detail = asq_detail;
+		this.asq_reqdate = asq_reqdate;
+		this.asq_comm = asq_comm;
+		this.asq_comdate = asq_comdate;
+		this.mem_id = mem_id;
+	}
 
 	public Assque(int asq_no, int com_no, String asq_name, String asq_detail, Date asq_reqdate, String asq_comm,
 			Date asq_comdate) {
