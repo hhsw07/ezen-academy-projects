@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import z01_vo.Assembly;
-import z01_vo.Computer;
+import z01_vo.Assque;
 import z01_vo.Parts;
 
 public class A01_AssemblyDao {
@@ -486,6 +486,68 @@ public class A01_AssemblyDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+
+	public ArrayList<Assque> asqList(){
+		ArrayList<Assque> asqList = new ArrayList<Assque>();
+		
+		try {
+			setcon();
+			String sql = "SELECT a.ASQ_NO, a.ASQ_NAME ,c.MEM_ID ,a.ASQ_REQDATE\r\n" + 
+					"FROM P5_ASSQUE a, P5_COMPUTER b, P5_MEMBER c\r\n" + 
+					"WHERE a.COM_NO = b.COM_NO \r\n" + 
+					"AND b.MEM_ID = c.MEM_ID";
+			
+			pstmt = con.prepareStatement(sql);
+						
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				asqList.add(new Assque(rs.getInt(1),
+									   rs.getString(2),
+									   rs.getString(3),
+									   rs.getDate(4)));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return asqList;
+	}
+
+
+	public ArrayList<Assque> asqList(int asq_no){
+		ArrayList<Assque> asqList = new ArrayList<Assque>();
+		
+		try {
+			setcon();
+			String sql = "SELECT a.ASQ_NO, a.ASQ_NAME ,c.MEM_ID ,a.ASQ_REQDATE\r\n" + 
+					"FROM P5_ASSQUE a, P5_COMPUTER b, P5_MEMBER c\r\n" + 
+					"WHERE a.COM_NO = b.COM_NO \r\n" + 
+					"AND b.MEM_ID = c.MEM_ID";
+			
+			pstmt = con.prepareStatement(sql);
+						
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				asqList.add(new Assque(rs.getInt(1),
+									   rs.getString(2),
+									   rs.getString(3),
+									   rs.getDate(4)));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return asqList;
 	}	
 		
 	

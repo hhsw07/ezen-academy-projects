@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Assembly;
+import z01_vo.Assque;
 import z01_vo.Nk;
 import z01_vo.Parts;
 
@@ -72,6 +73,7 @@ public class A01_AssemblyService {
 
 	// proc del => 견적테이블에서 제거
 	public void deleteCart(int com_no,int parts_no) {
+		
 		dao.deleteCart(com_no,parts_no);
 	}	
 	
@@ -92,6 +94,16 @@ public class A01_AssemblyService {
 		
 		dao.updateCart(upt);
 	}
+	// 견적문의 리스트
+	public ArrayList<Assque> asqlist(){
+		
+		return dao.asqList();
+	}
 	
+	public ArrayList<Assque> asqlist(HttpServletRequest request){
+		int asq_no = Nk.toInt(request.getParameter("asq_no"));
+		
+		return dao.asqList(asq_no);
+	}
 	
 }

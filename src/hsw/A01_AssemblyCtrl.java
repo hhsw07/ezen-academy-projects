@@ -49,6 +49,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
 		request.setAttribute("plist", service.plist(request));
+		request.setAttribute("asqlist", service.asqlist());
 		
 		if(proc.equals("first")) {
 			if(session.getAttribute("mem") == null) {
@@ -105,7 +106,6 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		if(proc.equals("del")) {
 			service.deleteCart(com_no, Nk.toInt(request.getParameter("parts_no")));
 			session.setAttribute("cart", service.cartList(com_no));
-			
 		}
 		
 		// proc delAll => 카트에서 모두제거
@@ -123,10 +123,20 @@ public class A01_AssemblyCtrl extends HttpServlet {
 			service.regEstimate(request);
 			System.out.println("구매버튼");
 		}
-
+		
+		
+		
 		
 		// 3. view
 		String page = "main\\estimate\\estimate.jsp";
+		
+		if(proc.equals("goAsq")) {
+			// asq 하나
+			int asq_no = Nk.toInt(request.getParameter("asq_no"));
+			// asq  객체 불러오기
+			// request.setAttribute("asq", service.
+			page = "견적문의글";
+		}
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

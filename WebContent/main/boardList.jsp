@@ -85,7 +85,7 @@
 					<!-- 1번부터 5번 글을 리스트화 하여 출력 -->
 					<c:if  test="${state.count < 6}">	
 						<tr>
-							<th>1</th>
+							<th>${state.count} / ${fn:length(plist)}  순번 / 전체반복횟수</th>
 							<td>제목이 출력되는곳</td>
 							<td>작성자가 출력되는곳</td>
 							<th>등록날짜</th>
@@ -96,7 +96,6 @@
 							<td>${prod.parts_name}</td>
 							<td><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
 							<td>idx${state.index} : cnt${state.count}</td>
-							<td class="ad">end${state.end.parts_name } :s${status.begin} : js</td>
 							<td>${fn:length(plist)}</td>
 						</tr>
 						 -->
