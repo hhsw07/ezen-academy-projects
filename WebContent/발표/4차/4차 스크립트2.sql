@@ -341,12 +341,20 @@ INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME03',
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME04','영상작업용','PCCAT-SAME04.jpg','PCCAT_COMDETAIL.jpg',947000);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS01','워크스테이션','PCCAT-WS01.jpg','PCCAT_COMDETAIL.jpg',1664000);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS02','워크스테이션','PCCAT-WS02.jpg','PCCAT_COMDETAIL.jpg',2873000);
---개인사양은 논의 필요
+--개인사양
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',978460);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1333860);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen03','ezen03님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1690660);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen04','ezen04님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',2819420);
+
+-- 등록된 컴퓨터 전체 목록
 SELECT * FROM p5_computer;
+-- 전체 컴퓨터 목록(견적포함)
+SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
+com_name, com_kind, com_img, com_detail, com_price
+FROM p5_assembly pa, p5_parts pp, p5_computer pc
+WHERE pa.parts_no = pp.parts_no
+AND pa.com_no = pc.com_no;
 --------------------------------------
 /* 견적 */
 DROP TABLE p5_assembly 
