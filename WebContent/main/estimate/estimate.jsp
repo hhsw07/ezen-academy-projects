@@ -128,6 +128,11 @@
 			$("form").submit();
 		}
 	}
+	function goAsq(no){
+		$("[name=proc]").val("goAsq");
+		$("[name=asq_no]").val(no);
+		$("form").submit();
+	}
 	
 </script>
 </head>
@@ -149,6 +154,7 @@
 				<input type="hidden" name="proc" />
 				<input type="hidden" name="parts_mc"/>
 				<input type="hidden" name="parts_no"/>
+				<input type="hidden" name="asq_no"/>
 				<table>
 					<c:choose>
 						<c:when test="${parts_mc=='CPU'}">
@@ -688,29 +694,14 @@
 					<th>등록일</th>
 				</tr>
 		<!-- 글목록  -->	
-		<!-- 타이틀 추가된만큼 같이 추가 -->
-				<tr>
-					<th>1</th>
-					<td>제목이 출력되는곳</td>
-					<td>작성자가 출력되는곳</td>
-					<th>등록날짜</th>
-				</tr>
-		<!-- 목록페이징 -->	
-		<!-- 목록 페이징 코드 먼저 짜시는분 계시면 공유부탁드립니다  -->
-				<tr>
-					<th colspan="4"> 1 2 3 4 5 </th>
-				</tr>	
-				
-		<!-- 검색 + 글등록 -->
-				<tr style="border:none;">
-					<td colspan="3">
-		<!-- 검색은 필요하신분들 사용 -->
-					<input class="input-box" type="text"/>
-					<input class="search-btn" type="submit" value="검색"/>
-					</td>		
-		<!-- 버튼 이름은 각자 필요에 맞게 수정  -->
-					<th><input class="reg-btn" type="button" value="글쓰기"/></th>
-				</tr>
+				<c:forEach var="asq" items="${asqlist}" varStatus="state">
+						<tr onclick="goAsq(${asq.asq_no})">
+							<td>${asq.asq_no}</td>
+							<td>${asq.asq_name}</td>
+							<td>${asq.mem_id}</td>
+							<td>${asq.asq_reqdate}</td>
+						</tr>
+				</c:forEach>
 			</table>
 		<br>
 		<br>

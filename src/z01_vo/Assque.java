@@ -10,10 +10,19 @@ public class Assque {
 	private Date asq_reqdate;
 	private String asq_comm;
 	private Date asq_comdate;
+	private String mem_id;
 	
 	public Assque() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Assque(int asq_no, String asq_name, String mem_id, Date asq_reqdate) {
+		super();
+		this.asq_no = asq_no;
+		this.asq_name = asq_name;
+		this.mem_id = mem_id;
+		this.asq_reqdate = asq_reqdate;
 	}
 
 	public Assque(int asq_no, int com_no, String asq_name, String asq_detail, Date asq_reqdate, String asq_comm,
@@ -82,6 +91,14 @@ public class Assque {
 
 	public void setAsq_comdate(Date asq_comdate) {
 		this.asq_comdate = asq_comdate;
+	}
+
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	
 }
