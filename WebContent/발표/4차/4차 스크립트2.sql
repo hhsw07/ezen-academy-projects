@@ -271,12 +271,26 @@ insert into p5_parts values (p5_parts_seq.nextval,'잘만 GigaMax 550W 80PLUS Br
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 GigaMax 650W 80PLUS Bronze 230V EU',63580,100,'잘만 GigaMax 650W 80PLUS Bronze 230V EU.jpg','잘만 GigaMax 650W 80PLUS Bronze 230V EU_detail.jpg','파워','잘만','600W 이상','24핀 전용','80 PLUS 브론즈',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 GigaMax 750W 80PLUS Bronze 230V EU',73000,100,'잘만 GigaMax 750W 80PLUS Bronze 230V EU.jpg','잘만 GigaMax 750W 80PLUS Bronze 230V EU_detail.jpg','파워','잘만','700W 이상','24핀 전용','80 PLUS 브론즈',' ',' ');
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 MegaMax 500W 80PLUS STANDARD',42500,100,'잘만 MegaMax 500W 80PLUS STANDARD.jpg','잘만 MegaMax 500W 80PLUS STANDARD_detail.jpg','파워','잘만','500W 이상','20핀+4핀','80 PLUS 스탠다드',' ',' ');
+--상품 등록
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 MegaMax 600W 80PLUS STANDARD',48000,100,'잘만 MegaMax 600W 80PLUS STANDARD.jpg','잘만 MegaMax 600W 80PLUS STANDARD_detail.jpg','파워','잘만','600W 이상','20핀+4핀','80 PLUS 스탠다드',' ',' ');
-
-SELECT * FROM p5_parts;
-DROP TABLE p5_parts;
-DROP sequence p5_parts_seq;
-
+--상품 전체 목록(상품은 최대가 204개)
+SELECT * FROM p5_parts ORDER BY parts_no asc;
+--상품 분류(분류를 정확히 적어야 함)
+SELECT * FROM p5_parts 
+WHERE parts_mc='RAM'
+ORDER BY parts_no asc;
+--상품 상세
+SELECT * FROM p5_parts 
+WHERE parts_no=1;
+--상품 삭제
+DELETE FROM p5_parts
+WHERE parts_no=204;
+--상품 수정
+UPDATE p5_parts
+SET parts_name = 'name',
+	parts_price = 0,
+	parts_stock = 0
+WHERE parts_no = 204;
 --------------------------------------
 /* 컴퓨터 */
 DROP TABLE p5_computer 
@@ -376,7 +390,169 @@ CREATE SEQUENCE p5_assembly_seq
 START WITH 1
 INCREMENT BY 1
 ;
---견적 데이터.sql 파일에 코드 입력해두었음
+--1번 컴퓨터
+INSERT INTO p5_assembly VALUES (1001,1,1);
+INSERT INTO p5_assembly VALUES (1001,15,1);
+INSERT INTO p5_assembly VALUES (1001,75,2);
+INSERT INTO p5_assembly VALUES (1001,82,1);
+INSERT INTO p5_assembly VALUES (1001,112,1);
+INSERT INTO p5_assembly VALUES (1001,140,1);
+INSERT INTO p5_assembly VALUES (1001,181,1);
+INSERT INTO p5_assembly VALUES (1001,161,1);
+--2번 컴퓨터
+INSERT INTO p5_assembly VALUES (1002,2,1);
+INSERT INTO p5_assembly VALUES (1002,16,1);
+INSERT INTO p5_assembly VALUES (1002,75,2);
+INSERT INTO p5_assembly VALUES (1002,83,1);
+INSERT INTO p5_assembly VALUES (1002,113,1);
+INSERT INTO p5_assembly VALUES (1002,141,1);
+INSERT INTO p5_assembly VALUES (1002,182,1);
+INSERT INTO p5_assembly VALUES (1002,162,1);
+--3번 컴퓨터
+INSERT INTO p5_assembly VALUES (1003,3,1);
+INSERT INTO p5_assembly VALUES (1003,17,1);
+INSERT INTO p5_assembly VALUES (1003,75,2);
+INSERT INTO p5_assembly VALUES (1003,84,1);
+INSERT INTO p5_assembly VALUES (1003,114,1);
+INSERT INTO p5_assembly VALUES (1003,142,1);
+INSERT INTO p5_assembly VALUES (1003,183,1);
+INSERT INTO p5_assembly VALUES (1003,163,1);
+--4번 컴퓨터
+INSERT INTO p5_assembly VALUES (1004,4,1);
+INSERT INTO p5_assembly VALUES (1004,18,1);
+INSERT INTO p5_assembly VALUES (1004,76,2);
+INSERT INTO p5_assembly VALUES (1004,85,1);
+INSERT INTO p5_assembly VALUES (1004,115,1);
+INSERT INTO p5_assembly VALUES (1004,143,1);
+INSERT INTO p5_assembly VALUES (1004,184,1);
+INSERT INTO p5_assembly VALUES (1004,164,1);
+--5번 컴퓨터
+INSERT INTO p5_assembly VALUES (1005,5,1);
+INSERT INTO p5_assembly VALUES (1005,20,1);
+INSERT INTO p5_assembly VALUES (1005,76,2);
+INSERT INTO p5_assembly VALUES (1005,86,1);
+INSERT INTO p5_assembly VALUES (1005,116,1);
+INSERT INTO p5_assembly VALUES (1005,144,1);
+INSERT INTO p5_assembly VALUES (1005,185,1);
+INSERT INTO p5_assembly VALUES (1005,165,1);
+--6번 컴퓨터
+INSERT INTO p5_assembly VALUES (1006,6,1);
+INSERT INTO p5_assembly VALUES (1006,22,1);
+INSERT INTO p5_assembly VALUES (1006,76,2);
+INSERT INTO p5_assembly VALUES (1006,87,1);
+INSERT INTO p5_assembly VALUES (1006,117,1);
+INSERT INTO p5_assembly VALUES (1006,145,1);
+INSERT INTO p5_assembly VALUES (1006,186,1);
+INSERT INTO p5_assembly VALUES (1006,166,1);
+--7번 컴퓨터
+INSERT INTO p5_assembly VALUES (1007,7,1);
+INSERT INTO p5_assembly VALUES (1007,24,1);
+INSERT INTO p5_assembly VALUES (1007,77,2);
+INSERT INTO p5_assembly VALUES (1007,88,1);
+INSERT INTO p5_assembly VALUES (1007,118,1);
+INSERT INTO p5_assembly VALUES (1007,146,1);
+INSERT INTO p5_assembly VALUES (1007,187,1);
+INSERT INTO p5_assembly VALUES (1007,167,1);
+--8번 컴퓨터
+INSERT INTO p5_assembly VALUES (1008,8,1);
+INSERT INTO p5_assembly VALUES (1008,26,1);
+INSERT INTO p5_assembly VALUES (1008,77,2);
+INSERT INTO p5_assembly VALUES (1008,89,1);
+INSERT INTO p5_assembly VALUES (1008,119,1);
+INSERT INTO p5_assembly VALUES (1008,147,1);
+INSERT INTO p5_assembly VALUES (1008,188,1);
+INSERT INTO p5_assembly VALUES (1008,168,1);
+--9번 컴퓨터
+INSERT INTO p5_assembly VALUES (1009,9,1);
+INSERT INTO p5_assembly VALUES (1009,28,1);
+INSERT INTO p5_assembly VALUES (1009,77,2);
+INSERT INTO p5_assembly VALUES (1009,90,1);
+INSERT INTO p5_assembly VALUES (1009,120,1);
+INSERT INTO p5_assembly VALUES (1009,148,1);
+INSERT INTO p5_assembly VALUES (1009,189,1);
+INSERT INTO p5_assembly VALUES (1009,169,1);
+--10번 컴퓨터
+INSERT INTO p5_assembly VALUES (1010,10,1);
+INSERT INTO p5_assembly VALUES (1010,30,1);
+INSERT INTO p5_assembly VALUES (1010,78,2);
+INSERT INTO p5_assembly VALUES (1010,91,1);
+INSERT INTO p5_assembly VALUES (1010,121,1);
+INSERT INTO p5_assembly VALUES (1010,149,1);
+INSERT INTO p5_assembly VALUES (1010,190,1);
+INSERT INTO p5_assembly VALUES (1010,170,1);
+--11번 컴퓨터
+INSERT INTO p5_assembly VALUES (1011,11,1);
+INSERT INTO p5_assembly VALUES (1011,32,1);
+INSERT INTO p5_assembly VALUES (1011,78,2);
+INSERT INTO p5_assembly VALUES (1011,92,1);
+INSERT INTO p5_assembly VALUES (1011,122,1);
+INSERT INTO p5_assembly VALUES (1011,150,1);
+INSERT INTO p5_assembly VALUES (1011,191,1);
+INSERT INTO p5_assembly VALUES (1011,171,1);
+--12번 컴퓨터
+INSERT INTO p5_assembly VALUES (1012,12,1);
+INSERT INTO p5_assembly VALUES (1012,34,1);
+INSERT INTO p5_assembly VALUES (1012,79,2);
+INSERT INTO p5_assembly VALUES (1012,93,1);
+INSERT INTO p5_assembly VALUES (1012,123,1);
+INSERT INTO p5_assembly VALUES (1012,151,1);
+INSERT INTO p5_assembly VALUES (1012,192,1);
+INSERT INTO p5_assembly VALUES (1012,172,1);
+--13번 컴퓨터
+INSERT INTO p5_assembly VALUES (1013,13,1);
+INSERT INTO p5_assembly VALUES (1013,36,1);
+INSERT INTO p5_assembly VALUES (1013,80,2);
+INSERT INTO p5_assembly VALUES (1013,94,1);
+INSERT INTO p5_assembly VALUES (1013,124,1);
+INSERT INTO p5_assembly VALUES (1013,152,1);
+INSERT INTO p5_assembly VALUES (1013,193,1);
+INSERT INTO p5_assembly VALUES (1013,173,1);
+--14번 컴퓨터
+INSERT INTO p5_assembly VALUES (1014,14,1);
+INSERT INTO p5_assembly VALUES (1014,38,1);
+INSERT INTO p5_assembly VALUES (1014,81,2);
+INSERT INTO p5_assembly VALUES (1014,95,1);
+INSERT INTO p5_assembly VALUES (1014,125,1);
+INSERT INTO p5_assembly VALUES (1014,153,1);
+INSERT INTO p5_assembly VALUES (1014,194,1);
+INSERT INTO p5_assembly VALUES (1014,174,1);
+
+--15번 컴퓨터
+INSERT INTO p5_assembly VALUES (1015,1,1);
+INSERT INTO p5_assembly VALUES (1015,15,1);
+INSERT INTO p5_assembly VALUES (1015,75,2);
+INSERT INTO p5_assembly VALUES (1015,82,1);
+INSERT INTO p5_assembly VALUES (1015,112,1);
+INSERT INTO p5_assembly VALUES (1015,140,1);
+INSERT INTO p5_assembly VALUES (1015,181,1);
+INSERT INTO p5_assembly VALUES (1015,161,1);
+--16번 컴퓨터
+INSERT INTO p5_assembly VALUES (1016,2,1);
+INSERT INTO p5_assembly VALUES (1016,16,1);
+INSERT INTO p5_assembly VALUES (1016,75,2);
+INSERT INTO p5_assembly VALUES (1016,83,1);
+INSERT INTO p5_assembly VALUES (1016,113,1);
+INSERT INTO p5_assembly VALUES (1016,141,1);
+INSERT INTO p5_assembly VALUES (1016,182,1);
+INSERT INTO p5_assembly VALUES (1016,162,1);
+--17번 컴퓨터
+INSERT INTO p5_assembly VALUES (1017,3,1);
+INSERT INTO p5_assembly VALUES (1017,17,1);
+INSERT INTO p5_assembly VALUES (1017,75,2);
+INSERT INTO p5_assembly VALUES (1017,84,1);
+INSERT INTO p5_assembly VALUES (1017,114,1);
+INSERT INTO p5_assembly VALUES (1017,142,1);
+INSERT INTO p5_assembly VALUES (1017,183,1);
+INSERT INTO p5_assembly VALUES (1017,163,1);
+--18번 컴퓨터
+INSERT INTO p5_assembly VALUES (1018,4,1);
+INSERT INTO p5_assembly VALUES (1018,18,1);
+INSERT INTO p5_assembly VALUES (1018,76,2);
+INSERT INTO p5_assembly VALUES (1018,85,1);
+INSERT INTO p5_assembly VALUES (1018,115,1);
+INSERT INTO p5_assembly VALUES (1018,143,1);
+INSERT INTO p5_assembly VALUES (1018,184,1);
+INSERT INTO p5_assembly VALUES (1018,164,1);
 SELECT * FROM p5_assembly;
 --------------------------------------
 /* 견적문의 */
