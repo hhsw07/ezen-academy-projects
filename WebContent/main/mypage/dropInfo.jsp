@@ -78,7 +78,7 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="text"/></td>
+				<td><input name="mem_pw" type="text"/></td>
 			</tr>
 			<tr>
 				<td>재입력</td>

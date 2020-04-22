@@ -28,12 +28,20 @@
 
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
-	});
+$(document).ready(function(){
+	var mem_name = "${mem.mem_name}";
+	if(mem_name!=""){
+		alert("아이디 찾기 성공");
+		$("[name=proc]").val("findIdRs");
+		$("form").submit();
+	}else{
+		if("${param.mem_name}"!=""){
+			alert("인증된 회원 정보가 없습니다.");
+			$("[name=mem_name]").focus();
+		}
+	}
+
+});
 </script>
 </head>
 <body>
@@ -52,10 +60,10 @@
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">아이디 찾기</th></tr>
 			<tr>
-				<th colspan="3"><input class="input-id" type="text" placeholder="이름"/></th>
+				<th colspan="3"><input name="mem_name" class="input-id" type="text" placeholder="이름"/></th>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="input-ps" type="text" placeholder="이메일"/></th>
+				<th colspan="3"><input name="mem_email" class="input-ps" type="text" placeholder="이메일"/></th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="login-btn" type="submit" value="확인"/></th>

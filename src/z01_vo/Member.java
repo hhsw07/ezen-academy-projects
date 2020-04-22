@@ -26,6 +26,14 @@ public class Member {
 		super();
 		this.mem_id = mem_id;
 	}
+// 아이디 찾기
+public Member(String mem_id, String mem_name, String mem_email) {
+		super();
+		this.mem_id = mem_id;
+		this.mem_name = mem_name;
+		this.mem_email = mem_email;
+	}
+
 // 회원가입
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel) {
 		super();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
+    import="khj.*"
     import="java.util.*"
     %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -39,13 +40,23 @@ ul li{list-style:none;}
 </script>
 </head>
 <body>
-	
+<% %>
 <!-- 상단 메뉴바 시작 -->
 		<div class="menu-wrap">
 			<div class="menu-1">
 				<ul>
-					<li><a href="SCenter">고객센터</a></li>
-					<li><a href="login">로그인</a></li>
+				<c:choose>
+					<c:when test="${mem.mem_id==null}">	
+						<li><a href="SCenter">고객센터</a></li>
+						<li><a href="login">로그인</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="">로그아웃</a></li>
+						<li><a href="">고객센터</a></li>
+						<li><a href="">마이페이지</a></li>
+						<li>${mem.mem_id}님 환영합니다.</li>
+					</c:otherwise>
+				</c:choose>
 				</ul>				
 			</div>
 			<div class="menu-div"></div>
