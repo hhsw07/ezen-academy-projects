@@ -55,9 +55,7 @@ public class A01_loginService {
 		if(mem_name==null) mem_name="";
 		String mem_email = request.getParameter("mem_email");
 		if(mem_email==null) mem_email="";
-		String mem_id = request.getParameter("mem_id");
-		if(mem_id==null) mem_id="";
-		return dao.findId(new Member(mem_name, mem_email, mem_id));
+		return dao.findId(new Member(mem_name, mem_email));
 	}
 	// 회원가입 아이디 중복확인
 	public boolean checkReg(String id){

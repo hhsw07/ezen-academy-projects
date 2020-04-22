@@ -29,19 +29,20 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var mem_name = "${mem.mem_name}";
-	if(mem_name!=""){
-		alert("아이디 찾기 성공");
-		$("[name=proc]").val("findIdRs");
-		$("form").submit();
-	}else{
-		if("${param.mem_name}"!=""){
-			alert("인증된 회원 정보가 없습니다.");
-			$("[name=mem_name]").focus();
-		}
+	var proc == "${param.proc}";
+	if(proc == "no"){
+		alert("입력하신 정보가 일치하지 않습니다.");
 	}
-
+	$(#findBtn).click(function(){
+	if($("[name=mem_name]").val()==null || $("[name=mem_email]").val()==null){
+		alert("입력된 정보가 없습니다");
+	}else{
+		$("form").submit();
+	}
+	});
 });
+
+
 </script>
 </head>
 <body>
@@ -51,6 +52,7 @@ $(document).ready(function(){
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
+	<input type="hidden" name="proc" value="findBtn" />
 		<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
@@ -66,7 +68,7 @@ $(document).ready(function(){
 				<th colspan="3"><input name="mem_email" class="input-ps" type="text" placeholder="이메일"/></th>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="login-btn" type="submit" value="확인"/></th>
+				<th colspan="3"><input class="login-btn" id="findBtn" type="button" value="확인"/></th>
 			</tr>
 		</table>
 	</form>
