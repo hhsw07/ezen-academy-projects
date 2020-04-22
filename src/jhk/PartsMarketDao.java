@@ -2,7 +2,7 @@ package jhk;
 
 import java.sql.*;
 
-public class MarketDao {
+public class PartsMarketDao {
 	private Connection con;
 	private PreparedStatement pstmt;
 	private ResultSet rs;

@@ -40,10 +40,14 @@ ul li{list-style:none;}
 	<div class="menu-2-wrap">
 		<div class="menu-2">
 			<ul>
-				<li><a href="#">가정/사무용</a></li>
-				<li><a href="#">게임용</a></li>
-				<li><a href="#">영상작업용</a></li>
-				<li><a href="#">워크스테이션</a></li>
+					<li><a href="#">CPU</a></li>
+					<li><a href="#">메인보드</a></li>
+					<li><a href="#">RAM</a></li>
+					<li><a href="#">그래픽카드</a></li>
+					<li><a href="#">SSD</a></li>
+					<li><a href="#">HDD</a></li>
+					<li><a href="#">케이스</a></li>
+					<li><a href="#">파워</a></li>
 			</ul>
 		</div>
 	</div>

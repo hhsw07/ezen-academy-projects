@@ -25,27 +25,35 @@ WHERE parts_no = 204;
 -- 컴퓨터에 해당하는 견적 등록
 -- INSERT INTO p5_assembly VALUES (1001,1,1);
 -- 등록된 컴퓨터 전체 목록
-SELECT * FROM p5_computer;
+SELECT * FROM p5_computer
+ORDER BY com_no asc;
+-- 등록된 컴퓨터 전체 목록
+SELECT * FROM p5_computer
+WHERE com_kind = '가정/사무용';
+ORDER BY com_no asc;
 -- 전체 컴퓨터 목록(견적포함)
 SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
 com_name, com_kind, com_img, com_detail, com_price
 FROM p5_assembly pa, p5_parts pp, p5_computer pc
 WHERE pa.parts_no = pp.parts_no
-AND pa.com_no = pc.com_no;
+AND pa.com_no = pc.com_no
+ORDER BY pc.com_no ASC, pp.parts_no ASC;
 -- 컴퓨터 분류에 따른 목록
 SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
 com_name, com_kind, com_img, com_detail, com_price
 FROM p5_assembly pa, p5_parts pp, p5_computer pc
 WHERE pa.parts_no = pp.parts_no
 AND pa.com_no = pc.com_no
-AND pc.com_kind = '가정/사무용';
---특정 컴퓨터 상세
+AND pc.com_kind = '가정/사무용'
+ORDER BY pc.com_no ASC, pp.parts_no ASC;
+--특정 컴퓨터 상세 
 SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
-com_name, com_kind, com_img, com_detail, com_price
+com_name, com_kind, com_img, com_detail, com_price 
 FROM p5_assembly pa, p5_parts pp, p5_computer pc
 WHERE pa.parts_no = pp.parts_no
 AND pa.com_no = pc.com_no
-AND pa.com_no = 1001;
+AND pa.com_no = 1001
+ORDER BY pp.parts_no asc;
 -- 삭제(삭제는 견적-컴퓨터 순으로 삭제)
 -- 컴퓨터에 해당하는 견적 삭제
 DELETE FROM p5_assembly WHERE com_no=1001;

@@ -38,12 +38,23 @@ ul li{list-style:none;}
 	   		.price-wrap1{position:absolute; right:0px; top:8px;}
 	   			.price{font-size:20px; font-weight:900;}
 </style>
+<script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$("#market1").click(function(){
+		$(location).attr('href','market');
+	});
+	$("#market1").click(function(){
+		$(location).attr('href','market');
+	});
+</script>
 </head>
 <body>
 <div class="all-wrap">
 
 <jsp:include page="../main/top.jsp"/>
-
+<form>
+	<input type="hidden" name="proc" value=""/>
+</form>
 	<div class="policy">
 		<img alt="" src="image/main/policy1.jpg">
 		<img alt="" src="image/main/policy2.jpg">
