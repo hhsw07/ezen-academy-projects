@@ -72,11 +72,11 @@
 			<tr>
 			<!-- readonly로 수정 불가능하게 변경 -->
 				<td>아이디</td>
-				<td><input type="text" value="${mem.mem_id }"/></td>
+				<td><input type="text" name="mem_id" value="${mem.mem_id }"/></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input name="mem_id" type="text" value="${mem.mem_pw }"/></td>
+				<td><input name="mem_id" type="text" value="${mem.mem_name }"/></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>

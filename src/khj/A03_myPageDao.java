@@ -37,7 +37,7 @@ public class A03_myPageDao {
 		Member mem = new Member();
 		try {
 			setConn();
-			String sql = "SELECT * FROM product WHERE sno=?";
+			String sql = "SELECT * FROM p5_member WHERE mem_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem_id);
 			rs = pstmt.executeQuery();
@@ -68,6 +68,7 @@ public class A03_myPageDao {
 			String sql = "UPDATE P5_MEMBER \r\n" + 
 						"SET mem_pw = ?\r\n" + 
 						"WHERE mem_id= ?";
+			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, upt.getMem_pw());
