@@ -44,23 +44,68 @@
 	
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("h2").text("장바구니");
-	});
-	var cnt = 1;
-	function count(obj){
-		// 구매수량, 수량에 따른 가격 처리
-		if(obj == "+"){
-			cnt++;
-			document.querySelector("#cnt").innerHTML= cnt;
-		}else if(obj =="-"){
-			if(cnt > 1){
-				cnt--;
+		$("h2").text("장바구니");	
+		var allCnt = $("input[type=checkbox]:not(#checkAll)").length;
+		var checkedCnt = $("input[type=checkbox]:checked:not(#checkAll)").length;
+		$("input[type=checkbox]:not(#checkAll)").change(function () {
+			var checked = $(this).is(":checked");
+			if (checked) {
+				checkedCnt++;
+			} else {
+				$("#checkAll").prop("checked", false);
+				checkedCnt--;
 			}
-			document.querySelector("#cnt").innerHTML= cnt;
+			if (checkedCnt >= allCnt) {
+				$("#checkAll").prop("checked", true);
+			} else {
+				$("#checkAll").prop("checked", false);
+			}
+		});
+		$("#checkAll").change(function(){
+			var checked = $(this).is(":checked");
+			if (checked) {
+				$("input[type=checkbox]").prop("checked", true);
+				checkedCnt = allCnt;
+			} else {
+				$("input[type=checkbox]").prop("checked", false);
+				checkedCnt = 0;
+			}
+		});
+		
+	});
+	
+	var cartCnt = ${fn:length(cart)};
+	function minus(no){
+		// 구매수량, 수량에 따른 가격 처리
+		var cnt = Number($("#cnt"+no).text());
+		if(cnt > 1){
+			cnt--;
 		}
+		$("#cnt"+no).text(cnt);
+		var price = Number($("#price"+no).text());
+		console.log(cnt);
+		console.log(price);
+		console.log(cnt*price);
+		$("#tot"+no).text(cnt*price);
+		var point = cnt*price*0.01;
+		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
 	}
+	function plus(no){
+		// 구매수량, 수량에 따른 가격 처리
+		var cnt = Number($("#cnt"+no).text());
+		cnt++;
+		$("#cnt"+no).text(cnt);
+		var price = Number($("#price"+no).text());
+		$("#tot"+no).text(cnt*price);
+		var point = cnt*price*0.01;
+		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -69,68 +114,70 @@
 		<header class="cart-title">
 			<h2></h2>
 		</header>
-		<div class="cart-wrap">
-			<table class="cart-table-th">
-				<colgroup>
-					<col width="5%">
-					<col width="55%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-				</colgroup>
-				<thead class="cart-thead">
-					<tr>
-						<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립예정 포인트</th>
-					</tr>
-				</thead>
-			</table>
-			<table class="cart-table-td">
-				<colgroup>
-					<col width="5%">
-					<col width="55%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-				</colgroup>
-				<tbody class="cart-tbody">
-					<c:forEach var="cart" items="${cart}">
-					
-									
-					<tr>
-						<td><input type="checkbox" name="cart"/></td>
-						<td>
-							<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
-						</td>
-						<td style="text-align:center">
-							<div class="pd_count">
-								<button type="button" onclick="count(this.innerHTML)">-</button>
-								<c:set var="cnt" value="1" />
-								<span id="cnt">${cnt}</span>
-								<button type="button" onclick="count(this.innerHTML)">+</button>
-							</div>
-						</td>
-						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/>원</td>
-						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cnt}"/>원</td>
-						<td class="fmtnum">
-							<c:set var="point" value="${cart.parts_price*0.01}"/>
-							<fmt:formatNumber type="number" value="${point+((point%1>0.5)?(1-(point%1))%1:-(point%1))}"/> p
-						</td>
-					</tr>
-					
-					
-					
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-		<div class="cart-price">
-			<div>
-				<b>결제예정금액</b>
-				<p>결제예정금액</p>
+		<form method="post">
+			<div class="cart-wrap">
+				<table class="cart-table-th">
+					<colgroup>
+						<col width="5%">
+						<col width="55%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+					</colgroup>
+					<thead class="cart-thead">
+						<tr>
+							<th><input type="checkbox" name="cart_all" id="checkAll"/></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립예정 포인트</th>
+						</tr>
+					</thead>
+				</table>
+				<table class="cart-table-td">
+					<colgroup>
+						<col width="5%">
+						<col width="55%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+					</colgroup>
+					<tbody class="cart-tbody">
+						<c:forEach var="cart" varStatus="status" items="${cart}">
+						
+										
+						<tr>
+							<td><input type="checkbox" name="cart"/></td>
+							<td>
+								<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
+							</td>
+							<td style="text-align:center">
+								<div class="pd_count">
+									<input type="button" onclick="minus(${status.count})" value="-"/>
+									<span id="cnt${status.count}">${cart.req_cnt}</span>
+									<input type="button" onclick="plus(${status.count})" value="+"/>
+								</div>
+							</td>
+							<td class="fmtnum">
+								<span id="price${status.count}">${cart.parts_price}</span> 원
+							<%-- <fmt:formatNumber id="price(${status.count})" type="number" value="${cart.parts_price}"/> --%></td>
+							<td class="fmtnum">
+								<span  id="tot${status.count}">${cart.parts_price*cart.req_cnt}</span> 원
+							<%-- <fmt:formatNumber id="tot(${status.count})" type="number" value="${cart.parts_price*cart.req_cnt}"/> --%></td>
+							<td class="fmtnum">
+								<span id="point${status.count}">${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}</span> p
+								<%-- <fmt:formatNumber type="number" value="${point+((point%1>0.5)?(1-(point%1))%1:-(point%1))}"/> --%>
+							</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
-		</div>
+			<div class="cart-price">
+				<div>
+					<b>결제예정금액</b>
+					<p id="totalPay"> </p>
+				</div>
+			</div>
+		</form>
 		
 		<div class="btn-order-ctrl">
 			<div class="btn0">

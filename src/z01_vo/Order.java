@@ -19,6 +19,20 @@ public class Order {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public Order(String mem_id, String ord_name, String ord_tel, String ord_post, String ord_addr1, String ord_addr2,
+			String ord_req) {
+		super();
+		this.mem_id = mem_id;
+		this.ord_name = ord_name;
+		this.ord_tel = ord_tel;
+		this.ord_post = ord_post;
+		this.ord_addr1 = ord_addr1;
+		this.ord_addr2 = ord_addr2;
+		this.ord_req = ord_req;
+	}
+
 
 	public Order(int ord_no, String mem_id, Date ord_date, String ord_name, String ord_tel, String ord_post,
 			String ord_addr1, String ord_addr2, String ord_req, String ord_stat, int ord_invoice) {

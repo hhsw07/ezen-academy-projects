@@ -7,6 +7,8 @@ public class Cart {
 	private int req_cnt;
 	private int parts_price;
 	
+	
+	
 	public Cart() {
 		super();
 		// TODO Auto-generated constructor stub

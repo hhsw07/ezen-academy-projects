@@ -11,6 +11,16 @@ public class Pay {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public Pay(int ord_no, String pay_method, int pay_point, int pay_price) {
+		super();
+		this.ord_no = ord_no;
+		this.pay_method = pay_method;
+		this.pay_point = pay_point;
+		this.pay_price = pay_price;
+	}
+
 
 	public Pay(int pay_no, int ord_no, String pay_method, int pay_point, int pay_price) {
 		super();

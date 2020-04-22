@@ -42,6 +42,7 @@ function addCart(){
 	$("[name=proc]").val("cart");
 	$("[name=req_no]").val("1");
 	$("[name=req_cnt]").val("1");
+	$("[name=req_opt]").val("0");
 	$("form").submit();
 }
 </script>
@@ -56,6 +57,7 @@ function addCart(){
 		<input type="hidden" name="proc">
 		<input type="hidden" name="req_no">
 		<input type="hidden" name="req_cnt">
+		<input type="hidden" name="req_opt">
 		<ul id="market_detail">
 			<li class="com">
 				<img src="image/Computer/PCCAT-HAO01.jpg" class="com_img">
