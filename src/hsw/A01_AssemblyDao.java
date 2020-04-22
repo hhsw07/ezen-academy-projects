@@ -593,7 +593,7 @@ public class A01_AssemblyDao {
 	}
 
 
-	public void updateCom(int upt) {
+	public void updateCom(int com_no) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
 			String sql = "UPDATE P5_COMPUTER\r\n" + 
@@ -601,7 +601,7 @@ public class A01_AssemblyDao {
 					"WHERE COM_NO = ?";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, upt);
+			pstmt.setInt(1, com_no);
 			// 실행
 			pstmt.executeUpdate();
 			con.commit();

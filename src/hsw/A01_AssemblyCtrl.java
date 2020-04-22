@@ -33,11 +33,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 	 */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// 0. 한글 encoding
 		request.setCharacterEncoding("utf-8");
 		// 1. 요청
 		HttpSession session = request.getSession();
-		
 		String proc = Nk.toStr(request.getParameter("proc"),"first");
 		String parts_mc = Nk.toStr(request.getParameter("parts_mc"),"CPU");
 		int com_no = 0;
@@ -46,6 +44,10 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		}
 		System.out.println("com_no:"+com_no);
 		System.out.println("proc: "+proc);
+		
+		String page = "main\\estimate\\estimate.jsp";
+
+		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
 		request.setAttribute("plist", service.plist(request));
@@ -114,44 +116,43 @@ public class A01_AssemblyCtrl extends HttpServlet {
 			session.setAttribute("ecart", service.cartList(com_no));
 			System.out.println("카트비우기 버튼");	
 		}
-		// proc assque => 견적목록에 추가
-		if(proc.equals("regAsq")) {
-			System.out.println("견적문의 등록");
-			service.regEstimate(request);
-			// com 상태 변경.
-			service.updateCom(request);
-		}
-		
-		if(proc.equals("buy")) {
-			System.out.println("구매버튼");
-			if(session.getAttribute("mem") != null) {
-				service.regEstimate(request);
-				// com 상태 변경.
-				service.updateCom(request);
-				System.out.println("mem 있음");
-			}else {
-				System.out.println("mem 없음");
-			}
-		}
-		
-		
-		// 3. view
-		String page = "main\\estimate\\estimate.jsp";
-		
 		if(proc.equals("goAsq")) {
 			// asq 객체 불러오기
 			request.setAttribute("asq", service.asqSch(request));
 			request.setAttribute("assemble", service.assList(request) ); 
 			page = "main\\estimate\\assque.jsp";
 		}
+		// proc regAsq => 견적목록 작성
+		if(proc.equals("insAsq")) {
+			page = "main\\estimate\\assque.jsp";
+		}
+		
+		// proc regAsq => 견적목록에 등록
+		if(proc.equals("regAsq")) {
+			System.out.println("견적문의 등록");
+			service.regEstimate(request, com_no);
+			// com 상태 변경.
+			service.updateCom(com_no);
+		}
 		
 		if(proc.equals("buy")) {
-			if(session.getAttribute("mem") == null) {
-				page = "main\\estimate\\NewFile.jsp?name=이름없음";
+			System.out.println("구매버튼");
+			if(session.getAttribute("mem") != null) {
+				service.regEstimate(request,com_no);
+				// com 상태 변경.
+				service.updateCom(com_no);
+				System.out.println("mem 있음");
+				page = "main\\estimate\\gobuy.jsp";
 			}else {
-				page = "main\\estimate\\NewFile.jsp";
+				System.out.println("mem 없음");
+				page = "main\\estimate\\goLogin.jsp";
+				
 			}
 		}
+		
+		
+		
+		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}

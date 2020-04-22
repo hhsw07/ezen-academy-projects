@@ -14,6 +14,21 @@
 7. 결제완료 페이지 화면
 
 
+ctrl
+service.insOrd()
+service.selOrd()
+
+서비스단
+dao.인서트()
+int ord_no = dao.셀렉트문
+dao.인서트(request, ord_no)
+return dao.셀렉트문으로정보가져오기
+
+
+
+
+
+
 1. 컴퓨터화면에서 컴퓨터를 보고 구매하기 버튼을 크릭...
 ...
 ...

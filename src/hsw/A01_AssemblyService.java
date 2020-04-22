@@ -82,18 +82,16 @@ public class A01_AssemblyService {
 		dao.deleteAllCart(com_no);
 	}
 	// proc reg => 견적문의 테이블에 추가
-	public void regEstimate(HttpServletRequest request) {
-		int com_no = Nk.toInt(request.getParameter("com_no"));
+	public void regEstimate(HttpServletRequest request, int com_no) {
 		String asq_name = Nk.toStr(request.getParameter("asq_name"));
 		String asq_detail= Nk.toStr(request.getParameter("asq_detail"));
 		
 		Assque reg = new Assque(com_no, asq_name, asq_detail);
 		dao.regEstimate(reg);
 	}
-	public void updateCom(HttpServletRequest request) {
-		int upt = Nk.toInt(request.getParameter("com_no"));
+	public void updateCom(int com_no) {
 		
-		dao.updateCom(upt);
+		dao.updateCom(com_no);
 	}
 	// 수정 처리
 	public void updateCart(HttpServletRequest request, int com_no) {

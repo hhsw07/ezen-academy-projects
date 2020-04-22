@@ -6,34 +6,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <fmt:requestEncoding value="utf-8"/>
-<!DOCTYPE html>
-<%--
+<style>
+	#e_cart{width:50%;height:100%; float:left;}
+	#e_cart table{border-collapse:collapse;}
+	#e_cart table td{padding:3px 3px;} 
+	#e_cart tr td:first-child{background-color:black;color:white;}
 
---%>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${path}/a00_com/a00_com.css" >
-<script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-<%--
+</style>
+<script>
 
---%>
-		$("h2").text("p5_assque");
-	});
 </script>
-</head>
 
 <body>
-<h2 align="center"></h2>
-<div>
-ASQ_NO : ${asq.asq_no}|ASQ_NAME : ${asq.asq_name}|ASQ_DETAIL : ${asq.asq_detail}| <br>
-ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.asq_comdate}|MEM_ID : ${asq.mem_id}<br>
+<div style="height:400px; overflow:auto; margin:0 auto;">
 	<table>
 		<col width="18%">
-		<col width="auto">
+		<col >
 		<col width="7%">
 		<col width="18%">
 		<col width="4%">
@@ -44,7 +32,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == 'CPU'}" >
 				<tr>
 					<td></td>
@@ -62,7 +50,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == '메인보드'}" >
 				<tr>
 					<td></td>
@@ -80,7 +68,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == 'RAM'}" >
 				<tr>
 					<td></td>
@@ -98,7 +86,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == '그래픽카드'}" >
 				<tr>
 					<td></td>
@@ -116,7 +104,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == 'SSD'}" >
 				<tr>
 					<td></td>
@@ -134,7 +122,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == 'HDD'}" >
 				<tr>
 					<td></td>
@@ -152,7 +140,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == '케이스'}" >
 				<tr>
 					<td></td>
@@ -170,7 +158,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			<td></td>
 			<td></td>
 		</tr>
-		<c:forEach var="prod" items="${assemble}">
+		<c:forEach var="prod" items="${ecart}">
 			<c:if test="${prod.parts_mc == '파워'}" >
 				<tr>
 					<td></td>
@@ -182,7 +170,7 @@ ASQ_REQDATE : ${asq.asq_reqdate}|ASQ_COMM : ${asq.asq_comm}|ASQ_COMDATE : ${asq.
 			</c:if>
 		</c:forEach>
 	</table>
-	<input type="button" value="돌아가기" />
 </div>
+
 </body>
 </html>

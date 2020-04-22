@@ -38,6 +38,8 @@
 	.comment-noti{font-size:12px; line-height:20px;padding:5px 26px;}
 	.goback-btn{width:93px; margin:0; height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
 	outline:none; border:none;}
+	.regAsq-btn{width:93px; margin:0; height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
+	outline:none; border:none;}
 	.comment-list{margin:20px auto;}
 	
 	.bbslist thead{border-top:2px solid cocoa; border-top:1px solid #cacaca;padding:12px 10px;}
@@ -61,6 +63,10 @@
 		$(".goback-btn").click(function(){
 			location.href="${path}/assembly";
 		});
+		$(".regAsq-btn").click(function(){
+			$("[name=regAsq]").submit();
+		});
+		
 	});
 	
 </script>
@@ -69,168 +75,41 @@
 <body>
 <jsp:include page="../top.jsp"/>
 <div class="cs-content">
-	<header class="apply-title">
-		<h2></h2>
-	</header>
 	<c:choose>
-		<c:when test="${param.proc eq 'assque'}">
+		<c:when test="${param.proc eq 'insAsq'}">
 			<div class="as-context">
 				<div id="cusestimateview">
 					<div class="bbsbox">
-						<div class="bbstitle">
-							<strong>
-							
-							${asq.asq_name}</strong>
-						</div>
-						<div class="bbsinfo">
-							<span class="writedate">작성일 : ${asq.asq_reqdate}</span> / <span class="writer">작성자 : ${asq.mem_id}</span>
-						</div>
-						<!-- 내용 시작 -->
-						<table summary="OrderList" class="bbslist">
-							<col width="18%">
-							<col width="60%">
-							<col width="7%">
-							<col width="15%">
-							<tr>
-								<td class="mcCho">CPU</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'CPU'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" /></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">메인보드</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '메인보드'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">RAM</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'RAM'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">그래픽카드</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '그래픽카드'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">SSD</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'SSD'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">HDD</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'HDD'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">케이스</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '케이스'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">케이스</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '파워'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
+						<form method="post" name="regAsq">
+						<input type="hidden" name="proc" value="regAsq"/>
+						<table>
+							<tr><th>제목</th>
+								<td><input type="text" name="asq_name" style="width:100%"/></td></tr>
 						</table>
+						<div class="bbslist">
+							<jsp:include page="ecart.jsp" />
+						</div>
 						<!-- 문의글 시작 -->
 						<div class="bbscontents">
-							<textarea rows="" cols="" name="asq_detail" />
+							<table>
+							<tr><th>내용</th>
+								<td><textarea name="asq_detail" style="background-color:gray; height:100px;"></textarea></td></tr>
+							</table>
 						</div>
+						</form>
 					</div>
 					<div class="listback">
+						<input class="regAsq-btn btn" type="button" value="등록"/>
 						<input class="goback-btn btn" type="button" value="목록으로"/>
 					</div>
 				</div>
 			</div>
 		</c:when>
+		
+		
+		
+		
+		
 		<c:when test="${param.proc eq 'goAsq'}">
 			<div class="as-context">
 				<div id="cusestimateview">
@@ -242,140 +121,9 @@
 							<span class="writedate">작성일 : ${asq.asq_reqdate}</span> / <span class="writer">작성자 : ${asq.mem_id}</span>
 						</div>
 						<!-- 내용 시작 -->
-						<table summary="OrderList" class="bbslist">
-							<col width="18%">
-							<col width="60%">
-							<col width="7%">
-							<col width="15%">
-							<tr>
-								<td class="mcCho">CPU</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'CPU'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" /></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">메인보드</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '메인보드'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">RAM</td>
-								<td></td> 
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'RAM'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">그래픽카드</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '그래픽카드'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">SSD</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'SSD'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">HDD</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == 'HDD'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">케이스</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '케이스'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-							<tr>
-								<td class="mcCho">케이스</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<c:forEach var="prod" items="${assemble}">
-								<c:if test="${prod.parts_mc == '파워'}" >
-									<tr>
-										<td></td>
-										<td>${prod.parts_name}</td> 
-										<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-										<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
-									</tr>
-								</c:if>
-							</c:forEach>
-						</table>
+						<div class="bbslist">
+							<jsp:include page="ecart.jsp" />
+						</div>
 						<!-- 문의글 시작 -->
 						<div class="bbscontents">
 							${asq.asq_detail}
@@ -415,12 +163,8 @@
 				     </c:if>
 				</div>
 			</div>
-			
 		</c:when>
 	</c:choose>
-	
-	
-	
 </div>
 	
 <jsp:include page="../bottom.jsp"/>
