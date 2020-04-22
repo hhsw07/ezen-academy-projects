@@ -34,6 +34,7 @@ INSERT INTO p5_member VALUES ('ezen05','ezen05','홍길동',to_date('1995-05-10'
 
 
 SELECT * FROM p5_member;
+-- 회원정보삭제
 DELETE FROM p5_member 
 WHERE mem_id = 'test503'
 AND mem_pw = 1234;

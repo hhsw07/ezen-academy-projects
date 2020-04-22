@@ -92,7 +92,7 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input name="mem_pw" type="text"/></td>
+				<td><input name="mem_pw" type="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

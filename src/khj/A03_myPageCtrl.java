@@ -50,6 +50,7 @@ public class A03_myPageCtrl extends HttpServlet {
 			request.getSession().invalidate();
 			page = "main/main.jsp";
 		}
+		// 회원정보수정 페이지 -> 회원탈퇴
 		if(proc.equals("dropInfo")) {
 			page = "main/mypage/dropInfo.jsp";
 		}
