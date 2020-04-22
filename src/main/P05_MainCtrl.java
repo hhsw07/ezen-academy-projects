@@ -28,6 +28,10 @@ public class P05_MainCtrl extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String proc = request.getParameter("proc");
+		if(proc==null) proc="";
+		
 		String page = "main/main.jsp";
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);

@@ -37,6 +37,7 @@ ul li{list-style:none;}
 <!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
+
 </script>
 </head>
 <body>
@@ -44,6 +45,7 @@ ul li{list-style:none;}
 <!-- 상단 메뉴바 시작 -->
 		<div class="menu-wrap">
 			<div class="menu-1">
+			<form method="post">
 				<ul>
 				<c:choose>
 					<c:when test="${mem.mem_id==null}">	
@@ -51,13 +53,14 @@ ul li{list-style:none;}
 						<li><a href="login">로그인</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="">로그아웃</a></li>
+						<li  id="logout">로그아웃</li>
 						<li><a href="">고객센터</a></li>
 						<li><a href="">마이페이지</a></li>
 						<li>${mem.mem_id}님 환영합니다.</li>
 					</c:otherwise>
 				</c:choose>
 				</ul>				
+			</form>
 			</div>
 			<div class="menu-div"></div>
 			<div class="menu-2-wrap">

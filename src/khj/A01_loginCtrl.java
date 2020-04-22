@@ -49,12 +49,17 @@ public class A01_loginCtrl extends HttpServlet {
 				session.setAttribute("mem", mem);
 			}
 		}		
+		String page="main/login/login.jsp";
+		
 		if(proc.equals("logout")) {
 			// 로그아웃 클릭시, session값을 없애는 처리..
 			request.getSession().invalidate();
+			page="main/main.jsp";
 		}
+		
+
 		// 3. 화면 main\\login\\login.jsp
-		String page="main/login/login.jsp";
+		
 		// 메인페이지
 		if(proc.equals("main")) {
 			page="main/main.jsp";
