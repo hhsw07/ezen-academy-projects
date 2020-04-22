@@ -33,10 +33,22 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
+		// 삭제 버튼 클릭시.
+		$("#delBtn").click(function(){
+			
+			var mypw = "${mem.mem_pw}";
+			if($("[name=mem_pw]").val() == mypw){
+				alert("비밀번호 일치!");
+				if( confirm("삭제하시겠습니까?") ){
+					// 1. 삭제 proc 변경.
+					$("[name=proc]").val("delete");
+					// 2. submit처리
+					$("form").submit();
+				}
+			}else{
+				alert("비밀번호가 일치하지 않습니다.");
+			}
+		});	
 	});
 </script>
 </head>
@@ -49,7 +61,9 @@
 <jsp:include page="../../main/myPageTop.jsp"/>
 
 	<div class="info-wrap">
-	<form>
+	<form method="post">
+		<input type="hidden" name="proc" value="update"/>
+		<input type="hidden" name="mem_id" value="${mem.mem_id}"/>
 		<table>
 			<tr>
 				<td class="sub-title">회원탈퇴</td>
@@ -81,14 +95,10 @@
 				<td><input name="mem_pw" type="text"/></td>
 			</tr>
 			<tr>
-				<td>재입력</td>
-				<td><input type="text"/></td>
-			</tr>
-			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
-				<th colspan="2"><input class="modify-btn" type="submit" value="확인"/></th>
+				<th colspan="2"><input class="modify-btn" id="delBtn" type="button" value="확인"/></th>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

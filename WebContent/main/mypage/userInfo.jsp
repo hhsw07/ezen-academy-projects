@@ -33,10 +33,20 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
+		// 수정 버튼 클릭시,
+		$("#uptBtn").click(function(){
+			if( confirm("수정하시겠습니까?") ){
+				// 1. 수정 proc 변경.
+				$("[name=proc]").val("update");
+				// 2. submit처리
+				$("form").submit();
+			}
+		});
+		// 회원탈퇴이동
+		$("[name=dropInfo]").click(function(){
+			$("[name=proc]").val("dropInfo");
+			$("form").submit();
+		});
 	});
 </script>
 </head>
@@ -49,11 +59,12 @@
 	<jsp:include page="../../main/myPageTop.jsp"/>
 
 	<div class="info-wrap">
-	<form>
+	<form method="post">
+		<input type="hidden" name="proc" value="update"/>
 		<table>
 			<tr>
 				<td class="sub-title">회원정보 수정</td>
-				<td><input class="drop-btn" type="button" value="회원탈퇴"/></td>
+				<td name="dropInfo"><input class="drop-btn" type="button" value="회원탈퇴"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
@@ -65,7 +76,7 @@
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" value="${mem.mem_pw }"/></td>
+				<td><input name="mem_id" type="text" value="${mem.mem_pw }"/></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
@@ -76,11 +87,11 @@
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input name="mem_pw" type="text"/></td>
+				<td><input name="mem_pw" type="password"/></td>
 			</tr>
 			<tr>
 				<td>재입력</td>
-				<td><input type="text"/></td>
+				<td><input type="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
@@ -97,7 +108,7 @@
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
-				<th colspan="2"><input class="modify-btn" type="submit" value="수정"/></th>
+				<th colspan="2"><input class="modify-btn" id="uptBtn" type="button" value="수정"/></th>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

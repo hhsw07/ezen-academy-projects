@@ -33,7 +33,7 @@ public class A03_myPageDao {
 	
 	
 	// 회원정보 불러오기
-	public Member getProduct(String mem_id) {
+	public Member getMember(String mem_id) {
 		Member mem = new Member();
 		try {
 			setConn();
@@ -62,7 +62,7 @@ public class A03_myPageDao {
 	
 	
 	// 비밀번호 업데이트
-	public void updateProduct(Member upt) {
+	public void uptPw(Member upt) {
 		try {
 			setConn(); // Connection 객체가 메모리 로딩.
 			String sql = "UPDATE P5_MEMBER \r\n" + 
@@ -99,14 +99,17 @@ public class A03_myPageDao {
 	
 	
 	// 회원정보 삭제
-	public void deleteMember(String mem_id) {
+	public void deleteMember(Member del) {
 		try {
 			setConn(); // Connection 객체가 메모리 로딩.
-			String sql = "DELETE FROM p5_member\r\n" + 
-						"WHERE mem_id = ?";
+			String sql = "DELETE FROM p5_member \r\n" + 
+							"WHERE mem_id = ? \r\n" + 
+							"AND mem_pw = ?";
+			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mem_id);
+			pstmt.setString(1, del.getMem_id());
+			pstmt.setString(2, del.getMem_pw());
 			// 실행
 			pstmt.executeUpdate();
 			con.commit();

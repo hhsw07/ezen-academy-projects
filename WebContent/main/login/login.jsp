@@ -33,7 +33,6 @@ $(document).ready(function(){
 	var mem_id = "${mem.mem_id}";
 	if(mem_id!=""){
 		alert("로그인 성공");
-		$(location).attr("href","${path}/")
 		$("[name=proc]").val("main");
 		$("form").submit();
 	}
