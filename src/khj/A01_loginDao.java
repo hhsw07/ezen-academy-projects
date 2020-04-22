@@ -1,14 +1,15 @@
 package khj;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import z01_vo.*;
+
+import z01_vo.Member;
+import z01_vo.Nk;
 
 public class A01_loginDao {
 	
@@ -99,7 +100,7 @@ public class A01_loginDao {
 		return m;
 	}
 	*/
-	
+	// 로그인
 	public Member login(Member mem){
 		Member m=null;
 		try {
@@ -124,6 +125,40 @@ public class A01_loginDao {
 							rs.getDate(7) );
 			}			
 			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return m;
+	}
+	
+	public Member findId(Member fid) {
+		Member m=null;
+		try {
+			setCon();
+			String sql ="SELECT * FROM p5_member\r\n" + 
+					"WHERE mem_name = ?\r\n" + 
+					"AND mem_email = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, fid.getMem_name());
+			pstmt.setString(2, fid.getMem_email());
+			System.out.println(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				m = new Member(
+						rs.getString(1),
+						rs.getString(2),
+						rs.getString(3));
+						
+			}
 			rs.close();
 			pstmt.close();
 			con.close();
@@ -200,7 +235,7 @@ public class A01_loginDao {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	
+
 	}
 
 }

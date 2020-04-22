@@ -48,11 +48,11 @@
 				<th colspan="3" class="logo-text">PC냥이</th>
 			</tr>
 			<tr>
-				<th colspan="3"><img src="image/main/logo.png"></th>
+				<th colspan="3"><img src="../../image/main/logo.png"></th>
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">아이디 찾기</th></tr>
 			<tr>
-				<th colspan="3" class="id-result">귀하의 아이디는 [] 입니다.</th>
+				<th colspan="3" class="id-result">귀하의 아이디는 [<span>$"{p5_member.mem_id}"</span>] 입니다.</th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="login-btn" type="submit" value="확인"/></th>

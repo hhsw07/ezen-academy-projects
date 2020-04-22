@@ -89,11 +89,7 @@ $(document).ready(function(){
 				<td>비밀번호 재입력<span class="import">*필수입력</span></td>
 				<td><input type="password" name="mem_pw" class="input-box" placeholder="비밀번호 재입력" /></td>
 			</tr>
-			
-			<tr>
-				<td></td><td>비밀번호 일치확인란</td>
-			</tr>
-			
+
 			<tr>
 				<td>이름<span class="import">*필수입력</span></td>
 				<td><input type="text" name="mem_name" class="input-box" placeholder="이름" /></td>

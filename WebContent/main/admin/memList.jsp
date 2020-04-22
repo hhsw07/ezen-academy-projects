@@ -69,12 +69,41 @@
 		
 	<!-- 글목록  -->	
 		<tr>
-			<td>홍길동</td>
-			<td>ezen01</td>
-			<td>ezen01@naver.com</td>
-			<td>010-0000-0000</td>
-			<td>상세보기</td>
+			<td style="padding-left:20px;">홍길동</td>	
+			<td style="padding-left:40px;">ezen01</td>
+			<td style="padding-left:40px;">ezen01@naver.com</td>
+			<td style="padding-left:40px;">010-0000-0000</td>
+			<td style="padding-left:20px;">상세보기</td>
 		</tr>
+		
+				<tr>
+			<td style="padding-left:20px;">김길동</td>
+			<td style="padding-left:40px;">ezen00201</td>
+			<td style="padding-left:40px;">ezen13201@naver.com</td>
+			<td style="padding-left:40px;">010-0000-0000</td>
+			<td style="padding-left:20px;">상세보기</td>
+		</tr>
+		
+		
+				<tr>
+			<td style="padding-left:20px;">오길동</td>
+			<td style="padding-left:40px;">ezen012351</td>
+			<td style="padding-left:40px;">ezen0142@naver.com</td>
+			<td style="padding-left:40px;">010-0000-0000</td>
+			<td style="padding-left:20px;">상세보기</td>
+		</tr>
+		
+		
+				<tr>
+			<td style="padding-left:20px;">진길동</td>
+			<td style="padding-left:40px;">ezen61501</td>
+			<td style="padding-left:40px;">ezen02311@naver.com</td>
+			<td style="padding-left:40px;">010-0000-0000</td>
+			<td style="padding-left:20px;">상세보기</td>
+		</tr>
+		
+		
+
 	
 	<!-- 목록페이징 -->	
 		<tr>

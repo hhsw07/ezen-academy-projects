@@ -59,23 +59,24 @@
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
+			<!-- readonly로 수정 불가능하게 변경 -->
 				<td>아이디</td>
-				<td><input type="text"/></td>
+				<td><input type="text" value="${mem.mem_id }"/></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text"/></td>
+				<td><input type="text" value="${mem.mem_pw }"/></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text"/></td>
+				<td><input type="text" value="${mem.mem_birth }"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
 				<td>새 비밀번호</td>
-				<td><input type="text"/></td>
+				<td><input name="mem_pw" type="text"/></td>
 			</tr>
 			<tr>
 				<td>재입력</td>
@@ -86,11 +87,11 @@
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text"/></td>
+				<td><input type="text" value="${mem.mem_email }"/></td>
 			</tr>
 			<tr>
 				<td>휴대폰</td>
-				<td><input type="text"/></td>
+				<td><input type="text" value="${mem.mem_tel }"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

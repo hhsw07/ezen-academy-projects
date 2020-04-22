@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Member;
@@ -48,8 +49,19 @@ public class A01_loginService {
 				
 		dao.insSignUpMember(ins);
 	}
+	// 아이디 찾기
+	public Member findID(HttpServletRequest request) {
+		String mem_name = request.getParameter("mem_name");
+		if(mem_name==null) mem_name="";
+		String mem_email = request.getParameter("mem_email");
+		if(mem_email==null) mem_email="";
+		String mem_id = request.getParameter("mem_id");
+		if(mem_id==null) mem_id="";
+		return dao.findId(new Member(mem_name, mem_email, mem_id));
+	}
 	// 회원가입 아이디 중복확인
 	public boolean checkReg(String id){
 		return dao.memberCk(id);
 	}
+
 }
