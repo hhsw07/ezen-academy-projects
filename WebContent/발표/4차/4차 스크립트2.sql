@@ -326,6 +326,7 @@ INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME02',
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME03','영상작업용','PCCAT-SAME03.jpg','PCCAT_COMDETAIL.jpg',854000);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-SAME04','영상작업용','PCCAT-SAME04.jpg','PCCAT_COMDETAIL.jpg',947000);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS01','워크스테이션','PCCAT-WS01.jpg','PCCAT_COMDETAIL.jpg',1664000);
+INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'admin','PCCAT-WS02','워크스테이션','PCCAT-WS02.jpg','PCCAT_COMDETAIL.jpg',2873000);
 --개인사양
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen01','ezen01님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',978460);
 INSERT INTO p5_computer VALUES (p5_computer_seq.nextval, 'ezen02','ezen02님의 컴퓨터','개인사양','PCCAT-USER01.jpg','',1333860);

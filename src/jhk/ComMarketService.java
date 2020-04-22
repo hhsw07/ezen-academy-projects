@@ -19,4 +19,9 @@ public class ComMarketService {
 		if(category==null||category.equals("")) category="all";
 		return dao.getComList(category);
 	}
+	
+	public ArrayList<Comdetail> cdlist(HttpServletRequest request){
+		int com_no = Nk.toInt(request.getParameter("com_no"));
+		return dao.getComDetailList(com_no);
+	}
 }

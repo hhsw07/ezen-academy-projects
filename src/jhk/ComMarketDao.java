@@ -59,7 +59,7 @@ public class ComMarketDao {
 		return clist;
 	}
 
-	public ArrayList<Comdetail> getComDetailList(){
+	public ArrayList<Comdetail> getComDetailList(int com_no){
 		ArrayList<Comdetail> cdlist = new ArrayList<Comdetail>();
 		
 		try {
@@ -68,15 +68,15 @@ public class ComMarketDao {
 					"com_name, com_kind, com_img, com_detail, com_price \r\n" + 
 					"FROM p5_assembly pa, p5_parts pp, p5_computer pc\r\n" + 
 					"WHERE pa.parts_no = pp.parts_no\r\n" + 
-					"AND pa.com_no = pc.com_no\r\n" + 
-					//"AND pa.com_no = ?\r\n" + 
-					"ORDER BY pp.parts_no asc;";
+					"AND pa.com_no = pc.com_no\r\n"; 
+					if(com_no!=0) sql+="AND pa.com_no = ?\r\n"; 
+					sql+="ORDER BY pp.parts_no asc";
 			System.out.println(sql);
 			
 			pstmt = con.prepareStatement(sql);
-			//if(!category.equals("all")) {
-			//	pstmt.setString(1, category);
-			//}
+			if(com_no!=0) {
+				pstmt.setInt(1, com_no);
+			}
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
