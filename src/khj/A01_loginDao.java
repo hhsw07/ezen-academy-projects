@@ -138,12 +138,12 @@ public class A01_loginDao {
 		
 		return m;
 	}
-	
+	// 아이디 찾기
 	public Member findId(Member fid) {
 		Member m=null;
 		try {
 			setCon();
-			String sql ="SELECT * FROM p5_member\r\n" + 
+			String sql ="SELECT mem_id FROM p5_member\r\n" + 
 					"WHERE mem_name = ?\r\n" + 
 					"AND mem_email = ?";
 			pstmt = con.prepareStatement(sql);
@@ -154,10 +154,7 @@ public class A01_loginDao {
 			
 			if(rs.next()) {
 				m = new Member(
-						rs.getString(1),
-						rs.getString(2),
-						rs.getString(3));
-						
+						rs.getString(1));
 			}
 			rs.close();
 			pstmt.close();

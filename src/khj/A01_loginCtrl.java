@@ -77,9 +77,19 @@ public class A01_loginCtrl extends HttpServlet {
 		}
 		// 로그인페이지 -> 아이디 찾기
 		if(proc.equals("findID")) {
-			// 서비스단에 요청
-			service.findID(request);
 			page="main/login/findID.jsp";
+		}
+		if(proc.equals("findBtn")) {
+			// db에서 id와 email을 이용해서 조회 
+			// 조회된 데이터가 1.null값일때 
+			service.findID(request);
+			if(service.findID(request)==null) {
+				page = "main/login/findID.jsp?proc=no";
+			}else {
+				page = "main/login/findIdRs.jsp";
+			}
+			
+			request.setAttribute("findId", service);
 		}
 		// 아이디찾기 결과 페이지
 		if(proc.equals("findIdRs")) {
