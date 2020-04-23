@@ -47,9 +47,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		System.out.println("proc: "+proc);
 		
 		String page = "main\\estimate\\estimate.jsp";
-
-		//session.setAttribute("mem", new Member("admin","7777"));
-		//session.setAttribute("mem", new Member("ezen1","7777"));
+		
+		//session.setAttribute("mem", new Member("admin","admin"));
+		//session.setAttribute("mem", new Member("ezen01","ezen01"));
 		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
@@ -78,11 +78,13 @@ public class A01_AssemblyCtrl extends HttpServlet {
 				String mem = m01.getMem_id();
 				// 견적용 컴퓨터 번호 찾기
 				com_no = service.comNo(mem);
+				System.out.println("견적용 번호 찾기:"+com_no);
 				if(!service.ckCom(com_no)) {
 					// 견적용 컴퓨터가 없다면 새로 만들기 
 					// 있다면 새로 만들지 않음
 					service.regCom(mem);
 					com_no = service.comNo(mem);
+					System.out.println("견적용 번호 생성:"+com_no);
 				}
 				session.setAttribute("com_no", com_no);
 				// 카트를 비우고 시작
@@ -95,12 +97,14 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		// proc ins => 카트에 추가
 		if(proc.equals("ins")) {
-			if(service.isCart(request, com_no)) {
-				System.out.println("있다"+service.isCart(request, com_no));
+			System.out.println(proc);
+			System.out.println(com_no);
+			System.out.println(request.getParameter("parts_no"));
+			boolean isCart = service.isCart(request, com_no); 
+			if(isCart) {
 				// 카트에 있을 때 수량 추가
 				service.updateCart(request, com_no);
 			}else {
-				System.out.println("없다."+service.isCart(request, com_no));
 				// 견적테이블에 추가
 				service.insertCart(request, com_no);
 			}
@@ -148,9 +152,10 @@ public class A01_AssemblyCtrl extends HttpServlet {
 			if(session.getAttribute("mem") != null) {
 				service.regEstimate(request,com_no);
 				// com 상태 변경.
+				
 				service.updateCom(com_no);
 				System.out.println("mem 있음");
-				page = "main\\estimate\\gobuy.jsp";
+				page = "main\\estimate\\gobuy.jsp?req_no="+com_no+"&req_cnt=1";
 			}else {
 				System.out.println("mem 없음");
 				page = "main\\estimate\\goLogin.jsp";

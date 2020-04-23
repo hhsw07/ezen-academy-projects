@@ -20,10 +20,10 @@ ul li{list-style:none;}
 	.menu-2-wrap{background-color:#63145F;}
 		.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
 				border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
-			.menu-2 li{display:inline; font-size:25px; margin:0 15px;}
+			.menu-2 li{display:inline; font-size:25px; margin:0 15px; cursor:pointer;}
 			.menu-2 a{text-decoration:none; color:white;}
 			
-	#market_wrap{padding:50px; position: relative; width:1280px; height:2000px; margin:0 auto;}
+	#market_wrap{padding:50px; position: relative; width:1280px; height:13700px; margin:0 auto;}
 	#market_title{border-bottom:1px solid black; padding:10px; font-size:20px;}
 	.parts{width:220px; height:300px;float: left; margin:15px;}
 	.parts_img{width:220px;height:220px;}
@@ -69,14 +69,17 @@ $(document).ready(function(){
 	});
 });
 	function go_detail(num){
-		$("[name=proc]").val("comdetail");
+		$("[name=proc]").val("partsdetail");
 		$("[name=parts_no]").val(num);
 		$("form").submit();
 	}
 </script>
 </head>
 <body>
-
+<form method="post">
+<input type="hidden" name="proc" value="partslist"/>
+<input type="hidden" name="category" value="all"/>
+<input type="hidden" name="parts_no" value="0"/>
 <jsp:include page="../../main/top.jsp"/>
 <div class="menu-wrap">
 	<div class="menu-2-wrap">
@@ -99,16 +102,16 @@ $(document).ready(function(){
 	<ul id="market_list">
 		<c:forEach var="parts" items="${plist}">
 			<li class="parts" onclick="javascript:go_detail('${parts.parts_no}')">
-				<a href="partsdetail"><img src="image/${parts.parts_mc}/${parts.parts_img}" class="parts_img"></a>
+				<img src="image/parts/${parts.parts_img}" class="parts_img">
 				<table class="parts_intro" border>
 					<tr><td class="parts_title" colspan="2">${parts.parts_name}</td></tr>
-					<tr class="parts_assem"><td>가격</td><td>${parts.parts_price}</td></tr>
+					<tr class="parts_assem"><td>가격</td><td style="text-align: right;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${parts.parts_price}" />원</td></tr>
 				</table>
 			</li>
 		</c:forEach>
 	</ul>
 </div>
-
+</form>
 <jsp:include page="../../main/bottom.jsp"/>
 
 </body>

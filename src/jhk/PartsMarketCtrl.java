@@ -29,6 +29,8 @@ public class PartsMarketCtrl extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 0. 한글 encoding
+				request.setCharacterEncoding("utf-8");	
 		// TODO Auto-generated method stub
 		// 1. 요청
 		String proc= request.getParameter("proc");

@@ -41,7 +41,7 @@ public class PayCtrl extends HttpServlet {
 		String proc = Nk.toStr(request.getParameter("proc"));
 		HttpSession session = request.getSession();
 		// 2. Model
-		if(proc.equals("cart")) {
+		if(proc.equals("cart") || proc.equals("buy")) {
 			if(session.getAttribute("cart") == null){
 				ArrayList<Cart> cartlist = new ArrayList<Cart>();
 				session.setAttribute("cart", cartlist);
@@ -62,6 +62,8 @@ public class PayCtrl extends HttpServlet {
 		if(proc.equals("pay")) {
 			page = "main\\order\\payend.jsp";
 		}
+		
+		
 		
 		request.getRequestDispatcher(page).forward(request, response); 
 	}

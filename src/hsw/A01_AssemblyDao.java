@@ -146,8 +146,8 @@ public class A01_AssemblyDao {
 					"AND com_no = ?";
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, ins.getCom_no() );
-			pstmt.setInt(2, ins.getParts_no());
+			pstmt.setInt(1, ins.getParts_no() );
+			pstmt.setInt(2, ins.getCom_no());
 			
 			rs = pstmt.executeQuery();
 			

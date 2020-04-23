@@ -55,6 +55,7 @@ public class A01_AssemblyService {
 	// 견적테이블에서 데이터유무 조회
 	public boolean isCart(HttpServletRequest request, int com_no) {
 		int parts_no = Nk.toInt(request.getParameter("parts_no"));
+		System.out.println("서비스단 com_no:"+com_no+"parts_no"+parts_no);
 		Assembly ins = new Assembly(com_no, parts_no,1);
 		
 		return dao.cList(ins); 

@@ -51,6 +51,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("장바구니");
+		var proc = "${param.proc}";
+		if(proc == "buy"){
+			$("h2").text("구매");	
+		}
 		// 전체선택
 		var allCnt = $("input[type=checkbox]:not(#checkAll)").length;
 		var checkedCnt = $("input[type=checkbox]:checked:not(#checkAll)").length;

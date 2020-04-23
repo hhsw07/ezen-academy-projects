@@ -14,12 +14,12 @@
 
 </style>
 <script>
-	var proc = "${param.proc}";
-	if(proc=='insAsq'){
-		$("input ")
-	}else if(proc){
-		
-	}
+	
+	
+	
+	
+	
+	
 
 </script>
 <body>
@@ -43,7 +43,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원								</td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -59,7 +59,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -75,7 +75,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -91,7 +91,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -107,7 +107,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -123,7 +123,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -139,7 +139,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -155,7 +155,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -182,7 +182,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원								</td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -198,7 +198,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -214,7 +214,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -230,7 +230,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -246,7 +246,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -262,7 +262,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -278,7 +278,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -294,7 +294,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td>${prod.parts_cnt}개</td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 						</tr>
 					</c:if>
 				</c:forEach>
@@ -325,7 +325,7 @@
 							<td></td>
 							<td>${prod.parts_name}</td> 
 							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원								</td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -342,8 +342,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -360,8 +360,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -378,8 +378,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -396,8 +396,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -414,8 +414,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -432,8 +432,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
@@ -450,8 +450,8 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="1"/></td>
-							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
 					</c:if>
