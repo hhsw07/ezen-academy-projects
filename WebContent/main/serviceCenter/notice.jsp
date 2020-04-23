@@ -33,10 +33,7 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("서비스센터");
+
 	});
 </script>
 </head>
@@ -72,18 +69,15 @@
 		</tr>
 		
 	<!-- 글목록  -->	
+	<c:forEach var="notice" items="${nlist}">
 		<tr>
-			<td align="center">2</td>
-			<td>글 작성 이용수칙을 지켜주세요</td>
+			<td align="center">${notice.noti_no}</td>
+			<td>${notice.noti_name}</td>
 			<td align="center">관리자</td>
-			<td align="center">2019-01-03</td>
+			<td align="center">${notice.noti_date}</td>
 		</tr>
-		<tr>
-			<td align="center">1</td>
-			<td>컴퓨터 견적을 의뢰하는 경우★필독</td>
-			<td align="center">관리자</td>
-			<td align="center">2018-12-26</td>
-		</tr>
+	</c:forEach>
+
 	<!-- 목록페이징 -->	
 		<tr>
 			<th colspan="4"> 1 2 3 4 5 </th>

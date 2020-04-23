@@ -18,7 +18,7 @@ import z01_vo.Member;
 public class A03_myPageCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private A03_myPageService service;
-	private A01_loginService service2;
+	
        
     /**
      * @see HttpServlet#HttpServlet()

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class A02_scCtrl
+ * Servlet implementation class A02_serviceCenterCtrl
  */
-@WebServlet("/A02_scCtrl")
-public class A02_scCtrl extends HttpServlet {
+@WebServlet("/A02_serviceCenterCtrl")
+public class A02_serviceCenterCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public A02_scCtrl() {
+    public A02_serviceCenterCtrl() {
         super();
         // TODO Auto-generated constructor stub
     }
