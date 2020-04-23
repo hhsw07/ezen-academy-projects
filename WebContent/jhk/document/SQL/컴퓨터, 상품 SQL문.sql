@@ -1,10 +1,11 @@
---상품 등록
+--상품 등록(상품은 최대가 204개)
 insert into p5_parts values (p5_parts_seq.nextval,'잘만 MegaMax 600W 80PLUS STANDARD',48000,100,'잘만 MegaMax 600W 80PLUS STANDARD.jpg','잘만 MegaMax 600W 80PLUS STANDARD_detail.jpg','파워','잘만','600W 이상','20핀+4핀','80 PLUS 스탠다드',' ',' ');
---상품 전체 목록(상품은 최대가 204개)
-SELECT * FROM p5_parts ORDER BY parts_no asc;
---상품 분류(분류를 정확히 적어야 함)
+--상품 전체 목록
 SELECT * FROM p5_parts 
-WHERE parts_mc='RAM'
+ORDER BY parts_no asc;
+--상품 분류
+SELECT * FROM p5_parts 
+WHERE parts_mc='CPU'
 ORDER BY parts_no asc;
 --상품 상세
 SELECT * FROM p5_parts 
@@ -31,7 +32,7 @@ ORDER BY com_no asc;
 SELECT * FROM p5_computer
 WHERE com_no = 1001
 ORDER BY com_no asc;
--- 등록된 컴퓨터 전체 목록
+-- 카테고리에 따른 컴퓨터 목록
 SELECT * FROM p5_computer
 WHERE com_kind = '가정/사무용';
 ORDER BY com_no asc;

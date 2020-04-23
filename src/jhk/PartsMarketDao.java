@@ -27,7 +27,6 @@ public class PartsMarketDao {
 		
 		try {
 			setCon();
-			//수정필요
 			String sql = "SELECT * FROM p5_parts \r\n"; 
 			if(!category.equals("all")) sql+="WHERE parts_mc=? \r\n";
 				sql+="ORDER BY parts_no asc";

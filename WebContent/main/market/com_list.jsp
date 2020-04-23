@@ -80,6 +80,7 @@ $(document).ready(function(){
 <div id="market_wrap">
 	<p id="market_title">조립컴퓨터</p>
 	<ul id="market_list">
+		<!-- 이중 forEach를 활용한 견적 호출 -->
 		<c:forEach var="com" items="${clist}">
 			<li class="com" onclick="javascript:go_detail('${com.com_no}')">
 				<img src="image/Computer/${com.com_img}" class="com_img">
