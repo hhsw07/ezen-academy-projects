@@ -3,7 +3,6 @@ package jhk;
 import java.sql.*;
 import java.util.ArrayList;
 
-import z01_vo.Computer;
 import z01_vo.Parts;
 
 public class PartsMarketDao {
@@ -74,7 +73,7 @@ public class PartsMarketDao {
 			setCon();
 			String sql = "SELECT * FROM p5_parts\r\n" + 
 					"WHERE parts_no = ?\r\n" + 
-					"ORDER BY com_no asc";
+					"ORDER BY parts_no asc";
 			System.out.println(sql);
 			
 			pstmt = con.prepareStatement(sql);
