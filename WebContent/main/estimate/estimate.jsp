@@ -503,7 +503,7 @@
 					<tr>
 						<td><img src="${path}/image/parts/${prod.parts_img}" style="width:60px;"/></td>
 						<td>${prod.parts_name}</td>
-						<td><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
+						<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price}"/>원</td>
 						<td><input type="button" onclick="regCart(${prod.parts_no})" style="width:100%"/></td>
 					</tr>
 					</c:forEach>

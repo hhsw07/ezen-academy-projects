@@ -128,7 +128,11 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		}
 		// proc regAsq => 견적목록 작성
 		if(proc.equals("insAsq")) {
-			page = "main\\estimate\\assque.jsp";
+			if(session.getAttribute("mem") != null) {
+				page = "main\\estimate\\assque.jsp";
+			}else {
+				page = "main\\estimate\\goLogin.jsp";
+			}
 		}
 		
 		// proc regAsq => 견적목록에 등록
