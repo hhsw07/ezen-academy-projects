@@ -499,7 +499,8 @@ public class A01_AssemblyDao {
 			String sql = "SELECT a.ASQ_NO, a.ASQ_NAME ,c.MEM_ID ,a.ASQ_REQDATE\r\n" + 
 					"FROM P5_ASSQUE a, P5_COMPUTER b, P5_MEMBER c\r\n" + 
 					"WHERE a.COM_NO = b.COM_NO \r\n" + 
-					"AND b.MEM_ID = c.MEM_ID";
+					"AND b.MEM_ID = c.MEM_ID\r\n" + 
+					"ORDER BY a.ASQ_NO desc";
 			
 			pstmt = con.prepareStatement(sql);
 						
@@ -602,6 +603,43 @@ public class A01_AssemblyDao {
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, com_no);
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("수정 성공!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
+	public void updateAsqcomm(Assque upt) {
+		try {
+			setcon(); // Connection 객체가 메모리 로딩.
+			String sql = "UPDATE P5_ASSQUE\r\n" + 
+					"SET ASQ_COMM = ?,\r\n" + 
+					"	ASQ_COMDATE = SYSDATE\r\n" + 
+					"WHERE ASQ_NO = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,upt.getAsq_comm() );
+			pstmt.setInt(2, upt.getAsq_no());
 			// 실행
 			pstmt.executeUpdate();
 			con.commit();

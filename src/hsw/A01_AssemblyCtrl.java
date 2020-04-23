@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import z01_vo.Member;
 import z01_vo.Nk;
 
 /**
@@ -47,6 +48,8 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		
 		String page = "main\\estimate\\estimate.jsp";
 
+		//session.setAttribute("mem", new Member("admin","7777"));
+		//session.setAttribute("mem", new Member("ezen1","7777"));
 		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
@@ -71,7 +74,8 @@ public class A01_AssemblyCtrl extends HttpServlet {
 					System.out.println("카트비우고 시작");
 				}
 			}else {
-				String mem = (String)session.getAttribute("mem");
+				Member m01 = (Member)session.getAttribute("mem");
+				String mem = m01.getMem_id();
 				// 견적용 컴퓨터 번호 찾기
 				com_no = service.comNo(mem);
 				if(!service.ckCom(com_no)) {
@@ -119,7 +123,7 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		if(proc.equals("goAsq")) {
 			// asq 객체 불러오기
 			request.setAttribute("asq", service.asqSch(request));
-			request.setAttribute("assemble", service.assList(request) ); 
+			request.setAttribute("assemble", service.assList(request) );
 			page = "main\\estimate\\assque.jsp";
 		}
 		// proc regAsq => 견적목록 작성

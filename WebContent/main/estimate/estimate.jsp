@@ -42,6 +42,10 @@
 	          outline:none; padding:0; margin:0; cursor:pointer;}
 	#e_bottom .reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
 	          outline:none; padding:0; margin:0; cursor:pointer;}
+	          
+	[type=button] {color:#FFFFFF;background:#63145F;text-align:center;vertical-align:middle;
+			  outline:none; border:none; padding:10px;}          
+	          
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -538,9 +542,10 @@
 					<th>등록일</th>
 				</tr>
 		<!-- 글목록  -->	
-				<c:forEach var="asq" items="${asqlist}" varStatus="state">
+		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+				<c:forEach var="asq" items="${asqlist}" varStatus="status">
 						<tr onclick="goAsq(${asq.asq_no})">
-							<td>${asq.asq_no}</td>
+							<td class="ordR">${fn:length(asqlist) - status.count + 1}</td>
 							<td>${asq.asq_name}</td>
 							<td>${asq.mem_id}</td>
 							<td>${asq.asq_reqdate}</td>

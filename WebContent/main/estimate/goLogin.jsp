@@ -21,7 +21,6 @@
 <%--
 
 --%>
-		alert("아이디가 없습니다.").
 		location.href="${path}/login";
 	});
 </script>

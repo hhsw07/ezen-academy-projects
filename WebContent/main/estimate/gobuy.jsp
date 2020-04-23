@@ -21,8 +21,7 @@
 <%--
 
 --%>
-		alert("구매페이지로 이동").
-		location.href="${path}/login";
+		location.href="${path}/main";
 	});
 </script>
 </head>
