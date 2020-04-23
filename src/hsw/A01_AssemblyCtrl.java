@@ -150,12 +150,8 @@ public class A01_AssemblyCtrl extends HttpServlet {
 			}else {
 				System.out.println("mem 없음");
 				page = "main\\estimate\\goLogin.jsp";
-				
 			}
 		}
-		
-		
-		
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

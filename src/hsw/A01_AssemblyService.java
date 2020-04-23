@@ -83,7 +83,7 @@ public class A01_AssemblyService {
 	}
 	// proc reg => 견적문의 테이블에 추가
 	public void regEstimate(HttpServletRequest request, int com_no) {
-		String asq_name = Nk.toStr(request.getParameter("asq_name"));
+		String asq_name = Nk.toStr(request.getParameter("asq_name"),"문의합니다.");
 		String asq_detail= Nk.toStr(request.getParameter("asq_detail"));
 		
 		Assque reg = new Assque(com_no, asq_name, asq_detail);
