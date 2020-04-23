@@ -144,7 +144,7 @@
 					</c:if>
 				</c:forEach>
 				<tr>
-					<td class="mcCho">케이스</td>
+					<td class="mcCho">파워</td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -283,7 +283,7 @@
 					</c:if>
 				</c:forEach>
 				<tr>
-					<td class="mcCho">케이스</td>
+					<td class="mcCho">파워</td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -439,7 +439,7 @@
 					</c:if>
 				</c:forEach>
 				<tr>
-					<td class="mcCho">케이스</td>
+					<td class="mcCho">파워</td>
 					<td></td>
 					<td></td>
 					<td></td>

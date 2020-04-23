@@ -545,10 +545,10 @@
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 				<c:forEach var="asq" items="${asqlist}" varStatus="status">
 						<tr onclick="goAsq(${asq.asq_no})">
-							<td class="ordR">${fn:length(asqlist) - status.count + 1}</td>
+							<td style="text-align:center;">${fn:length(asqlist) - status.count + 1}</td>
 							<td>${asq.asq_name}</td>
-							<td>${asq.mem_id}</td>
-							<td>${asq.asq_reqdate}</td>
+							<td style="text-align:center;">${asq.mem_id}</td>
+							<td style="text-align:center;">${asq.asq_reqdate}</td>
 						</tr>
 				</c:forEach>
 			</table>

@@ -113,7 +113,7 @@
 				<form method="post" name="insAns">
 					<fieldset>
 						<div class="bbstitle">
-							<strong>${asq.asq_name}ㅇㅇ</strong>
+							<strong>${asq.asq_name}</strong>
 						</div>
 						<div class="bbsinfo">
 							<span>작성일 : ${asq.asq_reqdate}</span> / <span>작성자 : ${asq.mem_id}</span>
@@ -124,7 +124,7 @@
 						</div>
 						<!-- 문의글 시작 -->
 						<div class="bbscontents">
-							${asq.asq_detail}ㅇㅇ
+							${asq.asq_detail}
 						</div>
 					</fieldset>
 					<div class="listback">
@@ -154,10 +154,10 @@
 						<div class="comment-list" >
 							<fieldset>
 								<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
-									관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${asq.asq_comdate}ㅇㅇ</span>
+									관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${asq.asq_comdate}</span>
 					     		</div>
 					     		<div style="line-height:120%; color:#666;">
-					     			${asq.asq_comm}ㅇㅇ
+					     			${asq.asq_comm}
 					     		</div>
 				     		</fieldset>
 					     </div>
