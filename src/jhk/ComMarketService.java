@@ -24,4 +24,9 @@ public class ComMarketService {
 		int com_no = Nk.toInt(request.getParameter("com_no"));
 		return dao.getComDetailList(com_no);
 	}
+	
+	public Computer cominfo(HttpServletRequest request) {
+		int com_no = Nk.toInt(request.getParameter("com_no"));
+		return dao.getComDetail(com_no);
+	}
 }

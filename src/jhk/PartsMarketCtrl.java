@@ -15,13 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "partslist", urlPatterns = { "/partslist" })
 public class PartsMarketCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private PartsMarketService service;   
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PartsMarketCtrl() {
         super();
         // TODO Auto-generated constructor stub
+        service = new PartsMarketService();
     }
 
 	/**
@@ -33,7 +34,12 @@ public class PartsMarketCtrl extends HttpServlet {
 		String proc= request.getParameter("proc");
 		if(proc==null||proc.equals("")) proc="partslist";
 		// 2. 모델 처리
-		
+		if(proc.equals("partslist")) {
+			request.setAttribute("plist", service.plist(request));
+		}
+		if(proc.equals("partsdetail")) {
+			request.setAttribute("partsd", service.partsinfo(request));
+		}
 		
 		//3.page
 		String page = "main/market/parts_list.jsp";

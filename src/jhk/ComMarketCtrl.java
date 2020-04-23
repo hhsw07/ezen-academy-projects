@@ -38,11 +38,13 @@ public class ComMarketCtrl extends HttpServlet {
 		String proc= Nk.toStr(request.getParameter("proc"));
 		if(proc==null||proc.equals("")) proc="comlist";
 		// 2. 모델 처리
-		request.setAttribute("clist", service.clist(request));
-		request.setAttribute("cdlist", service.cdlist(request));
 		if(proc.equals("comlist")) {
+			request.setAttribute("clist", service.clist(request));
+			request.setAttribute("cdlist", service.cdlist(request));
 		}
 		if(proc.equals("comdetail")) {
+			request.setAttribute("comd", service.cominfo(request));
+			request.setAttribute("cdlist", service.cdlist(request));
 		}
 		//3.page
 		String page = "main/market/com_list.jsp";

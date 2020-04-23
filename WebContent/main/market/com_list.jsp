@@ -51,8 +51,12 @@ $(document).ready(function(){
 		$("[name=category]").val("워크스테이션");
 		$("form").submit();
 	});
-	
 });
+	function go_detail(num){
+		$("[name=proc]").val("comdetail");
+		$("[name=com_no]").val(num);
+		$("form").submit();
+	}
 </script>
 </head>
 <body>
@@ -77,7 +81,7 @@ $(document).ready(function(){
 	<p id="market_title">조립컴퓨터</p>
 	<ul id="market_list">
 		<c:forEach var="com" items="${clist}">
-			<li class="com">
+			<li class="com" onclick="javascript:go_detail('${com.com_no}')">
 				<img src="image/Computer/${com.com_img}" class="com_img">
 				<table class="com_intro" border>
 					<tr><td class="com_title" colspan="2">${com.com_name}</td></tr>
@@ -86,7 +90,7 @@ $(document).ready(function(){
 					<tr class="com_assem"><td>${comdetail.parts_mc}</td><td>${comdetail.parts_name}</td></tr>
 					</c:if>
 					</c:forEach>
-					<tr class="com_assem"><td>가격</td><td>${com.com_price}원</td></tr>
+					<tr class="com_assem"><td>가격</td><td style="text-align:right;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${com.com_price}" />원</td></tr>
 				</table>
 			</li>
 		</c:forEach>

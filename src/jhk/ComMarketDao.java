@@ -101,4 +101,39 @@ public class ComMarketDao {
 		}
 		return cdlist;
 	}
+	
+	public Computer getComDetail(int com_no){
+		Computer com = new Computer();
+		
+		try {
+			setCon();
+			String sql = "SELECT * FROM p5_computer\r\n" + 
+					"WHERE com_no = ?\r\n" + 
+					"ORDER BY com_no asc";
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, com_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				com = new Computer(rs.getInt(1),
+							    rs.getString(2),
+							    rs.getString(3),
+							    rs.getString(4),
+							    rs.getString(5),
+							    rs.getString(6),
+							    rs.getInt(7)
+								);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return com;
+	}
 }

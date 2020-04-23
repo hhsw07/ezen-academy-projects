@@ -27,6 +27,10 @@ WHERE parts_no = 204;
 -- 등록된 컴퓨터 전체 목록
 SELECT * FROM p5_computer
 ORDER BY com_no asc;
+-- 특정 컴퓨터 정보
+SELECT * FROM p5_computer
+WHERE com_no = 1001
+ORDER BY com_no asc;
 -- 등록된 컴퓨터 전체 목록
 SELECT * FROM p5_computer
 WHERE com_kind = '가정/사무용';
