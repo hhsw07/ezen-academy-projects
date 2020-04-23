@@ -1126,7 +1126,8 @@ INSERT INTO p5_notice VALUES (p5_notice_seq.nextval,'글 작성 이용수칙을 
 INSERT INTO p5_notice VALUES (p5_notice_seq.nextval,'AMD CPU 사용 시 정품 쿨러 장착을 권장합니다.','안녕하세요.\nPC냥이의 컴퓨터 통합 고객만족센터입니다.\n\nAMD CPU 쿨러에 대한 간단한 안내입니다.\n\nAMD CPU 의 경우,\nAMD 정품 쿨러가 아닌 다른 회사가 제작한 쿨러(일명 사제 쿨러)를 장착할 경우\n특유의 핀 휨 현상이 일어날 수 있으니 정품 쿨러를 사용하는 것을 추천합니다.\n★ 쿨러의 무게가 무거울수록 해당 문제가 더 많이 나타나는 것으로 확인됩니다.\n★ 핀 휨 현상이 발생한 CPU 는 무상 A/S 처리가 되지 않습니다.\n★ 특히 택배로 배송을 받는 경우에는 더욱 주의가 필요합니다.\n\n참고하여 좋은 컴퓨터 구매하시기 바라며,\n보다 자세한 안내가 필요한 경우 1600-9257 로 연락 부탁드립니다.\n\n감사합니다.',to_date('2018-12-26','YYYY-MM-DD'));
 INSERT INTO p5_notice VALUES (p5_notice_seq.nextval,'컴퓨터 견적을 의뢰하는 경우★필독','고객님의 컴퓨터 견적을 가지고 컴퓨터 제작만 의뢰하는 경우에 대한 세 가지 안내사항을 전달합니다.\n★ 완성됨 상품을 구매하는 경우에 본 내용을 보지 않으셔도 됩니다.\n(1) 출장방문 A/S 를 포함하여 구매하시는 것을 권장합니다. (11,000원~12,000원)\n(2) 박스를 추가 구매하시는 것을 권장합니다. (3,000원)\n(3) 구매를 원하시는 견적과 판매중인 컴퓨터의 견적을 비교해주세요.\n★ 위 내용이 기본 적용되는 곳이 있고, 추가해야 적용되는 곳이 있습니다.\n 해당 사이트의 상세페이지를 확인한 후 추가해주세요.',to_date('2019-01-03','YYYY-MM-DD'));
 --공지목록
-SELECT * FROM p5_notice;
+SELECT * FROM p5_notice
+ORDER BY noti_no desc;
 --공지상세
 SELECT noti_no, noti_name,
 REPLACE(noti_detail,'\n', '<br>') noti_detail, noti_date
