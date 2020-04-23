@@ -47,9 +47,9 @@ public class A01_AssemblyCtrl extends HttpServlet {
 		System.out.println("proc: "+proc);
 		
 		String page = "main\\estimate\\estimate.jsp";
-//'admin','admin','관리자',to_date('1990-01-01','YYYY-MM-DD'),'admin@naver.com','010-0000-0000',to_date('2020-01-01','YYYY-MM-DD')
+		
 		//session.setAttribute("mem", new Member("admin","admin"));
-		session.setAttribute("mem", new Member("ezen01","ezen01"));
+		//session.setAttribute("mem", new Member("ezen01","ezen01"));
 		
 		// 2. 모델
 		request.setAttribute("parts_mc",parts_mc);
