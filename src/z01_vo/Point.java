@@ -10,6 +10,8 @@ public class Point {
 	private int point_pt;
 	
 	private int tot;
+	private int plus;
+	private int minus;
 	
 	public Point() {
 		super();
@@ -35,15 +37,20 @@ public class Point {
 	}
 	
 	// 포인트 계산
-	public Point(int point_pt) {
+
+	public Point(int tot, int plus, int minus) {
 		super();
-		this.point_pt = point_pt;
+		this.tot = tot;
+		this.plus = plus;
+		this.minus = minus;
 	}
 
 
 	public int getPoint_no() {
 		return point_no;
 	}
+
+
 
 	public void setPoint_no(int point_no) {
 		this.point_no = point_no;
@@ -90,6 +97,27 @@ public class Point {
 	public void setTot(int tot) {
 		this.tot = tot;
 	}
+
+
+	public int getPlus() {
+		return plus;
+	}
+
+
+	public void setPlus(int plus) {
+		this.plus = plus;
+	}
+
+
+	public int getMinus() {
+		return minus;
+	}
+
+
+	public void setMinus(int minus) {
+		this.minus = minus;
+	}
+
 	
 	
 }

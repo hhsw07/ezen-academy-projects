@@ -87,9 +87,6 @@
 		}
 		$("#cnt"+no).text(cnt);
 		var price = Number($("#price"+no).text());
-		console.log(cnt);
-		console.log(price);
-		console.log(cnt*price);
 		$("#tot"+no).text(cnt*price);
 		var point = cnt*price*0.01;
 		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
@@ -145,7 +142,7 @@
 						
 										
 						<tr>
-							<td><input type="checkbox" name="cart"/></td>
+							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
 							<td>
 								<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
 							</td>
@@ -174,7 +171,7 @@
 			<div class="cart-price">
 				<div>
 					<b>결제예정금액</b>
-					<p id="totalPay"> </p>
+					<p><span id="totalPay"></span> 원</p>
 				</div>
 			</div>
 		</form>

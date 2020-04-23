@@ -67,9 +67,7 @@ ORDER BY ord_no asc;
 
 -- 주문/배송 상세정보
 
-
--- 주문하기
---INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval,'ezen01', to_date(sysdate,'YYYY-MM-DD'),'홍길동','010-5014-1019','06611','서울 서초구 서초대로77길 54','서초더블유타워 13층','','결제완료','')
+-- 주문번호
 SELECT max(ord_no) FROM p5_order
 WHERE MEM_ID = 'ezen01';
 
@@ -77,7 +75,6 @@ WHERE MEM_ID = 'ezen01';
 UPDATE P5_PARTS
 SET PARTS_STOCK = PARTS_STOCK - req_cnt
 WHERE PARTS_NO = req_no
-
 
 -- 카트담기
 SELECT parts_no, parts_img, parts_name, parts_price 
@@ -94,7 +91,7 @@ WHERE pr.REQ_NO = a.parts_no
 GROUP BY ord_no
 ORDER BY ord_no ASC) d;
 
-
+-----------------------------------------------------------------------------------------
 -- 포인트조회
 SELECT point_date, point_detail, point_pt
 FROM p5_point
@@ -112,7 +109,18 @@ SELECT sum(point_pt) FROM P5_POINT
 WHERE mem_id = 'ezen01'
 AND POINT_PT<0;
 
+-- 포인트계산
+SELECT a.tot, b.pl, c.mi
+FROM (SELECT sum(point_pt) tot FROM P5_POINT
+WHERE mem_id = 'ezen01') a,
+(SELECT sum(point_pt) pl FROM P5_POINT
+WHERE mem_id = 'ezen01'
+AND POINT_PT>=0) b,
+(SELECT sum(point_pt) mi FROM P5_POINT
+WHERE mem_id = 'ezen01'
+AND POINT_PT<0) c;
 
+----------------------------------------------------------------------------------------------------
 -- AS 리스트
 SELECT as_no, as_cate, mem_id, as_date
 FROM p5_as a, P5_ORDER b 

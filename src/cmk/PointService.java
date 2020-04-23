@@ -13,10 +13,9 @@ public class PointService {
 		super();
 		// TODO Auto-generated constructor stub
 		dao = new PointDao();
-	}	
+	}
 	public ArrayList<Point> ptList(){
 
 		return dao.ptList();
 	}
-
 }
