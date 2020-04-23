@@ -21,6 +21,8 @@
 	.cart-table-td{width:100%; border-top:1px solid #cacaca; border-collapse:collapse;}
 	.cart-price{width:1050px; margin:20px auto; border:2px solid #63145F; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
+	.product-img {height: 60px; width: 60px; background-size: cover; background-position: center; background-repeat: no-repeat;}
+	
 	
 	
 /* 버튼 */
@@ -48,7 +50,8 @@
 <%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("h2").text("장바구니");	
+		$("h2").text("장바구니");
+		// 전체선택
 		var allCnt = $("input[type=checkbox]:not(#checkAll)").length;
 		var checkedCnt = $("input[type=checkbox]:checked:not(#checkAll)").length;
 		$("input[type=checkbox]:not(#checkAll)").change(function () {
@@ -76,8 +79,10 @@
 			}
 		});
 		
+		$("#delBtn")
+		
 	});
-	
+	<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 	var cartCnt = ${fn:length(cart)};
 	function minus(no){
 		// 구매수량, 수량에 따른 가격 처리
@@ -89,6 +94,7 @@
 		var price = Number($("#price"+no).text());
 		$("#tot"+no).text(cnt*price);
 		var point = cnt*price*0.01;
+		// 반올림처리
 		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
 	}
 	function plus(no){
@@ -99,6 +105,7 @@
 		var price = Number($("#price"+no).text());
 		$("#tot"+no).text(cnt*price);
 		var point = cnt*price*0.01;
+		// 반올림처리
 		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
 	}
 	
@@ -112,6 +119,7 @@
 			<h2></h2>
 		</header>
 		<form method="post">
+			<input type="hidden" name="proc"/>
 			<div class="cart-wrap">
 				<table class="cart-table-th">
 					<colgroup>
@@ -144,7 +152,7 @@
 						<tr>
 							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
 							<td>
-								<span>${cart.parts_img}</span><span>${cart.parts_name}</span>
+								<span class="product-img" style="background-image:url('image/CPU/${cart.parts_img}')" ></span><span>${cart.parts_name}</span>
 							</td>
 							<td style="text-align:center">
 								<div class="pd_count">
@@ -178,7 +186,7 @@
 		
 		<div class="btn-order-ctrl">
 			<div class="btn0">
-				<div class="box_btn white huge"><a href="javascript:basket_multidel()">선택삭제</a></div>
+				<div class="box_btn white huge" id="delBtn"><a href="javascript:basket_multidel()">선택삭제</a></div>
 			</div>
 			<div class="btn1">
 				<input class="btn" type="button" name="selBtn" value="선택주문"/>

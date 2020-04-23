@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import z01_vo.Nk;
+
 /**
  * Servlet implementation class AsCtrl
  */
@@ -31,6 +33,7 @@ public class AsCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		// 1. 요청
+		String proc = Nk.toStr(request.getParameter("proc"));
 		// 2. Model
 		request.setAttribute("asList", service.asList());
 		// 3. View

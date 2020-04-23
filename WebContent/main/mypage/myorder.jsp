@@ -11,13 +11,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.orderlist-cont{width:1080px; margin:0px auto; min-height:600px;}
-	.order-list-table {text-align:center; margin:0 auto; border-top: 2px solid #000; border-bottom:1px solid #797979; border-spacing:0; border:0;
+	.orderlist-cont{width:1080px; margin:0px auto; min-height:700px;}
+	.order-list-table {text-align:center; margin:0 auto; border-top: 2px solid #000; border-bottom:1px solid #797979; border-spacing:0; 
     border-collapse:collapse; width:100%;}
-    .order-list-table thead {display: table-header-group; vertical-align: middle; border-color: inherit;}
+    .order-list-table thead {display: table-header-group; vertical-align: middle; border-color:inherit;}
     .order-list-table thead tr th {text-align: center; padding: 0; height: 50px; font-size: 13px;}
     .order-list-table tbody {font-size: 12px;}
-    .order-list-table tbody tr.first-tr td {border-top: 1px solid #797979; padding-top: 15px;}
+    .order-list-table tbody tr.first-tr td {border-top:1px solid #797979; padding-top: 15px;}
     .order-list-table tbody tr td {padding: 5px 0;}
     .date {padding-bottom: 15px;}
     .date a {text-align: left; cursor: pointer; font-size: 12px;}
@@ -29,7 +29,8 @@
     .product-name {margin-left: 10px; max-width: 263px;}
     .product-name div {display: block; font-weight: bold;}
     .option {line-height: 1em; font-size: 11px; color: #797979; font-weight: normal;}
-    .total-price {font-weight: bold;}
+    .price{text-align:right; padding-right:20px;}
+    .total-price {font-weight: bold; text-align:right; padding-right:20px;}
     .service {padding-bottom: 15px;font-size: 12px;}
     .line {text-decoration: underline;color: #353535;}
 
@@ -47,7 +48,7 @@
 	
 	<jsp:include page="../myPageTop.jsp"/>
 	<div class="orderlist-cont">
-		<h2></h2>
+		<h2>주문/배송조회</h2>
 		
 		<table class="order-list-table">
 			<colgroup>
@@ -71,7 +72,7 @@
 			<c:if test="${not empty olist}">
 			<tbody id="list">
 				<c:forEach var="olist" items="${olist}">
-				<tr>
+				<tr class="first-tr">
 					<td class="date">
 						<a href="#주문상세내역">
 							<div class="ordernum-container">
@@ -81,7 +82,7 @@
 						</a>
 					</td>
 					<td class="product">
-						<div class="product-img" >${olist.parts_img}</div>
+						<div class="product-img" style="background-image:url('image/Computer/${olist.parts_img}')" ></div>
 						<a href="#상품페이지">
 							<div class="product-name">
 								<div class="main">${olist.parts_name}</div>
@@ -89,8 +90,8 @@
 						</a>
 					</td>
 					<td class="quantity">${olist.req_cnt}</td>
-					<td class="price">${olist.req}</td>
-					<td class="total-price">${olist.total}</td>
+					<td class="price"><fmt:formatNumber type="number" value="${olist.req}"/> 원</td>
+					<td class="total-price"><fmt:formatNumber type="number" value="${olist.total}"/> 원</td>
 					<td class="service">
 						<div>${olist.ord_stat}</div>
 					</td>

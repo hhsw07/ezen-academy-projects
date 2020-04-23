@@ -46,6 +46,34 @@ public class AsDao {
 		return asList;
 	}
 	
+	public ArrayList<Myorder> getOrder(){
+		ArrayList<Myorder> order = new ArrayList<Myorder>();
+		try {
+			setCon();
+			String sql = "SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req, c.ord_date\r\n" + 
+					"FROM p5_request pr, \r\n" + 
+					"	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c\r\n" + 
+					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no  \r\n" + 
+					"AND c.mem_id='ezen01'\r\n" + 
+					"ORDER BY ord_no ASC";
+			pstmt = con.prepareStatement(sql);
+			//pstmt.setString(1, "ezen01");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				order.add(new Myorder(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4), rs.getInt(5),rs.getDate(6)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return order;
+	}
+	
 	public void applyAs(As ins) {
 		try {
 			setCon();
@@ -75,16 +103,33 @@ public class AsDao {
 		}
 	}
 	
-	public As getAs(int as_no) {
-		As as = new As();
+	public ArrayList<As> getAs(int as_no) {
+		ArrayList<As> asdetail = new ArrayList<As>();
 		try {
 			setCon();
-			String sql = "";
+			String sql = "SELECT as_cate, mem_id, as_date, pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, a.parts_price, c.ord_date, as_detail, as_comm, as_comdate\r\n" + 
+					"FROM P5_AS d, p5_request pr, \r\n" + 
+					"	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c\r\n" + 
+					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no  \r\n" + 
+					"AND d.ORD_NO = c.ORD_NO\r\n" + 
+					"AND as_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, as_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				asdetail.add(new As(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5),rs.getString(6),
+						rs.getDate(7),rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11),rs.getDate(12)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return as;
+		return asdetail;
 	}
 
 	public static void main(String[] args) {

@@ -34,12 +34,25 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("");
-		var tot = 0;
-		var plus = 0;
-		var minus = 0;
-		
+		var point[] = $(".calpt").text();
+		console.log(point[1]);
 		
 	});
+	<%--
+	var tot = 0;
+	var plus = 0;
+	var minus = 0;
+	var cnt = ${fn:length(ptList)};
+	for(var idx=0;idx<cnt;idx++){
+		if(${ptList.point_pt}<0){
+			minus += ${ptList.point_pt};
+		}
+		if(${ptList.point_pt}>=0){
+			plus += ${ptList.point_pt};
+		}
+	}
+	tot = plus + minus;
+	--%>
 </script>
 </head>
 <body>
@@ -55,15 +68,15 @@
 						<div class="pointinfo_show">
 							<div class="point-info">
 								<div class="point-info-tit">사용가능 포인트</div>
-								<div class="point-info-p"><fmt:formatNumber value="7035"/> p</div>
+								<div class="point-info-p"><fmt:formatNumber value="0"/> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">총 적립 포인트</div>
-								<div class="point-info-p"><fmt:formatNumber value="20920"/> p</div>
+								<div class="point-info-p"><fmt:formatNumber value="0"/> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">사용한 포인트</div>
-								<div class="point-info-p"><fmt:formatNumber value="-13885"/> p</div>
+								<div class="point-info-p"><fmt:formatNumber value="0"/> p</div>
 							</div>
 						</div>
 					</div>
@@ -94,10 +107,10 @@
 										<td class="point-td" style="padding-left:70px;">${pt.point_detail}</td>
 									<c:choose>
 										<c:when test="${pt.point_pt<0}">
-											<td style="text-align:right; padding-right:100px;" class="point-td"><fmt:formatNumber value="${pt.point_pt}"/> p</td>
+											<td style="text-align:right; padding-right:100px;" class="point-td"><span class="calpt"><fmt:formatNumber value="${pt.point_pt}"/></span> p</td>
 										</c:when>
 										<c:when test="${pt.point_pt>=0}">
-											<td style="text-align:right; padding-right:100px;" class="point-td txt-color-r" >+<fmt:formatNumber value="${pt.point_pt}"/> p</td>
+											<td style="text-align:right; padding-right:100px;" class="point-td txt-color-r" >+<span class="calpt"><fmt:formatNumber value="${pt.point_pt}"/></span> p</td>
 										</c:when>
 									</c:choose>
 									</tr>

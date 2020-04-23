@@ -28,6 +28,17 @@ public class Myorder {
 		this.ord_date = ord_date;
 		this.ord_stat = ord_stat;
 	}
+	
+	public Myorder(int ord_no, String parts_img, String parts_name, int req_cnt, int req, Date ord_date) {
+		super();
+		this.ord_no = ord_no;
+		this.parts_img = parts_img;
+		this.parts_name = parts_name;
+		this.req_cnt = req_cnt;
+		this.req = req;
+		this.ord_date = ord_date;
+	}
+	
 	public int getOrd_no() {
 		return ord_no;
 	}

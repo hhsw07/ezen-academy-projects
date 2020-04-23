@@ -23,7 +23,6 @@ public class PayService {
 		int req_no = Nk.toInt(request.getParameter("req_no"));
 		int req_cnt = Nk.toInt(request.getParameter("req_cnt"));
 		return dao.getCart(req_no, req_cnt);
-		
 	}
 	
 	public void insOrder(HttpServletRequest request, String mem_id){

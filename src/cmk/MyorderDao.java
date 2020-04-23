@@ -39,7 +39,7 @@ public class MyorderDao {
 					"	ORDER BY ord_no ASC) d\r\n" + 
 					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no \r\n" + 
 					"AND c.mem_id='ezen01'\r\n" + 
-					"ORDER BY ord_no asc";
+					"ORDER BY ord_no DESC";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -72,7 +72,7 @@ public class MyorderDao {
 					"	ORDER BY ord_no ASC) d\r\n" + 
 					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no \r\n" + 
 					"AND c.mem_id=?\r\n" + 
-					"ORDER BY ord_no asc";
+					"ORDER BY ord_no DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "ezen01");
 			rs = pstmt.executeQuery();

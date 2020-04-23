@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.cs-content{min-height:750px;}
+	.cs-content{min-height:800px;}
 	.as-title{width:1080px; margin:0 auto;}
 	.cs-wrap{width:1080px; margin:0 auto;}
 	.cs-menu{width:160px; height:40px; outline:none; margin-bottom:20px; font-size:20px;}
@@ -24,8 +24,8 @@
 	.as-search{width:1080px; margin:20px auto; vertical-align:center;}
 	
 	.input-box{width:250px; height:35px; outline:none; padding:0; margin:0; cursor:pointer;}
-	.search-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
-	.reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
+	.search-btn{width:80px; height:40px; background-color:#63145F; color:white; border:none; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
+	.reg-btn{width:80px; height:40px; background-color:#63145F; color:white; border:none; font-size:20px; outline:none; padding:0; margin:0; cursor:pointer;}
 	
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
@@ -41,6 +41,7 @@
 		<header class="as-title">
 			<h2></h2>
 		</header>
+	<div style="min-height:700px;">
 		<div class="cs-wrap">
 			<select name="cs-menu" class="cs-menu">
 		      <option>공지사항</option>
@@ -83,7 +84,7 @@
 			</c:if>
 			</table>
 		</div>
-		
+	</div>
 		<div class="as-search">
 			<span style="margin-right:150px">
 				<input class="input-box" type="text">
