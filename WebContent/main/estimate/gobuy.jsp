@@ -21,13 +21,19 @@
 <%--
 
 --%>
-		location.href="${path}/main";
+		$("form").submit();
+		
+		
 	});
 </script>
 </head>
 
 <body>
 <h2 align="center"></h2>
-
+<form action="${path}/order">
+	<input type="hidden" name="proc" value="${param.proc}"/>
+	<input type="hidden" name="req_no" value="${param.req_no}"/>
+	<input type="hidden" name="req_cnt" value="${param.req_cnt}"/>
+</form>
 </body>
 </html>

@@ -11,7 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" href="${path}/a00_com/a00_com.css" > -->
 <style>
 	body{margin:0 auto; padding:0; width:100%;}
     a{text-decoration:none;}
@@ -48,11 +47,12 @@
 	          
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script type="text/javascript">
 	var proc = "${param.proc}";
 	var parts_mc = "${parts_mc}";
 	var parts_com = "${parts_com}";
-	
+	var cartCnt = "${fn:length(ecart)}";
 	$(document).ready(function(){
 <%--
 
@@ -88,6 +88,10 @@
 			 $("form").submit();
 			 
 		 });
+		
+		
+		
+		
 		
 	});
 	// regCart 버튼 클릭시 카트에 부품 등록
@@ -125,6 +129,9 @@
 	function buy(){
 		if(confirm("구매하시겠습니까?")){
 			$("[name=proc]").val("buy");
+			var parts_prices = $(".parts_price").text();;
+			
+			$("[name=com_price]").val();
 			$("[name=parts_mc]").val(parts_mc);
 			$("form").submit();
 		}
@@ -499,7 +506,7 @@
 					<col width="20%">
 					<col width="10%">
 					
-					<c:forEach var="prod" items="${plist}">
+					<c:forEach var="prod" items="${plist}" varStatus="status">
 					<tr>
 						<td><img src="${path}/image/parts/${prod.parts_img}" style="width:60px;"/></td>
 						<td>${prod.parts_name}</td>
@@ -542,7 +549,6 @@
 					<th>등록일</th>
 				</tr>
 		<!-- 글목록  -->	
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 				<c:forEach var="asq" items="${asqlist}" varStatus="status">
 						<tr onclick="goAsq(${asq.asq_no})">
 							<td style="text-align:center;">${fn:length(asqlist) - status.count + 1}</td>
