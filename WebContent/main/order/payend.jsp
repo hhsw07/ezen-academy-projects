@@ -10,19 +10,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/a00_com/a00_com.css">
+<style type="text/css">
+	section{min-height:800px;}
+	.payend{margin:20px auto; text-align:center; width:1080px; padding-top:250px; font-size:30px; font-weight:700;}
+	
+</style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	<%-- 
 		
 	--%>
-		$("h2").text("시작");
+		$("h2").text("");
 	});
 </script>
 </head>
 <body>
-	<h2></h2>
+	<jsp:include page="../top.jsp"/>
+	
+	<section>
+		<h2></h2>
+		<div class="payend">
+			구매가 완료되었습니다
+		</div>
+	</section>
+	
+	<jsp:include page="../bottom.jsp"/>
+	
 	
 </body>
 </html>

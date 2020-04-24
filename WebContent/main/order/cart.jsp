@@ -101,7 +101,6 @@
 		// 반올림처리
 		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
 		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		// 반올림처리
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 	}
 	function plus(no){
@@ -113,10 +112,10 @@
 		var tot = cnt*price;
 		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
+		// 반올림처리
 		var point = cnt*price*0.01;
 		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
 		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		// 반올림처리
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 	}
 	
@@ -162,8 +161,8 @@
 										
 						<tr>
 							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
-							<td style="vertical-align:middle;">
-								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span>${cart.parts_name}</span>
+							<td>
+								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
 							</td>
 							<td style="text-align:center">
 								<div class="pd_count">
@@ -177,7 +176,6 @@
 								<fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
 							<td class="fmtnum"  id="tot${status.count}" >
 								<input type="hidden" value="${cart.parts_price*cart.req_cnt}"/>
-								<%-- <span  id="tot${status.count}">${cart.parts_price*cart.req_cnt}</span> 원 --%>
 							<fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원
 							
 							</td>

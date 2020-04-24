@@ -74,13 +74,21 @@ INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval,?, 
 SELECT max(ord_no) FROM p5_order
 WHERE MEM_ID = 'ezen01';
 -- 받은 주문번호를 통해 상품, 수량 담기
-INSERT INTO p5_request VALUES (?, ?, ?, ?)
--- 결제방법과 구매금액, 사용한 포인트, 최종 결제금액
-INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?)
+INSERT INTO p5_request VALUES (?, ?, ?, ?);
+-- 주문번호 결제방법 사용한 포인트, 최종 결제금액
+INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?);
+-- 포인트사용
+SELECT b.lastpay, a.pay_point, a.pay_price 
+FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
+WHERE a.PAY_NO = lastpay;
+
+INSERT INTO p5_point VALUES (p5_point_seq.nextval, 'ezen01',sysdate,'상품구매사용',사용포인트)
 -- 재고 수정
 UPDATE P5_PARTS
 SET PARTS_STOCK = PARTS_STOCK - req_cnt
 WHERE PARTS_NO = req_no
+-- 포인트적립
+INSERT INTO p5_point VALUES (p5_point_seq.nextval, 'ezen01',sysdate,'상품구매적립',CEIL((총 금액-사용포인트)*0.01))
 
 -- 카트담기
 SELECT parts_no, parts_img, parts_name, parts_price 
@@ -88,14 +96,6 @@ FROM (SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
 	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) 
 WHERE parts_no=10;
 
-
-(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) FROM p5_request pr, 
-(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
-UNION
-SELECT com_no, com_name, com_price FROM p5_computer) a
-WHERE pr.REQ_NO = a.parts_no
-GROUP BY ord_no
-ORDER BY ord_no ASC) d;
 
 -----------------------------------------------------------------------------------------
 -- 포인트조회
@@ -159,9 +159,8 @@ AND as_no=1;
 -- AS 신청
 INSERT INTO p5_as VALUES (p5_as_seq.nextval, 2001221001,'AS','컴퓨터가 안켜져요',to_date('2020-02-22','YYYY-MM-DD'),'고객님의 회원정보에 등록된 연락처로 연락드렸습니다',to_date('2020-02-24','YYYY-MM-DD'));
 
-
-
-
+SELECT max(as_no) FROM P5_AS;
+INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 1, to_date('2020-02-26','YYYY-MM-DD'), '완료','유선을 통한 점검 후 AS진행',0);
 
 
 
