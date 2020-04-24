@@ -56,7 +56,7 @@ $(document).ready(function(){
 			<input type="hidden" name="proc" value="logout"/>
 				<ul>
 				<c:choose>
-					<c:when test="${mem.mem_id==null}">	
+					<c:when test="${empty mem.mem_id}">	
 						<li><a href="SCenter">고객센터</a></li>
 						<li><a href="login">로그인</a></li>
 					</c:when>
