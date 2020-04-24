@@ -594,15 +594,17 @@ public class A01_AssemblyDao {
 	}
 
 
-	public void updateCom(int com_no) {
+	public void updateCom(int com_no, int tot) {
 		try {
 			setcon(); // Connection 객체가 메모리 로딩.
 			String sql = "UPDATE P5_COMPUTER\r\n" + 
-					"SET COM_KIND = '개인사양'\r\n" + 
+					"SET COM_KIND = '개인사양',\r\n" + 
+					"    COM_PRICE = ?\r\n" + 
 					"WHERE COM_NO = ?";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, com_no);
+			pstmt.setInt(1, tot);
+			pstmt.setInt(2, com_no);
 			// 실행
 			pstmt.executeUpdate();
 			con.commit();
@@ -663,6 +665,35 @@ public class A01_AssemblyDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+
+	// 견적낸 부품의 총가격
+	public int getTot(int com_no){
+		int tot = 0;
+		try {
+			setcon();
+			String sql = "SELECT sum(b.PARTS_PRICE )\r\n" + 
+					"FROM P5_ASSEMBLY a, P5_PARTS b\r\n" + 
+					"WHERE a.PARTS_NO = b.PARTS_NO\r\n" + 
+					"AND a.COM_NO = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, com_no);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				tot = rs.getInt(1);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tot;
 	}	
 		
 	

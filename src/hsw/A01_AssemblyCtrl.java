@@ -152,7 +152,6 @@ public class A01_AssemblyCtrl extends HttpServlet {
 			if(session.getAttribute("mem") != null) {
 				service.regEstimate(request,com_no);
 				// com 상태 변경.
-				
 				service.updateCom(com_no);
 				System.out.println("mem 있음");
 				page = "main\\estimate\\gobuy.jsp?req_no="+com_no+"&req_cnt=1";
