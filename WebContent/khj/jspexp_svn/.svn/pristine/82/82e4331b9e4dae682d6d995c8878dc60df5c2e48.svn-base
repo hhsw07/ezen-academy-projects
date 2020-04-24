@@ -1,0 +1,94 @@
+package jspexp.z01_vo;
+
+import java.util.Date;
+
+public class Product2 {
+	private int sno;
+	private int div;
+	private String kind;
+	private String name;
+	private String img;
+	private int price;
+	private int cnt;
+	private Date regdte;
+	private Date uptdte;
+
+	public Product2() {
+		super();
+		// TODO Auto-generated constructor stub
+	}	
+	// sno, b.val kind, name, img, price, cnt, regdte, uptdte
+	public Product2(int sno, String kind, String name, String img, int price, int cnt, Date regdte, Date uptdte) {
+		super();
+		this.sno = sno;
+		this.kind = kind;
+		this.name = name;
+		this.img = img;
+		this.price = price;
+		this.cnt = cnt;
+		this.regdte = regdte;
+		this.uptdte = uptdte;
+	}	
+	
+	
+	
+	public int getSno() {
+		return sno;
+	}
+
+
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
+	
+	
+	public int getDiv() {
+		return div;
+	}
+	public void setDiv(int div) {
+		this.div = div;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public Date getRegdte() {
+		return regdte;
+	}
+	public void setRegdte(Date regdte) {
+		this.regdte = regdte;
+	}
+	public Date getUptdte() {
+		return uptdte;
+	}
+	public void setUptdte(Date uptdte) {
+		this.uptdte = uptdte;
+	}
+	
+}

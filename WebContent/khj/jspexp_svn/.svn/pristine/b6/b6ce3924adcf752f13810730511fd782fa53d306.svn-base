@@ -1,0 +1,22 @@
+package jspexp.c01_mvc;
+
+import java.util.ArrayList;
+
+import jspexp.b01_database.A03_ShoppingDao;
+import jspexp.z01_vo.Product2;
+
+public class A05_ProductService {
+	
+	private A03_ShoppingDao dao;
+
+	public A05_ProductService() {
+		super();
+		// TODO Auto-generated constructor stub
+		dao = new A03_ShoppingDao();
+	}
+	public ArrayList<Product2> getProductList(Product2 sch){
+		return dao.plist(sch);
+	}
+	
+	
+}

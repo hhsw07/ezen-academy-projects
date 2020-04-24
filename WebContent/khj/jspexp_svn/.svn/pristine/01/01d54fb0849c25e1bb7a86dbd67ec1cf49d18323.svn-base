@@ -1,0 +1,45 @@
+package jspexp.c01_mvc;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import jspexp.b01_database.A03_ShoppingDao;
+import jspexp.z01_vo.Product2;
+import jspexp.z02_util.Nk;
+
+public class A05_ProductService {
+	
+	private A03_ShoppingDao dao;
+
+	public A05_ProductService() {
+		super();
+		// TODO Auto-generated constructor stub
+		dao = new A03_ShoppingDao();
+	}
+	public ArrayList<Product2> getProductList(HttpServletRequest request){
+		String name=  Nk.toStr(request.getParameter("name"));
+		int frPrice=  Nk.toInt(request.getParameter("frPrice"));
+		int toPrice=  Nk.toInt(request.getParameter("toPrice"),999999999);
+		return dao.plist(new Product2(name, frPrice,toPrice));
+	}	
+	// 등록 처리.
+	public void insertProduct(HttpServletRequest request) {
+		int div = Nk.toInt(request.getParameter("div"));
+		String name=  Nk.toStr(request.getParameter("name"));
+		String img=  Nk.toStr(request.getParameter("img"));
+		int price = Nk.toInt(request.getParameter("price"));
+		int cnt = Nk.toInt(request.getParameter("cnt"));
+		String etc=  Nk.toStr(request.getParameter("etc"));
+		dao.insertProduct(new Product2(div, name, img, price, cnt, etc));
+	}
+	public Product2 detailProduct(HttpServletRequest request) {
+		int sno = Nk.toInt(request.getParameter("sno"));
+		return dao.getProduct2(sno);
+	}
+	
+}
+
+
+
+

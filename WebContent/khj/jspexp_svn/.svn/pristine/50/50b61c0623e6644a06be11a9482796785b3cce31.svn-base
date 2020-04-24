@@ -1,0 +1,78 @@
+1. request객체와 response객체의 차이점을 기술하세요.
+
+
+2. 요청값을 처리할 때, get방식과 post방식이 있다. 이 방식을 처리할 때 처리 코드와 차이점을 기술하세요.
+query String으로 데이터를 전달할 때 사용하는 방식으로 get방식은 url을 통해서 쿼리스트링(query String)을
+전달하고 전달할 데이터는 제한이 있다.
+post방식은 url이 아닌 body에서 @@@@
+
+
+1) get방식에서는 ?key=value&key=value 형식으로 주소 뒤에 붙어 나오지만, post방식에서는 볼 수 없다.
+2) form 태그의 method 속성으로 get/post 설정이 가능하다. default는 get방식
+
+3. 회원등록에서 등록된 id일때, 다시 등록하라고 메시지를 처리할 때 request 객체를 이용해서 처리하세요.
+	id:[  ][등록여부확인]
+
+
+4. 공통의 서버의 절대 경로를 설정하여, 이미지와 lib 위치를 접근하려고 한다. 해당 request하위 메서드를 기술하고,
+기본위치를 기술하세요.
+1) request.getContextPath() 메서드를 통해 서버의 WebContent폴더 기본위치로 경로를 설정할 수 있다.
+ex) String path = request.getContextPath();
+	<%=path %>/a00_img/img01.jpg
+
+
+5. 웹 화면에 현재 접속한 client의 ip를 list로 출력하려고 한다. 해당 프로그램을 처리하세요.
+ex)	
+	<h1>접속한 client의 ip</h1>
+<%
+String ip = request.getRemoteAddr();
+%>
+	<h2>ip주소:<%=ip %></h2>
+
+
+6. 장바구니에 list한 물건 중에, check한 목록만 최종결제하려고 한다.
+	요청 객체를 이용하여 처리하세요.
+	장바구니
+	[] 물건명
+	[] 사과
+	[] 바나나
+	[] 딸기
+	[최종결제목록] ==> 클릭시
+	결제목록
+	###
+	###
+ex) <h1>장바구니</h1>
+	<form>
+		<label><input type="checkbox" name="product" value="사과" />사과</label><br>
+		<label><input type="checkbox" name="product" value="바나나" />바나나</label><br>
+		<label><input type="checkbox" name="product" value="딸기" />딸기</label><br>
+		<input type="submit" value="최종결제목록" />
+	</form>
+<%
+String[] products = request.getParameterValues("product");
+
+if(products !=null){
+%>
+	<h2>결제목록</h2>
+<%	for(String prod : products){ %>
+		<h2><%=prod %></h2>	
+<%	}
+} %>	
+
+
+7. 성년/미성년자에 따라서, 이동되는 페이지가 다르게 처리하려고 한다. response객체를 이용하여 처리하세요.
+	()성년 ()미성년	[페이지이동]
+ex)	<form>
+		<label><input type="radio" name="isAdult" value="성년"/>성년</label><br>
+		<label><input type="radio" name="isAdult" value="미성년"/>미성년</label><br>
+		<input type="submit" value="페이지이동" />
+	</form>
+<%
+String isAdult = request.getParameter("isAdult");
+if(isAdult != null){
+	if(isAdult.equals("성년")){
+		response.sendRedirect("a14_isAdultY.jsp");
+	}else{
+		response.sendRedirect("a14_isAdultN.jsp");
+	}
+} %>	

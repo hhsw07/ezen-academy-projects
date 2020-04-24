@@ -1,0 +1,34 @@
+1. jsp의 session scope의 범위별로 4가지 객체를 기술하세요.
+pageContext : 페이지범위, request : 요청범위,
+session : 세션 범위(브라우저단위), application(서버단위) 
+2. session 객체를 이용하여, 로그인한 회원의 정보를 페이지가
+닫힐 때까지 계속 유지되도록 코드 처리하세요. 회원 정보(아이디,
+이름, 포인트)
+WebContent\z01_exp\a0311_sessionLogin.jsp
+
+3. 웹서버에서 지정한 file 서버의 물리적 위치를 지정하여, 해당
+서버를 통해 처리하고자 한다. 해당 물리적위치를 지정하고, 호출하여
+사용하자.
+web.xml : 
+  <context-param>
+  	<param-name>fileServer</param-name>
+	<param-value>C:\a01_javaexp\workspace_web\jspexp\WebContent\z01_fileLoc</param-value>  
+  </context-param> 
+
+@@.jsp : 
+	application.getInitParameter("fileServer") 
+4. out객체의 buffer 메모리를 확인하고,  버퍼를 플러시 할 때,
+사용되는 메서드를 기술하세요.
+	out.getBufferSize()
+	out.flush()
+5. 로그인 id/pass을 입력하고, 남/여에 따른 사이트가 다르게 이동될때,
+로그인한 id가 해당 사이트까지 전송되게 처리할려고 한다.
+session 4가지 객체 중, 하나를 활용하여 처리하세요.
+ 로그인
+ID [    ]   ==> Gentleman  @@@님 환영합니다.
+PWD [    ]  ==> Lady @@님 환영합니다. 
+()남 ()여
+ [로그인]
+
+
+

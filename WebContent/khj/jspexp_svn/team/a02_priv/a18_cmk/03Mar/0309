@@ -1,0 +1,81 @@
+ 1. url의 구성요소를 
+	http://192.168.0.23:7080/jspexp/a01_start.jsp?id=himan&pass=7777
+	를 기준으로 구분하여 기술하세요
+	- http : 프로토콜
+	- 192.168.0.23 : 호스트
+	- :7080 : 포트
+	- jspexp : 경로
+	- a01_start : 파일명
+	- .jsp : 확장자명
+	- id=himan&pass=7777 : 페이지에 전달하려는 요청값
+
+ 2. jsp화면을 크게 구분하여 상단/body에 들어갈 요소를 기술하세요
+ 	디렉티브 / 스크립트 jsp코드
+
+ 3. 스크립트 요소 3가지를 구구단 프로그램을 기준으로 예를 들어 설명하세요
+		<!-- 선언부 -->
+		<%!
+			public int multi(int grade, int cnt){
+				return grade*cnt;
+			}
+		%>
+		<table>
+		<!-- 스크립트릿 -->
+		<%
+			for(int cnt=1;cnt<=9;cnt++){%>
+				<tr>
+				<%
+				for(int grade=2;grade<=9;grade++){ %>
+					<!-- 표현식 -->
+					<td><%=grade %>X<%=cnt %>=<%=multi(grade,cnt) %></td>
+		<%		}%>
+				</tr>
+		<%	}%>
+		</table>
+		
+ 4. page 디렉티브 중에 contentType은 어떤 역할을 하는 속성인지 기술하세요
+ 	- jsp가 생성할 문서의 타입을 지정한다. 응답 결과의 출력형태 지정
+
+ 5. java 클래스로 물건명, 가격, 개수를 정의하여 jsp에서 활용하고자 한다. 해당 코드를 처리하는 순서와 코드를 기술하세요
+ 		Product.java --> src폴더에서 패키지 지정 후 선언
+		import="jspexp.z01_vo.Product" --> java클래스 사용하기 위해 호출
+		<%
+		Product p = new Product("오렌지", 3000, 2); // 물건명, 가격, 개수 정의
+		%>
+		// 출력
+		<h2>과일명:<%=p.getName() %></h2>
+		<h2>가격:<%=p.getPrice() %>원</h2>
+		<h2>개수:<%=p.getCnt()%>개</h2>
+
+ 6. ?name=홍길동&age=25&loc=강남 이라는 url 매개변수 값을 jsp에서 처리하고자 한다. 
+	jsp 기본객체를 통해서 위 요청값을 처리하되 null일 때는 ""로, 숫자는 0으로 처리되게 하여 h1에서 이름:@@@ 나이:@@ 사는곳:@@이 화면에 나오게 코드하세요
+		<%
+		String name = request.getParameter("name");
+		if(name==null) name="";
+		String strAge = request.getParameter("age");
+		int age = 0;
+		if(strAge!=null) age=Integer.parseInt(strAge);
+		String loc = request.getParameter("loc");
+		if(loc==null) loc="";
+		%>	
+		<h1>이름:<%=name %> 나이:<%=age %> 사는곳:<%=loc %></h1>
+	
+ 7. jsp 코드를 이용하여 3X3테이블에 임의의 무지개 색상을 각 cell의 배경 색상으로 나타나게 for문으로 이용하여 처리하세요
+	<table border>
+	<%
+	String []rainbow = {"red","orange","yellow","green","blue","navy","purple"};
+	for(int idx=0;idx<9;idx++){
+		int color = (int)Math.random()*7;
+		if(idx%3==0){%>
+			<tr>
+		<%} %>
+			<th style="background-color:<%=rainbow[color]%>;"><%=idx %></th>
+	<%	if(idx%3==2){	%>
+			</tr>
+		<%}
+	} %>
+	</table>
+ 
+ 8. jsp의 내장 객체가 무엇인지 기술하세요
+ 	- jsp에서 기본적으로 제공되어 사용할 수 있는 객체로 별도 선언 없이 사용할 수 있다
+ 	- 내장객체는 스크립트릿 안에서만 사용할 수 있다

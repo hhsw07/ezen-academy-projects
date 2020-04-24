@@ -1,0 +1,113 @@
+1. url의 구성요소를
+http://192.168.0.23:7080/jspexp/a01_start.jsp?id=himan&pass=777
+를 기준으로 구분하여 기술하세요.
+
+:	http[통신프로토콜], 192.168.0.23[호스트의 ip주소], 7080[포트번호], [jspexp/a01_start.jsp]
+	디렉토리 및 파일명, [?id=himan&pass=777] 쿼리의 key값과 value
+	
+2. jsp화면을 크게 구분하여, 상단/body에 들어갈 요소를 기술하세요.
+
+:	상단
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    ---->   디렉티브 구문
+	1) 형식 %@ 디렉티브이름 속성=속성값 속성=속성값
+    1) page : jsp 페이지에 대한 정보를 지정.
+		- 문서의 타입, 출력 버퍼의 크기, 에러 페이지 등 정보 지정.
+		
+	body
+	# 스크립트릿(scriptlet)
+	1. 자바 코드를 실행할 때, 사용되는 코드의 블럭.
+	2. 구조  자바코드%% 
+	# 표현식(Expression)
+	1. 값을 출력 결과에 포함시키고자 할 때, 사용
+	2. 선언부 형식
+		%!
+		public int sum(int price, int cnt){
+			return price*cnt;
+		}
+		%
+		
+3. 스크립트요소 3가지를 구구단프로그램을 기준으로 예를 들어 설명하세요.
+	
+	1) 스크립트릿(scriptlet)
+	2) 표현식(expression)
+	3) 선언부(declaration)
+	
+	: 
+	<ul>
+	<% for(int i=2; i<=9; i++){ 
+		 for(int j=1; j<=9; j++){%>
+			<li><%= i%>X<=% j%>=<%=i*j%><li>
+		<% }
+	}%>
+	</ul>
+	스크립트릿은 내부에 자바코드를 사용할 수 있다.
+	표현식은 html태그 안에 자바 코드의 변수를 대입할 수 있다.
+	선언부는 클래스를 사용하는 코드의 경우 클래스를 선언할 수 있다. 	
+	
+	
+4. page 디렉티브 중에 contentType는 어떤 역할을 하는 속성인지를 기술하세요.
+	:	contentType는 해당 jsp파일이 어떤 파일형식으로 컴파일 될지 결정한다.
+	
+5. java 클래스로 물건명, 가격, 갯수를 정의하여, jsp에서 활용하고자 한다.해당 코드를 처리하는 순서과 코드를 기술하세요.
+	:
+	
+	class 물건{
+		String 물건명;
+		int 가격;
+		int 갯수;
+		물건(String 물건명, int 가격, int 갯수){
+			this.물건명=물건명;
+			this.가격=가격;
+			this.갯수=갯수;
+		}
+	jsp코드 내
+	<% 물건 p1=new 물건("냉장고", 1000000, 1); %>
+	
+	<h1> 물건명:<%=p1.물건명%> 가격:<%=p1.가격%> 갯수:<%=p1.갯수%> </h1>
+		
+6. &name=홍길동&age=25&loc=강남이라는 url매개변수 값을 jsp에서 처리하고 jsp 기본객체를 통해서 위 요청값을 처리하되 null일
+때는 문자열을 ""으로 숫자는 0으로 처리되게 하여 h1에서 이름:@@@ 나이:@@ 사는 곳 : @@이 화면에 나오게 코드하세요.
+
+:	<%
+	String name = "";
+	if(request.getParameter("name")!=null){
+		name = request.getParameter("name");
+	}
+	int age=0;
+	if(request.getParameter("age")!=null){
+		age=Integer.parseInt(request.getParameter("age"));
+	}
+	String loc ="";
+	if(request.getParameter("loc")!=null){
+		loc=request.getParameter("loc");
+	}
+	%>
+	
+	<h1> 이름:<%=name%> 나이:<%=age%> 사는 곳 <%=loc %>
+7. jsp코드를 이용하여 3X3 테이블에 임의의 무지개 색상을 각 cell의 배경으로 나타나게 for문으로 이용하여 처리하세요.
+
+:	<% String[] ranColor={"Red", "Orange", "Yellow", "Green", "Blue", "Navy", "Purple"};
+	%>
+	
+	<table>
+	<%for(int i=0; i<3; i++){%>
+		<tr>
+		<%for(int j=0; j<3; j++){ 
+			int ranNum=Math.random()*7;%>
+			<td style="background-color:<%=ranColor[ranNum]%></td>
+		<%}%>
+		</tr>
+	<%}%>
+	<table>
+		
+8. jsp의 내장 객체가 무엇인지 서술하시오.
+
+:	jsp는 서블릿을 쉽게 사용할 수 있도록 구현한 servlet java 클래스 기반이기에 service(HttpServeletRequest
+	request, HttpServletResponse response)플 메서드 block으로 감싸고 있고
+	필요하는 공통 객체를 선언해 놓았기에, 내장 객체는 참조값으로 바로 사용할 수 있다.
+	request : 용청객체
+	response : 반응(응답 객체
+	session : session 객체
+	out : 출력객체 등이 내장 객체로 활용된다.

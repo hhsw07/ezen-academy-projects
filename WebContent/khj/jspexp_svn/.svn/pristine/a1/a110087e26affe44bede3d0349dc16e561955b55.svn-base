@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="java.util.ArrayList,jspexp.z01_vo.*,jspexp.b01_database.*"
+    %>
+<%request.setCharacterEncoding("utf-8");
+String path = request.getContextPath();%>     
+<!DOCTYPE html>
+<%--
+
+ --%>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" 
+	href="<%=path%>/a00_com/a00_com.css">
+</head>
+<%--
+	3) 화면 UI 변경
+		물건명 : [    ]
+		가격 :[    ] ~ [    ]
+		[검색]		
+	ex) 화면 UI 변경, 요청값 전달 처리 조회 데이터 list
+		처리..
+ --%>
+<%
+A03_ShoppingDao dao = new A03_ShoppingDao();
+//System.out.println(dao.plist().size());
+String name=request.getParameter("name"); if(name==null) name="";
+int frPrice=0;
+String frPriceS=request.getParameter("frPrice");
+if(frPriceS!=null) frPrice=Integer.parseInt(frPriceS);
+int toPrice=999999;
+String toPriceS=request.getParameter("toPrice");
+if(toPriceS!=null) toPrice=Integer.parseInt(toPriceS);
+Product sch = new Product(frPrice, toPrice, name);
+
+%>
+<body>
+<h2 align="center">물건 현황</h2>
+<form method="post">
+<table align="center">
+	<tr><th>물건명</th>
+		<td><input type="text" name="name" value="<%=name%>"/></td></tr>
+	<tr><th>가격</th>
+		<td> <!-- frPrice toPrice -->
+			<input type="text" name="frPrice" size="3" value="<%=frPrice%>"/>~
+			<input type="text" name="toPrice" size="3" value="<%=toPrice%>"/>
+		</td></tr>
+	<tr><td colspan="2" style="text-align:right">
+			<input type="submit" value="검색"/></td></tr>
+</table>
+</form>
+<table align="center">
+	<tr>
+		<th>물건번호</th>
+		<th>물건종류</th>
+		<th>물건명</th>
+		<th>가격</th>
+		<th>재고량</th>
+	</tr>
+	<%for(Product prod:dao.plist(sch)){%>
+	<tr>
+		<td><%=prod.getSno()%></td>
+		<td><%=prod.getKind()%></td>
+		<td><%=prod.getName()%></td>
+		<td><%=prod.getPrice()%></td>
+		<td><%=prod.getCnt()%></td>
+	</tr>
+	<%}%>
+<!-- 
+회원가입현황리스트
+회원id, 비밀번호, 이름, 포인트, 권한, 등록일
+A04_MemberDao.java
+
+
+ -->
+</table>
+</body>
+</html>

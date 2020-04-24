@@ -1,0 +1,100 @@
+# 물품 등록과 구매화면 
+1. 요구사항 정의서
+	1) 관리자 화면
+		- 물품 등록 리스트
+			- 물건 이미지
+			- 물건명 
+			- 가격
+			- 현재재고량
+			- 등록일자
+			- 변경일짜
+			- 기타사항
+		- 물품 등록
+		- 물품 상세 화면
+			- 변경, 수정
+	2) 사용자 화면
+		- 등록된 물품 리스트(shopping)
+		- 상세화면
+			- 장바구니 담기
+		- 장바구니 화면
+			- 구매 처리..
+2. 개발 순서
+	1) 테이블 구성, sequence
+	2) 화면별 sql 작성..
+	3) VO, DAO 작성.
+	4) 화면별 controller 선언
+		A05_ProductCtrl.java
+	5) 데이터 list할 service단
+		A05_ProductService.java 
+	6) service단에서 dao 호출.
+	7) 화면별 초기 jsp 선언(list)
+		a05_productList.jsp
+	8) 등록화면 구성
+	9) 상세화면 구성
+   10) 수정삭제 화면 구성 처리..
+	
+3. 진행 처리. 
+	1) DB 설계 관련 script
+SELECT * FROM product2;
+CREATE TABLE product2(
+	sno NUMBER PRIMARY KEY,
+	div NUMBER,
+	name varchar2(100),
+	img varchar2(200),
+	price NUMBER,
+	cnt NUMBER,
+	regdte DATE,
+	uptdte DATE, 
+	etc varchar2(200)
+);
+INSERT INTO product2 values(prod2_seq.nextval,1007, '오렌지','orange.jpg',1500,300,sysdate,sysdate,'' );
+
+
+SELECT a.*, b.val kind
+FROM product2 a, code_tab b
+WHERE a.div = b.key;
+SELECT sno, b.val kind, name, img, price, cnt, regdte, uptdte
+FROM product2 a, code_tab b
+WHERE a.div = b.key;
+/*
+sno, kind, name, img, price, cnt, regdte, uptdte
+ * */
+
+
+
+SELECT prod2_seq.nextval FROM dual;
+CREATE SEQUENCE prod2_seq
+	START WITH 1000
+	MINVALUE 1000
+	MAXVALUE 9999
+	INCREMENT BY 1;
+CREATE TABLE code_tab(
+	key NUMBER PRIMARY KEY,
+	refkey NUMBER,
+	val varchar2(100)
+);
+SELECT * FROM code_tab;
+CREATE sequence code_seq
+	START WITH 1000
+	MINVALUE 1000
+	MAXVALUE 9999
+	INCREMENT BY 1;
+INSERT INTO code_tab values(code_seq.nextval,0,'쇼핑분류');
+SELECT * FROM code_tab;
+
+SELECT * FROM product;
+INSERT INTO code_tab values(code_seq.nextval,1001,'과일류');
+SELECT * FROM code_tab;
+
+
+
+
+		
+		
+		
+		
+	
+	
+	
+	
+			

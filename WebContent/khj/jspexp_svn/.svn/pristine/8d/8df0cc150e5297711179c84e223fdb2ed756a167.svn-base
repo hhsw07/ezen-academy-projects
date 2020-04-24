@@ -1,0 +1,244 @@
+1. url의 구성요소를 아래를 기준으로 구분하여 기술하세요.
+	http://192.168.0.23:7080/jspexp/a01_start.jsp?id=himan&pass=7777
+
+=>	프로토콜 : http
+	호스트 : 192.168.0.23
+	포트 : 7080
+	경로 : member
+	파일명 : login
+	확장자명 : jsp
+	query string : ?id=himan&pass=7777
+
+============================================================================
+
+2. jsp화면을 크게 구분하여, 상단/body에 들어갈 요소를 기술하세요.
+
+=>	jsp 상단 내용	
+
+	# 디렉티브(Directive)
+	1. JSP 페이지에 대한 설정 정보를 지정한다.
+	2. 디렉티브 구문
+		1) 형식 %@ 디렉티브이름 속성 = 속성값  속성=속성값
+	3. 제공 디렉티브이름
+		1) page : JSP 페이지에 대한 정보를 지정.
+			- 문서의 타입, 출력 버퍼의 크기, 에러 페이지 등 정보 지정.
+		2) taglib : 사용할 태그 라이브러리를 지정.
+			ex) %@ taglib uri = "@@@.@@"
+		3) include : 다른 페이지를 포함할 때 지정 처리.
+			ex) %@ include file="##.jsp"
+			
+			
+	jsp body 내용
+	
+	# 스크립트 요소
+	1. 동적으로 출력 결과를 생성하기 위해 사용
+	2. 스크립트 요소
+		1) 표현식(Expression) : 변수를 통해 값을 출력 ex) %=변수명
+		2) 스크립트릿(scriptlet) : 자바 코드를 실행 ex) % % 선언하여 사이에서
+								자바의 변수를 선언하거나 조건/반복문들의 로직을 수행.
+		3) 선언부(Declaration) : 자바 메소드(함수)를 정의
+			ex) %! % 사이에 선언.
+
+============================================================================
+3. 스크립트 요소 3가지를 구구단을 프로그램을 기준으로 예를들어 설명하세요.
+
+=>	표현식(Expression) : 변수를 통해 값을 출력
+					   %=변수명
+	스크립트릿(scriptlet) : 자바 코드를 실행, 자바의 변수를 선언하거나 조건/반복문들의 로직을 수행.
+						 % % 선언하여 사이에서
+	선언부(Declaration) : 자바 메소드(함수)를 정의
+						%! % 사이에 선언.
+						
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--  
+	스크립트 요소 3가지를 구구단을 프로그램을 기준으로 예를들어 설명하세요.
+ -->
+<%!	// 선언부(Declaration)
+	int multiply(int num01, int num02){
+		return num01*num02;
+	}
+%>
+	<h1>구구단</h1>
+ 
+<%	// 스크립트릿(scriptlet)
+	for(int i=2; i<=9; i++){
+%>
+		<p><%=i%>단</p>
+<%
+		for(int j=1; j<=9; j++){
+%>
+			<!-- 표현식(Expression) -->
+			<%=i%> X <%=j%> = <%=multiply(i,j)%>
+			<br>
+<%
+		}
+	}
+%>
+
+</body>
+</html>
+
+==========================================================================
+4. page 디렉티브 중에 contentType은 어떤 역할을 하는 속성인지를 기술하세요.
+
+=>	contentType : JSP가 생성할 문서의 타입을 지정한다.
+			- response객체를 통해서 출력할 형식을 선언.
+
+===============================================================================
+5. java로 클래스로 물건명, 가격, 갯수를 정의하여, jsp에서 활용하고자 한다.
+	해당 코드를 처리하는 순서와 코드를 기술하세요.
+
+=>	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
+    import="jspexp.z01_vo.Product"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	Product p = new Product("코코아", 4500, 3);
+%>
+	<h2>물건명 : <%=p.getName() %></h2>
+	<h2>가격 : <%=p.getPrice() %></h2>
+	<h2>갯수 : <%=p.getCount() %></h2>
+ 
+</body>
+</html>	
+
+------product------
+package jspexp.z01_vo;
+
+public class Product {
+	private String name;
+	private int price;
+	private int count;
+	
+	
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Product(String name, int price, int count) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.count = count;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+}
+
+==================================================================================
+	
+6. &name=홍길동&age=25&loc=강남  이라는 url매개변수 값을 jsp에서 처리하고자 한다.
+   jsp 기본객체를 통해서 위 요청값을 처리하되 null일때는 문자열을 ""으로,  숫자는 0으로 처리되게 하여
+   h1에서 이름:@@@ 나이:@@ 사는 곳:@@이 화면에 나오게 코드하세요.
+   
+=>	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	String name = request.getParameter("name");
+	if(name==null) name="";
+	String age = request.getParameter("age");
+	if(age==null) age="0";
+	String loc = request.getParameter("loc");
+	if(loc==null) loc="";
+%>
+	<h1>이름 : <%=name %>, 나이 : <%=age%>, 사는 곳 : <%=loc %></h1>
+ 
+</body>
+</html>
+
+7. jsp 코드를 이용하여 3X3테이블에 임의의 무기개 색상을 각 cell의 배경 색상으로 나타나게 for문으로 이용하여 처리하세요.
+	
+=>	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" http-equiv="refresh" content="1">
+<title>Insert title here</title>
+</head>
+<body>
+<!--  jsp 코드를 이용하여 3X3테이블에 임의의 무기개 색상을 각 cell의 배경 색상으로 나타나게 for문으로 이용하여 처리하세요. -->
+		<table border width="300px" height="300px">
+<%
+	String[] color = {"red", "orange", "yellow", "green", "blue", "navy", "purple"};
+		
+	for(int i=1; i<=9; i++){
+		int ran = (int)(Math.random()*7);
+		if(i%3==1){
+%>
+			<tr>
+<%						
+		}
+%>
+				<td style="background-color:<%= color[ran]%>"></td>
+<%
+		if(i%3==0){
+%>
+			</tr>
+<%
+		}
+	}
+%>
+		</table>
+
+</body>
+</html>
+
+=======================================================================================
+8. jsp의 내장 객체가 무엇인지 기술하세요.
+
+=>	request : 웹 브라우저의 요청 정보를 저장하고 있는 객체
+	response : 웹 브라우저의 요청에 대한 응답 정보를 저장하고 있는 객체
+	out : JSP 페이지에 출력할 내용을 가지고 있는 출력 스트림 객체
+	session : 하나의 웹 브라우저의 정보를 유지하기 위한 세션 정보를 저장하고 있는 객체
+	application : 웹 어플리케이션 Context의 정보를 저장하고 있는 객체
+	pageContext : JSP 페이지에 대한 정보를 저장하고 있는 객체
+	page : JSP 페이지를 구현한 자바 클래스 객체
+	config : JSP 페이지에 대한 설정 정보를 저장하고 있는 객체
+	exception : JSP 페이지서 예외가 발생한 경우에 사용되는 객체
+	
+=========================================================================	
