@@ -18,7 +18,7 @@ public class GSONexp {
 		// 1. DB데이터를 json형식으로 변환
 		//	1) DAO 선언.
 		A01_AssemblyDao dao = new A01_AssemblyDao();
-		// 	2) ArrayList<VO> list 선언.
+		// 	2) ArrayList<VO> list 선언하고, dao.pList() 할당.
 		ArrayList<Parts> pList = (ArrayList<Parts>)dao.pList();
 		// 	3) toJson 메서드 사용
 		String jsonPart = gson.toJson(pList);
