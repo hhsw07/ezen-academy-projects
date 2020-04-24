@@ -105,7 +105,7 @@ public class PayDao {
 		
 		return no;
 	}
-	
+	// 주문번호에 상품담기
 	public void insertRequest(Request ins) {
 		try {
 			setCon();
@@ -124,7 +124,30 @@ public class PayDao {
 			e.printStackTrace();
 		}
 	}
-	
+	// 사용가능 포인트 조회
+	public int getPoint(String mem_id) {
+		int pt = 0;
+		try {
+			setCon();
+			String sql = "SELECT sum(point_pt) FROM P5_POINT\r\n" + 
+					"WHERE mem_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				pt = rs.getInt(1);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pt;
+	}
+	// 결제정보
 	public void insertPay(Pay ins) {
 		try {
 			setCon();
@@ -143,6 +166,22 @@ public class PayDao {
 			e.printStackTrace();
 		}
 	}
+	// 사용포인트 정보, 최종결제금액 정보
+	public Pay getPay() {
+		Pay payinfo = new Pay();
+		try {
+			setCon();
+			String sql = "SELECT b.lastpay, a.pay_point, a.pay_price \r\n" + 
+					"FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b\r\n" + 
+					"WHERE a.PAY_NO = lastpay";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return payinfo;
+	}
+	
 	
 	// 재고 관리
 	public void uptPartsCnt(int req_no, int req_cnt){

@@ -23,6 +23,7 @@
 	.pay-info{width:1050px; margin:20px auto;}
 	.pay-price{width:1050px; margin:20px auto; text-align:right; padding:20px 10px;}
 	.fmtnum{text-align:right;}
+	.product-img {height: 60px; width: 60px; background-size: cover; background-position: center; background-repeat: no-repeat;}
 	
 	fieldset{border:2px solid #63145F;}
 	legend{padding:5px 10px; font-weight:700; font-size:1.2em;}
@@ -88,22 +89,14 @@
 				<tr>
 					<td></td>
 					<td>
-						<span>상품이미지 고민중.. </span><span>상품명</span>
+						<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
 					</td>
-					<td>수량</td>
-					<td class="fmtnum">가격</td>
-					<td class="fmtnum">합계금액</td>
-					<td>포인트</td>
-				</tr>
-				<tr>
-					<td></td>
+					<td>${cart.req_cnt}</td>
+					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
+					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원</td>
 					<td>
-						<span>상품이미지 고민중.. </span><span>상품명</span>
+						<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
 					</td>
-					<td>수량</td>
-					<td class="fmtnum">가격</td>
-					<td class="fmtnum">합계금액</td>
-					<td>포인트</td>
 				</tr>
 			</tbody>
 		</table>

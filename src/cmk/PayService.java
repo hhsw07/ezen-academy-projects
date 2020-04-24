@@ -25,6 +25,8 @@ public class PayService {
 		return dao.getCart(req_no, req_cnt);
 	}
 	
+	
+	
 	public void insOrder(HttpServletRequest request, String mem_id){
 		
 		String ord_name = Nk.toStr(request.getParameter("ord_name"));

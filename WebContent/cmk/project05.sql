@@ -66,8 +66,25 @@ AND c.mem_id='ezen01'
 ORDER BY ord_no DESC;
 
 -- 주문/배송 상세정보
+SELECT pr.ord_no, c.ord_date, c.ORD_NAME, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE, 
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,
+	(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) total FROM p5_request pr, 
+		(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
+		UNION
+		SELECT com_no, com_name, com_price FROM p5_computer) a
+	WHERE pr.REQ_NO = a.parts_no
+	GROUP BY ord_no
+	ORDER BY ord_no ASC) d, p5_pay e
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no 
+AND c.mem_id='ezen01'
+ORDER BY ord_no DESC
 
-
+--관리자
+UPDATE P5_ORDER SET ord_stat = '' AND ORD_INVOICE = 운송장번호
+WHERE ORD_NO = 주문번호;
+-------------------------------------------------------------------------------------------
 -- 주문하기
 INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval,?, to_date(sysdate,'YYYY-MM-DD'),?,?,?,?,?,'','결제완료','')
 -- 주문 테이블에서 주문번호 받기
@@ -75,12 +92,28 @@ SELECT max(ord_no) FROM p5_order
 WHERE MEM_ID = 'ezen01';
 -- 받은 주문번호를 통해 상품, 수량 담기
 INSERT INTO p5_request VALUES (?, ?, ?, ?);
+-- 사용가능포인트
+SELECT sum(point_pt) FROM P5_POINT
+WHERE mem_id = 'ezen01';
 -- 주문번호 결제방법 사용한 포인트, 최종 결제금액
 INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?);
 -- 포인트사용
 SELECT b.lastpay, a.pay_point, a.pay_price 
 FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
 WHERE a.PAY_NO = lastpay;
+
+SELECT c.lastpay, d.mem_id
+FROM (SELECT max(pay_no) lastpay FROM p5_pay) c,
+P5_ORDER d
+WHERE c.ordno = d.ORD_NO;
+AND d.MEM_ID = 'ezen01';
+
+
+SELECT mem_id, max(pay_no), b.ord_no
+FROM P5_ORDER a, P5_PAY b, (SELECT max(pay_no) lastpay FROM p5_pay) c
+WHERE a.ord_no = b.ORD_NO
+GROUP BY MEM_ID;
+
 
 INSERT INTO p5_point VALUES (p5_point_seq.nextval, 'ezen01',sysdate,'상품구매사용',사용포인트)
 -- 재고 수정
