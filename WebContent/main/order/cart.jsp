@@ -23,8 +23,6 @@
 	.fmtnum{text-align:right;}
 	.product-img {height: 60px; width: 60px; background-size: cover; background-position: center; background-repeat: no-repeat;}
 	
-	
-	
 /* 버튼 */
 	.btn-order-ctrl {width:1080px; margin:0 auto;overflow: hidden;padding: 30px 0 0;} 
 	.btn0 {float: left;width: 50%;text-align: left;}
@@ -83,11 +81,12 @@
 			}
 		});
 		
-		$("#delBtn")
+		<%--$("#delBtn")--%>
 		
 	});
 	<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 	var cartCnt = ${fn:length(cart)};
+	var price = Number($("#price"+no).val());
 	function minus(no){
 		// 구매수량, 수량에 따른 가격 처리
 		var cnt = Number($("#cnt"+no).text());
@@ -95,7 +94,7 @@
 			cnt--;
 		}
 		$("#cnt"+no).text(cnt);
-		var price = Number($("#price"+no).text());
+		var price = Number($("#price"+no).val());
 		$("#tot"+no).text(cnt*price);
 		var point = cnt*price*0.01;
 		// 반올림처리
@@ -106,7 +105,7 @@
 		var cnt = Number($("#cnt"+no).text());
 		cnt++;
 		$("#cnt"+no).text(cnt);
-		var price = Number($("#price"+no).text());
+		var price = Number($("#price"+no).val());
 		$("#tot"+no).text(cnt*price);
 		var point = cnt*price*0.01;
 		// 반올림처리
@@ -155,8 +154,8 @@
 										
 						<tr>
 							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
-							<td>
-								<span class="product-img" style="background-image:url('image/CPU/${cart.parts_img}')" ></span><span>${cart.parts_name}</span>
+							<td style="vertical-align:middle;">
+								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span>${cart.parts_name}</span>
 							</td>
 							<td style="text-align:center">
 								<div class="pd_count">
@@ -166,8 +165,8 @@
 								</div>
 							</td>
 							<td class="fmtnum">
-								<span id="price${status.count}">${cart.parts_price}</span> 원
-							<%-- <fmt:formatNumber id="price(${status.count})" type="number" value="${cart.parts_price}"/> --%></td>
+								<input id="price${status.count}" type="hidden" value="${cart.parts_price}"/>
+								<fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
 							<td class="fmtnum">
 								<span  id="tot${status.count}">${cart.parts_price*cart.req_cnt}</span> 원
 							<%-- <fmt:formatNumber id="tot(${status.count})" type="number" value="${cart.parts_price*cart.req_cnt}"/> --%></td>
