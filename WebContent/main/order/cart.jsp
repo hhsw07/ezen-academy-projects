@@ -86,16 +86,17 @@
 	});
 	<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 	var cartCnt = ${fn:length(cart)};
-	var price = Number($("#price"+no).val());
 	function minus(no){
 		// 구매수량, 수량에 따른 가격 처리
 		var cnt = Number($("#cnt"+no).text());
+		var price = Number($("#price"+no).val());
 		if(cnt > 1){
 			cnt--;
 		}
 		$("#cnt"+no).text(cnt);
-		var price = Number($("#price"+no).val());
-		$("#tot"+no).text(cnt*price);
+		var tot = cnt*price;
+		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
 		var point = cnt*price*0.01;
 		// 반올림처리
 		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
@@ -106,7 +107,9 @@
 		cnt++;
 		$("#cnt"+no).text(cnt);
 		var price = Number($("#price"+no).val());
-		$("#tot"+no).text(cnt*price);
+		var tot = cnt*price;
+		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
 		var point = cnt*price*0.01;
 		// 반올림처리
 		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
@@ -167,9 +170,12 @@
 							<td class="fmtnum">
 								<input id="price${status.count}" type="hidden" value="${cart.parts_price}"/>
 								<fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
-							<td class="fmtnum">
-								<span  id="tot${status.count}">${cart.parts_price*cart.req_cnt}</span> 원
-							<%-- <fmt:formatNumber id="tot(${status.count})" type="number" value="${cart.parts_price*cart.req_cnt}"/> --%></td>
+							<td class="fmtnum"  id="tot${status.count}" >
+								<input type="hidden" value="${cart.parts_price*cart.req_cnt}"/>
+								<%-- <span  id="tot${status.count}">${cart.parts_price*cart.req_cnt}</span> 원 --%>
+							<fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원
+							
+							</td>
 							<td class="fmtnum">
 								<span id="point${status.count}">${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}</span> p
 								<%-- <fmt:formatNumber type="number" value="${point+((point%1>0.5)?(1-(point%1))%1:-(point%1))}"/> --%>
