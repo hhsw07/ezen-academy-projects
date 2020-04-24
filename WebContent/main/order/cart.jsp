@@ -99,7 +99,10 @@
 		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
 		var point = cnt*price*0.01;
 		// 반올림처리
-		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
+		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
+		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		// 반올림처리
+		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 	}
 	function plus(no){
 		// 구매수량, 수량에 따른 가격 처리
@@ -111,8 +114,10 @@
 		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
 		var point = cnt*price*0.01;
+		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
+		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		// 반올림처리
-		$("#point"+no).text(point+((point%1>0.5)?(1-(point%1))%1:-(point%1)));
+		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 	}
 	
 	
@@ -176,9 +181,9 @@
 							<fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원
 							
 							</td>
-							<td class="fmtnum">
-								<span id="point${status.count}">${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}</span> p
-								<%-- <fmt:formatNumber type="number" value="${point+((point%1>0.5)?(1-(point%1))%1:-(point%1))}"/> --%>
+							<td class="fmtnum" id="point${status.count}">
+								<input type="hidden" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/>
+								<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
 							</td>
 						</tr>
 						</c:forEach>
