@@ -95,7 +95,7 @@ function addCart(){
 
 <div id="market_wrap">
 	<p id="market_title">컴퓨터부품</p>
-	<form action="${path}/order">
+	<form action="${path}/order"  method="post">
 		<input type="hidden" name="proc">
 		<input type="hidden" name="req_no" value="${partsd.parts_no}">
 		<input type="hidden" name="req_cnt">

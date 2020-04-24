@@ -46,35 +46,33 @@ ul li{list-style:none;}
 var price= Number("${comd.com_price}");
 $(document).ready(function(){
 	var priceOri= Number("${comd.com_price}");
+	//수량 감소
 	$("#cntdown").click(function(){
-		var cnt = Number($("[name=cnt]").val()); 
+		var cnt = Number($("[name=cnt]").val());
+		//수량이 1 이하로 떨어지지 않음
 		if(cnt<=1){
-			
 			$("[name=cnt]").val(1);
 		}else{
 			$("[name=cnt]").val(cnt-1);
 			price -= priceOri;
 		}
-		
+		//가격 정규식 표현
 		var priceS = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
 		$('#price').html("<input type='hidden' name='tot_price' value='"+price+"'/>가격 : "+priceS+"원");
 	});
+	//수량 증가
 	$("#cntup").click(function(){
 		var cnt = Number($("[name=cnt]").val()); 
 		$("[name=cnt]").val(cnt+1);
 		price += priceOri;
 		
 		var priceS = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		
 		$('#price').html("<input type='hidden' name='tot_price' value='"+price+"'.>가격 : "+priceS+"원");
 	});
 	
 });
 function addCart(){
-
 	var cnt = Number($("[name=cnt]").val()); 
-	
 	var opt1 = Number($("select[name=opt1]").val());
 	var opt2 = Number($("select[name=opt2]").val());
 	var opt3 = Number($("select[name=opt3]").val());
@@ -84,7 +82,14 @@ function addCart(){
 	$("[name=proc]").val("cart");
 	$("[name=req_cnt]").val(cnt);
 	$("[name=req_opt]").val(tot_opt);
-	$("form").submit();
+	
+	var mem_id = "${mem.mem_id}";
+	
+	if(mem_id==""){
+		$(location).attr("href","${path}/login");		
+	}else{
+		$("form").attr("action","${path}/order").submit();	
+	}
 }
 </script>
 </head>
@@ -94,7 +99,7 @@ function addCart(){
 
 <div id="market_wrap">
 	<p id="market_title">조립컴퓨터</p>
-	<form action="${path}/order">
+	<form method="post">
 		<input type="hidden" name="proc">
 		<input type="hidden" name="req_no" value="${comd.com_no}">
 		<input type="hidden" name="req_cnt">

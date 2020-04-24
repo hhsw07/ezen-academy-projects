@@ -41,7 +41,7 @@ $(document).ready(function(){
 	$("#lo").click(function(){
 		if(confirm("로그아웃을 하시겠습니까?")){
 			$("[name=proc]").val("logout");
-			$("form").submit();
+			$(location).attr('href','${path}/login?proc=logout');
 		}
 	});
 });
