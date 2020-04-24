@@ -40,6 +40,16 @@ public class GSONexp {
 			System.out.print(p.getParts_name()+"\n");
 		}
 		
+		/*  ## 이거 복사해서 사용하세요. ##
+		// dao.pList로 불러낸 결과물 : ArrayList<Parts> plist
+		ArrayList<Parts> pList = (ArrayList<Parts>)dao.pList();
+		String jsonPart = gson.toJson(pList);
+		String jsData3 = "{\"partsList\":"+jsonPart +" } ";
+		PartsList partsList = gson.fromJson(jsData3, PartsList.class);
+		ArrayList<Parts> plist = partsList.getPartsList();
+		*/
+		
+		
 	}
 
 }
