@@ -551,7 +551,7 @@
 		<!-- 글목록  -->	
 				<c:forEach var="asq" items="${asqlist}" varStatus="status">
 						<tr onclick="goAsq(${asq.asq_no})">
-							<td style="text-align:center;">${fn:length(asqlist) - status.count + 1}</td>
+							<td style="text-align:center;">${fn:length(asqlist) - status.index}</td>
 							<td>${asq.asq_name}</td>
 							<td style="text-align:center;">${asq.mem_id}</td>
 							<td style="text-align:center;">${asq.asq_reqdate}</td>
