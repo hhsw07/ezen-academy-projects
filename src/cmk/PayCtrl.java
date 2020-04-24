@@ -62,8 +62,9 @@ public class PayCtrl extends HttpServlet {
 		if(proc.equals("pay")) {
 			page = "main\\order\\payend.jsp";
 		}
-		
-		
+		if(session.getAttribute("mem") == null) {
+			page = "login";
+		}
 		
 		request.getRequestDispatcher(page).forward(request, response); 
 	}
