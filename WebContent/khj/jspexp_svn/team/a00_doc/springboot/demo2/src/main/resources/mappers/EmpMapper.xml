@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+<!-- namespace : mapper별로 구분자
+	각 sql별로 id값이 있는데, 공통적인 부분을 선언
+	
+	id : 패키지명.인터페이스명.메서드 ==> DAO와 연결
+		해당 sql을 통해서 DAO에서 넘겨준 데이터를 조건(parameterType)으로
+		처리할 뿐 아니라, 해당 id에 매핑되는 DAO에 실제
+		객체(ArrayList<VO>)로 넘긴다.
+	
+ -->	
+<mapper namespace="com.example.demo2.mapper.EmpMapper">
+
+	<select id="emplist"
+		resultType="com.example.demo2.domain.Emp"
+		parameterType="com.example.demo2.domain.Emp">
+		select * from emp
+		where 1=1 
+		<if test="ename!=null and ename!=''">
+		and ename like '%'||#{ename} ||'%'
+		</if>
+		<if test="job!=null and job!=''">
+		and job like '%'||#{job} ||'%' 
+		</if>
+	</select>
+
+	 <select id="empOne" resultType="com.example.demo2.domain.Emp" parameterType="int">
+		select * 
+		from emp
+		where empno=#{empno}	 
+	 </select>
+
+	<update id="empUpdate" parameterType="com.example.demo2.domain.Emp">
+		update emp
+		 set ename=#{ename},
+		     job=#{job},
+			 mgr=#{mgr},
+			 sal=#{sal},
+			 comm=#{comm},
+			 deptno=#{deptno}
+		where empno=#{empno}		
+	</update>
+
+	
+</mapper>

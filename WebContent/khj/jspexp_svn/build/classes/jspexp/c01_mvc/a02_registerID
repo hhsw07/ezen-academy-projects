@@ -1,0 +1,87 @@
+# 등록 ID 여부 확인
+ID [     ] [확인]
+확인 클릭시, 등록된 id인지 여부 확인
+MVC 패턴..
+select count(*) from member2
+where id=?
+
+DAO 메서드
+public boolean isMember(String id){
+	boolean isRegister=false;
+	
+	return num;
+}
+1. 기본 프로세스 정리
+	1) 초기 화면에 ID 여부 확인
+		로딩..
+	2) 확인 버튼 클릭시, 등록된 id인지 여부를 확인하여
+		등록 가능 id check 프로그램.
+2. 개발 순서..
+	1) DAO 구현
+		id값을 입력하고, 등록된 여부를 boolean..
+		select count(*) from member2 where id=?
+	2) controller - 초기 화면 호출..
+	3) 초기 jsp 화면..
+		- 요청값을 넘겼을 때, 처리..
+	4) controller - 요청값 (id) 
+		- service단  호출 (id)
+		- dao단 등록 여부 (id)
+		- 결과값 boolean을 받음.
+		- model로 등록 여부를 boolean값으로 전달.
+	5) jsp 화면
+		- 등록된 여부 alert이나 message로 표기.
+3. 주요 핵심 코딩.
+	0) 사용할 파일
+		A04_MemberRegCtrl.java(controller)
+		A04_MemberRegService.java(service)
+		A04_MemberDao.java(dao) - public boolean isMember(String id)
+		a04_regCheck.jsp(view)
+	1) sql
+		SELECT * FROM member2
+		WHERE id=?;
+	2) dao
+		public boolean memberCk(String id){
+			boolean isMember = false;
+			isMember = rs.next(); // 데이터가 있으면 true값 받게 됨..
+			return isMember;
+		}
+	3) controller1(A04_MemberRegCtrl.java)
+		/regCheck
+		page = "경로명/a04_regCheck.jsp";
+	4) view1(a04_regCheck.jsp)
+		id:<input type="text" name="id"/>
+		$("#ckRegBtn").click(function(){
+			$("form").submit()
+		});	
+	5) controller2(A04_MemberRegCtrl.java)
+		String id= request.getParamter("id");
+		
+	6) service(A04_MemberRegService.java)
+		public boolean checkReg(String id){
+			return dao.memberCk(id);
+		}
+	7) controller3(A04_MemberRegCtrl.java)
+		request.setAttribute("isMember",service.checkReg(id));
+	8) view1(a04_regCheck.jsp)
+		var id = "${param.id}";
+		if(id!=""){
+			var isMember=${isMember};
+			if(isMember){
+				alert("등록된 id가 있습니다!");
+			}
+		}
+		
+		
+		
+		
+		
+	
+		
+	
+		
+
+
+
+
+
+

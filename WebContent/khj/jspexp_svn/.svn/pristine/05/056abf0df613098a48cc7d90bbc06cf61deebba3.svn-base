@@ -1,0 +1,82 @@
+# jsp로 데이터 베이스 처리
+1. 공통 내용
+	1) 화면설계 구성
+	2) Database 설계
+	3) database에 의한 SQL 작성
+	4) VO 작성
+	5) Database 모듈 작성
+	6) jsp(View 화면 구성)
+	7) 화면간의 데이터 전달	
+--------------------------
+2. list 화면 처리
+3. 등록화면 처리
+4. 상세화면 처리
+	1) 데이터 로딩
+	2) 수정 처리
+	3) 삭제 처리
+--------------------------
+# SQL에 따른 DB모듈 구성
+1. sql을 구성과 VO객체 생성.
+2. DB모듈
+	1) 공통 내용 선언과 활용
+		- 공통 객체 field로 선언
+		- DB 연결 기능 메서드 선언
+	2) 각 기능별로 메서드 선언 
+		- 기능별로 공통 내용 : 연결메서드 호출, 예외처리, 자원해제
+		
+		- 리스트 : 입력?(조회되는 내용-객체), 결과?(ArrayList<Vo>)  
+			ex) public ArrayList<Emp> getEmpList(Emp sch); 
+		- 상세처리 : 입력?(조회 key를 매개), 결과?(VO)
+			ex) public Emp getEmp(int empno);   
+		- 등록처리 : 입력?(입력할 VO객체), 결과?(X-void)
+			ex) public void insertEmp(Emp ins);   
+		- 수정처리 : 입력?(수정할 VO객체), 결과?(X-void)
+			ex) public void updateEmp(Emp sch);    
+		- 삭제처리 : 입력?(삭제할 key를 매개), 결과?(X-void)
+			ex) public void deleteEmp(int empno);   	
+
+# jsp화면 구성과 화면간의 데이터 전달
+1. 초기조회화면 - 주로 버튼 이벤트에 의한 js 처리.
+	1) 조회될 데이터 내용을 요청값으로 처리되어야 한다.	
+		?ename=himan&job=사원
+	2) 등록화면 진입
+		location.href="등록jsp화면"
+	3) 상세화면 진입
+		js로 해당 데이터 더블 클릭시, empno값을 기능함수에 전달
+		location.href="상세jsp화면?empno=7777";
+2. 등록화면
+	1) 입력 후, 등록처리
+		form으로 name=""으로 mapping된 데이터 request.getParameter("name의속성값")
+		요청값들을 VO객체에 할당할 수
+		Database 등록 처리 메서드에 매개값으로 전달. 
+	2) 메인화면 이동.		
+		location.href="메인화면"
+3. 상세화면 : 
+	0) 메인화면에서 온 검색을 위한 요청값, 수정을 처리하는 요청값,
+		삭제처리하는 요청값을 구분하여 처리하여야 한다. 
+		<input type="hidden" name="proc" value="upt"/>
+		-- 삭제 클릭시, document.querySelector("proc").value="del";
+		String proc=request.getParamter("proc");
+	1) 수정
+		form으로 name=""으로 mapping된 데이터 request.getParameter("name의속성값")
+		요청값들을 VO객체에 할당할 수
+		Database 수정 처리 메서드에 매개값으로 전달. 	
+	2) 삭제
+		삭제기능 버튼 클릭시, 현재 key값을 요청값으로 전달하고,
+		location.href="삭제jsp화면?empno=7777";
+		해당 요청값을 받아서 
+		Database 삭제 처리 메서드에 매개값으로 전달.
+	3) 메인화면 이동	
+		location.href="메인화면"	
+
+# jsp화면 요청처리와 Database 연결 처리.
+
+
+	
+	
+	
+	
+	
+	
+	
+	

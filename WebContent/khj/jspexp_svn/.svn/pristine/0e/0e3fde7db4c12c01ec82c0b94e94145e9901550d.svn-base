@@ -1,0 +1,70 @@
+package jspexp.z01_vo;
+
+import java.util.Date;
+
+public class Buy {
+	private String id;
+	private int sno;
+	private int cnt;
+	private Date buydte;
+	private String status;
+	private String etc;
+	public Buy() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Buy(String id, int sno, int cnt, Date buydte, String status, String etc) {
+		super();
+		this.id = id;
+		this.sno = sno;
+		this.cnt = cnt;
+		this.buydte = buydte;
+		this.status = status;
+		this.etc = etc;
+	}
+	public Buy(String id, int sno, int cnt, String etc) {
+		super();
+		this.id = id;
+		this.sno = sno;
+		this.cnt = cnt;
+		this.etc = etc;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getSno() {
+		return sno;
+	}
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public Date getBuydte() {
+		return buydte;
+	}
+	public void setBuydte(Date buydte) {
+		this.buydte = buydte;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getEtc() {
+		return etc;
+	}
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
+	
+	
+}

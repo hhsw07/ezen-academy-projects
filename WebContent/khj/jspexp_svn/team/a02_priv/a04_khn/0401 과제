@@ -1,0 +1,104 @@
+1.[난이도1]
+	h3을 7개 만들고, 배경색상을 무지개 색상으로 나타내고 해당 내용을 무지개명으로 출력 처리하세요..
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+		var colors = ["red", "orange", "yellow", "green", "blue", "navy", "purple"];
+		var texts = ["빨강", "주황", "노랑", "초록", "파랑", "남색", "보라"];
+		$("h3").attr("align","center");
+		for(var i=0; i<7; i++){
+			$("h3").eq(i).css("background-color",colors[i]);
+			$("h3").eq(i).text(texts[i]);
+		}
+	});
+</script>
+<body>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+	<h3></h3>
+</body>
+=========================================================================================
+2.[난이도2]
+	4x4 테이블에 글자가 16~1 역순위로 나타나되, 이중 임의의 cell 1개에는 지뢰(펑)이라고 표시되게하세요.
+
+<script type="text/javascript">
+	var ranNum = parseInt(Math.random()*16);
+	$(document).ready(function(){
+		$("td").css("width","25%");
+		for(var i=0; i<16; i++){
+			if(i == ranNum){
+				$("td").eq(i).text("지뢰(펑)");
+			}else{
+				$("td").eq(i).text(16-i);
+			}
+		}
+	});
+</script>
+<body>
+	<table>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td><td></td></tr>
+	</table>
+</body>
+
+=========================================================================================
+3.[난이도1]
+	로그인 아이디, 패스워드 값을 입력하는 화면을 만들되, 중앙정렬, 배경색/글자색 파랑색/오렌지색
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("h2").val("로그인");
+		$("input[name=id]").css({"align":"center","background-color":"blue","color":"orange"}).val("idTest");
+		$("input[name=pw]").css({"align":"center","background-color":"blue","color":"orange"}).val("test777");
+	});
+</script>
+<body>
+	<h2></h2>
+	아이디 : <input type="text" name="id"/>
+	패스워드 : <input type="password" name="pw"/>
+</body>
+
+=========================================================================================
+4.[난이도2]
+	위 내용에 클릭시, 아이디, 패스워드 값을 맞을 때는, 배경색상이 흰색으로 변경, 
+	그렇지 않을 때는 빨강색으로 변경되게 하세요.(js 이벤트 활용)
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("h2").val("로그인");
+		$("input[name=id]").css({"align":"center","background-color":"blue","color":"orange"}).val("idTest");
+		$("input[name=pw]").css({"align":"center","background-color":"blue","color":"orange"}).val("test777");		
+		$("#btn").click(function() {
+			if($("#btn").val() == "로그인"){
+				if($("input[name=id]").val() == "cocoa" && $("input[name=pw]").val() == "1234"){
+					$("#out").text("아이디 & 패스워드가 일치합니다.");
+					$("input[name=btn]").val("로그아웃");
+					$("input[name=id]").css("background-color","white");
+					$("input[name=pw]").css("background-color","white");
+				}else{
+					$("#out").text("아이디 or 패스워드를 확인하세요.");
+					$("input[name=id]").css("background-color","red");
+					$("input[name=pw]").css("background-color","red");
+				}
+			}else{
+				$("input[name=id]").val("");
+				$("input[name=pw]").val("");
+				$("#out").text("로그아웃 되었습니다.");
+			}			
+		});		
+	});
+</script>
+<body>
+	<h2></h2>
+	아이디 : <input type="text" name="id"/>
+	패스워드 : <input type="password" name="pw"/>
+	<input type="button" name="btn" id="btn" value="로그인"/>
+	<div id="out"></div>
+</body>
+

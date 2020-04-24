@@ -1,0 +1,59 @@
+1. (난이도1) h3을 7개 만들고, 배경색상을 무지개 색상으로 나타내고 해당 내용을 무지개명으로 출력처리하세요
+	<script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'purple'];
+			for(var idx=0;idx<7;idx++){
+				$("h3").eq(idx).text(colors[idx]);
+				$("h3").eq(idx).css("background-color", colors[idx]);
+			}
+		});
+	</script>
+	
+	<body>
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+
+	</body>
+
+2. (난이도2) 4X4 테이블에 글자가 9~1로 역순으로 나타나되 이중에 임의의 cell 1개에는 지뢰(펑)이라고 표시되게 하세요
+	<script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var ranNum = parseInt(Math.random()*16);		
+			for(var idx=0;idx<16;idx++){
+				$("td").eq(idx).text(16-idx);
+				if(idx==ranNum){
+					$("td").eq(idx).text("지뢰(펑!)");
+					$("td").eq(idx).css({"color":"red", "font-weight":"bold"});
+				}
+			}
+		});
+	</script>
+	
+	<body>	
+		<table>
+			<col width="25%">
+			<col width="25%">
+			<col width="25%">
+			<col width="25%">
+			<tr>
+				<td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td>
+			</tr>
+		</table>
+
+	</body>

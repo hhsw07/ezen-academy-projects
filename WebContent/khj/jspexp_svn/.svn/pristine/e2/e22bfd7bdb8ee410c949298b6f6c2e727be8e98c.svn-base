@@ -1,0 +1,41 @@
+1. jsp의 session scope의 범위별로 4가지 객체를 기술하세요.
+
+	데이터를 저장하고 활용할 수 있는 pageContext, 요청 page까지
+	데이터를 저장하고 활용할 수 있는 request, 브라우저가 닫힐 때까지
+	데이터를 저장하고 활용할 수 있는 session, 서버단위로
+	데이터를 저장하고 활용할 수 있는 application으로 기본 객체를 지원
+
+
+2. session 객체를 이용하여, 로그인한 회원의 정보를 페이지가
+	닫힐 때까지 계속 유지되도록 코드 처리하세요. 회원 정보(아이디, 이름, 포인트)
+	
+	<%
+	Person p2 = new Person("rlfehd2","홍길동2","1000p");
+	session.setAttribute("p2", p2);
+	%>
+	
+	<%
+	Person call2 = (Product)session.getAttribute("p2");
+	%>
+	
+	<h2><%=call2.getName()%>,<%=call2.getPrice()%>,<%=call2.getCnt()%></h2>
+	<a href=".jsp">페이지 이동</a> 
+	
+	
+3. 웹서버에서 지정한 file 서버의 물리적 위치를 지정하여, 해당 
+	서버를 통해 처리하고자 한다. 해당 물리적위치를 지정하고, 호출하여
+	사용하자
+	
+
+	
+4. out객체의 buffer메모리를 확인하고, 버퍼를 플러시 할 때,
+	사용되는 메서드를 기술하세요.
+	
+	
+5. 로그인 id/pass를 입력하고, 남/여에 따른 사이트가 다르게 이동될때,
+	로그인한 id가 해당 사이트까지 전송되게 처리하세요.
+	
+	로그인
+ID [	] ==> Gentleman @@@님 환영합니다.
+PWD[	] ==> Lady @@@님 환영합니다.
+() 남 () 여

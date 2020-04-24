@@ -54,9 +54,9 @@ public class A02_serviceCenterDao {
 		}
 		return nlist;
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 
 }

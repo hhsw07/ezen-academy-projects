@@ -1,0 +1,74 @@
+package jspexp.b01_database;
+
+import java.sql.*; // DB관련 package java.sql.*로 모두 사용 처리.
+
+/*
+# java에서 Database 처리..
+1. 자바와 데이터베이스 연결은 다음과 같은 절차로 진행된다.
+	1) 각 밴드(회사)에 지원하는 공통 모듈인 jdbc드라이버를 이용한다.
+	 	- jdbc(java database connection) 모듈을 사용할 수 있게끔  lib
+	 		에 위치시킴.
+	2) jdbc드라이버를 메모상 객체로 올려놓고 사용할 수 있겠끔
+	 		Class.forName("jdbc드라이버")
+	 	- 해당 드라이버 클래스를 메모리에 올리면 가지고 있는
+	 		객체와 메서드를 사용할 수 있게 된다.
+	3) 데이터베이스 서버와 연결할 수 있는 객체(Connection)를 통해서
+	 	- ip, port, sid, 계정, 비밀번호
+	4) sql을 사용할 수 있는 객체(Statement)를 이용하여, sql을 실행한다.
+	 	- sql 중에 결과값이 있는 객체(ResultSet)을 통하여,
+	 		결과를 받는다.
+	5) 데이터베이스 자원을 해제 처리한다..
+	 	- 예외 처리
+	 		
+ * */
+
+public class A01_Database {
+	// 공통으로 사용할 field 선언.
+	// 연결, 대화, 결과 처리하는 객체 선언.
+	// 1. 연결 객체
+	private Connection con;
+	// 2. 대화 객체
+	// 	1) 기본 대화 객체
+	private Statement stmt;
+	//  2) 준비된 대화 객체
+	private PreparedStatement pstmt;
+	// 3. 결과값을 받는 객체..
+	private ResultSet rs;
+	
+	// DB하기 위한 공통 기능 메서드인 연결처리 메서드 선언.
+	public void setCon() throws SQLException {
+//		1. driver를 메모리에 올려서
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		2. 특정 서버에 접속
+//			- 접속정보 : 드라이버명:@ip:port:sid
+//		String info="jdbc:oracle:thin:@211.238.140.48:1521:xe";
+//			- 공통 DB 서버 접속시, 접속 ip, 해당 서버의 방화벽 열어놓기
+		String info="jdbc:oracle:thin:@localhost:1521:xe";
+//		3. Connection 객체로 연결처리.
+		con = DriverManager.getConnection(info, "scott", "tiger");
+		System.out.println("정상 접속 성공.");
+//		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		A01_Database db = new A01_Database();
+		try {
+			db.setCon();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+
+	}
+
+}

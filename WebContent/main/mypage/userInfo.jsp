@@ -40,6 +40,7 @@
 				$("[name=proc]").val("update");
 				// 2. submit처리
 				$("form").submit();
+				alert("비밀번호가 변경되었습니다");
 			}
 		});
 		// 회원탈퇴이동
@@ -91,7 +92,7 @@
 			</tr>
 			<tr>
 				<td>재입력</td>
-				<td><input type="password"/></td>
+				<td><input name="ck_pw" type="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

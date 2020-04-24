@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import z01_vo.Nk;
+
 /**
  * Servlet implementation class A02_serviceCenterCtrl
  */
@@ -40,6 +42,10 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		// 공지리스트 불러오기
 		request.getSession().setAttribute("nlist", service.Notice(request));
 		String page = "main/serviceCenter/notice.jsp";
+		
+		if(proc.equals("notice")) {
+			page="main/serviceCenter/notice.jsp";
+		}
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

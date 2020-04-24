@@ -1,0 +1,93 @@
+1. url의 구성요소를 
+http://192.168.0.23:7080/jspexp/a01_start.jsp?id=himan&pass=777
+를 기준으로 구분하여 기술하세요.
+프로토콜 : http
+호스트 : 192.168.0.23
+포트 : 7080
+경로 : jspexp
+파일명 : a01_start
+확장자명 : jsp
+query string : ?id=himan&pass=777
+
+2. jsp화면을 크게 구분하여, 상단/body에 들어갈 요소를 기술하세요.
+상단: 지시자
+body: 스크립트
+3. 스크립트 요소 3가지를 구구단을 프로그램을 기준으로 예를들어 설명하세요.
+ 선언부(declaration)
+<%!
+public int a(int num1 , int num2){
+	return =num1 * num2; 
+}
+%>
+
+ 스크립트릿(scriptlet)
+<% 
+for(int num1 = 1;num1 <= 9; num++){
+	for(int num2 = 2;num2 <= 9; num++){
+%>
+ 표현식(expression)
+<%= num1 %> + <%= num2%> = <%= a%>
+
+<% } }%>
+
+4. page 디렉티브 중에 ontentType은 어떤 역할을 하는 속성인지를 기술하세요.
+	jsp가 생성할 문서의 타입을 지정한다.
+	
+5. java로 클래스로 물건명, 가격, 갯수를 정의하여, jsp에서 활용하고자 한다.
+	해당 코드를 처리하는 순서와 코드를 기술하세요.
+<%
+String name ="사과";
+int pay ="2000" ;
+int cnt ="3";
+%<
+<h2>물건명:<%=name%> 가격:<%=pay%> 갯수:<%=cnt%></h2>
+	
+6. &name=홍길동&age=25&loc=강남  이라는 url매개변수 값을 jsp에서 처리하고자 한다.
+   jsp 기본객체를 통해서 위 요청값을 처리하되 null일때는 문자열을 ""으로,
+   숫자는 0으로 처리되게 하여 h1에서 이름:@@@ 나이:@@ 사는 곳:@@이 화면에 
+   나오게 코드하세요.
+    String name = request.getParameter("name");
+ 	if(name==null) name="";
+    int age = request.getParameter("age");
+ 	if(age==null) age=0;
+    String loc = request.getParameter("loc");
+ 	if(loc==null) loc="";
+   <h1>이름:<%=name%> 나이:<%=age%> 사는 곳:<%=loc%> </h1>
+   
+7. jsp 코드를 이용하여 3X3테이블에 임의의 무지개 색상을 각 cell의 배경
+	색상으로 나타나게 for문으로 이용하여 처리하세요.
+<%	
+String [] colors={"red","orange","yellow","green","blue","navy","purple"};
+%>
+<table>
+<%
+for(int idx=0;idx<=9;idx++){
+	int r = (int)(Math.random()*colors.length);
+	if(idx%3==0){
+%>
+	<tr>
+	<%}%>
+		<td style="background-color:<%=colors[r] %>"><%=idx+1%></td>
+	<% if(idx%3==2){%>	
+	<tr>
+	
+<%}}%>	
+</table>
+8. jsp의 내장 객체가 무엇인지 기술하세요.
+
+	1) 웹 프로그래밍에 필요한 기능을 제공하는 객체 
+	2) jsp에서 별도 선언없이 사용 가능
+	3) 주요 기본 객체
+		- request : 요청 정보를 구할 때 사용
+		- response : 응답과 관련된 설정시 사용
+		- out : 직접 응답을 출력할 때 사용
+		- session : 세션 관리에 사용
+
+
+
+
+
+
+
+
+

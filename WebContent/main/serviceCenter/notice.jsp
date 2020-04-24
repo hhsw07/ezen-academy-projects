@@ -35,6 +35,12 @@
 	$(document).ready(function(){
 
 	});
+	function go(noti_no){
+		$("[name=noti_no]").val(noti_no);
+		$("[name=proc]").val("noticeDetail");
+		$("form").submit();
+		
+	}
 </script>
 </head>
 <body>
@@ -53,6 +59,8 @@
 	</select>
 	
 	<table align="center">
+	<form method="post">
+	<input type="hidden" name="proc2"/>
 		<colgroup>
 			<col style="width:100px;"/>
 			<col style="width:600px;"/>
@@ -70,7 +78,7 @@
 		
 	<!-- 글목록  -->	
 	<c:forEach var="notice" items="${nlist}">
-		<tr>
+		<tr ondblclick="javascript:go(${notice.noti_no})">
 			<td align="center">${notice.noti_no}</td>
 			<td>${notice.noti_name}</td>
 			<td align="center">관리자</td>
@@ -80,17 +88,19 @@
 
 	<!-- 목록페이징 -->	
 		<tr>
-			<th colspan="4"> 1 2 3 4 5 </th>
+			<th colspan="4"> 1 </th>
 		</tr>	
 		
 	<!-- 검색 + 글등록 -->
+	
 		<tr style="border:none;">
 			<td colspan="3">
-			<input class="input-box" type="text"/>
+			<input class="input-box" type="text" name="noti_name" value="${param.noti_name}"/>
 			<input class="search-btn" type="submit" value="검색"/>
 			</td>		
 			<th><input class="reg-btn" type="button" value="글쓰기"/></th>
 		</tr>
+	</form>
 	</table>
 	</div>
 </div>

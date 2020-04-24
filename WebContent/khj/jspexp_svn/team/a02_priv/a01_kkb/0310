@@ -1,0 +1,89 @@
+1.request객체와 response객체의 차이점을 기술하세요.
+1)request
+정의 : 클라이언트가 전송한 요청정보를 제공하는 기본객체
+2)response
+정의 : response객체는 웹 브라우저로 클라이언트 요청에 대한 응답할 응답 정보를 가지고 있는 개체
+2.요청값을 처리할 때, get방식과 post 방식이 있다. 이 방식을 처리할 때, 처리 코드와 차이점을 기술하세요
+get방식:클라이언트로가 입력한 query의 이름과 값이 결합되어 스트링 형태로 서버에 전달된다.
+	post방식 : 클라이언트와 서버 간에 인코딩하여 서버로 전송한다. Query는 body 안에 들어가 있어서 보안에 유리함이 있다.
+3. 회원 등록에서 등록된 id일떄, 다시 등록하라고 메시지를 처리할 때, request 객체르르 이용해서 처리하세요
+id: [    ] [등록여부확인]
+<form method="post">
+		id : <input type="text" name="id">&nbsp; <input type="submit" value="등록여부확인">
+	</form>
+	<%
+
+		boolean isValid = false;
+	%>
+	
+	
+	
+	<%
+		String id = request.getParameter("id");
+		if(id == null){id="";}
+		if(id.equals("himan")){
+			isValid = true;
+		}
+	%>
+	
+	<script>
+		var isValid = <%=isValid%>;
+		if(isValid){
+			alert("이미 등록되었습니다\n 다시 등록하세요");
+		}
+	</script>
+4. 공통의 서버의 절대 경로를 설정하여, 이미지와 lib를 위치를 접근할려고 한다.
+해당 request 하위 메서드를 기술하고, 기본 위치를 기술하세요
+	String pathImg = request.getContextPath()+"/lib";
+	String pathLib = request.getContextPath()+"/img";
+할 수 있다. jspexp/WebContent/
+5. 웹 화면에 현재 접속한 client의 ip를 list로 출력하려고 한다.
+해당 프로그램을 처리하세요.
+ArrayList<String> visitors = new ArrayList<>();
+	visitors.add(request.getRemoteAddr());
+	
+	for(String visitor:visitors){
+		System.out.println(visitor);
+	}
+6. 장바구니에 list한 물건 중에, check한 목록만 최종 결제 할려고 한다.
+요청 객체를 이용하여 처리하세요.
+장바구니
+[] 물건명
+[]사과
+[]바나나
+[] 딸기
+[최종결제목록] ==> 클릭시
+결재목록
+###
+###
+<form>
+		<h1>장바구니</h1>
+		<input type="checkbox" name="장바구니" value="사과">사과
+		<input type="checkbox" name="장바구니" value="바나나">바나나
+		<input type="checkbox" name="장바구니" value="딸기">딸기
+		<input type="submit" value="최종결제목록">
+	</form>
+	
+	<%
+		String[] items = request.getParameterValues("장바구니");
+		
+		for(String item:items){ %>
+			<h3><%= item%><h3>
+		<%}%>
+7. 성년/미성년자에 따라서, 이동되는 페이지가 다르게 처리할려고 한다.
+response객체르르 이용하여 처리하세요
+()성년 ()미성년 [페이지이동]
+<form>
+		<input type="radio" name="성인여부" value="성년">성년
+		<input type="radio" name="성인여부" value="미성년">미성년
+		<input type="submit" value="제출">
+		
+	</form>
+	
+	<% String value=request.getParameter("성인여부");
+	
+	if(value.equals("성년"){
+		response.sendRedirect("성년페이지.jsp");
+	} else {
+		response.sendRedirect("미성년페이지.jsp");
+	}

@@ -85,7 +85,14 @@ function addCart(){
 	$("[name=proc]").val("cart");
 	$("[name=req_cnt]").val(cnt);
 	$("[name=req_opt]").val(tot_opt);
-	$("form").submit();
+	
+	var mem_id = "${mem.mem_id}";
+	
+	if(mem_id==""){
+		$(location).attr("href","${path}/login");		
+	}else{
+		$("form").attr("action","${path}/order").submit();	
+	}
 }
 </script>
 </head>
@@ -95,7 +102,7 @@ function addCart(){
 
 <div id="market_wrap">
 	<p id="market_title">컴퓨터부품</p>
-	<form action="${path}/order">
+	<form action="${path}/order"  method="post">
 		<input type="hidden" name="proc">
 		<input type="hidden" name="req_no" value="${partsd.parts_no}">
 		<input type="hidden" name="req_cnt">
