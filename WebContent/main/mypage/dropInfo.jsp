@@ -34,8 +34,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		// 삭제 버튼 클릭시.
-		$("#delBtn").click(function(){
-			
+		$("#delBtn").click(function(){		
 			var mypw = "${mem.mem_pw}";
 			if($("[name=mem_pw]").val() == mypw){
 				alert("비밀번호 일치!");

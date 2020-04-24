@@ -35,6 +35,8 @@ $(document).ready(function(){
 		alert("로그인 성공");
 		$("[name=proc]").val("main");
 		$("form").submit();
+	}else{
+		alert("로그인 실패");
 	}
 	// 아이디찾기 이동
 	$("[name=findId]").click(function(){

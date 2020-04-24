@@ -20,6 +20,5 @@ public class A02_serviceCenterService {
 	public ArrayList<Notice> Notice(HttpServletRequest request) {
 		return dao.nlist();
 	}
-	
-	
-}
+}		
+
