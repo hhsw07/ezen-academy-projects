@@ -324,7 +324,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -342,7 +342,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -360,7 +360,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -378,7 +378,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -396,7 +396,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -414,7 +414,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -432,7 +432,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
@@ -450,7 +450,7 @@
 						<tr>
 							<td></td>
 							<td>${prod.parts_name}</td> 
-							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}"/></td>
+							<td><input type="number" name="cnt(${prod.parts_no})" value="${prod.parts_cnt}" readonly /></td>
 							<td class="ordR"><fmt:formatNumber pattern="###,###" value="${prod.parts_price * prod.parts_cnt}"/>원</td>
 							<td onclick="delCart(${prod.parts_no})">X</td>
 						</tr>
