@@ -13,6 +13,13 @@ public class Notice {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Notice(int noti_no, String noti_name, Date noti_date) {
+		super();
+		this.noti_no = noti_no;
+		this.noti_name = noti_name;
+		this.noti_date = noti_date;
+	}
+
 	public Notice(int noti_no, String noti_name, String noti_detail, Date noti_date) {
 		super();
 		this.noti_no = noti_no;
