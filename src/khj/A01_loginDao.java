@@ -29,16 +29,20 @@ public class A01_loginDao {
 		con = DriverManager.getConnection(info, "scott", "tiger");
 		System.out.println("정상 접속 성공.");
 	}
-
+//!! public void를 사용할때, public xxx사용할때 그다음에 쓰이는 코드와 ()괄호 안에 쓰이는 코드가 왜 어떻게 쓰이는지 이해부족
+	
+	
+	// public ArrayList<Member>는 Member VO를 ArrayList로 선언한다는 의미 getMemberList의 이름으로(?)
 	public ArrayList<Member> getMemberList(){
+	// ArrayList<Member>를 mList로 선언(?)
 		ArrayList<Member> mList=new ArrayList<Member>();
 		try {
 			setCon(); // Connection 객체가 메모리 로딩.
 			String sql = "SELECT * FROM FROM p5_member ";
 			pstmt = con.prepareStatement(sql);
-			
 			stmt = con.createStatement();
 			rs=stmt.executeQuery(sql);
+			// 위에 선언한 Member를 while 문 ResultSet.next로 추가될때마다 반복으로 생성(?)
 			while(rs.next()) {
 				mList.add(new Member(
 						rs.getString(1),
@@ -50,6 +54,7 @@ public class A01_loginDao {
 						rs.getDate(7) 
 						));
 			}
+			// 자원해제부분이 어떤 의미인지는 이해하지 못하고 사용
 			rs.close();
 			stmt.close();
 			con.close();
@@ -60,7 +65,7 @@ public class A01_loginDao {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+		// 위에 수행한 코드들을 mList는 반환한다는 의미(?)
 		return mList;
 	}	
 	// A04_MemberDao.login(Member mem)	
