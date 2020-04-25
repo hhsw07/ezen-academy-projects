@@ -54,6 +54,7 @@
 			$("h2").text("구매");	
 		}
 		// 전체선택
+		$("input[type=checkbox]").prop("checked", true);
 		var allCnt = $("input[type=checkbox]:not(#checkAll)").length;
 		var checkedCnt = $("input[type=checkbox]:checked:not(#checkAll)").length;
 		$("input[type=checkbox]:not(#checkAll)").change(function () {
@@ -82,45 +83,61 @@
 		});
 		
 		<%--$("#delBtn")--%>
+		$("#allBtn").click(function(){
+			$("[name=proc]").val("pay");
+			$("form").submit();
+		});
 		
 	});
 	<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 	var cartCnt = ${fn:length(cart)};
+	var totPay = 0;
+
 	function minus(no){
 		// 구매수량, 수량에 따른 가격 처리
 		var cnt = Number($("#cnt"+no).text());
 		var price = Number($("#price"+no).val());
+		var totPay = Number($("[name=totalPay]").val());
+		console.log(totPay);
 		if(cnt > 1){
 			cnt--;
+			totPay = totPay-price;
 		}
 		$("#cnt"+no).text(cnt);
 		var tot = cnt*price;
 		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
+		$("#tot"+no).html("<input type='hidden' name='tot' value='"+tot+"'/>"+totS+" 원");
 		var point = cnt*price*0.01;
 		// 반올림처리
 		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
 		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
+		var totPayS = totPay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS+" 원");
+		
 	}
 	function plus(no){
 		// 구매수량, 수량에 따른 가격 처리
 		var cnt = Number($("#cnt"+no).text());
+		var totPay = Number($("[name=totalPay]").val());
 		cnt++;
 		$("#cnt"+no).text(cnt);
+		console.log(totPay);
 		var price = Number($("#price"+no).val());
 		var tot = cnt*price;
 		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$("#tot"+no).html("<input type='hidden' value='"+tot+"'/>"+totS+" 원");
+		$("#tot"+no).html("<input type='hidden' name='tot' value='"+tot+"'/>"+totS+" 원");
 		// 반올림처리
 		var point = cnt*price*0.01;
 		var totpt = point+((point%1>0.5)?(1-(point%1))%1:-(point%1));
 		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
+		totPay = totPay+price;
+		var totPayS = totPay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS+" 원");
 	}
-	
-	
-</script>
+
+	</script>
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
@@ -142,7 +159,8 @@
 					</colgroup>
 					<thead class="cart-thead">
 						<tr>
-							<th><input type="checkbox" name="cart_all" id="checkAll"/></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립예정 포인트</th>
+							<th><input type="checkbox" name="cart_all" id="checkAll" /></th>
+							<th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>적립예정 포인트</th>
 						</tr>
 					</thead>
 				</table>
@@ -157,8 +175,6 @@
 					</colgroup>
 					<tbody class="cart-tbody">
 						<c:forEach var="cart" varStatus="status" items="${cart}">
-						
-										
 						<tr>
 							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
 							<td>
@@ -175,15 +191,15 @@
 								<input id="price${status.count}" type="hidden" value="${cart.parts_price}"/>
 								<fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
 							<td class="fmtnum"  id="tot${status.count}" >
-								<input type="hidden" value="${cart.parts_price*cart.req_cnt}"/>
-							<fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원
-							
+								<input type="hidden" name="tot" value="${cart.parts_price*cart.req_cnt}"/>
+								<fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원
 							</td>
 							<td class="fmtnum" id="point${status.count}">
-								<input type="hidden" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/>
+								<input type="hidden" name="pt" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/>
 								<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
 							</td>
 						</tr>
+						<c:set var="totPay" value="${totPay+cart.parts_price*cart.req_cnt}"/>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -191,7 +207,9 @@
 			<div class="cart-price">
 				<div>
 					<b>결제예정금액</b>
-					<p><span id="totalPay"></span> 원</p>
+					<p><span id="totalPay">
+						<input type="hidden" name="totalPay" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/>
+					</span> 원</p>
 				</div>
 			</div>
 		</form>
