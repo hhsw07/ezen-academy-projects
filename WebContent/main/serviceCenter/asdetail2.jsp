@@ -14,7 +14,7 @@
 	.ordR{text-align:right;}
 	.ordL{text-align:left;}
 
-	.cs-content{min-height:750px; margin-top:100px;}
+	.cs-content{min-height:750px; margin-top:200px;}
 	.as-context{width:1080px; margin:20px auto;}
 	.apply-title{width:1080px; margin:0 auto;}
  
@@ -54,7 +54,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){		
 		var as_no = "${param.as_no}";
-		$("h1").append(" ("+as_no+")");
+		alert(as_no);
+		$("h1").append(" - "+as_no);
 		
 		var tot = "${fn:length(asdetail)}";
 		for(var idx=0;idx<tot;idx++){
@@ -62,19 +63,6 @@
 			var numS = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			$(".num").eq(idx).text(numS+" 원");
 		}
-		
-		$(".delComm").click(function(){
-			if(confirm("삭제하시겠습니까?")){
-				$("[name=proc]").val("delComm");
-				$("form").submit();
-			}
-		});
-		
-		$(".insAns").click(function(){
-			$("[name=proc]").val("insAns");
-			$("form").submit();
-		});
-		
 		
 		$(".goback-btn").click(function(){
 			$("[name=proc]").val("as");
@@ -143,7 +131,7 @@
 					</table>
 					<!-- 문의글 시작 -->
 					<div class="bbscontents">
-						${as.as_detail}
+						${as.as_detail}as_detail
 					</div>
 				<!-- 문의글 끝 -->
 				</div>
@@ -151,7 +139,7 @@
 					<input class="goback-btn btn" type="button" value="목록으로"/>
 				</div>
 				<!-- 덧글 시작 -->
-				<c:if test="${mem.mem_id == 'admin'}">
+				<c:if test="${as.mem_id == 'admin'}">
 				<table class="commentbox">
 					<col width="80%">
 					<col width="20%">
@@ -159,10 +147,10 @@
 					<tbody>
 						<tr>
 							<td>
-								<textarea id="online_comment" name="as_comm" ></textarea>
+								<textarea id="online_comment" class=""></textarea>
 							</td>
 							<td style="text-align:right; padding-right:26px;">
-								<input class="insAns btn" type="button" value="입력"/>
+								<input class="insAns btn" type="button" name="insAns" value="입력"/>
 							</td>
 						</tr>
 					</tbody>
@@ -174,7 +162,6 @@
 					<div class="r_list online_line" id="799229" style="clear:both; padding:10px; border-bottom:1px dotted #666;">
 						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
 							관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${as.as_comdate}</span>
-							<span class="delComm" style="margin-left:900px">X</span>
             			</div>
             			<div style="line-height:120%; color:#666;">
             				${as.as_comm}

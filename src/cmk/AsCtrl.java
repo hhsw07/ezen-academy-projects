@@ -12,7 +12,7 @@ import z01_vo.Nk;
 /**
  * Servlet implementation class AsCtrl
  */
-@WebServlet(name = "cs", urlPatterns = { "/cs" })
+@WebServlet(name = "as", urlPatterns = { "/as" })
 public class AsCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AsService service;
@@ -33,11 +33,40 @@ public class AsCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		// 1. 요청
-		String proc = Nk.toStr(request.getParameter("proc"));
+		String proc = Nk.toStr(request.getParameter("proc"),"as");
+		System.out.println("proc: "+proc);
 		// 2. Model
-		request.setAttribute("asList", service.asList());
+		
 		// 3. View
 		String page = "main\\serviceCenter\\as.jsp";
+		if(proc.equals("notice")) {
+			page = "notice";
+		}
+		if(proc.equals("as")){
+			request.setAttribute("asList", service.asList());
+			page = "main\\serviceCenter\\as.jsp";
+		}
+		
+		if(proc.equals("goAs")) {
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		
+		if(proc.equals("delComm")) {
+			service.delComm(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		
+		if(proc.equals("insAns")) {
+			service.insAns(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

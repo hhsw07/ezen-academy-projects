@@ -35,8 +35,7 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String proc = request.getParameter("proc");
-		if(proc==null) proc="";
+		String proc = Nk.toStr(request.getParameter("proc"),"notice");
 		System.out.println("proc확인"+proc);
 		
 		// 공지리스트 불러오기
@@ -46,6 +45,7 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("notice")) {
 			page="main/serviceCenter/notice.jsp";
 		}
+		
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

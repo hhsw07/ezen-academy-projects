@@ -28,7 +28,9 @@ public class P05_SCenterCtrl extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = "main/serviceCenter/notice.jsp";
+		String page = "notice";
+		
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);

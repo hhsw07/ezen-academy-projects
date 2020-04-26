@@ -20,10 +20,27 @@ public class AsService {
 		return dao.asList();
 	}
 	
+	public As asList(HttpServletRequest request){
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		System.out.println("서비스단 as_no"+as_no);
+		
+		return dao.asList(as_no);
+	}
+	
 	public ArrayList<As> asDetail(HttpServletRequest request){
 		int as_no = Nk.toInt(request.getParameter("as_no"));
 		
 		return dao.getAs(as_no);
 	}
-
+	
+	public void delComm(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		dao.delComm(as_no);
+	}
+	
+	public void insAns(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		String as_comm = Nk.toStr(request.getParameter("as_comm"));
+		dao.insAns(as_no, as_comm);
+	}
 }

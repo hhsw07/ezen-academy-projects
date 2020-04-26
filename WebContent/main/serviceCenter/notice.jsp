@@ -27,13 +27,21 @@
           outline:none; padding:0; margin:0; cursor:pointer;}
 </style>
 
-<link rel="stylesheet" 
-	href="path/a00_com/a00_com.css">
-<!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		var proc = "${param.proc}";
+		if(proc=="notice"){
+			$("h1").append(" - 공지사항");
+		}
+		
+		if(proc=="as"){
+			location.href="${path}/as";
+		}
+		
+		
+		
+		
 	});
 	function go(noti_no){
 		$("[name=noti_no]").val(noti_no);
@@ -41,6 +49,8 @@
 		$("form").submit();
 		
 	}
+	
+	
 </script>
 </head>
 <body>
@@ -49,17 +59,18 @@
 
 <div class="all-wrap">
 	<div class="wrap">
-	<h1>서비스센터</h1>
+	<h1>고객센터</h1>
 	<!-- 게시판 목록 -->
-	<select align="center">
-		<option>공지사항</option>
+	<form method="post">
+	<select align="center" name="proc">
+		<option value="notice">공지사항</option>
 		<option>문의사항</option>
 		<option>상품후기</option>
-		<option>AS신청</option>
+		<option value="as">AS신청</option>
 	</select>
-	
+	<input class="btn" type="submit" value="이동" />
 	<table align="center">
-	<form method="post">
+	
 	<input type="hidden" name="proc2"/>
 		<colgroup>
 			<col style="width:100px;"/>

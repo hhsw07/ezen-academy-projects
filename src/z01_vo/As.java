@@ -5,7 +5,7 @@ import java.util.Date;
 public class As {
 	private int as_no;
 	private int ord_no;
-	private String as_cate;
+	private String as_cate; //AS, 교환, 반품
 	private String as_detail;
 	private Date as_date;
 	
@@ -41,6 +41,19 @@ public class As {
 		this.as_cate = as_cate;
 		this.as_date = as_date;
 		this.mem_id = mem_id;
+	}
+	
+
+	public As(int as_no, String as_cate, String as_detail, Date as_date, String mem_id, String as_comm,
+			Date as_comdate) {
+		super();
+		this.as_no = as_no;
+		this.as_cate = as_cate;
+		this.as_detail = as_detail;
+		this.as_date = as_date;
+		this.mem_id = mem_id;
+		this.as_comm = as_comm;
+		this.as_comdate = as_comdate;
 	}
 
 	public As(int ord_no, String as_cate, String as_detail, Date as_date, String mem_id, String as_comm,
