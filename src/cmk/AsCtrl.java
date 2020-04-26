@@ -52,6 +52,21 @@ public class AsCtrl extends HttpServlet {
 			request.setAttribute("asdetail", service.asDetail(request));
 			page ="main\\serviceCenter\\asdetail.jsp";
 		}
+		
+		if(proc.equals("delComm")) {
+			service.delComm(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		
+		if(proc.equals("insAns")) {
+			service.insAns(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

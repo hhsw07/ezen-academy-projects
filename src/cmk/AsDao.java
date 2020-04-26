@@ -164,6 +164,76 @@ public class AsDao {
 		return asdetail;
 	}
 
+	public void delComm(int as_no) {
+		try {
+			setCon(); 
+			String sql = "UPDATE P5_AS\r\n" + 
+					"SET AS_COMM = NULL\r\n" + 
+					"WHERE AS_NO =?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, as_no);
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("as_comm 삭제!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void insAns(int as_no, String as_comm) {
+		try {
+			setCon(); 
+			String sql = "UPDATE P5_AS\r\n" + 
+					"SET AS_COMM = ?,\r\n" + 
+					"	AS_COMDATE = SYSDATE \r\n" + 
+					"WHERE AS_NO =?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, as_comm);
+			pstmt.setInt(2, as_no);
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("as_comm 삭제!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		AsDao dao = new AsDao();

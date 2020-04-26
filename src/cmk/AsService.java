@@ -32,5 +32,15 @@ public class AsService {
 		
 		return dao.getAs(as_no);
 	}
-
+	
+	public void delComm(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		dao.delComm(as_no);
+	}
+	
+	public void insAns(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		String as_comm = Nk.toStr(request.getParameter("as_comm"));
+		dao.insAns(as_no, as_comm);
+	}
 }
