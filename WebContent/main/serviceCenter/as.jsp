@@ -32,7 +32,21 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("고객센터");
+		
+		
+		
+		$(".reg-btn").click(function(){
+			alert("as 등록합니다.");
+		});
 	});
+	
+	function goAs(no){
+		$("[name=proc]").val("goAs");
+		$("[name=as_no]").val(no);
+		//alert($("[name=proc]").val());
+		$("form").submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -41,61 +55,49 @@
 		<header class="as-title">
 			<h2></h2>
 		</header>
-	<div style="min-height:700px;">
-		<div class="cs-wrap">
-			<select name="cs-menu" class="cs-menu">
-		      <option>공지사항</option>
-		      <option>문의사항</option>
-		      <option>상품후기</option>
-		      <option selected="selected">AS신청</option>
-		    </select>
+		<form method="post">
+		<div style="min-height:700px;">
+			<div class="cs-wrap">
+				<select name="proc" class="cs-menu">
+			      <option value="notice">공지사항</option>
+			      <option value="">문의사항</option>
+			      <option value="">상품후기</option>
+			      <option value="as" selected>AS신청</option>
+			    </select>
+			    <input type="submit" id="goBtn" value="이동" />
+			    <input type="hidden" name="proc" />
+			    <input type="hidden" name="as_no" />
+			</div>
+			<div class="as-table">
+				<table class="as-thead">
+					<colgroup>
+						<col width="12%">
+						<col width="8%">
+						<col width="53%">
+						<col width="12%">
+						<col width="15%">
+					</colgroup>
+					<tr>
+						<th>글번호</th><th>분류</th><th>제목</th><th>작성자</th><th>등록일</th>
+					</tr>
+					<c:forEach var="as" items="${asList}">
+					<tr onclick="goAs(${as.as_no})">
+						<td class="as-code">${as.as_no}</td>
+						<td class="as-code">${as.as_cate}</td>
+						<td>AS 관련 문의드립니다</td>
+						<td class="as-code">${as.mem_id}</td>
+						<td class="as-code">${as.as_date}</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div class="as-search">
+				<span class="as-write" style="margin-left:500px">
+					<input class="reg-btn" type="button" value="글쓰기">
+				</span>
+			</div>
 		</div>
-		<div class="as-table">
-			<table class="as-thead">
-				<colgroup>
-					<col width="12%">
-					<col width="8%">
-					<col width="53%">
-					<col width="12%">
-					<col width="15%">
-				</colgroup>
-				<tr>
-					<th>글번호</th><th>분류</th><th>제목</th><th>작성자</th><th>등록일</th>
-				</tr>
-			</table>
-			<table class="as-tbody">
-				<colgroup>
-					<col width="12%">
-					<col width="8%">
-					<col width="53%">
-					<col width="12%">
-					<col width="15%">
-				</colgroup>
-			<c:if test="${not empty asList}">
-				<c:forEach var="as" items="${asList}">
-				<tr>
-					<td class="as-code">${as.as_no}</td>
-					<td class="as-code">${as.as_cate}</td>
-					<td>AS 관련 문의드립니다</td>
-					<td class="as-code">${as.mem_id}</td>
-					<td class="as-code">${as.as_date}</td>
-				</tr>
-				</c:forEach>
-			</c:if>
-			</table>
-		</div>
-	</div>
-		<div class="as-search">
-			<span style="margin-right:150px">
-				<input class="input-box" type="text">
-				<input class="search-btn" type="submit" value="검색">
-			</span>
-			<span class="as-write" style="margin-left:500px">
-				<input class="reg-btn" type="button" value="글쓰기">
-			</span>
-		</div>
-	</div>
-	
+	</form>
 	<jsp:include page="../bottom.jsp"/>
 	
 </body>

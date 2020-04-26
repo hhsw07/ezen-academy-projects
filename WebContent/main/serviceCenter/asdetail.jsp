@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	.ordR{text-align:right;}
+	.ordL{text-align:left;}
+
 	.cs-content{min-height:750px;}
 	.as-context{width:1080px; margin:20px auto;}
 	.apply-title{width:1080px; margin:0 auto;}
@@ -46,9 +49,24 @@
 	.btn:hover:before,.btn:hover:after{width:100%; transition:800ms ease all;}
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
 <script type="text/javascript">
 	$(document).ready(function(){		
 		$("h2").text("AS신청");
+		
+		var tot = "${fn:length(asdetail)}";
+		for(var idx=0;idx<tot;idx++){
+			var num = $(".num").eq(idx).text();
+			var numS = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$(".num").eq(idx).text(numS+" 원");
+		}
+		
+		$(".goback-btn").click(function(){
+			$("[name=proc]").val("as");
+			$("form").submit();
+		});
+		
 	});
 </script>
 </head>
@@ -61,12 +79,13 @@
 		</header>
 		<div class="as-context">
 			<div id="cusestimateview">
-			<form>
+			<form method="post">
 				<input type="hidden" name="as_no" value="${as.as_no}"/>
+				<input type="hidden" name="proc" />
 				<div class="bbsbox">
 					<div class="bbstitle">
 						<strong>AS신청합니다</strong>
-						<span class="">[${as.as_cate}]</span>
+						<span class="">[${as.as_cate}]</span> <!-- AS, 교환, 반품 -->
 					</div>
 					<div class="bbsinfo">
 						<span class="writedate">작성일 : ${as.as_date}</span> / <span class="writer">작성자 : ${as.mem_id}</span>
@@ -93,15 +112,15 @@
 						</thead>
 						<tbody>
 						<!-- 리스트 시작 -->
-						<c:forEach var="ord" items="${asdetail}">
-							<tr style="">
+						<c:forEach var="ord" items="${asdetail}" >
+							<tr style="text-align:center;">
 								<td>${ord.ord_no}</td>
-                    			<td>${ord.parts_img}</td>
-	                   			<td style="background:none;">
+                    			<td><img src="${path}/image/parts/${ord.parts_img}" style="width:60px;"/></td>
+	                   			<td style="background:none; text-align:left;">
 	                   				<div class="cart_name">${ord.parts_name}</div>
 	                    		</td>
-	                    		<td>${ord.parts_price}</td>
-	                    		<td>${ord.req_cnt}</td>
+	                    		<td class="ordR num">${ord.parts_price}</td>
+	                    		<td>${ord.req_cnt} 개</td>
 	                    		<td>${ord.ord_date}</td>
                 			</tr>
                 		</c:forEach>	
@@ -110,7 +129,7 @@
 					</table>
 					<!-- 문의글 시작 -->
 					<div class="bbscontents">
-						${as.as_detail}
+						${as.as_detail}as_detail
 					</div>
 				<!-- 문의글 끝 -->
 				</div>
@@ -118,6 +137,7 @@
 					<input class="goback-btn btn" type="button" value="목록으로"/>
 				</div>
 				<!-- 덧글 시작 -->
+				<c:if test="${as.mem_id == 'admin'}">
 				<table class="commentbox">
 					<col width="80%">
 					<col width="20%">
@@ -133,7 +153,7 @@
 						</tr>
 					</tbody>
 				</table>
-				
+				</c:if>
 				<!-- 덧글출력 시작 -->
 				<c:if test="${not empty as.as_comm}">
 				<div class="comment-list" id="online_lines">
@@ -150,7 +170,6 @@
             </form>
             </div>
 		</div>
-		
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>

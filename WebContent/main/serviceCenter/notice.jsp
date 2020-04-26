@@ -33,7 +33,12 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		var proc = "${param.proc}";
+		if(proc=="as"){
+			location.href="${path}/as";
+		}
+		
+		
 	});
 	function go(noti_no){
 		$("[name=noti_no]").val(noti_no);
@@ -41,6 +46,8 @@
 		$("form").submit();
 		
 	}
+	
+	
 </script>
 </head>
 <body>
@@ -51,15 +58,16 @@
 	<div class="wrap">
 	<h1>서비스센터</h1>
 	<!-- 게시판 목록 -->
-	<select align="center">
+	<form method="post">
+	<select align="center" name="proc">
 		<option>공지사항</option>
 		<option>문의사항</option>
 		<option>상품후기</option>
-		<option>AS신청</option>
+		<option value="as">AS신청</option>
 	</select>
-	
+	<input type="submit" value="이동" />
 	<table align="center">
-	<form method="post">
+	
 	<input type="hidden" name="proc2"/>
 		<colgroup>
 			<col style="width:100px;"/>
