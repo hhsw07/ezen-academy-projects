@@ -48,30 +48,47 @@
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){		
-		$("h2").text("AS신청");
+		$("h2").text("공지상세");
+		$("#uptNoti").click(function(){
+			$("[name=proc]").val("writeNoti");
+			$("form").submit();
+		});
+		$("#delNoti").click(function(){
+			
+		});
+		$("#listNoti").click(function(){
+			$("[name=proc]").val("notice");
+			$("form").submit();
+			/* if(confirm("작성을 취소하시겠습니까?")){
+			} */
+		});		
 	});
 </script>
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
+	<form method="post">
 	<div class="cs-content">
 	<header class="apply-title">
-
 	</header>
+	<input type="hidden" name="proc" />
+	<input type="hidden" name="noti_no" value="${notice.noti_no}"/>
+	<input type="hidden" name="noti_name" value="${notice.noti_name}"/>
+	<input type="hidden" name="noti_detail" value="${notice.noti_detail}"/>
 	<div class="as-context">
 		<div id="cusestimateview">
 			<div class="bbsbox">
 				<div class="bbstitle">
-					<strong>컴퓨터 견적을 의뢰하는 경우★필독</strong>
+					<strong>${notice.noti_name}</strong>
 				</div>
 				<div class="bbsinfo">
-					<span class="writedate">작성일 : 2018-12-16</span> / <span class="writer">작성자 : 관리자</span>
+					<span class="writedate">작성일 : ${notice.noti_date}</span> / <span class="writer">작성자 : 관리자</span>
 				</div>
 				<!-- 내용 시작 -->
 				<table summary="OrderList" class="bbslist">
 						<colgroup>
 							<col width="15%">
-							<col width="10%">
+							<col width="10%">	
 							<col width="auto">
 							<col width="15%">
 							<col width="7%">
@@ -81,18 +98,14 @@
 					</table>
 					<!-- 문의글 시작 -->
 					<div class="bbscontents">
-						고객님의 컴퓨터 견적을 가지고 컴퓨터 제작만 의뢰하는 경우에 대한 세 가지 안내사항을 전달합니다.<br>
-						★ 완성됨 상품을 구매하는 경우에 본 내용을 보지 않으셔도 됩니다.<br>
-						(1) 출장방문 A/S 를 포함하여 구매하시는 것을 권장합니다. (11,000원~12,000원)<br>
-						(2) 박스를 추가 구매하시는 것을 권장합니다. (3,000원)<br>
-						(3) 구매를 원하시는 견적과 판매중인 컴퓨터의 견적을 비교해주세요.<br>
-						★ 위 내용이 기본 적용되는 곳이 있고, 추가해야 적용되는 곳이 있습니다.<br>
-						해당 사이트의 상세페이지를 확인한 후 추가해주세요.<br>
+						${notice.noti_detail}
 					</div>
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
-					<input class="goback-btn btn" type="button" value="목록으로"/>
+					<input id="uptNoti" class="goback-btn btn" type="button" value="수정"/>
+					<input id="delNoti" class="goback-btn btn" type="button" value="삭제"/>
+					<input id="listNoti" class="goback-btn btn" type="button" value="목록"/>
 				</div>
 				<!-- 덧글 시작 -->
 				<table class="commentbox">
@@ -126,7 +139,7 @@
             </div>
 		</div>
 	</div>
-	
+	</form>
 	<jsp:include page="../bottom.jsp"/>
 	
 </body>

@@ -20,5 +20,28 @@ public class A02_serviceCenterService {
 	public ArrayList<Notice> Notice(HttpServletRequest request) {
 		return dao.nlist();
 	}
+	
+	public Notice noticeDetail(HttpServletRequest request) {
+		int noti_no = Nk.toInt(request.getParameter("noti_no"));
+		
+		return dao.ndetail(noti_no);
+	}
+
+	public void insertNotice(HttpServletRequest request) {
+		int noti_no = Nk.toInt(request.getParameter("noti_no"));
+		String noti_name = Nk.toStr(request.getParameter("noti_name"));
+		String noti_detail = Nk.toStr(request.getParameter("noti_detail"));
+		
+		Notice noti = new Notice(noti_no, noti_name, noti_detail);
+		dao.insertNotice(noti);
+	}
+	
+	public void updateNotice(HttpServletRequest request) {
+		String noti_name = Nk.toStr(request.getParameter("noti_name"));
+		String noti_detail = Nk.toStr(request.getParameter("noti_detail"));
+		
+		Notice noti = new Notice(noti_name, noti_detail);
+		dao.updateNotice(noti);
+	}
 }		
 

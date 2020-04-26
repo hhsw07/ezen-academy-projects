@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import z01_vo.Nk;
+import z01_vo.Notice;
 
 /**
  * Servlet implementation class A02_serviceCenterCtrl
@@ -33,19 +34,44 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//0. 한글 encoding 처리
 		request.setCharacterEncoding("utf-8");
-		
+		//1. 요청
 		String proc = Nk.toStr(request.getParameter("proc"),"notice");
 		System.out.println("proc확인"+proc);
-		
+		//2. Model
 		// 공지리스트 불러오기
+		if(proc.equals("notice")) {
 		request.getSession().setAttribute("nlist", service.Notice(request));
-		String page = "main/serviceCenter/notice.jsp";
+		}
+		// 공지 상세불러오기
+		if(proc.equals("noticeDetail")) {
+			request.setAttribute("notice", service.noticeDetail(request));
+		}
+		// 공지 등록
+		if(proc.equals("insNoti")) {
+			service.insertNotice(request);
+			request.getSession().setAttribute("nlist", service.Notice(request));
+			proc = "notice"; //view의 notice 작동 트리거
+		}
+		// 공지 수정
+		if(proc.equals("uptNoti")) {
+			service.updateNotice(request);
+			request.setAttribute("notice", service.noticeDetail(request));
+			proc = "noticeDetail"; //view의 notice 작동 트리거
+		}
 		
+		//3.View
+		String page = "main/serviceCenter/notice.jsp";
 		if(proc.equals("notice")) {
 			page="main/serviceCenter/notice.jsp";
 		}
-		
+		if(proc.equals("noticeDetail")) {
+			page="main/serviceCenter/noticeDetail.jsp";
+		}
+		if(proc.equals("writeNoti")) {
+			page="main/serviceCenter/noticeReg.jsp";
+		}
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

@@ -23,8 +23,8 @@
           .input-box{width:250px; height:45px; outline:none; padding:0; margin:0; cursor:pointer;}
           .search-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
           outline:none; padding:0; margin:0; cursor:pointer;}
-          .reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
-          outline:none; padding:0; margin:0; cursor:pointer;}
+          .btn{width:80px; height:40px; background-color:#63145F; color:white; border:1px solid black; font-size:20px;
+	outline:none; padding:0; margin:0; cursor:pointer; align:right}
 </style>
 
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
@@ -39,17 +39,16 @@
 			location.href="${path}/as";
 		}
 		
-		
-		
-		
+		$("#writeNoti").click(function(){
+			$("[name=proc]").val("writeNoti");
+			$("form").submit();
+		});
 	});
 	function go(noti_no){
 		$("[name=noti_no]").val(noti_no);
 		$("[name=proc]").val("noticeDetail");
 		$("form").submit();
-		
 	}
-	
 	
 </script>
 </head>
@@ -62,16 +61,16 @@
 	<h1>고객센터</h1>
 	<!-- 게시판 목록 -->
 	<form method="post">
-	<select align="center" name="proc">
+	<select name="proc">
 		<option value="notice">공지사항</option>
-		<option>문의사항</option>
-		<option>상품후기</option>
-		<option value="as">AS신청</option>
+		<option value="question">문의사항</option>
+		<option value="review">상품후기</option>
+		<option value="as">AS목록</option>
 	</select>
 	<input class="btn" type="submit" value="이동" />
+	<input type="hidden" name="proc" />
+	<input type="hidden" name="noti_no" />
 	<table align="center">
-	
-	<input type="hidden" name="proc2"/>
 		<colgroup>
 			<col style="width:100px;"/>
 			<col style="width:600px;"/>
@@ -89,7 +88,7 @@
 		
 	<!-- 글목록  -->	
 	<c:forEach var="notice" items="${nlist}">
-		<tr ondblclick="javascript:go(${notice.noti_no})">
+		<tr onclick="javascript:go(${notice.noti_no})">
 			<td align="center">${notice.noti_no}</td>
 			<td>${notice.noti_name}</td>
 			<td align="center">관리자</td>
@@ -106,13 +105,14 @@
 	
 		<tr style="border:none;">
 			<td colspan="3">
-			<input class="input-box" type="text" name="noti_name" value="${param.noti_name}"/>
-			<input class="search-btn" type="submit" value="검색"/>
-			</td>		
-			<th><input class="reg-btn" type="button" value="글쓰기"/></th>
+			</td>
+			<th style="text-align:right;">
+			<%-- <c:if test="${mem.mem_id == 'admin'}"> --%>
+			<input id="writeNoti" class="btn" type="button" value="글쓰기"/>
+			<%-- </c:if> --%></th>
 		</tr>
-	</form>
 	</table>
+	</form>
 	</div>
 </div>
 
