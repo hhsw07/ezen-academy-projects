@@ -47,7 +47,6 @@ public class PayDao {
 			e.printStackTrace();
 		}
 		
-		
 		return cart;
 	}
 	
@@ -181,8 +180,6 @@ public class PayDao {
 		
 		return payinfo;
 	}
-	
-	
 	// 재고 관리
 	public void uptPartsCnt(int req_no, int req_cnt){
 		try {

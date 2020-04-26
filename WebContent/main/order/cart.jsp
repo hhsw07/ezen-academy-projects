@@ -12,7 +12,6 @@
 <title>Insert title here</title>
 <style type="text/css">
 	.cart-cont{min-height:750px;}
-
 	.cart-title{width:1050px; margin:0 auto;}
 	.cart-thead tr th{padding:12px 10px; font-weight:700;}
 	.cart-tbody tr td{padding:12px 10px;border-bottom:1px solid #cacaca; }
@@ -26,14 +25,10 @@
 /* 버튼 */
 	.btn-order-ctrl {width:1080px; margin:0 auto;overflow: hidden;padding: 30px 0 0;} 
 	.btn0 {float: left;width: 50%;text-align: left;}
-	.box_btn {display: inline-block;text-align: center;vertical-align: top;}
-	.box_btn * {width: 140px;margin: 0 10px 0 0;}
-	.box_btn.white * {  border: 1px solid #e5e5e5; background: #fff;color: #333 !important;}
-	.box_btn.huge > * { padding: 18px !important; font-size: 16px !important;}
+	.box_btn.white{border: 1px solid #e5e5e5; background: #fff;color: #333 !important; padding: 18px !important; font-size: 16px !important;}
 	.box_btn > * {display: inline-block;outline: none;font-weight: 300;ext-align: center;vertical-align: middle;
     line-height: 1.4; white-space: nowrap;cursor: pointer; -webkit-appearance: none;transition: all .2s ease;}
     .btn1 {float: right; width: 50%; text-align: right;}
-    .box_btn.gray * {border-color: #f2f2f2;background: #f2f2f2;color: #333 !important;}
     
 	.btn{background:#63145F; color:#fff; border:none; position:relative; height:60px; font-size:1.5em; padding:0 2em; cursor:pointer;
 	transition:800ms ease all; outline:none;}
@@ -81,10 +76,22 @@
 				checkedCnt = 0;
 			}
 		});
-		
+		// 선택삭제
+		var strArry= $("input[name=cartck]:checked");
+		$('#delBtn').click(function(){
+			if(strArry!=null){
+				for(var idx=0;idx<strArry.length;idx++){
+					strArry.eq(idx).parent().parent().remove();
+				}
+			}
+			
+		});
+			
 		<%--$("#delBtn")--%>
+		
+		
 		$("#allBtn").click(function(){
-			$("[name=proc]").val("pay");
+			$("[name=proc]").val("gopay");
 			$("form").submit();
 		});
 		
@@ -103,7 +110,7 @@
 			cnt--;
 			totPay = totPay-price;
 		}
-		$("#cnt"+no).text(cnt);
+		$("#cnt"+no).html("<input type='hidden' name='req_cnt' value='"+cnt+"' />"+cnt);
 		var tot = cnt*price;
 		var totS = tot.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#tot"+no).html("<input type='hidden' name='tot' value='"+tot+"'/>"+totS+" 원");
@@ -113,7 +120,7 @@
 		var totptS = totpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 		var totPayS = totPay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS+" 원");
+		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS);
 		
 	}
 	function plus(no){
@@ -121,7 +128,7 @@
 		var cnt = Number($("#cnt"+no).text());
 		var totPay = Number($("[name=totalPay]").val());
 		cnt++;
-		$("#cnt"+no).text(cnt);
+		$("#cnt"+no).html("<input type='hidden' name='req_cnt' value='"+cnt+"' />"+cnt);
 		console.log(totPay);
 		var price = Number($("#price"+no).val());
 		var tot = cnt*price;
@@ -134,7 +141,7 @@
 		$("#point"+no).html("<input type='hidden' value='"+totpt+"'/>"+totptS+" p");
 		totPay = totPay+price;
 		var totPayS = totPay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS+" 원");
+		$("#totalPay").html("<input type='hidden' name='totalPay' value='"+totPay+"'/>"+totPayS);
 	}
 
 	</script>
@@ -146,7 +153,7 @@
 			<h2></h2>
 		</header>
 		<form method="post">
-			<input type="hidden" name="proc"/>
+			<input type="hidden" name="proc" value="gopay"/>
 			<div class="cart-wrap">
 				<table class="cart-table-th">
 					<colgroup>
@@ -176,14 +183,15 @@
 					<tbody class="cart-tbody">
 						<c:forEach var="cart" varStatus="status" items="${cart}">
 						<tr>
-							<td style="text-align:center"><input type="checkbox" name="cart"/></td>
+							<td style="text-align:center"><input type="checkbox" name="cartck"/></td>
 							<td>
-								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
+								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span>
+								<span style="vertical-align:middle;">${cart.parts_name}</span>
 							</td>
 							<td style="text-align:center">
 								<div class="pd_count">
 									<input type="button" onclick="minus(${status.count})" value="-"/>
-									<span id="cnt${status.count}">${cart.req_cnt}</span>
+									<span id="cnt${status.count}"><input type="hidden" name="req_cnt" value="${cart.req_cnt}" />${cart.req_cnt}</span>
 									<input type="button" onclick="plus(${status.count})" value="+"/>
 								</div>
 							</td>
@@ -216,11 +224,11 @@
 		
 		<div class="btn-order-ctrl">
 			<div class="btn0">
-				<div class="box_btn white huge" id="delBtn"><a href="javascript:basket_multidel()">선택삭제</a></div>
+				<input  class="box_btn white" id="delBtn" type="button" value="선택삭제"/>
 			</div>
 			<div class="btn1">
-				<input class="btn" type="button" name="selBtn" value="선택주문"/>
-				<input class="btn" type="button" name="allBtn" value="전체주문"/>
+				<input class="btn" type="button" id="selBtn" value="선택주문"/>
+				<input class="btn" type="button" id="allBtn" value="전체주문"/>
 			</div>
 		</div>
 		

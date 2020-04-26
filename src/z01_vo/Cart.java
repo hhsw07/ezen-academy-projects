@@ -7,7 +7,7 @@ public class Cart {
 	private int req_cnt;
 	private int parts_price;
 	
-	
+	private int totalPay;
 	
 	public Cart() {
 		super();
@@ -68,5 +68,6 @@ public class Cart {
 	public void setParts_price(int parts_price) {
 		this.parts_price = parts_price;
 	}
+	
 
 }

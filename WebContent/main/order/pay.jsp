@@ -51,6 +51,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("결제하기");
+		
+		var cnt = Number($("#cnt"+no).text());
+		var price = Number($("#price"+no).val());
+		var totPay = Number($("[name=totalPay]").val());
 	});
 </script>
 </head>
@@ -86,18 +90,21 @@
 				<col width="10%">
 			</colgroup>
 			<tbody class="pay-tbody">
+				<c:forEach var="cart" varStatus="status" items="${cart}">
 				<tr>
 					<td></td>
 					<td>
 						<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
 					</td>
-					<td>${cart.req_cnt}</td>
+					<td style="text-align:center;">${cart.req_cnt}</td>
 					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
 					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원</td>
-					<td>
+					<td class="fmtnum">
 						<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
 					</td>
 				</tr>
+				<c:set var="totPay" value="${totPay+cart.parts_price*cart.req_cnt}"/>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -209,7 +216,7 @@
 	
 	<div class="pay-price">
 		<fieldset>
-			<h3>총 금액</h3>
+			<h3>총 금액 : <span><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h3>
 			<h3>할인금액</h3>
 			<h1>최종결제금액</h1>
 		</fieldset>

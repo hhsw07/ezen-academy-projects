@@ -25,7 +25,11 @@ public class PayService {
 		return dao.getCart(req_no, req_cnt);
 	}
 	
-	
+	public Cart cartProduct(HttpServletRequest request) {
+		Cart p = getProd(request);
+		p.setReq_cnt(Nk.toInt(request.getParameter("req_cnt")));
+		return p;
+	}
 	
 	public void insOrder(HttpServletRequest request, String mem_id){
 		

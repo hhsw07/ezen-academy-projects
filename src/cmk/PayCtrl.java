@@ -53,12 +53,19 @@ public class PayCtrl extends HttpServlet {
 			
 			//session.setAttribute("cart", cartList);
 		}
+		if(proc.equals("gopay")) {
+			session.getAttribute("cart");
+		}
 		if(proc.equals("pay")) {
 			String mem_id = Nk.toStr((String)session.getAttribute("mem"));
 			service.insOrder(request, mem_id);
 		}
 		// 3. View
 		String page = "main\\order\\cart.jsp";
+		
+		if(proc.equals("gopay")) {
+			page = "main\\order\\pay.jsp";
+		}
 		if(proc.equals("pay")) {
 			page = "main\\order\\payend.jsp";
 		}
