@@ -77,14 +77,11 @@
 			}
 		});
 		// 선택삭제
-		var strArry= $("input[name=cartck]:checked");
+		var strArry= $("input[name=cartck]:checked").length;
 		$('#delBtn').click(function(){
 			if(strArry!=null){
-				for(var idx=0;idx<strArry.length;idx++){
-					strArry.eq(idx).parent().parent().remove();
-				}
-			}
-			
+				$("input[name=cartck]:checked").parent().parent().remove();
+			}			
 		});
 			
 		<%--$("#delBtn")--%>

@@ -52,7 +52,7 @@
 	$(document).ready(function(){
 		$("h2").text("결제하기");
 		
-		var cnt = Number($("#cnt"+no).text());
+		var cnt = Number($("#cnt"+no).val());
 		var price = Number($("#price"+no).val());
 		var totPay = Number($("[name=totalPay]").val());
 	});
@@ -96,9 +96,9 @@
 					<td>
 						<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
 					</td>
-					<td style="text-align:center;">${cart.req_cnt}</td>
+					<td style="text-align:center;">${param.req_cnt}</td>
 					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
-					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원</td>
+					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*param.req_cnt}"/> 원</td>
 					<td class="fmtnum">
 						<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
 					</td>
