@@ -47,34 +47,27 @@ public class PointDao {
 		return ptList;
 	}
 	
-	public Point calPoint() {
-		Point cal = new Point();
+	public int totPt(String mem_id) {
+		int point = 0;
 		try {
 			setCon();
-			String sql = "SELECT a.tot, b.pl, c.mi\r\n" + 
-					"FROM (SELECT sum(point_pt) tot FROM P5_POINT\r\n" + 
-					"WHERE mem_id = 'ezen01') a,\r\n" + 
-					"(SELECT sum(point_pt) pl FROM P5_POINT\r\n" + 
-					"WHERE mem_id = 'ezen01'\r\n" + 
-					"AND POINT_PT>=0) b,\r\n" + 
-					"(SELECT sum(point_pt) mi FROM P5_POINT\r\n" + 
-					"WHERE mem_id = 'ezen01'\r\n" + 
-					"AND POINT_PT<0) c";
+			String sql = "SELECT sum(point_pt) FROM P5_POINT\r\n" + 
+					"WHERE mem_id = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
-				cal = new Point(rs.getInt(1), rs.getInt(2), rs.getInt(3));
+			while(rs.next()) {
+				point = rs.getInt("tot");
 			}
-			rs.close();
-			pstmt.close();
-			con.close();
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return cal;
+		
+		return point;
 	}
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

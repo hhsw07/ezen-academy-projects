@@ -41,6 +41,10 @@ public class PayService {
 		return buy;
 	}
 	
+	public int getPt(HttpServletRequest request) {
+		int pt = dao.getPoint(Nk.toStr(request.getParameter("mem_id")));
+		return pt;
+	}
 	
 	public void insOrder(HttpServletRequest request, String mem_id){
 		

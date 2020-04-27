@@ -152,6 +152,7 @@
 		</header>
 		<form method="post">
 			<input type="hidden" name="proc" value="gopay"/>
+			<input type="hidden" name="mem_id" value="${mem.mem_id}"/>
 			<div class="cart-wrap">
 				<table class="cart-table-th">
 					<colgroup>

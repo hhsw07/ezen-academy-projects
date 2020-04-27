@@ -48,14 +48,57 @@
 	
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("결제하기");
-		
+		$("#usept").click(function(){
+			var usePt = Number($("[name=point]").val());
+			var usePtS = usePt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			$("#discount").html("<input type='hidden' name='pay_point' value='"+usePt+"'/>"+usePtS);
+			var tot = Number($("[name=totprice]").val());
+			var last = tot - usePt;
+			console.log("사용포인트"+usePt+","+usePtS);
+			var lastS = last.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			console.log("최종결제금액"+last+","+lastS);
+			$("#lastPay").html("<input type='hidden' name='pay_price' value='"+last+"'/>"+lastS);
+		});
+		$("[name=payBtn]").click(function(){
+			$("[name=proc]").val("pay");
+			$("form").submit();
+		});
+<%--
 		var cnt = Number($("#cnt"+no).val());
 		var price = Number($("#price"+no).val());
 		var totPay = Number($("[name=totalPay]").val());
+--%>
 	});
+	function findpost() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zip').value = data.zonecode;
+                document.getElementById("addr").value = roadAddr;
+                
+            }
+        }).open();
+    }
 </script>
 </head>
 <body>
@@ -64,6 +107,8 @@
 		<h2></h2>
 	</header>
 	
+	<form method="post">
+	<input type="hidden" name="proc" />
 	<div class="pay-wrap">
 		<table class="pay-table-th">
 			<colgroup>
@@ -118,19 +163,19 @@
 				<tr>
 					<th>이름</th>
 					<td>
-						<div class="input-wrap"><input class="input" type="text" name="name"/></div>
+						<div class="input-wrap"><input class="input" type="text" name="name" value="${mem.mem_id}"/></div>
 					</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<div class="input-wrap"><input class="input" type="text" name="tel"/></div>
+						<div class="input-wrap"><input class="input" type="text" name="tel" value="${mem.mem_tel}"/></div>
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<div class="input-wrap"><input class="input" type="email" name="email"/></div>
+						<div class="input-wrap"><input class="input" type="email" name="email" value="${mem.mem_email}"/></div>
 					</td>
 				</tr>
 			</table>
@@ -149,29 +194,29 @@
 				<tr>
 					<th>수령인</th>
 					<td>
-						<div class="input-wrap"><input class="input" type="text" name="recipient"/></div>
+						<div class="input-wrap"><input class="input" type="text" name="ord_name"/></div>
 					</td>
 				</tr>
 				<tr>
 					<th>연락처</th>
 					<td>
-						<div class="input-wrap"><input class="input" type="text" name="hp"/></div>
+						<div class="input-wrap"><input class="input" type="text" name="ord_tel"/></div>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
-						<div>
+						<div onclick="findpost()">
 							<span class="input-wrap input-post">
-								<input type="text" id="zip" class="input" name="postcode" value="" readonly="readonly">
+								<input type="text" id="zip" class="input" name="ord_post" value="" readonly/>
 							</span>
 							<input class="input-btn" type="button" value="우편번호찾기"/>
 						</div>
 						<div class="input-addr">
-							<input type="text" id="addr" class="input" name="newaddr" value="" readonly="readonly">
+							<input type="text" id="addr" class="input" name="ord_addr1" value="" readonly/>
 						</div>
 						<div class="input-addr">
-							<input type="text" class="input" name="detail_addr"/>
+							<input type="text" class="input" name="ord_addr2"/>
 						</div>
 					</td>
 				</tr>
@@ -179,7 +224,7 @@
 					<th>주문 요청사항</th>
 					<td>
 						<div class="request">
-							<textarea style="width:100%; border:none; height:100%; resize:none;" scrolling="yes"></textarea>
+							<textarea name="ord_req" style="width:100%; border:none; height:100%; resize:none;" scrolling="yes"></textarea>
 						</div>
 					</td>
 				</tr>
@@ -196,18 +241,18 @@
 				<tr>
 					<th>결제 방법 선택</th>
 					<td>
-						<input type="radio" name="payment" value=""/>무통장입금
-						<input type="radio" name="payment" value=""/>카드결제
+						<input type="radio" name="pay_method" value="무통장입금"/>무통장입금
+						<input type="radio" name="pay_method" value="카드결제"/>카드결제
 					</td>
 				</tr>
 				<tr>
 					<th>포인트 사용</th>
 					<td>
 						<span class="input-wrap input-post">
-							<input type="text" class="input" name="point" value=""/>
+							<input type="text" class="input" name="pay_point"/>
 						</span>
-						<input class="input-btn" type="button" value="사용"/>
-						('포인트'원 사용가능)
+						<input class="input-btn" type="button" id="usept" value="사용"/>
+						(<fmt:formatNumber type="number" value="${point}"/> p 사용가능)
 					</td>
 				</tr>
 			</table>
@@ -216,11 +261,12 @@
 	
 	<div class="pay-price">
 		<fieldset>
-			<h3>총 금액 : <span><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h3>
-			<h3>할인금액</h3>
-			<h1>최종결제금액</h1>
+			<h3>총 금액 : <span><input type="hidden" name="totprice" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h3>
+			<h3>할인금액 : <span id="discount"></span> 원</h3>
+			<h1>최종결제금액 : <span id="lastPay"><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h1>
 		</fieldset>
 	</div>
+	</form>
 	
 	<div class="pay-btn">
 		<input class="btn" type="button" name="payBtn" value="결제하기"/>

@@ -56,6 +56,8 @@ public class PayCtrl extends HttpServlet {
 		if(proc.equals("gopay")) {
 			System.out.println("확인:"+proc);
 			request.setAttribute("buylist", service.getCart(request));
+			request.setAttribute("point", service.getPt(request));
+			System.out.println();
 		}
 		if(proc.equals("pay")) {
 			String mem_id = Nk.toStr((String)session.getAttribute("mem"));

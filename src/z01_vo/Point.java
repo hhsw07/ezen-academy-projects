@@ -38,11 +38,9 @@ public class Point {
 	
 	// 포인트 계산
 
-	public Point(int tot, int plus, int minus) {
+	public Point(int tot) {
 		super();
 		this.tot = tot;
-		this.plus = plus;
-		this.minus = minus;
 	}
 
 
