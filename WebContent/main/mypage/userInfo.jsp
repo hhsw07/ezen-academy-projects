@@ -35,6 +35,21 @@
 	$(document).ready(function(){
 		// 수정 버튼 클릭시,
 		$("#uptBtn").click(function(){
+			var ckpw = "${mem.mem_pw}";
+			if($("[name=mempw]").val() == ckpw){
+				alert("비밀번호 일치");
+				if( confirm("수정하시겠습니까?") ){
+					// 1. 수정 proc 변경.
+					$("[name=proc]").val("update");
+					// 2. submit처리
+					$("form").submit();
+					alert("비밀번호가 변경되었습니다");
+				}
+			}else{
+				alert("비밀번호가 일치하지 않습니다");
+			}
+		});
+		/*
 			if( confirm("수정하시겠습니까?") ){
 				// 1. 수정 proc 변경.
 				$("[name=proc]").val("update");
@@ -43,6 +58,7 @@
 				alert("비밀번호가 변경되었습니다");
 			}
 		});
+		*/
 		// 회원탈퇴이동
 		$("[name=dropInfo]").click(function(){
 			$("[name=proc]").val("dropInfo");
@@ -87,12 +103,16 @@
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
+				<td>기존 비밀번호</td>
+				<td><input name="mempw" type="password"/></td>
+			</tr>
+			<tr>
 				<td>새 비밀번호</td>
 				<td><input name="mem_pw" type="password"/></td>
 			</tr>
 			<tr>
 				<td>재입력</td>
-				<td><input name="ck_pw" type="password"/></td>
+				<td><input name="" type="password"/></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>

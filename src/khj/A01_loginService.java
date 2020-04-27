@@ -64,8 +64,8 @@ public class A01_loginService {
 		return dao.findId(new Member(mem_name, mem_email));
 	}
 	// 회원가입 아이디 중복확인
-	public boolean checkReg(String id){
-		return dao.memberCk(id);
+	public boolean checkReg(String mem_id){
+		return dao.memberCk(mem_id);
 	}
 
 }

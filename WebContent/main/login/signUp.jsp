@@ -30,27 +30,27 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-
-	$("#regbtn").click(function(){
-		alert("회원가입 성공");
-		$("[name=proc]").val("insMem");
-		$("form").submit();
-	});
 	var mem_id = "${param.mem_id}";
-	
 	// id를 입력하고, controller단 호출 후..
 	if(mem_id!=""){
 		var isMember = "${isMember}";
 		if(isMember=="true"){ /// true이면..
-			alert("등록된 ID입니다!");
+			alert("등록된 id입니다!");
 			$("[name=mem_id]").focus();
 		}else{
 			alert("등록가능합니다.")
 			$("[name=mem_id]").val(mem_id);
 		}
 	}
+	$("h2").text("등록여부 확인");
 	$("#regCkBtn").click(function(){
-		//alert($("[name=id]").val());
+		$("form").submit();
+	});
+	
+	
+	$("#regbtn").click(function(){
+		alert("회원가입 성공");
+		$("[name=proc]").val("insMem");
 		$("form").submit();
 	});
 });
@@ -74,7 +74,7 @@ $(document).ready(function(){
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">회원가입</th></tr>
 			<tr>
 				<td>아이디<span class="import">*필수입력</span></td>
-				<td><input type="text" name="mem_id" class="input-box" id="id" placeholder="아이디" /></td>
+				<td><input type="text" name="mem_id" class="input-box" placeholder="아이디" /></td>
 			</tr>
 			
 			<tr>

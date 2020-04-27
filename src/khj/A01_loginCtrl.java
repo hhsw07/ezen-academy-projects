@@ -60,7 +60,8 @@ public class A01_loginCtrl extends HttpServlet {
 // 세션설정 ()부분에 왜 "mem", mem이 들어가는지 이해 안됨
 				session.setAttribute("mem", mem);
 			}
-		}		
+		}
+		String mem_id = request.getParameter("mem_id");
 // page는 main/login/login.jsp라는 경로라고 선언(?)
 		String page="main/login/login.jsp";
 // proc가 logout이면
@@ -75,6 +76,10 @@ public class A01_loginCtrl extends HttpServlet {
 		// 메인페이지
 		if(proc.equals("main")) {
 			page="main/main.jsp";
+		}
+		if(mem_id!=null&& !mem_id.equals("")) {
+			// id 있는지 여부 service에서 확인..
+			request.setAttribute("isMember", service.checkReg(mem_id));
 		}
 		// 로그인페이지 -> 회원가입
 		if(proc.equals("signUp")) {
@@ -102,9 +107,10 @@ public class A01_loginCtrl extends HttpServlet {
 			}else {
 				page = "main/login/findIdRs.jsp";
 			}
-			
 			request.setAttribute("findId", service);
 		}
+		if(proc.equals("findBtn"))
+		request.setAttribute("m", service.findID(request));
 		// 아이디찾기 결과 페이지
 		if(proc.equals("findIdRs")) {
 			page="main/login/findIdRs.jsp";

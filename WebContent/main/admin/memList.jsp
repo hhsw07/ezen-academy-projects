@@ -32,12 +32,15 @@
 <!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("서비스센터");
-	});
+$(document).ready(function(){
+	
+});
+function go(mem_name){
+	$("[name=mem_name]").val(empno);
+	$("[name=proc]").val("detail");
+	$("form").submit();
+	
+}
 </script>
 </head>
 <body>
@@ -68,48 +71,15 @@
 		</tr>
 		
 	<!-- 글목록  -->	
+	<c:forEach var="" items="">
 		<tr>
-			<td style="padding-left:20px;">홍길동</td>	
-			<td style="padding-left:40px;">ezen01</td>
-			<td style="padding-left:40px;">ezen01@naver.com</td>
-			<td style="padding-left:40px;">010-0000-0000</td>
-			<td style="padding-left:20px;">상세보기</td>
+			<td style="padding-left:20px;">${mem.mem_name}</td>	
+			<td style="padding-left:40px;">${mem.mem_id}</td>
+			<td style="padding-left:40px;">${mem.mem_email}</td>
+			<td style="padding-left:40px;">${mem.mem_tel}</td>
+			<td style="padding-left:20px;" ondblclick="javascript:go(${mem.mem_name})">상세보기</td>
 		</tr>
-		
-				<tr>
-			<td style="padding-left:20px;">김길동</td>
-			<td style="padding-left:40px;">ezen00201</td>
-			<td style="padding-left:40px;">ezen13201@naver.com</td>
-			<td style="padding-left:40px;">010-0000-0000</td>
-			<td style="padding-left:20px;">상세보기</td>
-		</tr>
-		
-		
-				<tr>
-			<td style="padding-left:20px;">오길동</td>
-			<td style="padding-left:40px;">ezen012351</td>
-			<td style="padding-left:40px;">ezen0142@naver.com</td>
-			<td style="padding-left:40px;">010-0000-0000</td>
-			<td style="padding-left:20px;">상세보기</td>
-		</tr>
-		
-		
-				<tr>
-			<td style="padding-left:20px;">진길동</td>
-			<td style="padding-left:40px;">ezen61501</td>
-			<td style="padding-left:40px;">ezen02311@naver.com</td>
-			<td style="padding-left:40px;">010-0000-0000</td>
-			<td style="padding-left:20px;">상세보기</td>
-		</tr>
-		
-		
-
-	
-	<!-- 목록페이징 -->	
-		<tr>
-			<th colspan="5"> 1 2 3 4 5 </th>
-		</tr>	
-		
+	</c:forEach>
 	</table>
 	</div>
 </div>

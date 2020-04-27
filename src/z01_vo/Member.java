@@ -15,13 +15,21 @@ public class Member {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public Member(String mem_id, String mem_pw) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_pw = mem_pw;
 	}
 
+	public Member(String mem_id, String mem_name, Date mem_birth, String mem_email, String mem_tel, Date mem_jdate) {
+		super();
+		this.mem_id = mem_id;
+		this.mem_name = mem_name;
+		this.mem_birth = mem_birth;
+		this.mem_email = mem_email;
+		this.mem_tel = mem_tel;
+		this.mem_jdate = mem_jdate;
+	}
 	public Member(String mem_id) {
 		super();
 		this.mem_id = mem_id;
