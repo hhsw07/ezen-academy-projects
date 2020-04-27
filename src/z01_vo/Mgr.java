@@ -10,9 +10,26 @@ public class Mgr {
 	private String mgr_note;
 	private int mgr_price;
 	
+	private Date as_date;
+	private String as_cate;
+	private String mem_id;
+	
+	
 	public Mgr() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Mgr(int mgr_no, int as_no, Date as_date, String as_cate,
+			String mem_id, Date mgr_date, String mgr_stat ) {
+		super();
+		this.mgr_no = mgr_no;
+		this.as_no = as_no;
+		this.as_date = as_date;
+		this.as_cate = as_cate;
+		this.mem_id = mem_id;
+		this.mgr_date = mgr_date;
+		this.mgr_stat = mgr_stat;
 	}
 
 	public Mgr(int mgr_no, int as_no, Date mgr_date, String mgr_stat, String mgr_note, int mgr_price) {

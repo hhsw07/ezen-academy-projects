@@ -41,7 +41,10 @@ public class A04_adminCtrl extends HttpServlet {
 			page = "main/admin/memDetail.jsp";
 		}
 			
-		
+		if(proc.equals("as")) {
+			request.setAttribute("asList",service.asList());
+			page = "main/admin/asAdmin.jsp";
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);

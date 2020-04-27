@@ -24,8 +24,15 @@
 		<%-- 
 		
 		--%>
-		$("h2").text("주문/배송관리");
+		$("h2").text("AS관리");
 	});
+	
+	function mgrDetail(mgr_no){
+		$("[name=proc]").val("mgrDetail");
+		$("[name=mgr_no]").val(mgr_no);
+		$("form").submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -35,7 +42,9 @@
 		<header>
 			<h2></h2>
 		</header>
-		
+		<form method="post">
+		<input type="hidden" name="proc"/>
+		<input type="hidden" name="mgr_no"/>
 		<table class="mgr-table">
 			<colgroup>
 				<col width="10%">
@@ -51,17 +60,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>신청번호</td><td>신청일</td><td>분류</td><td>신청자</td><td>입고일</td><td>진행상태</td>
+				<c:forEach var="mgr" items="mgrList">
+				<tr onclick="mgrDetail(${mgr.mgr_no})">
+					<td>${mgr.as_no}</td><td>${mgr.as_date}</td><td>${as.cate}</td><td>${as.mem_id}</td><td>입고일</td><td>진행상태</td>
 				</tr>
-				<tr>
-					<td>신청번호</td><td>신청일</td><td>분류</td><td>신청자</td><td>입고일</td><td>진행상태</td>
-				</tr>
-				<tr>
-					<td>신청번호</td><td>신청일</td><td>분류</td><td>신청자</td><td>입고일</td><td>진행상태</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
+		</form>
 	</div>
 	
 
