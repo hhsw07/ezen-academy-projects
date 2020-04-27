@@ -1051,7 +1051,7 @@ SELECT * FROM p5_question;
 SELECT que_no, mem_id, que_name,
 REPLACE(que_detail,'\n', '<br>') que_detail, que_date
 FROM p5_question
-WHERE que_no = 2;
+WHERE que_no = 6;
 --------------------------------------
 /* 문의사항댓글 */
 DROP TABLE p5_quecomm 
@@ -1109,7 +1109,7 @@ SELECT * FROM p5_quecomm;
 SELECT quec_no, que_no, mem_id,
 REPLACE(quec_detail,'\n', '<br>') quec_detail, quec_date
 FROM p5_quecomm
-WHERE que_no = 2;
+WHERE que_no = 6;
 --------------------------------------
 /* 공지사항 */
 DROP TABLE p5_notice 
