@@ -29,17 +29,7 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var proc = "${param.proc}";
-	if(proc == "no"){
-		alert("입력하신 정보가 일치하지 않습니다.");
-	}
-	$("#findBtn").click(function(){
-	if($("[name=mem_name]").val()==null || $("[name=mem_email]").val()==null){
-		alert("입력된 정보가 없습니다");
-	}else{
-		$("form").submit();
-	}
-	});
+
 });
 
 

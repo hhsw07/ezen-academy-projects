@@ -31,12 +31,15 @@
 // 로그인 성공 여부 확인
 $(document).ready(function(){
 	var mem_id = "${mem.mem_id}";
-	if(mem_id!=""){
-		alert("로그인 성공");
-		$("[name=proc]").val("main");
-		$("form").submit();
-	}else{
-		alert("로그인 실패");
+	var proc = "${param.proc}";
+	if(proc=='login'){
+		if(mem_id!=""){
+			alert("로그인 성공");
+			$("[name=proc]").val("main");
+			$("form").submit();
+		}else{
+			alert("로그인 실패");
+		}
 	}
 	// 아이디찾기 이동
 	$("[name=findId]").click(function(){

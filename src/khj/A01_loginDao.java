@@ -149,14 +149,15 @@ public class A01_loginDao {
 		try {
 			setCon();
 			String sql ="SELECT mem_id FROM p5_member\r\n" + 
-					"WHERE mem_name = ?\r\n" + 
-					"AND mem_email = ?";
+					"WHERE mem_name LIKE '%'||?||'%'\r\n" + 
+					"AND mem_email LIKE '%'||?||'%'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, fid.getMem_name());
 			pstmt.setString(2, fid.getMem_email());
 			System.out.println(sql);
-			rs = pstmt.executeQuery();
-			
+			System.out.println("이름"+fid.getMem_name());
+			System.out.println("메일"+fid.getMem_email());
+			rs = pstmt.executeQuery();			
 			if(rs.next()) {
 				m = new Member(
 						rs.getString(1));

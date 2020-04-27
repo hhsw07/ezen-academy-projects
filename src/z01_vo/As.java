@@ -34,6 +34,15 @@ public class As {
 		this.as_detail = as_detail;
 		this.as_date = as_date;
 	}
+	
+	
+	
+	public As(int ord_no, String as_cate, String as_detail) {
+		super();
+		this.ord_no = ord_no;
+		this.as_cate = as_cate;
+		this.as_detail = as_detail;
+	}
 
 	public As(int as_no, String as_cate, Date as_date, String mem_id) {
 		super();

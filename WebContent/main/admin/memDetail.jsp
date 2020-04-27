@@ -72,7 +72,7 @@
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
-				<td>포인트</td>
+				<td>가입날짜</td>
 				<td><input type="text"/></td>
 			</tr>
 			<tr>

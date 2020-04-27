@@ -22,7 +22,6 @@ public class AsService {
 	
 	public As asList(HttpServletRequest request){
 		int as_no = Nk.toInt(request.getParameter("as_no"));
-		System.out.println("서비스단 as_no"+as_no);
 		
 		return dao.asList(as_no);
 	}
@@ -33,6 +32,26 @@ public class AsService {
 		return dao.getAs(as_no);
 	}
 	
+	public void delAs(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		dao.delAs(as_no);
+	}
+	
+	public void insAs(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		String as_cate = Nk.toStr(request.getParameter("as_cate"));
+		String as_detail = Nk.toStr(request.getParameter("as_detail"));
+		As ins = new As(as_no,as_cate,as_detail);
+		dao.insAs(ins);
+	}
+	public void uptAs(HttpServletRequest request) {
+		int as_no = Nk.toInt(request.getParameter("as_no"));
+		String as_cate = Nk.toStr(request.getParameter("as_cate"));
+		String as_detail = Nk.toStr(request.getParameter("as_detail"));
+		As upt = new As(as_no,as_cate,as_detail);
+		dao.insAs(upt);
+	}
+
 	public void delComm(HttpServletRequest request) {
 		int as_no = Nk.toInt(request.getParameter("as_no"));
 		dao.delComm(as_no);
