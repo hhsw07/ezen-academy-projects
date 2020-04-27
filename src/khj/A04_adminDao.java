@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import z01_vo.Member;
 
@@ -62,6 +63,29 @@ public class A04_adminDao {
 		}
 		return mem;
 	}
+	public ArrayList<Member> mlist() {
+		ArrayList<Member> mlist = new ArrayList<Member>();
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_member";
+			pstmt = con.prepareStatement(sql);
+			while (rs.next()) {
+				mlist.add(new Member(
+						   rs.getString("mem_id"),
+						   rs.getString("mem_name"),
+						   rs.getString("mem_email"),
+						   rs.getString("mem_tel")));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mlist;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

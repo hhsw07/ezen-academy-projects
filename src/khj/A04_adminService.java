@@ -1,9 +1,12 @@
 package khj;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Member;
 import z01_vo.Nk;
+import z01_vo.Notice;
 
 public class A04_adminService {
 
@@ -14,7 +17,7 @@ public class A04_adminService {
 			dao = new A04_adminDao();
 		}
 		
-		public Member detail(HttpServletRequest request) {
-			return dao.getMember(Nk.toStr(request.getParameter("mem_name")));
+		public ArrayList<Member> Member(HttpServletRequest request) {
+			return dao.mlist();
 		}
 }
