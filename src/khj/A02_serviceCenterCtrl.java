@@ -70,6 +70,29 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("question")) {
 			request.getSession().setAttribute("qlist", service.Question(request));
 		}
+		// 문의 상세불러오기
+		if(proc.equals("quesDetail")) {
+			request.setAttribute("question", service.questionDetail(request));
+			request.setAttribute("qclist", service.Quecomm(request));
+		}
+		// 문의 등록
+		if(proc.equals("insQues")) {
+			service.insertQuestion(request);
+			request.getSession().setAttribute("qlist", service.Question(request));
+			proc = "question"; //view의 question 작동 트리거
+		}
+		// 문의 수정
+		if(proc.equals("uptQues")) {
+			service.updateQuestion(request);
+			request.setAttribute("question", service.questionDetail(request));
+			proc = "quesDetail"; //view의 quesDetail 작동 트리거
+		}
+		// 문의 삭제
+		if(proc.equals("delQues")) {
+			service.deleteQuestion(request);
+			request.getSession().setAttribute("qlist", service.Question(request));
+			proc = "question"; //view의 question 작동 트리거
+		}
 		//3.View
 		String page = "main/serviceCenter/notice.jsp";
 		if(proc.equals("notice")) {

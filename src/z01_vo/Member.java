@@ -42,7 +42,14 @@ public Member(String mem_id, String mem_name, String mem_email) {
 		this.mem_email = mem_email;
 	}
 
-// 회원가입
+public Member(String mem_id, String mem_name, String mem_email, String mem_tel) {
+	super();
+	this.mem_id = mem_id;
+	this.mem_name = mem_name;
+	this.mem_email = mem_email;
+	this.mem_tel = mem_tel;
+}
+	// 회원가입
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel) {
 		super();
 		this.mem_id = mem_id;

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import z01_vo.Nk;
+
 /**
  * Servlet implementation class A04_adminCtrl
  */
@@ -33,16 +35,25 @@ public class A04_adminCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String proc= request.getParameter("proc");
-		
+		String proc= Nk.toStr(request.getParameter("proc"));
+		System.out.println("proc확인"+proc);
+			
 		String page= "main/admin/memList.jsp";
 		
-		if(proc.equals("detail")) {
-			page = "main/admin/memDetail.jsp";
+		if(proc.equals("member")) {
+			request.getSession().setAttribute("mlist", service.Member(request));
 		}
+<<<<<<< HEAD
+		
+
+=======
 			
+		if(proc.equals("as")) {
+			request.setAttribute("asList",service.asList());
+			page = "main/admin/asAdmin.jsp";
+		}
 		
-		
+>>>>>>> branch 'master' of https://github.com/ezenteam3/project05.git
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}

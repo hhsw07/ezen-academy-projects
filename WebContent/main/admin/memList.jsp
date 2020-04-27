@@ -35,12 +35,7 @@
 $(document).ready(function(){
 	
 });
-function go(mem_name){
-	$("[name=mem_name]").val(empno);
-	$("[name=proc]").val("detail");
-	$("form").submit();
-	
-}
+
 </script>
 </head>
 <body>
@@ -53,6 +48,9 @@ function go(mem_name){
 	<!-- 게시판 목록 -->
 	
 	<table align="center">
+	<form method="post">
+	<input type="hidden" name="proc"/>
+	<input type="hidden" name="mem_id"/>
 		<colgroup>
 			<col style="width:150px;"/>
 			<col style="width:260px;"/>
@@ -71,15 +69,16 @@ function go(mem_name){
 		</tr>
 		
 	<!-- 글목록  -->	
-	<c:forEach var="" items="">
+	<c:forEach var="member" items="${mlist}">
 		<tr>
-			<td style="padding-left:20px;">${mem.mem_name}</td>	
-			<td style="padding-left:40px;">${mem.mem_id}</td>
-			<td style="padding-left:40px;">${mem.mem_email}</td>
-			<td style="padding-left:40px;">${mem.mem_tel}</td>
-			<td style="padding-left:20px;" ondblclick="javascript:go(${mem.mem_name})">상세보기</td>
+			<td style="padding-left:20px;">${member.mem_name}</td>	
+			<td style="padding-left:40px;">${member.mem_id}</td>
+			<td style="padding-left:40px;">${member.mem_email}</td>
+			<td style="padding-left:40px;">${member.mem_tel}</td>
+			<td style="padding-left:20px;">상세보기</td>
 		</tr>
 	</c:forEach>
+	</form>
 	</table>
 	</div>
 </div>
