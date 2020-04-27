@@ -77,19 +77,19 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		}
 		// 문의 등록
 		if(proc.equals("insQues")) {
-			service.insertQuestion(request);
+			//service.insertQuestion(request);
 			request.getSession().setAttribute("qlist", service.Question(request));
 			proc = "question"; //view의 question 작동 트리거
 		}
 		// 문의 수정
 		if(proc.equals("uptQues")) {
-			service.updateQuestion(request);
+			//service.updateQuestion(request);
 			request.setAttribute("question", service.questionDetail(request));
 			proc = "quesDetail"; //view의 quesDetail 작동 트리거
 		}
 		// 문의 삭제
 		if(proc.equals("delQues")) {
-			service.deleteQuestion(request);
+			//service.deleteQuestion(request);
 			request.getSession().setAttribute("qlist", service.Question(request));
 			proc = "question"; //view의 question 작동 트리거
 		}
@@ -106,6 +106,9 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		}
 		if(proc.equals("question")) {
 			page="main/serviceCenter/question.jsp";
+		}
+		if(proc.equals("quesDetail")) {
+			page="main/serviceCenter/questionDetail.jsp";
 		}
 		if(proc.equals("review")) {
 			page="main/serviceCenter/review.jsp";
