@@ -30,15 +30,15 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#writeNoti").click(function(){
-			$("[name=proc]").val("writeNoti");
+		$("#writeQue").click(function(){
+			$("[name=proc]").val("writeQue");
 			$("form").submit();
 		});
 		
 	});
-	function go(noti_no){
-		$("[name=noti_no]").val(noti_no);
-		$("[name=proc]").val("noticeDetail");
+	function go(que_no){
+		$("[name=que_no]").val(que_no);
+		$("[name=proc]").val("quesDetail");
 		$("form").submit();
 	}
 	
@@ -54,14 +54,14 @@
 	<!-- 게시판 목록 -->
 	<form method="post">
 	<select name="proc">
-		<option value="notice" selected>공지사항</option>
-		<option value="question">문의사항</option>
+		<option value="notice" >공지사항</option>
+		<option value="question" selected>문의사항</option>
 		<option value="review">상품후기</option>
 		<option value="as">AS목록</option>
 	</select>
 	<input class="btn" type="submit" value="이동" />
 	<input type="hidden" name="proc" />
-	<input type="hidden" name="noti_no" />
+	<input type="hidden" name="que_no" />
 	<table align="center">
 		<colgroup>
 			<col style="width:100px;"/>
@@ -79,12 +79,12 @@
 		</tr>
 		
 	<!-- 글목록  -->	
-	<c:forEach var="notice" items="${nlist}">
-		<tr onclick="javascript:go(${notice.noti_no})">
-			<td align="center">${notice.noti_no}</td>
-			<td>${notice.noti_name}</td>
-			<td align="center">관리자</td>
-			<td align="center">${notice.noti_date}</td>
+	<c:forEach var="question" items="${qlist}">
+		<tr onclick="javascript:go(${question.que_no})">
+			<td align="center">${question.que_no}</td>
+			<td>${question.que_name}</td>
+			<td align="center">${question.mem_id}</td>
+			<td align="center">${question.que_date}</td>
 		</tr>
 	</c:forEach>
 
@@ -100,7 +100,7 @@
 			</td>
 			<th style="text-align:right;">
 			<%-- <c:if test="${mem.mem_id == 'admin'}"> --%>
-			<input id="writeNoti" class="btn" type="button" value="글쓰기"/>
+			<input id="writeQue" class="btn" type="button" value="글쓰기"/>
 			<%-- </c:if> --%></th>
 		</tr>
 	</table>

@@ -38,7 +38,7 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		//1. 요청
 		String proc = Nk.toStr(request.getParameter("proc"),"notice");
-		System.out.println("proc확인"+proc);
+		System.out.println("proc확인 : "+proc);
 		//2. Model
 		// 공지리스트 불러오기
 		if(proc.equals("notice")) {
@@ -58,9 +58,18 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("uptNoti")) {
 			service.updateNotice(request);
 			request.setAttribute("notice", service.noticeDetail(request));
-			proc = "noticeDetail"; //view의 notice 작동 트리거
+			proc = "noticeDetail"; //view의 noticeDetail 작동 트리거
 		}
-		
+		// 공지 삭제
+		if(proc.equals("delNoti")) {
+			service.deleteNotice(request);
+			request.getSession().setAttribute("nlist", service.Notice(request));
+			proc = "notice"; //view의 notice 작동 트리거
+		}
+		// 문의리스트 불러오기
+		if(proc.equals("question")) {
+			request.getSession().setAttribute("qlist", service.Question(request));
+		}
 		//3.View
 		String page = "main/serviceCenter/notice.jsp";
 		if(proc.equals("notice")) {
@@ -72,6 +81,13 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("writeNoti")) {
 			page="main/serviceCenter/noticeReg.jsp";
 		}
+		if(proc.equals("question")) {
+			page="main/serviceCenter/question.jsp";
+		}
+		if(proc.equals("review")) {
+			page="main/serviceCenter/review.jsp";
+		}
+		
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

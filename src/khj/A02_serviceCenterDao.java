@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Notice;
+import z01_vo.Question;
 
 public class A02_serviceCenterDao {
 //	0) 전역 field 객체 선언
@@ -64,6 +65,7 @@ public class A02_serviceCenterDao {
 					"REPLACE(noti_detail,'\\n', '<br>') noti_detail, noti_date\r\n" + 
 					"FROM p5_notice\r\n" + 
 					"WHERE noti_no = ?";
+			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, noti_no);
 			rs = pstmt.executeQuery();
@@ -122,9 +124,6 @@ public class A02_serviceCenterDao {
 					"SET noti_name = ?,\r\n" + 
 					"	noti_detail = ?\r\n" + 
 					"WHERE noti_no = ?";
-			System.out.println(noti.getNoti_name());
-			System.out.println(noti.getNoti_detail());
-			System.out.println(noti.getNoti_no());
 			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
@@ -154,6 +153,68 @@ public class A02_serviceCenterDao {
 		}
 		
 	}
+	
+	public void deleteNotice(int noti_no) {
+		try {
+			setConn();
+			String sql = "DELETE FROM p5_notice\r\n" + 
+					"WHERE noti_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, noti_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	// 공지리스트 불러오기
+	public ArrayList<Question> qlist() {
+		ArrayList<Question> qlist = new ArrayList<Question>();
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_question\r\n" + 
+							"ORDER BY que_no desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				qlist.add(new Question(
+							rs.getInt("que_no"), 
+							rs.getString("mem_id"),
+							rs.getString("que_name"), 
+							rs.getString("que_detail"), 
+							rs.getDate("que_date")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return qlist;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
