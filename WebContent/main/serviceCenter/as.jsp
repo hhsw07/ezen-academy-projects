@@ -46,8 +46,15 @@
 			$("h1").append(" - AS목록");
 		}
 		
-		$(".reg-btn").click(function(){
-			alert("as 등록합니다.");
+		$(".ins-btn").click(function(){
+			var mem_id = "${mem.mem_id}";
+			if(mem_id == null){
+				alert("로그인이 필요합니다.");
+				location.href="${path}/login";
+			}else{
+				$("[name=proc]").val("insAs");
+				$("form").submit();	
+			}
 		});
 		
 		
@@ -112,7 +119,8 @@
 			<tr><th colspan="5"></th></tr>
 		<!-- 검색 + 글등록 -->
 			<tr style="border:none;">
-				<th colspan="5" class="ordR"><input class="btn reg-btn" type="button" value="글쓰기"></th>
+				<th colspan="5" class="ordR">
+					<input class="btn ins-btn" type="button" value="글쓰기"></th>
 			</tr>
 		</table>
 	</form>

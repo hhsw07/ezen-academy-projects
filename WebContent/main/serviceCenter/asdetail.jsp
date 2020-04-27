@@ -33,6 +33,10 @@
 	outline:none; border:none;}
 	.commentbox tr{vertical-align:middle;}
 	.comment-noti{font-size:12px; line-height:20px;padding:5px 26px;}
+	.upt-btn{width:93px; margin:0; height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
+	outline:none; border:none;}
+	.del-btn{width:93px; margin:0; height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
+	outline:none; border:none;}
 	.goback-btn{width:93px; margin:0; height:34px !important;line-height:34px;display:inline-block;color:#FFFFFF;font-size:12px !important;background:#63145F;text-align:center;vertical-align:middle;
 	outline:none; border:none;}
 	.comment-list{margin:20px auto;}
@@ -75,6 +79,14 @@
 			$("form").submit();
 		});
 		
+		$(".upt-btn").click(function(){
+			$("[name=proc]").val("uptAs");
+			$("form").submit();
+		});
+		$(".del-btn").click(function(){
+			$("[name=proc]").val("delAs");
+			$("form").submit();
+		});
 		
 		$(".goback-btn").click(function(){
 			$("[name=proc]").val("as");
@@ -148,7 +160,11 @@
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
-					<input class="goback-btn btn" type="button" value="목록으로"/>
+				<c:if test="${as.mem_id eq mem.mem_id}">
+					<input class="btn del-btn" type="button" value="삭제">
+					<input class="btn upt-btn" type="button" value="수정">
+				</c:if>
+					<input class="goback-btn btn" type="button" value="목록"/>
 				</div>
 				<!-- 덧글 시작 -->
 				<c:if test="${mem.mem_id == 'admin'}">
@@ -174,7 +190,9 @@
 					<div class="r_list online_line" id="799229" style="clear:both; padding:10px; border-bottom:1px dotted #666;">
 						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
 							관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${as.as_comdate}</span>
+							<c:if test="${mem.mem_id == 'admin'}">
 							<span class="delComm" style="margin-left:900px">X</span>
+							</c:if>
             			</div>
             			<div style="line-height:120%; color:#666;">
             				${as.as_comm}

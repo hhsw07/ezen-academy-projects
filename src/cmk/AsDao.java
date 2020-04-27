@@ -164,6 +164,112 @@ public class AsDao {
 		return asdetail;
 	}
 
+	public void delAs(int as_no) {
+		try {
+			setCon(); 
+			String sql = "DELETE P5_AS\r\n" + 
+					"WHERE AS_NO =?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, as_no);
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("as 삭제!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void insAs(As ins) {
+		try {
+			setCon(); 
+			String sql = "INSERT INTO P5_AS\r\n" + 
+					"VALUES(p5_as_seq.nextval, ?, ?,?,sysdate,NULL,null)";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ins.getOrd_no());
+			pstmt.setString(2, ins.getAs_cate());
+			pstmt.setString(3, ins.getAs_detail());
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("as 등록!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public void uptAs(As upt) {
+		try {
+			setCon(); 
+			String sql = "UPDATE P5_AS"
+					+ "SET as_cate = ?,"
+					+ "as_detail = ?,"
+					+ "as_date = sysdate"
+					+ "WHERE as_no = ?";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, upt.getAs_cate());
+			pstmt.setString(2, upt.getAs_detail());
+			pstmt.setInt(3, upt.getAs_no());
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("as 수정!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public void delComm(int as_no) {
 		try {
 			setCon(); 
@@ -215,7 +321,7 @@ public class AsDao {
 			// 자원해제
 			pstmt.close();
 			con.close();
-			System.out.println("as_comm 삭제!!");
+			System.out.println("as_comm 등록!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

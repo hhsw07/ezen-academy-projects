@@ -35,6 +35,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("AS신청");
+		
+		
+		
+		
 	});
 </script>
 </head>
@@ -53,10 +57,10 @@
 				<tr>
 					<th>분류</th>
 					<td>
-						<select>
-							<option>AS</option>
-							<option>교환</option>
-							<option>반품</option>
+						<select name="as_cate">
+							<option value="AS">AS</option>
+							<option value="교환">교환</option>
+							<option value="반품">반품</option>
 						</select>
 					</td>
 				</tr>
@@ -72,7 +76,7 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td><textarea></textarea></td>
+					<td><textarea name="as_detail"></textarea></td>
 				</tr>
 			</table>
 		</div>
