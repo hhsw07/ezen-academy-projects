@@ -58,9 +58,9 @@
 			$("#discount").html("<input type='hidden' name='pay_point' value='"+usePt+"'/>"+usePtS);
 			var tot = Number($("[name=totprice]").val());
 			var last = tot - usePt;
-			console.log("사용포인트"+usePt+","+usePtS);
+			console.log("사용포인트"+usePt);
 			var lastS = last.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			console.log("최종결제금액"+last+","+lastS);
+			console.log("최종결제금액"+last);
 			$("#lastPay").html("<input type='hidden' name='pay_price' value='"+last+"'/>"+lastS);
 		});
 		$("[name=payBtn]").click(function(){
@@ -249,7 +249,7 @@
 					<th>포인트 사용</th>
 					<td>
 						<span class="input-wrap input-post">
-							<input type="text" class="input" name="pay_point"/>
+							<input type="text" class="input" name="point"/>
 						</span>
 						<input class="input-btn" type="button" id="usept" value="사용"/>
 						(<fmt:formatNumber type="number" value="${point}"/> p 사용가능)
