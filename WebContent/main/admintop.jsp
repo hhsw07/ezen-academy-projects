@@ -27,7 +27,7 @@ ul li{list-style:none;}
 		.menu-2-wrap{background-color:#63145F;}
 			.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
-				.menu-2 li{display:inline; font-size:25px; margin:0 65px;}
+				.menu-2 li{display:inline; font-size:25px; margin:0 65px; cursor: pointer;}
 /*상단 메뉴바 끝*/
 
 
@@ -35,6 +35,24 @@ ul li{list-style:none;}
 <!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#member").click(function(){
+		$("[name=category]").val("member");
+		$("form").submit();
+	});
+	$("#market").click(function(){
+		$("[name=category]").val("market");
+		$("form").submit();
+	});
+	$("#order").click(function(){
+		$("[name=category]").val("order");
+		$("form").submit();
+	});
+	$("#as").click(function(){
+		$("[name=category]").val("as");
+		$("form").submit();
+	});
+});
 </script>
 </head>
 <body>
@@ -49,10 +67,10 @@ ul li{list-style:none;}
 				<div class="menu-2">
 				<span style="font-size:25px; font-weight:900; color:orange; float:left">PC냥이</span>
 					<ul>
-						<li>회원관리</li>
-						<li>상품관리</li>
-						<li>주문관리</li>
-						<li>AS관리</li>
+						<li id="member">회원관리</li>
+						<li id="market">상품관리</li>
+						<li id="order">주문관리</li>
+						<li id="as">AS관리</li>
 					</ul>
 				</div>
 			</div>

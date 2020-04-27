@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Notice;
+import z01_vo.Quecomm;
 import z01_vo.Question;
 
 public class A02_serviceCenterDao {
@@ -215,9 +216,67 @@ public class A02_serviceCenterDao {
 		return qlist;
 	}
 	
+	public Question qdetail(int que_no) {
+		Question ques = new Question();
+		try {
+			setConn();
+			String sql = "SSELECT que_no, mem_id, que_name,\r\n" + 
+					"REPLACE(que_detail,'\\n', '<br>') que_detail, que_date\r\n" + 
+					"FROM p5_question\r\n" + 
+					"WHERE que_no = ?";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, que_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ques = new Question(
+							rs.getInt("que_no"), 
+							rs.getString("mem_id"),
+							rs.getString("que_name"),
+							rs.getString("que_detail"), 
+							rs.getDate("noti_date"));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ques;
+	}
+	
+	// 문의댓글리스트 불러오기
+	public ArrayList<Quecomm> qclist() {
+		ArrayList<Quecomm> qclist = new ArrayList<Quecomm>();
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_quecomm\r\n" + 
+							"ORDER BY quec_no desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				qclist.add(new Quecomm(
+							rs.getInt("quec_no"), 
+							rs.getInt("que_no"), 
+							rs.getString("mem_id"),
+							rs.getString("quec_detail"), 
+							rs.getDate("quec_date")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return qclist;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
 
-
+	
 }

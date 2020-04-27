@@ -43,8 +43,17 @@ public class A04_adminCtrl extends HttpServlet {
 		if(proc.equals("member")) {
 			request.getSession().setAttribute("mlist", service.Member(request));
 		}
+<<<<<<< HEAD
 		
 
+=======
+			
+		if(proc.equals("as")) {
+			request.setAttribute("asList",service.asList());
+			page = "main/admin/asAdmin.jsp";
+		}
+		
+>>>>>>> branch 'master' of https://github.com/ezenteam3/project05.git
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 	}
