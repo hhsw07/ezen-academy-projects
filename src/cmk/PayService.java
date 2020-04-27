@@ -25,11 +25,22 @@ public class PayService {
 		return dao.getCart(req_no, req_cnt);
 	}
 	
-	public Cart cartProduct(HttpServletRequest request) {
-		Cart p = getProd(request);
-		p.setReq_cnt(Nk.toInt(request.getParameter("req_cnt")));
-		return p;
+	public ArrayList<Cart> getCart(HttpServletRequest request){	
+		Cart p = new Cart();
+		ArrayList<Cart> buy = new ArrayList<Cart>();
+		String []req_nos = request.getParameterValues("req_no");
+		String []req_cnts = request.getParameterValues("req_cnt");
+		System.out.println("req_nos:"+req_nos);
+		System.out.println("req_cnts:"+req_cnts);
+		for(int idx=0;idx<req_nos.length;idx++) {
+			int req_no = Nk.toInt(req_nos[idx]);
+			int req_cnt = Nk.toInt(req_cnts[idx]);
+			buy.add(dao.getCart(req_no, req_cnt));
+		}
+		
+		return buy;
 	}
+	
 	
 	public void insOrder(HttpServletRequest request, String mem_id){
 		

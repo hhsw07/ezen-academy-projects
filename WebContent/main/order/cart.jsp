@@ -77,11 +77,12 @@
 			}
 		});
 		// 선택삭제
+		var ckbox = $("input[name=cartck]");
 		var strArry= $("input[name=cartck]:checked").length;
 		$('#delBtn').click(function(){
 			if(strArry!=null){
 				$("input[name=cartck]:checked").parent().parent().remove();
-			}			
+			}
 		});
 			
 		<%--$("#delBtn")--%>
@@ -179,6 +180,7 @@
 					</colgroup>
 					<tbody class="cart-tbody">
 						<c:forEach var="cart" varStatus="status" items="${cart}">
+						<input type="hidden" name="req_no" value="${cart.req_no}"/>
 						<tr>
 							<td style="text-align:center"><input type="checkbox" name="cartck"/></td>
 							<td>
