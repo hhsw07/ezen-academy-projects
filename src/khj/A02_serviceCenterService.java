@@ -56,11 +56,12 @@ public class A02_serviceCenterService {
 
 	public Question questionDetail(HttpServletRequest request) {
 		int que_no = Nk.toInt(request.getParameter("que_no"));
-		return dao.ndetail(que_no);
+		return dao.qdetail(que_no);
 	}
 
 	public ArrayList<Quecomm> Quecomm(HttpServletRequest request) {
-		return dao.qclist();
+		int que_no = Nk.toInt(request.getParameter("que_no"));
+		return dao.qclist(que_no);
 	}
 }		
 

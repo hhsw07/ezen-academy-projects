@@ -49,18 +49,18 @@
 <script type="text/javascript">
 	$(document).ready(function(){		
 		$("h2").text("공지상세");
-		$("#uptNoti").click(function(){
-			$("[name=proc]").val("writeNoti");
+		$("#uptQues").click(function(){
+			$("[name=proc]").val("writeQues");
 			$("form").submit();
 		});
-		$("#delNoti").click(function(){
+		$("#delQues").click(function(){
 			if(confirm("글을 삭제하시겠습니까?")){
-				$("[name=proc]").val("delNoti");
+				$("[name=proc]").val("delQues");
 				$("form").submit();
 			}
 		});
-		$("#listNoti").click(function(){
-			$("[name=proc]").val("notice");
+		$("#listQues").click(function(){
+			$("[name=proc]").val("question");
 			$("form").submit();
 		});		
 	});
@@ -73,17 +73,17 @@
 	<header class="apply-title">
 	</header>
 	<input type="hidden" name="proc" />
-	<input type="hidden" name="noti_no" value="${notice.noti_no}"/>
-	<input type="hidden" name="noti_name" value="${notice.noti_name}"/>
-	<input type="hidden" name="noti_detail" value="${notice.noti_detail}"/>
+	<input type="hidden" name="que_no" value="${question.que_no}"/>
+	<input type="hidden" name="que_name" value="${question.que_name}"/>
+	<input type="hidden" name="que_detail" value="${question.que_detail}"/>
 	<div class="as-context">
 		<div id="cusestimateview">
 			<div class="bbsbox">
 				<div class="bbstitle">
-					<strong>${notice.noti_name}</strong>
+					<strong>${question.que_name}</strong>
 				</div>
 				<div class="bbsinfo">
-					<span class="writedate">작성일 : ${notice.noti_date}</span> / <span class="writer">작성자 : 관리자</span>
+					<span class="writedate">작성일 : ${question.que_date}</span> / <span class="writer">작성자 : ${question.mem_id}</span>
 				</div>
 				<!-- 내용 시작 -->
 				<table summary="OrderList" class="bbslist">
@@ -99,14 +99,14 @@
 					</table>
 					<!-- 문의글 시작 -->
 					<div class="bbscontents">
-						${notice.noti_detail}
+						${question.que_detail}
 					</div>
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
-					<input id="uptNoti" class="goback-btn btn" type="button" value="수정"/>
-					<input id="delNoti" class="goback-btn btn" type="button" value="삭제"/>
-					<input id="listNoti" class="goback-btn btn" type="button" value="목록"/>
+					<input id="uptQues" class="goback-btn btn" type="button" value="수정"/>
+					<input id="delQues" class="goback-btn btn" type="button" value="삭제"/>
+					<input id="listQues" class="goback-btn btn" type="button" value="목록"/>
 				</div>
 				<!-- 덧글 시작 -->
 				<table class="commentbox">
@@ -127,15 +127,17 @@
 				
 				<!-- 덧글출력 시작 -->
 				<div class="comment-list" id="online_lines">
+					<c:forEach var="quecomm" items="${qclist}">
 					<div class="r_list online_line" id="799229" style="clear:both; padding:10px; border-bottom:1px dotted #666;">
 						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
-							관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">2020-00-00</span>
+							${quecomm.mem_id} <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${quecomm.quec_date}</span>
             			</div>
             			<div style="line-height:120%; color:#666;">
-            				안녕하세요. PC냥이 입니다(댓글)<br><br>
+            				${quecomm.quec_detail}<br><br>
             				
             			</div>
             		</div>
+            		</c:forEach>
             	</div>
             </div>
 		</div>

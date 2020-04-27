@@ -220,7 +220,7 @@ public class A02_serviceCenterDao {
 		Question ques = new Question();
 		try {
 			setConn();
-			String sql = "SSELECT que_no, mem_id, que_name,\r\n" + 
+			String sql = "SELECT que_no, mem_id, que_name,\r\n" + 
 					"REPLACE(que_detail,'\\n', '<br>') que_detail, que_date\r\n" + 
 					"FROM p5_question\r\n" + 
 					"WHERE que_no = ?";
@@ -234,7 +234,7 @@ public class A02_serviceCenterDao {
 							rs.getString("mem_id"),
 							rs.getString("que_name"),
 							rs.getString("que_detail"), 
-							rs.getDate("noti_date"));
+							rs.getDate("que_date"));
 			}
 			rs.close();
 			pstmt.close();
@@ -247,13 +247,16 @@ public class A02_serviceCenterDao {
 	}
 	
 	// 문의댓글리스트 불러오기
-	public ArrayList<Quecomm> qclist() {
+	public ArrayList<Quecomm> qclist(int que_no) {
 		ArrayList<Quecomm> qclist = new ArrayList<Quecomm>();
 		try {
 			setConn();
-			String sql = "SELECT * FROM p5_quecomm\r\n" + 
-							"ORDER BY quec_no desc";
+			String sql = "SELECT quec_no, que_no, mem_id,\r\n" + 
+					"REPLACE(quec_detail,'\\n', '<br>') quec_detail, quec_date\r\n" + 
+					"FROM p5_quecomm\r\n" + 
+					"WHERE que_no = ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, que_no);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				qclist.add(new Quecomm(

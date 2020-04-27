@@ -6,7 +6,7 @@ public class Quecomm {
 	private int quec_no;
 	private int que_no;
 	private String mem_id;
-	private String quec_etail;
+	private String quec_detail;
 	private Date quec_date;
 	
 	public Quecomm() {
@@ -14,12 +14,12 @@ public class Quecomm {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Quecomm(int quec_no, int que_no, String mem_id, String quec_etail, Date quec_date) {
+	public Quecomm(int quec_no, int que_no, String mem_id, String quec_detail, Date quec_date) {
 		super();
 		this.quec_no = quec_no;
 		this.que_no = que_no;
 		this.mem_id = mem_id;
-		this.quec_etail = quec_etail;
+		this.quec_detail = quec_detail;
 		this.quec_date = quec_date;
 	}
 
@@ -47,12 +47,12 @@ public class Quecomm {
 		this.mem_id = mem_id;
 	}
 
-	public String getQuec_etail() {
-		return quec_etail;
+	public String getQuec_detail() {
+		return quec_detail;
 	}
 
-	public void setQuec_etail(String quec_etail) {
-		this.quec_etail = quec_etail;
+	public void setQuec_detail(String quec_detail) {
+		this.quec_detail = quec_detail;
 	}
 
 	public Date getQuec_date() {
