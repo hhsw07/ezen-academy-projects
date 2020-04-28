@@ -22,16 +22,18 @@ public class PointDao {
 		System.out.println("정상 접속 성공!");
 	}
 	
-	public ArrayList<Point> ptList(){
+	public ArrayList<Point> ptList(String mem_id){
 		ArrayList<Point> ptList = new ArrayList<Point>();
 		try {
 			setCon();
 			String sql = "SELECT point_date, point_detail, point_pt\r\n" + 
 					"FROM p5_point\r\n" + 
-					"WHERE mem_id = 'ezen01' \r\n" + 
+					"WHERE mem_id = ? \r\n" + 
 					"ORDER BY point_no DESC";
+			System.out.println(sql);
+			System.out.println(mem_id);
 			pstmt = con.prepareStatement(sql);
-			//pstmt.setString(1, id.getMem_id());
+			pstmt.setString(1, mem_id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ptList.add(new Point(rs.getDate("point_date"),rs.getString("point_detail"),rs.getInt("point_pt")));

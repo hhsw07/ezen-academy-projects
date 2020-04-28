@@ -48,31 +48,14 @@ public class A04_adminCtrl extends HttpServlet {
 		if(proc.equals("memberDetail")) {
 			request.setAttribute("member", service.memberDetail(request));
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-		
-
-
-
+		// 회원 리스트
+		if(proc.equals("member")) {
+			page = "main/admin/memList.jsp";
+		}
+		//회원 상세 이동
+		if(proc.equals("memberDetail")) {
+			page="main/admin/memDetail.jsp";
+		}
 		if(proc.equals("mgr")) {
 			request.setAttribute("mgrList",service.mgrList());
 			page = "main\\admin\\asAdmin.jsp";

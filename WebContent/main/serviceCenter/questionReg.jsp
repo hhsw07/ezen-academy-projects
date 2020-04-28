@@ -35,27 +35,29 @@
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("h2").text("공지사항 작성");
-		var ques_detailp="${param.ques_detail}";
-		if(ques_detailp != null){
-			ques_detailp = ques_detailp.replace(/<br>/g, '\n');
-			$("textarea").text(ques_detailp);
+		$("h2").text("문의사항 작성");
+		var que_detailp="${param.que_detail}";
+		if(que_detailp != null){
+			que_detailp = que_detailp.replace(/<br>/g, '\n');
+			$("textarea").text(que_detailp);
 		}
 		
-		$("[name=uptQues]").click(function(){
+		$("[name=uptQue]").click(function(){
 			if(confirm("작성하시겠습니까?")){
-				$("[name=proc]").val("uptQues");
-				var ques_detail = $("[name=ques_detail]").val();
-				ques_detail = ques_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');				$("[name=noti_detail]").val(noti_detail);
+				$("[name=proc]").val("uptQue");
+				var que_detail = $("[name=que_detail]").val();
+				que_detail = que_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				$("[name=que_detail]").val(que_detail);
 				$("form").submit();
 			}
 		});
 		
-		$("[name=insQues]").click(function(){
+		$("[name=insQue]").click(function(){
 			if(confirm("작성하시겠습니까?")){
-				$("[name=proc]").val("insQues");
-				var ques_detail = $("[name=ques_detail]").val();
-				ques_detail = ques_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');				$("[name=noti_detail]").val(noti_detail);
+				$("[name=proc]").val("insQue");
+				var que_detail = $("[name=que_detail]").val();
+				que_detail = que_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				$("[name=que_detail]").val(que_detail);
 				$("form").submit();
 			}
 		});
@@ -77,6 +79,7 @@
 			<h2></h2>
 		</header>
 		<input type="hidden" name="proc" />
+		<input type="hidden" name="mem_id" value="${mem.mem_id}" />
 		<c:if test="${not empty param.que_no}">
 		<input type="hidden" name="que_no" value="${param.que_no}"/>		
 		</c:if>
@@ -107,10 +110,10 @@
 		<div class="apply-btn">
 			<c:choose>
 				<c:when test="${not empty param.que_name}">
-				<input class="btn" type="button" name="uptQues" value="수정"/>
+				<input class="btn" type="button" name="uptQue" value="수정"/>
 				</c:when>
 				<c:otherwise>
-				<input class="btn" type="button" name="insQues" value="등록"/>
+				<input class="btn" type="button" name="insQue" value="등록"/>
 				</c:otherwise>
 			</c:choose>
 			<input class="btn" type="button" name="applyBtn" value="취소"/>

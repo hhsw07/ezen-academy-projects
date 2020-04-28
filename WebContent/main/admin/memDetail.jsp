@@ -45,10 +45,18 @@
 
 <jsp:include page="../../main/admintop.jsp"/>
 
-<div class="all-wrap">
+<form method="">
 
+<div class="all-wrap">
+	<input type="hidden" name="proc" />
+	<input type="hidden" name="mem_id" value="${member.mem_id}"/>
+	<input type="hidden" name="mem_name" value="${member.mem_name}"/>
+	<input type="hidden" name="mem_birth" value="${member.mem_birth}"/>
+	<input type="hidden" name="mem_email" value="${member.mem_email}"/>
+	<input type="hidden" name="mem_tel" value="${member.mem_tel}"/>
+	<input type="hidden" name="mem_jdate" value="${member.mem_jdate}"/>
 	<div class="info-wrap">
-	<form>
+
 		<table>
 			<tr>
 				<td class="sub-title">회원상세 정보</td>
@@ -58,33 +66,33 @@
 			</tr>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_id}</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_name}</td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_birth}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
 				<td>가입날짜</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_jdate}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_email}</td>
 			</tr>
 			<tr>
 				<td>휴대폰</td>
-				<td><input type="text"/></td>
+				<td>${member.mem_tel}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
@@ -99,10 +107,9 @@
 				<td colspan="2" class="line"></td>
 			</tr>
 		</table>
-	</form>
 	</div>
 </div>
-
+</form>
 
 
 </body>

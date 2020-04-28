@@ -76,11 +76,12 @@ $(document).ready(function(){
 		<!-- 글목록  -->	
 			<c:forEach var="member" items="${mlist}">
 				<tr>
-					<td style="padding-left:20px;">${member.mem_name}</td>	
+					<td style="padding-left:20px;" >${member.mem_name}</td>	
 					<td style="padding-left:40px;">${member.mem_id}</td>
 					<td style="padding-left:40px;">${member.mem_email}</td>
 					<td style="padding-left:40px;">${member.mem_tel}</td>
-					<td style="padding-left:20px;">상세보기</td>
+					<!--  문자열일때와 숫자일때 '' 사용 주의  -->
+					<td style="padding-left:20px;" ondblclick="javascript:go('${member.mem_id}')">상세보기</td>
 				</tr>
 			</c:forEach>
 	</table>

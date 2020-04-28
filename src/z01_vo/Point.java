@@ -19,6 +19,14 @@ public class Point {
 	}
 	
 
+	public Point(String mem_id, String point_detail, int point_pt) {
+		super();
+		this.mem_id = mem_id;
+		this.point_detail = point_detail;
+		this.point_pt = point_pt;
+	}
+
+
 	public Point(int point_no, String mem_id, Date point_date, String point_detail, int point_pt) {
 		super();
 		this.point_no = point_no;

@@ -55,7 +55,8 @@ public class PayDao {
 	public void insertOrder(Order ins) {
 		try {
 			setCon();
-			String sql = "INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval,?, to_date(sysdate,'YYYY-MM-DD'),?,?,?,?,?,'','결제완료','')";
+			String sql = "INSERT INTO p5_order VALUES (to_number(to_char(sysdate,'yymmdd'))||p5_order_seq.nextval,?, sysdate,?,?,?,?,?,?,'결제완료','')";
+			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, ins.getMem_id());
@@ -89,6 +90,7 @@ public class PayDao {
 			setCon();
 			String sql = "SELECT max(ord_no) FROM p5_order\r\n" + 
 					"WHERE MEM_ID = ?";
+			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem_id);
 			rs = pstmt.executeQuery();
@@ -110,6 +112,7 @@ public class PayDao {
 		try {
 			setCon();
 			String sql = "INSERT INTO p5_request VALUES (?, ?, ?, ?)";
+			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ins.getOrd_no());
@@ -122,6 +125,14 @@ public class PayDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	// 사용가능 포인트 조회
@@ -152,6 +163,7 @@ public class PayDao {
 		try {
 			setCon();
 			String sql = "INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?)";
+			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ins.getOrd_no());
@@ -164,6 +176,14 @@ public class PayDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	// 사용포인트 정보, 최종결제금액 정보
@@ -186,10 +206,27 @@ public class PayDao {
 	public void insPoint(Point ins) {
 		try {
 			setCon();
-			String sql="";
+			String sql="INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, ?, sysdate, ?, ?)";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, ins.getMem_id());
+			pstmt.setString(2, ins.getPoint_detail());
+			pstmt.setInt(3, ins.getPoint_pt());
+			con.commit();
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	// 재고 관리

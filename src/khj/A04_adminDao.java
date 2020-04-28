@@ -82,10 +82,6 @@ public class A04_adminDao {
 						   rs.getString("mem_email"),
 						   rs.getString("mem_tel")));
 			}
-			System.out.print(rs.getString("mem_id")+"\t");
-			System.out.print(rs.getString("mem_name")+"\t");
-			System.out.print(rs.getString("mem_email")+"\t");
-			System.out.print(rs.getString("mem_tel")+"\t");
 			rs.close();
 			pstmt.close();
 			con.close();
@@ -96,13 +92,13 @@ public class A04_adminDao {
 		return mlist;
 	}
 	
-	
 	public Member mdetail(String mem_id) {
 		Member mem = new Member();
 		try {
 			setConn();
-			String sql = "SELECT mem_id, mem_name, mem_birth, mem_jdate,\r\n" + 
-					"		mem_email, mem_tel FROM p5_member";
+			String sql = "SELECT mem_id, mem_name, mem_birth, mem_email, mem_tel, mem_jdate\r\n" + 
+							"FROM p5_member\r\n" + 
+							"WHERE mem_id = ?";
 			System.out.println(sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem_id);
@@ -125,7 +121,7 @@ public class A04_adminDao {
 			e.printStackTrace();
 		}
 		return mem;
-}
+	}
 	
 
 

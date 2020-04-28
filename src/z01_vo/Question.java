@@ -11,9 +11,7 @@ public class Question {
 	
 	public Question() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 	public Question(int que_no, String mem_id, String que_name, String que_detail, Date que_date) {
 		super();
 		this.que_no = que_no;
@@ -21,6 +19,20 @@ public class Question {
 		this.que_name = que_name;
 		this.que_detail = que_detail;
 		this.que_date = que_date;
+	}
+
+	public Question(String mem_id, String que_name, String que_detail) {
+		this.mem_id = mem_id;
+		this.que_name = que_name;
+		this.que_detail = que_detail;
+	}
+
+	public Question(int que_no, String mem_id, String que_name, String que_detail) {
+		super();
+		this.que_no = que_no;
+		this.mem_id = mem_id;
+		this.que_name = que_name;
+		this.que_detail = que_detail;
 	}
 
 	public int getQue_no() {

@@ -15,7 +15,7 @@ import z01_vo.Notice;
 /**
  * Servlet implementation class A02_serviceCenterCtrl
  */
-@WebServlet(name = "notice", urlPatterns = {"/notice"})
+@WebServlet(name = "SCenter", urlPatterns = {"/SCenter"})
 public class A02_serviceCenterCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private A02_serviceCenterService service;
@@ -39,6 +39,7 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		//1. 요청
 		String proc = Nk.toStr(request.getParameter("proc"),"notice");
 		System.out.println("proc확인 : "+proc);
+		
 		//2. Model
 		// 공지리스트 불러오기
 		if(proc.equals("notice")) {
@@ -71,25 +72,32 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 			request.getSession().setAttribute("qlist", service.Question(request));
 		}
 		// 문의 상세불러오기
-		if(proc.equals("quesDetail")) {
+		if(proc.equals("queDetail")) {
 			request.setAttribute("question", service.questionDetail(request));
 			request.setAttribute("qclist", service.Quecomm(request));
 		}
 		// 문의 등록
-		if(proc.equals("insQues")) {
-			//service.insertQuestion(request);
+		if(proc.equals("insQue")) {
+			service.insertQuestion(request);
 			request.getSession().setAttribute("qlist", service.Question(request));
 			proc = "question"; //view의 question 작동 트리거
 		}
 		// 문의 수정
-		if(proc.equals("uptQues")) {
-			//service.updateQuestion(request);
+		if(proc.equals("uptQue")) {
+			service.updateQuestion(request);
 			request.setAttribute("question", service.questionDetail(request));
-			proc = "quesDetail"; //view의 quesDetail 작동 트리거
+			request.setAttribute("qclist", service.Quecomm(request));
+			proc = "queDetail"; //view의 quesDetail 작동 트리거
 		}
 		// 문의 삭제
-		if(proc.equals("delQues")) {
-			//service.deleteQuestion(request);
+		if(proc.equals("delQue")) {
+			service.deleteQuestion(request);
+			request.getSession().setAttribute("qlist", service.Question(request));
+			proc = "question"; //view의 question 작동 트리거
+		}
+		// 문의댓글 등록
+		if(proc.equals("insQue")) {
+			service.insertQuestion(request);
 			request.getSession().setAttribute("qlist", service.Question(request));
 			proc = "question"; //view의 question 작동 트리거
 		}
@@ -107,13 +115,15 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("question")) {
 			page="main/serviceCenter/question.jsp";
 		}
-		if(proc.equals("quesDetail")) {
+		if(proc.equals("queDetail")) {
 			page="main/serviceCenter/questionDetail.jsp";
+		}
+		if(proc.equals("writeQue")) {
+			page="main/serviceCenter/questionReg.jsp";
 		}
 		if(proc.equals("review")) {
 			page="main/serviceCenter/review.jsp";
 		}
-		
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
 		rd.forward(request, response);

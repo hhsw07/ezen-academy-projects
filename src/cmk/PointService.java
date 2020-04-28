@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import z01_vo.Nk;
 import z01_vo.Point;
 
 public class PointService {
@@ -14,8 +15,9 @@ public class PointService {
 		// TODO Auto-generated constructor stub
 		dao = new PointDao();
 	}
-	public ArrayList<Point> ptList(){
+	public ArrayList<Point> ptList(HttpServletRequest request){
+		String mem_id= Nk.toStr(request.getParameter("mem_id"));
 
-		return dao.ptList();
+		return dao.ptList(mem_id);
 	}
 }

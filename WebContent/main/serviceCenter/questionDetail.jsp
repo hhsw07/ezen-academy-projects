@@ -49,20 +49,50 @@
 <script type="text/javascript">
 	$(document).ready(function(){		
 		$("h2").text("공지상세");
-		$("#uptQues").click(function(){
-			$("[name=proc]").val("writeQues");
+		$("#uptQue").click(function(){
+			$("[name=proc]").val("writeQue");
 			$("form").submit();
 		});
-		$("#delQues").click(function(){
+		$("#delQue").click(function(){
 			if(confirm("글을 삭제하시겠습니까?")){
-				$("[name=proc]").val("delQues");
+				$("[name=proc]").val("delQue");
 				$("form").submit();
 			}
 		});
-		$("#listQues").click(function(){
+		$("#listQue").click(function(){
 			$("[name=proc]").val("question");
 			$("form").submit();
-		});		
+		});
+		//댓글
+		$("[name=insQuec]").click(function(){
+			if(confirm("작성하시겠습니까?")){
+				$("[name=proc]").val("insQuec");
+				var quec_detail = $("[name=quec_detail]").val();
+				quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				$("[name=quec_detail]").val(quec_detail);
+				$("form").submit();
+			}
+		});
+		
+		$("[name=uptQuec]").click(function(){
+			if(confirm("수정하시겠습니까?")){
+				$("[name=proc]").val("uptQuec");
+				var quec_detail = $("[name=quec_detail]").val();
+				quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				$("[name=quec_detail]").val(quec_detail);
+				$("form").submit();
+			}
+		});
+		
+		$("[name=delQuec]").click(function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("[name=proc]").val("uptQuec");
+				var quec_detail = $("[name=quec_detail]").val();
+				quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+				$("[name=quec_detail]").val(quec_detail);
+				$("form").submit();
+			}
+		});
 	});
 </script>
 </head>
@@ -104,9 +134,9 @@
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
-					<input id="uptQues" class="goback-btn btn" type="button" value="수정"/>
-					<input id="delQues" class="goback-btn btn" type="button" value="삭제"/>
-					<input id="listQues" class="goback-btn btn" type="button" value="목록"/>
+					<input id="uptQue" class="goback-btn btn" type="button" value="수정"/>
+					<input id="delQue" class="goback-btn btn" type="button" value="삭제"/>
+					<input id="listQue" class="goback-btn btn" type="button" value="목록"/>
 				</div>
 				<!-- 덧글 시작 -->
 				<table class="commentbox">
@@ -116,10 +146,10 @@
 					<tbody>
 						<tr>
 							<td>
-								<textarea id="online_comment" class=""></textarea>
+								<textarea id="online_comment" name="quec_detail"></textarea>
 							</td>
 							<td style="text-align:right; padding-right:26px;">
-								<input class="insAns btn" type="button" name="insAns" value="입력"/>
+								<input class="insAns btn" type="button" id="insQuec" value="입력"/>
 							</td>
 						</tr>
 					</tbody>
@@ -131,6 +161,10 @@
 					<div class="r_list online_line" id="799229" style="clear:both; padding:10px; border-bottom:1px dotted #666;">
 						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
 							${quecomm.mem_id} <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${quecomm.quec_date}</span>
+							<c:if test="${quecomm.mem_id==mem.mem_id}">
+							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;" >수정</span>
+							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;">삭제</span>
+							</c:if>
             			</div>
             			<div style="line-height:120%; color:#666;">
             				${quecomm.quec_detail}<br><br>

@@ -31,14 +31,22 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#writeQue").click(function(){
-			$("[name=proc]").val("writeQue");
-			$("form").submit();
+			var mem_id = "${mem.mem_id}";
+			
+			if(mem_id==""){
+				alert('로그인이 필요합니다.');
+				$(location).attr("href","${path}/login");		
+			}else{
+				$("[name=proc]").val("writeQue");
+				$("form").submit();	
+			}
+			
 		});
 		
 	});
 	function go(que_no){
 		$("[name=que_no]").val(que_no);
-		$("[name=proc]").val("quesDetail");
+		$("[name=proc]").val("queDetail");
 		$("form").submit();
 	}
 	
