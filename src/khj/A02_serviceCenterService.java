@@ -1,9 +1,6 @@
 package khj;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import z01_vo.*;
@@ -62,6 +59,32 @@ public class A02_serviceCenterService {
 	public ArrayList<Quecomm> Quecomm(HttpServletRequest request) {
 		int que_no = Nk.toInt(request.getParameter("que_no"));
 		return dao.qclist(que_no);
+	}
+	
+	public void insertQuestion(HttpServletRequest request) {
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String que_name = Nk.toStr(request.getParameter("que_name"));
+		String que_detail = Nk.toStr(request.getParameter("que_detail"));
+		
+		Question que = new Question(mem_id, que_name, que_detail);
+		dao.insertQuestion(que);
+	}
+	
+	public void updateQuestion(HttpServletRequest request) {
+		int que_no = Nk.toInt(request.getParameter("que_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String que_name = Nk.toStr(request.getParameter("que_name"));
+		String que_detail = Nk.toStr(request.getParameter("que_detail"));
+		
+		Question que = new Question(que_no, mem_id, que_name, que_detail);
+		dao.updateQuestion(que);
+	}
+	
+	public void deleteQuestion(HttpServletRequest request) {
+		int que_no = Nk.toInt(request.getParameter("que_no"));
+		
+		dao.deleteQuecommAll(que_no);
+		dao.deleteQuestion(que_no);
 	}
 }		
 

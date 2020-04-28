@@ -217,7 +217,7 @@ public class A02_serviceCenterDao {
 	}
 	
 	public Question qdetail(int que_no) {
-		Question ques = new Question();
+		Question que = new Question();
 		try {
 			setConn();
 			String sql = "SELECT que_no, mem_id, que_name,\r\n" + 
@@ -229,7 +229,7 @@ public class A02_serviceCenterDao {
 			pstmt.setInt(1, que_no);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				ques = new Question(
+				que = new Question(
 							rs.getInt("que_no"), 
 							rs.getString("mem_id"),
 							rs.getString("que_name"),
@@ -243,7 +243,7 @@ public class A02_serviceCenterDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ques;
+		return que;
 	}
 	
 	// 문의댓글리스트 불러오기
@@ -277,6 +277,142 @@ public class A02_serviceCenterDao {
 		return qclist;
 	}
 	
+	public void insertQuestion(Question que) {
+		try {
+			setConn();
+			String sql = "INSERT INTO p5_question VALUES (p5_question_seq.nextval, ?, ?, ?, sysdate)";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, que.getMem_id());
+			pstmt.setString(2, que.getQue_name());
+			pstmt.setString(3, que.getQue_detail());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("등록성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	//여기서부터 수정
+	public void updateQuestion(Question que) {
+		try {
+			setConn();
+			String sql = "UPDATE p5_question\r\n" + 
+					"SET que_name = ?,\r\n" + 
+					"	que_detail = ?\r\n" + 
+					"WHERE que_no = ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, que.getQue_name());
+			pstmt.setString(2, que.getQue_detail());
+			pstmt.setInt(3, que.getQue_no());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	public void deleteQuestion(int que_no) {
+		try {
+			setConn();
+			String sql = "DELETE FROM p5_question\r\n" + 
+					"WHERE que_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, que_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void deleteQuecommAll(int que_no) {
+		try {
+			setConn();
+			String sql = "DELETE FROM p5_quecomm\r\n" + 
+					"WHERE que_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, que_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
