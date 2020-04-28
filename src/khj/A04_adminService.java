@@ -1,10 +1,8 @@
 package khj;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.Date;
->>>>>>> branch 'master' of https://github.com/ezenteam3/project05.git
+
 
 import javax.servlet.http.HttpServletRequest;
 
