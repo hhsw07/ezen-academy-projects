@@ -60,9 +60,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="mgr" items="mgrList">
+				<c:forEach var="mgr" items="${mgrList}">
 				<tr onclick="mgrDetail(${mgr.mgr_no})">
-					<td>${mgr.as_no}</td><td>${mgr.as_date}</td><td>${as.cate}</td><td>${as.mem_id}</td><td>입고일</td><td>진행상태</td>
+					<td style="text-align:center;">${mgr.as_no}</td><td style="text-align:center;">${mgr.as_date}</td><td style="text-align:center;">${mgr.as_cate}</td>
+					<td style="text-align:center;">${mgr.mem_id}</td><td style="text-align:center;">${mgr.mgr_date}</td><td>${mgr.mgr_stat}</td>
 				</tr>
 				</c:forEach>
 			</tbody>

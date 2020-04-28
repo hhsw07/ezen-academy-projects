@@ -35,27 +35,37 @@ public class A04_adminCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String proc= Nk.toStr(request.getParameter("proc"));
+		String proc= Nk.toStr(request.getParameter("proc"),"mgr");
 		System.out.println("proc확인"+proc);
 			
-		String page= "main/admin/memList.jsp";
+		String page= "main\\admin\\memList.jsp";
 		
 		if(proc.equals("member")) {
 			request.getSession().setAttribute("mlist", service.Member(request));
 		}
-<<<<<<< HEAD
 		
-
-=======
 			
-		if(proc.equals("as")) {
-			request.setAttribute("asList",service.asList());
-			page = "main/admin/asAdmin.jsp";
+		if(proc.equals("mgr")) {
+			request.setAttribute("mgrList",service.mgrList());
+			page = "main\\admin\\asAdmin.jsp";
+			
+		}
+		if(proc.equals("mgrDetail")) {
+			request.setAttribute("mgr", service.mgrDetail(request));
+			request.setAttribute("ordlist", service.reqList(request));
+			
+			page = "main\\admin\\asdetailAdmin.jsp";
+			
+		}
+		if(proc.equals("uptmgrDetail")) {
+			service.uptMgr(request);
+			
+			page = "main\\admin\\asdetailAdmin.jsp";
 		}
 		
->>>>>>> branch 'master' of https://github.com/ezenteam3/project05.git
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
+		
 	}
 
 }

@@ -49,7 +49,7 @@ $(document).ready(function(){
 		$("form").submit();
 	});
 	$("#as").click(function(){
-		$("[name=category]").val("as");
+		$("[name=category]").val("mgr");
 		$("form").submit();
 	});
 });

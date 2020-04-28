@@ -36,7 +36,15 @@
 		<%-- 
 		
 		--%>
-		$("h2").text("AS관리");
+		var mgr_no = "${mgr.mgr_no}";
+		$("h2").text("AS관리("+mgr_no+")");
+		
+		var proc = "${param.proc}";
+		if(proc=='uptmgrDetail'){
+			$("[name=proc]").val("mgr");
+			$("form").submit();
+		}
+		
 	});
 </script>
 </head>
@@ -47,7 +55,9 @@
 		<header>
 			<h2></h2>
 		</header>
-		
+		<form method="post">
+		<input type="hidden" name="proc" value="uptmgrDetail" />
+		<input type="hidden" name="mgr_no" value="${mgr.mgr_no}" />
 		<table class="mgr-table">
 			<colgroup>
 				<col width="10%">
@@ -64,14 +74,14 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>신청번호</td>
-					<td>신청일</td>
-					<td>분류</td>
-					<td>신청자</td>
-					<td>입고일</td>
+					<td style="text-align:center;">${mgr.as_no}</td>
+					<td style="text-align:center;">${mgr.as_date}</td>
+					<td style="text-align:center;">${mgr.as_cate}</td>
+					<td style="text-align:center;">${mgr.mem_id}</td>
+					<td style="text-align:center;">${mgr.mgr_date}</td>
 					<td>
 						<div class="input-wrap">
-							<input class="input" type="text" name="" value=""/>
+							<input class="input" type="text" name="mgr_stat" value="${mgr.mgr_stat}"/>
 						</div>
 					</td>
 				</tr>
@@ -86,28 +96,41 @@
 				<col width="35%">
 			</colgroup>
 			<tr>
-				<th>주문번호</th><td>주문번호</td><th>구매일</th><td>구매날짜</td>
+				<th>주문번호</th><td>${mgr.ord_no}</td><th>구매일</th><td>${mgr.ord_date}</td>
 			</tr>
 			<tr>
-				<th>구매상품</th><td colspan="3">구매상품</td>
+				<th>구매상품</th>
+				<td colspan="3">
+				<c:forEach var="ord" items="${ordlist}">
+					<img src="${path}/image/parts/${ord.parts_img}" style="width:40px;"/> ${ord.parts_name}<br>
+				</c:forEach>
+				</td>
 			</tr>
 			<tr>
-				<th>신청내용</th><td colspan="3">신청내용</td>
+				<th>신청내용</th><td colspan="3">${mgr.as_detail}</td>
 			</tr>
 		</table>
 		
 		<table>
 			<tr><th>처리비용</th>
-			<td>
-				<div class="input-wrap">
-					<input class="input" type="text" name="mgr_price" value=""/>
-				</div>
-			</td>
+				<td>
+					<div class="input-wrap">
+						<input class="input" type="number" name="mgr_price" value="${mgr.mgr_price}"/>
+					</div>
+				</td>
+				<th>비고</th>
+				<td>
+					<div class="input-wrap">
+						<input class="input" type="text" name="mgr_note" value="${mgr.mgr_note}"/>
+					</div>
+				</td>
+			</tr>
 		</table>
 		
 		<div class="pay-btn">
-			<input class="btn" type="button" value="수정/확인"/>
+			<input class="btn" type="submit" value="수정/확인"/>
 		</div>
+		</form>
 	</div>
 	
 
