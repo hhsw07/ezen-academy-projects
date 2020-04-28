@@ -101,6 +101,53 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 			request.getSession().setAttribute("qlist", service.Question(request));
 			proc = "question"; //view의 question 작동 트리거
 		}
+		
+		
+		// AS리스트 불러오기
+		if(proc.equals("as")){
+			request.setAttribute("asList", service.asList());
+		}
+		// AS상세 불러오기
+		if(proc.equals("goAs")) {
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+		}
+		// AS등록창 불러오기
+		if(proc.equals("insAs")) {
+			request.setAttribute("ordlist",service.ordList(request) );
+		}
+		// AS등록
+		if(proc.equals("ins")) {
+			service.insAs(request);
+			proc = "as";
+		}
+		// AS수정
+		if(proc.equals("uptAs")) {
+			service.uptAs(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			proc = "goAs";
+		}
+		// AS삭제
+		if(proc.equals("delAs")) {
+			service.delAs(request);
+			proc = "as";
+		}
+		// AS댓글 등록 및 수정
+		if(proc.equals("insAns")) {
+			service.insAns(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			proc = "goAs";
+		}
+		// AS댓글 삭제
+		if(proc.equals("delComm")) {
+			service.delComm(request);
+			request.setAttribute("as", service.asList(request));
+			request.setAttribute("asdetail", service.asDetail(request));
+			proc = "goAs";
+		}
+		
 		//3.View
 		String page = "main/serviceCenter/notice.jsp";
 		if(proc.equals("notice")) {
@@ -123,6 +170,16 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		}
 		if(proc.equals("review")) {
 			page="main/serviceCenter/review.jsp";
+		}
+		
+		if(proc.equals("as")){
+			page = "main\\serviceCenter\\as.jsp";
+		}
+		if(proc.equals("goAs")) {
+			page ="main\\serviceCenter\\asdetail.jsp";
+		}
+		if(proc.equals("insAs")) {
+			page ="main\\serviceCenter\\apply.jsp";
 		}
 		
 		RequestDispatcher rd= request.getRequestDispatcher(page);
