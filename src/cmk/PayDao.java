@@ -6,6 +6,7 @@ import java.sql.*;
 import z01_vo.Cart;
 import z01_vo.Order;
 import z01_vo.Pay;
+import z01_vo.Point;
 import z01_vo.Request;
 
 public class PayDao {
@@ -179,6 +180,17 @@ public class PayDao {
 		}
 		
 		return payinfo;
+	}
+	
+	// 포인트 적립 및 사용
+	public void insPoint(Point ins) {
+		try {
+			setCon();
+			String sql="";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	// 재고 관리
 	public void uptPartsCnt(int req_no, int req_cnt){
