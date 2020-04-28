@@ -160,7 +160,7 @@ public class A01_loginDao {
 			rs = pstmt.executeQuery();			
 			if(rs.next()) {
 				m = new Member(
-						rs.getString(1));
+						rs.getString("mem_id"));
 			}
 			rs.close();
 			pstmt.close();

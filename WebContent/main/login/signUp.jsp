@@ -30,24 +30,14 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	var mem_id = "${param.mem_id}";
-	// id를 입력하고, controller단 호출 후..
-	if(mem_id!=""){
-		var isMember = "${isMember}";
-		if(isMember=="true"){ /// true이면..
-			alert("등록된 id입니다!");
-			$("[name=mem_id]").focus();
-		}else{
-			alert("등록가능합니다.")
-			$("[name=mem_id]").val(mem_id);
-		}
-	}
-	$("h2").text("등록여부 확인");
 	$("#regCkBtn").click(function(){
-		$("form").submit();
+		var insId = "${mem.mem_id}";
+		if($("[name=mem_id]").val()==insId){
+			alert("중복된 아이디입니다.");	
+		}else{
+			alert("사용가능한 아이디입니다.")
+		}
 	});
-	
-	
 	$("#regbtn").click(function(){
 		alert("회원가입 성공");
 		$("[name=proc]").val("insMem");
