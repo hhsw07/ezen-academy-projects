@@ -60,8 +60,8 @@ public class PayCtrl extends HttpServlet {
 			System.out.println();
 		}
 		if(proc.equals("pay")) {
-			String mem_id = Nk.toStr((String)session.getAttribute("mem"));
-			service.insOrder(request, mem_id);
+			service.getCart(request);
+			service.insOrder(request);
 		}
 		// 3. View
 		String page = "main\\order\\cart.jsp";

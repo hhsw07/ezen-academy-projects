@@ -35,6 +35,11 @@
 $(document).ready(function(){
 	
 });
+ function go(mem_id){
+	 $("[name=mem_id]").val(mem_id);
+	 $("[name=proc]").val("memberDetail");
+	 $("form").submit();
+ }
 
 </script>
 </head>
@@ -46,40 +51,40 @@ $(document).ready(function(){
 	<div class="wrap">
 	<h1>회원관리</h1>
 	<!-- 게시판 목록 -->
-	
-	<table align="center">
 	<form method="post">
-	<input type="hidden" name="proc"/>
-	<input type="hidden" name="mem_id"/>
-		<colgroup>
-			<col style="width:150px;"/>
-			<col style="width:260px;"/>
-			<col style="width:260px;"/>
-			<col style="width:260px;"/>
-			<col style="width:150px;"/>
-		</colgroup>
-		
-	<!-- 타이틀 -->
-		<tr>
-			<th>이름</th>
-			<th>아이디</th>
-			<th>이메일</th>
-			<th>연락처</th>
-			<th>상세보기</th>
-		</tr>
-		
-	<!-- 글목록  -->	
-	<c:forEach var="member" items="${mlist}">
-		<tr>
-			<td style="padding-left:20px;">${member.mem_name}</td>	
-			<td style="padding-left:40px;">${member.mem_id}</td>
-			<td style="padding-left:40px;">${member.mem_email}</td>
-			<td style="padding-left:40px;">${member.mem_tel}</td>
-			<td style="padding-left:20px;">상세보기</td>
-		</tr>
-	</c:forEach>
-	</form>
+		<input type="hidden" name="proc"/>
+		<input type="hidden" name="mem_id"/>	
+	<table align="center">
+
+				<colgroup>
+					<col style="width:150px;"/>
+					<col style="width:260px;"/>
+					<col style="width:260px;"/>
+					<col style="width:260px;"/>
+					<col style="width:150px;"/>
+				</colgroup>
+				
+			<!-- 타이틀 -->
+				<tr>
+					<th>이름</th>
+					<th>아이디</th>
+					<th>이메일</th>
+					<th>연락처</th>
+					<th>상세보기</th>
+				</tr>
+			
+		<!-- 글목록  -->	
+			<c:forEach var="member" items="${mlist}">
+				<tr>
+					<td style="padding-left:20px;">${member.mem_name}</td>	
+					<td style="padding-left:40px;">${member.mem_id}</td>
+					<td style="padding-left:40px;">${member.mem_email}</td>
+					<td style="padding-left:40px;">${member.mem_tel}</td>
+					<td style="padding-left:20px;">상세보기</td>
+				</tr>
+			</c:forEach>
 	</table>
+	</form>
 	</div>
 </div>
 

@@ -1,8 +1,14 @@
 package khj;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 //github.com/ezenteam3/project05.git
+=======
+import java.util.ArrayList;
+import java.util.Date;
+
+>>>>>>> 6be964aed4b341ec41f5b97e0c3fbdc8eb745eb5
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +29,12 @@ public class A04_adminService {
 		
 		public ArrayList<Member> Member(HttpServletRequest request) {
 			return dao.mlist();
+		}
+		
+		public Member memberDetail(HttpServletRequest request) {
+			String mem_id = Nk.toStr(request.getParameter("mem_id"));
+			
+			return dao.mdetail(mem_id);
 		}
 		
 		

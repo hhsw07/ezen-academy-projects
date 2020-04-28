@@ -16,6 +16,12 @@ public class Request {
 		this.req_no = req_no;
 		this.req_cnt = req_cnt;
 	}
+	public Request(int ord_no, int req_no, int req_cnt) {
+		super();
+		this.ord_no = ord_no;
+		this.req_no = req_no;
+		this.req_cnt = req_cnt;
+	}
 
 	public Request(int ord_no, int req_no, int req_cnt, int req_opt) {
 		super();

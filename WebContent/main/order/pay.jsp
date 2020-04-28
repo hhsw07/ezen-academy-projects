@@ -108,164 +108,166 @@
 	</header>
 	
 	<form method="post">
-	<input type="hidden" name="proc" />
-	<div class="pay-wrap">
-		<table class="pay-table-th">
-			<colgroup>
-				<col width="5%">
-				<col width="55%">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-			</colgroup>
-			<thead class="pay-thead">
-				<tr>
-					<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>포인트</th>
-				</tr>
-			</thead>
-		</table>
-		<table class="pay-table-td">
-			<colgroup>
-				<col width="5%">
-				<col width="55%">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-			</colgroup>
-			<tbody class="pay-tbody">
-				<c:forEach var="cart" varStatus="status" items="${buylist}">
-				<tr>
-					<td></td>
-					<td>
-						<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
-					</td>
-					<td style="text-align:center;">${cart.req_cnt}</td>
-					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
-					<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원</td>
-					<td class="fmtnum">
-						<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
-					</td>
-				</tr>
-				<c:set var="totPay" value="${totPay+cart.parts_price*cart.req_cnt}"/>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
-	
-	<div class="pay-order">
-		<fieldset>
-			<legend>주문자 정보 확인</legend>
-			<table class="input-table">
-				<col width="17%">
-				<col width="83%">
-				<tr>
-					<th>이름</th>
-					<td>
-						<div class="input-wrap"><input class="input" type="text" name="name" value="${mem.mem_id}"/></div>
-					</td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td>
-						<div class="input-wrap"><input class="input" type="text" name="tel" value="${mem.mem_tel}"/></div>
-					</td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>
-						<div class="input-wrap"><input class="input" type="email" name="email" value="${mem.mem_email}"/></div>
-					</td>
-				</tr>
+		<input type="hidden" name="proc" />
+		<input type="hidden" name="mem_id" value="${mem.mem_id}"/>
+		<div class="pay-wrap">
+			<table class="pay-table-th">
+				<colgroup>
+					<col width="5%">
+					<col width="55%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+				</colgroup>
+				<thead class="pay-thead">
+					<tr>
+						<th></th><th>상품명</th><th>수량</th><th>가격</th><th>합계</th><th>포인트</th>
+					</tr>
+				</thead>
 			</table>
-		</fieldset>
-	</div>
-	
-	<div class="pay-delivery">
-		<fieldset>
-			<legend>배송정보입력</legend>
-			<table class="input-table">
-				<col width="17%">
-				<col width="83%">
-				<tr>
-					<th class="pay-tit">배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
-				</tr>
-				<tr>
-					<th>수령인</th>
-					<td>
-						<div class="input-wrap"><input class="input" type="text" name="ord_name"/></div>
-					</td>
-				</tr>
-				<tr>
-					<th>연락처</th>
-					<td>
-						<div class="input-wrap"><input class="input" type="text" name="ord_tel"/></div>
-					</td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td>
-						<div onclick="findpost()">
+			<table class="pay-table-td">
+				<colgroup>
+					<col width="5%">
+					<col width="55%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+				</colgroup>
+				<tbody class="pay-tbody">
+					<c:forEach var="cart" varStatus="status" items="${buylist}">
+					<input type="hidden" name="req_no" value="${cart.req_no}"/>
+					<tr>
+						<td></td>
+						<td>
+							<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span><span style="vertical-align:middle;">${cart.parts_name}</span>
+						</td>
+						<td style="text-align:center;"><input type="hidden" name="req_cnt" value="${cart.req_cnt}"/>${cart.req_cnt}</td>
+						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price}"/> 원</td>
+						<td class="fmtnum"><fmt:formatNumber type="number" value="${cart.parts_price*cart.req_cnt}"/> 원</td>
+						<td class="fmtnum">
+							<fmt:formatNumber type="number" value="${(cart.req_cnt*cart.parts_price*0.01)+(((cart.req_cnt*cart.parts_price*0.01)%1>0.5)?(1-((cart.req_cnt*cart.parts_price*0.01)%1))%1:-((cart.req_cnt*cart.parts_price*0.01)%1))}"/> p
+						</td>
+					</tr>
+					<c:set var="totPay" value="${totPay+cart.parts_price*cart.req_cnt}"/>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="pay-order">
+			<fieldset>
+				<legend>주문자 정보 확인</legend>
+				<table class="input-table">
+					<col width="17%">
+					<col width="83%">
+					<tr>
+						<th>이름</th>
+						<td>
+							<div class="input-wrap"><input class="input" type="text" name="name" value="${mem.mem_id}"/></div>
+						</td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td>
+							<div class="input-wrap"><input class="input" type="text" name="tel" value="${mem.mem_tel}"/></div>
+						</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>
+							<div class="input-wrap"><input class="input" type="email" name="email" value="${mem.mem_email}"/></div>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		
+		<div class="pay-delivery">
+			<fieldset>
+				<legend>배송정보입력</legend>
+				<table class="input-table">
+					<col width="17%">
+					<col width="83%">
+					<tr>
+						<th class="pay-tit">배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
+					</tr>
+					<tr>
+						<th>수령인</th>
+						<td>
+							<div class="input-wrap"><input class="input" type="text" name="ord_name"/></div>
+						</td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td>
+							<div class="input-wrap"><input class="input" type="text" name="ord_tel"/></div>
+						</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td>
+							<div onclick="findpost()">
+								<span class="input-wrap input-post">
+									<input type="text" id="zip" class="input" name="ord_post" value="" readonly/>
+								</span>
+								<input class="input-btn" type="button" value="우편번호찾기"/>
+							</div>
+							<div class="input-addr">
+								<input type="text" id="addr" class="input" name="ord_addr1" value="" readonly/>
+							</div>
+							<div class="input-addr">
+								<input type="text" class="input" name="ord_addr2"/>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>주문 요청사항</th>
+						<td>
+							<div class="request">
+								<textarea name="ord_req" style="width:100%; border:none; height:100%; resize:none;" scrolling="yes"></textarea>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		
+		<div class="pay-info">
+			<fieldset>
+				<legend>결제/할인 선택</legend>
+				<table class="input-table">
+					<col width="17%">
+					<col width="83%">
+					<tr>
+						<th>결제 방법 선택</th>
+						<td>
+							<input type="radio" name="pay_method" value="무통장입금"/>무통장입금
+							<input type="radio" name="pay_method" value="카드결제"/>카드결제
+						</td>
+					</tr>
+					<tr>
+						<th>포인트 사용</th>
+						<td>
 							<span class="input-wrap input-post">
-								<input type="text" id="zip" class="input" name="ord_post" value="" readonly/>
+								<input type="text" class="input" name="point"/>
 							</span>
-							<input class="input-btn" type="button" value="우편번호찾기"/>
-						</div>
-						<div class="input-addr">
-							<input type="text" id="addr" class="input" name="ord_addr1" value="" readonly/>
-						</div>
-						<div class="input-addr">
-							<input type="text" class="input" name="ord_addr2"/>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>주문 요청사항</th>
-					<td>
-						<div class="request">
-							<textarea name="ord_req" style="width:100%; border:none; height:100%; resize:none;" scrolling="yes"></textarea>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</fieldset>
-	</div>
-	
-	<div class="pay-info">
-		<fieldset>
-			<legend>결제/할인 선택</legend>
-			<table class="input-table">
-				<col width="17%">
-				<col width="83%">
-				<tr>
-					<th>결제 방법 선택</th>
-					<td>
-						<input type="radio" name="pay_method" value="무통장입금"/>무통장입금
-						<input type="radio" name="pay_method" value="카드결제"/>카드결제
-					</td>
-				</tr>
-				<tr>
-					<th>포인트 사용</th>
-					<td>
-						<span class="input-wrap input-post">
-							<input type="text" class="input" name="point"/>
-						</span>
-						<input class="input-btn" type="button" id="usept" value="사용"/>
-						(<fmt:formatNumber type="number" value="${point}"/> p 사용가능)
-					</td>
-				</tr>
-			</table>
-		</fieldset>
-	</div>
-	
-	<div class="pay-price">
-		<fieldset>
-			<h3>총 금액 : <span><input type="hidden" name="totprice" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h3>
-			<h3>할인금액 : <span id="discount"></span> 원</h3>
-			<h1>최종결제금액 : <span id="lastPay"><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h1>
-		</fieldset>
-	</div>
+							<input class="input-btn" type="button" id="usept" value="사용"/>
+							(<fmt:formatNumber type="number" value="${point}"/> p 사용가능)
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		
+		<div class="pay-price">
+			<fieldset>
+				<h3>총 금액 : <span><input type="hidden" name="totprice" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h3>
+				<h3>할인금액 : <span id="discount"></span> 원</h3>
+				<h1>최종결제금액 : <span id="lastPay"><fmt:formatNumber type="number" value="${totPay}"/></span> 원</h1>
+			</fieldset>
+		</div>
 	</form>
 	
 	<div class="pay-btn">

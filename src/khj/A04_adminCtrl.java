@@ -40,9 +40,11 @@ public class A04_adminCtrl extends HttpServlet {
 			
 		String page= "main\\admin\\memList.jsp";
 		
+		// 회원 정보 불러오기
 		if(proc.equals("member")) {
 			request.getSession().setAttribute("mlist", service.Member(request));
 		}
+<<<<<<< HEAD
 		
 			
 		if(proc.equals("mgr")) {
@@ -63,6 +65,18 @@ public class A04_adminCtrl extends HttpServlet {
 			page = "main\\admin\\asdetailAdmin.jsp";
 		}
 		
+=======
+		// 회원 상세
+		if(proc.equals("memberDetail")) {
+			request.setAttribute("member", service.memberDetail(request));
+		}
+
+		if(proc.equals("as")) {
+			request.setAttribute("asList",service.asList());
+			page = "main/admin/asAdmin.jsp";
+		}
+		
+>>>>>>> 6be964aed4b341ec41f5b97e0c3fbdc8eb745eb5
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 		

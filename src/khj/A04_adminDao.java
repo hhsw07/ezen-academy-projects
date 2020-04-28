@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import cmk.Myorder;
 import z01_vo.As;
 import z01_vo.Member;
+<<<<<<< HEAD
 import z01_vo.Mgr;
+=======
+import z01_vo.Notice;
+>>>>>>> 6be964aed4b341ec41f5b97e0c3fbdc8eb745eb5
 
 public class A04_adminDao {
 	private Connection con;
@@ -72,6 +76,8 @@ public class A04_adminDao {
 			setConn();
 			String sql = "SELECT * FROM p5_member";
 			pstmt = con.prepareStatement(sql);
+			System.out.println(sql);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				mlist.add(new Member(
 						   rs.getString("mem_id"),
@@ -79,6 +85,10 @@ public class A04_adminDao {
 						   rs.getString("mem_email"),
 						   rs.getString("mem_tel")));
 			}
+			System.out.print(rs.getString("mem_id")+"\t");
+			System.out.print(rs.getString("mem_name")+"\t");
+			System.out.print(rs.getString("mem_email")+"\t");
+			System.out.print(rs.getString("mem_tel")+"\t");
 			rs.close();
 			pstmt.close();
 			con.close();
@@ -89,6 +99,7 @@ public class A04_adminDao {
 		return mlist;
 	}
 	
+<<<<<<< HEAD
 	public ArrayList<Mgr> mgrList(){
 		ArrayList<Mgr> mgrList = new ArrayList<Mgr>();
 		try {
@@ -111,6 +122,27 @@ public class A04_adminDao {
 									rs.getString(5),
 									rs.getDate(6),
 									rs.getString(7)));
+=======
+	public Member mdetail(String mem_id) {
+		Member mem = new Member();
+		try {
+			setConn();
+			String sql = "SELECT mem_id, mem_name, mem_birth, mem_jdate,\r\n" + 
+					"		mem_email, mem_tel FROM p5_member";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				mem = new Member(
+							rs.getString("mem_id"), 
+							rs.getString("mem_name"),
+							rs.getDate("mem_birth"), 
+							rs.getString("mem_email"),
+							rs.getString("mem_tel"),
+							rs.getDate("mem_jdate")
+							);
+>>>>>>> 6be964aed4b341ec41f5b97e0c3fbdc8eb745eb5
 			}
 			rs.close();
 			pstmt.close();
@@ -119,6 +151,7 @@ public class A04_adminDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		
 		return mgrList;
 	}
@@ -230,9 +263,15 @@ public class A04_adminDao {
 		}
 	}
 
+=======
+		return mem;
+	}
+>>>>>>> 6be964aed4b341ec41f5b97e0c3fbdc8eb745eb5
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		A04_adminDao dao = new A04_adminDao();
+		
+		System.out.println("데이터건수"+dao.mlist().size());
 		
 	}
 

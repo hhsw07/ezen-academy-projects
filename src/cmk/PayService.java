@@ -46,7 +46,7 @@ public class PayService {
 		return pt;
 	}
 	
-	public void insOrder(HttpServletRequest request, String mem_id){
+	public void insOrder(HttpServletRequest request){
 		
 		String ord_name = Nk.toStr(request.getParameter("ord_name"));
 		String ord_tel = Nk.toStr(request.getParameter("ord_tel"));
@@ -55,20 +55,18 @@ public class PayService {
 		String ord_addr2 = Nk.toStr(request.getParameter("ord_addr2"));
 		String ord_req = Nk.toStr(request.getParameter("ord_req"));
 		
-		Order ins = new Order(mem_id,ord_name,ord_tel,ord_post,ord_addr1,ord_addr2,ord_req);
+		Order ins = new Order(request.getParameter("mem_id"),ord_name,ord_tel,ord_post,ord_addr1,ord_addr2,ord_req);
 		dao.insertOrder(ins);
 
-		int ord_no = dao.getOrdno(mem_id);
+		int ord_no = dao.getOrdno(request.getParameter("mem_id"));
 		
 		String []req_nos = request.getParameterValues("req_no");
 		String []req_cnts = request.getParameterValues("req_cnt");
-		String []req_opts = request.getParameterValues("req_opt");
 		
 		for(int idx=0;idx<req_nos.length;idx++) {
 			int req_no = Nk.toInt(req_nos[idx]);
 			int req_cnt = Nk.toInt(req_cnts[idx]);
-			int req_opt = Nk.toInt(req_opts[idx]);
-			Request ins2 = new Request(ord_no, req_no,req_cnt,req_opt);
+			Request ins2 = new Request(ord_no, req_no,req_cnt);
 			
 			dao.insertRequest(ins2);
 			if(req_no<1000) {

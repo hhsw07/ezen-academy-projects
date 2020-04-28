@@ -66,7 +66,7 @@ AND c.mem_id='ezen01'
 ORDER BY ord_no DESC;
 
 -- 주문/배송 상세정보
-SELECT pr.ord_no, c.ord_date, c.ORD_NAME, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE, 
+SELECT pr.ord_no, c.ord_date, c.ORD_NAME, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE 
 FROM p5_request pr, 
 	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
 	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,
