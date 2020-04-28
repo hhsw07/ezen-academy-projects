@@ -9,6 +9,7 @@ import z01_vo.Cart;
 import z01_vo.Nk;
 import z01_vo.Order;
 import z01_vo.Pay;
+import z01_vo.Point;
 import z01_vo.Request;
 
 public class PayService {
@@ -47,6 +48,7 @@ public class PayService {
 	}
 	
 	public void insOrder(HttpServletRequest request){
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
 		
 		String ord_name = Nk.toStr(request.getParameter("ord_name"));
 		String ord_tel = Nk.toStr(request.getParameter("ord_tel"));
@@ -55,7 +57,7 @@ public class PayService {
 		String ord_addr2 = Nk.toStr(request.getParameter("ord_addr2"));
 		String ord_req = Nk.toStr(request.getParameter("ord_req"));
 		
-		Order ins = new Order(request.getParameter("mem_id"),ord_name,ord_tel,ord_post,ord_addr1,ord_addr2,ord_req);
+		Order ins = new Order(mem_id,ord_name,ord_tel,ord_post,ord_addr1,ord_addr2,ord_req);
 		dao.insertOrder(ins);
 
 		int ord_no = dao.getOrdno(request.getParameter("mem_id"));
@@ -80,6 +82,12 @@ public class PayService {
 		
 		Pay ins3 = new Pay(ord_no, pay_method, pay_point, pay_price);
 		dao.insertPay(ins3);
+		if(pay_point!=0) {
+			Point use = new Point(mem_id,"상품구매사용",pay_point);
+			dao.insPoint(use);
+		}
+		Point saving = new Point(mem_id,"상품구매적립",pay_price);
+		dao.insPoint(saving);
 	}
 
 }

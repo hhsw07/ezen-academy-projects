@@ -32,7 +32,7 @@ public class PointCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 1. 요청
 		// 2. Model
-		request.setAttribute("ptList", service.ptList());
+		request.setAttribute("ptList", service.ptList(request));
 		// 3. View
 		String page = "main\\mypage\\mypoint.jsp";
 		request.getRequestDispatcher(page).forward(request, response);

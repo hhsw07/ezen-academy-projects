@@ -55,7 +55,7 @@ public class MyorderDao {
 		return olist;
 	}
 */
-	public ArrayList<Myorder> olist(){
+	public ArrayList<Myorder> olist(String mem_id){
 		ArrayList<Myorder> olist = new ArrayList<Myorder>();
 		try {
 			setCon();
@@ -74,7 +74,7 @@ public class MyorderDao {
 					"AND c.mem_id=?\r\n" + 
 					"ORDER BY ord_no DESC";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "ezen01");
+			pstmt.setString(1, mem_id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				olist.add(new Myorder(rs.getInt(1),

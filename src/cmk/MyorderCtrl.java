@@ -38,7 +38,7 @@ public class MyorderCtrl extends HttpServlet {
 		// 1. 요청
 		String proc = Nk.toStr(request.getParameter("proc"));
 		// 2. Model
-		request.setAttribute("olist", service.olist());
+		request.setAttribute("olist", service.olist(request));
 		// 3. View
 		String page = "main\\mypage\\myorder.jsp";  
 		request.getRequestDispatcher(page).forward(request, response); 
