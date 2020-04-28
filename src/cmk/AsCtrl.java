@@ -59,14 +59,14 @@ public class AsCtrl extends HttpServlet {
 		
 		// as 삭제
 		if(proc.equals("delAs")) {
-			service.delComm(request);
-			request.setAttribute("as", service.asList(request));
-			request.setAttribute("asdetail", service.asDetail(request));
+			service.delAs(request);
+			
 			page ="main\\serviceCenter\\asdetail.jsp";
 		}
 		// as 등록 이동
 		if(proc.equals("insAs")) {
 			// 회원의 주문번호 전달
+			request.setAttribute("ordlist",service.ordList(request) );
 			
 			page ="main\\serviceCenter\\apply.jsp";
 		}

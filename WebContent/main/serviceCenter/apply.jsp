@@ -35,8 +35,26 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("h2").text("AS신청");
+		var proc = "${param.proc}";
+		if(proc == 'ins'){
+			$("[name=proc]").val("as");
+			$("form").submit();
+		}
 		
 		
+		$("[name=applyBtn]").click(function(){
+			var ord_no = $("[name=ord_no]").val();
+			console.log(ord_no);
+			if(ord_no != ""){
+				if(confirm("등록하시겠습니까?")){
+					$("form").submit();
+				}	
+			}else{
+				alert("주문번호를 선택하세요.")
+			}
+			
+			
+		});
 		
 		
 	});
@@ -49,7 +67,8 @@
 		<header>
 			<h2></h2>
 		</header>
-		
+		<form method="post">
+		<input type="hidden" name="proc" value="ins" />
 		<div class="apply-cont">
 			<table class="apply-table">
 				<col width="10%">
@@ -67,12 +86,13 @@
 				<tr>
 					<th>주문번호</th>
 					<td>
-						XXXXXXXXX
-						<span><input class="apply-schon btn" type="button" name="schOrder" value="선택"/></span>
+						<select name="ord_no">
+							<option value="">주문번호</option>
+							<c:forEach var="ord" items="${ordlist}">
+							<option value="${ord.ord_no}">${ord.ord_no}</option>
+							</c:forEach>
+						</select>
 					</td>
-				</tr>
-				<tr>
-					<th>상품명</th><td>XXXXXXXXX</td>
 				</tr>
 				<tr>
 					<th>내용</th>
@@ -84,6 +104,7 @@
 		<div class="apply-btn">
 			<input class="btn" type="button" name="applyBtn" value="신청하기"/>
 		</div>
+		</form>
 	</div>
 	
 	<jsp:include page="../bottom.jsp"/>

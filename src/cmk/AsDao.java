@@ -1,10 +1,14 @@
 package cmk;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import z01_vo.As;
+import z01_vo.Order;
 
 public class AsDao {
 	private Connection con;
@@ -338,6 +342,28 @@ public class AsDao {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public ArrayList<Order> ordList(String mem_id) {
+		ArrayList<Order> ordList = new ArrayList<Order>();
+		try {
+			setCon();
+			String sql = "select ord_no from p5_order where mem_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ordList.add(new Order(rs.getInt(1)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ordList;
 	}
 
 	public static void main(String[] args) {

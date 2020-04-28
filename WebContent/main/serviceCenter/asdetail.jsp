@@ -60,6 +60,14 @@
 		var as_no = "${param.as_no}";
 		$("h1").append(" ("+as_no+")");
 		
+		var proc="${param.proc}"
+		if(proc=='delAs'){
+			$("[name=proc]").val("as");
+			$("form").submit();
+		}
+		
+		
+		
 		var tot = "${fn:length(asdetail)}";
 		for(var idx=0;idx<tot;idx++){
 			var num = $(".num").eq(idx).text();

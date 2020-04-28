@@ -48,11 +48,12 @@
 		
 		$(".ins-btn").click(function(){
 			var mem_id = "${mem.mem_id}";
-			if(mem_id == null){
+			if(mem_id == ""){
 				alert("로그인이 필요합니다.");
 				location.href="${path}/login";
 			}else{
 				$("[name=proc]").val("insAs");
+				$("[name=mem_id]").val(mem_id);
 				$("form").submit();	
 			}
 		});
@@ -87,6 +88,7 @@
 		<input class="btn" type="submit" value="이동" />
 		<input type="hidden" name="proc" />
 	    <input type="hidden" name="as_no" />
+	    <input type="hidden" name="mem_id" />
 		<table align="center">
 			<colgroup>
 				<col style="width:10%;"/>

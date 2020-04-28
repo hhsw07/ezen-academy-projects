@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 import z01_vo.Nk;
+import z01_vo.Order;
 import z01_vo.As;
 
 public class AsService {
@@ -38,10 +39,10 @@ public class AsService {
 	}
 	
 	public void insAs(HttpServletRequest request) {
-		int as_no = Nk.toInt(request.getParameter("as_no"));
+		int ord_no = Nk.toInt(request.getParameter("ord_no"));
 		String as_cate = Nk.toStr(request.getParameter("as_cate"));
 		String as_detail = Nk.toStr(request.getParameter("as_detail"));
-		As ins = new As(as_no,as_cate,as_detail);
+		As ins = new As(ord_no,as_cate,as_detail);
 		dao.insAs(ins);
 	}
 	public void uptAs(HttpServletRequest request) {
@@ -61,5 +62,10 @@ public class AsService {
 		int as_no = Nk.toInt(request.getParameter("as_no"));
 		String as_comm = Nk.toStr(request.getParameter("as_comm"));
 		dao.insAns(as_no, as_comm);
+	}
+
+	public ArrayList<Order> ordList(HttpServletRequest request){
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		return dao.ordList(mem_id);
 	}
 }

@@ -35,7 +35,7 @@ public class A04_adminCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		String proc= Nk.toStr(request.getParameter("proc"),"mgr");
+		String proc= Nk.toStr(request.getParameter("proc"),"member");
 		System.out.println("proc확인"+proc);
 			
 		String page= "main\\admin\\memList.jsp";
