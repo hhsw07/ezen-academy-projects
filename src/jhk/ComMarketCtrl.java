@@ -40,7 +40,6 @@ public class ComMarketCtrl extends HttpServlet {
 		// 2. 모델 처리
 		if(proc.equals("comlist")) {
 			request.setAttribute("clist", service.clist(request));
-			request.setAttribute("cdlist", service.cdlist(request));
 		}
 		if(proc.equals("comdetail")) {
 			request.setAttribute("comd", service.cominfo(request));

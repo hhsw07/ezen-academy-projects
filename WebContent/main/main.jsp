@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="path" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,15 +31,14 @@ ul li{list-style:none;}
 						  from {opacity: .4} 
 						  to {opacity: 4}
 						}
-	.pdt-wrap{width:1280px; margin:0 auto;}		
-		.pdt-wrap p{margin:0px;}
-	   	.pdt-box{margin:20px 15px 20px 15px; width:392px; height:290px; background-color:purple; display:inline-block; position:relative;}
-	   		.pdt-image{position:relative; width:392px; height:230px; background-color:gold;}
-	   		.pdt-info{position:relative; margin-top:8px;}
-	   			.host-name{float:left; font-size:12px; color:gray;}
-	   			.class-name{float:left; font-size:20px; font-weight:900;}
-	   		.price-wrap1{position:absolute; right:0px; top:8px;}
-	   			.price{font-size:20px; font-weight:900;}
+	.pdt-wrap{width:1280px; height:350px; margin:0 auto; background-color: white;}		
+
+	.com{width:220px; height:300px;float: left; margin:15px;}
+	.com_img{width:220px;height:220px;}
+	.com_intro{width:100%; border:1px solid black; border-collapse:collapse;}	
+	.com_intro .com_title{border:1px solid black; text-align:center;}
+	.com_intro .com_assem{border-bottom:1px solid white;}
+	.com_intro .com_assem:last-child{border-bottom:1px solid black;}	   			
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -46,6 +48,11 @@ ul li{list-style:none;}
 	$("#market1").click(function(){
 		$(location).attr('href','market');
 	});
+	function go_detail(num){
+		$("[name=proc]").val("comdetail");
+		$("[name=com_no]").val(num);
+		$("form").submit();
+	}
 </script>
 </head>
 <body>
@@ -72,20 +79,18 @@ ul li{list-style:none;}
 	<div class="pdt-wrap">
 	
 		<div class="pdt-box">
-			<a>
-				<div class="pdt-image">
-					<img alt="" src="">
-				</div>
-				<div class="pdt-info">
-					<div>
-						<span class="host-name">용도</span><br>
-						<span class="class-name">이름</span>
-					</div>
-					<div class="price-wrap1">
-						<span class="price">가격</span>
-					</div>
-				</div>
-			</a>
+			<ul id="market_list">
+				<!-- 이중 forEach를 활용한 견적 호출 -->
+				<c:forEach var="com" items="${clist}" begin="0" end="4">
+					<li class="com" onclick="javascript:go_detail('${com.com_no}')">
+						<img src="image/Computer/${com.com_img}" class="com_img">
+						<table class="com_intro" border>
+							<tr><td class="com_title" colspan="2">${com.com_name}</td></tr>
+							<tr class="com_assem"><td>가격</td><td style="text-align:right;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${com.com_price}" />원</td></tr>
+						</table>
+					</li>
+				</c:forEach>
+			</ul>
 		</div>
 		
 	</div>
