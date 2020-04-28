@@ -32,12 +32,15 @@
 <!-- 서버 안에 jquery lib를 다운 받아서 설정 -->	
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("서비스센터");
-	});
+$(document).ready(function(){
+	
+});
+ function go(mem_id){
+	 $("[name=mem_id]").val(mem_id);
+	 $("[name=proc]").val("memberDetail");
+	 $("form").submit();
+ }
+
 </script>
 </head>
 <body>
@@ -48,37 +51,41 @@
 	<div class="wrap">
 	<h1>회원관리</h1>
 	<!-- 게시판 목록 -->
-	
+	<form method="post">
+		<input type="hidden" name="proc"/>
+		<input type="hidden" name="mem_id"/>	
 	<table align="center">
-		<colgroup>
-			<col style="width:150px;"/>
-			<col style="width:310px;"/>
-			<col style="width:310px;"/>
-			<col style="width:310px;"/>
-		</colgroup>
-		
-	<!-- 타이틀 -->
-		<tr>
-			<th>이름</th>
-			<th>아이디</th>
-			<th>이메일</th>
-			<th>연락처</th>
-		</tr>
-		
-	<!-- 글목록  -->	
-		<tr>
-			<th>홍길동</th>
-			<th>ezen01</th>
-			<th>ezen01@naver.com</th>
-			<th>010-0000-0000</th>
-		</tr>
-	
-	<!-- 목록페이징 -->	
-		<tr>
-			<th colspan="4"> 1 2 3 4 5 </th>
-		</tr>	
-		
+
+				<colgroup>
+					<col style="width:150px;"/>
+					<col style="width:260px;"/>
+					<col style="width:260px;"/>
+					<col style="width:260px;"/>
+					<col style="width:150px;"/>
+				</colgroup>
+				
+			<!-- 타이틀 -->
+				<tr>
+					<th>이름</th>
+					<th>아이디</th>
+					<th>이메일</th>
+					<th>연락처</th>
+					<th>상세보기</th>
+				</tr>
+			
+		<!-- 글목록  -->	
+			<c:forEach var="member" items="${mlist}">
+				<tr>
+					<td style="padding-left:20px;" >${member.mem_name}</td>	
+					<td style="padding-left:40px;">${member.mem_id}</td>
+					<td style="padding-left:40px;">${member.mem_email}</td>
+					<td style="padding-left:40px;">${member.mem_tel}</td>
+					<!--  문자열일때와 숫자일때 '' 사용 주의  -->
+					<td style="padding-left:20px;" ondblclick="javascript:go('${member.mem_id}')">상세보기</td>
+				</tr>
+			</c:forEach>
 	</table>
+	</form>
 	</div>
 </div>
 
