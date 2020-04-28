@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import z01_vo.Member;
+import z01_vo.Notice;
 
 public class A04_adminDao {
 	private Connection con;
@@ -69,6 +70,8 @@ public class A04_adminDao {
 			setConn();
 			String sql = "SELECT * FROM p5_member";
 			pstmt = con.prepareStatement(sql);
+			System.out.println(sql);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				mlist.add(new Member(
 						   rs.getString("mem_id"),
@@ -76,6 +79,10 @@ public class A04_adminDao {
 						   rs.getString("mem_email"),
 						   rs.getString("mem_tel")));
 			}
+			System.out.print(rs.getString("mem_id")+"\t");
+			System.out.print(rs.getString("mem_name")+"\t");
+			System.out.print(rs.getString("mem_email")+"\t");
+			System.out.print(rs.getString("mem_tel")+"\t");
 			rs.close();
 			pstmt.close();
 			con.close();
@@ -86,9 +93,40 @@ public class A04_adminDao {
 		return mlist;
 	}
 	
+	public Member mdetail(String mem_id) {
+		Member mem = new Member();
+		try {
+			setConn();
+			String sql = "SELECT mem_id, mem_name, mem_birth, mem_jdate,\r\n" + 
+					"		mem_email, mem_tel FROM p5_member";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				mem = new Member(
+							rs.getString("mem_id"), 
+							rs.getString("mem_name"),
+							rs.getDate("mem_birth"), 
+							rs.getString("mem_email"),
+							rs.getString("mem_tel"),
+							rs.getDate("mem_jdate")
+							);
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mem;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		A04_adminDao dao = new A04_adminDao();
+		
+		System.out.println("데이터건수"+dao.mlist().size());
 		
 	}
 

@@ -40,12 +40,14 @@ public class A04_adminCtrl extends HttpServlet {
 			
 		String page= "main/admin/memList.jsp";
 		
+		// 회원 정보 불러오기
 		if(proc.equals("member")) {
 			request.getSession().setAttribute("mlist", service.Member(request));
 		}
-
-		
-
+		// 회원 상세
+		if(proc.equals("memberDetail")) {
+			request.setAttribute("member", service.memberDetail(request));
+		}
 
 		if(proc.equals("as")) {
 			request.setAttribute("asList",service.asList());

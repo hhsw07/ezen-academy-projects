@@ -26,6 +26,12 @@ public class A04_adminService {
 			return dao.mlist();
 		}
 		
+		public Member memberDetail(HttpServletRequest request) {
+			String mem_id = Nk.toStr(request.getParameter("mem_id"));
+			
+			return dao.mdetail(mem_id);
+		}
+		
 		
 		// mgr 관련 
 		// int mgr_no, int as_no, Date as_date, String as_cate,
