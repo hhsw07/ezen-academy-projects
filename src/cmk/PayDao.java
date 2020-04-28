@@ -111,14 +111,14 @@ public class PayDao {
 	public void insertRequest(Request ins) {
 		try {
 			setCon();
-			String sql = "INSERT INTO p5_request VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO p5_request VALUES (?, ?, ?,0)";
 			System.out.println(sql);
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ins.getOrd_no());
 			pstmt.setInt(2, ins.getReq_no());
 			pstmt.setInt(3, ins.getReq_cnt());
-			pstmt.setInt(4, ins.getReq_opt());
+			pstmt.executeUpdate();
 			con.commit();
 			pstmt.close();
 			con.close();
@@ -170,6 +170,7 @@ public class PayDao {
 			pstmt.setString(2, ins.getPay_method());
 			pstmt.setInt(3, ins.getPay_point());
 			pstmt.setInt(4, ins.getPay_price());
+			pstmt.executeUpdate();
 			con.commit();
 			pstmt.close();
 			con.close();
@@ -213,6 +214,7 @@ public class PayDao {
 			pstmt.setString(1, ins.getMem_id());
 			pstmt.setString(2, ins.getPoint_detail());
 			pstmt.setInt(3, ins.getPoint_pt());
+			pstmt.executeUpdate();
 			con.commit();
 			pstmt.close();
 			con.close();

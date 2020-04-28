@@ -216,7 +216,7 @@
 				<div>
 					<b>결제예정금액</b>
 					<p><span id="totalPay">
-						<input type="hidden" name="totalPay" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/>
+						<input type="hidden" name="totalPay" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/>0
 					</span> 원</p>
 				</div>
 			</div>

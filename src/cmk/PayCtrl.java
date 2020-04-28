@@ -60,8 +60,9 @@ public class PayCtrl extends HttpServlet {
 			System.out.println();
 		}
 		if(proc.equals("pay")) {
-			service.getCart(request);
+			ArrayList<Cart> cartlist = service.getCart(request);
 			service.insOrder(request);
+			session.removeAttribute("cart");
 		}
 		// 3. View
 		String page = "main\\order\\cart.jsp";

@@ -15,9 +15,12 @@ public class PointService {
 		// TODO Auto-generated constructor stub
 		dao = new PointDao();
 	}
-	public ArrayList<Point> ptList(HttpServletRequest request){
-		String mem_id= Nk.toStr(request.getParameter("mem_id"));
+	public ArrayList<Point> ptList(String mem_id){
 
 		return dao.ptList(mem_id);
+	}
+	public ArrayList<Myorder> olist(String mem_id){
+		
+		return dao.olist(mem_id);
 	}
 }

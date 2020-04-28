@@ -17,10 +17,12 @@ SELECT * FROM p5_assque;
 SELECT * FROM p5_point;
 
 -- 주문
-SELECT * FROM p5_order;
+SELECT * FROM p5_order
+ORDER BY ord_no desc;
 
 -- 상품주문
-SELECT * FROM p5_request;
+SELECT * FROM p5_request
+ORDER BY ORD_NO desc;
 
 -- 결제
 SELECT * FROM p5_pay;
@@ -79,7 +81,7 @@ FROM p5_request pr,
 	ORDER BY ord_no ASC) d, p5_pay e
 WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no 
 AND c.mem_id='ezen01'
-ORDER BY ord_no DESC
+ORDER BY ord_no DESC;
 
 --관리자
 UPDATE P5_ORDER SET ord_stat = '' AND ORD_INVOICE = 운송장번호
@@ -98,9 +100,16 @@ WHERE mem_id = 'ezen01';
 -- 주문번호 결제방법 사용한 포인트, 최종 결제금액
 INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?);
 -- 포인트사용
-SELECT b.lastpay, a.pay_point, a.pay_price 
+SELECT a.pay_point 
 FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
 WHERE a.PAY_NO = lastpay;
+-- 포인트적립
+SELECT pay_price
+FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
+WHERE a.PAY_NO = lastpay;
+
+INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매사용, pay_point)
+INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매적립, CEIL(pay_price))
 
 SELECT c.lastpay, d.mem_id
 FROM (SELECT max(pay_no) lastpay FROM p5_pay) c,
@@ -196,5 +205,5 @@ SELECT max(as_no) FROM P5_AS;
 INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 1, to_date('2020-02-26','YYYY-MM-DD'), '완료','유선을 통한 점검 후 AS진행',0);
 
 
-
+SELECT to_number(to_char(sysdate,'yymmdd')) FROM dual;
 

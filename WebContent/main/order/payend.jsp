@@ -16,14 +16,7 @@
 	
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	<%-- 
-		
-	--%>
-		$("h2").text("");
-	});
-</script>
+
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
@@ -35,8 +28,7 @@
 		</div>
 	</section>
 	
-	<jsp:include page="../bottom.jsp"/>
-	
+		<jsp:include page="../bottom.jsp"/>
 	
 </body>
 </html>

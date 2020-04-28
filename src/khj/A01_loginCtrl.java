@@ -77,10 +77,10 @@ public class A01_loginCtrl extends HttpServlet {
 		if(proc.equals("main")) {
 			page="main/main.jsp";
 		}
-		if(mem_id!=null&& !mem_id.equals("")) {
-			// id 있는지 여부 service에서 확인..
-			request.setAttribute("isMember", service.checkReg(mem_id));
-		}
+		/*
+		 * if(mem_id!=null&& !mem_id.equals("")) { // id 있는지 여부 service에서 확인..
+		 * request.setAttribute("isMember", service.checkReg(mem_id)); }
+		 */
 		// 로그인페이지 -> 회원가입
 		if(proc.equals("signUp")) {
 			page="main/login/signUp.jsp";
