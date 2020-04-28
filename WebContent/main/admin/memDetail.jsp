@@ -34,10 +34,16 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
+		$("#delMem").click(function(){
+			if(confirm("삭제 하시겠습니까?")){
+				$("[name=proc]").val("delMem");
+				$("form").submit();
+			}
+		});
+		$("#golist").click(function(){
+			$("[name=proc]").val("member");
+			$("form").submit();
+		});
 	});
 </script>
 </head>
@@ -45,7 +51,7 @@
 
 <jsp:include page="../../main/admintop.jsp"/>
 
-<form method="">
+<form method="post">
 
 <div class="all-wrap">
 	<input type="hidden" name="proc" />
@@ -99,8 +105,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input style="margin-left:20px;" class="modify-btn" type="button" value="이전"/>
-					<input class="modify-btn" type="submit" value="삭제"/>
+					<input style="margin-left:20px;" id="golist" class="modify-btn" type="button" value="이전"/>
+					<input class="modify-btn" id="delMem" type="button" value="삭제"/>
 				</td>
 			</tr>
 			<tr>

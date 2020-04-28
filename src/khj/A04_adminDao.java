@@ -67,6 +67,7 @@ public class A04_adminDao {
 		}
 		return mem;
 	}
+	// 회원리시트
 	public ArrayList<Member> mlist() {
 		ArrayList<Member> mlist = new ArrayList<Member>();
 		try {
@@ -91,7 +92,7 @@ public class A04_adminDao {
 		}
 		return mlist;
 	}
-	
+	// 회원상세
 	public Member mdetail(String mem_id) {
 		Member mem = new Member();
 		try {
@@ -122,7 +123,37 @@ public class A04_adminDao {
 		}
 		return mem;
 	}
-	
+	// 회원삭제
+	public void deleteMember(String mem_id) {
+		try {
+			setConn();
+			String sql = "DELETE FROM p5_member\r\n" + 
+						"WHERE mem_id= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			pstmt.executeUpdate();
+			con.commit();
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 
 
 

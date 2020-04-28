@@ -21,15 +21,21 @@ public class A04_adminService {
 			super();
 			dao = new A04_adminDao();
 		}
-		
+		// 회원리스트
 		public ArrayList<Member> Member(HttpServletRequest request) {
 			return dao.mlist();
 		}
-		
+		// 회원상세
 		public Member memberDetail(HttpServletRequest request) {
 			String mem_id = Nk.toStr(request.getParameter("mem_id"));
 			
 			return dao.mdetail(mem_id);
+		}
+		// 회원삭제
+		public void deleteMember(HttpServletRequest request) {
+			String mem_id = Nk.toStr(request.getParameter("mem_id"));
+			
+			dao.deleteMember(mem_id);
 		}
 		
 		

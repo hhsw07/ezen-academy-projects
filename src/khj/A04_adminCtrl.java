@@ -56,6 +56,12 @@ public class A04_adminCtrl extends HttpServlet {
 		if(proc.equals("memberDetail")) {
 			page="main/admin/memDetail.jsp";
 		}
+		//회원 삭제
+		if(proc.equals("delMem")) {
+			service.deleteMember(request);
+			request.getSession().setAttribute("mlist", service.Member(request));
+			proc = "member"; 
+		}
 		if(proc.equals("mgr")) {
 			request.setAttribute("mgrList",service.mgrList());
 			page = "main\\admin\\asAdmin.jsp";
