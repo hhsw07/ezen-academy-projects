@@ -61,6 +61,7 @@ ul li{list-style:none;}
 <jsp:include page="../main/top.jsp"/>
 <form>
 	<input type="hidden" name="proc" value=""/>
+	<input type="hidden" name="com_no"/>
 </form>
 	<div class="policy">
 		<img alt="" src="image/main/policy1.jpg">

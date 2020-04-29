@@ -47,8 +47,9 @@
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){		
+	$(document).ready(function(){	
 		$("h2").text("공지상세");
+		
 		$("#uptQue").click(function(){
 			$("[name=proc]").val("writeQue");
 			$("form").submit();
@@ -64,7 +65,7 @@
 			$("form").submit();
 		});
 		//댓글
-		$("[name=insQuec]").click(function(){
+		$("#insQuec").click(function(){
 			if(confirm("작성하시겠습니까?")){
 				$("[name=proc]").val("insQuec");
 				var quec_detail = $("[name=quec_detail]").val();
@@ -74,19 +75,10 @@
 			}
 		});
 		
-		$("[name=uptQuec]").click(function(){
-			if(confirm("수정하시겠습니까?")){
-				$("[name=proc]").val("uptQuec");
-				var quec_detail = $("[name=quec_detail]").val();
-				quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
-				$("[name=quec_detail]").val(quec_detail);
-				$("form").submit();
-			}
-		});
-		
+		//댓글 삭제 기능
 		$("[name=delQuec]").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				$("[name=proc]").val("uptQuec");
+				$("[name=proc]").val("delQuec");
 				var quec_detail = $("[name=quec_detail]").val();
 				quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
 				$("[name=quec_detail]").val(quec_detail);
@@ -94,6 +86,39 @@
 			}
 		});
 	});
+	//문의댓글 수정
+	function uptQuec(num){
+		if(confirm("댓글수정하시겠습니까?")){
+			$("[name=proc]").val("uptQuec");
+			var quec_detail = $("[name=quec_detail"+num+"]").val();
+			quec_detail = quec_detail.replace(/(?:\r\n|\r|\n)/g, '<br>');
+			$("[name=quec_detail]").val(quec_detail);
+			$("[name=quec_no]").val(num);
+			$("form").submit();
+		}
+	}
+	//문의댓글 삭제
+	function delQuec(num){
+		if(confirm("댓글을 삭제하시겠습니까?")){
+			$("[name=proc]").val("delQuec");
+			$("[name=quec_no]").val(num);
+			$("form").submit();
+		}
+	}
+	function viewUptcomm(num){
+				
+		var quec_detailp=$("[name=quec_detail"+num+"]").val();
+		quec_detailp = quec_detailp.replace(/<br>/g, '\n');
+		$("[name=quec_detail"+num+"]").text(quec_detailp);
+		
+		var commentbox = '#commentbox'+num;
+		console.log(commentbox);
+	    if($(commentbox).css("display") == "none"){   
+	    	$(commentbox).css("display", "block");   
+	    } else {  
+	    	$(commentbox).css("display", "none");   
+	    }  
+	}
 </script>
 </head>
 <body>
@@ -103,9 +128,11 @@
 	<header class="apply-title">
 	</header>
 	<input type="hidden" name="proc" />
+	<input type="hidden" name="mem_id" value="${mem.mem_id}"/>
 	<input type="hidden" name="que_no" value="${question.que_no}"/>
 	<input type="hidden" name="que_name" value="${question.que_name}"/>
 	<input type="hidden" name="que_detail" value="${question.que_detail}"/>
+	<input type="hidden" name="quec_no" />
 	<div class="as-context">
 		<div id="cusestimateview">
 			<div class="bbsbox">
@@ -162,8 +189,8 @@
 						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
 							${quecomm.mem_id} <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">${quecomm.quec_date}</span>
 							<c:if test="${quecomm.mem_id==mem.mem_id}">
-							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;" >수정</span>
-							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;">삭제</span>
+							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;" onclick="javascript:viewUptcomm(${quecomm.quec_no})">수정</span>
+							<span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999; cursor:pointer;" onclick="javascript:delQuec(${quecomm.quec_no})">삭제</span>
 							</c:if>
             			</div>
             			<div style="line-height:120%; color:#666;">
@@ -171,6 +198,21 @@
             				
             			</div>
             		</div>
+            		<table id="commentbox${quecomm.quec_no}" class="commentbox" style="display:none;">
+					<!-- 덧글입력 시작 -->
+					<col width="120%">
+					<col width="20%">
+					<tbody>
+						<tr>
+							<td>
+								<textarea id="online_comment" name="quec_detail${quecomm.quec_no}">${quecomm.quec_detail}</textarea>
+							</td>
+							<td style="text-align:right; padding-left:40px; padding-right:26px;">
+								<input class="insAns btn" type="button" id="uptQuec${quecomm.quec_no}" onclick="javascript:uptQuec(${quecomm.quec_no})" value="수정"/>
+							</td>
+						</tr>
+					</tbody>
+					</table>
             		</c:forEach>
             	</div>
             </div>

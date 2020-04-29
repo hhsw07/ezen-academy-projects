@@ -254,7 +254,8 @@ public class A02_serviceCenterDao {
 			String sql = "SELECT quec_no, que_no, mem_id,\r\n" + 
 					"REPLACE(quec_detail,'\\n', '<br>') quec_detail, quec_date\r\n" + 
 					"FROM p5_quecomm\r\n" + 
-					"WHERE que_no = ?";
+					"WHERE que_no = ?" + 
+					"ORDER BY quec_no DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, que_no);
 			rs = pstmt.executeQuery();
@@ -310,7 +311,7 @@ public class A02_serviceCenterDao {
 		}
 		
 	}
-	//여기서부터 수정
+
 	public void updateQuestion(Question que) {
 		try {
 			setConnn();
@@ -381,6 +382,109 @@ public class A02_serviceCenterDao {
 		
 	}
 	
+	public void insertQuecomm(Quecomm quec) {
+		try {
+			setConnn();
+			String sql = "INSERT INTO p5_quecomm VALUES (p5_quecomm_seq.nextval,?,?,?,sysdate)";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, quec.getQue_no());
+			pstmt.setString(2, quec.getMem_id());
+			pstmt.setString(3, quec.getQuec_detail());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("등록성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void updateQuecomm(Quecomm quec) {
+		try {
+			setConnn();
+			String sql = "UPDATE p5_quecomm\r\n" + 
+					"SET quec_detail = ?,\r\n" + 
+					"	quec_date = sysdate\r\n" + 
+					"WHERE quec_no = ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, quec.getQuec_detail());
+			pstmt.setInt(2, quec.getQuec_no());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	public void deleteQuecomm(int quec_no) {
+		try {
+			setConnn();
+			String sql = "DELETE FROM p5_quecomm\r\n" + 
+					"WHERE quec_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, quec_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("댓글삭제성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
 	public void deleteQuecommAll(int que_no) {
 		try {
 			setConnn();
@@ -397,7 +501,7 @@ public class A02_serviceCenterDao {
 			pstmt.close();
 			con.close();
 			
-			System.out.println("수정성공");
+			System.out.println("삭제성공");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

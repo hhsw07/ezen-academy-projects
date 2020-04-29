@@ -96,13 +96,26 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 			proc = "question"; //view의 question 작동 트리거
 		}
 		// 문의댓글 등록
-		if(proc.equals("insQue")) {
-			service.insertQuestion(request);
-			request.getSession().setAttribute("qlist", service.Question(request));
-			proc = "question"; //view의 question 작동 트리거
+		if(proc.equals("insQuec")) {
+			service.insertQuecomm(request);
+			request.setAttribute("question", service.questionDetail(request));
+			request.setAttribute("qclist", service.Quecomm(request));
+			proc = "queDetail"; //view의 question 작동 트리거
 		}
-		
-		
+		// 문의댓글 수정
+		if(proc.equals("uptQuec")) {
+			service.updateQuecomm(request);
+			request.setAttribute("question", service.questionDetail(request));
+			request.setAttribute("qclist", service.Quecomm(request));
+			proc = "queDetail"; //view의 quesDetail 작동 트리거
+		}
+		// 문의댓글 삭제
+		if(proc.equals("delQuec")) {
+			service.deleteQuecomm(request);
+			request.setAttribute("question", service.questionDetail(request));
+			request.setAttribute("qclist", service.Quecomm(request));
+			proc = "queDetail"; //view의 quesDetail 작동 트리거
+		}
 		// AS리스트 불러오기
 		if(proc.equals("as")){
 			request.setAttribute("asList", service.asList());

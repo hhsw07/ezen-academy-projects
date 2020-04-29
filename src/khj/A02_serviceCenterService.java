@@ -87,6 +87,33 @@ public class A02_serviceCenterService {
 		dao.deleteQuestion(que_no);
 	}
 
+	public void insertQuecomm(HttpServletRequest request) {
+		int que_no = Nk.toInt(request.getParameter("que_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String quec_detail = Nk.toStr(request.getParameter("quec_detail"));
+		
+		Quecomm quec = new Quecomm(que_no, mem_id, quec_detail);
+		dao.insertQuecomm(quec);
+	}
+	public void updateQuecomm(HttpServletRequest request) {
+		int quec_no = Nk.toInt(request.getParameter("quec_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String quec_detail = Nk.toStr(request.getParameter("quec_detail"));
+
+		System.out.println("문의댓글번호:"+quec_no);
+		System.out.println("아이디:"+mem_id);
+		System.out.println("내용:"+quec_detail);
+		
+		Quecomm quec = new Quecomm(quec_no, quec_detail);
+		dao.updateQuecomm(quec);
+	}
+	
+	public void deleteQuecomm(HttpServletRequest request) {
+		int quec_no = Nk.toInt(request.getParameter("quec_no"));
+		
+		dao.deleteQuecomm(quec_no);
+	}
+	
 	public ArrayList<As> asList(){
 		return dao.asList();
 	}

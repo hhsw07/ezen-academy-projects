@@ -1103,8 +1103,14 @@ INSERT INTO p5_quecomm VALUES (p5_quecomm_seq.nextval,4,'admin','정품 추가�
 INSERT INTO p5_quecomm VALUES (p5_quecomm_seq.nextval,5,'admin','죄송합니다만 현재 주문량이 밀려있어 월요일에 가능할 것으로 보입니다. 감사합니다.',to_date('2020-01-31','YYYY-MM-DD'));
 INSERT INTO p5_quecomm VALUES (p5_quecomm_seq.nextval,6,'admin','안녕하세요. 말씀주신 쿨러 제작은 인텔 순정쿨러와는 조립 방법이 다릅니다.\n보드를 들어낸 상태로 하셔야 합니다.\n난이도가 조금 있습니다!!',to_date('2020-04-21','YYYY-MM-DD'));
 INSERT INTO p5_quecomm VALUES (p5_quecomm_seq.nextval,6,'ezen01','감사합니다.',to_date('2020-04-22','YYYY-MM-DD'));
+--후기댓글 수정
+UPDATE p5_quecomm
+SET quec_detail = '바뀔내용',
+	quec_date = sysdate
+WHERE quec_no = 1;
 --후기댓글 전체보기(실제로 사용하진 않음)
-SELECT * FROM p5_quecomm;
+SELECT * FROM p5_quecomm
+ORDER BY QUEC_NO DESC;
 --후기댓글 불러오기
 SELECT quec_no, que_no, mem_id,
 REPLACE(quec_detail,'\n', '<br>') quec_detail, quec_date
