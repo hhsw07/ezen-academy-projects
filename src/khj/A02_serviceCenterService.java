@@ -46,7 +46,7 @@ public class A02_serviceCenterService {
 		
 		dao.deleteNotice(noti_no);
 	}
-
+	
 	public ArrayList<Question> Question(HttpServletRequest request) {
 		return dao.qlist();
 	}
@@ -112,6 +112,69 @@ public class A02_serviceCenterService {
 		int quec_no = Nk.toInt(request.getParameter("quec_no"));
 		
 		dao.deleteQuecomm(quec_no);
+	}
+	
+	public ArrayList<Review> Review(HttpServletRequest request) {
+		return dao.rlist();
+	}
+
+	public Review reviewDetail(HttpServletRequest request) {
+		int rev_no = Nk.toInt(request.getParameter("rev_no"));
+		return dao.rdetail(rev_no);
+	}
+
+	public ArrayList<Revcomm> Revcomm(HttpServletRequest request) {
+		int rev_no = Nk.toInt(request.getParameter("rev_no"));
+		return dao.rclist(rev_no);
+	}
+	
+	public void insertReview(HttpServletRequest request) {
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String rev_name = Nk.toStr(request.getParameter("rev_name"));
+		String rev_detail = Nk.toStr(request.getParameter("rev_detail"));
+		
+		Review rev = new Review(mem_id, rev_name, rev_detail);
+		dao.insertReview(rev);
+	}
+	
+	public void updateReview(HttpServletRequest request) {
+		int rev_no = Nk.toInt(request.getParameter("rev_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String rev_name = Nk.toStr(request.getParameter("rev_name"));
+		String rev_detail = Nk.toStr(request.getParameter("rev_detail"));
+		
+		Review rev = new Review(rev_no, mem_id, rev_name, rev_detail);
+		dao.updateReview(rev);
+	}
+	
+	public void deleteReview(HttpServletRequest request) {
+		int rev_no = Nk.toInt(request.getParameter("rev_no"));
+		
+		dao.deleteRevcommAll(rev_no);
+		dao.deleteReview(rev_no);
+	}
+
+	public void insertRevcomm(HttpServletRequest request) {
+		int rev_no = Nk.toInt(request.getParameter("rev_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String revc_detail = Nk.toStr(request.getParameter("revc_detail"));
+		
+		Revcomm revc = new Revcomm(rev_no, mem_id, revc_detail);
+		dao.insertRevcomm(revc);
+	}
+	public void updateRevcomm(HttpServletRequest request) {
+		int revc_no = Nk.toInt(request.getParameter("revc_no"));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String revc_detail = Nk.toStr(request.getParameter("revc_detail"));
+		
+		Revcomm revc = new Revcomm(revc_no, revc_detail);
+		dao.updateRevcomm(revc);
+	}
+	
+	public void deleteRevcomm(HttpServletRequest request) {
+		int revc_no = Nk.toInt(request.getParameter("revc_no"));
+		
+		dao.deleteQuecomm(revc_no);
 	}
 	
 	public ArrayList<As> asList(){

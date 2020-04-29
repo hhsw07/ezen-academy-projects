@@ -943,7 +943,8 @@ INSERT INTO p5_review VALUES (p5_review_seq.nextval,'ezen03','물건 왔습니�
 INSERT INTO p5_review VALUES (p5_review_seq.nextval,'ezen04','본체 잘받았습니다~','본체 받은건 저번주에 받았는데 본가에 받아서 일요일날 집에 설치후 작동확인 했고 잘됩니다.\n배송올때 박스 포장이나 에어캡도 안전하게 잘되있고 선정리도 깔끔히 잘되있습니다.\n택배박스에 기사분들한테 조심히 다뤄달라는 문구가 있는데 마음에듭니다ㅎㅎ',to_date('2020-03-17','YYYY-MM-DD'));
 INSERT INTO p5_review VALUES (p5_review_seq.nextval,'ezen05','받은지 좀 됐지만 이제야 후기 ㅎ','받은지 좀 지났지만 이제야 후기 씁니다.\n현재까지 고장하나없이 아주 잘 사용하고 있습니다 ..ㅎㅎ 원래 후기 남기는 성격이 아니라서 \n깜빡하고 있다가 주변에서 다른 곳 컴퓨터 맞추다가 몇주째 교환만 계속 하는 모습보고 문득 생각나서 \n후기씁니다 ..ㅎㅎ 조립도 빠르고 배송도 몇일만에 바로 오고 케이스 전부 깨끗하고 고장하나 없이 잘 와서\n사용중이에요. 다음에도 기회가 된다면 여기에서 맞출거 같아요 ㅎ',to_date('2020-04-01','YYYY-MM-DD'));
 --후기 목록
-SELECT * FROM p5_review;
+SELECT * FROM p5_review
+ORDER BY rev_no DESC;
 --후기 상세
 SELECT rev_no, mem_id, rev_name,
 REPLACE(rev_detail,'\n', '<br>') rev_detail, rev_date

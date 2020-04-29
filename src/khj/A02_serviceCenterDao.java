@@ -13,6 +13,8 @@ import z01_vo.Notice;
 import z01_vo.Order;
 import z01_vo.Quecomm;
 import z01_vo.Question;
+import z01_vo.Revcomm;
+import z01_vo.Review;
 
 public class A02_serviceCenterDao {
 //	0) 전역 field 객체 선언
@@ -255,7 +257,7 @@ public class A02_serviceCenterDao {
 					"REPLACE(quec_detail,'\\n', '<br>') quec_detail, quec_date\r\n" + 
 					"FROM p5_quecomm\r\n" + 
 					"WHERE que_no = ?" + 
-					"ORDER BY quec_no DESC";
+					"ORDER BY quec_no ASC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, que_no);
 			rs = pstmt.executeQuery();
@@ -517,7 +519,336 @@ public class A02_serviceCenterDao {
 		}
 		
 	}
+
+	// 리뷰리스트 불러오기
+	public ArrayList<Review> rlist() {
+		ArrayList<Review> rlist = new ArrayList<Review>();
+		try {
+			setConnn();
+			String sql = "SELECT * FROM p5_review\r\n" + 
+							"ORDER BY rev_no desc";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				rlist.add(new Review(
+							rs.getInt("rev_no"), 
+							rs.getString("mem_id"),
+							rs.getString("rev_name"), 
+							rs.getString("rev_detail"), 
+							rs.getDate("rev_date")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rlist;
+	}
 	
+	public Review rdetail(int rev_no) {
+		Review rev = new Review();
+		try {
+			setConnn();
+			String sql = "SELECT rev_no, mem_id, rev_name,\r\n" + 
+					"REPLACE(rev_detail,'\\n', '<br>') rev_detail, rev_date\r\n" + 
+					"FROM p5_review\r\n" + 
+					"WHERE rev_no = ?";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rev_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				rev = new Review(
+							rs.getInt("rev_no"), 
+							rs.getString("mem_id"),
+							rs.getString("rev_name"),
+							rs.getString("rev_detail"), 
+							rs.getDate("rev_date"));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rev;
+	}
+	
+	// 문의댓글리스트 불러오기
+	public ArrayList<Revcomm> rclist(int rev_no) {
+		ArrayList<Revcomm> rclist = new ArrayList<Revcomm>();
+		try {
+			setConnn();
+			String sql = "SELECT revc_no, rev_no, mem_id,\r\n" + 
+					"REPLACE(revc_detail,'\\n', '<br>') revc_detail, revc_date\r\n" + 
+					"FROM p5_revcomm\r\n" + 
+					"WHERE rev_no = ?" + 
+					"ORDER BY revc_no ASC";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rev_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				rclist.add(new Revcomm(
+							rs.getInt("revc_no"), 
+							rs.getInt("rev_no"), 
+							rs.getString("mem_id"),
+							rs.getString("revc_detail"), 
+							rs.getDate("revc_date")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rclist;
+	}
+	
+	public void insertReview(Review rev) {
+		try {
+			setConnn();
+			String sql = "INSERT INTO p5_review VALUES (p5_review_seq.nextval, ?, ?, ?, sysdate)";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, rev.getMem_id());
+			pstmt.setString(2, rev.getRev_name());
+			pstmt.setString(3, rev.getRev_detail());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("등록성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	public void updateReview(Review que) {
+		try {
+			setConnn();
+			String sql = "UPDATE p5_review\r\n" + 
+					"SET rev_name = ?,\r\n" + 
+					"	rev_detail = ?\r\n" + 
+					"WHERE rev_no = ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, que.getRev_name());
+			pstmt.setString(2, que.getRev_detail());
+			pstmt.setInt(3, que.getRev_no());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	public void deleteReview(int rev_no) {
+		try {
+			setConnn();
+			String sql = "DELETE FROM p5_review\r\n" + 
+					"WHERE rev_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rev_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void insertRevcomm(Revcomm revc) {
+		try {
+			setConnn();
+			String sql = "INSERT INTO p5_revcomm VALUES (p5_revcomm_seq.nextval,?,?,?,sysdate)";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, revc.getRev_no());
+			pstmt.setString(2, revc.getMem_id());
+			pstmt.setString(3, revc.getRevc_detail());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("등록성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void updateRevcomm(Revcomm revc) {
+		try {
+			setConnn();
+			String sql = "UPDATE p5_revcomm\r\n" + 
+					"SET revc_detail = ?,\r\n" + 
+					"	revc_date = sysdate\r\n" + 
+					"WHERE revc_no = ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, revc.getRevc_detail());
+			pstmt.setInt(2, revc.getRevc_no());
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("수정성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+
+	public void deleteRevcomm(int revc_no) {
+		try {
+			setConnn();
+			String sql = "DELETE FROM p5_revcomm\r\n" + 
+					"WHERE revc_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, revc_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("댓글삭제성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void deleteRevcommAll(int rev_no) {
+		try {
+			setConnn();
+			String sql = "DELETE FROM p5_revcomm\r\n" + 
+					"WHERE rev_no= ?";
+			System.out.println(sql);
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rev_no);
+			pstmt.executeUpdate();
+			
+			con.commit();
+			
+			pstmt.close();
+			con.close();
+			
+			System.out.println("삭제성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	
 	public ArrayList<As> asList(){
 		ArrayList<As> asList = new ArrayList<As>();

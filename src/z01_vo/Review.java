@@ -11,7 +11,21 @@ public class Review {
 	
 	public Review() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+	
+	public Review(String mem_id, String rev_name, String rev_detail) {
+		super();
+		this.mem_id = mem_id;
+		this.rev_name = rev_name;
+		this.rev_detail = rev_detail;
+	}
+
+	public Review(int rev_no, String mem_id, String rev_name, String rev_detail) {
+		super();
+		this.rev_no = rev_no;
+		this.mem_id = mem_id;
+		this.rev_name = rev_name;
+		this.rev_detail = rev_detail;
 	}
 
 	public Review(int rev_no, String mem_id, String rev_name, String rev_detail, Date rev_date) {
