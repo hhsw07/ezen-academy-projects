@@ -174,7 +174,7 @@ public class A02_serviceCenterService {
 	public void deleteRevcomm(HttpServletRequest request) {
 		int revc_no = Nk.toInt(request.getParameter("revc_no"));
 		
-		dao.deleteQuecomm(revc_no);
+		dao.deleteRevcomm(revc_no);
 	}
 	
 	public ArrayList<As> asList(){
