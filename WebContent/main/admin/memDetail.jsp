@@ -34,6 +34,7 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		// 회원정보 삭제
 		$("#delMem").click(function(){
 			if(confirm("삭제 하시겠습니까?")){
 				$("[name=proc]").val("delMem");

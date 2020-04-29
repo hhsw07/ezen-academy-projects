@@ -34,6 +34,7 @@ $(document).ready(function(){
 	var proc="${param.proc}"
  	var isMember = "${isMember}";
  	
+ 	// 아이디중복확인
  	if(proc ==  "regCkBtn"){
 		if(isMember=="true"){ 
 			alert("등록된 id입니다!");
@@ -44,13 +45,11 @@ $(document).ready(function(){
 			$("[name=mem_id]").attr("readOnly",true);
 		}
  	}
- 	
- 	
+ 	// 가입버튼 클릭 시 입력란 체크 
 	$("#regCkBtn").click(function(){
 		$("[name=proc]").val("regCkBtn")
 		$("form").submit();
 	});
-	
 	$("#regbtn").click(function(){
 		if(isMember == "true" || isMember == ""){
 			alert("아이디를 다시 입력해주세요");
@@ -64,8 +63,10 @@ $(document).ready(function(){
 				var mem_email = $("[name=mem_email]").val();
 				var mem_tel= $("[name=mem_tel]").val();
 				var mem_birth = $("[name=mem_birth]").val();
-				if(mem_name != null && mem_email != null && mem_tel != null && mem_birth != null &&
-				   mem_name != "" && mem_email != "" && mem_tel != "" && mem_birth != ""){
+				if(mem_name != null && mem_email != null && 
+					mem_tel != null && mem_birth != null &&
+			  		mem_name != "" && mem_email != "" && 
+			  		mem_tel != "" && mem_birth != ""){
 					alert("회원가입완료");
 					$("[name=proc]").val("regbtn")
 					$("form").submit();

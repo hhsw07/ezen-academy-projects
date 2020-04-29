@@ -35,6 +35,7 @@
 $(document).ready(function(){
 	
 });
+ // 상세보기 이동
  function go(mem_id){
 	 $("[name=mem_id]").val(mem_id);
 	 $("[name=proc]").val("memberDetail");

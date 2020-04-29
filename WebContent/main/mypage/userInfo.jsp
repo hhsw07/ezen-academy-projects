@@ -36,12 +36,11 @@
 		// 수정 버튼 클릭시,
 		$("#uptBtn").click(function(){
 			var ckpw = "${mem.mem_pw}";
+			// 기존 비밀번호 일치확인
 			if($("[name=mempw]").val() == ckpw){
 				alert("비밀번호 일치");
 				if( confirm("수정하시겠습니까?") ){
-					// 1. 수정 proc 변경.
 					$("[name=proc]").val("update");
-					// 2. submit처리
 					$("form").submit();
 					alert("비밀번호가 변경되었습니다");
 				}

@@ -29,11 +29,12 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		// 입력정보가 틀렸을 때
 		var proc="${param.proc}"
 		if(proc=="checkBtn"){
 			alert("입력하신 정보가 없습니다");
 		}
-		// 버튼 클릭
+		// 찾기 버튼 클릭
 		$("#checkBtn").click(function(){
 			var mem_id = $("[name=mem_id]").val();
 			var mem_email = $("[name=mem_email]").val();
