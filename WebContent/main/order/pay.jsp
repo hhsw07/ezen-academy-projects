@@ -73,7 +73,6 @@
 		var totPay = Number($("[name=totalPay]").val());
 --%>
 
-		$("[name=delivery]").eq(0).attr("checked",true);
 		var ord_name = "이름";
 		var ord_tel = "전화번호";
 		var ord_post = "우편"
@@ -224,7 +223,7 @@
 					<col width="17%">
 					<col width="83%">
 					<tr>
-						<th class="pay-tit">배송지선택</th><td><input type="radio" name="delivery" value="old"/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
+						<th class="pay-tit">배송지선택</th><td><input type="radio" name="delivery" value="old" checked/>최근 배송지<input type="radio" name="delivery" value="new"/>새 배송지</td>
 					</tr>
 					<tr>
 						<th>수령인</th>
