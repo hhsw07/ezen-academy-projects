@@ -11,24 +11,72 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+	.orderlist-cont{width:1080px; margin:0px auto; min-height:700px;}
+	.order-area{width:1080px; margin:20px auto;}
+	fieldset{border:2px solid #63145F;}
+	legend{padding:5px 10px; font-weight:700; font-size:1.2em;}
+	.order-info-table{width:100%; margin:20px auto;}
+	.order-info-span{display:inline-block;}
+	.shipment{width:69%;}
+	.payment{width:29%;}
+	
+	
+	.order-list-table {text-align:center; margin:0 auto; border-top: 2px solid #000; border-bottom:1px solid #797979; border-spacing:0; 
+    border-collapse:collapse; width:100%;}
+    .order-list-table thead {display: table-header-group; vertical-align: middle; border-color:inherit;}
+    .order-list-table thead tr th {text-align: center; padding: 0; height: 50px; font-size: 13px;}
+    .order-list-table tbody {font-size: 12px;}
+    .order-list-table tbody tr.first-tr td {border-top:1px solid #797979; padding-top: 15px;}
+    .order-list-table tbody tr td {padding: 5px 0;}
+    .date {padding-bottom: 15px;}
+    .date a {text-align: left; cursor: pointer; font-size: 12px;}
+    .ordernum-container {display: inline-block;}
+    .order-date {font-weight: bold;}
+    .product {text-align: left; padding-left: 10px; line-height: 30px;}
+    .product-img {height: 60px; width: 60px; background-size: cover; background-position: center; background-repeat: no-repeat;}
+    .product div {vertical-align: middle; display: inline-block;}
+    .product-name {margin-left: 10px; max-width: 263px;}
+    .product-name div {display: block; font-weight: bold;}
+    .option {line-height: 1em; font-size: 11px; color: #797979; font-weight: normal;}
+    .price{text-align:right; padding-right:20px;}
+    .total-price {font-weight: bold; text-align:right; padding-right:20px;}
+    .service {padding-bottom: 15px;font-size: 12px;}
+    .line {text-decoration: underline;color: #353535;}
+/* 버튼 */
+	.list-btn{width:1050px; margin:20px auto 50px; text-align:center;}
+	.btn{background:#63145F; color:#fff; border:none; position:relative; height:60px; font-size:1.5em; padding:0 2em; cursor:pointer;
+	transition:800ms ease all; outline:none;}
+	.btn:hover{background:#fff; color:#63145F;}
+	.btn:before,.btn:after{content:''; position:absolute; top:0; right:0; height:2px; width:0; background: #63145F; transition:400ms ease all;}
+	.btn:after{right:inherit; top:inherit; left:0; bottom:0;}
+	.btn:hover:before,.btn:hover:after{width:100%; transition:800ms ease all;}
+	
 
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){		
 		$("h2").text("");
+		$("#no").text($("[name=ord_no]").eq(0).val());
+		$("#date").text($("[name=ord_date]").eq(0).val());
+		$("#id").text($("[name=mem_id]").eq(0).val());
+		$("#stat").text($("[name=ord_stat]").eq(0).val());
 	});
 </script>
 </head>
 <body>
 	<jsp:include page="../top.jsp"/>
+	<jsp:include page="../myPageTop.jsp"/>
 	<h2></h2>
-	<div class="container">
-		<div class="order-detail-container frame">
-			<div class="order-area">
-				<h3>주문 정보</h3>
-				<table>
+	
+	<div class="orderlist-cont">
+	<form method="post">
+		<input type="hidden" name="proc" value="modetail"/>
+		<input type="hidden" name="ord_no" value="${myolist.ord_no}"/>
+		<div class="order-area">
+			<fieldset>
+				<legend>주문 정보</legend>
+				<table class="order-info-table">
 					<colgroup>
 						<col width="15%">
 						<col width="35%">
@@ -38,114 +86,76 @@
 					<tbody>
 						<tr>
 							<th scope="col">주문번호</th>
-							<td>20200116-0001318</td>
+							<td id="no"></td>
 							<th scope="col">주문일자</th>
-							<td>2020-01-16 23:24:16</td>
+							<td id="date"></td>
 						</tr>
 						<tr>
 							<th scope="col">주문자</th>
-							<td>최 민기</td>
+							<td id="id"></td>
 							<th scope="col">주문처리상태</th>
-							<td> 배송완료</td>
+							<td id="stat"></td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<div class="order-list">
-				<h3>주문 상품 정보</h3>
-				<table class="delivery-product-info">
-					<thead>
-						<tr>
-							<th scope="col" class="product">상품정보</th>
-							<th scope="col" class="sell">판매가</th>
-							<th scope="col" class="quantity">수량</th>
-							<th scope="col" class="state">처리상태</th>
-							<th scope="col" class="delivery-detail">택배사</th>
-							<th scope="col" class="delivery-tracking">배송추적</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="product">
-								<div class="product-img">상품이미지</div>
-								<a href="#상품페이지">
-									<div class="product-name">
-										<div class="main">상품명</div>
-									</div>
-								</a>
-							</td>
-							<td class="sell">판매금액</td>
-							<td class="quantity">수량</td>
-							<td class="state">
-								<p>배송완료</p>
-							</td>
-							<td class="delivery-detail" rowspan="2">
-								<span><p>CJ대한통운</p><p>운송장번호</p></span>
-							</td>
-							<td class="delivery-tracking" rowspan="2">
-								<a href="https://www.doortodoor.co.kr/parcel/doortodoor.do?fsp_action=PARC_ACT_002&fsp_cmd=retrieveInvNoACT&invc_no=#운송장번호" target="_blank" rel="noopener noreferrer">
-									<div class="btn detail-btn">배송추적</div>
-								</a>
-							</td>
-						</tr>
-						<tr>
-							<td class="product">
-								<div class="product-img" >상품이미지</div>
-								<a href="#상품페이지">
-									<div class="product-name">
-										<div class="main">상품명</div>
-									</div> 
-								</a>
-							</td>
-							<td class="sell">판매금액</td>
-							<td class="quantity">1</td>
-							<td class="delivery">개별배송</td>
-							<td class="state">
-								<p>배송완료</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			</fieldset>		
+		</div>
+		
+		<div class="order-area">
+			<legend>주문 상품 정보</legend>
+			<table class="order-list-table">
+				<colgroup>
+					<col width="auto">
+					<col width="15%">
+					<col width="5%">
+					<col width="10%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col" class="product">상품정보</th>
+						<th scope="col" class="sell">판매가</th>
+						<th scope="col" class="quantity">수량</th>
+						<th scope="col" class="state">총 금액</th>							
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="myo" items="${myolist}">
+				<input type="hidden" name="ord_no" value="${myo.ord_no}"/>
+				<input type="hidden" name="ord_date" value="${myo.ord_date}"/>
+				<input type="hidden" name="mem_id" value="${myo.mem_id}"/>
+				<input type="hidden" name="ord_stat" value="${myo.ord_stat}"/>
+					<tr>
+						<td class="product">
+							<span class="product-img" style="background-image:url('image/parts/${myo.parts_img}')"></span>
+							<span class="product-name">
+								<span class="main">${myo.parts_name}</span>
+							</span>
+						</td>
+						<td class="sell">${myo.parts_price}</td>
+						<td class="quantity">${myo.req_cnt}</td>
+						<td class="state">${myo.req}</td>
+					</tr>
+				</c:forEach>	
+				</tbody>
+				
+			</table>
+			<table>
+				<tr>
+					<th scope="col" class="delivery-tracking">배송추적</th>
+					<td class="delivery-detail" colspan="3">
+						<span><p>CJ대한통운</p><p>${myolist.ord_invoice}</p></span>
+						<a href="https://www.doortodoor.co.kr/parcel/doortodoor.do?fsp_action=PARC_ACT_002&fsp_cmd=retrieveInvNoACT&invc_no=#운송장번호" target="_blank" rel="noopener noreferrer">
+							<span class="btn detail-btn">배송추적</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</div>
 			
-			<div class="order-area order-payment-detail">
-				<h3>결제 정보</h3>
-				<table class="order-info">
-					<caption>결제 정보</caption>
-					<colgroup>
-						<col width="20%">
-						<col width="30%">
-					</colgroup>
-					<tbody>
-						<tr>
-							<th class="type">총 주문금액</th>
-							<td class="payment">
-								<div class="payment-price">65,800원 </div>
-							</td>
-						</tr>
-						<tr>
-							<th class="type">포인트 사용금액</th>
-							<td class="payment">
-								<div class="payment-price">5,000원</div>
-							</td>
-						</tr>
-						<tr>
-							<th class="type">총 결제금액</th>
-							<td class="payment">
-								<div class="payment-price">60,800원</div>
-							</td>
-						</tr>
-						<tr class="mileage-wrapper">
-							<th class="type">적립금</th>
-							<td class="payment">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			
-			<div class="order-area">
-				<h3>배송지 정보</h3>
+		<div class="order-area">
+			<span class="order-info-span shipment">
+				<fieldset>
+				<legend>배송지 정보</legend>
 				<table>
 					<colgroup>
 						<col width="15%">
@@ -154,33 +164,77 @@
 					<tbody>
 						<tr>
 							<th scope="col">수취인</th>
-							<td>수취인이름</td>
+							<td>${myolist.ord_name}</td>
 						</tr>
 						<tr>
-							<th scope="col">주소</th>
-							<td>배송주소 (우편번호)</td>
+							<th scope="col" rowspan="2">주소</th>
+							<td>(${myolist.ord_post})</td>
+						</tr>
+						<tr>
+							<td>${myolist.ord_addr1} ${myolist.ord_addr2}</td>
 						</tr>
 						<tr>
 							<th scope="col">연락처</th>
 							<td>
-								<span class="mobile-wrapper">010-4108-5116 </span>
+								<span class="mobile-wrapper">${myolist.ord_tel}</span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="col">배송메세지</th>
-							<td>배송전연락부탁드립니다...</td>
+							<td>${myolist.ord_req}</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
+				</fieldset>
+			</span>
 			
-			
-			
-			<div class="btn-wrapper">
-				<a href="#마이페이지주문조회">
-					<div class="back-btn">목록보기</div>
-				</a>
-			</div>
+			<span class="order-info-span payment">
+			<fieldset>
+				<legend>결제 정보</legend>
+				<table class="order-info">
+					<colgroup>
+						<col width="60%">
+						<col width="40%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="type">결제 방법</th>
+							<td class="payment">
+								<div class="payment-price">${myolist.pay_method}</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="type">총 주문금액</th>
+							<td class="payment">
+								<div class="payment-price">${myolist.total} 원 </div>
+							</td>
+						</tr>
+						<tr>
+							<th class="type">포인트 사용금액</th>
+							<td class="payment">
+								<div class="payment-price">${myolist.pay_point} 원</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="type">총 결제금액</th>
+							<td class="payment">
+								<div class="payment-price">${myolist.pay_price} 원</div>
+							</td>
+						</tr>
+						<tr class="mileage-wrapper">
+							<th class="type">적립 포인트</th>
+							<td class="payment">${myolist.pay_price*0.01} </td>
+						</tr>
+					</tbody>
+				</table>
+				</fieldset>
+			</span>
+		</div>
+		</form>	
+		<div class="list-btn">
+			<input class="btn" type="button"  value="목록보기"/>
+		</div>
+	</div>
 	
 	<jsp:include page="../bottom.jsp"/>
 	

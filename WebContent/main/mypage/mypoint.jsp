@@ -63,6 +63,19 @@
 	<div class="point-cont-wrap">
 		<h2></h2>
 
+<c:forEach var="pt" varStatus="status" items="${ptList}">
+<c:choose>
+	<c:when test="${pt.point_pt<0}">
+		<c:set var="minus" value="${minus+pt.point_pt}" />
+	</c:when>
+	<c:when test="${pt.point_pt>=0}">
+		<c:set var="plus" value="${plus+pt.point_pt}" />
+	</c:when>
+</c:choose>
+<c:set var="tot" value="${plus+minus}"/>
+</c:forEach>
+
+
 		<section class="mypage_content">
 			<article class="point-wrap">
 				<div class="point_page">

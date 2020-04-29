@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.orderlist-cont{width:1080px; margin:0px auto; min-height:700px;}
+	.orderlist-cont{width:1080px; margin:50px auto; min-height:700px;}
 	.order-list-table {text-align:center; margin:0 auto; border-top: 2px solid #000; border-bottom:1px solid #797979; border-spacing:0; 
     border-collapse:collapse; width:100%;}
     .order-list-table thead {display: table-header-group; vertical-align: middle; border-color:inherit;}
@@ -29,10 +29,12 @@
     .product-name {margin-left: 10px; max-width: 263px;}
     .product-name div {display: block; font-weight: bold;}
     .option {line-height: 1em; font-size: 11px; color: #797979; font-weight: normal;}
-    .price{text-align:right; padding-right:20px;}
-    .total-price {font-weight: bold; text-align:right; padding-right:20px;}
+    .price{text-align:right; padding-right:20px !important;}
+    .total-price {font-weight: bold; text-align:right; padding-right:20px !important;}
     .service {padding-bottom: 15px;font-size: 12px;}
     .line {text-decoration: underline;color: #353535;}
+    
+    .foreach{padding:20px 0;}
 
 </style>
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
@@ -40,6 +42,12 @@
 	$(document).ready(function(){	
 		
 	});
+	function go(ord_no){
+		// 상세 처리를 위한 controller 호출
+		$("[name=proc]").val("modetail");
+		$("[name=ord_no]").val(ord_no);
+		$("form").submit();
+	}
 	
 </script>
 </head>
@@ -49,7 +57,9 @@
 	<jsp:include page="../myPageTop.jsp"/>
 	<div class="orderlist-cont">
 		<h2>주문/배송조회</h2>
-		
+	<form method="post">
+		<input type="hidden" name="proc"/>
+		<input type="hidden" name="ord_no" />
 		<table class="order-list-table">
 			<colgroup>
 				<col width="16%">
@@ -64,33 +74,44 @@
 					<th class="number">날짜 및 주문번호</th>
 					<th class="product">주문정보</th>
 					<th class="quantity">수량</th>
-					<th class="price">총 상품금액</th>
-					<th class="total-price">총 주문금액</th>
+					<th>총 상품금액</th>
+					<th>총 주문금액</th>
 					<th class="state">주문처리상태</th>
 				</tr>
 			</thead>
-			<c:if test="${not empty olist}">
 			<tbody id="list">
 				<c:forEach var="olist" items="${olist}">
-				<tr class="first-tr">
+				<tr class="first-tr" ondblclick="go(${olist.ord_no})">
 					<td class="date">
-						<a href="#주문상세내역">
-							<div class="ordernum-container">
-								<div class="order-date">${olist.ord_date}</div>
-								<div class="order-num">${olist.ord_no}</div>
-							</div>
-						</a>
+						<div class="ordernum-container">
+							<div class="order-date">${olist.ord_date}</div>
+							<div class="order-num">${olist.ord_no}</div>
+						</div>
 					</td>
 					<td class="product">
-						<div class="product-img" style="background-image:url('image/Computer/${olist.parts_img}')" ></div>
-						<a href="#상품페이지">
-							<div class="product-name">
-								<div class="main">${olist.parts_name}</div>
-							</div>
-						</a>
+					<c:forEach var="geto" items="${getolist}">
+						<c:if test="${geto.ord_no==olist.ord_no}">
+						<div class="product-img" style="background-image:url('image/parts/${geto.parts_img}')" ></div>
+						<div class="product-name">
+							<div class="main">${geto.parts_name}</div>
+						</div>
+						<br>
+						</c:if>
+					</c:forEach>
 					</td>
-					<td class="quantity">${olist.req_cnt}</td>
-					<td class="price"><fmt:formatNumber type="number" value="${olist.req}"/> 원</td>
+					<td class="quantity">
+						<c:forEach var="geto" items="${getolist}">
+							<c:if test="${geto.ord_no==olist.ord_no}">
+								<div class="foreach">${geto.req_cnt}</div></c:if>
+						</c:forEach>
+					</td>
+					<td class="price">
+						<c:forEach var="geto" items="${getolist}">
+							<c:if test="${geto.ord_no==olist.ord_no}">
+							<div class="foreach"><fmt:formatNumber type="number" value="${geto.req}"/> 원</div>
+							</c:if>
+						</c:forEach>
+					</td>
 					<td class="total-price"><fmt:formatNumber type="number" value="${olist.total}"/> 원</td>
 					<td class="service">
 						<div>${olist.ord_stat}</div>
@@ -98,8 +119,8 @@
 				</tr>
 				</c:forEach>
 			</tbody>
-			</c:if>
 		</table>
+	</form>	
 	</div>
 	
 	
