@@ -38,7 +38,7 @@ public class PointCtrl extends HttpServlet {
 		String proc = Nk.toStr(request.getParameter("proc"),"mypt");
 		HttpSession session = request.getSession();
 		Member mem = (Member)session.getAttribute("mem");
-		String mem_id = Nk.toStr(mem.getMem_id(),"ezen01");
+		String mem_id = Nk.toStr(mem.getMem_id());
 		int ord_no = Nk.toInt(request.getParameter("ord_no"));
 		System.out.println("ctrl ord_no:"+ord_no);
 		// 2. Model
