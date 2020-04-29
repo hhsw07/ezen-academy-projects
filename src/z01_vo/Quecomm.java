@@ -11,9 +11,21 @@ public class Quecomm {
 	
 	public Quecomm() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
+	
+	public Quecomm(int que_no, String mem_id, String quec_detail) {
+		super();
+		this.que_no = que_no;
+		this.mem_id = mem_id;
+		this.quec_detail = quec_detail;
+	}
+	
+	public Quecomm(int quec_no, String quec_detail) {
+		super();
+		this.quec_no = quec_no;
+		this.quec_detail = quec_detail;
+	}
+	
 	public Quecomm(int quec_no, int que_no, String mem_id, String quec_detail, Date quec_date) {
 		super();
 		this.quec_no = quec_no;
