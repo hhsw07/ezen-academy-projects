@@ -276,7 +276,7 @@
 					<tr>
 						<th>결제 방법 선택</th>
 						<td>
-							<input type="radio" name="pay_method" value="무통장입금"/>무통장입금
+							<input type="radio" name="pay_method" value="무통장입금" checked/>무통장입금
 							<input type="radio" name="pay_method" value="카드결제"/>카드결제
 						</td>
 					</tr>
