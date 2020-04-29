@@ -30,25 +30,13 @@ public class Member {
 		this.mem_tel = mem_tel;
 		this.mem_jdate = mem_jdate;
 	}
-	public Member(String mem_id) {
-		super();
-		this.mem_id = mem_id;
-	}
-// 아이디 찾기
-public Member(String mem_id, String mem_name, String mem_email) {
+	public Member(String mem_id, String mem_name, String mem_email, String mem_tel) {
 		super();
 		this.mem_id = mem_id;
 		this.mem_name = mem_name;
 		this.mem_email = mem_email;
+		this.mem_tel = mem_tel;
 	}
-
-public Member(String mem_id, String mem_name, String mem_email, String mem_tel) {
-	super();
-	this.mem_id = mem_id;
-	this.mem_name = mem_name;
-	this.mem_email = mem_email;
-	this.mem_tel = mem_tel;
-}
 	// 회원가입
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel) {
 		super();
@@ -59,7 +47,6 @@ public Member(String mem_id, String mem_name, String mem_email, String mem_tel) 
 		this.mem_email = mem_email;
 		this.mem_tel = mem_tel;
 	}
-
 	public Member(String mem_id, String mem_pw, String mem_name, Date mem_birth, String mem_email, String mem_tel,
 			Date mem_jdate) {
 		super();

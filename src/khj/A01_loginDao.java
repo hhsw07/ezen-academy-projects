@@ -29,9 +29,6 @@ public class A01_loginDao {
 		con = DriverManager.getConnection(info, "scott", "tiger");
 		System.out.println("정상 접속 성공.");
 	}
-//!! ()괄호 안에 쓰이는 코드가 왜 어떻게 쓰이는지 이해부족
-	
-	
 	public ArrayList<Member> getMemberList(){
 		ArrayList<Member> mList=new ArrayList<Member>();
 		try {
@@ -101,9 +98,10 @@ public class A01_loginDao {
 		
 		return m;
 	}
+	
 	// 아이디 찾기
-	public Member findId(Member fid) {
-		Member m=null;
+	public String findId(String mem_name, String mem_email) {
+		String findid=null;
 		try {
 			setCon();
 			// sql문 작업수행
@@ -111,15 +109,13 @@ public class A01_loginDao {
 					"WHERE mem_name = ?" + 
 					"AND mem_email = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, fid.getMem_name());
-			pstmt.setString(2, fid.getMem_email());
+			pstmt.setString(1, mem_name);
+			pstmt.setString(2, mem_email);
 			System.out.println(sql);
-			System.out.println("이름"+fid.getMem_name());
-			System.out.println("메일"+fid.getMem_email());
 			rs = pstmt.executeQuery();			
 			
 			if(rs.next()) {
-				m = new Member(rs.getString("mem_id"));
+				findid = rs.getString("mem_id");
 			}
 			rs.close();
 			pstmt.close();
@@ -132,7 +128,37 @@ public class A01_loginDao {
 			System.out.println(e.getMessage());
 		}
 		
-		return m;
+		return findid;
+	}
+	
+	public String findPw(String mem_id, String mem_email) {
+		String findpw=null;
+		try {
+			setCon();
+			String sql ="SELECT mem_pw FROM p5_member\r\n" + 
+					"WHERE mem_id= ?" + 
+					"AND mem_email = ?";
+			pstmt = con.prepareStatement(sql);
+			// sql문 ?에 해당하는 id와 email
+			pstmt.setString(1, mem_id);
+			pstmt.setString(2, mem_email);
+			System.out.println(sql);
+			rs = pstmt.executeQuery();			
+			if(rs.next()) {
+				// 리턴받을 비밀번호
+				findpw = rs.getString("mem_pw");
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return findpw;
 	}
 	
 	// 회원가입 
@@ -168,6 +194,7 @@ public class A01_loginDao {
 		}
 		
 	}
+	
 	// member가 등록된 여부 check
 	public boolean memberCk(String mem_id){
 		boolean isMember=false;
