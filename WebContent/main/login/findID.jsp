@@ -29,7 +29,10 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-
+	// 버튼 클릭 
+	$("findBtn").click(function(){
+		$("[name=proc]")
+	});
 });
 
 
@@ -42,6 +45,7 @@ $(document).ready(function(){
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
+	<!-- name과 value의 역할 차이 -->
 	<input type="hidden" name="proc" value="findBtn" />
 		<table align="center">
 			<tr>

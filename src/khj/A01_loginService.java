@@ -56,12 +56,13 @@ public class A01_loginService {
 		dao.insSignUpMember(ins);
 	}
 	// 아이디 찾기
+	// db에 일치하는 이름과 메일이 있는지 확인하고 id를 return받아야하는데
+	// Dao에 있는 부분이 위내용이고 service단에서는 retrun받을 코드만 적으면 되는지?>
 	public Member findID(HttpServletRequest request) {
-		String mem_name = request.getParameter("mem_name");
-		if(mem_name==null) mem_name="";
-		String mem_email = request.getParameter("mem_email");
-		if(mem_email==null) mem_email="";
-		return dao.findId(new Member(mem_name, mem_email));
+		String mem_id = Nk.toStr(request.getParameter("mem_id"));
+		String mem_name= Nk.toStr(request.getParameter("mem_name"));
+		String mem_email= Nk.toStr(request.getParameter("mem_email"));
+		return dao.findId(new Member(mem_id, mem_name, mem_email));
 	}
 	// 회원가입 아이디 중복확인
 	public boolean checkReg(String mem_id){

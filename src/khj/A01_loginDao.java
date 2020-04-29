@@ -29,7 +29,7 @@ public class A01_loginDao {
 		con = DriverManager.getConnection(info, "scott", "tiger");
 		System.out.println("정상 접속 성공.");
 	}
-//!! public void를 사용할때, public xxx사용할때 그다음에 쓰이는 코드와 ()괄호 안에 쓰이는 코드가 왜 어떻게 쓰이는지 이해부족
+//!! ()괄호 안에 쓰이는 코드가 왜 어떻게 쓰이는지 이해부족
 	
 	
 	// public ArrayList<Member>는 Member VO를 ArrayList로 선언한다는 의미 getMemberList의 이름으로(?)
@@ -148,9 +148,10 @@ public class A01_loginDao {
 		Member m=null;
 		try {
 			setCon();
+			// sql문 작업수행
 			String sql ="SELECT mem_id FROM p5_member\r\n" + 
-					"WHERE mem_name LIKE '%'||?||'%'\r\n" + 
-					"AND mem_email LIKE '%'||?||'%'";
+					"WHERE mem_name = ?" + 
+					"AND mem_email = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, fid.getMem_name());
 			pstmt.setString(2, fid.getMem_email());
@@ -158,6 +159,7 @@ public class A01_loginDao {
 			System.out.println("이름"+fid.getMem_name());
 			System.out.println("메일"+fid.getMem_email());
 			rs = pstmt.executeQuery();			
+			
 			if(rs.next()) {
 				m = new Member(
 						rs.getString("mem_id"));
@@ -213,16 +215,14 @@ public class A01_loginDao {
 	public boolean memberCk(String mem_id){
 		boolean isMember=false;
 		try {
-			setCon(); // Connection 객체가 메모리 로딩.
-			String sql = "SELECT * FROM FROM p5_member\r\n" + 
+			setCon();
+			String sql = "SELECT * FROM p5_member\r\n" + 
 						 "		WHERE mem_id=?";
 			pstmt = con.prepareStatement(sql);
-			
 			pstmt.setString(1, mem_id);
 			rs=pstmt.executeQuery();		
-			// rs.next() : 데이터가 있을 때, true
-			// if(rs.next()) rs.getString("id") (X)
 			isMember=rs.next();
+			
 			rs.close();
 			pstmt.close();
 			con.close();

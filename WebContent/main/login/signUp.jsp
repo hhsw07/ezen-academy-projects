@@ -30,19 +30,35 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#regCkBtn").click(function(){
-		var insId = "${mem.mem_id}";
-		if($("[name=mem_id]").val()==insId){
-			alert("중복된 아이디입니다.");	
+ 	var mem_id = "${param.mem_id}";
+	if(mem_id!=""){
+		var isMember = "${isMember}";
+		if(isMember=="true"){ 
+			alert("등록된 id입니다!");
+			$("[name=mem_id]").focus();
 		}else{
-			alert("사용가능한 아이디입니다.")
+			alert("등록가능합니다.")
+			$("[name=mem_id]").val("mem_id");
 		}
-	});
-	$("#regbtn").click(function(){
-		alert("회원가입 성공");
-		$("[name=proc]").val("insMem");
+	}
+	$("#regCkBtn").click(function(){
 		$("form").submit();
 	});
+	/* 
+ 	$("#regCkBtn").click(function(){
+		var mem_id = "${param.mem_id}";
+		if(mem_id!=""){
+			var isMember = "${isMember}";
+			if(isMember=="true"){
+				alert("등록된 id입니다");
+				$("[name=mem_id]").focus();
+			}else{
+				alert("등록가능합니다.")
+				$("[name=mem_id]").val("mem_id");
+				$("form").submit();
+			}
+		}
+	}); */
 });
 </script>
 </head>
@@ -53,7 +69,8 @@ $(document).ready(function(){
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
-		<input type="hidden" name="proc" value=""/>
+		<input type="hidden" name="mem_id" value="mem_id"/>
+		<input type="hidden" name="proc" value="mem_id"/>
 		<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
