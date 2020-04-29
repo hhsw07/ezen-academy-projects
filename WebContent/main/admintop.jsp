@@ -65,7 +65,7 @@ $(document).ready(function(){
 			<div class="menu-div"></div>
 			<div class="menu-2-wrap">
 				<div class="menu-2">
-				<span style="font-size:25px; font-weight:900; color:orange; float:left">PC냥이</span>
+				<span style="padding-left:25px;font-size:25px; float:left"><a href="main" style="color:orange;">PC냥이</a></span>
 					<ul>
 						<li id="member">회원관리</li>
 						<li id="market">상품관리</li>
