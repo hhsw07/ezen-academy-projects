@@ -72,6 +72,39 @@
 		var price = Number($("#price"+no).val());
 		var totPay = Number($("[name=totalPay]").val());
 --%>
+
+		$("[name=delivery]").eq(0).attr("checked",true);
+		var ord_name = "이름";
+		var ord_tel = "전화번호";
+		var ord_post = "우편"
+		var ord_addr1 = "주소1";
+		var ord_addr2 = "주소2";
+		$("[name=ord_name]").val(ord_name);
+		$("[name=ord_tel]").val(ord_tel);
+		$("[name=ord_post]").val(ord_post);
+		$("[name=ord_addr1]").val(ord_addr1);
+		$("[name=ord_addr2]").val(ord_addr2);
+		
+		
+		$("[name=delivery]").eq(0).click(function(){
+			$("[name=ord_name]").val(ord_name);
+			$("[name=ord_tel]").val(ord_tel);
+			$("[name=ord_post]").val(ord_post);
+			$("[name=ord_addr1]").val(ord_addr1);
+			$("[name=ord_addr2]").val(ord_addr2);
+		});
+		
+		$("[name=delivery]").eq(1).click(function(){
+			$("[name=ord_name]").val("");
+			$("[name=ord_tel]").val("");
+			$("[name=ord_post]").val("");
+			$("[name=ord_addr1]").val("");
+			$("[name=ord_addr2]").val("");
+		});
+
+		
+
+
 	});
 	function findpost() {
         new daum.Postcode({
