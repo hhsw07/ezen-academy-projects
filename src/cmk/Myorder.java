@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Myorder {
 	private int ord_no;
+	private String mem_name;
 	private String parts_img;
 	private String parts_name;
 	private int req_cnt;
@@ -32,7 +33,43 @@ public class Myorder {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	/*
+	 c.ord_no, m.MEM_NAME, c.ORD_DATE, c.ord_stat, sum(pr.req_cnt*a.parts_price) total, c.ORD_INVOICE, c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD, e.PAY_POINT ,e.PAY_PRICE
+	 */
+
+	public Myorder(int ord_no, String mem_name, Date ord_date, String ord_stat, int total, int ord_invoice,
+			String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req,
+			String pay_method, int pay_point, int pay_price) {
+		super();
+		this.ord_no = ord_no;
+		this.mem_name = mem_name;
+		this.total = total;
+		this.ord_date = ord_date;
+		this.ord_stat = ord_stat;
+		this.ord_invoice = ord_invoice;
+		this.ord_name = ord_name;
+		this.ord_tel = ord_tel;
+		this.ord_post = ord_post;
+		this.ord_addr1 = ord_addr1;
+		this.ord_addr2 = ord_addr2;
+		this.ord_req = ord_req;
+		this.pay_method = pay_method;
+		this.pay_point = pay_point;
+		this.pay_price = pay_price;
+	}
+	/*
+	 pr.ord_no, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req 
+	 */
+
+	public Myorder(int ord_no, String parts_img, String parts_name, int parts_price, int req_cnt, int req) {
+		super();
+		this.ord_no = ord_no;
+		this.parts_img = parts_img;
+		this.parts_name = parts_name;
+		this.req_cnt = req_cnt;
+		this.req = req;
+		this.parts_price = parts_price;
+	}
 	
 	public Myorder(int ord_no, Date ord_date, String mem_id, String ord_stat, String parts_img, String parts_name, int parts_price, int req_cnt, int req, int total,
 			int ord_invoice, String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req, String pay_method, int pay_point, int pay_price) {
@@ -58,7 +95,6 @@ public class Myorder {
 		this.pay_point = pay_point;
 		this.pay_price = pay_price;
 	}
-
 	//pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req
 	public Myorder(int ord_no, String parts_img, String parts_name, int req_cnt, int req) {
 		super();
@@ -254,6 +290,16 @@ public class Myorder {
 
 	public void setPay_price(int pay_price) {
 		this.pay_price = pay_price;
+	}
+
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	
 	

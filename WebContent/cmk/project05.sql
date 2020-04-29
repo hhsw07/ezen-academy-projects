@@ -210,7 +210,6 @@ WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no
 AND c.mem_id='ezen01'
 ORDER BY ord_no DESC;
 
-
 SELECT c.ord_no, sum(pr.req_cnt*a.parts_price) total, c.ORD_DATE, c.ord_stat
 FROM p5_request pr, 
 	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
@@ -221,4 +220,20 @@ GROUP BY c.ORD_NO, c.ORD_DATE, c.ORD_STAT
 ORDER BY ord_no DESC;
 
 
+SELECT c.ord_no, m.MEM_NAME, c.ORD_DATE, c.ord_stat, sum(pr.req_cnt*a.parts_price) total, c.ORD_INVOICE, c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, 
+c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD, e.PAY_POINT ,e.PAY_PRICE 
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c, p5_pay e, P5_MEMBER m
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND e.ORD_NO = pr.ORD_NO AND c.MEM_ID = m.MEM_ID 
+AND c.mem_id='ezen01' AND pr.ord_no=2001221001
+GROUP BY c.ORD_NO, c.ORD_DATE, c.ORD_STAT, e.PAY_METHOD,c.ORD_INVOICE, c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ,e.PAY_POINT ,e.PAY_PRICE,m.MEM_NAME
+ORDER BY ord_no DESC;
+
+SELECT pr.ord_no, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no
+AND c.mem_id='ezen01' AND pr.ord_no=2001221001
 ORDER BY ord_no DESC;
