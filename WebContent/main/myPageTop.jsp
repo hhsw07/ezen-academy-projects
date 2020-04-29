@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#myinfo").click(function(){
-			$("[name=proc]").val("myinfo");
+			$("[name=proc]").val("userInfo");
 			$("form").submit();
 		});
 		$("#mypt").click(function(){
