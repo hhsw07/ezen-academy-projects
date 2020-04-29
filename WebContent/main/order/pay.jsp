@@ -73,17 +73,11 @@
 		var totPay = Number($("[name=totalPay]").val());
 --%>
 
-		var ord_name = "이름";
-		var ord_tel = "전화번호";
-		var ord_post = "우편"
-		var ord_addr1 = "주소1";
-		var ord_addr2 = "주소2";
-		$("[name=ord_name]").val(ord_name);
-		$("[name=ord_tel]").val(ord_tel);
-		$("[name=ord_post]").val(ord_post);
-		$("[name=ord_addr1]").val(ord_addr1);
-		$("[name=ord_addr2]").val(ord_addr2);
-		
+		var ord_name = "${addr.ord_name}";
+		var ord_tel = "${addr.ord_tel}";
+		var ord_post = "${addr.ord_post}"
+		var ord_addr1 = "${addr.ord_addr1}";
+		var ord_addr2 = "${addr.ord_addr2}";
 		
 		$("[name=delivery]").eq(0).click(function(){
 			$("[name=ord_name]").val(ord_name);
@@ -228,13 +222,13 @@
 					<tr>
 						<th>수령인</th>
 						<td>
-							<div class="input-wrap"><input class="input" type="text" name="ord_name"/></div>
+							<div class="input-wrap"><input class="input" type="text" name="ord_name" value="${addr.ord_name}"/></div>
 						</td>
 					</tr>
 					<tr>
 						<th>연락처</th>
 						<td>
-							<div class="input-wrap"><input class="input" type="text" name="ord_tel"/></div>
+							<div class="input-wrap"><input class="input" type="text" name="ord_tel" value="${addr.ord_tel}"/></div>
 						</td>
 					</tr>
 					<tr>
@@ -242,15 +236,15 @@
 						<td>
 							<div onclick="findpost()">
 								<span class="input-wrap input-post">
-									<input type="text" id="zip" class="input" name="ord_post" value="" readonly/>
+									<input type="text" id="zip" class="input" name="ord_post" value="${addr.ord_post}" readonly/>
 								</span>
 								<input class="input-btn" type="button" value="우편번호찾기"/>
 							</div>
 							<div class="input-addr">
-								<input type="text" id="addr" class="input" name="ord_addr1" value="" readonly/>
+								<input type="text" id="addr" class="input" name="ord_addr1" value="${addr.ord_addr1}" readonly/>
 							</div>
 							<div class="input-addr">
-								<input type="text" class="input" name="ord_addr2"/>
+								<input type="text" class="input" name="ord_addr2" value="${addr.ord_addr2}"/>
 							</div>
 						</td>
 					</tr>

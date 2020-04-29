@@ -25,6 +25,17 @@ public class Order {
 		super();
 		this.ord_no = ord_no;
 	}
+	
+	
+
+	public Order(String ord_name, String ord_tel, String ord_post, String ord_addr1, String ord_addr2) {
+		super();
+		this.ord_name = ord_name;
+		this.ord_tel = ord_tel;
+		this.ord_post = ord_post;
+		this.ord_addr1 = ord_addr1;
+		this.ord_addr2 = ord_addr2;
+	}
 
 
 	public Order(String mem_id, String ord_name, String ord_tel, String ord_post, String ord_addr1, String ord_addr2,

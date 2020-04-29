@@ -266,6 +266,32 @@ public class PayDao {
 	}
 
 
+	public Order getAddr(String mem_id) {
+		Order addr = new Order();
+		try {
+			setCon();
+			String sql = "SELECT ORD_NAME,ORD_TEL,ORD_POST,ORD_ADDR1 ,ORD_ADDR2 FROM P5_ORDER\r\n" + 
+					"WHERE mem_id = ?\r\n" + 
+					"ORDER BY ord_no DESC";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mem_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				addr = new Order(rs.getString(1),rs.getString(2),
+								 rs.getString(3),rs.getString(4),rs.getString(5));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return addr;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

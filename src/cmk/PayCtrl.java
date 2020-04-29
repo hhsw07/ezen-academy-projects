@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import z01_vo.Cart;
+import z01_vo.Member;
 import z01_vo.Nk;
-import z01_vo.Request;
 
 /**
  * Servlet implementation class PayCtrl
@@ -57,6 +57,8 @@ public class PayCtrl extends HttpServlet {
 			System.out.println("확인:"+proc);
 			request.setAttribute("buylist", service.getCart(request));
 			request.setAttribute("point", service.getPt(request));
+			String mem_id = Nk.toStr(((Member)session.getAttribute("mem")).getMem_id());
+			request.setAttribute("addr", service.getAddr(mem_id));
 			System.out.println();
 		}
 		if(proc.equals("pay")) {

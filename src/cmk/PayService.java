@@ -96,5 +96,9 @@ public class PayService {
 		Point saving = new Point(mem_id,"상품구매적립",pay_price);
 		dao.insPoint(saving);
 	}
+	
+	public Order getAddr(String mem_id) {
+		return dao.getAddr(mem_id);
+	}
 
 }
