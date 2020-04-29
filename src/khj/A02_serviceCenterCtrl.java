@@ -134,8 +134,16 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 			service.insAs(request);
 			proc = "as";
 		}
-		// AS수정
+		
+		// AS수정 불러오기
 		if(proc.equals("uptAs")) {
+			request.setAttribute("ordlist",service.ordList(request) );
+			request.setAttribute("as", service.asList(request));
+			proc = "insAs";
+		}
+		
+		// AS수정
+		if(proc.equals("uptAsBtn")) {
 			service.uptAs(request);
 			request.setAttribute("as", service.asList(request));
 			request.setAttribute("asdetail", service.asDetail(request));
