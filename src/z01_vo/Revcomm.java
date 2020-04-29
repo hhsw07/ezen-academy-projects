@@ -13,6 +13,19 @@ public class Revcomm {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Revcomm(int rev_no, String mem_id, String revc_detail) {
+		super();
+		this.rev_no = rev_no;
+		this.mem_id = mem_id;
+		this.revc_detail = revc_detail;
+	}
+
+	public Revcomm(int revc_no, String revc_detail) {
+		super();
+		this.revc_no = revc_no;
+		this.revc_detail = revc_detail;
+	}
 
 	public Revcomm(int revc_no, int rev_no, String mem_id, String revc_detail, Date revc_date) {
 		super();

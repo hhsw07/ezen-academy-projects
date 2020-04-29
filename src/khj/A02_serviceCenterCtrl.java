@@ -116,6 +116,57 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 			request.setAttribute("qclist", service.Quecomm(request));
 			proc = "queDetail"; //view의 quesDetail 작동 트리거
 		}
+		
+		// 후기 불러오기
+		if(proc.equals("review")) {
+			request.getSession().setAttribute("rlist", service.Review(request));
+		}
+		// 후기 상세불러오기
+		if(proc.equals("revDetail")) {
+			request.setAttribute("review", service.reviewDetail(request));
+			request.setAttribute("rclist", service.Revcomm(request));
+		}
+		// 후기 등록
+		if(proc.equals("insRev")) {
+			service.insertReview(request);
+			request.getSession().setAttribute("rlist", service.Review(request));
+			proc = "review"; //view의 review 작동 트리거
+		}
+		// 후기 수정
+		if(proc.equals("uptRev")) {
+			service.updateReview(request);
+			request.setAttribute("review", service.reviewDetail(request));
+			request.setAttribute("rclist", service.Revcomm(request));
+			proc = "revDetail"; //view의 revDetail 작동 트리거
+		}
+		// 후기 삭제
+		if(proc.equals("delRev")) {
+			service.deleteReview(request);
+			request.getSession().setAttribute("rlist", service.Review(request));
+			proc = "review"; //view의 review 작동 트리거
+		}
+		// 후기댓글 등록
+		if(proc.equals("insRevc")) {
+			service.insertRevcomm(request);
+			request.setAttribute("review", service.reviewDetail(request));
+			request.setAttribute("rclist", service.Revcomm(request));
+			proc = "revDetail"; //view의 revDetail 작동 트리거
+		}
+		// 후기댓글 수정
+		if(proc.equals("uptRevc")) {
+			service.updateRevcomm(request);
+			request.setAttribute("review", service.reviewDetail(request));
+			request.setAttribute("rclist", service.Revcomm(request));
+			proc = "revDetail"; //view의 revDetail 작동 트리거
+		}
+		// 후기댓글 삭제
+		if(proc.equals("delRevc")) {
+			service.deleteRevcomm(request);
+			request.setAttribute("review", service.reviewDetail(request));
+			request.setAttribute("rclist", service.Revcomm(request));
+			proc = "revDetail"; //view의 revDetail 작동 트리거
+		}		
+		
 		// AS리스트 불러오기
 		if(proc.equals("as")){
 			request.setAttribute("asList", service.asList());
@@ -192,7 +243,12 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		if(proc.equals("review")) {
 			page="main/serviceCenter/review.jsp";
 		}
-		
+		if(proc.equals("revDetail")) {
+			page="main/serviceCenter/reviewDetail.jsp";
+		}
+		if(proc.equals("writeRev")) {
+			page="main/serviceCenter/reviewReg.jsp";
+		}
 		if(proc.equals("as")){
 			page = "main\\serviceCenter\\as.jsp";
 		}

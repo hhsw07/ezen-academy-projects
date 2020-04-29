@@ -40,21 +40,12 @@ $(document).ready(function(){
 
 		if(mem_name != null && mem_email != null &&
 			mem_name != "" && mem_email != ""){
-
 			$("form").submit();
 		}else{
 			alert("다시 입력해주세요");
 		}
-		
-		
-		
-		
-		
-	
 	});
 });
-
-
 </script>
 </head>
 <body>

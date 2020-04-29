@@ -51,7 +51,7 @@
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">아이디 찾기</th></tr>
 			<tr>
-				<th colspan="3" class="id-result">귀하의 아이디는 [<span>${fid.mem_id}</span>] 입니다.</th>
+				<th colspan="3" class="id-result">귀하의 아이디는 [<span>${fid}</span>] 입니다.</th>
 			</tr>
 			<tr>
 				<th colspan="3"><input class="login-btn" id="gomain"  type="button" value="확인"/></th>

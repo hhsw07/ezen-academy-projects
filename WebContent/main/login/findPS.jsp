@@ -29,10 +29,22 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		<%-- 
-		
-		--%>
-		$("h2").text("시작");
+		var proc="${param.proc}"
+		if(proc=="checkBtn"){
+			alert("입력하신 정보가 없습니다");
+		}
+		// 버튼 클릭
+		$("#checkBtn").click(function(){
+			var mem_id = $("[name=mem_id]").val();
+			var mem_email = $("[name=mem_email]").val();
+			
+			if(mem_id!= null && mem_email != null &&
+				mem_id!= "" && mem_email != ""){
+				$("form").submit();
+			}else{
+				alert("다시 입력해주세요")
+			}
+		});
 	});
 </script>
 </head>
@@ -43,6 +55,8 @@
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
+	<!-- proc수행 -->
+	<input type="hidden" name="proc" value="checkBtn"/>
 		<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
@@ -52,13 +66,13 @@
 			</tr>
 			<tr><th colspan="3" style="font-size:30px; padding-bottom:30px;">비밀번호 찾기</th></tr>
 			<tr>
-				<th colspan="3"><input class="input-id" type="text" placeholder="아이디"/></th>
+				<th colspan="3"><input name="mem_id" class="input-id" type="text" placeholder="아이디"/></th>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="input-ps" type="text" placeholder="이메일"/></th>
+				<th colspan="3"><input name="mem_email" class="input-ps" type="text" placeholder="이메일"/></th>
 			</tr>
 			<tr>
-				<th colspan="3"><input class="login-btn" type="submit" value="확인"/></th>
+				<th colspan="3"><input id="checkBtn" class="login-btn" type="button" value="확인"/></th>
 			</tr>
 		</table>
 	</form>

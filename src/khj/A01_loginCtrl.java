@@ -75,17 +75,20 @@ public class A01_loginCtrl extends HttpServlet {
 		// service단 findID에 요청(service단에서 findID에 해당하는 부분을 수행) 
 		if(proc.equals("findBtn")) {
 			request.setAttribute("fid", service.findID(request));
-			
+		}
+		// proc가 checkBtn면 findPW에 해당하는 요청 수행
+		if(proc.equals("checkBtn")) {
+			request.setAttribute("fidpw", service.findPW(request));
 		}
 		// 메인페이지
 		if(proc.equals("main")) {
 			page="main/main.jsp";
 		}
-		// 로그인페이지 -> 회원가입
+		// 회원가입
 		if(proc.equals("signUp")) {
 			page="main/login/signUp.jsp";
 		}
-		// 로그인페이지 -> 아이디 찾기
+		// 아이디 찾기
 		if(proc.equals("findID")) {
 			page="main/login/findID.jsp";
 		}
@@ -94,16 +97,22 @@ public class A01_loginCtrl extends HttpServlet {
 			if(service.findID(request)==null) {
 				page = "main/login/findID.jsp";
 			}else {
-			page="main/login/findIdRs.jsp";
+				page="main/login/findIdRs.jsp";
 			}
 		}
-		// 로그인페이지 -> 비밀번호 찾기
+		// 비밀번호 찾기
 		if(proc.equals("findPS")) {
 			page="main/login/findPS.jsp";
 		}
-		// 비밀번호찾기 결과 페이지
-		if(proc.equals("findPsRs")) {
-			page="main/login/findPsRs.jsp";
+		// 비밀번호 찾기 결과
+		if(proc.equals("checkBtn")) {
+			// 입력한 결과가 맞지 않다면 다시 비밀번호 찾기 페이지로 이동
+			if(service.findPW(request)==null) {
+				page = "main/login/findPS.jsp";
+			// 입력한 정보가 맞으면 결과페이지 이동
+			}else {
+				page = "main/login/findPsRs.jsp";
+			}
 		}
 		// 아이디 중복 체크
 		if(proc.equals("regCkBtn")) {
