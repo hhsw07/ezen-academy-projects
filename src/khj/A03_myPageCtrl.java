@@ -8,13 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import z01_vo.Member;
+import z01_vo.Nk;
 
 /**
  * Servlet implementation class A03_myPageCtrl
  */
-@WebServlet(name ="userInfo" , urlPatterns = {"/userInfo"})
+@WebServlet(name ="MyPage" , urlPatterns = {"/MyPage"})
 public class A03_myPageCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private A03_myPageService service;
@@ -34,16 +36,34 @@ public class A03_myPageCtrl extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String proc = request.getParameter("proc"); 
-		if(proc==null) proc="";
+		String proc = Nk.toStr(request.getParameter("proc"));
 		System.out.println("proc확인"+proc);
+		
+		
+		HttpSession session = request.getSession();
+		Member mem = (Member)session.getAttribute("mem");
+		String mem_id = Nk.toStr(mem.getMem_id());
+		int ord_no = Nk.toInt(request.getParameter("ord_no"));
+		
+		if(proc.equals("mypt")) {
+			request.setAttribute("ptList", service.ptList(mem_id));
+		}
+		if(proc.equals("myorder")) {
+			request.setAttribute("getolist", service.getolist(mem_id));
+			request.setAttribute("olist", service.olist(mem_id));
+		}
+		if(proc.equals("modetail")) {
+			request.setAttribute("myolist", service.myolist(mem_id, request));
+			System.out.println("ctrl1");
+		}
+		
 		
 		String page ="main/mypage/userInfo.jsp";
 		
 		if(proc.equals("update")) {
 			// 수정처리 서비스
 			service.uptPw(request);
-		}
+		}		
 		if(proc.equals("delete")) {
 			// 삭제처리 서비스.
 			service.deleteMember(request);			
@@ -60,6 +80,16 @@ public class A03_myPageCtrl extends HttpServlet {
 			// emp Model
 			request.setAttribute("emp", service.userInfo( request ));
 			
+		}
+		
+		if(proc.equals("mypt")) {
+			page = "main\\mypage\\mypoint.jsp";
+		}
+		if(proc.equals("myorder")) {
+			page = "main\\mypage\\myorder.jsp";
+		}
+		if(proc.equals("modetail")) {
+			page = "main\\mypage\\orderdetail.jsp";
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(page);

@@ -63,7 +63,7 @@ $(document).ready(function(){
 					<c:otherwise>
 						<li id="lo">로그아웃</li>
 						<li><a href="SCenter">고객센터</a></li>
-						<li><a href="userInfo">마이페이지</a></li>
+						<li><a href="MyPage">마이페이지</a></li>
 						<li>${mem.mem_id}님 환영합니다.</li>
 					</c:otherwise>
 				</c:choose>
