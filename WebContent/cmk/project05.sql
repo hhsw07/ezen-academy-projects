@@ -22,7 +22,7 @@ ORDER BY ord_no desc;
 
 -- 상품주문
 SELECT * FROM p5_request
-ORDER BY ORD_NO desc;
+ORDER BY ORD_NO ASC;
 
 -- 결제
 SELECT * FROM p5_pay;
@@ -52,23 +52,18 @@ ORDER BY ord_no asc;
 
 -----------------------------------------------------------------------
 -- 주문/배송 조회
-SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ord_date, c.ord_stat 
+SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req, c.ord_date, c.ord_stat 
 FROM p5_request pr, 
 	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
-	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,
-	(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) total FROM p5_request pr, 
-		(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts
-		UNION
-		SELECT com_no, com_name, com_price FROM p5_computer) a
-	WHERE pr.REQ_NO = a.parts_no
-	GROUP BY ord_no
-	ORDER BY ord_no ASC) d
-WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no 
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no 
 AND c.mem_id='ezen01'
+GROUP BY ORD_NO 
 ORDER BY ord_no DESC;
 
 -- 주문/배송 상세정보
-SELECT pr.ord_no, c.ord_date, c.ORD_NAME, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE 
+SELECT pr.ord_no, c.ord_date, c.MEM_ID, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE,
+ c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE 
 FROM p5_request pr, 
 	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
 	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,
@@ -79,9 +74,8 @@ FROM p5_request pr,
 	WHERE pr.REQ_NO = a.parts_no
 	GROUP BY ord_no
 	ORDER BY ord_no ASC) d, p5_pay e
-WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no 
-AND c.mem_id='ezen01'
-ORDER BY ord_no DESC;
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no AND e.ORD_NO = pr.ORD_NO 
+AND c.mem_id='ezen01' AND pr.ord_no=2001221001;
 
 --관리자
 UPDATE P5_ORDER SET ord_stat = '' AND ORD_INVOICE = 운송장번호
@@ -206,4 +200,25 @@ INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 1, to_date('2020-02-26','YYYY-MM-
 
 
 SELECT to_number(to_char(sysdate,'yymmdd')) FROM dual;
+------------------------------------------------------------------------------------------------------------------------------
+-- rollup
+SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no
+AND c.mem_id='ezen01'
+ORDER BY ord_no DESC;
 
+
+SELECT c.ord_no, sum(pr.req_cnt*a.parts_price) total, c.ORD_DATE, c.ord_stat
+FROM p5_request pr, 
+	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
+	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c
+WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no 
+AND c.mem_id='ezen01'
+GROUP BY c.ORD_NO, c.ORD_DATE, c.ORD_STAT
+ORDER BY ord_no DESC;
+
+
+ORDER BY ord_no DESC;
