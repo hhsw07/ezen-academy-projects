@@ -41,7 +41,6 @@ UPDATE P5_MEMBER
 SET mem_pw =5555
 WHERE mem_id ='ezen01';
 
-
 -- 마이페이지 회원정보 불러오기
 SELECT * FROM p5_member
 WHERE mem_id= 'ezen01';
@@ -50,6 +49,12 @@ WHERE mem_id= 'ezen01';
 DELETE FROM p5_member 
 WHERE mem_id = 'test503'
 AND mem_pw = 1234;
+
+--guest, admin 제외 멤버 불러오기
+SELECT * FROM p5_member
+WHERE NOT mem_id LIKE '%'||'guest0.'||'%'
+AND NOT mem_id = 'admin'
+ORDER BY mem_jdate desc;
 
 --------------------------------------------
 /* 컴퓨터부품 */

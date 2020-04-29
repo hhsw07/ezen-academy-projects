@@ -14,7 +14,7 @@ import z01_vo.Nk;
 /**
  * Servlet implementation class A04_adminCtrl
  */
-@WebServlet(name = "memList", urlPatterns = {"/memList"})
+@WebServlet(name = "admin", urlPatterns = {"/admin"})
 public class A04_adminCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private A04_adminService service;

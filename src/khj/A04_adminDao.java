@@ -72,7 +72,10 @@ public class A04_adminDao {
 		ArrayList<Member> mlist = new ArrayList<Member>();
 		try {
 			setConn();
-			String sql = "SELECT * FROM p5_member";
+			String sql = "SELECT * FROM p5_member\r\n" + 
+					"WHERE NOT mem_id LIKE '%'||'guest0.'||'%'\r\n" + 
+					"AND NOT mem_id = 'admin'\r\n" + 
+					"ORDER BY mem_jdate desc";
 			pstmt = con.prepareStatement(sql);
 			System.out.println(sql);
 			rs = pstmt.executeQuery();
