@@ -34,8 +34,27 @@
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("h2").text("AS신청");
 		var proc = "${param.proc}";
+		
+		if(proc='insAs'){
+			$("h2").text("AS신청");
+			$("[name=proc]").val("uptAsBtn");
+		}
+		if(proc='uptAs'){
+			$("h2").text("AS수정");
+			var as_no = "${as.as_no}";
+			var as_cate = "${as.as_cate}";
+			var ord_no = "${as.ord_no}";
+			var as_detail = "${as.as_detail}";
+			$("[name=proc]").val("as");
+			$("[name=as_no]").val(as_no);
+			$("[name=as_cate]").val(as_cate);
+			$("[name=ord_no]").val(ord_no);
+			$("[name=as_detail]").text(as_detail);
+			
+			
+		}
+		
 		if(proc == 'ins'){
 			$("[name=proc]").val("as");
 			$("form").submit();
@@ -69,6 +88,7 @@
 		</header>
 		<form method="post">
 		<input type="hidden" name="proc" value="ins" />
+		<input type="hidden" name="as_no"  />
 		<div class="apply-cont">
 			<table class="apply-table">
 				<col width="10%">

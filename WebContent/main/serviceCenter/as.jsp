@@ -95,7 +95,7 @@
 				<col style="width:15%;"/>
 				<col style="width:45%"/>
 				<col style="width:20%;"/>
-				<col style="width:20%px;"/>
+				<col style="width:20%;"/>
 			</colgroup>
 			
 		<!-- 타이틀 -->
@@ -122,7 +122,7 @@
 		<!-- 검색 + 글등록 -->
 			<tr style="border:none;">
 				<th colspan="5" class="ordR">
-					<input class="btn ins-btn" type="button" value="글쓰기"></th>
+					<input class="btn ins-btn" type="button" value="AS신청"></th>
 			</tr>
 		</table>
 	</form>
