@@ -31,19 +31,51 @@
 <script type="text/javascript">
 $(document).ready(function(){
  	var mem_id = "${param.mem_id}";
-	if(mem_id!=""){
-		var isMember = "${isMember}";
+	var proc="${param.proc}"
+ 	var isMember = "${isMember}";
+ 	
+ 	if(proc ==  "regCkBtn"){
 		if(isMember=="true"){ 
 			alert("등록된 id입니다!");
 			$("[name=mem_id]").focus();
 		}else{
 			alert("등록가능합니다.")
-			$("[name=mem_id]").val("mem_id");
+			$("[name=mem_id]").val(mem_id);
+			$("[name=mem_id]").attr("readOnly",true);
 		}
-	}
+ 	}
+ 	
+ 	
 	$("#regCkBtn").click(function(){
+		$("[name=proc]").val("regCkBtn")
 		$("form").submit();
 	});
+	
+	$("#regbtn").click(function(){
+		if(isMember == "true" || isMember == ""){
+			alert("아이디를 다시 입력해주세요");
+		}else{
+			var mem_pw = $("[name=mem_pw]").val();
+			var ck_pw = $("[name=ck_pw]").val();
+			if(mem_id != null && mem_pw != ck_pw){
+				alert("비밀번호가 일치하지 않습니다.");
+			}else{
+				var mem_name = $("[name=mem_name]").val();
+				var mem_email = $("[name=mem_email]").val();
+				var mem_tel= $("[name=mem_tel]").val();
+				var mem_birth = $("[name=mem_birth]").val();
+				if(mem_name != null && mem_email != null && mem_tel != null && mem_birth != null &&
+				   mem_name != "" && mem_email != "" && mem_tel != "" && mem_birth != ""){
+					alert("회원가입완료");
+					$("[name=proc]").val("regbtn")
+					$("form").submit();
+				}else{
+					alert("모두 입력해주세요");
+				}
+			}
+		}
+	});
+	
 	/* 
  	$("#regCkBtn").click(function(){
 		var mem_id = "${param.mem_id}";
@@ -69,8 +101,7 @@ $(document).ready(function(){
 <div class="all-wrap">
 	<div class="wrap">
 	<form method="post">
-		<input type="hidden" name="mem_id" value="mem_id"/>
-		<input type="hidden" name="proc" value="mem_id"/>
+		<input type="hidden" name="proc" value=""/>
 		<table align="center">
 			<tr>
 				<th colspan="3" class="logo-text">PC냥이</th>
@@ -94,7 +125,7 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td>비밀번호 재입력<span class="import">*필수입력</span></td>
-				<td><input type="password" name="mem_pw" class="input-box" placeholder="비밀번호 재입력" /></td>
+				<td><input type="password" name="ck_pw" class="input-box" placeholder="비밀번호 재입력" /></td>
 			</tr>
 
 			<tr>
@@ -103,7 +134,8 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td>생년월일<span class="import">*필수입력</span></td>
-				<td><input type="date" name="mem_birth" class="input-box" placeholder="'-'제외 6자리(ex:901102)" /></td>
+				<td><input type="date" name="mem_birth" class="input-box" placeholder="'-'제외 6자리(ex:901102)" 
+				value="1990/01/01"/></td>
 			</tr>
 			<tr>
 				<td>이메일<span class="import">*필수입력</span></td>

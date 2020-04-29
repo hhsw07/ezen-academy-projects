@@ -29,9 +29,28 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	var proc="${param.proc}"
+	if(proc=="findBtn"){
+		alert("입력하신 정보가 없습니다");
+	}
 	// 버튼 클릭 
-	$("findBtn").click(function(){
-		$("[name=proc]")
+	$("#findBtn").click(function(){
+		var mem_name = $("[name=mem_name]").val();
+		var mem_email= $("[name=mem_email]").val();
+
+		if(mem_name != null && mem_email != null &&
+			mem_name != "" && mem_email != ""){
+
+			$("form").submit();
+		}else{
+			alert("다시 입력해주세요");
+		}
+		
+		
+		
+		
+		
+	
 	});
 });
 

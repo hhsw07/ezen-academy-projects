@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import z01_vo.Member;
+import z01_vo.Nk;
 
 /**
  * Servlet implementation class A01_loginCtrl
@@ -40,20 +41,16 @@ public class A01_loginCtrl extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		// 요청
-		String proc = request.getParameter("proc");
-		if(proc==null) proc="";
+		String proc = Nk.toStr(request.getParameter("proc"), "login");
 		System.out.println("proc확인"+proc);
 		
-		String mem_id = request.getParameter("mem_id");
-		if(mem_id==null) mem_id="";
-		System.out.println("mem_id확인"+mem_id);
-		
-		String page="main/login/login.jsp";
+		String page ="main/login/login.jsp";
+		// 세션 선언
+		HttpSession session = request.getSession();
 		
 		if(proc.equals("login")) {
 			Member mem = service.login(request);
 			if(mem!=null) {
-				HttpSession session = request.getSession();
 				session.setAttribute("mem", mem);
 			}
 		}
@@ -61,39 +58,25 @@ public class A01_loginCtrl extends HttpServlet {
 			request.getSession().invalidate();
 			page="main/main.jsp";
 		}
+		
 		// mem_id에 입력된 값이 있으면 DAO isMember에 해당하는걸 mem_id로 요청?
-		if(mem_id!=null&& !mem_id.equals("")) {
-			request.setAttribute("isMember", service.checkReg(mem_id));
+		if(proc.equals("regCkBtn")) {
+			request.setAttribute("isMember", service.checkReg(request));	
 		}
+			
+		
 		// 회원테이블에 입력값 저장
-		if(proc.equals("insMem")) {
-			System.out.println("저장확인");
+		if(proc.equals("regbtn")) {
 			service.insMem(request);
+			System.out.println("저장확인");
 			page="main/login/login.jsp";
 		}
 		// findBtn에 해당하는 요청 수행 
 		// service단 findID에 요청(service단에서 findID에 해당하는 부분을 수행) 
 		if(proc.equals("findBtn")) {
-			service.findID(request);
+			request.setAttribute("fid", service.findID(request));
+			
 		}
-		// DAO에서 return m을 설정한다?
-		if(proc.equals("findBtn")) {
-			request.setAttribute("m", service.findID(request));
-		}
-//		if(proc.equals("findBtn")) {
-//			// db에서 id와 email을 이용해서 조회 
-//			// 조회된 데이터가 1.null값일때 
-//			service.findID(request);
-//			if(service.findID(request)==null) {
-//				page = "main/login/findID.jsp?proc=no";
-//			}else {
-//				page = "main/login/findIdRs.jsp";
-//			}
-//			request.setAttribute("findId", service);
-//		}
-//		if(proc.equals("findBtn")) {
-//		request.setAttribute("m", service.findID(request));
-//		}
 		// 메인페이지
 		if(proc.equals("main")) {
 			page="main/main.jsp";
@@ -107,8 +90,12 @@ public class A01_loginCtrl extends HttpServlet {
 			page="main/login/findID.jsp";
 		}
 		// 아이디찾기 결과 페이지
-		if(proc.equals("findIdRs")) {
+		if(proc.equals("findBtn")) {
+			if(service.findID(request)==null) {
+				page = "main/login/findID.jsp";
+			}else {
 			page="main/login/findIdRs.jsp";
+			}
 		}
 		// 로그인페이지 -> 비밀번호 찾기
 		if(proc.equals("findPS")) {
@@ -117,6 +104,10 @@ public class A01_loginCtrl extends HttpServlet {
 		// 비밀번호찾기 결과 페이지
 		if(proc.equals("findPsRs")) {
 			page="main/login/findPsRs.jsp";
+		}
+		// 아이디 중복 체크
+		if(proc.equals("regCkBtn")) {
+			page="main/login/signUp.jsp";
 		}
 
 		RequestDispatcher rd= request.getRequestDispatcher(page);

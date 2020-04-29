@@ -32,17 +32,13 @@ public class A01_loginDao {
 //!! ()괄호 안에 쓰이는 코드가 왜 어떻게 쓰이는지 이해부족
 	
 	
-	// public ArrayList<Member>는 Member VO를 ArrayList로 선언한다는 의미 getMemberList의 이름으로(?)
 	public ArrayList<Member> getMemberList(){
-	// ArrayList<Member>를 mList로 선언(?)
 		ArrayList<Member> mList=new ArrayList<Member>();
 		try {
 			setCon(); // Connection 객체가 메모리 로딩.
 			String sql = "SELECT * FROM FROM p5_member ";
 			pstmt = con.prepareStatement(sql);
-			stmt = con.createStatement();
-			rs=stmt.executeQuery(sql);
-			// 위에 선언한 Member를 while 문 ResultSet.next로 추가될때마다 반복으로 생성(?)
+			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				mList.add(new Member(
 						rs.getString(1),
@@ -54,7 +50,6 @@ public class A01_loginDao {
 						rs.getDate(7) 
 						));
 			}
-			// 자원해제부분이 어떤 의미인지는 이해하지 못하고 사용
 			rs.close();
 			stmt.close();
 			con.close();
@@ -65,46 +60,9 @@ public class A01_loginDao {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		// 위에 수행한 코드들을 mList는 반환한다는 의미(?)
 		return mList;
 	}	
-	// A04_MemberDao.login(Member mem)	
-	/*
-	public Member login(Member mem){
-		Member m=null;
-		try {
-			setCon(); // Connection 객체가 메모리 로딩.
-			String sql = "SELECT * FROM p5_member "
-					+ "WHERE mem_id = '"+mem.getMem_id()+"' "
-					+ "AND mem_pw='"+mem.getMem_pw()+"' ";
 
-			System.out.println(sql);
-			stmt = con.createStatement();
-			rs=stmt.executeQuery(sql);
-			if(rs.next()) {
-				m = new Member(
-							rs.getString(1),
-							rs.getString(2),
-							rs.getString(3),
-							rs.getDate(4),
-							rs.getString(5),
-							rs.getString(6),
-							rs.getDate(7) );
-			}
-			rs.close();
-			stmt.close();
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return m;
-	}
-	*/
 	// 로그인
 	public Member login(Member mem){
 		Member m=null;
@@ -161,8 +119,7 @@ public class A01_loginDao {
 			rs = pstmt.executeQuery();			
 			
 			if(rs.next()) {
-				m = new Member(
-						rs.getString("mem_id"));
+				m = new Member(rs.getString("mem_id"));
 			}
 			rs.close();
 			pstmt.close();
