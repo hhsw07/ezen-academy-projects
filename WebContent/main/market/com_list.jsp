@@ -22,7 +22,7 @@ ul li{list-style:none;}
 				border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
 			.menu-2 li{display:inline; font-size:25px; margin:0 15px; color:white; cursor:pointer;}
 				
-	#market_wrap{position: relative; width:1280px; height:3200px; margin:0 auto;}
+	#market_wrap{position: relative; width:1280px; height:2400px; margin:0 auto;}
 	#market_title{border-bottom:1px solid black; padding:10px; font-size:20px;}
 	.com{width:220px; height:750px;float: left; margin:15px;}
 	.com_img{width:220px;height:220px;}

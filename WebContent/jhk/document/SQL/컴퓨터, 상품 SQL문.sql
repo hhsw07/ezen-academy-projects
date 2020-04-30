@@ -34,8 +34,11 @@ WHERE com_no = 1001
 ORDER BY com_no asc;
 -- 카테고리에 따른 컴퓨터 목록
 SELECT * FROM p5_computer
-WHERE com_kind = '가정/사무용';
-ORDER BY com_no asc;
+WHERE NOT com_kind = '개인사양'
+AND NOT com_kind = '임시견적'
+AND com_kind = '가정/사무용'
+ORDER BY com_no ASC;
+
 -- 전체 컴퓨터 목록(견적포함)
 SELECT pa.com_no, parts_name, parts_cnt, parts_mc, 
 com_name, com_kind, com_img, com_detail, com_price

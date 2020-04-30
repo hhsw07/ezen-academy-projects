@@ -60,6 +60,10 @@ $(document).ready(function(){
 						<li><a href="SCenter">고객센터</a></li>
 						<li><a href="login">로그인</a></li>
 					</c:when>
+					<c:when test="${mem.mem_id == 'admin'}">
+						<li id="lo">로그아웃</li>	
+						<li><a href="admin">관리자</a></li>
+					</c:when>
 					<c:otherwise>
 						<li id="lo">로그아웃</li>
 						<li><a href="SCenter">고객센터</a></li>

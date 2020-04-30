@@ -37,19 +37,19 @@ ul li{list-style:none;}
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#member").click(function(){
-		$("[name=category]").val("member");
+		$("[name=proc").val("member");
 		$("form").submit();
 	});
 	$("#market").click(function(){
-		$("[name=category]").val("market");
+		$("[name=proc]").val("market");
 		$("form").submit();
 	});
 	$("#order").click(function(){
-		$("[name=category]").val("order");
+		$("[name=proc]").val("order");
 		$("form").submit();
 	});
 	$("#as").click(function(){
-		$("[name=category]").val("mgr");
+		$("[name=proc]").val("mgr");
 		$("form").submit();
 	});
 });
@@ -58,9 +58,11 @@ $(document).ready(function(){
 <body>
 	
 <!-- 상단 메뉴바 시작 -->
+		<form method="post">
+		<input type="hidden" name="proc"/>
 		<div class="menu-wrap">
 			<div class="menu-1">
-				<a href="login">로그인</a>
+				<a href="main">메인화면</a>
 			</div>
 			<div class="menu-div"></div>
 			<div class="menu-2-wrap">
@@ -75,6 +77,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
+		</form>
 <!-- 상단 메뉴바 끝 -->
 
 </body>
