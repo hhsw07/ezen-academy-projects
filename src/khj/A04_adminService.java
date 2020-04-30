@@ -42,6 +42,32 @@ public class A04_adminService {
 			dao.deleteMember(mem_id);
 		}
 		
+		public ArrayList<Computer> clist(HttpServletRequest request){
+			String category = Nk.toStr(request.getParameter("category"));
+			if(category==null||category.equals("")) category="all";
+			return dao.getComList(category);
+		}
+		
+		public ArrayList<Comdetail> cdlist(HttpServletRequest request){
+			int com_no = Nk.toInt(request.getParameter("com_no"));
+			return dao.getComDetailList(com_no);
+		}
+		
+		public Computer cominfo(HttpServletRequest request) {
+			int com_no = Nk.toInt(request.getParameter("com_no"));
+			return dao.getComDetail(com_no);
+		}
+		
+		public ArrayList<Parts> plist(HttpServletRequest request){
+			String category = Nk.toStr(request.getParameter("category"));
+			if(category==null||category.equals("")) category="all";
+			return dao.getPartsList(category);
+		}
+		public Parts partsinfo(HttpServletRequest request) {
+			int parts_no = Nk.toInt(request.getParameter("parts_no"));
+			return dao.getPartsDetail(parts_no);
+		}		
+		
 		// mgr 목록 
 		// int mgr_no, int as_no, Date as_date, String as_cate,
 		// String mem_id, Date mgr_date, String mgr_stat

@@ -160,6 +160,240 @@ public class A04_adminDao {
 		}
 		
 	}
+	public ArrayList<Computer> getComList(String category){
+		ArrayList<Computer> clist = new ArrayList<Computer>();
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_computer\r\n" + 
+					"WHERE NOT com_kind = '개인사양'\r\n" + 
+					"AND NOT com_kind = '임시견적'\r\n"; 
+					if(!category.equals("all")) sql+="AND com_kind = ? \r\n";
+					sql+="ORDER BY com_no asc";
+			
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			if(!category.equals("all")) {
+				pstmt.setString(1, category);
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				clist.add(new Computer(rs.getInt(1),
+								    rs.getString(2),
+								    rs.getString(3),
+								    rs.getString(4),
+								    rs.getString(5),
+								    rs.getString(6),
+								    rs.getInt(7)
+						));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return clist;
+	}
+
+	public ArrayList<Comdetail> getComDetailList(int com_no){
+		ArrayList<Comdetail> cdlist = new ArrayList<Comdetail>();
+		
+		try {
+			setConn();
+			String sql = "SELECT pa.com_no, parts_name, parts_cnt, parts_mc, \r\n" + 
+					"com_name, com_kind, com_img, com_detail, com_price \r\n" + 
+					"FROM p5_assembly pa, p5_parts pp, p5_computer pc\r\n" + 
+					"WHERE pa.parts_no = pp.parts_no\r\n" + 
+					"AND pa.com_no = pc.com_no\r\n"; 
+					if(com_no!=0) sql+="AND pa.com_no = ?\r\n"; 
+					sql+="ORDER BY pp.parts_no asc";
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			if(com_no!=0) {
+				pstmt.setInt(1, com_no);
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				cdlist.add(new Comdetail(rs.getInt(1),
+								    rs.getString(2),
+								    rs.getInt(3),
+								    rs.getString(4),
+								    rs.getString(5),
+								    rs.getString(6),
+								    rs.getString(7),
+								    rs.getString(8),
+								    rs.getInt(9)
+						));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cdlist;
+	}
+	
+	public Computer getComDetail(int com_no){
+		Computer com = new Computer();
+		
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_computer\r\n" + 
+					"WHERE com_no = ?\r\n" + 
+					"ORDER BY com_no asc";
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, com_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				com = new Computer(rs.getInt(1),
+							    rs.getString(2),
+							    rs.getString(3),
+							    rs.getString(4),
+							    rs.getString(5),
+							    rs.getString(6),
+							    rs.getInt(7)
+								);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return com;
+	}
+	
+	public ArrayList<Mgr> mgrList(){
+		ArrayList<Mgr> mgrList = new ArrayList<Mgr>();
+		try {
+			setConn();
+			// int mgr_no, int as_no, Date as_date, String as_cate,
+			// String mem_id, Date mgr_date, String mgr_stat
+			String sql = "SELECT a.MGR_NO, b.AS_NO, b.AS_DATE, b.AS_CATE, c.MEM_ID, a.MGR_DATE , a.MGR_STAT \r\n" + 
+					"FROM P5_MGR a, P5_AS b, P5_ORDER c\r\n" + 
+					"WHERE a.AS_NO = b.AS_NO \r\n" + 
+					"AND b.ORD_NO = c.ORD_NO\r\n" + 
+					"ORDER BY a.MGR_NO DESC";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				mgrList.add(new Mgr(rs.getInt(1),
+									rs.getInt(2),
+									rs.getDate(3),
+									rs.getString(4),
+									rs.getString(5),
+									rs.getDate(6),
+									rs.getString(7)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		return mgrList;
+	}
+	
+	public ArrayList<Parts> getPartsList(String category){
+		ArrayList<Parts> plist = new ArrayList<Parts>();
+		
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_parts \r\n"; 
+			if(!category.equals("all")) sql+="WHERE parts_mc=? \r\n";
+				sql+="ORDER BY parts_no asc";
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			if(!category.equals("all")) {
+				pstmt.setString(1, category);
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				plist.add(new Parts(rs.getInt(1),
+								    rs.getString(2),
+								    rs.getInt(3),
+								    rs.getInt(4),
+								    rs.getString(5),
+								    rs.getString(6),
+								    rs.getString(7),
+								    rs.getString(8),
+								    rs.getString(9),
+								    rs.getString(10),
+								    rs.getString(11),
+								    rs.getString(12),
+								    rs.getString(13)
+						));
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return plist;
+	}
+	
+	public Parts getPartsDetail(int parts_no){
+		Parts parts = new Parts();
+		
+		try {
+			setConn();
+			String sql = "SELECT * FROM p5_parts\r\n" + 
+					"WHERE parts_no = ?\r\n" + 
+					"ORDER BY parts_no asc";
+			System.out.println(sql);
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, parts_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				parts = new Parts(rs.getInt(1),
+					    rs.getString(2),
+					    rs.getInt(3),
+					    rs.getInt(4),
+					    rs.getString(5),
+					    rs.getString(6),
+					    rs.getString(7),
+					    rs.getString(8),
+					    rs.getString(9),
+					    rs.getString(10),
+					    rs.getString(11),
+					    rs.getString(12),
+					    rs.getString(13)
+						);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return parts;
+	}
+
 
 	public Mgr mgrDetail(int mgr_no){
 		Mgr mgrDetail = new Mgr();
