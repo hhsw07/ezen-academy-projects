@@ -53,6 +53,22 @@ public class PayCtrl extends HttpServlet {
 			
 			//session.setAttribute("cart", cartList);
 		}
+		if(proc.equals("delBtn")) {
+			ArrayList<Cart> cartlist = (ArrayList<Cart>) session.getAttribute("cart");
+			String[] cartckS = request.getParameterValues("cartck");
+			for(int idx = cartckS.length-1; idx >= 0; idx--) {
+				int cartck = Nk.toInt(cartckS[idx]);
+				System.out.println("idx:"+idx+"cartck:"+cartck);
+				cartlist.remove(cartck);
+			}
+			
+			session.setAttribute("cart", cartlist);
+		}
+		
+		
+		
+		
+		
 		if(proc.equals("gopay")) {
 			System.out.println("확인:"+proc);
 			request.setAttribute("buylist", service.getCart(request));

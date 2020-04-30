@@ -81,6 +81,18 @@
 			}
 		});
 		// 선택삭제
+		$('#delBtn').click(function(){
+			if($("input[name=cartck]:checked").length == 0){
+				alert("선택된 상품이 없습니다.")
+			}else{
+				$("[name=proc]").val("delBtn");
+				$("form").submit();	
+			}
+		});
+		
+		
+		// 선택삭제
+		/*
 		var ckbox = $("input[name=cartck]");
 		var strArry= $("input[name=cartck]:checked").length;
 		$('#delBtn').click(function(){
@@ -88,7 +100,7 @@
 				$("input[name=cartck]:checked").parent().parent().remove();
 			}
 		});
-			
+		*/	
 		<%--$("#delBtn")--%>
 		
 		
@@ -187,7 +199,7 @@
 						<c:forEach var="cart" varStatus="status" items="${cart}">
 						<input type="hidden" name="req_no" value="${cart.req_no}"/>
 						<tr>
-							<td style="text-align:center"><input type="checkbox" name="cartck"/></td>
+							<td style="text-align:center"><input type="checkbox" name="cartck" value="${status.index}"/></td>
 							<td>
 								<span><img class="product-img" src="image/parts/${cart.parts_img}"/></span>
 								<span style="vertical-align:middle;">${cart.parts_name}</span>
