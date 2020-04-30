@@ -202,7 +202,7 @@ public class A02_serviceCenterService {
 		int ord_no = Nk.toInt(request.getParameter("ord_no"));
 		String as_cate = Nk.toStr(request.getParameter("as_cate"));
 		String as_detail = Nk.toStr(request.getParameter("as_detail"));
-		As ins = new As(ord_no,as_cate,as_detail);
+		As ins = new As(as_cate,as_detail,ord_no);
 		dao.insAs(ins);
 	}
 
@@ -210,8 +210,9 @@ public class A02_serviceCenterService {
 		int as_no = Nk.toInt(request.getParameter("as_no"));
 		String as_cate = Nk.toStr(request.getParameter("as_cate"));
 		String as_detail = Nk.toStr(request.getParameter("as_detail"));
+		System.out.println("서비스단:"+as_no+":"+as_cate+":"+as_detail);
 		As upt = new As(as_no,as_cate,as_detail);
-		dao.insAs(upt);
+		dao.uptAs(upt);
 	}
 
 	public void delComm(HttpServletRequest request) {
@@ -219,10 +220,10 @@ public class A02_serviceCenterService {
 		dao.delComm(as_no);
 	}
 
-	public void insAns(HttpServletRequest request) {
+	public void insComm(HttpServletRequest request) {
 		int as_no = Nk.toInt(request.getParameter("as_no"));
 		String as_comm = Nk.toStr(request.getParameter("as_comm"));
-		dao.insAns(as_no, as_comm);
+		dao.insComm(as_no, as_comm);
 	}
 
 	public ArrayList<Order> ordList(HttpServletRequest request){

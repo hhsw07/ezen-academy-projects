@@ -59,7 +59,7 @@ ul li{list-style:none;}
 <div class="all-wrap">
 
 <jsp:include page="../main/top.jsp"/>
-<form>
+<form action="comlist" method="post">
 	<input type="hidden" name="proc" value=""/>
 	<input type="hidden" name="com_no"/>
 </form>

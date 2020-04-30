@@ -163,6 +163,7 @@
 				<input type="hidden" name="parts_mc"/>
 				<input type="hidden" name="parts_no"/>
 				<input type="hidden" name="asq_no"/>
+				<input type="hidden" name="req_cnt" value="1"/>
 				<table>
 					<c:choose>
 						<c:when test="${parts_mc=='CPU'}">

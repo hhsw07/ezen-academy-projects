@@ -36,23 +36,24 @@
 	$(document).ready(function(){
 		var proc = "${param.proc}";
 		
-		if(proc='insAs'){
+		if(proc== 'insAs'){
 			$("h2").text("AS신청");
-			$("[name=proc]").val("uptAsBtn");
+			$("[name=proc]").val("ins");
 		}
-		if(proc='uptAs'){
+		
+		
+		if(proc=='uptAs'){
 			$("h2").text("AS수정");
 			var as_no = "${as.as_no}";
 			var as_cate = "${as.as_cate}";
 			var ord_no = "${as.ord_no}";
 			var as_detail = "${as.as_detail}";
-			$("[name=proc]").val("as");
+			$("[name=proc]").val("uptAsBtn");
 			$("[name=as_no]").val(as_no);
 			$("[name=as_cate]").val(as_cate);
-			$("[name=ord_no]").val(ord_no);
+			$("[name=ord_no]").html("<option value='"+ord_no+"'>"+ord_no+"</option>");
 			$("[name=as_detail]").text(as_detail);
-			
-			
+			$("[name=applyBtn]").val("수정");
 		}
 		
 		if(proc == 'ins'){
@@ -60,20 +61,23 @@
 			$("form").submit();
 		}
 		
-		
 		$("[name=applyBtn]").click(function(){
-			var ord_no = $("[name=ord_no]").val();
-			console.log(ord_no);
-			if(ord_no != ""){
-				if(confirm("등록하시겠습니까?")){
+			if(proc=='uptAs'){
+				if(confirm("수정하시겠습니까?")){
 					$("form").submit();
-				}	
-			}else{
-				alert("주문번호를 선택하세요.")
+				}
+			}else if(proc=='insAs'){
+				var ord_no = $("[name=ord_no]").val();
+				if(ord_no != ""){
+					if(confirm("등록하시겠습니까?")){
+						$("form").submit();
+					}	
+				}else{
+					alert("주문번호를 선택하세요.")
+				}
 			}
-			
-			
 		});
+		
 		
 		
 	});

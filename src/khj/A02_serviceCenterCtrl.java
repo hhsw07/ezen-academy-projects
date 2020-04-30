@@ -183,7 +183,7 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		// AS등록
 		if(proc.equals("ins")) {
 			service.insAs(request);
-			proc = "as";
+			proc = "insAs";
 		}
 		
 		// AS수정 불러오기
@@ -202,16 +202,17 @@ public class A02_serviceCenterCtrl extends HttpServlet {
 		}
 		// AS삭제
 		if(proc.equals("delAs")) {
-			service.delAs(request);
-			proc = "as";
+			// 관리자페이지 연결로 인하여 삭제 불가
 		}
-		// AS댓글 등록 및 수정
-		if(proc.equals("insAns")) {
-			service.insAns(request);
+		
+		// AS댓글 수정
+		if(proc.equals("insComm")) {
+			service.insComm(request);
 			request.setAttribute("as", service.asList(request));
 			request.setAttribute("asdetail", service.asDetail(request));
 			proc = "goAs";
 		}
+		
 		// AS댓글 삭제
 		if(proc.equals("delComm")) {
 			service.delComm(request);

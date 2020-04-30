@@ -45,6 +45,10 @@
 	$(document).ready(function(){
 		$("h2").text("장바구니");
 		var proc = "${param.proc}";
+		if(proc == "cart"){
+			$("[name=proc]").val("gobuy");
+			$("form").submit();
+		}
 		if(proc == "buy"){
 			$("h2").text("구매");	
 		}
@@ -216,7 +220,7 @@
 				<div>
 					<b>결제예정금액</b>
 					<p><span id="totalPay">
-						<input type="hidden" name="totalPay" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/>0
+						<input type="hidden" name="totalPay" value="${totPay}"/><fmt:formatNumber type="number" value="${totPay}"/>
 					</span> 원</p>
 				</div>
 			</div>

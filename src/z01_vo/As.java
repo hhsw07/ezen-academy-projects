@@ -37,7 +37,14 @@ public class As {
 	
 	
 	
-	public As(int ord_no, String as_cate, String as_detail) {
+	public As(int as_no, String as_cate, String as_detail) {
+		super();
+		this.as_no = as_no;
+		this.as_cate = as_cate;
+		this.as_detail = as_detail;
+	}
+	
+	public As(String as_cate, String as_detail, int ord_no) {
 		super();
 		this.ord_no = ord_no;
 		this.as_cate = as_cate;
@@ -57,6 +64,19 @@ public class As {
 			Date as_comdate) {
 		super();
 		this.as_no = as_no;
+		this.as_cate = as_cate;
+		this.as_detail = as_detail;
+		this.as_date = as_date;
+		this.mem_id = mem_id;
+		this.as_comm = as_comm;
+		this.as_comdate = as_comdate;
+	}
+	
+	public As(int as_no, int ord_no, String as_cate, String as_detail, Date as_date, String mem_id, String as_comm,
+			Date as_comdate) {
+		super();
+		this.as_no = as_no;
+		this.ord_no = ord_no;
 		this.as_cate = as_cate;
 		this.as_detail = as_detail;
 		this.as_date = as_date;
