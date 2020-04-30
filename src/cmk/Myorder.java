@@ -70,8 +70,11 @@ public class Myorder {
 		this.req = req;
 		this.parts_price = parts_price;
 	}
-	
-	public Myorder(int ord_no, Date ord_date, String mem_id, String ord_stat, String parts_img, String parts_name, int parts_price, int req_cnt, int req, int total,
+	/*
+	 pr.ord_no, c.ord_date, c.MEM_ID, c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE,\r\n" + 
+					" c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE
+	 */
+	public Myorder(int ord_no, Date ord_date, String mem_name, String ord_stat, String parts_img, String parts_name, int parts_price, int req_cnt, int req, int total,
 			int ord_invoice, String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req, String pay_method, int pay_point, int pay_price) {
 		super();
 		this.ord_no = ord_no;
@@ -82,7 +85,7 @@ public class Myorder {
 		this.total = total;
 		this.ord_date = ord_date;
 		this.ord_stat = ord_stat;
-		this.mem_id = mem_id;
+		this.mem_name = mem_name;
 		this.parts_price = parts_price;
 		this.ord_invoice = ord_invoice;
 		this.ord_name = ord_name;

@@ -51,7 +51,6 @@ public class A03_myPageService {
 	
 	public ArrayList<Myorder> myolist(String mem_id, HttpServletRequest request){
 		int ord_no = Nk.toInt(request.getParameter("ord_no"));
-		System.out.println("ordno:"+ord_no);
 		return dao.myolist(mem_id, ord_no);
 	}
 }

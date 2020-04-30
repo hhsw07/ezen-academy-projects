@@ -86,15 +86,15 @@
 					<tbody>
 						<tr>
 							<th scope="col">주문번호</th>
-							<td id="no"></td>
+							<td id="no">${getmyo.ord_no}</td>
 							<th scope="col">주문일자</th>
-							<td id="date"></td>
+							<td id="date">${getmyo.ord_date}</td>
 						</tr>
 						<tr>
 							<th scope="col">주문자</th>
-							<td id="id"></td>
+							<td id="id">${getmyo.mem_name}</td>
 							<th scope="col">주문처리상태</th>
-							<td id="stat"></td>
+							<td id="stat">${getmyo.ord_stat}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -120,10 +120,6 @@
 				</thead>
 				<tbody>
 				<c:forEach var="myo" items="${myolist}">
-				<input type="hidden" name="ord_no" value="${myo.ord_no}"/>
-				<input type="hidden" name="ord_date" value="${myo.ord_date}"/>
-				<input type="hidden" name="mem_id" value="${myo.mem_id}"/>
-				<input type="hidden" name="ord_stat" value="${myo.ord_stat}"/>
 					<tr>
 						<td class="product">
 							<span class="product-img" style="background-image:url('image/parts/${myo.parts_img}')"></span>
@@ -143,7 +139,7 @@
 				<tr>
 					<th scope="col" class="delivery-tracking">배송추적</th>
 					<td class="delivery-detail" colspan="3">
-						<span><p>CJ대한통운</p><p>${myolist.ord_invoice}</p></span>
+						<span><p>CJ대한통운</p><p>${getmyo.ord_invoice}</p></span>
 						<a href="https://www.doortodoor.co.kr/parcel/doortodoor.do?fsp_action=PARC_ACT_002&fsp_cmd=retrieveInvNoACT&invc_no=#운송장번호" target="_blank" rel="noopener noreferrer">
 							<span class="btn detail-btn">배송추적</span>
 						</a>
@@ -164,24 +160,24 @@
 					<tbody>
 						<tr>
 							<th scope="col">수취인</th>
-							<td>${myolist.ord_name}</td>
+							<td>${getmyo.ord_name}</td>
 						</tr>
 						<tr>
 							<th scope="col" rowspan="2">주소</th>
-							<td>(${myolist.ord_post})</td>
+							<td>(${getmyo.ord_post})</td>
 						</tr>
 						<tr>
-							<td>${myolist.ord_addr1} ${myolist.ord_addr2}</td>
+							<td>${getmyo.ord_addr1} ${getmyo.ord_addr2}</td>
 						</tr>
 						<tr>
 							<th scope="col">연락처</th>
 							<td>
-								<span class="mobile-wrapper">${myolist.ord_tel}</span>
+								<span class="mobile-wrapper">${getmyo.ord_tel}</span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="col">배송메세지</th>
-							<td>${myolist.ord_req}</td>
+							<td>${getmyo.ord_req}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -200,30 +196,30 @@
 						<tr>
 							<th class="type">결제 방법</th>
 							<td class="payment">
-								<div class="payment-price">${myolist.pay_method}</div>
+								<div class="payment-price">${getmyo.pay_method}</div>
 							</td>
 						</tr>
 						<tr>
 							<th class="type">총 주문금액</th>
 							<td class="payment">
-								<div class="payment-price">${myolist.total} 원 </div>
+								<div class="payment-price">${getmyo.total} 원 </div>
 							</td>
 						</tr>
 						<tr>
 							<th class="type">포인트 사용금액</th>
 							<td class="payment">
-								<div class="payment-price">${myolist.pay_point} 원</div>
+								<div class="payment-price">${getmyo.pay_point} 원</div>
 							</td>
 						</tr>
 						<tr>
 							<th class="type">총 결제금액</th>
 							<td class="payment">
-								<div class="payment-price">${myolist.pay_price} 원</div>
+								<div class="payment-price">${getmyo.pay_price} 원</div>
 							</td>
 						</tr>
 						<tr class="mileage-wrapper">
 							<th class="type">적립 포인트</th>
-							<td class="payment">${myolist.pay_price*0.01} </td>
+							<td class="payment">${getmyo.pay_price*0.01} </td>
 						</tr>
 					</tbody>
 				</table>

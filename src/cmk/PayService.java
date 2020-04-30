@@ -93,7 +93,9 @@ public class PayService {
 			Point use = new Point(mem_id,"상품구매사용",-1*pay_point);
 			dao.insPoint(use);
 		}
-		Point saving = new Point(mem_id,"상품구매적립",pay_price);
+		double pt = (pay_price*0.01)+(((pay_price*0.01)%1>0.5)?(1-((pay_price*0.01)%1))%1:-((pay_price*0.01)%1));
+		int savept = (int)(pt);
+		Point saving = new Point(mem_id,"상품구매적립",savept);
 		dao.insPoint(saving);
 	}
 	

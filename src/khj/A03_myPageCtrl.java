@@ -54,7 +54,6 @@ public class A03_myPageCtrl extends HttpServlet {
 		}
 		if(proc.equals("modetail")) {
 			request.setAttribute("myolist", service.myolist(mem_id, request));
-			System.out.println("ctrl1");
 		}
 		
 		

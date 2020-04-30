@@ -491,8 +491,8 @@ ORDER BY ord_no asc;
 
 --------------------------------------
 /* 주문 */
---DROP TABLE p5_order 
---	CASCADE CONSTRAINTS;
+DROP TABLE p5_order 
+	CASCADE CONSTRAINTS;
 
 /* 주문 */
 CREATE TABLE p5_order (

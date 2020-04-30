@@ -83,15 +83,15 @@
 						<div class="pointinfo_show">
 							<div class="point-info">
 								<div class="point-info-tit">사용가능 포인트</div>
-								<div class="point-info-p"><span id="totpt">${tot}</span> p</div>
+								<div class="point-info-p"><span id="totpt"><fmt:formatNumber value="${tot}"/></span> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">총 적립 포인트</div>
-								<div class="point-info-p"><span id="pluspt">${plus}</span> p</div>
+								<div class="point-info-p"><span id="pluspt"><fmt:formatNumber value="${plus}"/></span> p</div>
 							</div>
 							<div class="point-info">
 								<div class="point-info-tit">사용한 포인트</div>
-								<div class="point-info-p"><span id="minuspt">${minus}</span> p</div>
+								<div class="point-info-p"><span id="minuspt"><fmt:formatNumber value="${minus}"/></span> p</div>
 							</div>
 						</div>
 					</div>
@@ -123,13 +123,11 @@
 										<td class="point-td" style="padding-left:70px;">${pt.point_detail}</td>
 									<c:choose>
 										<c:when test="${pt.point_pt<0}">
-											<c:set var="minus" value="${minus+pt.point_pt}" />
 											<td style="text-align:right; padding-right:100px;" class="point-td">
 												<span class="calpt"><input type="hidden" name="point_pt" value="${pt.point_pt}"/><fmt:formatNumber value="${pt.point_pt}"/></span> p
 											</td>
 										</c:when>
 										<c:when test="${pt.point_pt>=0}">
-											<c:set var="plus" value="${plus+pt.point_pt}" />
 											<td style="text-align:right; padding-right:100px;" class="point-td txt-color-r" >
 												+<span class="calpt"><input type="hidden" name="point_pt" value="${pt.point_pt}"/><fmt:formatNumber value="${pt.point_pt}"/></span> p
 											</td>
@@ -138,7 +136,6 @@
 									</tr>
 									</c:forEach>
 								</tbody>
-								<c:set var="tot" value="${plus+minus}"/>
 							</c:if>
 							</table>
 						</div>
