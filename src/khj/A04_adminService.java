@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import cmk.Myorder;
 import z01_vo.Member;
 import z01_vo.Mgr;
 import z01_vo.Nk;
@@ -71,5 +72,19 @@ public class A04_adminService {
 			Mgr upt = new Mgr(mgr_no, mgr_stat, mgr_note, mgr_price);
 			dao.uptMgr(upt);
 		}
-		
+		public ArrayList<Myorder> getOrders(HttpServletRequest request){
+			return dao.getOrders();			
+		}
+		public ArrayList<Myorder> OrdersList(HttpServletRequest request){
+			return dao.OrdersList();
+		}
+		public ArrayList<Myorder> getord(HttpServletRequest request){
+			int ord_no = Nk.toInt(request.getParameter("ord_no"));
+			return dao.getord(ord_no);
+		}
+		public void uptOrd(HttpServletRequest request) {
+			int ord_no = Nk.toInt(request.getParameter("ord_no"));
+			int ord_invoice = Nk.toInt(request.getParameter("ord_invoice"));
+			dao.uptOrd(new Myorder(ord_no,ord_invoice));
+		}
 }

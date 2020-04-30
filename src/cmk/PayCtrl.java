@@ -51,7 +51,6 @@ public class PayCtrl extends HttpServlet {
 			cartlist.add(service.getProd(request));
 			session.setAttribute("cart", cartlist);
 			
-			//session.setAttribute("cart", cartList);
 		}
 		if(proc.equals("gopay")) {
 			System.out.println("확인:"+proc);

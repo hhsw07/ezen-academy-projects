@@ -159,42 +159,6 @@ public class A04_adminDao {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 	public ArrayList<Mgr> mgrList(){
 		ArrayList<Mgr> mgrList = new ArrayList<Mgr>();
 		try {
@@ -317,6 +281,133 @@ public class A04_adminDao {
 			pstmt.close();
 			con.close();
 			System.out.println("as 수정!!");
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			// 입력시, 문제 발생시, 이전 데이터 원복 처리.
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public ArrayList<Myorder> getOrders(){
+		ArrayList<Myorder> orders = new ArrayList<Myorder>();
+		try {
+			setConn();
+			String sql = "SELECT c.ord_no, sum(pr.req_cnt*a.parts_price) total, c.ORD_DATE, c.ord_stat, c.ORD_INVOICE \r\n" + 
+					"FROM p5_request pr, \r\n" + 
+					"	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c\r\n" + 
+					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no \r\n" + 
+					"GROUP BY c.ORD_NO, c.ORD_DATE, c.ORD_STAT, c.ORD_INVOICE \r\n" + 
+					"ORDER BY ord_no DESC";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				orders.add(new Myorder(rs.getInt(1),rs.getInt(2), rs.getDate(3),rs.getString(4),rs.getInt(5)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return orders;
+	}
+	public ArrayList<Myorder> OrdersList(){
+		ArrayList<Myorder> olists = new ArrayList<Myorder>();
+		try {
+			setConn();
+			String sql = "SELECT pr.ord_no, a.parts_img, a.parts_name\r\n" + 
+					"FROM p5_request pr, \r\n" + 
+					"	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a\r\n" + 
+					"WHERE pr.REQ_NO = a.parts_no\r\n" + 
+					"ORDER BY ord_no DESC";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				olists.add(new Myorder(rs.getInt(1),rs.getString(2),rs.getString(3)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return olists;
+	}
+	
+	public ArrayList<Myorder> getord(int ord_no){
+		ArrayList<Myorder> getord = new ArrayList<Myorder>();
+		try {
+			setConn();
+			String sql = "SELECT pr.ord_no, c.ord_date, f.MEM_NAME , c.ord_stat, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req, d.total, c.ORD_INVOICE,\r\n" + 
+					" c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE \r\n" + 
+					"FROM p5_request pr, \r\n" + 
+					"	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"	UNION SELECT com_no, com_img, com_name, com_price FROM p5_computer) a, P5_ORDER c,\r\n" + 
+					"	(SELECT pr.ord_no, sum(pr.req_cnt*a.parts_price) total FROM p5_request pr, \r\n" + 
+					"		(SELECT parts_no, parts_name, PARTS_PRICE FROM p5_parts\r\n" + 
+					"		UNION\r\n" + 
+					"		SELECT com_no, com_name, com_price FROM p5_computer) a\r\n" + 
+					"	WHERE pr.REQ_NO = a.parts_no\r\n" + 
+					"	GROUP BY ord_no\r\n" + 
+					"	ORDER BY ord_no ASC) d, p5_pay e, p5_member f\r\n" + 
+					"WHERE pr.REQ_NO = a.parts_no AND c.ord_no = pr.ord_no AND d.ord_no = pr.ord_no AND e.ORD_NO = pr.ORD_NO AND c.MEM_ID = f.MEM_ID " + 
+					"AND pr.ord_no=? ";
+			System.out.println(sql);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ord_no);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+			/*
+			int 1, Date 2, String 3, String 4, String 5, String 6, int 7, int 8, int 9, int 10,
+			int 11, String 12, String 13, String 14, String 15, String 16, String 17, String 18, int 19, int 20
+			 */	
+				getord.add(new Myorder(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
+						rs.getInt(9), rs.getInt(10),rs.getInt(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
+						rs.getString(16),rs.getString(17),rs.getString(18),rs.getInt(19),rs.getInt(20)));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getord;
+	}
+	public void uptOrd(Myorder upt) {
+		try {
+			setConn(); 
+			String sql = "UPDATE P5_ORDER \r\n" + 
+					"SET ORD_INVOICE = ? , ord_stat='배송중'\r\n" + 
+					"WHERE ORD_NO = ? ";
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, upt.getOrd_invoice());
+			pstmt.setInt(2, upt.getOrd_no());
+			// 실행
+			pstmt.executeUpdate();
+			con.commit();
+			// 자원해제
+			pstmt.close();
+			con.close();
+			System.out.println("수정!!");
 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

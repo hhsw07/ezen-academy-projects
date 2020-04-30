@@ -29,9 +29,35 @@ public class Myorder {
 	private int pay_price;
 	
 	
+
+	
+	public Myorder(int ord_no, int ord_invoice) {
+		super();
+		this.ord_no = ord_no;
+		this.ord_invoice = ord_invoice;
+	}
 	public Myorder() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	/*
+	 c.ord_no, sum(pr.req_cnt*a.parts_price) total, c.ORD_DATE, c.ord_stat, c.ORD_INVOICE
+	 */
+	public Myorder(int ord_no, int total, Date ord_date, String ord_stat, int ord_invoice) {
+		super();
+		this.ord_no = ord_no;
+		this.total = total;
+		this.ord_date = ord_date;
+		this.ord_stat = ord_stat;
+		this.ord_invoice = ord_invoice;
+	}
+	
+	
+	public Myorder(int ord_no, String parts_img, String parts_name) {
+		super();
+		this.ord_no = ord_no;
+		this.parts_img = parts_img;
+		this.parts_name = parts_name;
 	}
 	/*
 	 c.ord_no, m.MEM_NAME, c.ORD_DATE, c.ord_stat, sum(pr.req_cnt*a.parts_price) total, c.ORD_INVOICE, c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD, e.PAY_POINT ,e.PAY_PRICE
@@ -57,6 +83,7 @@ public class Myorder {
 		this.pay_point = pay_point;
 		this.pay_price = pay_price;
 	}
+	
 	/*
 	 pr.ord_no, a.parts_img, a.parts_name, a.parts_price, pr.req_cnt, (pr.req_cnt*a.parts_price) req 
 	 */
@@ -98,6 +125,7 @@ public class Myorder {
 		this.pay_point = pay_point;
 		this.pay_price = pay_price;
 	}
+	
 	//pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req
 	public Myorder(int ord_no, String parts_img, String parts_name, int req_cnt, int req) {
 		super();
