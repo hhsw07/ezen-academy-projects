@@ -91,6 +91,27 @@ function addCart(){
 		$("form").attr("action","${path}/order").submit();	
 	}
 }
+
+function goPay(){
+	var cnt = Number($("[name=cnt]").val()); 
+	var opt1 = Number($("select[name=opt1]").val());
+	var opt2 = Number($("select[name=opt2]").val());
+	var opt3 = Number($("select[name=opt3]").val());
+	var opt4 = Number($("select[name=opt4]").val());
+	var tot_opt = opt1 + opt2 + opt3 + opt4;
+	
+	$("[name=proc]").val("gopay");
+	$("[name=req_cnt]").val(cnt);
+	$("[name=req_opt]").val(tot_opt);
+	
+	var mem_id = "${mem.mem_id}";
+	
+	if(mem_id==""){
+		$(location).attr("href","${path}/login");		
+	}else{
+		$("form").attr("action","${path}/order").submit();	
+	}
+}
 </script>
 </head>
 <body>
@@ -101,6 +122,7 @@ function addCart(){
 	<p id="market_title">조립컴퓨터</p>
 	<form method="post">
 		<input type="hidden" name="proc">
+		<input type="hidden" name="mem_id" value="${mem.mem_id}">
 		<input type="hidden" name="req_no" value="${comd.com_no}">
 		<input type="hidden" name="req_cnt">
 		<input type="hidden" name="req_opt">
@@ -171,7 +193,7 @@ function addCart(){
 					<td id="price"><input type="hidden" name="tot_price" value="${comd.com_price}"/>
 					가격 : <fmt:formatNumber type="number" maxFractionDigits="3" value="${comd.com_price}" />원</td>
 					</tr>
-					<tr><td align="center"><div class="buyPro" id="addCart" onclick="addCart()">장바구니</div><div class="buyPro">바로구매</div></td></tr>
+					<tr><td align="center"><div class="buyPro" id="addCart" onclick="addCart()">장바구니</div><div class="buyPro" onclick="goPay()">바로구매</div></td></tr>
 				</table>
 			</li>
 			<li>

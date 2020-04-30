@@ -24,12 +24,14 @@ public class ComMarketDao {
 	
 	public ArrayList<Computer> getComList(String category){
 		ArrayList<Computer> clist = new ArrayList<Computer>();
-		
 		try {
 			setCon();
-			String sql = "SELECT * FROM p5_computer \r\n"; 
-			if(!category.equals("all")) sql+="WHERE com_kind = ? \r\n";
-				sql+="ORDER BY com_no asc";
+			String sql = "SELECT * FROM p5_computer\r\n" + 
+					"WHERE NOT com_kind = '개인사양'\r\n" + 
+					"AND NOT com_kind = '임시견적'\r\n"; 
+					if(!category.equals("all")) sql+="AND com_kind = ? \r\n";
+					sql+="ORDER BY com_no asc";
+			
 			System.out.println(sql);
 			
 			pstmt = con.prepareStatement(sql);

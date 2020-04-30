@@ -99,7 +99,7 @@
 		
 	});
 	<%-- ${fn:length(plist)} : ${plist}의 크기 --%>
-	var cartCnt = ${fn:length(cart)};
+	var cartCnt = "${fn:length(cart)}";
 	var totPay = 0;
 
 	function minus(no){
