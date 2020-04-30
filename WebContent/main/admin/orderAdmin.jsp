@@ -16,6 +16,11 @@
 	.mgr-table thead{visibility:visible; border-top:3px solid black; border-bottom:3px solid black;}
 	.mgr-table tr{border-top:1px solid gray;}
 	table tr td,th {padding:10px 10px;}
+ .product {text-align: left; padding-left: 10px; line-height: 30px;}
+    .product-img {height: 60px; width: 60px; background-size: cover; background-position: center; background-repeat: no-repeat;}
+    .product div {vertical-align: middle; display: inline-block;}
+    .product-name {margin-left: 10px; max-width: 263px;}
+    .product-name div {display: block; font-weight: bold;}
 	
 </style>
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
@@ -26,6 +31,12 @@
 		--%>
 		$("h2").text("주문/배송관리");
 	});
+	function go(ord_no){
+		// 상세 처리를 위한 controller 호출
+		$("[name=proc]").val("orderdetail");
+		$("[name=ord_no]").val(ord_no);
+		$("form").submit();
+	}
 </script>
 </head>
 <body>
@@ -35,7 +46,9 @@
 		<header>
 			<h2></h2>
 		</header>
-		
+	<form method="post">
+		<input type="hidden" name="proc"/>
+		<input type="hidden" name="ord_no" />
 		<table class="mgr-table">
 			<colgroup>
 				<col width="12%">
@@ -51,17 +64,27 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>주문번호</td><td>주문날짜</td><td>상품명</td><td>결제금액</td><td>주문상태</td><td>배송</td>
+			<c:forEach var="order" items="${getorders}">
+				<tr ondblclick="go(${order.ord_no})">
+					<td>${order.ord_no}</td><td>${order.ord_date}</td>
+					<td>
+					<c:forEach var="olist" items="${orderslist}">
+						<c:if test="${olist.ord_no==order.ord_no}">
+							<span><img class="product-img" src="image/parts/${olist.parts_img}"/></span>
+							<span class="product-name">
+								<span style="padding-bottom:60px; font-weight:bold;">${olist.parts_name}</span>
+							</span>
+							<br>
+						</c:if>
+					</c:forEach>
+					</td>
+					<td style="text-align:right;padding-right:20px;"><fmt:formatNumber type="number" value="${order.total}"/> 원</td>
+					<td style="text-align:center;">${order.ord_stat}</td><td style="text-align:center;">${order.ord_invoice}</td>
 				</tr>
-				<tr>
-					<td>주문번호</td><td>주문날짜</td><td>상품명</td><td>결제금액</td><td>주문상태</td><td>배송</td>
-				</tr>
-				<tr>
-					<td>주문번호</td><td>주문날짜</td><td>상품명</td><td>결제금액</td><td>주문상태</td><td>배송</td>
-				</tr>
+			</c:forEach>
 			</tbody>
 		</table>
+		</form> 
 	</div>
 	
 

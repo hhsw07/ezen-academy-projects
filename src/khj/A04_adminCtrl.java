@@ -112,6 +112,21 @@ public class A04_adminCtrl extends HttpServlet {
 		if(proc.equals("uptmgrDetail")) {
 			page = "main/dmin/asdetailAdmin.jsp";
 		}
+		if(proc.equals("order")) {
+			request.setAttribute("getorders", service.getOrders(request));
+			request.setAttribute("orderslist", service.OrdersList(request));
+			
+			page = "\\main\\admin\\orderAdmin.jsp";
+		}
+		if(proc.equals("orderdetail")) {
+			request.setAttribute("getord", service.getord(request));
+			
+			page = "\\main\\admin\\orderdetailAdmin.jsp";
+		}
+		if(proc.equals("uptord")) {
+			service.uptOrd(request);
+			page = "\\main\\admin\\orderdetailAdmin.jsp";
+		}
 
 
 		RequestDispatcher rd = request.getRequestDispatcher(page);

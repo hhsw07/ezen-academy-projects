@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+import cmk.Myorder;
 import jhk.Comdetail;
 import z01_vo.Computer;
 import z01_vo.Member;
@@ -41,32 +42,6 @@ public class A04_adminService {
 			dao.deleteMember(mem_id);
 		}
 		
-		public ArrayList<Computer> clist(HttpServletRequest request){
-			String category = Nk.toStr(request.getParameter("category"));
-			if(category==null||category.equals("")) category="all";
-			return dao.getComList(category);
-		}
-		
-		public ArrayList<Comdetail> cdlist(HttpServletRequest request){
-			int com_no = Nk.toInt(request.getParameter("com_no"));
-			return dao.getComDetailList(com_no);
-		}
-		
-		public Computer cominfo(HttpServletRequest request) {
-			int com_no = Nk.toInt(request.getParameter("com_no"));
-			return dao.getComDetail(com_no);
-		}
-		
-		public ArrayList<Parts> plist(HttpServletRequest request){
-			String category = Nk.toStr(request.getParameter("category"));
-			if(category==null||category.equals("")) category="all";
-			return dao.getPartsList(category);
-		}
-		public Parts partsinfo(HttpServletRequest request) {
-			int parts_no = Nk.toInt(request.getParameter("parts_no"));
-			return dao.getPartsDetail(parts_no);
-		}
-		
 		// mgr 목록 
 		// int mgr_no, int as_no, Date as_date, String as_cate,
 		// String mem_id, Date mgr_date, String mgr_stat
@@ -99,5 +74,19 @@ public class A04_adminService {
 			Mgr upt = new Mgr(mgr_no, mgr_stat, mgr_note, mgr_price);
 			dao.uptMgr(upt);
 		}
-		
+		public ArrayList<Myorder> getOrders(HttpServletRequest request){
+			return dao.getOrders();			
+		}
+		public ArrayList<Myorder> OrdersList(HttpServletRequest request){
+			return dao.OrdersList();
+		}
+		public ArrayList<Myorder> getord(HttpServletRequest request){
+			int ord_no = Nk.toInt(request.getParameter("ord_no"));
+			return dao.getord(ord_no);
+		}
+		public void uptOrd(HttpServletRequest request) {
+			int ord_no = Nk.toInt(request.getParameter("ord_no"));
+			int ord_invoice = Nk.toInt(request.getParameter("ord_invoice"));
+			dao.uptOrd(new Myorder(ord_no,ord_invoice));
+		}
 }
