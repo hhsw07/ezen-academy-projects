@@ -35,8 +35,7 @@ $(document).ready(function(){
 	if(proc=='login'){
 		if(mem_id!=""){
 			alert("로그인 성공");
-			$("[name=proc]").val("main");
-			$("form").submit();
+			$(location).attr("href","main")
 		}else{
 			alert("로그인 실패");
 		}
