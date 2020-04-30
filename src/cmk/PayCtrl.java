@@ -49,7 +49,6 @@ public class PayCtrl extends HttpServlet {
 			ArrayList<Cart> cartlist = (ArrayList<Cart>) session.getAttribute("cart");
 			
 			cartlist.add(service.getProd(request));
-			request.setAttribute("proc", "gopay");
 			session.setAttribute("cart", cartlist);
 			
 			//session.setAttribute("cart", cartList);
