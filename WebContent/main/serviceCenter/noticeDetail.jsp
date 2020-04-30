@@ -104,39 +104,12 @@
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
+					<c:if test="${mem.mem_id == 'admin'}">
 					<input id="uptNoti" class="goback-btn btn" type="button" value="수정"/>
 					<input id="delNoti" class="goback-btn btn" type="button" value="삭제"/>
+					</c:if>
 					<input id="listNoti" class="goback-btn btn" type="button" value="목록"/>
 				</div>
-				<!-- 덧글 시작 -->
-				<table class="commentbox">
-					<col width="80%">
-					<col width="20%">
-					<!-- 덧글입력 시작 -->
-					<tbody>
-						<tr>
-							<td>
-								<textarea id="online_comment" class=""></textarea>
-							</td>
-							<td style="text-align:right; padding-right:26px;">
-								<input class="insAns btn" type="button" name="insAns" value="입력"/>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<!-- 덧글출력 시작 -->
-				<div class="comment-list" id="online_lines">
-					<div class="r_list online_line" id="799229" style="clear:both; padding:10px; border-bottom:1px dotted #666;">
-						<div style="padding-bottom:1px; font-weight:bold; font-size:13px; line-height:24px; color:#000;">
-							관리자 <span style="margin-left:5px; font-weight:normal; font-size:11px; color:#999;">2020-00-00</span>
-            			</div>
-            			<div style="line-height:120%; color:#666;">
-            				안녕하세요. PC냥이 입니다(댓글)<br><br>
-            				
-            			</div>
-            		</div>
-            	</div>
             </div>
 		</div>
 	</div>

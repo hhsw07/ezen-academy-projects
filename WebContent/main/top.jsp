@@ -38,6 +38,10 @@ ul li{list-style:none;}
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	var islogin = "${param.proc}"
+	if(islogin=='logout'){
+		$(location).attr('href','main');
+	}
 	$("#lo").click(function(){
 		if(confirm("로그아웃을 하시겠습니까?")){
 			$("[name=proc]").val("logout");

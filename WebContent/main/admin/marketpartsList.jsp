@@ -25,6 +25,7 @@
           outline:none; padding:0; margin:0; cursor:pointer;}
           .reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
           outline:none; padding:0; margin:0; cursor:pointer;}
+          .modify-btn{width:100px; height:40px; float:right; background-color:purple; color:white; border:0px; cursor:pointer;}
           .btn{width:80px; height:40px; background-color:#63145F; color:white; border:1px solid black; font-size:20px;
 </style>
 
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
 <div class="all-wrap">
 	<div class="wrap">
-	<h1>상품관리 - 컴퓨터</h1>
+	<h1>상품관리 - 부품</h1>
 	<!-- 게시판 목록 -->
 	<form method="post">
 	<select name="proc">

@@ -76,15 +76,8 @@ function addCart(){
 
 	var cnt = Number($("[name=cnt]").val()); 
 	
-	var opt1 = Number($("select[name=opt1]").val());
-	var opt2 = Number($("select[name=opt2]").val());
-	var opt3 = Number($("select[name=opt3]").val());
-	var opt4 = Number($("select[name=opt4]").val());
-	var tot_opt = opt1 + opt2 + opt3 + opt4;
-	
 	$("[name=proc]").val("cart");
 	$("[name=req_cnt]").val(cnt);
-	$("[name=req_opt]").val(tot_opt);
 	
 	var mem_id = "${mem.mem_id}";
 	
@@ -98,15 +91,8 @@ function goPay(){
 
 	var cnt = Number($("[name=cnt]").val()); 
 	
-	var opt1 = Number($("select[name=opt1]").val());
-	var opt2 = Number($("select[name=opt2]").val());
-	var opt3 = Number($("select[name=opt3]").val());
-	var opt4 = Number($("select[name=opt4]").val());
-	var tot_opt = opt1 + opt2 + opt3 + opt4;
-	
 	$("[name=proc]").val("gopay");
 	$("[name=req_cnt]").val(cnt);
-	$("[name=req_opt]").val(tot_opt);
 	
 	var mem_id = "${mem.mem_id}";
 	

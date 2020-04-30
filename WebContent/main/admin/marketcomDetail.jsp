@@ -55,12 +55,6 @@
 
 <div class="all-wrap">
 	<input type="hidden" name="proc" />
-	<input type="hidden" name="mem_id" value="${member.mem_id}"/>
-	<input type="hidden" name="mem_name" value="${member.mem_name}"/>
-	<input type="hidden" name="mem_birth" value="${member.mem_birth}"/>
-	<input type="hidden" name="mem_email" value="${member.mem_email}"/>
-	<input type="hidden" name="mem_tel" value="${member.mem_tel}"/>
-	<input type="hidden" name="mem_jdate" value="${member.mem_jdate}"/>
 	<div class="info-wrap">
 
 		<table>
@@ -80,7 +74,7 @@
 			</tr>
 			<tr>
 				<td>상품가격</td>
-				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${com.com_price}" />원</td>
+				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${comd.com_price}" />원</td>
 			</tr>
 			<tr>
 				<td>상품이미지</td>
