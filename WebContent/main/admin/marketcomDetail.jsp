@@ -25,7 +25,7 @@
 			.drop-btn{width:100px; height:40px; background-color:black; 
 					color:white; border-color:black; cursor:pointer; float:right;}
 			.line{border-bottom:1px solid gray;}
-			.modify-btn{width:100px; height:40px; float:right; background-color:black; color:white; border-color:black; cursor:pointer;}
+			.modify-btn{width:100px; height:40px; float:right; background-color:purple; color:white; border:0px; cursor:pointer;}
 				.modify-btn button{}
 </style>
 
@@ -41,7 +41,7 @@
 			}
 		});
 		$("#golist").click(function(){
-			$("[name=proc]").val("member");
+			$("[name=proc]").val("mcomlist");
 			$("form").submit();
 		});
 	});
@@ -65,48 +65,51 @@
 
 		<table>
 			<tr>
-				<td class="sub-title">회원상세 정보</td>
+				<td class="sub-title">상품상세 정보</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
-				<td>아이디</td>
-				<td>${member.mem_id}</td>
+				<td>상품명</td>
+				<td>${comd.com_name}</td>
 			</tr>
 			<tr>
-				<td>이름</td>
-				<td>${member.mem_name}</td>
+				<td>상품용도</td>
+				<td>${comd.com_kind}</td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
-				<td>${member.mem_birth}</td>
+				<td>상품가격</td>
+				<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${com.com_price}" />원</td>
+			</tr>
+			<tr>
+				<td>상품이미지</td>
+				<td>${comd.com_img}</td>
+			</tr>
+			<tr>
+				<td>상품상세</td>
+				<td>${comd.com_detail}</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
-				<td>가입날짜</td>
-				<td>${member.mem_jdate}</td>
+				<td colspan="2"  class="sub-title">견적</td>
 			</tr>
+			<c:forEach var="comdetail" items="${cdlist}">
 			<tr>
-				<td colspan="2" class="line"></td>
+				<td>${comdetail.parts_mc}</td>
+				<td>${comdetail.parts_name} ${comdetail.parts_cnt}개</td>
 			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${member.mem_email}</td>
-			</tr>
-			<tr>
-				<td>휴대폰</td>
-				<td>${member.mem_tel}</td>
-			</tr>
+			</c:forEach>
 			<tr>
 				<td colspan="2" class="line"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<input style="margin-left:20px;" id="golist" class="modify-btn" type="button" value="이전"/>
-					<input class="modify-btn" id="delMem" type="button" value="삭제"/>
+					<input style="margin-left:20px;"  class="modify-btn" id="delCom" type="button" value="삭제"/>
+					<input class="modify-btn" id="uptCom" type="button" value="수정"/>
 				</td>
 			</tr>
 			<tr>

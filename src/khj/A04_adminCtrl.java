@@ -35,11 +35,12 @@ public class A04_adminCtrl extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
+		System.out.println(request.getParameter("proc"));
 		String proc= Nk.toStr(request.getParameter("proc"),"member");
 		System.out.println("proc확인"+proc);
 			
-		String page= "main\\admin\\memList.jsp";
-		
+		String page= "main/admin/memList.jsp";
+		//2.모델처리
 		// 회원 정보 불러오기
 		if(proc.equals("member")) {
 			request.getSession().setAttribute("mlist", service.Member(request));
@@ -53,6 +54,21 @@ public class A04_adminCtrl extends HttpServlet {
 			service.deleteMember(request);
 			request.getSession().setAttribute("mlist", service.Member(request));
 			proc = "member"; 
+		}
+		
+		if(proc.equals("mcomlist")) {
+			request.setAttribute("clist", service.clist(request));
+			request.setAttribute("cdlist", service.cdlist(request));
+		}
+		if(proc.equals("mcomdetail")) {
+			request.setAttribute("comd", service.cominfo(request));
+			request.setAttribute("cdlist", service.cdlist(request));
+		}
+		if(proc.equals("mpartslist")) {
+			request.setAttribute("plist", service.plist(request));
+		}
+		if(proc.equals("mpartsdetail")) {
+			request.setAttribute("partsd", service.partsinfo(request));
 		}
 		if(proc.equals("mgr")) {
 			request.setAttribute("mgrList",service.mgrList());
@@ -74,9 +90,21 @@ public class A04_adminCtrl extends HttpServlet {
 			page="main/admin/memDetail.jsp";
 		}
 		
+		if(proc.equals("mcomlist")) {
+			page = "main/admin/marketcomList.jsp";
+		}
+		if(proc.equals("mcomdetail")) {
+			page = "main/admin/marketcomDetail.jsp";
+		}
+		if(proc.equals("mpartslist")) {
+			page = "main/admin/marketpartsList.jsp";
+		}
+		if(proc.equals("mpartsdetail")) {
+			page = "main/admin/marketpartsDetail.jsp";
+		}
+		
 		if(proc.equals("mgr")) {
 			page = "main/admin/asAdmin.jsp";
-			
 		}
 		if(proc.equals("mgrDetail")) {
 			page = "main/admin/asdetailAdmin.jsp";

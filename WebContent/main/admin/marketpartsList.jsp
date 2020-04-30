@@ -25,7 +25,6 @@
           outline:none; padding:0; margin:0; cursor:pointer;}
           .reg-btn{width:80px; height:40px; background-color:black; color:white; border:1px solid black; font-size:20px;
           outline:none; padding:0; margin:0; cursor:pointer;}
-          .modify-btn{width:100px; height:40px; float:right; background-color:purple; color:white; border:0px; cursor:pointer;}
           .btn{width:80px; height:40px; background-color:#63145F; color:white; border:1px solid black; font-size:20px;
 </style>
 
@@ -37,9 +36,9 @@
 $(document).ready(function(){
 	
 });
- function go(com_no){
-	 $("[name=com_no]").val(com_no);
-	 $("[name=proc]").val("mcomdetail");
+ function go(parts_no){
+	 $("[name=parts_no]").val(parts_no);
+	 $("[name=proc]").val("mpartsdetail");
 	 $("form").submit();
  }
 
@@ -55,12 +54,12 @@ $(document).ready(function(){
 	<!-- 게시판 목록 -->
 	<form method="post">
 	<select name="proc">
-		<option value="mcomlist" selected>컴퓨터</option>
-		<option value="mpartslist">부품</option>
+		<option value="mcomlist" >컴퓨터</option>
+		<option value="mpartslist" selected>부품</option>
 	</select>
-	<input class="btn" type="submit" value="이동" />
+	<input class="btn" type="submit" value="이동" />	
 	<input type="hidden" name="proc"/>
-	<input type="hidden" name="com_no"/>
+	<input type="hidden" name="parts_no"/>
 	<table align="center">
 				<colgroup>
 					<col style="width:60%;"/>
@@ -78,17 +77,17 @@ $(document).ready(function(){
 				</tr>
 			
 		<!-- 글목록  -->	
-			<c:forEach var="com" items="${clist}">
+			<c:forEach var="parts" items="${plist}">
 				<tr>
-					<td style="padding-left:20px;" >${com.com_name}</td>	
-					<td style="padding-left:40px;">${com.com_kind}</td>
-					<td style="padding-left:40px; padding-right:20px; text-align:right;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${com.com_price}" />원</td>
+					<td style="padding-left:20px;" >${parts.parts_name}</td>	
+					<td style="padding-left:40px;">${parts.parts_mc}</td>
+					<td style="padding-left:40px; padding-right:20px; text-align:right;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${parts.parts_price}" />원</td>
 					<!--  문자열일때와 숫자일때 '' 사용 주의  -->
-					<td style="padding-left:20px;" ondblclick="javascript:go('${com.com_no}')">상세보기</td>
+					<td style="padding-left:20px;" ondblclick="javascript:go('${parts.parts_no}')">상세보기</td>
 				</tr>
 			</c:forEach>
 				<tr>
-					<td colspan="4"><input class="modify-btn" id="insCom" type="button" value="등록"/>
+					<td colspan="4"><input class="modify-btn" id="insParts" type="button" value="등록"/>
 					</td>
 				</tr>
 	</table>

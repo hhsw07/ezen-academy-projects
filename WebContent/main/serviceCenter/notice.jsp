@@ -50,7 +50,7 @@
 
 <div class="all-wrap">
 	<div class="wrap">
-	<h1>고객센터</h1>
+	<h1>고객센터 - 공지사항</h1>
 	<!-- 게시판 목록 -->
 	<form method="post">
 	<select name="proc">

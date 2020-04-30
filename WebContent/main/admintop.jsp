@@ -40,8 +40,8 @@ $(document).ready(function(){
 		$("[name=proc").val("member");
 		$("form").submit();
 	});
-	$("#market").click(function(){
-		$("[name=proc]").val("market");
+	$("#mcomlist").click(function(){
+		$("[name=proc]").val("mcomlist");
 		$("form").submit();
 	});
 	$("#order").click(function(){
@@ -70,7 +70,7 @@ $(document).ready(function(){
 				<span style="padding-left:25px;font-size:25px; float:left"><a href="main" style="color:orange;">PC냥이</a></span>
 					<ul>
 						<li id="member">회원관리</li>
-						<li id="market">상품관리</li>
+						<li id="mcomlist">상품관리</li>
 						<li id="order">주문관리</li>
 						<li id="as">AS관리</li>
 					</ul>
