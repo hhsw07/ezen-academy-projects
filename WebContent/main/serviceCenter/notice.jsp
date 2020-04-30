@@ -99,9 +99,9 @@
 			<td colspan="3">
 			</td>
 			<th style="text-align:right;">
-			<%-- <c:if test="${mem.mem_id == 'admin'}"> --%>
+			<c:if test="${mem.mem_id == 'admin'}">
 			<input id="writeNoti" class="btn" type="button" value="글쓰기"/>
-			<%-- </c:if> --%></th>
+			</c:if></th>
 		</tr>
 	</table>
 	</form>

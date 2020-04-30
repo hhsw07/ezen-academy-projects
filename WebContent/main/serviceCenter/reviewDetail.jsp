@@ -161,8 +161,10 @@
 				<!-- 문의글 끝 -->
 				</div>
 				<div class="listback">
+					<c:if test="${review.mem_id == mem.mem_id}">
 					<input id="uptRev" class="goback-btn btn" type="button" value="수정"/>
 					<input id="delRev" class="goback-btn btn" type="button" value="삭제"/>
+					</c:if>
 					<input id="listRev" class="goback-btn btn" type="button" value="목록"/>
 				</div>
 				<!-- 덧글 시작 -->

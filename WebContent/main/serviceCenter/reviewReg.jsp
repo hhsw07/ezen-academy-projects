@@ -35,7 +35,7 @@
 <script type="text/javascript" src="${path}/a00_com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("h2").text("문의사항 작성");
+		$("h2").text("상품후기 작성");
 		var rev_detailp="${param.rev_detail}";
 		if(rev_detailp != null){
 			rev_detailp = rev_detailp.replace(/<br>/g, '\n');
