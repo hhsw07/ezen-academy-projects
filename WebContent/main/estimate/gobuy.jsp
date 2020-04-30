@@ -18,20 +18,15 @@
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-<%--
-
---%>
 		$("form").submit();
-		
-		
 	});
 </script>
 </head>
 
 <body>
 <h2 align="center"></h2>
-<form action="${path}/order">
-	<input type="hidden" name="proc" value="${param.proc}"/>
+<form method="post" action="${path}/order">
+	<input type="hidden" name="proc" value="gopay"/>
 	<input type="hidden" name="req_no" value="${param.req_no}"/>
 	<input type="hidden" name="req_cnt" value="${param.req_cnt}"/>
 </form>

@@ -66,8 +66,6 @@
 			$("form").submit();
 		}
 		
-		
-		
 		var tot = "${fn:length(asdetail)}";
 		for(var idx=0;idx<tot;idx++){
 			var num = $(".num").eq(idx).text();
@@ -82,17 +80,13 @@
 			}
 		});
 		
-		$(".insAns").click(function(){
-			$("[name=proc]").val("insAns");
+		$(".insComm").click(function(){
+			$("[name=proc]").val("insComm");
 			$("form").submit();
 		});
 		
 		$(".upt-btn").click(function(){
 			$("[name=proc]").val("uptAs");
-			$("form").submit();
-		});
-		$(".del-btn").click(function(){
-			$("[name=proc]").val("delAs");
 			$("form").submit();
 		});
 		
@@ -169,7 +163,6 @@
 				</div>
 				<div class="listback">
 				<c:if test="${as.mem_id eq mem.mem_id}">
-					<input class="btn del-btn" type="button" value="삭제">
 					<input class="btn upt-btn" type="button" value="수정">
 				</c:if>
 					<input class="goback-btn btn" type="button" value="목록"/>
@@ -186,7 +179,7 @@
 								<textarea id="online_comment" name="as_comm" ></textarea>
 							</td>
 							<td style="text-align:right; padding-right:26px;">
-								<input class="insAns btn" type="button" value="입력"/>
+								<input class="insComm btn" type="button" value="입력"/>
 							</td>
 						</tr>
 					</tbody>

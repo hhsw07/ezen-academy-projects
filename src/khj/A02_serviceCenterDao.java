@@ -877,7 +877,7 @@ public class A02_serviceCenterDao {
 		As asList = new As();
 		try {
 			setConnn();
-			String sql = "SELECT as_no, as_cate, as_detail, as_date, mem_id, as_comm, as_comdate\r\n" + 
+			String sql = "SELECT as_no, a.ord_no, as_cate, as_detail, as_date, mem_id, as_comm, as_comdate \r\n" + 
 					"FROM P5_AS a, P5_ORDER b \r\n" + 
 					"WHERE a.ORD_NO = b.ORD_NO\r\n" + 
 					"AND a.as_no = ?";
@@ -886,7 +886,7 @@ public class A02_serviceCenterDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				//as_no, as_cate, as_detail, as_date, mem_id, as_comm, as_comdate
-				asList = new As(rs.getInt("as_no"),rs.getString("as_cate"),
+				asList = new As(rs.getInt("as_no"),rs.getInt("ord_no"),rs.getString("as_cate"),
 						rs.getString("as_detail"),rs.getDate("as_date"),
 						rs.getString("mem_id"), rs.getString("as_comm"), rs.getDate("as_comdate"));
 			}
@@ -940,7 +940,7 @@ public class A02_serviceCenterDao {
 			con.commit();
 			pstmt.close();
 			con.close();
-			System.out.println("등록성공");
+			System.out.println("AS 등록!!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1022,7 +1022,7 @@ public class A02_serviceCenterDao {
 		try {
 			setConnn(); 
 			String sql = "INSERT INTO P5_AS\r\n" + 
-					"VALUES(p5_as_seq.nextval, ?, ?,?,sysdate,NULL,null)";
+					"VALUES(p5_as_seq.nextval, ?, ?, ?,sysdate,NULL,null)";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ins.getOrd_no());
@@ -1055,11 +1055,11 @@ public class A02_serviceCenterDao {
 	public void uptAs(As upt) {
 		try {
 			setConnn(); 
-			String sql = "UPDATE P5_AS"
-					+ "SET as_cate = ?,"
-					+ "as_detail = ?,"
-					+ "as_date = sysdate"
-					+ "WHERE as_no = ?";
+			String sql = "UPDATE P5_AS\r\n" + 
+					"SET as_cate = ?,\r\n" + 
+					"as_detail = ?,\r\n" + 
+					"as_date = sysdate\r\n" + 
+					"WHERE as_no = ?";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, upt.getAs_cate());
@@ -1122,7 +1122,7 @@ public class A02_serviceCenterDao {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void insAns(int as_no, String as_comm) {
+	public void insComm(int as_no, String as_comm) {
 		try {
 			setConnn(); 
 			String sql = "UPDATE P5_AS\r\n" + 
