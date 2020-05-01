@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style type="text/css">
 	section{min-height:800px;}
 	.payend{margin:20px auto; text-align:center; width:1080px; padding-top:250px; font-size:30px; font-weight:700;}
