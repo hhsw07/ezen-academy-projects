@@ -261,7 +261,7 @@ public class A03_myPageDao {
 			int 11, String 12, String 13, String 14, String 15, String 16, String 17, String 18, int 19, int 20
 			 */	
 				myolist.add(new Myorder(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
-						rs.getInt(9), rs.getInt(10),rs.getInt(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
+						rs.getInt(9), rs.getInt(10),rs.getLong(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
 						rs.getString(16),rs.getString(17),rs.getString(18),rs.getInt(19),rs.getInt(20)));
 				System.out.println("5");
 			}

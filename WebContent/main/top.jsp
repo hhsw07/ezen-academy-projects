@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 	<style>
 body{margin:0; padding:0; overflow-x:hidden;}
 a{text-decoration:none; color:black;}
@@ -23,7 +23,7 @@ ul li{list-style:none;}
 	.menu-wrap{width:100%;}
 		.menu-1{width:1280px; margin:0 auto; height:25px; padding:5px 0;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
-			.menu-1 ul li{display:inline; margin:0 15px; float:right;}
+			.menu-1 ul li{display:inline; margin:0 15px; float:right; cursor:pointer;}
 		.menu-div{border-bottom:1px solid #E4E1E1;}
 		.menu-2-wrap{background-color:#63145F;}
 			.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
@@ -65,7 +65,8 @@ $(document).ready(function(){
 						<li><a href="login">로그인</a></li>
 					</c:when>
 					<c:when test="${mem.mem_id == 'admin'}">
-						<li id="lo">로그아웃</li>	
+						<li id="lo">로그아웃</li>
+						<li><a href="SCenter">고객센터</a></li>	
 						<li><a href="admin">관리자</a></li>
 					</c:when>
 					<c:otherwise>

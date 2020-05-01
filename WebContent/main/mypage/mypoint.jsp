@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style type="text/css">
 /* 포인트조회 */
 	table{border-collape:collape;}
@@ -62,7 +62,7 @@
 	<jsp:include page="../myPageTop.jsp"/>
 	<div class="point-cont-wrap">
 		<h2></h2>
-
+<%-- 포인트계산 --%>
 <c:forEach var="pt" varStatus="status" items="${ptList}">
 <c:choose>
 	<c:when test="${pt.point_pt<0}">

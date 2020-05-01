@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style>
 
 body{margin:0; padding:0; overflow-x:hidden;}
@@ -36,7 +36,7 @@ ul li{list-style:none;}
 	.parts_detailimg {width:100%;}
 	#opt_detail select{width:300px;}
 	#opt_detail input{width:30px;}
-	.buyPro {width:200px;text-align:center; border:1px solid black;
+	.buyPro {width:200px;text-align:center; border:1px solid black; cursor:pointer;
 	 display:inline-block; margin:10px; padding:20px; background-color:purple; color:white;
 	 font-weight: bold; font-size:1.5em;}
 	#price{ text-align: right;}

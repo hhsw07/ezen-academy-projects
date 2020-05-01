@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <!-- <link rel="stylesheet" href="${path}/a00_com/a00_com.css" > -->
 <style>
 	body{margin:0 auto; padding:0; width:100%;}

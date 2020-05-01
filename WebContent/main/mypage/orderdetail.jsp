@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style type="text/css">
 	.orderlist-cont{width:1080px; margin:0px auto; min-height:700px;}
 	.order-area{width:1080px; margin:20px auto;}

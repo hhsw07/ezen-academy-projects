@@ -112,7 +112,7 @@ public class A04_adminService {
 		}
 		public void uptOrd(HttpServletRequest request) {
 			int ord_no = Nk.toInt(request.getParameter("ord_no"));
-			int ord_invoice = Nk.toInt(request.getParameter("ord_invoice"));
+			Long ord_invoice = Nk.toLong(request.getParameter("ord_invoice"));
 			dao.uptOrd(new Myorder(ord_no,ord_invoice));
 		}
 }

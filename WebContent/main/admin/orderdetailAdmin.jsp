@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style type="text/css">
 	.mgr-wrap{width:1080px; margin:20px auto;}
 	.mgr-table{width:100%; border-collapse:collapse; cursor:pointer; border-bottom:2px solid black;}
@@ -39,11 +39,13 @@
 		--%>
 		$("h2").text("주문/배송관리");
 		
-		if(proc=='uptord'){
-			$("[name=proc]").val("order");
+		$("#edit").click(function(){
+			$("[name=proc]").val("uptord");
+			var ord_no = Number($("#ord_no").text());
+			$("[name=ord_no]").val(ord_no);
+			console.log(ord_no);
 			$("form").submit();
-		}
-		
+		});
 		$("#ord_no").text($("[name=ord_no]").eq(0).val());
 		$("#ord_date").text($("[name=ord_date]").eq(0).val());
 		$("#mem_name").text($("[name=mem_name]").eq(0).val());
@@ -74,8 +76,8 @@
 		<header>
 			<h2></h2>
 		</header>
-	<form method="post">
-	<input type="hidden" name="proc" value="uptord" />
+	<form method="post" >
+	<input type="hidden" name="proc" />
 		<table class="detail-table" border>
 			<colgroup>
 				<col width="15%">
@@ -95,6 +97,10 @@
 					<span id="ord_name"></span> / <span id="ord_tel"></span><br>
 					<span id="ord_post"></span> <span id="ord_addr"></span>
 				</td>
+			</tr>
+			<tr>
+				<th>요청사항</th>
+				<td colspan="3" id="ord_req"></td>
 			</tr>
 			<tr>
 				<th>운송장등록</th>
@@ -124,7 +130,6 @@
 				<input type="hidden" name="mem_name" value="${geto.mem_name}"/>
 				<input type="hidden" name="ord_stat" value="${geto.ord_stat}"/>
 				<input type="hidden" name="ord_invoice" value="${geto.ord_invoice}"/>
-				<c:set var="invoice" value="${geto.ord_invoice}"/>
 				<input type="hidden" name="ord_name" value="${geto.ord_name}"/>
 				<input type="hidden" name="ord_post" value="${geto.ord_post}"/>
 				<input type="hidden" name="ord_addr1" value="${geto.ord_addr1}"/>
@@ -144,7 +149,7 @@
 		</table>
 		</form>	
 		<div class="pay-btn">
-			<input class="btn" type="submit" value="수정/확인"/>
+			<input class="btn" type="button" id="edit" value="수정/확인"/>
 		</div>
 	</div>
 	

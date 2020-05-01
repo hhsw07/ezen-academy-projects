@@ -16,7 +16,7 @@ public class Myorder {
 	private String mem_id;
 	private int parts_price;
 	
-	private int ord_invoice;
+	private Long ord_invoice;
 	private String ord_name;
 	private String ord_tel;
 	private String ord_post;
@@ -31,7 +31,7 @@ public class Myorder {
 	
 
 	
-	public Myorder(int ord_no, int ord_invoice) {
+	public Myorder(int ord_no, Long ord_invoice) {
 		super();
 		this.ord_no = ord_no;
 		this.ord_invoice = ord_invoice;
@@ -43,7 +43,7 @@ public class Myorder {
 	/*
 	 c.ord_no, sum(pr.req_cnt*a.parts_price) total, c.ORD_DATE, c.ord_stat, c.ORD_INVOICE
 	 */
-	public Myorder(int ord_no, int total, Date ord_date, String ord_stat, int ord_invoice) {
+	public Myorder(int ord_no, int total, Date ord_date, String ord_stat, Long ord_invoice) {
 		super();
 		this.ord_no = ord_no;
 		this.total = total;
@@ -63,7 +63,7 @@ public class Myorder {
 	 c.ord_no, m.MEM_NAME, c.ORD_DATE, c.ord_stat, sum(pr.req_cnt*a.parts_price) total, c.ORD_INVOICE, c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD, e.PAY_POINT ,e.PAY_PRICE
 	 */
 
-	public Myorder(int ord_no, String mem_name, Date ord_date, String ord_stat, int total, int ord_invoice,
+	public Myorder(int ord_no, String mem_name, Date ord_date, String ord_stat, int total, Long ord_invoice,
 			String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req,
 			String pay_method, int pay_point, int pay_price) {
 		super();
@@ -102,7 +102,7 @@ public class Myorder {
 					" c.ORD_NAME, c.ORD_POST, c.ORD_ADDR1, c.ORD_ADDR2, c.ORD_TEL, c.ORD_REQ, e.PAY_METHOD,e.PAY_POINT ,e.PAY_PRICE
 	 */
 	public Myorder(int ord_no, Date ord_date, String mem_name, String ord_stat, String parts_img, String parts_name, int parts_price, int req_cnt, int req, int total,
-			int ord_invoice, String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req, String pay_method, int pay_point, int pay_price) {
+			Long ord_invoice, String ord_name, String ord_post, String ord_addr1, String ord_addr2, String ord_tel, String ord_req, String pay_method, int pay_point, int pay_price) {
 		super();
 		this.ord_no = ord_no;
 		this.parts_img = parts_img;
@@ -224,12 +224,12 @@ public class Myorder {
 	}
 
 
-	public int getOrd_invoice() {
+	public Long getOrd_invoice() {
 		return ord_invoice;
 	}
 
 
-	public void setOrd_invoice(int ord_invoice) {
+	public void setOrd_invoice(Long ord_invoice) {
 		this.ord_invoice = ord_invoice;
 	}
 
