@@ -62,7 +62,7 @@
 	<jsp:include page="../myPageTop.jsp"/>
 	<div class="point-cont-wrap">
 		<h2></h2>
-
+<%-- 포인트계산 --%>
 <c:forEach var="pt" varStatus="status" items="${ptList}">
 <c:choose>
 	<c:when test="${pt.point_pt<0}">

@@ -85,25 +85,23 @@ WHERE ORD_NO = 주문번호;
 INSERT INTO p5_order VALUES (to_date(sysdate,'yymmdd')||p5_order_seq.nextval,?, to_date(sysdate,'YYYY-MM-DD'),?,?,?,?,?,'','결제완료','')
 -- 주문 테이블에서 주문번호 받기
 SELECT max(ord_no) FROM p5_order
-WHERE MEM_ID = 'ezen01';
+WHERE MEM_ID = ?;
 -- 받은 주문번호를 통해 상품, 수량 담기
 INSERT INTO p5_request VALUES (?, ?, ?, ?);
 -- 사용가능포인트
 SELECT sum(point_pt) FROM P5_POINT
-WHERE mem_id = 'ezen01';
+WHERE mem_id = ?;
 -- 주문번호 결제방법 사용한 포인트, 최종 결제금액
 INSERT INTO p5_pay VALUES (p5_pay_seq.nextval,?,?,?,?);
 -- 포인트사용
-SELECT a.pay_point 
-FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
-WHERE a.PAY_NO = lastpay;
+INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매사용, -pay_point)
 -- 포인트적립
-SELECT pay_price
-FROM P5_PAY a, (SELECT max(pay_no) lastpay FROM p5_pay) b
-WHERE a.PAY_NO = lastpay;
+INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매적립, CEIL(pay_price*0.01))
+-- 재고 수정
+UPDATE P5_PARTS
+SET PARTS_STOCK = PARTS_STOCK - req_cnt
+WHERE PARTS_NO = req_no
 
-INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매사용, pay_point)
-INSERT INTO P5_POINT VALUES (p5_point_seq.nextval, MEM_ID, sysdate, 상품구매적립, CEIL(pay_price))
 
 SELECT c.lastpay, d.mem_id
 FROM (SELECT max(pay_no) lastpay FROM p5_pay) c,
@@ -202,6 +200,7 @@ INSERT INTO p5_mgr VALUES (p5_mgr_seq.nextval, 1, to_date('2020-02-26','YYYY-MM-
 SELECT to_number(to_char(sysdate,'yymmdd')) FROM dual;
 ------------------------------------------------------------------------------------------------------------------------------
 -- rollup
+
 SELECT pr.ord_no, a.parts_img, a.parts_name, pr.req_cnt, (pr.req_cnt*a.parts_price) req
 FROM p5_request pr, 
 	(SELECT parts_no, parts_img, parts_name, PARTS_PRICE FROM p5_parts
