@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style type="text/css">
 	.mgr-wrap{width:1080px; margin:20px auto;}
 	.mgr-table{width:100%; border-collapse:collapse; cursor:pointer; border-bottom:2px solid black;}
@@ -41,9 +41,11 @@
 		
 		$("#edit").click(function(){
 			$("[name=proc]").val("uptord");
+			var ord_no = Number($("#ord_no").text());
+			$("[name=ord_no]").val(ord_no);
+			console.log(ord_no);
 			$("form").submit();
-		})
-		
+		});
 		$("#ord_no").text($("[name=ord_no]").eq(0).val());
 		$("#ord_date").text($("[name=ord_date]").eq(0).val());
 		$("#mem_name").text($("[name=mem_name]").eq(0).val());
@@ -74,7 +76,7 @@
 		<header>
 			<h2></h2>
 		</header>
-	<form method="post">
+	<form method="post" >
 	<input type="hidden" name="proc" />
 		<table class="detail-table" border>
 			<colgroup>
