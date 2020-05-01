@@ -3,13 +3,14 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <fmt:requestEncoding value="utf-8"/>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 
 <style type="text/css">
 .all-wrap{margin-top:100px; margin-bottom:200px;}
@@ -79,9 +80,9 @@
 		</tr>
 		
 	<!-- 글목록  -->	
-	<c:forEach var="notice" items="${nlist}">
+	<c:forEach var="notice" items="${nlist}" varStatus="status">
 		<tr onclick="javascript:go(${notice.noti_no})">
-			<td align="center">${notice.noti_no}</td>
+			<td align="center">${fn:length(nlist) - status.index}</td>
 			<td>${notice.noti_name}</td>
 			<td align="center">관리자</td>
 			<td align="center">${notice.noti_date}</td>

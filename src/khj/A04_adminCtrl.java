@@ -110,7 +110,7 @@ public class A04_adminCtrl extends HttpServlet {
 			page = "main/admin/asdetailAdmin.jsp";
 		}
 		if(proc.equals("uptmgrDetail")) {
-			page = "main/dmin/asdetailAdmin.jsp";
+			page = "main/admin/asdetailAdmin.jsp";
 		}
 		if(proc.equals("order")) {
 			request.setAttribute("getorders", service.getOrders(request));

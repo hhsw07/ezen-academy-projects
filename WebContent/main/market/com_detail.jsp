@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 <style>
 
 body{margin:0; padding:0; overflow-x:hidden;}
