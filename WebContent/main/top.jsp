@@ -23,7 +23,7 @@ ul li{list-style:none;}
 	.menu-wrap{width:100%;}
 		.menu-1{width:1280px; margin:0 auto; height:25px; padding:5px 0;
 					border-right:1px solid #E4E1E1; border-left:1px solid #E4E1E1;}
-			.menu-1 ul li{display:inline; margin:0 15px; float:right;}
+			.menu-1 ul li{display:inline; margin:0 15px; float:right; cursor:pointer;}
 		.menu-div{border-bottom:1px solid #E4E1E1;}
 		.menu-2-wrap{background-color:#63145F;}
 			.menu-2{width:1280px; margin:0 auto; padding:10px 0; text-align:center; color:white; font-weight:1px;
