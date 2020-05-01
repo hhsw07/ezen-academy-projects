@@ -24,7 +24,7 @@
 		cursor:pointer; margin-bottom:20px;}
 		
 </style>
-<title>Insert title here</title>
+<title>PC냥이:컴퓨터 맞춰보자냥</title>
 
 <script src="${path}/a00_com/jquery-3.4.1.js" type="text/javascript"></script>
 <script type="text/javascript">
