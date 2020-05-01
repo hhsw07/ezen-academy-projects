@@ -1,3 +1,4 @@
+<%@page import="vo_jhk.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,12 +33,19 @@
 	}
 	</script>
 </head>
+<%
+	memberDao mdao = new memberDao();
+	String uid = request.getParameter("uid");
+	if(uid == null) uid = "";
+	
+	String findid = mdao.findId(uid);
+%>
 <body>
 <p class="logo" style="padding:20px;">HobbyFactory</p>
 <form id="login" method="post" action="Main.jsp">
 	<input type="hidden" name="page" value="maindetail"/>
 	<input type="hidden" name="lp" value="loginmain"/>
-	<p>귀하의 아이디는 [himan1]입니다.</p>
+	<p>귀하의 아이디는 [<%=findid %>]입니다.</p>
 	<div style="display:inline-block;cursor:pointer; background-color:#FF4000; margin-top:20px;
 	padding:10px 40px 10px 40px; font-weight:bold; color:black; font-size:20px;" 
 	 onclick="document.querySelector('#login').submit();">확인</div>
