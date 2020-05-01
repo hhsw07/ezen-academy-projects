@@ -11,6 +11,9 @@ public class Nk {
 	public static int toInt(String intS) {
 		return intS==null||intS.equals("")?0:new Integer(intS);
 	}
+	public static Long toLong(String longS) {
+		return longS==null||longS.equals("")?0:new Long(longS);
+	}
 	public static Double toDbl(String dblS) {
 		return dblS==null||dblS.equals("")?0.0:new Double(dblS);
 	}
