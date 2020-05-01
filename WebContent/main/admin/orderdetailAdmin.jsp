@@ -41,9 +41,11 @@
 		
 		$("#edit").click(function(){
 			$("[name=proc]").val("uptord");
+			var ord_no = Number($("#ord_no").text());
+			$("[name=ord_no]").val(ord_no);
+			console.log(ord_no);
 			$("form").submit();
-		})
-		
+		});
 		$("#ord_no").text($("[name=ord_no]").eq(0).val());
 		$("#ord_date").text($("[name=ord_date]").eq(0).val());
 		$("#mem_name").text($("[name=mem_name]").eq(0).val());
@@ -74,7 +76,7 @@
 		<header>
 			<h2></h2>
 		</header>
-	<form method="post">
+	<form method="post" >
 	<input type="hidden" name="proc" />
 		<table class="detail-table" border>
 			<colgroup>

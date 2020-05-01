@@ -516,7 +516,7 @@ public class A04_adminDao {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				orders.add(new Myorder(rs.getInt(1),rs.getInt(2), rs.getDate(3),rs.getString(4),rs.getInt(5)));
+				orders.add(new Myorder(rs.getInt(1),rs.getInt(2), rs.getDate(3),rs.getString(4),rs.getLong(5)));
 			}
 			rs.close();
 			pstmt.close();
@@ -582,7 +582,7 @@ public class A04_adminDao {
 			int 11, String 12, String 13, String 14, String 15, String 16, String 17, String 18, int 19, int 20
 			 */	
 				getord.add(new Myorder(rs.getInt(1),rs.getDate(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),
-						rs.getInt(9), rs.getInt(10),rs.getInt(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
+						rs.getInt(9), rs.getInt(10),rs.getLong(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),
 						rs.getString(16),rs.getString(17),rs.getString(18),rs.getInt(19),rs.getInt(20)));
 			}
 			rs.close();
@@ -602,7 +602,7 @@ public class A04_adminDao {
 					"WHERE ORD_NO = ? ";
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, upt.getOrd_invoice());
+			pstmt.setLong(1, upt.getOrd_invoice());
 			pstmt.setInt(2, upt.getOrd_no());
 			// 실행
 			pstmt.executeUpdate();
