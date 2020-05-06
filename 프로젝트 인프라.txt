@@ -5,4 +5,4 @@ pw:123123
 sysdate > current_date
 
 BOOTSTRAP Templet URL
-https://demos.creative-tim.com/get-shit-done/index.html?_ga=2.83091539.472377244.1588312756-1580014930.1588312756
+https://demos.creative-tim.com/get-shit-done/index.html?_ga=2.83091539.472377244.1588312756-1580014930.1588312756  
