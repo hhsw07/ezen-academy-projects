@@ -1,0 +1,13 @@
+
+DB 접속 주소
+jdbc:oracle:thin:@//34.64.177.9:1521/xe
+id:ezen_team_2
+pw:123123
+sysdate > current_date
+
+BOOTSTRAP Templet URL
+https://demos.creative-tim.com/get-shit-done/index.html?_ga=2.83091539.472377244.1588312756-1580014930.1588312756  
+
+프로젝트 테마 색상
+RGB : 255,158,0
+RGB : FF, 9E, 0
