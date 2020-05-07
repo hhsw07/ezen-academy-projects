@@ -97,7 +97,7 @@ $(function () {
 });
 
 $(document).scroll(function() {
-    if( $(this).scrollTop() > 260 ) {
+    if( $(this).scrollTop() > 10 ) {
         if(transparent) {
             transparent = false;
             $('nav[role="navigation"]').removeClass('navbar-transparent');
