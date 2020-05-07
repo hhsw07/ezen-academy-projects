@@ -1,8 +1,8 @@
 
 DB 접속 주소
 jdbc:oracle:thin:@//34.64.177.9:1521/xe
-id:ezen_team_2
-pw:123123
+id	: ezen_team_2
+pw 	: 123123
 sysdate > current_date
 
 BOOTSTRAP Templet URL
