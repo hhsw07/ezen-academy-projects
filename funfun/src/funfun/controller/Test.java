@@ -14,7 +14,7 @@ public class Test {
 	@RequestMapping("/test.do")
 	public String test(Model d) {
 		
-		d.addAttribute("test1", "�׽�Ʈ�Դϴ�.");
+		d.addAttribute("test1", "test.테스트.");
 		return "WEB-INF\\views\\test\\testpage.jsp";
 	}
 }
