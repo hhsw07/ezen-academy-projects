@@ -14,7 +14,11 @@ public class Test {
 	@RequestMapping("/test.do")
 	public String test(Model d) {
 		
+<<<<<<< HEAD
 		d.addAttribute("test1", "테스트입니다");
+=======
+		d.addAttribute("test1", "test.테스트.");
+>>>>>>> bb85614784b28a0e41354d524a324aa50d4169f9
 		return "WEB-INF\\views\\test\\testpage.jsp";
 	}
 }
