@@ -1,9 +1,9 @@
-# µ¥ÀÌÅÍ º£ÀÌ½º Á¤º¸
+# ë°ì´í„° ë² ì´ìŠ¤ ì •ë³´. (ìš´ì˜ì„œë²„, í…ŒìŠ¤íŠ¸ì„œë²„)
 driver=oracle.jdbc.driver.OracleDriver
 url=jdbc:oracle:thin:@34.64.177.9:1521:xe
 user=ezen_team_2
 pass=123123
 
-# ÆÄÀÏ ¾÷·Îµå À§Ä¡.
+#íŒŒì¼ ì—…ë¡œë“œ ìœ„ì¹˜ (ì»´í“¨í„°ë§ˆë‹¤ ë‹¤ë¦…ë‹ˆë‹¤.)
 upload=C:/a01_javaexp/springweb/springweb1/WebContent/z01_upload/
 tmpUpload=C:/a01_javaexp/springweb/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/z01_upload/
