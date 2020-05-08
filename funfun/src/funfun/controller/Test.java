@@ -1,0 +1,20 @@
+package funfun.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
+@Controller
+public class Test {
+		
+	// http://localhost:4080/funfun/test.do?
+	@RequestMapping("/test.do")
+	public String test(Model d) {
+		
+		d.addAttribute("test1", "테스트입니다.");
+		return "WEB-INF\\views\\test\\testpage.jsp";
+	}
+}
