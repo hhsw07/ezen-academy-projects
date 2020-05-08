@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Test {
 		
-	// http://localhost:4080/funfun/test.do?
+	// http://localhost:5080/funfun/test.do?
 	@RequestMapping("/test.do")
 	public String test(Model d) {
 		
-		d.addAttribute("test1", "�׽�Ʈ�Դϴ�.");
+		d.addAttribute("test1", "�׽�Ʈ�Դϴ�.");
 		return "WEB-INF\\views\\test\\testpage.jsp";
 	}
 }
