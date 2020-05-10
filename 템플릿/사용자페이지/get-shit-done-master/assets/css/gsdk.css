@@ -1222,6 +1222,7 @@ input.ct-red + span + label + span.switch-right {
   .navbar .btn-simple {
     font-size: 16px; }
 
+
 .navbar-nav > li > .dropdown-menu {
   border-radius: 10px;
   margin-top: -5px; }
