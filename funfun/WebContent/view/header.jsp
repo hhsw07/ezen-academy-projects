@@ -3,29 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<fmt:requestEncoding value="utf-8" />
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">	
+	<link rel="apple-touch-icon" sizes="76x76" href="${path }/view/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="${path }/view/assets/img/favicon.png">	
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>펀펀(FunFunding)</title>
+	<title>FunFun 펀펀</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 	
-    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="bootstrap3/css/font-awesome.css" rel="stylesheet" />
+    <link href="${path }/view/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="${path }/view/bootstrap3/css/font-awesome.css" rel="stylesheet" />
     
-	<link href="assets/css/gsdk.css" rel="stylesheet" />   
-    <link href="assets/css/demo.css" rel="stylesheet" /> 
+	<link href="${path }/view/assets/css/gsdk.css" rel="stylesheet" />   
+    <link href="${path }/view/assets/css/demo.css" rel="stylesheet" /> 
 
     <!--     Font Awesome     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+    <!-- 아이콘 추가 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
 </head>
 
@@ -36,6 +37,7 @@
         navbar-default can be changed with navbar-ct-blue navbar-ct-azzure navbar-ct-red navbar-ct-green navbar-ct-orange  
         -->
         <nav class="navbar navbar-ct-orange navbar-transparent navbar-fixed-top" role="navigation">
+          
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -45,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#gsdk">FunFunding</a>
+              <a class="navbar-brand" href="#gsdk">FunFun</a>
             </div>
         
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,7 +72,7 @@
                 <ul class="nav navbar-nav">
                   <li class="active">
                     <div class="form-group">
-                      <input type="text" value="" placeholder="아무거나 검색해보세요!" class="form-control" style="background-color: transparent; color:white;
+                      <input type="text" value="" placeholder="프로젝트를 검색해보세요!" class="form-control" style="background-color: transparent; color:white;
                       margin:15px 3px; border:none" />
                     </div>
                   </li>
@@ -78,17 +80,50 @@
                     margin: 26px 3px;"></button></li>
                 </ul>
               </form>
+              
+              <c:if test="${user!=null }">
+              <div class="navbar-right">
+	              <div class="nav navbar-nav dropdown" id="noti-wrap" style="cursor:pointer; position:relative; margin:0; width:24px; height: 24px; box-sizing: border-box;
+	              margin:24px 20px;">
+	                <i class="medium material-icons dropdown-toggle" data-toggle="dropdown" style="position:absolute; color:white;">notifications</i>
+	                <div id="noti-number" style="position:absolute; top:-2px; right:-2px; color:white; background-color: red;
+	                font-size: 12px; width:12px; height: 12px; border-radius: 6px; line-height: 12px; text-align: center;">2</div>
+	                <ul class="dropdown-menu">
+                        <li><a href="#">문의사항 답변(#1231)</a></li>
+                        <li><a href="#">마감 예정인 프로젝트(#1232)</a></li>
+                    </ul>
+	              </div>
+	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
+	                     <div class="logo-container dropdown-toggle" data-toggle="dropdown">
+	                        <div class="logo">
+	                            <img src="${path }/view/assets/img/new_logo.png">
+	                        </div>
+	                        <div class="brand">
+	                            @${user } 홍길동
+	                        </div>
+	                    </div>
+	                    <div class="dropdown-menu" style="display:flex; flex-direction:column; border:none; align-items:center;
+	                    background-color:#fafafa;">
+					      <a class="dropdown-item" style=""href="#">마이페이지</a>	
+					      <a class="dropdown-item" href="#" onclick="javascript:logOut()">로그아웃</a>
+					    </div>
+	              </div>
+              </div>
+              </c:if>
+              
+              <c:if test="${user==null }">
               <ul class="nav navbar-nav navbar-right">
                     <li><a href="#gsdk">회원가입</a></li>
                     
                     <li><button href="#gsdk" class="btn btn-round btn-default">로그인</button></li>
                </ul>
+               </c:if>
               
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        <div class="blurred-container" style="height:100px;">
-            <div class="img-src" style="background-image: url('assets/img/bg.jpg'); height:100px"></div>
+        <div class="blurred-container">
+            <div class="img-src" style="background-image: url('${path }/view/assets/img/bg.jpg')"></div>
         </div>
     </div><!--  end navbar -->
 
@@ -96,13 +131,20 @@
 
 </body>
 
-  <script src="jquery/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-	<script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-	<script src="assets/js/gsdk-checkbox.js"></script>
-	<script src="assets/js/gsdk-radio.js"></script>
-	<script src="assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="assets/js/get-shit-done-header.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <script src="${path }/view/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="${path }/view/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+	<script src="${path }/view/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="${path }/view/assets/js/gsdk-checkbox.js"></script>
+	<script src="${path }/view/assets/js/gsdk-radio.js"></script>
+	<script src="${path }/view/assets/js/gsdk-bootstrapswitch.js"></script>
+	<script src="${path }/view/assets/js/get-shit-done-home.js"></script>
+  <script src="${path }/view/assets/js/custom.js"></script>
+  <script>
+  	function logOut(){
+  		if(confirm('로그아웃하시겠습니까?')){
+  			alert("로그아웃! 가버렷!");
+  		}
+  	}
+  </script>
 
 </html>
