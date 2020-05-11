@@ -1,0 +1,14 @@
+메이커 등록		- ht_user_w_MS_makerReg
+메이커 등록 완료 		- ht_user_w_MS_makerReg_done
+마이 프로젝트 		- ht_user_w_MS_myProject
+프로젝트 등록 준비 	- ht_user_w_MS_proReg_ready
+프로젝트 등록 기본요건	- ht_user_w_MS_proReg_basicReq
+프로젝트 등록 기본정보	- ht_user_w_MS_proReg_basicInfo
+프로젝트 등록 스토리 작성	- ht_user_w_MS_proReg_story
+프로젝트 등록 리워드 설게	- ht_user_w_MS_proReg_reward
+프로젝트 등록 위험요인	- ht_user_w_MS_proReg_risk
+프로젝트 등록 메이커 정보	- ht_user_w_MS_proReg_makerInfo
+프로젝트 문의 관리		- ht_user_w_MS_manageQna
+스토어 등록		- ht_user_w_MS_storeReg
+스토어 배송 관리		- ht_user_w_MS_store_manage
+스토어 문의 관리		- ht_user_w_MS_store_manageQna

@@ -21,6 +21,44 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
+	    <div class="row" style="text-align:center; margin-top:50px;">
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/all.png" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>전체보기</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/edu.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>교육·키즈</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/beauty.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>패션·잡화·뷰티</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/homeLiving.png" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>홈리빙·디자인소품</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/culture.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>공연·컬쳐</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/sports.png" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>스포츠·모빌리티</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/book.png" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>출판</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/dog.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>반려동물</h6>
+				</div>
+				<div class="" style="text-align:center; width:120px; display:inline-block;">
+					<img src="${path}/img/electro.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
+					<h6>테크·가전</h6>
+				</div>
+            </div>
 			 <div id="Product_Search_Div">
         <span id="Cate_Search_Span">전체보기</span>
         <div id="Search_Div">        
