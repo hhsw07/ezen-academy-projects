@@ -119,7 +119,7 @@ var functions=[function(){
 $(document).ready(function(){
 		if(window.location.href.includes("main.do")){
 			$(document).scroll(function() {
-			    if( $(this).scrollTop() > 10 ) {
+			    if( $(this).scrollTop() > 220 ) {
 			        if(transparent) {
 			            transparent = false;
 			            $('nav[role="navigation"]').removeClass('navbar-transparent');
