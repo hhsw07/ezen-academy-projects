@@ -4,18 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import funfun.service.MakerStudioService;
+import funfun.service.HT_MSService;
 import funfun.vo.MakerStudio;
 
 @Controller
 @RequestMapping("/MakerStudio.do")
-public class MakerStudioCtrl {
+public class HT_MSCtrl {
 
 	// http://localhost:6080/funfun/MakerStudio.do?method=makerReg
 	// http://localhost:6080/funfun/MakerStudio.do?method=makerReg_done
 
 	@Autowired(required=false)
-	private MakerStudioService service;
+	private HT_MSService service;
 	
 	@RequestMapping(params="method=makerReg")
 	public String regForm() {
@@ -27,5 +27,10 @@ public class MakerStudioCtrl {
 		service.regMaker(reg);
 		System.out.println("등록됨???");
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
+	}
+	
+	@RequestMapping(params="method=myProject")
+	public String myProject() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 	}
 }

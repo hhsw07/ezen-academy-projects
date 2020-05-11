@@ -3,14 +3,14 @@ package funfun.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import funfun.repository.MakerStudioDAO;
+import funfun.repository.HT_MSReposi;
 import funfun.vo.MakerStudio;
 
 @Service
-public class MakerStudioService {
+public class HT_MSService {
 
 	@Autowired(required=false)
-	private MakerStudioDAO dao;
+	private HT_MSReposi dao;
 	
 	public void regMaker(MakerStudio reg) {
 		dao.regMaker(reg);
