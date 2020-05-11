@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+
+<mapper namespace="funfun.repository.MakerDAO">
+	
+	<resultMap type="makerstudio" id="msResult"/>
+	
+	<insert id="regMaker" parameterType="makerstudio">
+	
+ 	INSERT INTO MAKER VALUES (maker_seq.nextval, #{mem_code}, #{maker_profile}, #{maker_type}, #{maker_name}, #{maker_email}, #{maker_curr}, #{maker_bankbook})
+	
+	</insert>
+	
+</mapper>

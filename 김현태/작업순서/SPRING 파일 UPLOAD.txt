@@ -1,0 +1,59 @@
+1. C:\a01_javaexp\workspace_web\springweb\WebContent\z01_upload
+	업로드 된 파일 저장 위치 생성
+
+2. springweb\src\resource\properties\info
+
+upload=C:/a01_javaexp/workspace_web/springweb/WebContent/z01_upload/
+tmpUpload=C:/a01_javaexp/workspace_web/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/springweb/z01_upload/
+
+3. dispatcher-servlit
+
+<bean id="btnViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+	<property name="order" value="0"/>
+</bean>
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="order" value="1"/>
+</bean>
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+</bean>
+
+4. VO 객체 추가
+
+	private MultipartFile[] report;
+
+5. 화면 UI 구현
+	WEB-INF\views\a03_mvc\a02_board_insert.jsp
+
+	<form> 속성 변경 => enctype="multipart/form-data"
+
+
+6. CONTROLLER 수정
+	Public String insert(Board insert)
+	등록 제목, 파일 로딩 추가
+
+7. SERVICE 수정
+	@Value("${upload}")
+	@Value("${tmpUpload}")
+	public void insert(Board ins),
+	public void upload(MultipartFile mtf)
+
+8. eclipse
+	Preferences -> General -> Workspace => Refresh using native hooks or pooling, Refresh on access 체크 확인 하셈
+
+9. BoardDao
+	public void insertRepo(String fname);
+
+10. boardMapper
+	<insert id="insertRepo">
+	<select id="fnames">
+
+
+---------- 첨부된 파일 표시
+
+11. BoardVO
+	private ArrayList<String> fnames; 
+	Set, Get Method 추가
+
+11. BoardService
+	
+12. board_detail 구현
