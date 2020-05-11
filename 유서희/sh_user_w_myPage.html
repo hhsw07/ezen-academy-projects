@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -94,7 +95,7 @@
 	                            <img src="assets/img/new_logo.png">
 	                        </div>
 	                        <div class="brand">
-	                            @${user } 홍길동
+	                            홍길동
 	                        </div>
 	                    </div>
 	                    <div class="dropdown-menu" style="display:flex; flex-direction:column; border:none; align-items:center;
@@ -132,7 +133,7 @@
 	<script src="assets/js/gsdk-checkbox.js"></script>
 	<script src="assets/js/gsdk-radio.js"></script>
 	<script src="assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="assets/js/get-shit-done-home.js"></script>
+	<script src="assets/js/get-shit-done-header.js"></script>
   <script src="assets/js/custom.js"></script>
   <script>
   	function logOut(){
@@ -140,24 +141,11 @@
   			alert("로그아웃! 가버렷!");
   		}
   	}
-  	$(document).ready(function(){
-  		if(window.location.href.includes("main.do")){
-  			//그대로
-  		} else{
-  			$('nav[role="navigation"]').removeClass('navbar-transparent');
-  			document.querySelector('.blurred-container').style.display='none';
-  		}
-  	})
-
-
   </script>
 
 </html>
-
 <!---------------- 헤더 파일 ------------------>
 
-<c:set var="path" value="${pageContext.request.contextPath }" />
-<fmt:requestEncoding value="utf-8" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,11 +182,11 @@
       </div>
 
 <!--하단 푸른 박스 -->
-      <div style="background-color: rgb(245, 247, 250); margin-top: -20px;">
+      <div style="background-color: rgb(245, 247, 250); margin-top: -20px; min-height: 490px">
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
-          <div class="row">
+          <div class="row" style="display:none;">
 
             <div class="col-xs-12 col-md-3 item">
               <div class="thumbnail">
@@ -257,10 +245,122 @@
 
 
           </div>
+<!--아이템들 끝-->
+
+<!-- 참여한 펀딩 -->
+<div  style="display: none;">
+        <div class="row" >
+          <div class="col-xs-1 col-md-1 "></div>
+          <div class="col-xs-10 col-md-10 funding">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
+              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
+              <tr><td class="funding__company">by 이젠</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
+              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
+            </table>
+            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-1 col-md-1"></div>
+          <div class="col-xs-10 col-md-10 funding">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
+              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
+              <tr><td class="funding__company">by 이젠</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
+              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
+            </table>
+            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-xs-1 col-md-1 "></div>
+          <div class="col-xs-10 col-md-10 funding">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state" style="color : rgb(245, 2, 2)">펀딩실패</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
+              <tr><td class="funding__name">[패션.잡화] "STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</td><td></td></tr>
+              <tr><td class="funding__company">by 이젠</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">200,000원</td></tr>
+              <tr><td colspan class="funding__alert">* 모금실패시 투자액은 즉시 락업해제 됩니다</td></tr>
+              
+            </table>
+            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-xs-1 col-md-1 "></div>
+          <div class="col-xs-10 col-md-10 funding">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
+              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
+              <tr><td class="funding__company">by 이젠</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
+              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
+            </table>
+            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+          </div>
+        </div>
+</div>
+<!-- 참여한 펀딩 끝 -->
+    <div class="row">
+
+      <div class="col-xs-12 col-md-3 item">
+        <span data-html = "true" data-toggle="tooltip" data-placement="top" title="주문번호 : 0000001&#013;주문일 : 2020.05.12&#013;결제금액 : 50,000원&#013;상태 : 배송준비중">   
+        <div class="thumbnail">
+          <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
+          <div class="caption">
+            
+            <p class="item__title">클래식 안경 – 블랙 (1개)</p>
+            <span class="trans__date">5월 5일에 배송 예정</span>
+          </div>
+        </div>
+      </div>
+     </span>
+
+     <div class="col-xs-12 col-md-3 item">
+      <span data-html = "true" data-toggle="tooltip2" data-placement="top" title="주문번호 : 0000001&#013;주문일 : 2020.05.12&#013;결제금액 : 50,000원&#013;상태 : 배송준비중">   
+      <div class="thumbnail">
+        <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
+        <div class="caption">
+          
+          <p class="item__title">클래식 안경 – 블랙 (1개)</p>
+          <span class="trans__date">5월 5일에 배송 예정</span>
+        </div>
+      </div>
+    </div>
+   </span>
+     
+    </div>
 
       </div>
     </div>
   </div>
-	<!-- end main -->
+  <!-- end main -->
+  <script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(function () {
+    $('[data-toggle="tooltip2"]').tooltip()
+  })
+</script>
 </body>
 </html>

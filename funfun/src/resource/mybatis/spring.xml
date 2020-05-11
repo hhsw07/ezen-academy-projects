@@ -3,6 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
+	<typeAliases>
+		<typeAlias alias="makerstudio" type="funfun.vo.MakerStudio"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="resource/mybatis/MSMapper.xml"/>
+	</mappers>
  
 </configuration>
