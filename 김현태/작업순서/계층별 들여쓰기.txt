@@ -1,0 +1,21 @@
+1. boardMapper.xml
+
+id="boardList"
+
+	select rownumcnt, level, b.*		> level 추가
+
+2. a02_board.jsp
+
+		<tbody>
+			<c:forEach var="board" items="${blist}">	
+			<tr class="text-center"	ondblclick="javascript:go(${board.no})">
+			<td>${board.cnt}</td>
+				<c:forEach varStatus="sts" begin="1" end="${board.level}"></c:forEach>
+				<c:if test="${board.level>1 and sts.last}">▶</c:if>
+			<td class="text-left">${board.title}</td>
+			<td class="text-center">${board.writer}</td>
+			<td><fmt:formatDate value="${board.credte}"/> </td>
+			<td>조회수</td>
+			</tr>
+			</c:forEach>
+		</tbody>

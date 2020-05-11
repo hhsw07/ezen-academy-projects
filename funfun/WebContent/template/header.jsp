@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#gsdk">FunFun</a>
+              <a class="navbar-brand" href="${path }/main.do">FunFun</a>
             </div>
         
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -113,9 +113,9 @@
               
               <c:if test="${user==null }">
               <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#gsdk">회원가입</a></li>
+                    <li><a href="${path }/signup.do">회원가입</a></li>
                     
-                    <li><button href="#gsdk" class="btn btn-round btn-default">로그인</button></li>
+                    <li><a href="${path }/login.do" class="btn btn-round btn-default">로그인</a></li>
                </ul>
                </c:if>
               

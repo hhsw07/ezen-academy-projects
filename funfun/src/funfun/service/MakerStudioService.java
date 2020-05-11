@@ -12,7 +12,8 @@ public class MakerStudioService {
 	@Autowired(required=false)
 	private MakerStudioDAO dao;
 	
-	public void register(MakerStudio reg) {
-		dao.regMaker(reg);		
+	public void regMaker(MakerStudio reg) {
+		dao.regMaker(reg);
+		System.out.println("얘는 찍혀???");
 	}
 }
