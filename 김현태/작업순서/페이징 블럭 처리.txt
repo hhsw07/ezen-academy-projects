@@ -1,0 +1,27 @@
+1. springweb.a03_mvc.a04_vo.BoardSch
+
+	blockSize
+	startBlock
+	endBlock
+
+2. A02_BoardService
+
+	public ArrayList<Board> boardList(BoardSch sch){
+
+		sch.setBlockSize(5);
+		int blocknum = (int)Math.ceil(sch.getCurPage()/(double)sch.getBlockSize());
+		int endBlock = blocknum*sch.getBlockSize();
+		sch.setEndBlock(endBlock>sch.getPageCount()?sch.getPageCount():endBlock);
+		sch.setStartBlock((blocknum-1)*sch.getBlockSize()+1);
+
+	}
+
+3. a02_board.jsp
+
+	<ul class="pagination">
+		<li class="page-item disabled"><a class="page-link" href="javascript:goPage(${bsch.startBlock-1})">Previous</a></li>
+		<c:forEach var="cnt" begin="${bsch.startBlock}" end="${bsch.endBlock}">
+		<li class="page-item ${bsch.curPage==cnt?'active':''}"><a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a></li>
+		</c:forEach>		
+		<li class="page-item"><a class="page-link" href="javascript:goPage(${bsch.endBlock+1})">Next</a></li>
+	</ul>
