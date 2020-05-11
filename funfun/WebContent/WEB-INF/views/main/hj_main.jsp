@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/view/header.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<%@ include file="/template/header.jsp" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,7 +21,7 @@
 
 <body>
 <div class="main">
-    <div class="container tim-container" style="max-width:800px; padding-top:100px">
+    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
        <h1 class="text-center">남의 눈치 보지말고<br> FunFun하게 투자하세요! <small class="subtitle">Better Funding Better Business Better Life</small></h1>
        <p class="text-center">사람들은 자신이 지지하는 기업에 투자합니다.<br>
         한 사람 한 사람의 투자가 모여 기업은 성장합니다.<br>

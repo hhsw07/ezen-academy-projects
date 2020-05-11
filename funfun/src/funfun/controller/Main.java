@@ -18,6 +18,6 @@ public class Main {
 		HttpSession session = req.getSession();
 		session.setAttribute("user", "funfun123");
 		
-		return "WEB-INF\\views\\hj_main.jsp";
+		return "WEB-INF\\views\\main/hj_main.jsp";
 	}
 }

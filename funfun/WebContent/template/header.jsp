@@ -7,8 +7,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="${path }/view/assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="${path }/view/assets/img/favicon.png">	
+	<link rel="apple-touch-icon" sizes="76x76" href="${path }/template/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="${path }/template/assets/img/favicon.png">	
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>FunFun 펀펀</title>
@@ -16,11 +16,11 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 	
-    <link href="${path }/view/bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="${path }/view/bootstrap3/css/font-awesome.css" rel="stylesheet" />
+    <link href="${path }/template/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="${path }/template/bootstrap3/css/font-awesome.css" rel="stylesheet" />
     
-	<link href="${path }/view/assets/css/gsdk.css" rel="stylesheet" />   
-    <link href="${path }/view/assets/css/demo.css" rel="stylesheet" /> 
+	<link href="${path }/template/assets/css/gsdk.css" rel="stylesheet" />   
+    <link href="${path }/template/assets/css/demo.css" rel="stylesheet" /> 
 
     <!--     Font Awesome     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -96,7 +96,7 @@
 	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
 	                     <div class="logo-container dropdown-toggle" data-toggle="dropdown">
 	                        <div class="logo">
-	                            <img src="${path }/view/assets/img/new_logo.png">
+	                            <img src="${path }/template/assets/img/new_logo.png">
 	                        </div>
 	                        <div class="brand">
 	                            @${user } 홍길동
@@ -123,7 +123,7 @@
           </div><!-- /.container-fluid -->
         </nav>
         <div class="blurred-container">
-            <div class="img-src" style="background-image: url('${path }/view/assets/img/bg.jpg')"></div>
+            <div class="img-src" style="background-image: url('${path }/template/assets/img/bg.jpg')"></div>
         </div>
     </div><!--  end navbar -->
 
@@ -131,20 +131,30 @@
 
 </body>
 
-  <script src="${path }/view/jquery/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="${path }/view/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
-	<script src="${path }/view/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
-	<script src="${path }/view/assets/js/gsdk-checkbox.js"></script>
-	<script src="${path }/view/assets/js/gsdk-radio.js"></script>
-	<script src="${path }/view/assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="${path }/view/assets/js/get-shit-done-home.js"></script>
-  <script src="${path }/view/assets/js/custom.js"></script>
+  <script src="${path }/template/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="${path }/template/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+	<script src="${path }/template/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="${path }/template/assets/js/gsdk-checkbox.js"></script>
+	<script src="${path }/template/assets/js/gsdk-radio.js"></script>
+	<script src="${path }/template/assets/js/gsdk-bootstrapswitch.js"></script>
+	<script src="${path }/template/assets/js/get-shit-done-home.js"></script>
+  <script src="${path }/template/assets/js/custom.js"></script>
   <script>
   	function logOut(){
   		if(confirm('로그아웃하시겠습니까?')){
   			alert("로그아웃! 가버렷!");
   		}
   	}
+  	$(document).ready(function(){
+  		if(window.location.href.includes("main.do")){
+  			//그대로
+  		} else{
+  			$('nav[role="navigation"]').removeClass('navbar-transparent');
+  			document.querySelector('.blurred-container').style.display='none';
+  		}
+  	})
+
+
   </script>
 
 </html>
