@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/sh_user_w_myPage.css">
+<link rel="stylesheet" href="${path}/css/sh_user_w_myPage.css">
 <script>
 		$(document).ready(function(){
 			
@@ -24,7 +24,7 @@
           <span class="profile__name">홍길동</span>
           <br>
           <span class="profile__level">서포터 회원</span>
-          <img  class="profile__img" src="img/profile01.png" alt="">
+          <img  class="profile__img" src="${path}/img/profile01.png" alt="">
           <table class="profile__times--table">
             <tr><td class="profile__times--num">2</td><td class="profile__times--num">3</td></tr>
             <tr><td class="profile__times--text">펀딩</td><td class="profile__times--text">주문</td></tr>
@@ -222,6 +222,6 @@
     $('[data-toggle="tooltip2"]').tooltip()
   })
 </script>
-<script src="js/sh_user_w_myPage.js"></script>
+<script src="${path}/js/sh_user_w_myPage.js"></script>
 </body>
 </html>
