@@ -137,7 +137,7 @@
 	<script src="${path }/template/assets/js/gsdk-checkbox.js"></script>
 	<script src="${path }/template/assets/js/gsdk-radio.js"></script>
 	<script src="${path }/template/assets/js/gsdk-bootstrapswitch.js"></script>
-	<script src="${path }/template/assets/js/get-shit-done-home.js"></script>
+	<script src="${path }/template/assets/js/get-shit-done-header.js"></script>
   <script src="${path }/template/assets/js/custom.js"></script>
   <script>
   	function logOut(){
@@ -145,16 +145,6 @@
   			alert("로그아웃! 가버렷!");
   		}
   	}
-  	$(document).ready(function(){
-  		if(window.location.href.includes("main.do")){
-  			//그대로
-  		} else{
-  			$('nav[role="navigation"]').removeClass('navbar-transparent');
-  			document.querySelector('.blurred-container').style.display='none';
-  		}
-  	})
-
-
   </script>
 
 </html>
