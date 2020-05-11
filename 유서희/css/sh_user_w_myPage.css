@@ -1,0 +1,83 @@
+.profile__detail {
+  color: black;
+  margin-right: 15px;
+  margin-bottom: 50px;
+}
+
+.profile__name {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.profile__level {
+  font-size: 15px;
+}
+
+.profile__img {
+  height: 120px;
+  width: 120px;
+  border-radius: 200px;
+  float: right;
+  position: relative;
+  bottom: 50px;
+}
+
+.profile__times--table {
+  margin: 20px 0 45px 13px;
+}
+
+.profile__times--num {
+  color: orange;
+  font-size: 35px;
+  padding-left: 5px;
+}
+
+.profile__times--text {
+  font-size: 14px;
+  padding-right: 30px;
+  font-weight: bold;
+}
+
+.profile__choice {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 18px;
+  cursor: pointer;
+}
+
+.profile__choice--table {
+  margin-bottom: 20px;
+  margin-left: 13px;
+}
+
+.clicked {
+  height: 3px;
+  width: 84px;
+  background-color: orange;
+  margin: auto;
+}
+
+.item {
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.item__title {
+  color: black;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.item__category {
+  font-size: 12px;
+}
+
+.item__money {
+  float: right;
+  color: orange;
+  font-weight: bold;
+  font-size: 15px;
+}
+/*# sourceMappingURL=sh_user_w_myPage.css.map */
