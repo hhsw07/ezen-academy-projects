@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/view/header.jsp" %>
+<%@ include file="/template/header.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <fmt:requestEncoding value="utf-8" />
 <!DOCTYPE html>
@@ -15,7 +15,6 @@
 	$("#makerReg").click(function(){
 		console.log("이거 찍힘???")
 		$("form").submit();
-		//$(location).attr("href", "${path}/MakerStudio.do?method=makerReg_done")
 	})
 
 	$(':checkbox').checkbox('check');
@@ -31,7 +30,16 @@
 	
 	<br><br><br>
 
-	<form action="${path}/MakerStudio.do?method=makerReg_done">
+	<form method="post" action="${path}/MakerStudio.do">
+	 
+	<input type="hidden" name="method" value="makerReg_done" />
+
+	<input type="hidden" name="mem_code" value="123132"/>
+	<input type="hidden" name="maker_profile" value="123123"/>
+	<input type="hidden" name="maker_email" value="123123"/>
+	<input type="hidden" name="maker_curr" value=""/>
+	<input type="hidden" name="maker_bankbook" value="123123"/>
+
 	<div class="form-group">
 	
 	<h5>메이커(기업)명 *</h5>
@@ -51,7 +59,9 @@
 	<br><br>
 	
 	<h5>관리자 휴대폰 번호 *</h5>
+<!-- 
     <input style="width:800px;display:inline-block;" type="text" value="" placeholder="휴대폰 번호를 입력하세요" class="form-control" name="mem_phoneno" />&nbsp&nbsp
+ -->
     <button class="btn btn-warning" style="display:inline-block;">인증하기</button>
 	
 	<br><br>

@@ -9,7 +9,7 @@
 	
 	<insert id="regMaker" parameterType="makerstudio">
 	
-	INSERT INTO MAKER VALUES (maker_seq.nextval, #{mem_code}, #{maker_profile}, #{maker_type}, #{maker_name}, #{maker_email}, #{maker_curr}, #{maker_bankbook})
+ 	INSERT INTO MAKER VALUES (maker_seq.nextval, #{mem_code}, #{maker_profile}, #{maker_type}, #{maker_name}, #{maker_email}, #{maker_curr}, #{maker_bankbook})
 	
 	</insert>
 	

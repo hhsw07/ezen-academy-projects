@@ -24,7 +24,7 @@ public class MakerStudioCtrl {
 	
 	@RequestMapping(params="method=makerReg_done")
 	public String regDone(MakerStudio reg) {
-		service.register(reg);
+		service.regMaker(reg);
 		System.out.println("등록됨???");
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
 	}
