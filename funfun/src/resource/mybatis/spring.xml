@@ -5,10 +5,14 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="makerstudio" type="funfun.vo.MakerStudio"/>
+		<typeAlias alias="notice" type="funfun.vo.Notice"/>
+		<typeAlias alias="paging" type="funfun.vo.Paging"/>
+		<typeAlias alias="project" type="funfun.vo.Project"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="resource/mybatis/MSMapper.xml"/>
+		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
 	</mappers>
  
 </configuration>
