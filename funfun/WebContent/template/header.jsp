@@ -53,7 +53,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#gsdk">프로젝트 오픈 신청</a></li>
+                <li class="active"><a href="${path }/MakerStudio.do?method=myProject">프로젝트 오픈 신청</a></li>
                 <li class="dropdown">
                       <a href="#gsdk" class="dropdown-toggle" data-toggle="dropdown">메뉴 <b class="caret"></b></a>
                       <ul class="dropdown-menu">

@@ -60,6 +60,7 @@ public class Main {
 		return "pageJsonReport";
 	}
 	
+	//회원가입시 아이디 중복 체크
 	@RequestMapping("/signupIdCheck.do")
 	public String signupIdCheck(@RequestParam("mem_email") String email, Model d) {
 		d.addAttribute("verification", service.signupIdCheck(email));

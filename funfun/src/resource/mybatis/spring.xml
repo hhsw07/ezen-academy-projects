@@ -13,6 +13,7 @@
 	<mappers>
 		<mapper resource="resource/mybatis/MSMapper.xml"/>
 		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
+		<mapper resource="resource/mybatis/loginMapper.xml" />
 	</mappers>
  
 </configuration>
