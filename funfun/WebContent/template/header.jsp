@@ -27,7 +27,19 @@
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <!-- 아이콘 추가 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+  	<style>
+  	.fadeIn{
+  		animation:fadein 2s;
+  	}
+  	@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+	}
+  	</style>
 </head>
 
 <body>
@@ -121,7 +133,7 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        <div class="blurred-container">
+        <div class="blurred-container fadeIn">
             <div class="img-src" style="background-image: url('${path }/template/assets/img/bg.jpg')"></div>
         </div>
     </div><!--  end navbar -->
