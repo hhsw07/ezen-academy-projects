@@ -20,7 +20,9 @@
 	
 	</select>
 	
-	<select id="myProjectList" resultMap="msResult" parameterType="project">
+	<resultMap type="project" id="proResult"/>
+	
+	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	
 	SELECT * FROM PROJECT
 	WHERE MAKER_CODE = 13000014
