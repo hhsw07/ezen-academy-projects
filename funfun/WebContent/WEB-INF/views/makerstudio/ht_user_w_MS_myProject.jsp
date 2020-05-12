@@ -14,6 +14,30 @@
 		$(document).ready(function(){
 		})
 </script>
+
+<style>
+
+.item__title {
+  color: black;
+  padding-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.item__category {
+  font-size: 12px;
+}
+
+.item__money {
+  float: right;
+  color: orange;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+</style>
+
 </head>
 <body>
 
