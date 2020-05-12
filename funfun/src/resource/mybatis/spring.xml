@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="makerstudio" type="funfun.vo.MakerStudio"/>
+<<<<<<< HEAD
+		<typeAlias alias="notice" type="funfun.vo.Notice"/>
+		<typeAlias alias="paging" type="funfun.vo.Paging"/>
+=======
+		<typeAlias alias="project" type="funfun.vo.Project"/>
+>>>>>>> ddf2b5af4adcc035de4818455222fef5da077d67
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="resource/mybatis/MSMapper.xml"/>
+		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
+	</mappers>
+ 
+</configuration>
