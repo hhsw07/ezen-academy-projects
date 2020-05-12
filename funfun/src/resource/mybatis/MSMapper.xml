@@ -13,4 +13,18 @@
 	
 	</insert>
 	
+	<select id="makerInfo" resultType="makerstudio" parameterType="int">
+	
+	SELECT * FROM MAKER
+	WHERE MAKER_CODE = #{MAKER_CODE}
+	
+	</select>
+	
+	<select id="myProjectList" resultMap="msResult" parameterType="project">
+	
+	SELECT * FROM PROJECT
+	WHERE MAKER_CODE = 13000014
+	
+	</select>
+	
 </mapper>
