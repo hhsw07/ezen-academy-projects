@@ -9,6 +9,7 @@
 		<typeAlias alias="notice" type="funfun.vo.Notice"/>
 		<typeAlias alias="paging" type="funfun.vo.Paging"/>
 		<typeAlias alias="project" type="funfun.vo.Project"/>
+		<typeAlias alias="project" type="funfun.vo.Favor"/>
 
 	</typeAliases>
 	<mappers>
@@ -16,6 +17,7 @@
 		<mapper resource="resource/mybatis/StoreMapper.xml"/>
 		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
 		<mapper resource="resource/mybatis/loginMapper.xml" />
+		<mapper resource="resource/mybatis/favorMapper.xml" />
 
 	</mappers>
  
