@@ -20,22 +20,11 @@
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 
-<nav class="navbar navbar-inverse">
-<div class="container-fluid">
-<div class="navbar-header" style="background-color:white;">
-<a class="navbar-brand" href="#">WebSiteName</a>
-</div>
-<ul class="nav navbar-nav">
-<li class="active"><a href="#">Home</a></li>
-<li><a href="#">Page 1</a></li>
-<li><a href="#">Page 2</a></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-</ul>
-</div>
-</nav> 
+	<div class="row">
+  	<div class="col-sm-4" style="background-color:yellow">.col-sm-4</div>
+  	<div class="col-sm-8" style="background-color:blue">.col-sm-8</div>
+	</div>
+
 
 
 

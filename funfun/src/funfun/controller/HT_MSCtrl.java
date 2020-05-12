@@ -38,4 +38,9 @@ public class HT_MSCtrl {
 		d.addAttribute("list", service.myProjectList(list));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 	}
+	
+	@RequestMapping(params="method=proRegReady")
+	public String proRegReady() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectReg_Ready.jsp";
+	}
 }

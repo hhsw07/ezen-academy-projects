@@ -12,10 +12,23 @@
 <title>Insert title here</title>
 <script>
 		$(document).ready(function(){
+			
+			function goReg(){
+				$(location).attr("href", "${path}/MakerStudio.do?method=proRegReady")
+			}
+			
 		})
 </script>
 
 <style>
+
+.display_item {
+  display: block;
+}
+
+.item__img{
+	width: 200px;
+}
 
 .item__title {
   color: black;
@@ -45,7 +58,7 @@
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px; padding-bottom:50px;">
 
-	<h3>만든 프로젝트</h3>
+	<h3>만든 프로젝트</h3> &nbsp&nbsp&nbsp&nbsp&nbsp <h5><a href="${path}/MakerStudio.do?method=proRegReady">등록하기</a></h5>
 	        
 	    </div>
 
@@ -57,10 +70,10 @@
 		<div class="display_item" class="row">
 			<div class="col-xs-12 col-md-3 item">
 				<div class="thumbnail">
-					<img src="${pList.pro_image}" alt="...">
+					<img class="item__img" src="${pList.pro_image}" alt="...">
 					<div class="caption">
 						<p class="item__title">${pList.pro_title}</p>
-						<span class="item__category">패션.잡화 | MOD</span><br>
+						<span class="item__category">패션.잡화 | MOD</span>
 						<span class="item__money">모금율 : 90%</span>
 					</div>
 				</div>

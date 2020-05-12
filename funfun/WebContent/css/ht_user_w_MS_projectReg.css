@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.reg_item_container{
+	width:60%;
+	align:justify;
+	font-weight:bolder;
+	padding:10px 20px 10px 20px;
+	margin:20px 0px 20px 0px;
+	border-left:solid 5px #FF9E00;
+	border-right:solid #E6EAED;
+	border-top:solid #E6EAED;
+	border-bottom:solid #E6EAED;
+	background-color:none;
+}
