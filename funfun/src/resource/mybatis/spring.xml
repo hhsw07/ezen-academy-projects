@@ -5,10 +5,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="makerstudio" type="funfun.vo.MakerStudio"/>
+		<typeAlias alias="RewardStore" type="funfun.vo.RewardStore"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="resource/mybatis/MSMapper.xml"/>
+		<mapper resource="resource/mybatis/StoreMapper.xml"/>
 	</mappers>
  
 </configuration>
