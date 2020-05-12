@@ -24,23 +24,16 @@ public class Sw_NoticeService {
 		private int start;		// 화면에 보여줄 페이지의 시작번호
 		private int end;		// 화면에 보여줄 페이지의 마지막번호
 		*/
-		System.out.println("1-1");
 		sch.setCount(dao.totCnt());
-		System.out.println("1-2");
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(5);
 		}
-		System.out.println("1-3");
 		sch.setPageCount((int)Math.ceil(sch.getCount()/(double)sch.getPageSize()));
-		System.out.println("1-4");
 		if(sch.getCurPage() == 0) {
 			sch.setCurPage(1);
 		}
-		System.out.println("1-5");
 		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1); // start => (curPage-1)*pageSize+1
-		System.out.println("1-6");
 		sch.setEnd(sch.getCurPage()*sch.getPageSize());			// end 	 => curPage*pageSize
-		System.out.println("1-7");
 		
 		/*
 		// 3. 블럭 처리.
@@ -49,16 +42,11 @@ public class Sw_NoticeService {
 		private int endBlock;	// block의 마지막번호
 		*/
 		sch.setBlocksize(5);
-		System.out.println("1-8");
 		// int blocknum 현재 위치한 블럭의 단계 1~5 = 1, 6~10=2..
 		int blocknum = (int)Math.ceil(sch.getCurPage()/(double)sch.getBlocksize());
-		System.out.println("1-9");
-		sch.setStartBlock((blocknum-1)*sch.getBlocksize()-1);
-		System.out.println("1-10");
+		sch.setStartBlock((blocknum-1)*sch.getBlocksize()+1);
 		int endblock = blocknum*sch.getBlocksize();
-		System.out.println("1-11");
 		sch.setEndBlock(endblock>sch.getPageCount()?sch.getPageCount():endblock);
-		System.out.println("1-12");
 		
 		
 		return dao.list(sch);
