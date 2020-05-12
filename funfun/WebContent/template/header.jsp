@@ -61,7 +61,7 @@
                         <li><a href="#gsdk">스토어 구경하기</a></li>
                         
                         <li class="divider"></li>
-                        <li><a href="#gsdk">공지사항</a></li>
+                        <li><a href="${path}/notice.do?method=list">공지사항</a></li>
                         <li><a href="#gsdk">FAQ</a></li>
                         <li><a href="#gsdk">QnA</a></li>
                       </ul>
