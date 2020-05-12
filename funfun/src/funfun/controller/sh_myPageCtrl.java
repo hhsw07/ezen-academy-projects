@@ -13,11 +13,10 @@ import funfun.vo.Favor;
 @Controller
 @RequestMapping("/mypage.do")
 public class sh_myPageCtrl {
-	// http://localhost:5542/funfun/mypage.do?method=info
+	// http://localhost:5542/funfun/mypage.do
 	@Autowired(required=false)
 	private sh_myPageService service;
 	
-	@RequestMapping(params="method=info")
 	public String list(@ModelAttribute("favor") Favor favor, Model d) {
 
 		d.addAttribute("flist", service.list(favor));
