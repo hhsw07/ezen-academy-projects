@@ -58,12 +58,11 @@
                       <a href="#gsdk" class="dropdown-toggle" data-toggle="dropdown">메뉴 <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li><a href="#gsdk">펀딩하기</a></li>
-                        <li><a href="#gsdk">스토어 구경하기</a></li>
+                        <li><a href="${path }/storeList.do">스토어 구경하기</a></li>
                         
                         <li class="divider"></li>
-                        <li><a href="${path}/notice.do?method=list">공지사항</a></li>
+                        <li><a href="${path }/notice.do?method=list">공지사항</a></li>
                         <li><a href="#gsdk">FAQ</a></li>
-                        <li><a href="#gsdk">QnA</a></li>
                       </ul>
                 </li>
                 
