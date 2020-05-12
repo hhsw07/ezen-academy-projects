@@ -13,6 +13,29 @@
 <script>
 		
 </script>
+<style>
+.shaking {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+</style>
 </head>
 <body>
 	<div class="main">
@@ -25,7 +48,7 @@
 		        <div class="col-md-4">
 		        	<div class="form-group">
 					  <label for="usr">이메일:</label>
-					  <input type="text" class="form-control" id="usr">
+					  <input type="text" name="mem_email" class="form-control" id="usr">
 					</div>
 		        </div>
     		</div>
@@ -34,8 +57,14 @@
         		<div class="col-md-4">
         			<div class="form-group">
 					  <label for="pwd">Password:</label>
- 					<input type="password" class="form-control" id="pwd">
+ 					<input type="password" name="mem_pw" class="form-control" id="pwd">
 					</div>
+        		</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-4"></div>
+        		<div class="col-md-4">
+        			<div id="resultMsg" v-bind:class="{shaking:isShaking}" style="width:100%; color:red;">{{msg}}</div>
         		</div>
         	</div>
         	<br>
@@ -50,7 +79,7 @@
         	<div class="row">
         		<div class="col-md-4"></div>
         		<div class="col-md-4">
-        			<button type="submit" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">로그인</button>
+        			<button id="loginBtn" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">로그인</button>
         		</div>
         	</div>
         	</form>
@@ -58,5 +87,65 @@
 	    </div>
 	</div>
 	<!-- end main -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'#resultMsg',
+			data:{
+				msg:"",
+				isShaking:false
+			}
+		});
+		
+		function loginTry(){
+			if($('input[name=mem_email]').val()===''){
+				vm.msg="아이디를 입력해주세요";
+				vm.isShaking=true;
+				setTimeout(()=>{
+					vm.isShaking=false;
+				}, 500);
+			} else if($('input[name=mem_pw]').val()===''){
+				vm.msg="비밀번호를 입력해주세요";
+				vm.isShaking=true;
+				setTimeout(()=>{
+					vm.isShaking=false;
+				}, 500);
+			} else {
+				$.ajax({
+					type:"post",
+					url:"${path}/verification.do",
+					data:$("form").serialize(),
+					dataType:"json",
+					success:function(data){
+						if(data.verification===false){
+							vm.msg="올바른 아이디/비밀번호를 입력해주세요.";
+							vm.isShaking=true;
+							setTimeout(()=>{
+								vm.isShaking=false;
+							}, 500);
+						} else {
+							window.location="${path}/loginSuccess.do?"+$("form").serialize();
+						}
+					},
+					error:function(err){
+						console.log("ajax처리 에러");
+						console.log(err);
+					}
+				});
+			}
+		}
+		$('#loginBtn').on('click', loginTry);
+		$('input[name=mem_email]').on('keyup', event=>{
+			if(event.keyCode===13){
+				loginTry();
+			}
+		});
+		$('input[name=mem_pw]').on('keyup', event=>{
+			if(event.keyCode===13){
+				loginTry();
+			}
+		});
+		
+	</script>
 </body>
 </html>

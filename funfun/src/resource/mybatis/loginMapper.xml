@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+
+<mapper namespace="funfun.repository.MainRepo">
+	
+	<resultMap type="int" id="cnt"></resultMap>
+	<select id="verifyId" resultMap="cnt" parameterType="funfun.vo.MemberLogin">
+	
+ 	select count(*) cnt from member where mem_email=#{mem_email} and mem_pw=#{mem_pw}
+	
+	</select>
+	
+	<resultMap type="funfun.vo.MemberInfo" id="memberInfo"></resultMap>
+	<select id="getMemberInfo" resultMap="memberInfo" parameterType="String">
+		select mem_email, mem_name, mem_profile from member where mem_email=#{email}
+	</select>
+	
+	
+	<select id="signupIdCheck" resultMap="cnt" parameterType="String">
+ 	select count(*) cnt from member where mem_email=#{mem_email}
+	</select>
+	
+	<insert id="insertMember" parameterType="funfun.vo.MemberInfo">
+		insert into member(mem_code, mem_email, mem_pw, mem_name, mem_favor) values(member_seq.nextval, #{mem_email},
+			#{mem_pw}, #{mem_name}, #{mem_favor})
+	</insert>
+</mapper>

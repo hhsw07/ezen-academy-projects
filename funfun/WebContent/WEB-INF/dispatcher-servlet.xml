@@ -131,4 +131,7 @@
  
  <!-- 다운로드 viewer -->
  <bean id="download" class="funfun.util.DonwloadViewer"></bean>
+ <bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+ 	<property name="contentType" value="text/html; charset=utf-8"></property>
+ </bean>
 </beans>
