@@ -9,8 +9,9 @@ INSERT INTO rtqna values(rtqna_seq.nextval,6,current_date, '1만원이요',1001)
 INSERT INTO rtqna values(rtqna_seq.nextval,5,current_date, '그래도 안돼요',1100002);
 
 
+INSERT INTO notice values(notice_seq.nextval,'test01제목','test01내용',sysdate,NULL,'Y',1001);
+INSERT INTO notice values(notice_seq.nextval,'test제목'||notice_seq.nextval,'test내용'||notice_seq.nextval,sysdate,NULL,'Y',1001);
 
-INSERT INTO notice values();
 
-INSERT INTO faq values();
 
+INSERT INTO faq values(faq_seq.nextval,'faq제목'||faq_seq.nextval,'faq내용'||faq_seq.nextval,sysdate,NULL,1001);

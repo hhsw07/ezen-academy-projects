@@ -53,7 +53,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#gsdk">프로젝트 오픈 신청</a></li>
+                <li class="active"><a href="${path }/MakerStudio.do?method=myProject">프로젝트 오픈 신청</a></li>
                 <li class="dropdown">
                       <a href="#gsdk" class="dropdown-toggle" data-toggle="dropdown">메뉴 <b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -61,7 +61,7 @@
                         <li><a href="#gsdk">스토어 구경하기</a></li>
                         
                         <li class="divider"></li>
-                        <li><a href="#gsdk">공지사항</a></li>
+                        <li><a href="${path}/notice.do?method=list">공지사항</a></li>
                         <li><a href="#gsdk">FAQ</a></li>
                         <li><a href="#gsdk">QnA</a></li>
                       </ul>
@@ -99,7 +99,7 @@
 	                            <img src="${path }/template/assets/img/new_logo.png">
 	                        </div>
 	                        <div class="brand">
-	                            @${user } 홍길동
+	                            ${user.mem_email } ${user.mem_name }
 	                        </div>
 	                    </div>
 	                    <div class="dropdown-menu" style="display:flex; flex-direction:column; border:none; align-items:center;
@@ -131,7 +131,9 @@
 
 </body>
 
-  <script src="${path }/template/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	  crossorigin="anonymous"></script>
 	<script src="${path }/template/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 	<script src="${path }/template/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
 	<script src="${path }/template/assets/js/gsdk-checkbox.js"></script>
@@ -142,7 +144,7 @@
   <script>
   	function logOut(){
   		if(confirm('로그아웃하시겠습니까?')){
-  			alert("로그아웃! 가버렷!");
+  			window.location.href="${path}/logout.do";
   		}
   	}
   </script>
