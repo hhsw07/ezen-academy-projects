@@ -23,7 +23,7 @@ public class Main {
 	// http://localhost:5080/funfun/main.do
 	@RequestMapping("/main.do")
 	public String moveMain(Model d) {
-		System.out.println("¸ŞÀÎÆäÀÌÁö ÁøÀÔ");
+		System.out.println("ë©”ì¸í™”ë©´ í˜¸ì¶œ");
 		return "WEB-INF\\views\\main/hj_main.jsp";
 	}
 	
@@ -60,7 +60,7 @@ public class Main {
 		return "pageJsonReport";
 	}
 	
-	//È¸¿ø°¡ÀÔ½Ã ¾ÆÀÌµğ Áßº¹ Ã¼Å©
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ Ã¼Å©
 	@RequestMapping("/signupIdCheck.do")
 	public String signupIdCheck(@RequestParam("mem_email") String email, Model d) {
 		d.addAttribute("verification", service.signupIdCheck(email));
@@ -71,7 +71,7 @@ public class Main {
 	public String loginSuccess(MemberLogin m, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.setAttribute("user", service.getMemberInfo(m.getMem_email()));
-		System.out.println("·Î±×ÀÎ ¼º°ø, ·Î±×ÀÎ ÀÌ¸ŞÀÏ:"+m.getMem_email());
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½:"+m.getMem_email());
 		return "redirect:/main.do";
 	}
 	
