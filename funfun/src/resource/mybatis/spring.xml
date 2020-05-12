@@ -9,7 +9,7 @@
 		<typeAlias alias="notice" type="funfun.vo.Notice"/>
 		<typeAlias alias="paging" type="funfun.vo.Paging"/>
 		<typeAlias alias="project" type="funfun.vo.Project"/>
-		<typeAlias alias="project" type="funfun.vo.Favor"/>
+		<typeAlias alias="favor" type="funfun.vo.Favor"/>
 
 	</typeAliases>
 	<mappers>

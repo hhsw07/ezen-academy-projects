@@ -35,7 +35,30 @@
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+.bounce{
+	animation:BounceIn 500ms;
+}
+
+@keyframes BounceIn{
+	0%{
+		transform:scale(1.1);
+		opacity:0.3;
+	}
+	100%{
+		transform:scale(1);
+		opacity:1;
+	}
+}
 </style>
+
+<script>
+	$(document).ready(function(){
+		$('.main').addClass('bounce');
+		setTimeout(()=>{
+			$('.main').removeClass('bounce');
+		},500);
+	})
+</script>
 </head>
 <body>
 	<div class="main">

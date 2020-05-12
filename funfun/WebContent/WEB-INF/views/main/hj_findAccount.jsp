@@ -52,11 +52,19 @@
 	}
 }
 </style>
+<script>
+	$(document).ready(function(){
+		$('.main').addClass('bounce');
+		setTimeout(()=>{
+			$('.main').removeClass('bounce');
+		},500);
+	})
+</script>
 </head>
 <body>
 	<div class="main">
 	    <div id="vue-container" v-bind:class="{bounce:isBounce}" class="container tim-container" style="max-width:1200px; padding-top:100px">
-	        <h1 class="text-center">아이디/비밀번호 찾기</h1>
+	        <h1 class="text-center">{{state[0].mainText}}</h1>
 	        <br><br><br>
 	        <div class="row">
 		        <div class="col-md-4"></div>
@@ -107,13 +115,15 @@
 			data:{
 				state:[
 					{
-						button1:"비밀번호 찾기>",
+						mainText:"아이디 찾기",
+						button1:"비밀번호 찾기 >",
 						inputText:"가입 시 등록한 이메일 주소 입력:",
 						button2:"가입여부 확인",
 						inputText2:"",
 					},
 					{
-						button1:"<아이디찾기",
+						mainText:"비밀번호 찾기",
+						button1:"< 아이디찾기",
 						inputText:"가입 시 등록한 이메일 주소 입력:",
 						button2:"비밀번호 재설정",
 						inputText2:"",
