@@ -33,7 +33,7 @@ public class Sw_NoticeCtrl {
 	// http://localhost:5080/funfun/notice.do?method=admList
 	@RequestMapping(params="method=admList")
 	public String admList(@ModelAttribute("paging") Paging sch, Model d) {
-		d.addAttribute("list","service.getList(sch)");
+		d.addAttribute("list",service.list(sch));
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeList.jsp";
 	}
 	

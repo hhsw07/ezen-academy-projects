@@ -82,31 +82,31 @@
           </div>
           <div class="col-xs-12 col-md-3 item">
             <div class="thumbnail">
-              <img src="img/oksusu.PNG" alt="...">
+              <img src="img/coolpants.PNG" alt="...">
               <div class="caption">
                 
-                <p class="item__title">초~ 달아서 초당! 옥수수가 이렇게 달수가 있나?! 초당 옥수수</p>
-                <span class="item__category">푸드 | 야수네</span><span class="item__money">25,000원</span>
+                <p class="item__title">COOL하게 돌아온 [편애 시원팬츠]</p>
+                <span class="item__category">패션 | 편애팬츠</span><span class="item__money">15,000원</span>
               </div>
             </div>
           </div>
           <div class="col-xs-12 col-md-3 item">
             <div class="thumbnail">
-              <img src="img/oksusu.PNG" alt="...">
+              <img src="img/mask.PNG" alt="...">
               <div class="caption">
                 
-                <p class="item__title">초~ 달아서 초당! 옥수수가 이렇게 달수가 있나?! 초당 옥수수</p>
-                <span class="item__category">푸드 | 야수네</span><span class="item__money">25,000원</span>
+                <p class="item__title">숨쉬기 편한 마스크! 빨아쓰는 향균 & 자외선 차단 마스크</p>
+                <span class="item__category">패션 | (주)코스코즈</span><span class="item__money">5,000원</span>
               </div>
             </div>
           </div>
           <div class="col-xs-12 col-md-3 item">
             <div class="thumbnail">
-              <img src="img/oksusu.PNG" alt="...">
+              <img src="img/dabuchi.PNG" alt="...">
               <div class="caption">
                 
-                <p class="item__title">초~ 달아서 초당! 옥수수가 이렇게 달수가 있나?! 초당 옥수수</p>
-                <span class="item__category">푸드 | 야수네</span><span class="item__money">25,000원</span>
+                <p class="item__title">다 붙여드립니다! 세계 최초 USB 핸드 실러 다부치</p>
+                <span class="item__category">테크가전 | 우리민트</span><span class="item__money">20,000원</span>
               </div>
             </div>
           </div>
@@ -191,6 +191,10 @@
             </div>
           </div>
       </div>
+      <c:forEach items="${slist}" var="store">
+      	<div>${store.stoCode}</div>
+      </c:forEach>
+      
       <div id="pagination_Div">
         <ul class="pagination">
             <li><a href="#">1</a></li>
