@@ -34,9 +34,8 @@ CREATE TABLE notice (
 	noti_ck	  	  VARCHAR2(1)	 NOT NULL, -- 공지사항 중요여부(Y or N)
 	admin_code    NUMBER         NOT NULL  -- 관리자 사번
 );
-
 -- 공지사항 시퀀스 생성
-CREATE TABLE notice_seq
+CREATE SEQUENCE notice_seq
 INCREMENT BY 1
 START WITH 43000000
 MINVALUE 43000000
