@@ -38,39 +38,39 @@
   	</div>
 
 
-  	<div class="col-sm-10" style="padding-left:20px;">
+  	<div class="col-sm-10" style="padding-left:30px;">
   	
   	<h3 style="font-weight:bolder">프로젝트 준비</h3>
   	
   	<br><br>
   	
-  	<span style="color:#E6EAED;">프로젝트를 오픈하기 위한 6가지 항목을 작성해 주세요</span>
+  	<span style="color:#787878;font-weight:bold;">프로젝트를 오픈하기 위한 6가지 항목을 작성해 주세요</span>
   	
   	<br><br><br>
   	
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">기본 요건</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">기본 정보</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">스토리 작성</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">리워드 설계</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">위험 요인 및 정책</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span style="display:inline-block">메이커 정보</span>
-	  	<span style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning">작성하기</button></span>
   	</div>
   	
   	<br><br>

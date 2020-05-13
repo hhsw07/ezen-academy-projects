@@ -2,7 +2,8 @@
 
 .reg_item_container{
 	width:60%;
-	align:justify;
+	height:65px;
+	vertical-align:middle;
 	font-weight:bolder;
 	padding:10px 20px 10px 20px;
 	margin:20px 0px 20px 0px;
