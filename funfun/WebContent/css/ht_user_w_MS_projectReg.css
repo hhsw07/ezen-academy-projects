@@ -48,3 +48,27 @@
 	font-weight:bold;
 	font-size:17px
 }
+
+.reward_reg_subTitle{
+	padding:10px 0px 10px 0px;
+	vertical-align:middle;
+}
+
+.reward_reg_content_container1{
+	width:28%;
+	height:100%;
+	vertical-align:middle;
+	background-color:yellow;
+	display:inline-block;
+	font-weight:bold;
+}
+
+.reward_reg_content_container2{
+	width:68%;
+	display:inline-block;
+}
+
+
+
+
+

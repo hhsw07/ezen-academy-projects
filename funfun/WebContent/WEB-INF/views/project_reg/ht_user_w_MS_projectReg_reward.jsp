@@ -59,7 +59,7 @@
   	
   	<br><br>
   	
-  	<span style="color:#787878;font-weight:bold;">서포터에게 제공할 리워드 내용을 입력하세요</span>
+  	<span style="color:#787878;font-weight:bold;">서포터에게 제공할 리워드 옵션 내용을 입력하세요</span>
 
   	<br><br><br><br>
 
@@ -73,10 +73,50 @@
 			<div class="modal-content">
 				<div class="modal-header" style="padding:30px 20px 20px 30px;">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				  	<h3 class="modal-title" id="myModalLabel" style="font-weight:bolder">리워드 추가</h3>
+				  	<h3 class="modal-title" id="myModalLabel" style="font-weight:bolder">리워드 옵션 추가</h3>
 				</div>
-				<div class="modal-body">
-				...
+				<div class="modal-body" style="padding-left:70px;padding-right:70px;">
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">금액</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">리워드명</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control"/>xx자 남음</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">상세설명</div>
+						<div class="reward_reg_content_container2"><textarea class="form-control"></textarea>xx자 남음</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">옵션조건</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">배송조건</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">제한수량</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">발송시작일</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+					</div>
+				
+				
+				
+				
+				
+				
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>

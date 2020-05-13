@@ -13,6 +13,8 @@ public class HT_ProjectRegCtrl {
 	@Autowired(required=false)
 	private HT_ProjectRegService service;
 	
+	//http://localhost:6080/funfun/ProjectReg.do?method=ready
+	
 	@RequestMapping(params="method=ready")
 	public String proReady() {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
