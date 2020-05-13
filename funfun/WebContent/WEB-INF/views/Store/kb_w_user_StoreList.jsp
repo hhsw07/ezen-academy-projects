@@ -61,8 +61,22 @@
             </div>
 			 <div id="Product_Search_Div">
         <span id="Cate_Search_Span">전체보기</span>
-        <div id="Search_Div">        
-            <input type="text" id="Search_Input" placeholder="검색">
+        <div id="Search_Div">
+        	<form>
+                <ul class="nav navbar-nav">
+                  <li class="active">
+                    <div class="form-group">
+                      <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:white;
+                      margin:15px 3px; border:none; margin-top:-4px" />
+                    </div>
+                  </li>
+                  <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:white;
+                    margin: 26px 3px; margin-top:-6px"></button></li>
+                </ul>
+              </form>
+        	
+        	<!--    
+            <input type="text" id="Search_Input" placeholder="검색">-->      
             <!-- 
             <button type="submit" class="Seach_Button">
                 <i class="icon_Search"></i>
@@ -80,7 +94,7 @@
               <div class="caption">
                 
                 <p class="item__title">${store.sto_title }</p>
-                <span class="item__category">${store.cate_title} | 야수네</span><span class="item__money">${store.sto_price}원</span>
+                <span class="item__category">${store.cate_title}</span><span class="item__money">${store.sto_price}원</span>
               </div>
             </div>
           </div>
