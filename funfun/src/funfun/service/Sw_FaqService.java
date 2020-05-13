@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import funfun.repository.Sw_NoticeDao;
-import funfun.vo.Notice;
+import funfun.repository.Sw_FaqDao;
+import funfun.vo.Faq;
 import funfun.vo.Paging;
 
 @Service
-public class Sw_NoticeService {
+public class Sw_FaqService {
 	@Autowired(required=false)
-	private Sw_NoticeDao dao;
+	private Sw_FaqDao dao;
 	
-	public ArrayList<Notice> list(Paging sch){
+	public ArrayList<Faq> list(Paging sch){
 		/*
 		// 2. 페이징 처리
 		private int count; 		// 총 데이터 건수
@@ -24,7 +24,7 @@ public class Sw_NoticeService {
 		private int start;		// 화면에 보여줄 페이지의 시작번호
 		private int end;		// 화면에 보여줄 페이지의 마지막번호
 		*/
-		sch.setCount(dao.notitotCnt());
+		sch.setCount(dao.faqtotCnt());
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(5);
 		}
@@ -51,7 +51,5 @@ public class Sw_NoticeService {
 		
 		return dao.list(sch);
 	}
-	public String name() {
-		return "himan";
-	}
+	
 }

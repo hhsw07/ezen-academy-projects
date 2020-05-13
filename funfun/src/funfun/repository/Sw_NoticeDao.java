@@ -32,6 +32,6 @@ public interface Sw_NoticeDao {
 	public void deleteFile(int no);
 	
 	*/
-	public int totCnt();
+	public int notitotCnt();
 	public ArrayList<Notice> list(Paging sch);
 }
