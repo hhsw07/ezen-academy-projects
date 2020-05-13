@@ -41,7 +41,7 @@
 
   	<div class="col-sm-10" style="padding-left:30px;">
   	
-  	<h3 style="font-weight:bolder"></h3>
+  	<h3 style="font-weight:bolder">메이커 정보</h3>
 
   	
   	</div>
