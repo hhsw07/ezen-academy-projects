@@ -24,7 +24,7 @@ public class Sw_FaqService {
 		private int start;		// 화면에 보여줄 페이지의 시작번호
 		private int end;		// 화면에 보여줄 페이지의 마지막번호
 		*/
-		sch.setCount(dao.totCnt());
+		sch.setCount(dao.faqtotCnt());
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(5);
 		}

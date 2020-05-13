@@ -71,10 +71,9 @@
                       <ul class="dropdown-menu">
                         <li><a href="#gsdk">펀딩하기</a></li>
                         <li><a href="${path }/storeList.do">스토어 구경하기</a></li>
-                        
                         <li class="divider"></li>
                         <li><a href="${path }/notice.do?method=list">공지사항</a></li>
-                        <li><a href="#${path }/faq.do?method=list"">FAQ</a></li>
+                        <li><a href="${path }/faq.do?method=list">FAQ</a></li>
                       </ul>
                 </li>
                 
