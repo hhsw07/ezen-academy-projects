@@ -114,7 +114,7 @@
 	                    </div>
 	                    <div class="dropdown-menu" style="display:flex; flex-direction:column; border:none; align-items:center;
 	                    background-color:#fafafa;">
-					      <a class="dropdown-item" style=""href="#">마이페이지</a>	
+					      <a class="dropdown-item" href="${path }/mypage.do">마이페이지</a>	
 					      <a class="dropdown-item" href="#" onclick="javascript:logOut()">로그아웃</a>
 					    </div>
 	              </div>
