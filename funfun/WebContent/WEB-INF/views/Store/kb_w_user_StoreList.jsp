@@ -14,6 +14,8 @@
 		$(document).ready(function(){
 			
 		})
+		
+	
 </script>
 <link rel="stylesheet" href="css/kb_w_user_StoreList.css"/>
 
@@ -66,12 +68,12 @@
                 <ul class="nav navbar-nav">
                   <li class="active">
                     <div class="form-group">
-                      <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:white;
+                      <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:black;
                       margin:15px 3px; border:none; margin-top:-4px" />
                     </div>
                   </li>
-                  <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:white;
-                    margin: 26px 3px; margin-top:-6px"></button></li>
+                  <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
+                    margin: 26px 3px; margin-top:12px"></button></li>
                 </ul>
               </form>
         	
@@ -85,21 +87,23 @@
         </div>
 
     </div><br>
-    <div class="row">
+    <div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
+    <div class="row" style="padding-bottom:100px;">
     		
           <c:forEach items="${slist}" var="store">
         	<div class="col-xs-12 col-md-3 item">
-            <div class="thumbnail">
+            <div class="thumbnail storeList-item">
               <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
               <div class="caption">
                 
                 <p class="item__title">${store.sto_title }</p>
-                <span class="item__category">${store.cate_title}</span><span class="item__money">${store.sto_price}원</span>
+                <span class="item__category">${store.cate_title}</span><span class="item__money"><span id="price">${store.sto_price}</span>원</span>
               </div>
             </div>
           </div>
           </c:forEach>
           
+      </div>	
       </div>
 
       <div id="pagination_Div">
