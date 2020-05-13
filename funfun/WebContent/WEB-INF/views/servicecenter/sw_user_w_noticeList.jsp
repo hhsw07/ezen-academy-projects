@@ -12,9 +12,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.ordR {text-align:right;}
-	.ordC {text-align:center;}
-	.ordL {text-align:left;}
 	.hide {display:none;}  
     .notishow {display:show;}
 </style>
@@ -42,7 +39,7 @@
 	    	$(location).attr("href","${path}/notice.do?method=list");
 	    });
 	    $("#faq").click(function(){
-	    //	$(location).attr("href","${path}/faq.do?method=list");
+	    	$(location).attr("href","${path}/faq.do?method=list");
 	    });
 	    $("#chatting").click(function(){
 	    //	$(location).attr("href","${path}/chatting.do?method=list");
@@ -65,7 +62,7 @@
 	        <div>
 		        <h2>고객센터</h2>
 		    </div>
-	        <div class="collapse navbar-collapse ordC" style="margin-bottom:30px;">
+	        <div class="collapse navbar-collapse text-center" style="margin-bottom:30px;">
 	        	<div class="btn-group btn-group-lg " style="width:80%;">
 					<button type="button" class="btn btn-fill btn-warning" id="notice" style="width:30%;">공지사항</button>
 					<button type="button" class="btn btn-warning" id="faq" style="width:30%;">FAQ</button>
@@ -85,37 +82,32 @@
 			</div>
 			</form:form>
 			<div>
-		        <table class="table table-bordered table-hover">
+		        <table class="table table-hover text-center">
 		        	<col width="10%">
 		        	<col width="50%">
 		        	<col width="20%">
 		        	<col width="20%">
-		        	<tr class=""><th >번호</th>
-		        		<th>제목</th>
-		        		<th>작성자</th>
-		        		<th>등록일</th></tr>
+		        	<tr><th class="text-center">번호</th>
+		        		<th class="text-center">제목</th>
+		        		<th class="text-center">작성자</th>
+		        		<th class="text-center">등록일</th></tr>
 		        	<c:forEach var="noti" items="${list}">
 			        	<tr class="item" onclick="javascript:go(${noti.noti_code})"><td>${noti.cnt}</td>
-			        		<td>${noti.noti_title}</td>
-			        		<td>${noti.admin_code}</td>
+			        		<td class="text-left">${noti.noti_title}</td>
+			        		<td>${noti.admin_code}(admin_name으로 변경)</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
+			        	<tr class="hide text-left"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
 		        	</c:forEach>
-		        	
-		        	
+		        	<tr><td colspan="4"></td></tr>
 		        </table>
 			</div>
-	        <div class="ordC">
+	        <div class="text-center">
 		        <ul class="pagination ct-orange"> 
 					<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
 					<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
 						<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 					</c:forEach>
-					<li><a href="javascript:goPage(${paging.endBlock+1})">&raquo;</a></li>
-					
-					
-					
-					
+					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
 	    </div>

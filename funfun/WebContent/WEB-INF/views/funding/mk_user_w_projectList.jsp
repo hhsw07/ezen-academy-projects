@@ -9,18 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
-<script>
-	$(document).ready(function(){
-		
-	});
-</script>
 </head>
 <body>
 	<div class="main">
-	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	    <!-- 분류 -->
+		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
+		<form method="post">
+			<input type="hidden" name="category" />
+		<!-- 분류 -->
 	    	<div>
 		  		<ul class="nav nav-tabs justify-content-center">
 					<li class="active"><a href="#Bla">카테고리</a></li>
@@ -29,39 +25,39 @@
 			</div>
 		<!-- 카테고리 -->
 			<div class="row project-category" >
-				<div class="categoryList">
+				<div class="categoryList" id="all">
 					<img src="${path}/img/all.png" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>전체보기</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="edu">
 					<img src="${path}/img/edu.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>교육·키즈</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="beauty">
 					<img src="${path}/img/beauty.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>패션·잡화·뷰티</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="homeLiving">
 					<img src="${path}/img/homeLiving.png" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>홈리빙·디자인소품</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="culture">
 					<img src="${path}/img/culture.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>공연·컬쳐</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="sports">
 					<img src="${path}/img/sports.png" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>스포츠·모빌리티</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="book">
 					<img src="${path}/img/book.png" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>출판</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="dog">
 					<img src="${path}/img/dog.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>반려동물</h6>
 				</div>
-				<div class="categoryList">
+				<div class="categoryList" id="electro">
 					<img src="${path}/img/electro.PNG" alt="Circle Image" class="img-circle" style="width:100px;">
 					<h6>테크·가전</h6>
 				</div>
@@ -94,23 +90,26 @@
 			</div>
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
-					<div class="row">
+					<div class="row" style="padding-bottom:100px;">
 				<c:forEach var="proj" items="${plist}">
-						<div class="col-xs-12 col-md-3 item">
+						<div class="col-xs-12 col-md-3 item"  onclick="javascript:go_detail('${proj.pro_code}')">
 							<div class="thumbnail projectList-item">
 								<img alt="..." src="img/${proj.pro_image}">
 								<div class="caption proj-info">
 									<p class="ProjectList-title">${proj.pro_title}</p>
-									<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
-									<span class="ProjectList-rate">모금율 : 90%</span>
+									<div class="maker-info">
+										<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+										<span class="ProjectList-rate">모금율 : 90%</span>
+									</div>
 								</div>
 							</div>
 						</div>
 				</c:forEach>
 					</div>
 			</div>
-	        
-	    </div>
+			
+		</form>
+		</div>
 	</div>
 	<!-- end main -->
 </body>

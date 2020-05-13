@@ -6,13 +6,22 @@ public class Favor {
 	private String dDay; // 프로젝트 종료까지 남은 날짜
 	private String image; // 프로젝트 이미지
 	private String makerName; // 프로젝트 메이커 이름
-	private String memCode; // 회원 코드
+	private String memEmail; // 회원 이메일
+	private String percent; // 현재모금률
+	private String proCode; // 프로젝트 코드
 	
-	public String getMemCode() {
-		return memCode;
+	public String getPercent() {
+		return percent;
 	}
-	public void setMemCode(String memCode) {
-		this.memCode = memCode;
+
+	public String getProCode() {
+		return proCode;
+	}
+	public String getemEmail() {
+		return memEmail;
+	}
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
 	}
 	public String getProTitle() {
 		return proTitle;

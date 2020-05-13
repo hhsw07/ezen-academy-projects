@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+<mapper namespace="funfun.repository.sh_myPageReposi">
+<!-- 
+	// empMapper.xml과 연결 
+	// EmpRep ==> namspace명
+	// ArrayList<Emp> ==> ResultMap
+	// empList ==> id
+	// Emp ==> parameterType
+	resultMap 객체 선언 단위 객체가 모인 객체 선언
+ -->	
+ 	<!-- resultMap은 배열형태로 결과값을 return할 객체
+ 		 resultType 단일 데이터형태로 결과값을 return할 객체
+ 		 
+ 		 column ==> vo와 연결하여 ArrayList로 처리..
+ 	 -->
+ 	<resultMap type="favor" id="favorResult"/>
+ 	<select id="list" resultMap="favorResult" 
+ 		parameterType="favor">
+		SELECT  b.MEM_EMAIL memEmail,p.PRO_CODE proCode, round(p.PRO_MONEY/p.PRO_TARGET*100)||'%' percent, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, floor(p.PRO_FINISH_DATE-sysdate) dDay, p.PRO_IMAGE image, m.MAKER_NAME makerName
+		FROM favor f LEFT JOIN project p ON f.PRO_CODE = p.PRO_CODE LEFT JOIN maker m ON p.MAKER_CODE = m.MAKER_CODE 
+		LEFT JOIN MEMBER b ON f.MEM_CODE = b.MEM_CODE 
+		WHERE b.MEM_EMAIL = #{memEmail} AND p.PRO_CURR ='정상'
+ 	</select>
+	
+	<resultMap type="parti" id="partiResult"/>
+ 	<select id="plist" resultMap="partiResult" 
+ 		parameterType="parti">
+	SELECT d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-sysdate,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
+	FROM funding d LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE LEFT JOIN MAKER m
+	ON m.MAKER_CODE = p.MAKER_CODE LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE WHERE b.mem_Email = #{memEmail} AND p.PRO_CURR = '정상'
+	</select>
+</mapper>	

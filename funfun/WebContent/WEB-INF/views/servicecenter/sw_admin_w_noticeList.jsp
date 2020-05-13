@@ -10,11 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.ordR {text-align:right;}
-	.ordC {text-align:center;}
-	.ordL {text-align:left;}
-</style>
 <script>
 	$(document).ready(function(){
 		
@@ -34,64 +29,54 @@
 	<div class="main">
 	    <div class="container tim-container noticeList" style="max-width:1200px; padding-top:100px">
 	        <div>
-		        <h2>공지사항 목록(관리자)</h2>
+		        <h2>고객센터(관리자)</h2>
 		    </div>
-	        <div class="collapse navbar-collapse ordC" style="margin-bottom:30px;">
+	        <div class="collapse navbar-collapse text-center" style="margin-bottom:30px;">
 	        	<div class="btn-group btn-group-lg " style="width:80%;">
-					<button type="button" class="btn btn-fill btn-warning" style="width:30%;">공지사항</button>
-					<button type="button" class="btn btn-warning" style="width:30%;">FAQ</button>
-					<button type="button" class="btn btn-warning" style="width:30%;">실시간 채팅 상담</button>
+					<button type="button" class="btn btn-fill btn-warning" id="notice" style="width:30%;">공지사항</button>
+					<button type="button" class="btn btn-warning" id="faq" style="width:30%;">FAQ</button>
+					<button type="button" class="btn btn-warning" id="chatting" style="width:30%;">실시간 채팅 상담</button>
 				</div>
 	        </div>
+	    	<form:form class="form" commandName="paging" method="post">
+	    	<form:hidden path="curPage" />
 	    	<div>
-	        	총건수 : @@건 
-	        	<select style="margin-left:950px;" name="pageCount">
-	        		<option value="5">5건</option>
-	        		<option value="10">10건</option>
-	        		<option value="20">20건</option>
-	        	</select>
+	        	총건수 : ${paging.count}건 
+	        	<span style="margin-left:930px;" >페이지수 : </span>
+	        	<form:select path="pageSize">
+	        		<form:option value="5">5건</form:option>
+	        		<form:option value="10">10건</form:option>
+	        		<form:option value="20">20건</form:option>
+	        	</form:select>
 			</div>
+			</form:form>
 			<div>
-		        <table class="table table-bordered table-hover">
+		        <table class="table table-hover text-center">
 		        	<col width="10%">
 		        	<col width="50%">
 		        	<col width="20%">
 		        	<col width="20%">
-		        	<tr class=""><th>번호</th>
-		        		<th>제목</th>
-		        		<th>작성자</th>
-		        		<th>등록일</th></tr>
-		        	<tr class="item"><td>1</td>
-		        		<td>공지제목1</td>
-		        		<td>작성자1</td>
-		        		<td>20.05.08</td></tr>
-		        	<tr class="item"><td>2</td>
-		        		<td>제목2</td>
-		        		<td>작성자2</td>
-		        		<td>등록일2</td></tr>
-		        	<tr class="item"><td>3</td>
-		        		<td>제목3</td>
-		        		<td>작성자3</td>
-		        		<td>등록일3</td></tr>
-		        	<tr class="item"><td>4</td>
-		        		<td>제목4</td>
-		        		<td>작성자4</td>
-		        		<td>등록일4</td></tr>
-		        	<tr class="item"><td>5</td>
-		        		<td>제목5</td>
-		        		<td>작성자5</td>
-		        		<td>등록일5</td></tr>
+		        	<tr><th class="text-center">번호</th>
+		        		<th class="text-center">제목</th>
+		        		<th class="text-center">작성자</th>
+		        		<th class="text-center">등록일</th></tr>
+		        	<c:forEach var="noti" items="${list}">
+			        	<tr class="item" onclick="javascript:go(${noti.noti_code})"><td>${noti.cnt}</td>
+			        		<td class="text-left">${noti.noti_title}</td>
+			        		<td>${noti.admin_code}(admin_name으로 변경)</td>
+			        		<td>${noti.noti_reg_date}</td></tr>
+			        	<tr class="hide text-left"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
+		        	</c:forEach>
+		        	<tr><td colspan="4"></td></tr>
 		        </table>
 			</div>
-	        <div class="ordC">
+	        <div class="text-center">
 		        <ul class="pagination ct-orange"> 
-					<li><a href="#">&laquo;</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li class="active"><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">&raquo;</a></li>
+					<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
+					<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
+						<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+					</c:forEach>
+					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
 	    </div>
