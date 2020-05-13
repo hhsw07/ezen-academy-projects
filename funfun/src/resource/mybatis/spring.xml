@@ -12,6 +12,7 @@
 		<typeAlias alias="project" type="funfun.vo.Project"/>
 		<typeAlias alias="favor" type="funfun.vo.Favor"/>
 		<typeAlias alias="parti" type="funfun.vo.PartiFunding"/>
+		<typeAlias alias="trans" type="funfun.vo.TranLookUp"/>
 
 	</typeAliases>
 	<mappers>
