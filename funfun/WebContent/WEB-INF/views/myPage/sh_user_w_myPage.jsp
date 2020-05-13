@@ -13,6 +13,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/sh_user_w_myPage.css">
 <script>
+		var flist = "${flist}";
+		if(flist ===''){
+			window.location = "${path}/login.do";
+			alert("로그인해주세요");
+		}
+		
+		$(document).ready(function(){
+			
+			
+		})
+
 		$(document).ready(function(){
 			
 		})
@@ -46,138 +57,57 @@
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
+<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
           <div class="display_item" class="row">
 
             <div class="col-xs-12 col-md-3 item">
               <div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
+                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
                 <div class="caption">
                   
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
+                  <p class="item__title">${list.proTitle}</p>
+                  <span class="item__category">${list.cateTitle} | ${list.makerName}</span><span class="item__money">모금율 : ${list.percent}</span>
                 </div>
               </div>
             </div>
-
-            <div class="col-xs-12 col-md-3 item">
-              <div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-              </div>
             </div>
-
-            <div class="col-xs-12 col-md-3 item">
-              <div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-md-3 item">
-              <div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-md-3 item">
-              <div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
+</c:forEach>
+		
 <!--아이템들 끝-->
 
 <!-- 참여한 펀딩 -->
 <div class="funding_display">
+
+<c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
           <div class="col-xs-10 col-md-10 funding">
             <table class="col-xs-12 col-md-12">
-              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
-              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
-              <tr><td class="funding__company">by 이젠</td><td></td></tr>
+              <tr><td class="funding__state">
+              <c:choose>
+				<c:when test="${list.proLeftDate<0 and list.percent>=0.8}">펀딩성공 </c:when>	
+				<c:when test="${list.proLeftDate<0 and list.percent<0.8}">펀딩실패 </c:when>
+				<c:when test="${list.proLeftDate>=0}"> 펀딩중 </c:when>
+				<c:otherwise> ${list.percent} </c:otherwise>
+			  </c:choose>
+              </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
+              <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+              <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
-              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
-              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
-              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
-              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">${list.fundPrice}원</td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
+              <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+              <fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/>
+              </td></tr>
+              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
             </table>
             <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
           </div>
         </div>
+</c:forEach>
 
-        <div class="row">
-          <div class="col-xs-1 col-md-1"></div>
-          <div class="col-xs-10 col-md-10 funding">
-            <table class="col-xs-12 col-md-12">
-              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
-              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
-              <tr><td class="funding__company">by 이젠</td><td></td></tr>
-              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
-              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
-              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
-              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
-              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
-            </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
-          </div>
-        </div>
-
-        <div class="row" >
-          <div class="col-xs-1 col-md-1 "></div>
-          <div class="col-xs-10 col-md-10 funding">
-            <table class="col-xs-12 col-md-12">
-              <tr><td class="funding__state" style="color : rgb(245, 2, 2)">펀딩실패</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
-              <tr><td class="funding__name">[패션.잡화] "STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</td><td></td></tr>
-              <tr><td class="funding__company">by 이젠</td><td></td></tr>
-              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">200,000원</td></tr>
-              <tr><td colspan class="funding__alert">* 모금실패시 투자액은 즉시 락업해제 됩니다</td></tr>
-              
-            </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
-          </div>
-        </div>
-
-        <div class="row" >
-          <div class="col-xs-1 col-md-1 "></div>
-          <div class="col-xs-10 col-md-10 funding">
-            <table class="col-xs-12 col-md-12">
-              <tr><td class="funding__state">펀딩중</td><td class="funding__fund-date">참여일 : 2020.05.21</td></tr>
-              <tr><td class="funding__name">[패션.잡화] 클래식 안경</td><td></td></tr>
-              <tr><td class="funding__company">by 이젠</td><td></td></tr>
-              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">100,000원</td></tr>
-              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">블랙-D</td></tr>
-              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">2020.06.02</td></tr>
-              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">배송준비중</td></tr>
-              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">서울 종로구 이젠컴퓨터아카데미 5층</td></tr>
-            </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
-          </div>
-        </div>
 </div>
 <!-- 참여한 펀딩 끝 -->
     <div class="trans_display" class="row">
@@ -212,7 +142,7 @@
 
       </div>
     </div>
-  </div>
+
   <!-- end main -->
   <script>
   $(function () {
