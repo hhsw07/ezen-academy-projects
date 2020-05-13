@@ -18,13 +18,6 @@
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
 		<form method="post">
 			<input type="hidden" name="category" />
-		<!-- 분류 -->
-	    	<div>
-		  		<ul class="nav nav-tabs justify-content-center">
-					<li class="active"><a href="#Bla">카테고리</a></li>
-					<li><a href="#nice">오픈예정</a></li>
-				</ul>
-			</div>
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -75,13 +68,6 @@
 					</label>
 				</form>
 				<div class="select-sort ProjectListHead_sort">
-					<select name="status" class="">
-						<option value="all">전체</option>
-						<option value="now">진행중</option>
-						<option value="end">종료된</option>
-					</select>
-				</div>
-				<div class="select-sort ProjectListHead_sort">
 					<select name="sort" class="">
 						<option value="recommend">추천순</option>
 						<option value="popluar">인기순</option>
@@ -90,6 +76,14 @@
 						<option value="closing">마감임박순</option>
 					</select>
 				</div>
+			</div>
+		<!-- 분류 -->
+	    	<div>
+		  		<ul class="nav nav-tabs justify-content-center">
+					<li class="active"><a href="#">진행중인 프로젝트</a></li>
+					<li><a href="#">오픈예정 프로젝트</a></li>
+					<li><a href="#">종료된 프로젝트</a></li>
+				</ul>
 			</div>
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
