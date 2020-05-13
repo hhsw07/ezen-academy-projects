@@ -22,27 +22,80 @@
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 
 	<div class="row">
-  	<div class="col-sm-2" style="background-color:yellow">
+  	<div class="col-sm-2" style="padding-top:30px;height:100%">
  
- 	<details open>
-    <summary>프로젝트 준비</summary>
-	<ul>
-  		<li>기본 요건</li>
-  		<li>기본 정보</li>
-  		<li>스토리 작성</li>
-  		<li>리워드 설계</li>
-  		<li>위험요인 및 정책</li>
-  		<li>메이커 정보</li>
-	</ul>
-  	</details> 	
+	<div class="panel-group">
+	<div class="panel panel-default">
+	<div class="panel-body">
+	
+	님의<br> 
+	프로젝트
+	
+	</div>
+	</div>
+	<div class="panel panel-default">
+	<div class="panel-body">
+	 	<details open>
+	    <summary>프로젝트 준비</summary>
+		<ul style="list-style:none;line-height:3em">
+	  		<li>기본 정보</li>
+	  		<li>스토리 작성</li>
+	  		<li>리워드 설계</li>
+	  		<li>위험요인</li>
+	  		<li>메이커 정보</li>
+		</ul>
+	  	</details> 	
+	</div>
+	</div>
+	</div>
+
  
   	</div>
 
 
   	<div class="col-sm-10" style="padding-left:30px;">
   	
-  	<h3 style="font-weight:bolder"></h3>
+  	<h3 style="font-weight:bolder">리워드 설계</h3>
+  	
+  	<br><br>
+  	
+  	<span style="color:#787878;font-weight:bold;">서포터에게 제공할 리워드 내용을 입력하세요</span>
 
+  	<br><br><br><br>
+
+	<div class="form-group">
+
+	<button class="btn btn-warning" data-toggle="modal" data-target="#myModal">+ 추가하기</button>
+
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:30px 20px 20px 30px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				  	<h3 class="modal-title" id="myModalLabel" style="font-weight:bolder">리워드 추가</h3>
+				</div>
+				<div class="modal-body">
+				...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
+						<div class="divider"></div>
+					<button type="button" class="btn btn-info btn-simple">등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<br><br><br><br>
+
+  	<button class="btn btn-warning" style="width:50%">저장하기</button>
+
+	<br><br><br><br>
+
+	</div>
   	
   	</div>
 
