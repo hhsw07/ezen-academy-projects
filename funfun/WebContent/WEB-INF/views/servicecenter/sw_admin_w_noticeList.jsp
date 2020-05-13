@@ -14,6 +14,8 @@
 <style type="text/css">
 	.hide {display:none;}  
     .notishow {display:show;}
+    .form th, td {font-size:20px;}
+    #scnav button {margin-top:15px; height:75px;}
 </style>
 <script>
 	$(document).ready(function(){
@@ -51,7 +53,7 @@
 		        <h2>고객센터(관리자)</h2>
 		    </div>
 	        <div class="collapse navbar-collapse text-center" style="margin-bottom:30px;">
-	        	<div class="btn-group btn-group-lg " style="width:80%;">
+	        	<div class="btn-group btn-group-lg " id="scnav" style="width:80%;">
 					<button type="button" class="btn btn-fill btn-warning" id="notice" style="width:30%;">공지사항</button>
 					<button type="button" class="btn btn-warning" id="faq" style="width:30%;">FAQ</button>
 					<button type="button" class="btn btn-warning" id="chatting" style="width:30%;">실시간 채팅 상담</button>
@@ -80,9 +82,15 @@
 		        		<th class="text-center">작성자</th>
 		        		<th class="text-center">등록일</th></tr>
 		        	<c:forEach var="noti" items="${list}">
+			        	<tr class="item" onclick="javascript:go(${noti.noti_code})"><td>중요</td>
+			        		<td class="text-left">${noti.noti_title}</td>
+			        		<td>${noti.admin_code}</td>
+			        		<td>${noti.noti_reg_date}</td></tr>
+		        	</c:forEach>
+		        	<c:forEach var="noti" items="${list}">
 			        	<tr class="item" onclick="javascript:go(${noti.noti_code})"><td>${noti.cnt}</td>
 			        		<td class="text-left">${noti.noti_title}</td>
-			        		<td>${noti.admin_code}(admin_name으로 변경)</td>
+			        		<td>${noti.admin_code}(admin_name)</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
 		        	</c:forEach>
 		        	<tr><td colspan="4"></td></tr>
