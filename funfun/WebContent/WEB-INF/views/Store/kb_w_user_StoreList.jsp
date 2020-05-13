@@ -76,7 +76,7 @@
           <c:forEach items="${slist}" var="store">
         	<div class="col-xs-12 col-md-3 item">
             <div class="thumbnail">
-              <img src="img/${store.sto_image}" alt="..." style="width:242px; height:200px">
+              <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
               <div class="caption">
                 
                 <p class="item__title">${store.sto_title }</p>
