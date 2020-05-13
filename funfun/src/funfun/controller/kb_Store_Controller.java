@@ -16,4 +16,5 @@ public class kb_Store_Controller {
 		d.addAttribute("slist", service.slist());
 		return "WEB-INF\\views\\Store\\kb_w_user_StoreList.jsp";
 	}
+	
 }

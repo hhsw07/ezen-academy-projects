@@ -5,7 +5,7 @@
 <mapper namespace="funfun.repository.Sw_FaqDao">
 	<resultMap type="Faq" id="FaqResult"/>
 	<!-- int totCnt() 총 데이터 건수 -->
-	<select id="totCnt" resultType="int">
+	<select id="faqtotCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM Faq
 		WHERE 1=1

@@ -74,7 +74,7 @@
                         
                         <li class="divider"></li>
                         <li><a href="${path }/notice.do?method=list">공지사항</a></li>
-                        <li><a href="#gsdk">FAQ</a></li>
+                        <li><a href="#${path }/faq.do?method=list"">FAQ</a></li>
                       </ul>
                 </li>
                 

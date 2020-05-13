@@ -10,6 +10,6 @@ import funfun.vo.Paging;
 @Repository
 public interface Sw_FaqDao {
 	
-	public int totCnt();
+	public int faqtotCnt();
 	public ArrayList<Faq> list(Paging sch);
 }
