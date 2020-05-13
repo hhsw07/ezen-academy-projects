@@ -51,7 +51,23 @@ public class Sw_NoticeService {
 		
 		return dao.list(sch);
 	}
-	public String name() {
-		return "himan";
-	}
+
+	public void insert(Notice ins){
+		dao.insert(ins);
+		System.out.println("noti 등록 완료");
+	};
+	
+	public Notice detail(int noti_code) {
+		System.out.println("noti 상세화면 호출");
+		return dao.detail(noti_code);
+	};
+	public void update(Notice upt) {
+		dao.update(upt);
+		System.out.println("noti 수정 완료");
+	};
+	public void delete(int noti_code) {
+		dao.delete(noti_code);
+		System.out.println("noti 삭제 완료");
+	};
+	
 }

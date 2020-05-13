@@ -55,7 +55,7 @@
 	 	<details open>
 	    <summary>프로젝트 준비</summary>
 		<ul style="list-style:none;line-height:3em">
-	  		<li>기본 요건</li>
+
 	  		<li>기본 정보</li>
 	  		<li>스토리 작성</li>
 	  		<li>리워드 설계</li>
@@ -83,23 +83,23 @@
   	<br><br><br>
   	
   	<div class="reg_item_container">
-	  	<span style="display:inline-block">기본 정보</span>
+	  	<span class="reg_content_title">기본 정보</span>
 	  	<span class="navbar-right" style="display:inline-block"><button id="basicInfoBtn" class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
-	  	<span style="display:inline-block">스토리 작성</span>
+	  	<span class="reg_content_title">스토리 작성</span>
 	  	<span class="navbar-right" style="display:inline-block"><button id="storyBtn" class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
-	  	<span style="display:inline-block">리워드 설계</span>
+	  	<span class="reg_content_title">리워드 설계</span>
 	  	<span class="navbar-right" style="display:inline-block"><button id="rewardBtn" class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
-	  	<span style="display:inline-block">위험 요인 및 정책</span>
+	  	<span class="reg_content_title">위험 요인 및 정책</span>
 	  	<span class="navbar-right" style="display:inline-block"><button id="riskBtn" class="btn btn-warning">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
-	  	<span style="display:inline-block">메이커 정보</span>
+	  	<span class="reg_content_title">메이커 정보</span>
 	  	<span class="navbar-right" style="display:inline-block"><button id="makerInfoBtn" class="btn btn-warning">작성하기</button></span>
   	</div>
   	

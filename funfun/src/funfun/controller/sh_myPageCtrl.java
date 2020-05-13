@@ -31,6 +31,7 @@ public class sh_myPageCtrl {
 		 }else {
 			 d.addAttribute("flist", service.list(memberinfo.getMem_email()));
 			 d.addAttribute("plist", service.plist(memberinfo.getMem_email()));
+			 d.addAttribute("tlist", service.tlist(memberinfo.getMem_email()));
 		 }
 		 	
 		return "WEB-INF\\views\\myPage\\sh_user_w_myPage.jsp";

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/template/header.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <fmt:requestEncoding value="utf-8" />
@@ -10,13 +11,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.hide {display:none;}  
+    .notishow {display:show;}
+</style>
 <script>
 	$(document).ready(function(){
-		
+	    
+	    $("#pageSize").change(function(){
+	    	$("#curPage").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
+			$("form").submit();
+		});
+	    
+	    $("#notice").click(function(){
+	    	$(location).attr("href","${path}/notice.do?method=list");
+	    });
+	    $("#faq").click(function(){
+	    	$(location).attr("href","${path}/faq.do?method=list");
+	    });
+	    $("#chatting").click(function(){
+	    //	$(location).attr("href","${path}/chatting.do?method=list");
+	    });
 	})
 	
-	function go(no){
-		$(location).attr("href","${path}/notice.do?method=detail&no="+no);
+	function go(noti_code){
+		$(location).attr("href","${path}/notice.do?method=detail&noti_code="+noti_code);
 	}
 	function goPage(no){
 		$("#curPage").val(no);
@@ -65,7 +84,6 @@
 			        		<td class="text-left">${noti.noti_title}</td>
 			        		<td>${noti.admin_code}(admin_name으로 변경)</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide text-left"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
 		        	</c:forEach>
 		        	<tr><td colspan="4"></td></tr>
 		        </table>

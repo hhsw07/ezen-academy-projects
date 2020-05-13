@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.table th {
+	text-align : center;
+	vertical-align:middle;
+}
+
+<!-- <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" /> -->
+

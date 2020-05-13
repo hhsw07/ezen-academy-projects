@@ -111,32 +111,29 @@
 </div>
 <!-- 참여한 펀딩 끝 -->
     <div class="trans_display" class="row">
-
-      <div class="col-xs-12 col-md-3 item">
-        <span data-html = "true" data-toggle="tooltip" data-placement="top" title="주문번호 : 0000001&#013;주문일 : 2020.05.12&#013;결제금액 : 50,000원&#013;상태 : 배송준비중">   
+<c:forEach var="list" items="${tlist}" begin="0" end="5" step="1">
+	
+      <div class="col-xs-12 col-md-3">
+      <span style="font-size:12px;color: gray;">주문번호 : ${list.orderCode}</span>
+      <div class="item" style="margin-top:5px">
+      
+        <span data-html = "true" data-toggle="tooltip" data-placement="top" title="주문번호 : ${list.orderCode}&#013;주문일시 : ${list.orderDate}&#013;결제금액 : ${list.orderPrice}원&#013;상태 : ${list.orderCurr}">   
+        
         <div class="thumbnail">
-          <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
+          <img src="${path}/img/${list.stoImage}" style="height:180px; width:320px" alt="...">
           <div class="caption">
             
-            <p class="item__title">클래식 안경 – 블랙 (1개)</p>
-            <span class="trans__date">5월 5일에 배송 예정</span>
+            <p class="item__title">${list.stoTitle}</p>
+            <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+            <span class="trans__date">
+           <fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정</span>
+           
           </div>
         </div>
       </div>
-     </span>
-
-     <div class="col-xs-12 col-md-3 item">
-      <span data-html = "true" data-toggle="tooltip2" data-placement="top" title="주문번호 : 0000001&#013;주문일 : 2020.05.12&#013;결제금액 : 50,000원&#013;상태 : 배송준비중">   
-      <div class="thumbnail">
-        <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-        <div class="caption">
-          
-          <p class="item__title">클래식 안경 – 블랙 (1개)</p>
-          <span class="trans__date">5월 5일에 배송 예정</span>
-        </div>
       </div>
-    </div>
-   </span>
+     </span>
+</c:forEach>
      
     </div>
 

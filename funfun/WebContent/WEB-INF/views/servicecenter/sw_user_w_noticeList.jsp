@@ -47,7 +47,7 @@
 	})
 	
 	function go(no){
-		//$(location).attr("href","${path}/notice.do?method=detail&no="+no);
+		//$(location).attr("href","${path}/notice.do?method=detail&noti_code="+no);
 	}
 	function goPage(no){
 		$("#curPage").val(no);

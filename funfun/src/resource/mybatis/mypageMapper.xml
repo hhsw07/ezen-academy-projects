@@ -32,4 +32,12 @@
 	FROM funding d LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE LEFT JOIN MAKER m
 	ON m.MAKER_CODE = p.MAKER_CODE LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE WHERE b.mem_Email = #{memEmail} AND p.PRO_CURR = '정상'
 	</select>
+
+	<resultMap type="trans" id="transResult"/>
+ 	<select id="tlist" resultMap="transResult" 
+ 		parameterType="trans">
+	SELECT so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage 
+	FROM store_order so LEFT JOIN store_option op ON so.STO_OPT_CODE = op.STO_OPT_CODE LEFT JOIN store s ON 
+	s.STO_CODE = op.STO_CODE LEFT JOIN MEMBER b ON b.MEM_CODE = so.MEM_CODE WHERE b.MEM_Email = #{memEmail} AND s.STO_CURR ='정상'
+	</select>
 </mapper>	

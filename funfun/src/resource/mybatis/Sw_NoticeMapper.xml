@@ -19,16 +19,36 @@
 		where cnt between #{start} and #{end}
 	</select>
 	
+	<!-- 
+	void insert(Notice ins)
 	
-
+	Notice detail(int noti_code)
+	void update(Notice upt)
+	void delete(int noti_code)
+	-->
+	<insert id="insert" parameterType="notice">
+		INSERT INTO notice 
+		VALUES(notice_seq.nextval,#{noti_title},#{noti_detail},current_date, NULL, #{noti_ck}, #{admin_code})
+	</insert>
 	
-
-
-
-
-
-
-
+	<select id="detail" resultType="notice" parameterType="int">
+		select rownum cnt, a.*
+		from Notice a
+		where noti_code = #{noti_code}
+	</select>
+	<update id="update" parameterType="notice">
+		UPDATE notice
+		SET noti_title = #{noti_title},
+			noti_detail = #{noti_detail},
+			noti_upt_date = CURRENT_DATE,
+			noti_ck = #{noti_ck},
+			admin_code = #{admin_code}
+		WHERE noti_code = #{noti_code}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM NOTICE 
+		WHERE noti_code = #{noti_code}
+	</delete>
 </mapper>
 
 

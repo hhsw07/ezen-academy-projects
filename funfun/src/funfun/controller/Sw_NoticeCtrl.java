@@ -41,6 +41,7 @@ public class Sw_NoticeCtrl {
 	// http://localhost:5080/funfun/notice.do?method=insForm
 	@RequestMapping(params="method=insForm")
 	public String insForm() {
+		
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
 	}
 	// http://localhost:5080/funfun/notice.do?method=insert
@@ -55,27 +56,33 @@ public class Sw_NoticeCtrl {
 		insert.setTitle("");
 		insert.setContent("");
 		*/
+		
+		service.insert(ins);
+		ins.setNoti_title("");
+		ins.setNoti_detail("");
+		
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
 	}
 	
 	
 	// http://localhost:5080/funfun/notice.do?method=detail
 	@RequestMapping(params="method=detail")
-	public String detail(@RequestParam("no") int no, Model d) {
-		// d.addAttribute("board", service.getBoard(no));
+	public String detail(@RequestParam("noti_code") int noti_code, Model d) {
+		d.addAttribute("notice", service.detail(noti_code));
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeDetail.jsp";
 	}
 	// http://localhost:5080/funfun/notice.do?method=update
 	@RequestMapping(params="method=update")
 	public String update(Notice upt) {
-		// service.update(upt);
-		return "forward:/notice.do?method=detail";
+		System.out.println("수정될 noti_ck값:"+upt.getNoti_ck());
+		service.update(upt);
+		return "forward:/notice.do?method=detail&noti_code+"+upt.getNoti_code();
 	}
 	// http://localhost:5080/funfun/notice.do?method=delete
 	@RequestMapping(params="method=delete")
-	public String delete(@RequestParam("no") int no) {
-		// service.deleteBoard(no);
-		return "redirect:/notice.do?method=list";
+	public String delete(@RequestParam("noti_code") int noti_code) {
+		service.delete(noti_code);
+		return "redirect:/notice.do?method=admList";
 	}
 	
 }
