@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+
+<mapper namespace="funfun.repository.MK_FundingReposi">
+	
+	<resultMap type="project" id="projectResult"/>
+	
+	<select id="projectList" resultMap="projectResult" parameterType="project">
+		SELECT a.*, b.maker_name FROM project a, MAKER b
+		WHERE a.MAKER_CODE = b.MAKER_CODE
+	</select>
+	
+</mapper>

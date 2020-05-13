@@ -16,6 +16,9 @@ public class Project {
 	private String pro_docu;
 	private String pro_keyword;
 	private String pro_curr;
+	
+	private String maker_name;
+	
 	public Project() {
 		super();
 	}
@@ -102,6 +105,12 @@ public class Project {
 	}
 	public void setPro_curr(String pro_curr) {
 		this.pro_curr = pro_curr;
+	}
+	public String getMaker_name() {
+		return maker_name;
+	}
+	public void setMaker_name(String maker_name) {
+		this.maker_name = maker_name;
 	}
 	
 	
