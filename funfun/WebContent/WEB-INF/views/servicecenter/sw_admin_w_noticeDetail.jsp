@@ -10,30 +10,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.ordR {text-align:right;}
-	.ordC {text-align:center;}
-	.ordL {text-align:left;}
-</style>
 <script>
 	$(document).ready(function(){
+		var noti = "${notice.noti_ck}";
+		var ck1 = "${notice.noti_ck=="Y"?"checked":""}";
+		var ck2 = "${notice.noti_ck!="Y"?"checked":""}";
+		console.log("noti:"+noti+"ck1:"+ck1+" ck2:"+ck2);
+		
+		
 		$(".updateNoti").click(function(){
 			if(confirm("수정하시겠습니까?")){
-				alert("수정 후 상세화면으로 이동");
-				//$("form").attr("action","${path}/notice.do?method=update");
-				//$("form").submit();
+				$("form").attr("action","${path}/notice.do?method=update");
+				$("form").submit();
 			}
 		});
 		$(".deleteNoti").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				alert("삭제 후 목록으로 이동");
-				//$("form").attr("action","${path}/notice.do?method=delete");
-				//$("form").submit();
+				$("form").attr("action","${path}/notice.do?method=delete&noti_code=${notice.noti_code}");
+				$("form").submit();
 			}
 		});
 		$(".goList").click(function(){
-			alert("목록으로 이동");
-			//$(location).attr("href","${path}/notice.do?method=adminlist");
+			//alert("목록으로 이동");
+			$(location).attr("href","${path}/notice.do?method=admList");
 		});
 		
 	})
@@ -54,26 +53,26 @@
 			        	<col style="width:15%">
 			        	<col style="width:35%">
 			        	<tr><th>번호</th>
-			        		<td>1</td>
+			        		<td><input type="hidden" name="noti_code" value="${notice.noti_code}"/>${notice.noti_code}</td>
 			        		<th>등록일</th>
-			        		<td>20.05.02</td></tr>
+			        		<td>${notice.noti_reg_date}</td></tr>
 			        	<tr><th rowspan="2">중요</th>
 			        		<td rowspan="2">
-			        			<label class="radio ct-orange"><input type="radio" data-toggle="radio" name="noti_ck" value="Y"/>Y</label>
-			        			<label class="radio ct-orange"><input type="radio" data-toggle="radio" name="noti_ck" value="N"/>N</label></td>
+			        			<label class="radio ct-orange" ><input type="radio" data-toggle="radio" name="noti_ck" value="Y" ${notice.noti_ck=="Y"?"checked":""} />${notice.noti_ck}</label>
+			        			<label class="radio ct-orange" ><input type="radio" data-toggle="radio" name="noti_ck" value="N" ${notice.noti_ck!="Y"?"checked":""}/>N</label></td>
 			        		<th>수정일</th>
-			        		<td>20.05.03</td></tr>
+			        		<td>${not empty notice.noti_upt_date?notice.noti_upt_date:"없음"}</td></tr>
 			        	<tr><th>작성자</th>
-			        		<td>한송우</td></tr>
+			        		<td><input type="hidden" name="admin_code" value="${notice.admin_code}"/>${notice.admin_code}</td></tr>
 			        	<tr><th>제목</th>
-			        		<td colspan="3"><input type="text" class="form-control" name="noti_title" placeholder="공지제목" /></td></tr>
+			        		<td colspan="3"><input type="text" class="form-control" name="noti_title" placeholder="공지제목" value="${notice.noti_title}"/></td></tr>
 			        	<tr><th>내용</th>
 			        		<td colspan="3">
-			        			<textarea class="form-control" name="noti_detail" placeholder="공지내용" style="resize:none;" ></textarea></td></tr>
+			        			<textarea class="form-control" rows="20"name="noti_detail" placeholder="공지내용" style="resize:none;" >${notice.noti_title}</textarea></td></tr>
 			        </table>
 		        </form>
 		    </div>
-		    <div class="ordR">
+		    <div class="text-right">
 		    	<button class="btn btn-warning updateNoti">수정</button>
 		    	<button class="btn btn-warning deleteNoti">삭제</button>
 		    	<button class="btn btn-warning goList">목록</button>
