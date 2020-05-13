@@ -9,7 +9,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title></title>
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
+<script src="js/mk_user_w_projectList.js"></script>
 </head>
 <body>
 	<div class="main">
@@ -62,7 +64,8 @@
 					<h6>테크·가전</h6>
 				</div>
             </div>
-			
+		</form>
+		
 			<div class="ProjectListHead_bar">
 				<h3 class="ProjectListHead_title">전체보기</h3>
 				<form class="ProjectListHead_search">
@@ -108,7 +111,7 @@
 					</div>
 			</div>
 			
-		</form>
+		
 		</div>
 	</div>
 	<!-- end main -->

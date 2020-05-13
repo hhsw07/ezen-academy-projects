@@ -37,5 +37,5 @@
 	});
 // 프로젝트 상세보기
 	function go_detail(no){
-		$(location).attr("href", "${path}/funding.do?method=detail&no="+no);
+		$(location).attr("href", "funding.do?method=detail&pro_code="+no);
 	}
