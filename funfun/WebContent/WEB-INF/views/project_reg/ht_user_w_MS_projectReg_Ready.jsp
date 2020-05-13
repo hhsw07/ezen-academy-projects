@@ -45,7 +45,8 @@
 	<div class="panel panel-default">
 	<div class="panel-body">
 	
-	님의 프로젝트
+	님의<br> 
+	프로젝트
 	
 	</div>
 	</div>
@@ -53,7 +54,7 @@
 	<div class="panel-body">
 	 	<details open>
 	    <summary>프로젝트 준비</summary>
-		<ul style="list-style:none;line-height:150%">
+		<ul style="list-style:none;line-height:3em">
 	  		<li>기본 요건</li>
 	  		<li>기본 정보</li>
 	  		<li>스토리 작성</li>
@@ -71,7 +72,7 @@
   	</div>
 
 
-  	<div class="col-sm-10" style="padding-left:30px;">
+  	<div class="col-sm-10" style="padding-left:80px;">
   	
   	<h3 style="font-weight:bolder">프로젝트 준비</h3>
   	
