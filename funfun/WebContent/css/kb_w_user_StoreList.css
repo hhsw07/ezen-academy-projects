@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap');
 
+
 .Product_Div{
     width:70%;
     height:300px;
@@ -59,7 +60,7 @@
     color: black;
     padding-top: 10px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 13px;
     text-align: justify;
   }
   
@@ -98,8 +99,8 @@
       width:25px;
       height:25px;
       position: absolute;
-      top:20%;
-      left:75%;
+      top:44%;
+      left:77%;
       background-color: white;
       border:0;
   }

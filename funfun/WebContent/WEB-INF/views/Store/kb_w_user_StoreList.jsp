@@ -63,17 +63,20 @@
         <span id="Cate_Search_Span">전체보기</span>
         <div id="Search_Div">        
             <input type="text" id="Search_Input" placeholder="검색">
+            <!-- 
             <button type="submit" class="Seach_Button">
                 <i class="icon_Search"></i>
             </button>
+            -->
         </div>
 
-    </div>
+    </div><br>
     <div class="row">
+    		
           <c:forEach items="${slist}" var="store">
-        <div class="col-xs-12 col-md-3 item">
+        	<div class="col-xs-12 col-md-3 item">
             <div class="thumbnail">
-              <img src="img/${store.sto_image}" alt="...">
+              <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
               <div class="caption">
                 
                 <p class="item__title">${store.sto_title }</p>
@@ -82,11 +85,9 @@
             </div>
           </div>
           </c:forEach>
+          
       </div>
 
-
-
-      
       <div id="pagination_Div">
         <ul class="pagination">
             <li><a href="#">1</a></li>
