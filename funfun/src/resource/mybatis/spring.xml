@@ -18,6 +18,7 @@
 		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
 		<mapper resource="resource/mybatis/loginMapper.xml" />
 		<mapper resource="resource/mybatis/favorMapper.xml" />
+		<mapper resource="resource/mybatis/FundingMapper.xml" />
 
 	</mappers>
  
