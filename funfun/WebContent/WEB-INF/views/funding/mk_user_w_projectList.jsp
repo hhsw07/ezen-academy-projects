@@ -97,11 +97,12 @@
 					<div class="row">
 				<c:forEach var="proj" items="${plist}">
 						<div class="col-xs-12 col-md-3 item">
-							<div class="thumbnail">
+							<div class="thumbnail projectList-item">
 								<img alt="..." src="img/${proj.pro_image}">
-								<div class="caption">
-									<p class="item__title">${proj.pro_title}</p>
-									<span class="item__category">${proj.cate_title} | ${proj.maker_name}</span><span class="item__money">모금율 : 90%</span>
+								<div class="caption proj-info">
+									<p class="ProjectList-title">${proj.pro_title}</p>
+									<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+									<span class="ProjectList-rate">모금율 : 90%</span>
 								</div>
 							</div>
 						</div>
