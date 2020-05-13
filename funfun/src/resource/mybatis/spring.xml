@@ -20,7 +20,6 @@
 		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
 		<mapper resource="resource/mybatis/Sw_FaqMapper.xml"/>
 		<mapper resource="resource/mybatis/loginMapper.xml" />
-		<mapper resource="resource/mybatis/favorMapper.xml" />
 		<mapper resource="resource/mybatis/mypageMapper.xml" />
 
 	</mappers>
