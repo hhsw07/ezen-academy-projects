@@ -10,46 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
 <script>
 		$(document).ready(function(){
 			
-			function goReg(){
-				$(location).attr("href", "${path}/MakerStudio.do?method=proRegReady")
-			}
-			
 		})
 </script>
-
-<style>
-
-.display_item {
-  display: block;
-}
-
-.item__img{
-	width: 200px;
-}
-
-.item__title {
-  color: black;
-  padding-top: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: justify;
-}
-
-.item__category {
-  font-size: 12px;
-}
-
-.item__money {
-  float: right;
-  color: orange;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-</style>
 
 </head>
 <body>
@@ -58,7 +24,7 @@
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px; padding-bottom:50px;">
 
-	<h3>만든 프로젝트</h3> &nbsp&nbsp&nbsp&nbsp&nbsp <h5><a href="${path}/MakerStudio.do?method=proRegReady">등록하기</a></h5>
+	<h3>만든 프로젝트</h3> &nbsp&nbsp&nbsp&nbsp&nbsp <h5><a href="${path}/ProjectReg.do?method=ready">등록하기</a></h5>
 	        
 	    </div>
 
