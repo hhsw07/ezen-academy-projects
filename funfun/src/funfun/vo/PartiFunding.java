@@ -19,7 +19,13 @@ public class PartiFunding {
 	private String makerName; // 프로젝트 메이커 이름
 	private int percent; // 모금률
 	private String fundState;// 배송상태
-	
+	private String fundingCode; // 펀딩 코드
+	public String getFundingCode() {
+		return fundingCode;
+	}
+	public void setFundingCode(String fundingCode) {
+		this.fundingCode = fundingCode;
+	}
 	public String getFundState() {
 		return fundState;
 	}

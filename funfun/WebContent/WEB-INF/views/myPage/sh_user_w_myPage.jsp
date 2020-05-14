@@ -34,7 +34,7 @@
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
           <span class="profile__name">홍길동</span>
           <br>
-          <span class="profile__level">서포터 회원</span>
+          <span class="profile__level">${memState}</span>
           <img  class="profile__img" src="img/profile01.png" alt="">
           <table class="profile__times--table">
             <tr><td class="profile__times--num">2</td><td class="profile__times--num">3</td></tr>
@@ -81,7 +81,9 @@
 <c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
-          <div class="col-xs-10 col-md-10 funding">
+          <div class="col-xs-10 col-md-10" style="margin-top:10px">
+          <span style="font-size:14px;color:gray;padding-bottom:10px;">펀딩번호 : ${list.fundingCode}</span>
+          <div class="funding" style="margin-top:5px">
             <table class="col-xs-12 col-md-12">
               <tr><td class="funding__state">
               <c:choose>
@@ -106,38 +108,48 @@
             <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
           </div>
         </div>
+        </div>
+      
 </c:forEach>
 
 </div>
+
 <!-- 참여한 펀딩 끝 -->
-    <div class="trans_display" class="row">
+<!-- 주문 및 배송조회 -->
+<div class="trans_display">
+
 <c:forEach var="list" items="${tlist}" begin="0" end="5" step="1">
-	
-      <div class="col-xs-12 col-md-3">
-      <span style="font-size:12px;color: gray;">주문번호 : ${list.orderCode}</span>
-      <div class="item" style="margin-top:5px">
-      
-        <span data-html = "true" data-toggle="tooltip" data-placement="top" title="주문번호 : ${list.orderCode}&#013;주문일시 : ${list.orderDate}&#013;결제금액 : ${list.orderPrice}원&#013;상태 : ${list.orderCurr}">   
-        
-        <div class="thumbnail">
-          <img src="${path}/img/${list.stoImage}" style="height:180px; width:320px" alt="...">
-          <div class="caption">
-            
-            <p class="item__title">${list.stoTitle}</p>
-            <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
-            <span class="trans__date">
-           <fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정</span>
-           
+        <div class="row" >
+          <div class="col-xs-1 col-md-1 "></div>
+          <div class="col-xs-10 col-md-10" style="margin-top:10px">
+          <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
+          <div class="funding" style="margin-top:5px">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">${list.orderCurr}</td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
+              <tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">${list.orderPrice}원</td></tr>
+              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">${list.orderPrice}원</td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+	           	  <fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정
+              </td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
+            </table>
+            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+          </div>
           </div>
         </div>
-      </div>
-      </div>
-     </span>
 </c:forEach>
-     
-    </div>
+
+</div>
+
+<!-- 주문 및 배송 조회 끝 -->
 
       </div>
+    </div>
     </div>
 
   <!-- end main -->
