@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort">
+        <item>추천순</item>
+        <item>인기순</item>
+        <item>최신순</item>
+        <item>펀딩액순</item>
+        <item>마감임박순</item>
+    </string-array>
+
+</resources>
