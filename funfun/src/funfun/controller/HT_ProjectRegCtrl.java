@@ -20,6 +20,10 @@ public class HT_ProjectRegCtrl {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
+	@RequestMapping(params="method=basicReq")
+	public String proRegBasicReq() {
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
+	}
 	@RequestMapping(params="method=basicInfo")
 	public String proRegBasicInfo() {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicInfo.jsp";
@@ -35,10 +39,6 @@ public class HT_ProjectRegCtrl {
 	@RequestMapping(params="method=risk")
 	public String proRegRisk() {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
-	}
-	@RequestMapping(params="method=makerInfo")
-	public String proRegMakerInfo() {
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_makerInfo.jsp";
 	}
 
 }
