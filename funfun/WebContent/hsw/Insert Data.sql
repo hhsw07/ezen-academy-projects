@@ -1,11 +1,11 @@
-INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date, 1100001, '안녕하세요');
-INSERT INTO rtqna values(rtqna_seq.nextval,1,current_date, 1001, '네.안녕하세요');
-INSERT INTO rtqna values(rtqna_seq.nextval,2,current_date,1100001, '질문있어요');
-INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date,1100002, '이거 안돼요');
-INSERT INTO rtqna values(rtqna_seq.nextval,4,current_date,1001, '다시해보세요.');
-INSERT INTO rtqna values(rtqna_seq.nextval,3,current_date,1100001, '얼마예요?');
-INSERT INTO rtqna values(rtqna_seq.nextval,6,current_date,1001, '1만원이요');
-INSERT INTO rtqna values(rtqna_seq.nextval,5,current_date,1100002, '그래도 안돼요');
+INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date, 11000001, '안녕하세요');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000000,current_date, 1001, '네.안녕하세요');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000001,current_date,11000001, '질문있어요');
+INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date,11000002, '이거 안돼요');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000003,current_date,1001, '다시해보세요.');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000002,current_date,11000001, '얼마예요?');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000005,current_date,1001, '1만원이요');
+INSERT INTO rtqna values(rtqna_seq.nextval,42000006,current_date,11000002, '그래도 안돼요');
 
 
 INSERT INTO notice values(notice_seq.nextval,'test01제목','test01내용',sysdate,NULL,'Y',1001);
