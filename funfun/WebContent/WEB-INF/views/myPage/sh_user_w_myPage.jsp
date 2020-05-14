@@ -54,6 +54,7 @@
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
+<div class="display_item">
 <c:if test="${empty flist}">
 	
    <div class="emptyMsg">관심프로젝트가 존재하지 않습니다</div>
@@ -61,7 +62,7 @@
 </c:if>
 <c:if test="${!empty flist}">
 	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
-	          <div class="display_item" class="row">
+	          <div class="row">
 	
 	            <div class="col-xs-12 col-md-3 item">
 	              <div class="thumbnail">
@@ -76,9 +77,11 @@
 	            </div>
 	</c:forEach>
 </c:if>		
+</div>
 <!--아이템들 끝-->
 
 <!-- 참여한 펀딩 -->
+
 <div class="funding_display">
 <c:if test="${empty flist}">
 	
