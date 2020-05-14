@@ -1,0 +1,14 @@
+************ MAVEN 형식으로 만들때는
+DYNAMIC WEB PROJECT로 프로젝트 생성
+오른쪽 마우스 - configure => conver to Maven Project
+
+LIB 구글 검색 ==> pom.xml spring-webmvc
+
+
+
+
+
+
+1. Dynamic Web project
+
+2. 

@@ -11,10 +11,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
 		
 	})
+
+	$( function() {
+		$( "#deliveryDate" ).datepicker();
+	} );	
+
 </script>
 </head>
 <body>
@@ -59,13 +66,13 @@
   	
   	<br><br>
   	
-  	<span style="color:#787878;font-weight:bold;">서포터에게 제공할 리워드 옵션 내용을 입력하세요</span>
+  	<span class="sub_gray_font">서포터에게 제공할 리워드 옵션 내용을 입력하세요</span>
 
   	<br><br><br><br>
 
 	<div class="form-group">
 
-	<button class="btn btn-warning" data-toggle="modal" data-target="#myModal">+ 추가하기</button>
+	<button class="btn btn-warning btn_custom" data-toggle="modal" data-target="#myModal">+ 추가하기</button>
 
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -84,32 +91,65 @@
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">리워드명</div>
-						<div class="reward_reg_content_container2"><input type="text" class="form-control"/>xx자 남음</div>
+						<div class="reward_reg_content_container2">
+							<input type="text" class="form-control"/>
+							<span class="sub_gray_font">xx자 남음</span>
+						</div>
 					</div>
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">상세설명</div>
-						<div class="reward_reg_content_container2"><textarea class="form-control"></textarea>xx자 남음</div>
+						<div class="reward_reg_content_container2">
+							<textarea class="form-control"></textarea>
+							<span class="sub_gray_font">xx자 남음</span>
+						</div>
 					</div>
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">옵션조건</div>
-						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+						<div class="reward_reg_content_container2">
+							<select class="form-control" id="sel1" style="width:60%;" name="maker_type">
+							<option>옵션 없음</option>
+							<option>선택 옵션(사이즈, 색상 등)</option>
+							<option>직접 입력 옵션(각인, 메세지 등)</option>
+							</select>
+						</div>
 					</div>
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">배송조건</div>
-						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+						<div class="reward_reg_content_container2">
+
+							<label class="radio">
+	    					<input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="option1">
+						    <i></i>배송이 필요한 리워드입니다
+							</label>
+							<div style="padding-left:30px;line-height:1.5em">
+								<div class="reward_reg_content_container1">배송비</div>
+								<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:80%;display:inline-block;height:30px;"/>&nbsp&nbsp&nbsp원</div>
+								<span class="sub_gray_font">배송금액이 필요 없는 경우 0을 입력하세요</span>
+							</div>
+							<label class="radio">
+	    					<input type="radio" name="optionsRadios" data-toggle="radio" id="optionsRadios1" value="option1">
+						    <i></i>배송이 필요 없는 리워드입니다
+							</label>
+							
+						
+						</div>
 					</div>
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">제한수량</div>
-						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:30%;display:inline-block;"/>&nbsp&nbsp&nbsp개</div>
 					</div>
 				
 					<div class="reward_reg_subTitle">
-						<div class="reward_reg_content_container1">발송시작일</div>
-						<div class="reward_reg_content_container2"><input type="text" class="form-control" style="width:60%;display:inline-block;"/>&nbsp&nbsp&nbsp원</div>
+						<div class="reward_reg_content_container1">발송시작 예정일</div>
+						<div class="reward_reg_content_container2">
+
+							<input type="text" placeholder="날짜를 선택하세요" name="date" id="deliveryDate" class="form-control" style="width:60%;" >
+
+						</div>
 					</div>
 				
 				
@@ -131,7 +171,7 @@
 
 	<br><br><br><br>
 
-  	<button class="btn btn-warning" style="width:50%">저장하기</button>
+  	<button class="btn btn-warning btn_custom" style="width:40%">저장하기</button>
 
 	<br><br><br><br>
 

@@ -47,7 +47,7 @@
 	<div class="main">
 	    <div class="container tim-container noticeList" style="max-width:1200px; padding-top:100px">
 	        <div class="sctitle">
-		        <h2>고객센터(관리자)</h2>
+		        <h2>공지사항 목록(관리자)</h2>
 		    </div>
 	        <div class="collapse navbar-collapse text-center">
 	        	<div class="btn-group btn-group-lg scnav" style="width:80%;">

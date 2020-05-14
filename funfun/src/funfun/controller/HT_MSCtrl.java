@@ -43,4 +43,15 @@ public class HT_MSCtrl {
 	public String proRegReady() {
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
+	
+	@RequestMapping(params="method=makerInfo")
+	public String proRegMakerInfo() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerInfo.jsp";
+	}
+
+	@RequestMapping(params="method=proQna")
+	public String proQna() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proQna.jsp";
+	}
+	
 }

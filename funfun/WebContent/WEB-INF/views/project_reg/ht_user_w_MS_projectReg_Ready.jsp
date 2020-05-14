@@ -14,20 +14,23 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#basicInfoBtn").click(function(){
+		$(".basicReqBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicReq")
+		})
+		$(".basicInfoBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfo")
 		})
-		$("#storyBtn").click(function(){
+		$(".storyBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/ProjectReg.do?method=story")
 		})
-		$("#rewardBtn").click(function(){
+		$(".rewardBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/ProjectReg.do?method=reward")
 		})
-		$("#riskBtn").click(function(){
+		$(".riskBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/ProjectReg.do?method=risk")
 		})
-		$("#makerInfoBtn").click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=makerInfo")
+		$(".proQnaBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
 		})
 		    
 		
@@ -45,24 +48,30 @@
 	<div class="panel panel-default">
 	<div class="panel-body">
 	
+	<span class="sub_gray_font">
 	님의<br> 
 	프로젝트
+	</span>
 	
 	</div>
 	</div>
 	<div class="panel panel-default">
 	<div class="panel-body">
 	 	<details open>
-	    <summary>프로젝트 준비</summary>
+	    <summary class="sub_gray_font" style="font-size:1.1em;">프로젝트 준비<br><br></summary>
 		<ul style="list-style:none;line-height:3em">
 
-	  		<li>기본 정보</li>
-	  		<li>스토리 작성</li>
-	  		<li>리워드 설계</li>
-	  		<li>위험요인</li>
-	  		<li>메이커 정보</li>
+	  		<li class="sub_gray_font basicReqBtn">기본 요건 동의</li>
+	  		<li class="sub_gray_font basicInfoBtn">기본 정보</li>
+	  		<li class="sub_gray_font storyBtn">스토리 작성</li>
+	  		<li class="sub_gray_font rewardBtn">리워드 설계</li>
+	  		<li class="sub_gray_font riskBtn">위험요인</li>
+	  	
 		</ul>
 	  	</details> 	
+	</div>
+	<div class="panel-body sub_gray_font proQnaBtn" style="font-size:1.1em;">
+	프로젝트 문의 관리
 	</div>
 	</div>
 	</div>
@@ -78,34 +87,34 @@
   	
   	<br><br>
   	
-  	<span style="color:#787878;font-weight:bold;">프로젝트를 오픈하기 위한 6가지 항목을 작성해 주세요</span>
+  	<span class="sub_gray_font">프로젝트를 오픈하기 위한 6가지 항목을 작성해 주세요</span>
   	
   	<br><br><br>
   	
   	<div class="reg_item_container">
+	  	<span class="reg_content_title">기본 요건 동의</span>
+	  	<span class="navbar-right" style="display:inline-block"><button id="basicReqBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+  	</div>
+  	<div class="reg_item_container">
 	  	<span class="reg_content_title">기본 정보</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="basicInfoBtn" class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button id="basicInfoBtn" class="btn btn-warning btn_custom">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">스토리 작성</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="storyBtn" class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button id="storyBtn" class="btn btn-warning btn_custom">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">리워드 설계</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="rewardBtn" class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button id="rewardBtn" class="btn btn-warning btn_custom">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">위험 요인 및 정책</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="riskBtn" class="btn btn-warning">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button id="riskBtn" class="btn btn-warning btn_custom">작성하기</button></span>
   	</div>
-  	<div class="reg_item_container">
-	  	<span class="reg_content_title">메이커 정보</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="makerInfoBtn" class="btn btn-warning">작성하기</button></span>
-  	</div>
-  	
+
   	<br><br>
   	
-  	<button class="btn btn-warning">프로젝트 등록 신청</button>
+  	<button class="btn btn-warning btn_custom">프로젝트 등록 신청</button>
   	
   	<br><br><br><br><br><br>
   	
