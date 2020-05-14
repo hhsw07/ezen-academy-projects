@@ -91,14 +91,14 @@
 			        		<td>${noti.noti_title}</td>
 			        		<td>${noti.admin_name}</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide"><td></td><td colspan="3"><textarea class="form-control" style="resize:none;">${noti.noti_detail}</textarea></td></tr>	
+			        	<tr class="hide"><td></td><td colspan="3">${noti.noti_detail}</td></tr>	
 		        	</c:forEach>
 		        	<c:forEach var="noti" items="${list}">
 			        	<tr class="item"><td>${noti.cnt}</td>
 			        		<td>${noti.noti_title}</td>
 			        		<td>${noti.admin_name}</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide"><td></td><td colspan="3"><textarea class="form-control" style="resize:none;">${noti.noti_detail}</textarea></td></tr>
+			        	<tr class="hide"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
 		        	</c:forEach>
 		        	<tr><td colspan="4"></td></tr>
 		        </table>
