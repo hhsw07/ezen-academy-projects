@@ -30,12 +30,14 @@
   color: orange;
   font-size: 35px;
   padding-left: 5px;
+  cursor: pointer;
 }
 
 .profile__times--text {
   font-size: 14px;
   padding-right: 30px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .profile__choice {
@@ -57,8 +59,11 @@
   margin: auto;
 }
 
-.item {
+.thumbnail {
   cursor: pointer;
+}
+
+.item {
   margin-top: 25px;
 }
 

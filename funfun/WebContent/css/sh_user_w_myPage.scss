@@ -27,11 +27,13 @@
             color: orange;
             font-size: 35px;
             padding-left : 5px;
+            cursor: pointer;
         }
         &--text{
             font-size: 14px;
             padding-right: 30px;
             font-weight: bold;
+            cursor: pointer;
         }
         
     }
@@ -52,8 +54,10 @@
     background-color: orange;
     margin: auto;
 }
-.item{
+.thumbnail{
     cursor: pointer;
+}
+.item{
     margin-top: 25px;
     &__title{
     color:black; 
