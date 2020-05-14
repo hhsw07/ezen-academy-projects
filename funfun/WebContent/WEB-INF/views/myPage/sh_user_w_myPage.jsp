@@ -42,9 +42,9 @@
           <button class="btn btn-default profile__detail">회원탈퇴</button>
           <table class="profile__choice--table">
             <tr>
-              <td class="profile__choice">관심프로젝트<br><br><div class="clicked"></div></td>
-              <td class="profile__choice">참여한 펀딩<br><br></td>
-              <td class="profile__choice">주문 및 배송 조회<br><br></td>
+              <td class="profile__choice">관심프로젝트<br><br><div id="myProject" style="width:80px;height:3px"></div></td>
+              <td class="profile__choice">참여한 펀딩<br><br><div id="myFunding" style="width:80px;height:3px"></div></td>
+              <td class="profile__choice">주문 및 배송 조회<br><br><div id="myOrder" style="width:80px;height:3px"></div></td>
             </tr>
           </table>
       </div>
