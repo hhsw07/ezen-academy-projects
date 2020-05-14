@@ -83,11 +83,11 @@
 					<li class="active"><a href="#">진행중인 프로젝트</a></li>
 					<li><a href="#">오픈예정 프로젝트</a></li>
 					<li><a href="#">종료된 프로젝트</a></li>
-				</ul>
+				</ul>	
 			</div>
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
-					<div class="row" style="padding-bottom:100px;">
+					<div class="row">
 				<c:forEach var="proj" items="${plist}">
 						<div class="col-xs-12 col-md-3 item"  onclick="javascript:go_detail('${proj.pro_code}')">
 							<div class="thumbnail projectList-item">
@@ -96,7 +96,10 @@
 									<p class="ProjectList-title">${proj.pro_title}</p>
 									<div class="maker-info">
 										<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+									</div>
+									<div>
 										<span class="ProjectList-rate">모금율 : 90%</span>
+										<span class="ProjectList-date">남은기간 : 7일</span>
 									</div>
 								</div>
 							</div>
