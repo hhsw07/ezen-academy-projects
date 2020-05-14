@@ -16,7 +16,7 @@ import funfun.vo.MemberInfo;
 
 @Controller
 public class sh_myPageCtrl {
-	// http://localhost:5542/funfun/mypage.do
+	// http://localhost:1254/funfun/mypage.do
 	@Autowired(required=false)
 	private sh_myPageService service;
 	
@@ -32,6 +32,14 @@ public class sh_myPageCtrl {
 			 d.addAttribute("flist", service.list(memberinfo.getMem_email()));
 			 d.addAttribute("plist", service.plist(memberinfo.getMem_email()));
 			 d.addAttribute("tlist", service.tlist(memberinfo.getMem_email()));
+			 if(service.memState(memberinfo.getMem_email())==null) {
+				 d.addAttribute("memState", "서포터회원");
+			 }else {
+				 d.addAttribute("memState", "메이커회원");
+			 }
+			 d.addAttribute("fundCnt", service.fundCnt(memberinfo.getMem_email()));
+			 d.addAttribute("orderCnt", service.orderCnt(memberinfo.getMem_email()));
+			 d.addAttribute("meminfo", service.mypageinfo(memberinfo.getMem_email()));
 		 }
 		 	
 		return "WEB-INF\\views\\myPage\\sh_user_w_myPage.jsp";

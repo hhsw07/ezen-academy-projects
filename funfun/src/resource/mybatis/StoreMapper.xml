@@ -6,9 +6,15 @@
 	<mapper namespace="funfun.repository.KB_RSReposi">
 		<resultMap type="RewardStore" id="Storelist"/>
 		
-		<select id="slist" resultMap="Storelist">
+		<select id="slist" resultMap="Storelist" parameterType="RewardStore">
 			SELECT a.sto_code, a.sto_title, a.sto_image, a.sto_price, b.CATE_TITLE FROM 
 			store a, PROJECT b WHERE a.PRO_CODE  = b.PRO_CODE
+			<if test="sto_title!=null and sto_title!=''">
+				and sto_title like '%'||#{sto_title} || '%'
+			</if>
+			<if test="cate_title!=null and cate_title!= ''">
+				and cate_title like '%' || #{cate_title} ||'%'
+			</if>
 		</select>
 	</mapper>
 	

@@ -12,7 +12,7 @@ public class KB_StoreService {
 	@Autowired(required=false)
 	KB_RSReposi dao;
 	
-	public ArrayList<RewardStore> slist(){
-		return dao.slist();
+	public ArrayList<RewardStore> slist(RewardStore sch){
+		return dao.slist(sch);
 	}
 }

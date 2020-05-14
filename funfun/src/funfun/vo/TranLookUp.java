@@ -15,6 +15,13 @@ public class TranLookUp {
 	private String orderCode; // 주문 번호
 	private String receivDate; // 배송예정일
 	private String orderDate; //주문날짜
+	private String makerName; // 상품 제작 메이커 이름
+	public String getMakerName() {
+		return makerName;
+	}
+	public void setMakerName(String makerName) {
+		this.makerName = makerName;
+	}
 	public String getOrderDate() {
 		return orderDate;
 	}

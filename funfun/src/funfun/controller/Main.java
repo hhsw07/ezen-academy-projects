@@ -49,11 +49,11 @@ public class Main {
 
 	
 	// http://localhost:5080/funfun/verification.do
+	// 로그인 아이디비밀번호 정확한지 검증
 	@RequestMapping("/verification.do")
 	public String verificationId(MemberLogin m, Model d) {
 		
-		System.out.println("email:"+m.getMem_email());
-		System.out.println("pw:"+m.getMem_pw());
+		System.out.println("로그인 아이디 비밀번호 검증...");
 		d.addAttribute("verification", service.verifyId(m));
 		
 		
@@ -71,7 +71,7 @@ public class Main {
 	public String loginSuccess(MemberLogin m, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.setAttribute("user", service.getMemberInfo(m.getMem_email()));
-		System.out.println("�α��� ����, �α��� �̸���:"+m.getMem_email());
+		System.out.println("로그인성공");
 		return "redirect:/main.do";
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.sh_myPageReposi;
 import funfun.vo.Favor;
+import funfun.vo.MyPageInfo;
 import funfun.vo.PartiFunding;
 import funfun.vo.TranLookUp;
 
@@ -24,4 +25,18 @@ public class sh_myPageService {
 	public ArrayList<TranLookUp> tlist(String memEmail){
 		return dao.tlist(memEmail);
 	}
+	
+	public String memState(String memEmail){ 
+		return dao.memState(memEmail); 
+	}
+	public int fundCnt(String memEmail){ 
+		return dao.fundCnt(memEmail); 
+	}
+	public int orderCnt(String memEmail){ 
+		return dao.orderCnt(memEmail); 
+	}
+	public MyPageInfo mypageinfo(String memEmail){ 
+		return dao.mypageinfo(memEmail); 
+	}
+	
 }

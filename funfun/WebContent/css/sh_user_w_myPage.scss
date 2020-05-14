@@ -27,11 +27,19 @@
             color: orange;
             font-size: 35px;
             padding-left : 5px;
+            cursor: pointer;
+        }
+        &--num:hover{
+            text-decoration: underline;
         }
         &--text{
             font-size: 14px;
             padding-right: 30px;
             font-weight: bold;
+            cursor: pointer;
+        }
+        &--text:hover{
+            text-decoration: underline;
         }
         
     }
@@ -52,8 +60,10 @@
     background-color: orange;
     margin: auto;
 }
-.item{
+.thumbnail{
     cursor: pointer;
+}
+.item{
     margin-top: 25px;
     &__title{
     color:black; 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.Sw_FaqDao;
 import funfun.vo.Faq;
+import funfun.vo.Notice;
 import funfun.vo.Paging;
 
 @Service
@@ -52,4 +53,21 @@ public class Sw_FaqService {
 		return dao.list(sch);
 	}
 	
+	public void insert(Faq ins){
+		dao.insert(ins);
+		System.out.println("faq 등록 완료");
+	};
+	
+	public Faq detail(int faq_code) {
+		System.out.println("faq 상세화면 호출");
+		return dao.detail(faq_code);
+	};
+	public void update(Faq upt) {
+		dao.update(upt);
+		System.out.println("faq 수정 완료");
+	};
+	public void delete(int faq_code) {
+		dao.delete(faq_code);
+		System.out.println("faq 삭제 완료");
+	};
 }
