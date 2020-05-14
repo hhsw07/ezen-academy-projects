@@ -61,8 +61,8 @@
 
 </c:if>
 <c:if test="${!empty flist}">
+<div class="row">
 	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
-	          <div class="row">
 	            <div class="col-xs-12 col-md-3 item">
 	              <div class="thumbnail">
 	                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
@@ -72,9 +72,9 @@
 	                  <span class="item__category">${list.cateTitle} | ${list.makerName}</span><span class="item__money">모금율 : ${list.percent}</span>
 	                </div>
 	              </div>
-	            </div>
-	            </div>
+	            </div>     
 	</c:forEach>
+	 </div>
 </c:if>		
 </div>
 <!--아이템들 끝-->
