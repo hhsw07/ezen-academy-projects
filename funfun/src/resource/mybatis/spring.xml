@@ -14,8 +14,6 @@
 		<typeAlias alias="parti" type="funfun.vo.PartiFunding"/>
 		<typeAlias alias="trans" type="funfun.vo.TranLookUp"/>
 		<typeAlias alias="mypageinfo" type="funfun.vo.MyPageInfo"/>
-		<!--펀딩??-->
-		
 
 	</typeAliases>
 	<mappers>
