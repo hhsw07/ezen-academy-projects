@@ -105,7 +105,9 @@
               <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">${list.fundPrice}원</td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
               
               <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
@@ -145,8 +147,9 @@
               <tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
-              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">${list.orderPrice}원</td></tr>
-              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">${list.orderPrice}원</td></tr>
+              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
 	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
