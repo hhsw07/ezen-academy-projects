@@ -130,5 +130,9 @@
   #pagination_Div{
       text-align: center;
   }
+  .maker{
+  	font-size: 12px;color:#90949c;font-weight:800; position: absolute; bottom: 28px; width:150px;height: 17px; overflow:hidden;white-space: nowrap; text-overflow:ellipsis;
+  }
   
+  .store-info{height:100px;}
   .storeList-item{height:287px;}
