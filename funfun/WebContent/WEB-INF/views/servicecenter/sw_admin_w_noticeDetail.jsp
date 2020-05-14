@@ -68,9 +68,9 @@
 		        </form>
 		    </div>
 		    <div class="text-right">
-		    	<button class="btn btn-warning updateNoti">수정</button>
-		    	<button class="btn btn-warning deleteNoti">삭제</button>
-		    	<button class="btn btn-warning goList">목록</button>
+		    	<button class="btn btn-fill btn-warning updateNoti">수정</button>
+		    	<button class="btn btn-fill btn-warning deleteNoti">삭제</button>
+		    	<button class="btn btn-fill btn-warning goList">목록</button>
 		    </div>
 	    </div>
 	</div>

@@ -61,8 +61,8 @@
 		        </form>
 		    </div>
 		    <div class="text-right">
-		    	<button class="btn btn-warning insertNoti">등록</button>
-		    	<button class="btn btn-warning goList">목록</button>
+		    	<button class="btn btn-fill btn-warning insertNoti">등록</button>
+		    	<button class="btn btn-fill btn-warning goList">목록</button>
 		    </div>
 	    </div>
 	</div>
