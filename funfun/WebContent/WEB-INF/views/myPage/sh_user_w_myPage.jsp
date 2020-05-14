@@ -54,27 +54,38 @@
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
-<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
-          <div class="display_item" class="row">
+<c:if test="${empty flist}">
+	
+   <div class="emptyMsg">관심프로젝트가 존재하지 않습니다</div>
 
-            <div class="col-xs-12 col-md-3 item">
-              <div class="thumbnail">
-                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">${list.proTitle}</p>
-                  <span class="item__category">${list.cateTitle} | ${list.makerName}</span><span class="item__money">모금율 : ${list.percent}</span>
-                </div>
-              </div>
-            </div>
-            </div>
-</c:forEach>
-		
+</c:if>
+<c:if test="${!empty flist}">
+	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
+	          <div class="display_item" class="row">
+	
+	            <div class="col-xs-12 col-md-3 item">
+	              <div class="thumbnail">
+	                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
+	                <div class="caption">
+	                  
+	                  <p class="item__title">${list.proTitle}</p>
+	                  <span class="item__category">${list.cateTitle} | ${list.makerName}</span><span class="item__money">모금율 : ${list.percent}</span>
+	                </div>
+	              </div>
+	            </div>
+	            </div>
+	</c:forEach>
+</c:if>		
 <!--아이템들 끝-->
 
 <!-- 참여한 펀딩 -->
 <div class="funding_display">
+<c:if test="${empty flist}">
+	
+   <div class="emptyMsg">참여한 펀딩이 존재하지 않습니다</div>
 
+</c:if>
+<c:if test="${!empty flist}">
 <c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
@@ -94,9 +105,11 @@
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">${list.fundPrice}원</td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
-              <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+              
+              <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
               <fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/>
+              
               </td></tr>
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
@@ -107,13 +120,18 @@
         </div>
       
 </c:forEach>
-
+</c:if>
 </div>
 
 <!-- 참여한 펀딩 끝 -->
 <!-- 주문 및 배송조회 -->
 <div class="trans_display">
+<c:if test="${empty flist}">
+	
+   <div class="emptyMsg">주문 및 배송내역이 존재하지 않습니다</div>
 
+</c:if>
+<c:if test="${!empty flist}">
 <c:forEach var="list" items="${tlist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
@@ -139,7 +157,7 @@
           </div>
         </div>
 </c:forEach>
-
+</c:if>
 </div>
 
 <!-- 주문 및 배송 조회 끝 -->

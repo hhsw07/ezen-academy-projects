@@ -67,6 +67,12 @@
   margin: auto;
 }
 
+.emptyMsg {
+  margin: auto;
+  margin-top: 500px;
+  font-size: 20px;
+}
+
 .thumbnail {
   cursor: pointer;
 }
