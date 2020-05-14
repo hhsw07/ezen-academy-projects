@@ -104,7 +104,16 @@
 				</c:forEach>
 					</div>
 			</div>
-			
+		<!-- 페이징 -->
+			<div class="text-center">
+		        <ul class="pagination ct-orange"> 
+					<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
+					<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
+						<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+					</c:forEach>
+					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
+				</ul>
+	        </div>
 		
 		</div>
 	</div>

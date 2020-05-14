@@ -6,11 +6,21 @@
 <mapper namespace="funfun.repository.MK_FundingReposi">
 	
 	<resultMap type="project" id="projectResult"/>
+	<!-- int totCnt() 총 데이터 건수 -->
+	<select id="projcnt" resultType="int">
+		SELECT COUNT(*)
+		FROM project
+		WHERE 1=1
+	</select>
 	
 	<select id="projectList" resultMap="projectResult" parameterType="project">
-		SELECT a.*, b.maker_name FROM project a, MAKER b
-		WHERE a.MAKER_CODE = b.MAKER_CODE
+		SELECT *
+		FROM (SELECT rownum cnt, c.*
+			FROM (SELECT a.*, b.maker_name FROM project a, MAKER b
+				WHERE a.MAKER_CODE = b.MAKER_CODE) c)
+		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
+	
 	<select id="getP" resultType="project" parameterType="int">
 		SELECT a.*, b.maker_name FROM project a, MAKER b
 		WHERE a.MAKER_CODE = b.MAKER_CODE
