@@ -13,6 +13,7 @@ public class Notice {
 	private String noti_ck;
 	private int admin_code;
 	
+	private String admin_name;
 	
 	public int getCnt() {
 		return cnt;
@@ -61,6 +62,12 @@ public class Notice {
 	}
 	public void setAdmin_code(int admin_code) {
 		this.admin_code = admin_code;
+	}
+	public String getAdmin_name() {
+		return admin_name;
+	}
+	public void setAdmin_name(String admin_name) {
+		this.admin_name = admin_name;
 	}
 	
 

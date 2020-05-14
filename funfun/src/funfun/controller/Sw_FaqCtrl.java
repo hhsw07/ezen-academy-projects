@@ -41,41 +41,38 @@ public class Sw_FaqCtrl {
 	// http://localhost:5080/funfun/faq.do?method=insForm
 	@RequestMapping(params="method=insForm")
 	public String insForm() {
+		
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_faqInsert.jsp";
 	}
 	// http://localhost:5080/funfun/faq.do?method=insert
 	@RequestMapping(params="method=insert")
 	public String insert(Faq ins) {
-		/*
-		System.out.println("등록 제목:"+insert.getTitle());
-		System.out.println("파일 로딩:"+
-		insert.getReport()[0].getOriginalFilename());
-		service.insert(insert);
-		insert.setRefno(0);
-		insert.setTitle("");
-		insert.setContent("");
-		*/
+		service.insert(ins);
+		System.out.println("faq 등록완료");
+		
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_faqInsert.jsp";
 	}
-	
+
 	
 	// http://localhost:5080/funfun/faq.do?method=detail
 	@RequestMapping(params="method=detail")
-	public String detail(@RequestParam("no") int no, Model d) {
-		// d.addAttribute("board", service.getBoard(no));
+	public String detail(@RequestParam("faq_code") int faq_code, Model d) {
+		d.addAttribute("faq", service.detail(faq_code));
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_faqDetail.jsp";
 	}
 	// http://localhost:5080/funfun/faq.do?method=update
 	@RequestMapping(params="method=update")
 	public String update(Faq upt) {
-		// service.update(upt);
-		return "forward:/faq.do?method=detail";
+		service.update(upt);
+		System.out.println("faq 수정완료");
+		return "forward:/faq.do?method=detail&faq_code+"+upt.getFaq_code();
 	}
 	// http://localhost:5080/funfun/faq.do?method=delete
 	@RequestMapping(params="method=delete")
-	public String delete(@RequestParam("no") int no) {
-		// service.deleteBoard(no);
-		return "redirect:/faq.do?method=list";
+	public String delete(@RequestParam("faq_code") int faq_code) {
+		service.delete(faq_code);
+		System.out.println("faq 삭제완료");
+		return "redirect:/faq.do?method=admList";
 	}
 	
 }
