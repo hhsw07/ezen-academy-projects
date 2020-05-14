@@ -87,7 +87,6 @@
 				<c:when test="${list.proLeftDate<0 and list.percent>=0.8}">펀딩성공 </c:when>	
 				<c:when test="${list.proLeftDate<0 and list.percent<0.8}">펀딩실패 </c:when>
 				<c:when test="${list.proLeftDate>=0}"> 펀딩중 </c:when>
-				<c:otherwise> ${list.percent} </c:otherwise>
 			  </c:choose>
               </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
               <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
