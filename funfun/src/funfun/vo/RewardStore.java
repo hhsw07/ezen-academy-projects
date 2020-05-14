@@ -12,6 +12,7 @@ public class RewardStore {
 	private String sto_curr;
 	private String cate_title;
 	private int sto_price;
+	private String maker_name;
 	public int getSto_code() {
 		return sto_code;
 	}
@@ -71,6 +72,12 @@ public class RewardStore {
 	}
 	public void setSto_price(int sto_price) {
 		this.sto_price = sto_price;
+	}
+	public String getMaker_name() {
+		return maker_name;
+	}
+	public void setMaker_name(String maker_name) {
+		this.maker_name = maker_name;
 	}
 	
 }

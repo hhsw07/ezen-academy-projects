@@ -8,5 +8,5 @@ import funfun.vo.RewardStore;
 
 @Repository
 public interface KB_RSReposi {
-	public ArrayList<RewardStore> slist();
+	public ArrayList<RewardStore> slist(RewardStore sch);
 }
