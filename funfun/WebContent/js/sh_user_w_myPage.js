@@ -1,4 +1,6 @@
 var choice = $(".profile__choice").get();
+var funding = $(".profile__times--num").get();
+var order = $(".profile__times--text").get();
 console.log(1)
 $(choice[0]).click(function(e){
 
@@ -10,16 +12,35 @@ $(choice[0]).click(function(e){
 
 })
 $(choice[1]).click(function(e){
-    console.log(2)
     $(".funding_display").css('display','block');
-    console.log(3)
     $(".display_item").css('display','none');
-    console.log(4)
     $(".trans_display").css('display','none');
-    console.log(5)
+
 })
 $(choice[2]).click(function(e){
     $(".trans_display").css('display','block');
+    $(".display_item").css('display','none');
+    $(".funding_display").css('display','none');
+})
+
+$(funding[0]).click(function(e){
+	$(".funding_display").css('display','block');
+    $(".display_item").css('display','none');
+    $(".trans_display").css('display','none');
+})
+$(order[0]).click(function(e){
+	$(".funding_display").css('display','block');
+    $(".display_item").css('display','none');
+    $(".trans_display").css('display','none');
+})
+
+$(funding[1]).click(function(e){
+	$(".trans_display").css('display','block');
+    $(".display_item").css('display','none');
+    $(".funding_display").css('display','none');
+})
+$(order[2]).click(function(e){
+	$(".trans_display").css('display','block');
     $(".display_item").css('display','none');
     $(".funding_display").css('display','none');
 })

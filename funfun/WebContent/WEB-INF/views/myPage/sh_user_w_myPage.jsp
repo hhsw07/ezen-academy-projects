@@ -32,12 +32,12 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-          <span class="profile__name">홍길동</span>
+          <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  class="profile__img" src="img/profile01.png" alt="">
+          <img  class="profile__img" src="${path}/img/${meminfo.memProfile}" alt="">
           <table class="profile__times--table">
-            <tr><td class="profile__times--num">2</td><td class="profile__times--num">3</td></tr>
+            <tr><td class="profile__times--num">${fundCnt}</td><td class="profile__times--num">${orderCnt}</td></tr>
             <tr><td class="profile__times--text">펀딩</td><td class="profile__times--text">주문</td></tr>
           </table>
           <button class="btn btn-default profile__detail">프로필 편집</button>

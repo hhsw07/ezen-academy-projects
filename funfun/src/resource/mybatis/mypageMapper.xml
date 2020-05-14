@@ -54,8 +54,20 @@
 	</select>
 	
 	<select id="memState" resultType="String" parameterType="mypageinfo">
- 		SELECT MAKER_CODE makerCode FROM maker WHERE MEM_CODE = 11000001
+ 		SELECT MAKER_CODE makerCode FROM maker m LEFT JOIN MEMBER b ON m.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
  	</select>
 	
+	<select id="fundCnt" resultType="int" parameterType="mypageinfo">
+ 		select count(FUND_CODE) from FUNDING d LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
 	
+	<select id="orderCnt" resultType="int" parameterType="mypageinfo">
+ 		SELECT count(STO_ORDER_CODE) FROM STORE_ORDER so LEFT JOIN MEMBER b ON so.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+ 	
+ 	<resultMap type="mypageinfo" id="mypageinfoResult"/>
+ 	<select id="mypageinfo" resultMap="mypageinfoResult" parameterType="mypageinfo">
+ 		SELECT MEM_EMAIL memEmail, MEM_NAME memName, MEM_PROFILE memProfile FROM MEMBER WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+ 	
 </mapper>	

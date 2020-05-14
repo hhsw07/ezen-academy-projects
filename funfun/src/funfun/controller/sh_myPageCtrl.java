@@ -37,7 +37,9 @@ public class sh_myPageCtrl {
 			 }else {
 				 d.addAttribute("memState", "메이커회원");
 			 }
-			 
+			 d.addAttribute("fundCnt", service.fundCnt(memberinfo.getMem_email()));
+			 d.addAttribute("orderCnt", service.orderCnt(memberinfo.getMem_email()));
+			 d.addAttribute("meminfo", service.mypageinfo(memberinfo.getMem_email()));
 		 }
 		 	
 		return "WEB-INF\\views\\myPage\\sh_user_w_myPage.jsp";
