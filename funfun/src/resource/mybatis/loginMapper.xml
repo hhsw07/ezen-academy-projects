@@ -14,7 +14,7 @@
 	
 	<resultMap type="funfun.vo.MemberInfo" id="memberInfo"></resultMap>
 	<select id="getMemberInfo" resultMap="memberInfo" parameterType="String">
-		select mem_email, mem_name, mem_profile from member where mem_email=#{email}
+		select mem_code, mem_email, mem_name, mem_profile from member where mem_email=#{email}
 	</select>
 	
 	

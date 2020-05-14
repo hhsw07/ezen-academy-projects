@@ -69,7 +69,7 @@
                 <li class="dropdown">
                       <a href="#gsdk" class="dropdown-toggle" data-toggle="dropdown">메뉴 <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li><a href="${path }/funding.do">펀딩하기</a></li>
+                        <li><a href="${path }/funding.do?method=list">펀딩하기</a></li>
                         <li><a href="${path }/storeList.do">스토어 구경하기</a></li>
                         <li class="divider"></li>
                         <li><a href="${path }/notice.do?method=list">공지사항</a></li>
@@ -109,7 +109,7 @@
 	                            <img src="${path }/template/assets/img/new_logo.png">
 	                        </div>
 	                        <div class="brand">
-	                            ${user.mem_email } ${user.mem_name }
+	                            ${user.mem_name }
 	                        </div>
 	                    </div>
 	                    <div class="dropdown-menu" style="display:flex; flex-direction:column; border:none; align-items:center;

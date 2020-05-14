@@ -1,6 +1,7 @@
 package funfun.vo;
 
 public class MemberInfo {
+	int mem_code;
 	String mem_email;
 	String mem_name;
 	String mem_profile;
@@ -8,6 +9,13 @@ public class MemberInfo {
 	String mem_favor;
 	
 	
+	
+	public int getMem_code() {
+		return mem_code;
+	}
+	public void setMem_code(int mem_code) {
+		this.mem_code = mem_code;
+	}
 	public String getMem_pw() {
 		return mem_pw;
 	}
