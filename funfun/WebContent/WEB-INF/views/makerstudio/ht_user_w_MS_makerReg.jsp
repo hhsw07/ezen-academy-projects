@@ -59,11 +59,9 @@
 	<br><br>
 	
 	<h5>관리자 휴대폰 번호 *</h5>
-<!-- 
-    <input style="width:800px;display:inline-block;" type="text" value="" placeholder="휴대폰 번호를 입력하세요" class="form-control" name="mem_phoneno" />&nbsp&nbsp
- -->
-    <button class="btn btn-warning" style="display:inline-block;">인증하기</button>
-	
+    <input style="width:800px;display:inline-block;" type="text" value="" placeholder="휴대폰 번호를 입력하세요" class="form-control" name="mem_phoneno" />
+
+
 	<br><br>
 	
 
@@ -76,7 +74,7 @@
 	        
 	<br><br>
 	
-	<button class="btn btn-warning" style="width:400px;" id="makerReg">시작하기</button>
+	<button class="btn btn-warning btn_custom" style="width:40%;" id="makerReg">시작하기</button>
 
 	</div>
 	</form>

@@ -74,7 +74,7 @@
   	
   	<br><br>
   	
-  	<span style="color:#787878;font-weight:bold;">프로젝트를 대표할 주요 기본 정보를 입력하세요</span>
+  	<span class="sub_gray_font">프로젝트를 대표할 주요 기본 정보를 입력하세요</span>
 
   	<br><br><br><br>
 
@@ -134,7 +134,7 @@
 
 	<br><br><br><br>
 	
-  	<button class="btn btn-warning">저장하기</button>
+  	<button class="btn btn-warning btn_custom" style="width:40%">저장하기</button>
 	
 	</div>
 

@@ -33,7 +33,7 @@
 
 	<br><br><br><br>
 	
-	<button class="btn btn-warning" style="width:400px;" onclick="javascript:goMS()">시작하기</button>
+	<button class="btn btn-warning btn_custom" style="width:40%;" onclick="javascript:goMS()">시작하기</button>
 	
 	
 	        
