@@ -10,26 +10,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.ordR {text-align:right;}
-	.ordC {text-align:center;}
-	.ordL {text-align:left;}
-</style>
+<link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
-		var faq_title="";
-	
+		var faq_title = "${faq.faq_title}";
+		if(faq_title != ""){
+			if(!confirm("추가로 등록하시겠습니까?")){
+				$(location).attr("href","${path}/faq.do?method=admList");
+			}
+		}
+		
+		
 		$(".insertFaq").click(function(){
 			if(confirm("등록하시겠습니까?")){
-				alert("등록 후 추가 등록할 지 확인. 등록화면 또는 상세화면으로 이동");
-				//$("form").attr("action","${path}/faq.do?method=update");
-				//$("form").submit();
+				if($("[name=faq_title]").val() != "" && $("[name=faq_detail]").val() != ""){
+					$("form").attr("action","${path}/faq.do?method=insert");
+					$("form").submit();
+				}else{
+					alert("제목 및 내용을 입력하세요.");
+				}
 			}
 		});
 		
 		$(".goList").click(function(){
-			alert("목록으로 이동");
-			//$(location).attr("href","${path}/faq.do?method=adminlist");
+			//alert("목록으로 이동");
+			$(location).attr("href","${path}/faq.do?method=admList");
 		});
 		
 	})
@@ -38,11 +43,12 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	        <div>
+	        <div class="sctitle">
 		        <h2>FAQ 등록</h2>
 		    </div>
 	        <div>
-		    	<form class="form-group">
+		    	<form class="form-group" method="post">
+			    	<input type="hidden" name="admin_code" value="1001" />
 			    	<table class="table table-bordered">
 			        	<col style="width:15%">
 			        	<col style="width:85%">
@@ -50,13 +56,13 @@
 			        		<td colspan="3"><input type="text" class="form-control" name="faq_title" placeholder="FAQ 제목" /></td></tr>
 			        	<tr><th>내용</th>
 			        		<td colspan="3">
-			        			<textarea class="form-control" name="faq_detail" placeholder="FAQ 내용" style="resize: none;"></textarea></td></tr>
+			        			<textarea class="form-control" name="faq_detail" placeholder="FAQ 내용" style="resize: none;" rows="20"></textarea></td></tr>
 			        </table>
 		        </form>
 		    </div>
-		    <div class="ordR">
-		    	<button class="btn btn-warning insertFaq">등록</button>
-		    	<button class="btn btn-warning goList">목록</button>
+		    <div class="text-right">
+		    	<button class="btn btn-fill btn-warning insertFaq">등록</button>
+		    	<button class="btn btn-fill btn-warning goList">목록</button>
 		    </div>
 	    </div>
 	</div>

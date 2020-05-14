@@ -10,16 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	
-</style>
+<link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
-		var noti = "${notice.noti_ck}";
-		var ck1 = "${notice.noti_ck=="Y"?"checked":""}";
-		var ck2 = "${notice.noti_ck!="Y"?"checked":""}";
-		console.log("noti:"+noti+"ck1:"+ck1+" ck2:"+ck2);
-		
 		
 		$(".updateNoti").click(function(){
 			if(confirm("수정하시겠습니까?")){
@@ -29,8 +22,7 @@
 		});
 		$(".deleteNoti").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				$("form").attr("action","${path}/notice.do?method=delete&noti_code=${notice.noti_code}");
-				$("form").submit();
+				$(location).attr("href","${path}/notice.do?method=delete&noti_code=${notice.noti_code}");
 			}
 		});
 		$(".goList").click(function(){
@@ -44,7 +36,7 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	        <div>
+	        <div class="sctitle">
 		        <h2>공지사항 상세</h2>
 		    </div>
 	        <div>
@@ -61,24 +53,24 @@
 			        		<td>${notice.noti_reg_date}</td></tr>
 			        	<tr><th rowspan="2">중요</th>
 			        		<td rowspan="2">
-			        			<label class="radio ct-orange" ><input type="radio" data-toggle="radio" name="noti_ck" value="Y" ${notice.noti_ck=="Y"?"checked":""} />${notice.noti_ck}</label>
+			        			<label class="radio ct-orange" ><input type="radio" data-toggle="radio" name="noti_ck" value="Y" ${notice.noti_ck=="Y"?"checked":""} />Y</label>
 			        			<label class="radio ct-orange" ><input type="radio" data-toggle="radio" name="noti_ck" value="N" ${notice.noti_ck!="Y"?"checked":""}/>N</label></td>
 			        		<th>수정일</th>
 			        		<td>${not empty notice.noti_upt_date?notice.noti_upt_date:"없음"}</td></tr>
 			        	<tr><th>작성자</th>
-			        		<td><input type="hidden" name="admin_code" value="${notice.admin_code}"/>${notice.admin_code}</td></tr>
+			        		<td><input type="hidden" name="admin_code" value="${notice.admin_code}"/>${notice.admin_name}</td></tr>
 			        	<tr><th>제목</th>
 			        		<td colspan="3"><input type="text" class="form-control" name="noti_title" placeholder="공지제목" value="${notice.noti_title}"/></td></tr>
 			        	<tr><th>내용</th>
 			        		<td colspan="3">
-			        			<textarea class="form-control" rows="20"name="noti_detail" placeholder="공지내용" style="resize:none;" >${notice.noti_title}</textarea></td></tr>
+			        			<textarea class="form-control" rows="20" name="noti_detail" placeholder="공지내용" style="resize:none;" >${notice.noti_detail}</textarea></td></tr>
 			        </table>
 		        </form>
 		    </div>
 		    <div class="text-right">
-		    	<button class="btn btn-warning updateNoti">수정</button>
-		    	<button class="btn btn-warning deleteNoti">삭제</button>
-		    	<button class="btn btn-warning goList">목록</button>
+		    	<button class="btn btn-fill btn-warning updateNoti">수정</button>
+		    	<button class="btn btn-fill btn-warning deleteNoti">삭제</button>
+		    	<button class="btn btn-fill btn-warning goList">목록</button>
 		    </div>
 	    </div>
 	</div>
