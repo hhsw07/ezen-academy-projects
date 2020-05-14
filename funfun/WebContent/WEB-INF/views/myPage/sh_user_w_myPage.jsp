@@ -63,7 +63,6 @@
 <c:if test="${!empty flist}">
 	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
 	          <div class="row">
-	
 	            <div class="col-xs-12 col-md-3 item">
 	              <div class="thumbnail">
 	                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
@@ -83,12 +82,12 @@
 <!-- 참여한 펀딩 -->
 
 <div class="funding_display">
-<c:if test="${empty flist}">
+<c:if test="${empty plist}">
 	
    <div class="emptyMsg">참여한 펀딩이 존재하지 않습니다</div>
 
 </c:if>
-<c:if test="${!empty flist}">
+<c:if test="${!empty plist}">
 <c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
@@ -129,12 +128,12 @@
 <!-- 참여한 펀딩 끝 -->
 <!-- 주문 및 배송조회 -->
 <div class="trans_display">
-<c:if test="${empty flist}">
+<c:if test="${empty tlist}">
 	
    <div class="emptyMsg">주문 및 배송내역이 존재하지 않습니다</div>
 
 </c:if>
-<c:if test="${!empty flist}">
+<c:if test="${!empty tlist}">
 <c:forEach var="list" items="${tlist}" begin="0" end="5" step="1">
         <div class="row" >
           <div class="col-xs-1 col-md-1 "></div>
