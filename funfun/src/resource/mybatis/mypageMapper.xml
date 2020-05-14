@@ -28,16 +28,46 @@
 	<resultMap type="parti" id="partiResult"/>
  	<select id="plist" resultMap="partiResult" 
  		parameterType="parti">
-	SELECT d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-sysdate,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
-	FROM funding d LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE LEFT JOIN MAKER m
-	ON m.MAKER_CODE = p.MAKER_CODE LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE WHERE b.mem_Email = #{memEmail} AND p.PRO_CURR = '정상'
+		SELECT d.FUND_CODE fundingCode, d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-sysdate,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
+		FROM funding d 
+		LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE 
+		LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE 
+		LEFT JOIN MAKER m ON m.MAKER_CODE = p.MAKER_CODE 
+		LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE 
+		WHERE b.mem_Email = #{memEmail} AND p.PRO_CURR = '정상'
+		order by d.FUND_CODE desc
 	</select>
 
 	<resultMap type="trans" id="transResult"/>
  	<select id="tlist" resultMap="transResult" 
  		parameterType="trans">
-	SELECT so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage 
-	FROM store_order so LEFT JOIN store_option op ON so.STO_OPT_CODE = op.STO_OPT_CODE LEFT JOIN store s ON 
-	s.STO_CODE = op.STO_CODE LEFT JOIN MEMBER b ON b.MEM_CODE = so.MEM_CODE WHERE b.MEM_Email = #{memEmail} AND s.STO_CURR ='정상'
+		SELECT m.MAKER_NAME makerName, so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage 
+		FROM store_order so 
+		LEFT JOIN store_option op ON so.STO_OPT_CODE = op.STO_OPT_CODE 
+		LEFT JOIN store s ON s.STO_CODE = op.STO_CODE 
+		LEFT JOIN MEMBER b ON b.MEM_CODE = so.MEM_CODE 
+		LEFT JOIN STORE st ON op.STO_CODE = st.STO_CODE
+		LEFT JOIN project pro ON pro.PRO_CODE = st.PRO_CODE 
+		LEFT JOIN maker m ON pro.MAKER_CODE = m.MAKER_CODE 
+		WHERE b.MEM_Email = #{memEmail} AND s.STO_CURR ='정상'
+		order by so.sto_order_code desc
 	</select>
+	
+	<select id="memState" resultType="String" parameterType="mypageinfo">
+ 		SELECT MAKER_CODE makerCode FROM maker m LEFT JOIN MEMBER b ON m.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+	
+	<select id="fundCnt" resultType="int" parameterType="mypageinfo">
+ 		select count(FUND_CODE) from FUNDING d LEFT JOIN MEMBER b ON d.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+	
+	<select id="orderCnt" resultType="int" parameterType="mypageinfo">
+ 		SELECT count(STO_ORDER_CODE) FROM STORE_ORDER so LEFT JOIN MEMBER b ON so.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+ 	
+ 	<resultMap type="mypageinfo" id="mypageinfoResult"/>
+ 	<select id="mypageinfo" resultMap="mypageinfoResult" parameterType="mypageinfo">
+ 		SELECT MEM_EMAIL memEmail, MEM_NAME memName, MEM_PROFILE memProfile FROM MEMBER WHERE MEM_EMAIL = #{memEamil}
+ 	</select>
+ 	
 </mapper>	

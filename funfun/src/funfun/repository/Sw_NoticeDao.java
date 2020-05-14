@@ -10,10 +10,10 @@ import funfun.vo.Paging;
 @Repository
 public interface Sw_NoticeDao {
 	// 검색할 내용의 전체 데이터 건수.
-	// public int totCnt(BoardSch sch);
 	public int notitotCnt();
 	
 	// 검색된 데이터 리스트
+	public ArrayList<Notice> toplist();
 	public ArrayList<Notice> list(Paging sch);
 	public void insert(Notice ins);
 	

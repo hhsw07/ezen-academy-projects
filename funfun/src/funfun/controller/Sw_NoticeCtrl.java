@@ -28,12 +28,14 @@ public class Sw_NoticeCtrl {
 	@RequestMapping(params="method=list")
 	public String list(@ModelAttribute("paging") Paging sch, Model d) {
 		d.addAttribute("list",service.list(sch));
+		d.addAttribute("toplist", service.toplist());
 		return "WEB-INF\\views\\servicecenter\\sw_user_w_noticeList.jsp";
 	}
 	// http://localhost:5080/funfun/notice.do?method=admList
 	@RequestMapping(params="method=admList")
 	public String admList(@ModelAttribute("paging") Paging sch, Model d) {
 		d.addAttribute("list",service.list(sch));
+		d.addAttribute("toplist", service.toplist());
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeList.jsp";
 	}
 	
@@ -47,23 +49,12 @@ public class Sw_NoticeCtrl {
 	// http://localhost:5080/funfun/notice.do?method=insert
 	@RequestMapping(params="method=insert")
 	public String insert(Notice ins) {
-		/*
-		System.out.println("등록 제목:"+insert.getTitle());
-		System.out.println("파일 로딩:"+
-		insert.getReport()[0].getOriginalFilename());
-		service.insert(insert);
-		insert.setRefno(0);
-		insert.setTitle("");
-		insert.setContent("");
-		*/
-		
 		service.insert(ins);
-		ins.setNoti_title("");
-		ins.setNoti_detail("");
+		System.out.println("noti 등록완료");
 		
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
 	}
-	
+
 	
 	// http://localhost:5080/funfun/notice.do?method=detail
 	@RequestMapping(params="method=detail")
@@ -74,14 +65,15 @@ public class Sw_NoticeCtrl {
 	// http://localhost:5080/funfun/notice.do?method=update
 	@RequestMapping(params="method=update")
 	public String update(Notice upt) {
-		System.out.println("수정될 noti_ck값:"+upt.getNoti_ck());
 		service.update(upt);
+		System.out.println("noti 수정완료");
 		return "forward:/notice.do?method=detail&noti_code+"+upt.getNoti_code();
 	}
 	// http://localhost:5080/funfun/notice.do?method=delete
 	@RequestMapping(params="method=delete")
 	public String delete(@RequestParam("noti_code") int noti_code) {
 		service.delete(noti_code);
+		System.out.println("noti 삭제완료");
 		return "redirect:/notice.do?method=admList";
 	}
 	

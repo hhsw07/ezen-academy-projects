@@ -14,6 +14,10 @@ public class Sw_NoticeService {
 	@Autowired(required=false)
 	private Sw_NoticeDao dao;
 	
+	public ArrayList<Notice> toplist(){
+		return dao.toplist();
+	}
+	
 	public ArrayList<Notice> list(Paging sch){
 		/*
 		// 2. 페이징 처리

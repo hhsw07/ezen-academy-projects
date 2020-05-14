@@ -11,31 +11,40 @@
 		WHERE 1=1
 	</select>
 	
+	<!-- ArrayList<Notice> toplist() -->
+	<select id="toplist" resultMap="NoticeResult" >
+		SELECT rownum cnt, c.*
+		FROM ( SELECT a.*, b.ADMIN_NAME 
+			   FROM NOTICE a, ADMIN b
+			   WHERE a.ADMIN_CODE = b.ADMIN_CODE 
+			   AND NOTI_CK = 'Y'
+			   ORDER BY NOTI_CODE DESC) c
+	</select>
 	<!-- ArrayList<Notice> list(Paging sch) -->
 	<select id="list" resultMap="NoticeResult" parameterType="paging">
 		SELECT *
-		FROM (select rownum cnt, a.*
-		 	  from Notice a)
-		where cnt between #{start} and #{end}
+		FROM(SELECT rownum cnt, c.*
+			 FROM (SELECT a.*, b.ADMIN_NAME 
+			 	   FROM NOTICE a, ADMIN b
+				   WHERE a.ADMIN_CODE = b.ADMIN_CODE 
+				   ORDER BY NOTI_CODE DESC) c)
+		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
-	
-	<!-- 
-	void insert(Notice ins)
-	
-	Notice detail(int noti_code)
-	void update(Notice upt)
-	void delete(int noti_code)
-	-->
+	<!-- void insert(Notice ins) -->
 	<insert id="insert" parameterType="notice">
 		INSERT INTO notice 
 		VALUES(notice_seq.nextval,#{noti_title},#{noti_detail},current_date, NULL, #{noti_ck}, #{admin_code})
 	</insert>
 	
+	
+	<!-- Notice detail(int noti_code) -->
 	<select id="detail" resultType="notice" parameterType="int">
-		select rownum cnt, a.*
-		from Notice a
-		where noti_code = #{noti_code}
+		SELECT rownum cnt, a.*, b.ADMIN_NAME
+		FROM Notice a, ADMIN b
+		WHERE a.ADMIN_CODE = b.ADMIN_CODE
+		AND noti_code = #{noti_code}
 	</select>
+	<!-- void update(Notice upt) -->
 	<update id="update" parameterType="notice">
 		UPDATE notice
 		SET noti_title = #{noti_title},
@@ -45,6 +54,7 @@
 			admin_code = #{admin_code}
 		WHERE noti_code = #{noti_code}
 	</update>
+	<!-- void delete(int noti_code) -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM NOTICE 
 		WHERE noti_code = #{noti_code}

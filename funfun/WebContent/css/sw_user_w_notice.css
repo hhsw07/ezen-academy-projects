@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
-.table th {
-	text-align : center;
-	vertical-align:middle;
-}
+	.hide {display:none;}  
+    .notishow {display:show;}
+    .faqshow {display:show;}
+    .sctitle {margin-bottom:30px;}
+    .scnav button { height:75px; margin-bottom:30px;}
+    .sctable th {font-size:20px;}
+    .sctable td {font-size:20px;}
 
-.form th, td {font-size:20px;}
-#scnav button {margin-top:15px; height:75px;}
-
-
-<!-- <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" /> -->
 
