@@ -96,7 +96,29 @@
            
        
 </div>
-<div class="space"></div>
+<div class="space container" style="cursor:default; margin-top:70px;">
+	
+	<div class="row" style="color:black; font-size:15px; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; height:50px;">
+		<div style="text-align:center; line-height:50px; " class="col-md-2">회원가입 약관</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2">서비스이용약관</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2">개인정보처리방침</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2">운영정책</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2">제휴문의</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2">공지사항</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<h4 style="font-weight:700;">펀펀 대표 고객센터</h4>
+			<h4 style="font-weight:700;">1661-1515</h4>
+		</div>
+		<div class="text-center col-md-6" style="padding-top:20px">
+			<p>펀펀플랫폼 (주)|사업자등록번호 220-88-37</p>
+			<p>경기도 성남시 분당구 판교로 242호</p>
+			<p>© FunFun Platform Co., Ltd.</p> 
+		</div>
+	</div>
+	
+</div>
 <!-- end container -->
 </div>
 <!-- end main -->
