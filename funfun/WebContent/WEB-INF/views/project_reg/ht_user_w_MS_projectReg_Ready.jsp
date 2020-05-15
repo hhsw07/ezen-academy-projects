@@ -93,23 +93,23 @@
   	
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">기본 요건 동의</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="basicReqBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicReqBtn">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">기본 정보</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="basicInfoBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">스토리 작성</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="storyBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storyBtn">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">리워드 설계</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="rewardBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">위험 요인 및 정책</span>
-	  	<span class="navbar-right" style="display:inline-block"><button id="riskBtn" class="btn btn-warning btn_custom">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom riskBtn">작성하기</button></span>
   	</div>
 
   	<br><br>
