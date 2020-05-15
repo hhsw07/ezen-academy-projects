@@ -14,13 +14,34 @@
 <script src="ckeditor/ckeditor.js"></script>
 <script>
 	$(document).ready(function(){
-		
+		$(".basicReqBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicReq")
+		})
+		$(".basicInfoBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfo")
+		})
+		$(".storyBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=story")
+		})
+		$(".rewardBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=reward")
+		})
+		$(".riskBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=risk")
+		})
+		$(".proQnaBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
+		})		
+				
 	var ckeditor_config = {
 			resize_enaleb : false,
 			enterMode : CKEDITOR.ENTER_BR,
 			shiftEnterMode : CKEDITOR.ENTER_P,
 			filebrowserUploadUrl : "img"
-	};
+	};			
+			
+
+
 	
 	CKEDITOR.replace("storyDetail", ckeditor_config);
 		
@@ -32,36 +53,8 @@
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 
 	<div class="row">
-  	<div class="col-sm-2" style="padding-top:30px;height:100%">
- 
-	<div class="panel-group">
-	<div class="panel panel-default">
-	<div class="panel-body">
-	
-	님의<br> 
-	프로젝트
-	
-	</div>
-	</div>
-	<div class="panel panel-default">
-	<div class="panel-body">
-	 	<details open>
-	    <summary>프로젝트 준비</summary>
-		<ul style="list-style:none;line-height:3em">
 
-	  		<li>기본 정보</li>
-	  		<li>스토리 작성</li>
-	  		<li>리워드 설계</li>
-	  		<li>위험요인</li>
-	  		<li>메이커 정보</li>
-		</ul>
-	  	</details> 	
-	</div>
-	</div>
-	</div>
-	
-	 
-  	</div>
+ 	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
 
 
   	<div class="col-sm-10" style="padding-left:30px;">

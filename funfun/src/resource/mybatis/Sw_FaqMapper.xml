@@ -5,10 +5,11 @@
 <mapper namespace="funfun.repository.Sw_FaqDao">
 	<resultMap type="Faq" id="FaqResult"/>
 	<!-- int totCnt() 총 데이터 건수 -->
-	<select id="faqtotCnt" resultType="int">
-		SELECT COUNT(*)
-		FROM Faq
-		WHERE 1=1
+	<select id="faqtotCnt" resultType="int" parameterType="paging">
+		SELECT COUNT(*) 
+		FROM FAQ
+		WHERE (faq_title LIKE '%'||#{title}||'%'
+		OR FAQ_DETAIL LIKE '%'||#{title}||'%')
 	</select>
 	
 	<!-- ArrayList<Faq> list(Paging sch) -->
@@ -16,9 +17,11 @@
 		SELECT *
 		FROM(SELECT rownum cnt, c.*
 			 FROM (SELECT a.*, b.ADMIN_NAME 
-			 	   FROM FAQ a, ADMIN b
-				   WHERE a.ADMIN_CODE = b.ADMIN_CODE 
-				   ORDER BY FAQ_CODE DESC) c)
+					FROM FAQ a, ADMIN b
+					WHERE a.ADMIN_CODE = b.ADMIN_CODE 
+					AND (faq_title LIKE '%'||#{title}||'%'
+					OR FAQ_DETAIL LIKE '%'||#{title}||'%')
+					ORDER BY FAQ_CODE DESC) c)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	<!-- void insert(Faq ins) -->

@@ -14,6 +14,9 @@
 <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
+		var title = "${paging.title}";
+		console.log("title:"+title);
+		
 		var article = (".faqList .faqshow");  
 	    $(".faqList .item  td").click(function() {  
 	    	var myArticle =$(this).parents().next("tr");  
@@ -51,26 +54,34 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container faqList" style="max-width:1200px; padding-top:100px">
-	        <div class="sctitle">
-		        <h2>고객센터</h2>
-		    </div>
 	        <div class="collapse navbar-collapse text-center" >
 	        	<div class="btn-group btn-group-lg scnav" style="width:80%;">
-					<button type="button" class="btn btn-warning" id="notice" style="width:30%;">공지사항</button>
-					<button type="button" class="btn btn-fill btn-warning" id="faq" style="width:30%;">FAQ</button>
-					<button type="button" class="btn btn-warning" id="chatting" style="width:30%;">실시간 채팅 상담</button>
+					<button type="button" class="btn btn-warning" id="notice" style="width:50%;">공지사항</button>
+					<button type="button" class="btn btn-fill btn-warning" id="faq" style="width:50%;">FAQ</button>
 				</div>
 	        </div>
+	        <div class="sctitle">
+		        <h2>FAQ</h2>
+		    </div>
 	        <form:form class="form" commandName="paging" method="post">
 	        <form:hidden path="curPage" />
 	        <div>
-	        	총건수 : ${paging.count}건 
-	        	<span style="margin-left:930px;" >페이지수 : </span>
-	        	<form:select path="pageSize">
-	        		<form:option value="5">5건</form:option>
-	        		<form:option value="10">10건</form:option>
-	        		<form:option value="20">20건</form:option>
-	        	</form:select>
+				<ul class="nav navbar-nav">
+					<li>총건수 : ${paging.count}건</li>
+					<li class="active">
+						<div class="form-group">
+							<input type="text" name="title" placeholder="검색" class="form-control" style="background-color: transparent; 
+									color:black; margin:-10px 0px -25px 760px; border:none; " value="${paging.title}" />
+						</div>
+					</li>
+					<li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent;
+									color:black; margin-right:15px;"></button></li>
+					<li><form:select path="pageSize">
+		        		<form:option value="5">5건</form:option>
+		        		<form:option value="10">10건</form:option>
+		        		<form:option value="20">20건</form:option>
+		        	</form:select></li>
+				</ul>
 			</div>
 			</form:form>
 			<div>

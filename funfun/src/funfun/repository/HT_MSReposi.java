@@ -12,5 +12,5 @@ public interface HT_MSReposi {
 
 	public void regMaker(MakerStudio reg);
 	public MakerStudio makerInfo(int maker_code);
-	public ArrayList<Project> myProjectList(Project list);
+	public ArrayList<Project> myProjectList(int mem_code);
 }

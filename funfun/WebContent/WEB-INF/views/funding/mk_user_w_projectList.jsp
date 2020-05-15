@@ -58,36 +58,42 @@
 				</div>
             </div>
 		</form>
+		<!-- 분류 -->
+	    	<div class="ProjectListHead_bar">
+	    		
+		  		<ul class="nav nav-tabs ">
+					<li class="active" style="font-weight:700;"><a href="#">진행중인 프로젝트</a></li>
+					<li style="font-weight:700;"><a href="#">오픈예정 프로젝트</a></li>
+					<li style="font-weight:700;"><a href="#">종료된 프로젝트</a></li>
+					<li style="right:0px; position:absolute;">	
+						<div>
+						<form class="ProjectListHead_search">
+							<label for="search-keyword">
+								<input class="" id="search-keyword" type="search" placeholder="검색" value="">
+								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
+							</label>
+						</form>
+						<div class="select-sort ProjectListHead_sort">
+							<select name="sort" class="">
+								<option value="recommend">추천순</option>
+								<option value="popluar">인기순</option>
+								<option value="recent">최신순</option>
+								<option value="amount">펀딩액순</option>
+								<option value="closing">마감임박순</option>
+							</select>
+						</div>
+					</div>
+				</li>
+				</ul>
+			</div>
 		
 			<div class="ProjectListHead_bar">
 				<h3 class="ProjectListHead_title">전체보기</h3>
-				<form class="ProjectListHead_search">
-					<label for="search-keyword">
-						<input class="" id="search-keyword" type="search" placeholder="검색" value="">
-						<button type="submit" style="border:none; background-color: transparent; color:black;margin: 26px 3px;" class="fa fa-search" aria-label="검색"></button>
-					</label>
-				</form>
-				<div class="select-sort ProjectListHead_sort">
-					<select name="sort" class="">
-						<option value="recommend">추천순</option>
-						<option value="popluar">인기순</option>
-						<option value="recent">최신순</option>
-						<option value="amount">펀딩액순</option>
-						<option value="closing">마감임박순</option>
-					</select>
-				</div>
-			</div>
-		<!-- 분류 -->
-	    	<div>
-		  		<ul class="nav nav-tabs justify-content-center">
-					<li class="active"><a href="#">진행중인 프로젝트</a></li>
-					<li><a href="#">오픈예정 프로젝트</a></li>
-					<li><a href="#">종료된 프로젝트</a></li>
-				</ul>
+				
 			</div>
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
-					<div class="row" style="padding-bottom:100px;">
+					<div class="row">
 				<c:forEach var="proj" items="${plist}">
 						<div class="col-xs-12 col-md-3 item"  onclick="javascript:go_detail('${proj.pro_code}')">
 							<div class="thumbnail projectList-item">
@@ -96,7 +102,10 @@
 									<p class="ProjectList-title">${proj.pro_title}</p>
 									<div class="maker-info">
 										<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+									</div>
+									<div>
 										<span class="ProjectList-rate">모금율 : 90%</span>
+										<span class="ProjectList-date">남은기간 : 7일</span>
 									</div>
 								</div>
 							</div>

@@ -12,6 +12,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/sh_user_w_myPage.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 <script>
 		var flist = "${flist}";
 		if(flist ===''){
@@ -19,10 +21,12 @@
 			alert("로그인해주세요");
 		}
 		
+		
 		$(document).ready(function(){
 			
 			
 		})
+		
 
 </script>
 </head>
@@ -118,8 +122,10 @@
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
             </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
-          </div>
+             <button style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
+            <span style="width:3%"></span>
+            <a style="position:relative;bottom:75px;width : 48.5%; float : right;" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal" data-toggle="modal">펀딩 취소 하기</a>
+         </div>
         </div>
         </div>
       
@@ -157,7 +163,9 @@
               </td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
             </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+            <button style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
+            <span style="width:3%"></span>
+            <a style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal">주문 취소 하기</a>
           </div>
           </div>
         </div>
@@ -166,19 +174,90 @@
 </div>
 
 <!-- 주문 및 배송 조회 끝 -->
+<!-- 모달 -->
+<div class="text-center">
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>펀딩 취소시 사용 금액은 즉시 반환됩니다</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
+				<button type="button" class="btn btn-danger">펀딩취소하기</button>
+			</div>
+		</div>
+	</div>
+</div>     
+
+<!-- 모달 -->
+<div class="text-center">
+<!-- Modal HTML -->
+<div id="myModal2" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>				
+				<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>주문 취소시 사용 금액은 즉시 반환됩니다</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
+				<button type="button" class="btn btn-danger">주문취소하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">기존 주소</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">새로운 주소를 입력해주세요</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
+        <button type="button" class="btn btn-primary">변경하기</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       </div>
     </div>
     </div>
-
+  
   <!-- end main -->
   <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-  $(function () {
-    $('[data-toggle="tooltip2"]').tooltip()
-  })
+
 </script>
 <script src="js/sh_user_w_myPage.js"></script>
 </body>

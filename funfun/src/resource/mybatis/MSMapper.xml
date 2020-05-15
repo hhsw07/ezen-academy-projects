@@ -25,7 +25,10 @@
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	
 	SELECT * FROM PROJECT
-	WHERE MAKER_CODE = 13000014
+	WHERE MAKER_CODE =( 
+	SELECT MAKER_CODE
+	FROM MAKER 
+	WHERE MEM_CODE = #{mem_code})
 	
 	</select>
 	

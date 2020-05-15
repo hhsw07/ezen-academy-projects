@@ -29,8 +29,7 @@ public class MK_FundingCtrl {
 	public String ajaxList(Paging sch, Model d) {
 		// view를 json형 뷰로 선언
 		d.addAttribute("plist", service.projectList(sch));
-		// 모델에 있는 elist로 된 ArrayList 객체를 json형식으로 변경
-		// {"elist":[{"empno":7788, "ename":"홍길동",...}]}
+		// 모델에 있는 plist로 된 ArrayList 객체를 json형식으로 변경
 		return "pageJsonReport";
 	}
 	

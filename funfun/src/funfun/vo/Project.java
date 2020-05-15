@@ -4,6 +4,7 @@ public class Project {
 
 	private int pro_code;
 	private int maker_code;
+	private String mem_code;
 	private String pro_reg_date;
 	private String pro_sub_date;
 	private String pro_title;
@@ -111,6 +112,12 @@ public class Project {
 	}
 	public void setMaker_name(String maker_name) {
 		this.maker_name = maker_name;
+	}
+	public String getMem_code() {
+		return mem_code;
+	}
+	public void setMem_code(String mem_code) {
+		this.mem_code = mem_code;
 	}
 	
 	

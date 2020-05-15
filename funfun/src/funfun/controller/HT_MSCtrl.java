@@ -1,5 +1,8 @@
 package funfun.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.HT_MSService;
+import funfun.service.MainService;
 import funfun.vo.MakerStudio;
+import funfun.vo.MemberInfo;
+import funfun.vo.MemberLogin;
 import funfun.vo.Project;
 
 @Controller
@@ -21,6 +27,8 @@ public class HT_MSCtrl {
 
 	@Autowired(required=false)
 	private HT_MSService service;
+	private MainService serviceM;
+	
 	
 	@RequestMapping(params="method=makerReg")
 	public String regForm() {
@@ -34,8 +42,19 @@ public class HT_MSCtrl {
 	}
 	
 	@RequestMapping(params="method=myProject")
-	public String myProjectList(@ModelAttribute("project")Project list, Model d) {
-		d.addAttribute("list", service.myProjectList(list));
+	public String myProjectList(@ModelAttribute("project")int mem_code, MemberLogin m, HttpServletRequest request, Model d) {
+		
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		
+		if (memberinfo==null) {
+			
+		} else {
+			d.addAttribute("mInfo", serviceM.getMemberInfo(m.getMem_code()));
+			d.addAttribute("list", service.myProjectList(mem_code));
+		}
+		
+		
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 	}
 	
