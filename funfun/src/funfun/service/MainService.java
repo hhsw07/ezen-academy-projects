@@ -27,9 +27,10 @@ public class MainService {
 		return repo.getMemberInfo(email);
 	}
 	
+
 	public boolean signupIdCheck(String email) {
 		if(repo.signupIdCheck(email)==1) {
-			return false; //¾ÆÀÌµðÁ¸Àç
+			return false; //ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½
 		} else {
 			return true;
 		}

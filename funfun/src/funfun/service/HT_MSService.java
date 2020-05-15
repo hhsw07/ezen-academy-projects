@@ -26,7 +26,8 @@ public class HT_MSService {
 		return d;
 	}
 	
-	public ArrayList<Project> myProjectList(Project list){
-		return dao.myProjectList(list);
+	public ArrayList<Project> myProjectList(int mem_code){
+		
+		return dao.myProjectList(mem_code);
 	}
 }

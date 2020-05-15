@@ -33,7 +33,7 @@
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px; padding-bottom:50px;">
 
-	<h3>만든 프로젝트</h3>
+	<h3>${user.mem_name}님이 만든 프로젝트</h3>
 	<span class="navbar-right" style="display:inline-block">
 	<button id="newProRegBtn" class="btn btn-warning btn_custom">새 프로젝트 등록</button>
 	<button id="makerInfoBtn" class="btn btn-warning btn_custom">메이커 정보 변경</button>
