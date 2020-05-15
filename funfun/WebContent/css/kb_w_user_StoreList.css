@@ -41,7 +41,6 @@
 
 #Product_Search_Div{
 	height:40px;
-    border-bottom: 1px solid black;
     margin-top:3%;
 }
 
@@ -75,16 +74,6 @@
     font-size: 12pt;
   }
 
-  #Search_Input{
-      width:150px;
-      height:40px;
-      border-top:0px;
-      border-left:0px;
-      border-right:0px;
-      border-bottom: 1px solid black;
-
-
-  }
 
   #Search_Div{
       float:right;
