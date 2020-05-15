@@ -118,7 +118,9 @@
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
             </table>
-            <button class="col-xs-12 col-md-12 btn btn-warning funding--btn">주소지 정보 변경하기</button>
+            <button type="button" class="col-xs-12 col-md-12 btn btn-warning funding--btn btn2" data-toggle="modal" data-target="#myModal">
+			  주소지 정보 변경하기
+			</button>
           </div>
         </div>
         </div>
@@ -167,18 +169,31 @@
 
 <!-- 주문 및 배송 조회 끝 -->
 
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    
+	    <span class="change_address">주소지 정보 수정</span>
+	    <span class="change_order">주문 취소</span>
+	    
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn2">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
       </div>
     </div>
     </div>
-
+  
   <!-- end main -->
   <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-  $(function () {
-    $('[data-toggle="tooltip2"]').tooltip()
-  })
+
 </script>
 <script src="js/sh_user_w_myPage.js"></script>
 </body>
