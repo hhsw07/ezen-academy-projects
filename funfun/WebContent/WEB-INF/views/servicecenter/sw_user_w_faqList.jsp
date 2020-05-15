@@ -56,9 +56,8 @@
 	    <div class="container tim-container faqList" style="max-width:1200px; padding-top:100px">
 	        <div class="collapse navbar-collapse text-center" >
 	        	<div class="btn-group btn-group-lg scnav" style="width:80%;">
-					<button type="button" class="btn btn-warning" id="notice" style="width:30%;">공지사항</button>
-					<button type="button" class="btn btn-fill btn-warning" id="faq" style="width:30%;">FAQ</button>
-					<button type="button" class="btn btn-warning" id="chatting" style="width:30%;">실시간 채팅 상담</button>
+					<button type="button" class="btn btn-warning" id="notice" style="width:50%;">공지사항</button>
+					<button type="button" class="btn btn-fill btn-warning" id="faq" style="width:50%;">FAQ</button>
 				</div>
 	        </div>
 	        <div class="sctitle">

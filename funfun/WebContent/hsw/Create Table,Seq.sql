@@ -1,10 +1,8 @@
 -- 실시간 채팅 테이블 생성
 CREATE TABLE rtqna (
-	qna_code    NUMBER         NOT NULL, -- 실시간 채팅 번호
-	qna_refcode NUMBER         NOT NULL, -- 실시간 채팅 상위번호
-	qna_time    DATE           NOT NULL, -- 실시간 채팅 전송 시간
-	qna_writer  NUMBER         NOT NULL, -- 실시간 채팅 작성자
-	qna_detail  VARCHAR2(1000) NULL      -- 실시간 채팅 내용
+	qna_code  NUMBER      NOT NULL, -- 실시간 채팅 번호
+	mem_code  NUMBER      NULL,     -- 회원 번호
+	qna_state VARCHAR2(20) NULL      -- 실시간 채팅 상태
 );
 
 -- 실시간 채팅 시퀀스 생성
@@ -16,11 +14,69 @@ MAXVALUE 42999999;
 
 -- 실시간 채팅
 ALTER TABLE rtqna
-ADD
-CONSTRAINT PK_rtqna -- 실시간 채팅 기본키
-PRIMARY KEY (
-	qna_code -- 실시간 채팅 번호
+	ADD
+		CONSTRAINT PK_rtqna -- 실시간 채팅 기본키
+		PRIMARY KEY (
+			qna_code -- 실시간 채팅 번호
+		);
+
+-- 실시간 채팅
+ALTER TABLE rtqna
+	ADD
+		CONSTRAINT FK_member_TO_rtqna -- 회원 -> 실시간 채팅
+		FOREIGN KEY (
+			mem_code -- 회원 번호
+		)
+		REFERENCES member ( -- 회원
+			mem_code -- 회원 번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;
+
+
+	
+----------------------------------------------------------------
+-- 실시간채팅 내용 테이블 생성
+CREATE TABLE rtqna_detail (
+	qna_detail_code NUMBER         NOT NULL, -- 실시간채팅 내용 번호
+	qna_code        NUMBER         NULL,     -- 실시간 채팅 번호
+	qna_time        DATE           NOT NULL, -- 실시간 채팅 전송 시간
+	qna_writer      NUMBER         NOT NULL, -- 실시간 채팅 작성자
+	qna_detail      VARCHAR2(1000) NULL      -- 실시간 채팅 내용
 );
+
+-- 실시간채팅 내용 시퀀스 생성
+CREATE SEQUENCE rtqna_detail_seq
+START WITH 1
+INCREMENT BY 1;
+
+-- 실시간채팅 내용 기본키
+CREATE UNIQUE INDEX PK_rtqna_detail
+	ON rtqna_detail ( -- 실시간채팅 내용
+		qna_detail_code ASC -- 실시간채팅 내용 번호
+	);
+
+-- 실시간채팅 내용
+ALTER TABLE rtqna_detail
+	ADD
+		CONSTRAINT PK_rtqna_detail -- 실시간채팅 내용 기본키
+		PRIMARY KEY (
+			qna_detail_code -- 실시간채팅 내용 번호
+		);
+
+-- 실시간채팅 내용
+ALTER TABLE rtqna_detail
+	ADD
+		CONSTRAINT FK_rtqna_TO_rtqna_detail -- 실시간 채팅 -> 실시간채팅 내용
+		FOREIGN KEY (
+			qna_code -- 실시간 채팅 번호
+		)
+		REFERENCES rtqna ( -- 실시간 채팅
+			qna_code -- 실시간 채팅 번호
+		)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION;	
+	
 
 
 ----------------------------------------------------------------
