@@ -26,15 +26,13 @@
 	    	$(location).attr("href","${path}/faq.do?method=admList");
 	    });
 	    $("#chatting").click(function(){
-	    //	$(location).attr("href","${path}/chatting.do?method=list");
+	    //	$(location).attr("href","${path}/rtqna.do?method=list");
 	    });
-	    $(".insertNoti").click(function(){
-		 	$(location).attr("href","${path}/notice.do?method=insForm");	
-	    });
+	    
 	})
 	
-	function go(noti_code){
-		$(location).attr("href","${path}/notice.do?method=detail&noti_code="+noti_code);
+	function go(rtqna_code){
+		// $(location).attr("href","${path}/rtqna.do?method=detail&rtqna_code="+rtqna_code);
 	}
 	function goPage(no){
 		$("#curPage").val(no);
@@ -46,9 +44,6 @@
 <body>
 	<div class="main">
 	    <div class="container tim-container rtqnaList" style="max-width:1200px; padding-top:100px">
-	        <div class="sctitle">
-		        <h2>채팅 상담 목록(관리자)</h2>
-		    </div>
 	        <div class="collapse navbar-collapse text-center">
 	        	<div class="btn-group btn-group-lg scnav" style="width:80%;">
 					<button type="button" class="btn btn-warning" id="notice" style="width:30%;">공지사항</button>
@@ -56,6 +51,9 @@
 					<button type="button" class="btn btn-fill btn-warning" id="chatting" style="width:30%;">실시간 채팅 상담</button>
 				</div>
 	        </div>
+	        <div class="sctitle">
+		        <h2>실시간 채팅 상담 목록(관리자)</h2>
+		    </div>
 	    	<form:form class="form" commandName="paging" method="post">
 	    	<form:hidden path="curPage" />
 	    	<div>
@@ -79,7 +77,7 @@
 		        		<th>작성자</th>
 		        		<th>등록일</th></tr>
 		        	<c:forEach var="rtqna" items="${list}">
-			        	<tr class="item" onclick="javascript:go(${noti.noti_code})"><td>${noti.cnt}</td>
+			        	<tr class="item" onclick="javascript:go(${rtqna.rtqna_code})"><td>${rtqna.cnt}</td>
 			        		<td>${noti.noti_title}</td>
 			        		<td>${noti.admin_name}</td>
 			        		<td>${noti.noti_reg_date}</td></tr>

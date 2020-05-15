@@ -17,3 +17,11 @@ DROP TABLE faq
 	CASCADE CONSTRAINTS;
 DROP SEQUENCE faq_seq;
 ---------------------------------------------
+
+
+
+
+
+
+
+

@@ -2,6 +2,9 @@ INSERT INTO rtqna values(rtqna_seq.nextval,11000000,'확인');
 INSERT INTO rtqna values(rtqna_seq.nextval,11000001,'미확인');
 INSERT INTO rtqna values(rtqna_seq.nextval,11000002,'문의중');
 
+SELECT * FROM RTQNA ORDER BY qna_state; --'문의중', '미확인', '확인' 순서로 배열
+
+
 
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:00:00','yyyy-mm-dd hh:mi:ss'),11000000,'안녕하세요');
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:02:00','yyyy-mm-dd hh:mi:ss'),1001,'네.안녕하세요');
