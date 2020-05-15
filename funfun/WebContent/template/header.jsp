@@ -139,6 +139,13 @@
 
 </div> <!-- end menu-dropdown -->
 
+<!-- 채팅 버튼 -->
+<div class="" style="position:fixed; bottom:100px; right:100px;">
+	<a href="#" ><img src="${path}/img/chatting.png" style="width:150px; height:150px;"/></a>
+</div>
+
+
+
 </body>
 
   

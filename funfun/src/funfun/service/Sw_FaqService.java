@@ -16,6 +16,12 @@ public class Sw_FaqService {
 	private Sw_FaqDao dao;
 	
 	public ArrayList<Faq> list(Paging sch){
+		
+		// 1. 초기 검색값 없을 경우
+		if(sch.getTitle() == null) {
+			sch.setTitle("");
+		}
+		
 		/*
 		// 2. 페이징 처리
 		private int count; 		// 총 데이터 건수
@@ -25,7 +31,7 @@ public class Sw_FaqService {
 		private int start;		// 화면에 보여줄 페이지의 시작번호
 		private int end;		// 화면에 보여줄 페이지의 마지막번호
 		*/
-		sch.setCount(dao.faqtotCnt());
+		sch.setCount(dao.faqtotCnt(sch));
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(5);
 		}
