@@ -33,8 +33,8 @@
 		})
 		$(".proQnaBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
-		})
-		
+		})		
+				
 	})
 	
 	$( function() {
@@ -56,41 +56,8 @@
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 
 	<div class="row">
-  	<div class="col-sm-2" style="padding-top:30px;height:100%">
- 
-	<div class="panel-group">
-	<div class="panel panel-default">
-	<div class="panel-body">
-	
-	<span class="sub_gray_font">
-	님의<br> 
-	프로젝트
-	</span>
-	
-	</div>
-	</div>
-	<div class="panel panel-default">
-	<div class="panel-body">
-	 	<details open>
-	    <summary class="sub_gray_font" style="font-size:1.1em;">프로젝트 준비<br><br></summary>
-		<ul style="list-style:none;line-height:3em">
 
-	  		<li class="sub_gray_font basicReqBtn">기본 요건 동의</li>
-	  		<li class="sub_gray_font basicInfoBtn">기본 정보</li>
-	  		<li class="sub_gray_font storyBtn">스토리 작성</li>
-	  		<li class="sub_gray_font rewardBtn">리워드 설계</li>
-	  		<li class="sub_gray_font riskBtn">위험요인</li>
-	  	
-		</ul>
-	  	</details> 	
-	</div>
-	<div class="panel-body sub_gray_font proQnaBtn" style="font-size:1.1em;">
-	프로젝트 문의 관리
-	</div>
-	</div>
-	</div>
- 
-  	</div>
+ 	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
 
 
   	<div class="col-sm-10" style="padding-left:30px;">

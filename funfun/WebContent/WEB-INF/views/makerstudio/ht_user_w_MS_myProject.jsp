@@ -12,16 +12,18 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
 <script>
-		$(document).ready(function(){
+	$(document).ready(function(){
+		
+		
 
-			$("#newProRegBtn").click(function(){
-				$(location).attr("href", "${path}/ProjectReg.do?method=ready")
-			})			
-			$("#makerInfoBtn").click(function(){
-				$(location).attr("href", "${path}/MakerStudio.do?method=makerInfo")
-			})			
-
-		})
+		
+		$("#newProRegBtn").click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=ready")
+		})			
+		$("#makerInfoBtn").click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=makerInfo")
+		})			
+	})
 </script>
 
 </head>
