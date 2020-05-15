@@ -4,7 +4,7 @@
 	.hide {display:none;}  
     .notishow {display:show;}
     .faqshow {display:show;}
-    .sctitle {margin-bottom:40px;}
-    .scnav button { height:65px; margin-bottom:30px;}
+    .sctitle {margin-bottom:20px;}
+    .scnav button { height:60px; margin-bottom:20px;}
     .sctable th {font-size:20px;}
     .sctable td {font-size:20px; cursor:pointer;}

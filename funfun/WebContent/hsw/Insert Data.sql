@@ -1,11 +1,22 @@
-INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date, 11000001, '안녕하세요');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000000,current_date, 1001, '네.안녕하세요');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000001,current_date,11000001, '질문있어요');
-INSERT INTO rtqna values(rtqna_seq.nextval,0,current_date,11000002, '이거 안돼요');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000003,current_date,1001, '다시해보세요.');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000002,current_date,11000001, '얼마예요?');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000005,current_date,1001, '1만원이요');
-INSERT INTO rtqna values(rtqna_seq.nextval,42000006,current_date,11000002, '그래도 안돼요');
+INSERT INTO rtqna values(rtqna_seq.nextval,11000000,'확인');
+INSERT INTO rtqna values(rtqna_seq.nextval,11000001,'미확인');
+INSERT INTO rtqna values(rtqna_seq.nextval,11000002,'문의중');
+
+
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:00:00','yyyy-mm-dd hh:mi:ss'),11000000,'안녕하세요');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:02:00','yyyy-mm-dd hh:mi:ss'),1001,'네.안녕하세요');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:03:00','yyyy-mm-dd hh:mi:ss'),11000000,'질문있어요');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:04:00','yyyy-mm-dd hh:mi:ss'),11000000,'얼마예요?');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:05:00','yyyy-mm-dd hh:mi:ss'),1001,'1만원입니다.');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:02:00','yyyy-mm-dd hh24:mi:ss'),11000002,'전원이 안들어와요.');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:03:00','yyyy-mm-dd hh24:mi:ss'),1001,'다시해보세요.');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:04:00','yyyy-mm-dd hh24:mi:ss'),11000002,'그래도 안돼요');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:05:00','yyyy-mm-dd hh24:mi:ss'),1001,'환불해드릴께요.');
+INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000002,to_date('2020-05-13 14:02:00','yyyy-mm-dd hh24:mi:ss'),11000003,'메이커가 되고 싶어요.');
+
+
+
+
 
 
 INSERT INTO notice VALUES (notice_seq.nextval,'MY페이지가 새롭게 개편되었습니다.','안녕하세요, 대한민국 NO.1 크라우드펀딩 펀펀입니다. :-)

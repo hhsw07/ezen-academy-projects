@@ -120,12 +120,18 @@
                   <li class="active">
                     <div class="form-group">
                       <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:black;
-                      margin:15px 3px; border:none; margin-top:-4px" name="sto_title"/>
+                      margin:15px 3px; border:none; margin-top:-4px; margin-left:0px" name="sto_title"/>
                     </div>
                   </li>
                   <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
-                    margin: 26px 3px; margin-top:12px"></button></li>
+                    margin: 26px 3px; margin-top:12px; margin-right:30px"></button></li>
+                    <li><select class="form-control" style="width:150px">
+                	<option></option>
+                	<option>낮은가격순</option>
+                	<option>높은가격순</option>
+                </select></li>
                 </ul>
+               
               </form>
         	
         </div>
