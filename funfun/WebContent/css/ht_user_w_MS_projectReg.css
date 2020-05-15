@@ -83,6 +83,11 @@ details > summary::-webkit-details-marker {
 }
 
 
-
-
+.regAnswerBtn{
+	padding:0;
+	width:80px;
+	height:30px;
+	vertical-align:middle;
+	text-align:center;
+}
 
