@@ -14,7 +14,7 @@ public class MK_FundingService {
 	@Autowired(required=false)
 	private MK_FundingReposi dao;
 	// 프로젝트 목록
-	public ArrayList<Project> projectList(Paging sch){
+	public ArrayList<Project> projectList(Project sch){
 		sch.setCount(dao.projcnt());
 		/*
 		// 2. 페이징 처리

@@ -11,7 +11,7 @@ import funfun.vo.Project;
 public interface MK_FundingReposi {
 	// 프로젝트 목록
 	public int projcnt();
-	public ArrayList<Project> projectList(Paging sch);
+	public ArrayList<Project> projectList(Project sch);
 	// 프로젝트 상세보기
 	public Project detail(int pro_code);
 	

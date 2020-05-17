@@ -16,8 +16,8 @@
 <body>
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
-		<form method="post">
-			<input type="hidden" name="category" />
+		<form method="post" id="category">
+			<input type="hidden" name="category" id="category" />
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -88,7 +88,7 @@
 			</div>
 		
 			<div class="ProjectListHead_bar">
-				<h3 class="ProjectListHead_title">전체보기</h3>
+				<h3 class="ProjectListHead_title">${cate_title}</h3>
 				
 			</div>
 		<!-- 리스트 -->
