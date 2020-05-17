@@ -6,7 +6,6 @@
 #sto_Main_Info_Div{
     width:100%;
     height:300px;
-    border:solid;
     margin-top:5%;
 }
 
@@ -21,4 +20,31 @@
     font-weight: 800;
     font-size:20pt;
     margin-top:5%;
+}
+
+#sto_pay_Div{
+    float:left;
+    width:35%;
+    height:100%;
+    border: solid;
+}
+
+.sto_menu_li{
+    float:left;
+    list-style-position: unset;
+    padding-left:2%;
+    padding-right:2%;
+}
+
+.sto_menu_ul{
+    text-align:center;
+
+}
+
+#sto_menu_Div{
+    width:100%;
+    height:40px;
+    text-align:center;
+    border-top: 1px solid black;
+
 }
