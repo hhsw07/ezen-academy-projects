@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example</title>
+</head>
+<body>
+    
+    <div id="example">
+        <my-parent></my-parent>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.component('my-child', {
+            template:'<span>{{myMessage}}</span>',
+            data:function(){
+                return {
+                    counter:0
+                } //컴포넌트마다 고유한 데이터를 사용 가능..
+            },
+            props:['myMessage']
+            
+        });
+
+        Vue.component('my-parent', {
+            template:'<my-child my-message="fuckyou" key="1" />\
+                <my-child my-message="asshole" key="2"></my-child>'
+
+        })
+
+
+
+        new Vue({
+            el:'#example',
+            data:{
+                parentMsg:"",
+            }
+        })
+    </script>
+</body>
+</html>

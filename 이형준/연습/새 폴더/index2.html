@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js 예제</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.4/vue.js"></script>
+
+<style>
+.good {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0093d1;
+}
+</style>
+  
+</head>
+<body>
+  
+<h1>app</h1>
+
+<div id="app">
+	<friends-list inline-template>
+		<div>
+			<transition-group name="flip-list" tag="ul">
+				<friends-profile v-for="(friend, idx) in sortedFriends"
+					v-bind="friend"
+					:key="friend.id"
+					@count-trigger="countUp(idx)">
+              </friends-profile>
+            </transition-group>
+            <child-component></child-component>
+        </div>
+	</friends-list>
+</div>
+<script type="text/x-template" id="child-component">
+    <h1 class="nimi">자식 컴포넌트 입니다..</h1>
+</script>
+<script type="text/x-template" id="tpl-friends-profile">
+	<li>
+		name：<span :style="{color: color}">{{ name }}</span> [{{ count }}]
+        <span @click="$emit('count-trigger')" class="good">좋아요</span>
+	</li>
+</script>
+
+<script>
+var childComponent= {
+    template:"#child-component",
+}
+// 프로퍼티 상세 컴포넌트
+var friendsProfile = Vue.extend({
+  props: {
+    id: Number,
+    name: String,
+    color: String,
+    count: Number
+  },
+  template: '#tpl-friends-profile',
+  components:{
+      
+  }
+})
+
+// 프로퍼티 목록 컴포넌트
+var friendsList = Vue.extend({
+  data: function() {
+      console.log("data함수 실행");
+    return {
+      friends: [
+        { id: 1, name: '고양이', color: '#e69313', count: 0 },
+        { id: 2, name: '여우', color: '#a7a264', count: 0 },
+        { id: 3, name: '너구리', color: '#bbbbbb', count: 0 }
+      ]
+    }
+  },
+  computed: {
+    // 좋아요가 많은 순서대로 정렬한 목록을 반환한다.
+    // 또한 sort는 원래의 데이터의 순서를 다시 작성하기 때문에 복사를 하는 것이 좋을지도
+    sortedFriends: function() {
+        console.log('sortedFriends 실행');
+      return this.friends.sort(function (a, b) {
+        console.log("a:"+a,"b:"+b);
+        return b.count-a.count;
+      })
+    }
+  },
+  components: {
+    'friends-profile': friendsProfile,
+    'child-component':childComponent,
+  },
+  methods: {
+    countUp: function(idx) {
+      this.friends[idx].count++
+    }
+  }
+})
+
+// 부모 루트 컴포넌트
+new Vue({
+  el: '#app',
+  components: {
+    'friends-list': friendsList
+  }
+})
+</script>
+  
+</body>
+</html>

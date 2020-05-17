@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+		
+</script>
+<style>
+
+.shaking {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.bounce{
+	animation:BounceIn 500ms;
+}
+
+@keyframes BounceIn{
+	0%{
+		transform:scale(1.1);
+		opacity:0.3;
+	}
+	100%{
+		transform:scale(1);
+		opacity:1;
+	}
+}
+</style>
+<script>
+	// $(document).ready(function(){
+	// 	$('.main').addClass('bounce');
+	// 	setTimeout(()=>{
+	// 		$('.main').removeClass('bounce');
+	// 	},500);
+	// })
+</script>
+</head>
+<body>
+	<div class="main">
+	    <div id="vue-container"  class="container tim-container" style="max-width:1200px; padding-top:100px">
+            <form-find-id v-if="status==='id'" v-on:change="change"></form-find-id>
+            <form-find-pass v-if="status==='pass'" v-on:change="change"></form-find-pass>
+	    </div>
+	</div>
+	<!-- end main -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+	
+		
+		
+		
+		
+		/*
+		$('button').on('click', (event)=>{
+			event.preventDefault();
+			if(idx===0){
+				$.ajax({
+					type:"post",
+					url:"${path}/signupIdCheck.do",
+					data:$("input[name=mem_email]").serialize(),
+					dataType:"json",
+					success:function(data){
+						if(data.verification===false){
+							vm.state[0].inputText2="이미 해당 이메일로 가입하셨습니다";
+							vm.fontColor="red";
+							vm.isShaking=true;
+							setTimeout(()=>{
+								vm.isShaking=false;
+							}, 500);
+						} else {
+							vm.state[0].inputText2="아직 가입하지 않으셨습니다.";
+							vm.fontColor="green";
+						}
+					},
+					error:function(err){
+						console.log("ajax처리 에러");
+						console.log(err);
+					}
+				});
+			} else if(idx===1){
+				
+			}
+        });
+        */
+    </script>
+    
+    <script type="text/x-template" id="form-find-id">
+        <div>
+        <h1 class="text-center">아이디 찾기</h1>
+	        <br><br><br>
+	        <div class="row">
+		        <div class="col-md-4"></div>
+		        <div class="col-md-4">
+		        	<div class="btn-group btn-group-justified}\">
+					  <a id="changeBtn" v-on:click="changeForm" class="btn btn-warning">비밀번호 찾기 > </a>
+				</div>
+		        </div>
+    		</div>
+	        <br><br>
+	        <div class="row">
+		        <div class="col-md-4"></div>
+		        <div class="col-md-4">
+		        	<div class="form-group">
+					  <label for="usr">가입 시 등록한 이메일 주소 입력</label>
+					  <input type="text" class="form-control" name="mem_email">
+					</div>
+		        </div>
+    		</div>
+	        
+	        <div class="row">
+		        <div class="col-md-4"></div>
+		        <div class="col-md-4">
+		        	<div></div>
+		        </div>
+    		</div>
+	        
+        	<br><br>
+        	<div class="row">
+        		<div class="col-md-4"></div>
+        		<div class="col-md-4">
+        			<button type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">가입여부 확인</button>
+        		</div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="form-find-pass">
+        <div>
+            <h1 class="text-center">비밀번호 찾기</h1>
+                <br><br><br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="btn-group btn-group-justified}\">
+                          <a v-on:click="changeForm" id="changeBtn" class="btn btn-warning"> < 아이디 찾기</a>
+                    </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="usr">가입 시 등록한 이메일 주소 입력</label>
+                          <input type="text" class="form-control" name="mem_email">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div></div>
+                    </div>
+                </div>
+                
+                <br><br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">비밀번호 재설정</button>
+                    </div>
+                </div>
+            </div>
+    </script>
+    <script>
+        var formFindId=Vue.extend({
+            template:"#form-find-id",
+            methods:{
+                changeForm:function(){
+                    this.$emit('change');
+                }
+            }
+        });
+
+        var formFindPass=Vue.extend({
+            template:"#form-find-pass",
+            methods:{
+                changeForm:function(){
+                    this.$emit('change');
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el:'#vue-container',
+            data:{
+                status:"id",
+
+            },
+			components:{
+                'form-find-id':formFindId,
+                'form-find-pass':formFindPass
+            },
+            methods:{
+                change:function(){
+                    if(this.status==='id'){
+                        this.status='pass';
+                    } else if(this.status==='pass'){
+                        this.status='id';
+                    }
+                }
+            }
+		});
+    </script>
+
+    
+</body>
+</html>
