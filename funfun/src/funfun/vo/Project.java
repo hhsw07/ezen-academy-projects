@@ -19,6 +19,7 @@ public class Project {
 	private String pro_curr; // 현재 상태
 	private int pro_money; // 현재 모금액
 	private int percent; // 모금률
+	private int dday; // 남은기간
 	
 	private String maker_name;
 	
@@ -119,6 +120,24 @@ public class Project {
 	}
 	public void setPro_curr(String pro_curr) {
 		this.pro_curr = pro_curr;
+	}
+	public int getPro_money() {
+		return pro_money;
+	}
+	public void setPro_money(int pro_money) {
+		this.pro_money = pro_money;
+	}
+	public int getPercent() {
+		return percent;
+	}
+	public void setPercent(int percent) {
+		this.percent = percent;
+	}
+	public int getDday() {
+		return dday;
+	}
+	public void setDday(int dday) {
+		this.dday = dday;
 	}
 	public String getMaker_name() {
 		return maker_name;

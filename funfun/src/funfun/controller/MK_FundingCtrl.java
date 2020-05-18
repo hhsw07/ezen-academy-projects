@@ -68,7 +68,7 @@ public class MK_FundingCtrl {
 	// 프로젝트 상세보기
 	@RequestMapping(params="method=detail")
 	public String detail(@RequestParam("pro_code") int pro_code, Model d) {
-		d.addAttribute("getP", service.detail(pro_code));
+		d.addAttribute("project", service.detail(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
 	}
 	
