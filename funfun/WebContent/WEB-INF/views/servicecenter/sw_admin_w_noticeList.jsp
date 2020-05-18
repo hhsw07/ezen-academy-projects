@@ -26,7 +26,7 @@
 	    	$(location).attr("href","${path}/faq.do?method=admList");
 	    });
 	    $("#chatting").click(function(){
-	    //	$(location).attr("href","${path}/chatting.do?method=list");
+	    	$(location).attr("href","${path}/rtqna.do?method=admList");
 	    });
 	    $(".insertNoti").click(function(){
 		 	$(location).attr("href","${path}/notice.do?method=insForm");	

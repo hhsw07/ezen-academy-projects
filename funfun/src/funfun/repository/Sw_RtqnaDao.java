@@ -18,7 +18,7 @@ public interface Sw_RtqnaDao {
 	public void insert(Rtqna ins);
 	
 	// 데이터 상세보기
-	public Rtqna detail(int rtqna_code);
+	public ArrayList<Rtqna> detail(int mem_code);
 	public void update(Rtqna upt);
 	public void delete(int rtqna_code);
 	

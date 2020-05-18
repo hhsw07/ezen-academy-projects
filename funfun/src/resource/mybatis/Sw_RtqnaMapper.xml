@@ -11,25 +11,11 @@
 		WHERE 1=1
 	</select>
 	
-	<!-- ArrayList<Rtqna> list2() -->
-	<select id= "list2" resultMap="RtqnaResult" >
-		SELECT rownum cnt, d.rtQNA_CODE, d.rtqna_detail, d.mem_name, d.rtqna_state, d.rtqna_time
-		from(
-		SELECT a.*, b.rtqna_detail, c.mem_name, b.rtqna_time
-		FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
-		GROUP by rtqna_code) b
-		where b.lastqna = a.rtqna_detail_code) b, MEMBER c
-		WHERE a.rtqna_code = b.rtqna_code
-		AND a.mem_code = c.mem_code
-		ORDER BY rtqna_state) d
-	</select>
-	
-	
 	<!-- ArrayList<Rtqna> list(Paging sch) -->
 	<select id="list" resultMap="RtqnaResult" parameterType="paging">
 		SELECT *
 		from(
-			SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state
+			SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state, a.mem_code
 			from(
 			SELECT a.*, b.rtqna_detail, c.mem_name
 			FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
@@ -48,13 +34,17 @@
 	</insert>
 	
 	
-	<!-- Rtqna detail(int rtqna_code) -->
-	<select id="detail" resultType="rtqna" parameterType="int">
-		<!-- 코드수정 -->
-		SELECT rownum cnt, a.*, b.ADMIN_NAME
-		FROM Notice a, ADMIN b
-		WHERE a.ADMIN_CODE = b.ADMIN_CODE
-		AND noti_code = #{noti_code}
+	<!-- ArrayList<Rtqna> detail(int mem_code) -->
+	<select id="detail" resultMap="RtqnaResult" parameterType="int">
+		SELECT a.mem_code, a.RTQNA_STATE, b.RTQNA_TIME , b.RTQNA_WRITER , b.RTQNA_DETAIL ,c."name"
+		FROM rtqna a, rtqna_detail b, 
+			(SELECT mem_code "code", mem_name "name" FROM MEMBER 
+			UNION
+			SELECT admin_code, admin_name FROM ADMIN) c
+		WHERE a.rtqna_code = b.RTQNA_CODE
+		and b.RTQNA_WRITER = c."code"
+		AND a.MEM_CODE = #{mem_code}
+		ORDER BY rtqna_time
 	</select>
 	<!-- void update(Rtqna upt) -->
 	<update id="update" parameterType="rtqna">

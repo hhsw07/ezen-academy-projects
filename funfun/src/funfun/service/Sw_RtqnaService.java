@@ -58,9 +58,9 @@ public class Sw_RtqnaService {
 		System.out.println("rtqna 등록 완료");
 	};
 	
-	public Rtqna detail(int rtqna_code) {
+	public ArrayList<Rtqna> detail(int mem_code) {
 		System.out.println("rtqna 상세화면 호출");
-		return dao.detail(rtqna_code);
+		return dao.detail(mem_code);
 	};
 	public void update(Rtqna upt) {
 		dao.update(upt);

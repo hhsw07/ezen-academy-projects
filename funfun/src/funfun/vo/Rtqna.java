@@ -7,7 +7,7 @@ public class Rtqna {
 	채팅 목록(관리자) 페이징처리 및 마지막 채팅내용 완료
 	SELECT *
 	from(
-		SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state
+		SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state, a.mem_code
 		from(
 		SELECT a.*, b.rtqna_detail, c.mem_name
 		FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
@@ -17,6 +17,10 @@ public class Rtqna {
 		AND a.mem_code = c.mem_code
 		ORDER BY rtqna_state) a)
 	WHERE cnt BETWEEN 1 AND 5
+	
+	채팅 작성자 이름 처리
+	
+	
 	 */
 	
 	private int rtqna_code;
@@ -29,8 +33,8 @@ public class Rtqna {
 	
 	private int cnt;
 	private String mem_name;
-	private String lastqna;
 	private String name;
+	
 	public int getRtqna_code() {
 		return rtqna_code;
 	}
@@ -84,12 +88,6 @@ public class Rtqna {
 	}
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
-	}
-	public String getLastqna() {
-		return lastqna;
-	}
-	public void setLastqna(String lastqna) {
-		this.lastqna = lastqna;
 	}
 	public String getName() {
 		return name;

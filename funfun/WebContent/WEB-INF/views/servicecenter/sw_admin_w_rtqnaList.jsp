@@ -14,17 +14,16 @@
 <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
-	    $.ajax({
+		$.ajax({
 	    	type:"post",
-	    	url:"${path}/rtqna.do?method=ajaxlist",
-	    	data: $("form").serialize(),
+	    	url:"${path}/rtqna.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
    			dataType:"json",
 	    	success:function(data){
 	    		var list = data.list;
 	    		//$("h2").text("data.list.lenght:"+list.length);
 	    		var show = "";
 	    		$.each(list, function(idx,rtqna){
-	    			show += '<tr class="item" onclick="javascript:go('+rtqna.rtqna_code+')"><td>'+rtqna.cnt+'</td>';
+	    			show += '<tr class="item" onclick="javascript:go('+rtqna.mem_code+')"><td>'+rtqna.cnt+'</td>';
 	    			show += '<td>'+rtqna.rtqna_detail+'</td>';
 	    			show += '<td>'+rtqna.mem_name+'</td>';
 	    			show += '<td>'+rtqna.rtqna_state+'</td></tr>';
@@ -38,7 +37,15 @@
 	    });
 		
 		
-		
+	    $("#notice").click(function(){
+	    	$(location).attr("href","${path}/notice.do?method=admList");
+	    });
+	    $("#faq").click(function(){
+	    	$(location).attr("href","${path}/faq.do?method=admList");
+	    });
+	    $("#chatting").click(function(){
+	    	$(location).attr("href","${path}/rtqna.do?method=admList");
+	    });
 		
 		
 		$("#pageSize").change(function(){
@@ -50,9 +57,9 @@
 	    
 	})
 	
-	function go(rtqna_code){
-		alert("rtqna_code:"+rtqna_code);
-		// $(location).attr("href","${path}/rtqna.do?method=detail&rtqna_code="+rtqna_code);
+	function go(mem_code){
+		// alert("mem_code:"+mem_code);
+		$(location).attr("href","${path}/rtqna.do?method=detail&mem_code="+mem_code);
 	}
 	function goPage(no){
 		$("#curPage").val(no);
