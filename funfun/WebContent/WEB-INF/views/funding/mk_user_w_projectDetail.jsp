@@ -14,6 +14,7 @@
 .project-maker{width:100%; padding: 10px 10px 20px;}
 .project-opt{text-align:right;}
 .project-opt-info{margin:10px 0;}
+.opt-cont{text-align:left; padding:20px 10px 20px 30px;}
 </style>
 <script>
 	$(document).ready(function(){
@@ -49,7 +50,7 @@
 							<p class="remainday">펀딩 종료</p>
 						</c:when>
 						<c:when test="${project.dday==0}">
-							<p class="remainday">오늘 마감!</p>
+							<p class="remainday">오늘 자정 마감</p>
 						</c:when>
 					</c:choose>
 					<div class="progress">
@@ -74,6 +75,26 @@
 					<p style="font-size:13px;">신고하기란?</p>
 					<p>해당 프로젝트에 허위내용 및 지적재산권을<br>침해하는 내용이 있다면 제보해주세요.</p>
 					<button class="btn btn-block btn-lg btn-default" >프로젝트 신고하기</button>
+					
+					<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title" id="myModalLabel">프로젝트 신고하기</h4>
+								</div>
+								<div class="modal-body">
+									...
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
+									<div class="divider"></div>
+									<button type="button" class="btn btn-warning btn-simple">신고하기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 			
@@ -97,7 +118,7 @@
 			<!-- 프로젝트 옵션 -->
 			<div class="project-opt col-md-4 col-sm-6">
 				<div class="project-opt-info">
-					<button href="#fakelink" class="img-thumbnail" style="width:300px;">
+					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
 						<h6>opt_title</h6>
 						<p>opt_detail</p><br>
 						<p class="text-muted">opt_condition</p><br>
@@ -108,7 +129,7 @@
 					</button>
 				</div>
 				<div class="project-opt-info">
-					<button href="#fakelink" class="img-thumbnail" style="width:300px;">
+					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
 						<h6>opt_title</h6>
 						<p>opt_detail</p><br>
 						<p class="text-muted">opt_condition</p><br>
@@ -119,7 +140,7 @@
 					</button>
 				</div>
 				<div class="project-opt-info">
-					<button href="#fakelink" class="img-thumbnail" style="width:300px;">
+					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
 						<h6>opt_title</h6>
 						<p>opt_detail</p><br>
 						<p class="text-muted">opt_condition</p><br>
@@ -131,7 +152,10 @@
 				</div>
 			
 			</div>
-	    
+	    	<!-- 문의 -->
+	    	<div>
+	    	
+	    	</div>
 	    
 	    
 		</div>
