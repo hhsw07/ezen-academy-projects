@@ -90,4 +90,11 @@ public class Main {
 		
 		return "redirect:/login.do";
 	}
+	
+	@RequestMapping("/changePass.do")
+	public String changePass(MemberInfo m, Model d) {
+		
+		d.addAttribute("result", service.changePass(m));
+		return "pageJsonReport";
+	}
 }

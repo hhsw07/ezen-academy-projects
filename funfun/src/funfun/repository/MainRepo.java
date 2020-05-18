@@ -16,4 +16,6 @@ public interface MainRepo {
 	public int signupIdCheck(String email);
 	
 	public void insertMember(MemberInfo m);
+	
+	public void changePass(MemberInfo m);
 }

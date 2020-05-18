@@ -91,7 +91,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                       <label for="usr">가입 시 등록한 이메일 주소 입력</label>
-                      <input v-model="inputEmail" type="text" class="form-control" name="mem_email">
+                      <input v-bind:disabled="isDisabled" v-model="inputEmail" type="text" class="form-control" name="mem_email">
                     </div>
                 </div>
             </div>
@@ -103,13 +103,13 @@
 	        </div>
 		</div>
             
-            <form-reset-pass v-if="isResetForm"></form-reset-pass>
+            <form-reset-pass v-bind:change-result="changeResult"  v-on:changePass="changePass" v-bind:class="{bounce:isBounce}" v-if="isResetForm"></form-reset-pass>
             
             <br><br>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <button v-on:click="checkEmail" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">비밀번호 재설정</button>
+                    <button v-if="isResetForm===false" v-on:click="checkEmail" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">비밀번호 재설정</button>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
       <div class="col-md-4">
           <div class="form-group">
               <label for="usr">재설정할 비밀번호</label>
-              <input type="text" class="form-control">
+              <input v-model="pass1" v-on:blur="pass1Chk" v-on:focus="pass1Focus" type="password" class="form-control">
           </div>
       </div>
     </div>
@@ -130,9 +130,24 @@
       <div class="col-md-4">
           <div class="form-group">
               <label for="usr">재설정할 비밀번호 확인</label>
-              <input type="text" class="form-control">
+              <input v-on:blur="pass2Chk" v-model="pass2" type="password" class="form-control">
           </div>
       </div>
+    </div>
+
+	<div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<div v-bind:style="{color:fontColor}" v-bind:class="{shaking:isShake, bounce:isBounce}">{{alertMsg}}</div>
+				<div v-if="countOn" style="color:black;" >{{count}}초 후에 로그인 페이지로 이동합니다..</div>
+	        </div>
+		</div>
+	<br>
+	<div class="row">
+       <div class="col-md-4"></div>
+       <div class="col-md-4">
+         <button v-if="isButtonOn" v-on:click="changePass" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">변경 완료</button>
+       </div>
     </div>
 </div>
 </script>
@@ -187,6 +202,82 @@
         
         var formResetPass=Vue.extend({
         	template:"#form-reset-pass",
+        	data:function(){
+        		return{
+        			pass1:"",
+        			pass2:"",
+        			isButtonOn:false,
+        			alertMsg:"",
+        			fontColor:"red",
+        			isShake:false,
+        			isBounce:false,
+        			countOn:false,
+        			count:5,
+        		}
+        	},
+        	props:['change-result'],
+            watch:{
+            	changeResult:function(val){
+            		this.alertMsg="변경이 완료되었습니다.";
+            		this.fontColor="green";
+            		this.countOn=true;
+            	},
+            	countOn:function(val){
+            		if(val===true){
+            			setInterval(()=>{
+            				this.count=this.count-1;
+            			}, 1000);
+            		}
+            	},
+            	count:function(val){
+            		if(val===0){
+            			window.location="${path}/login.do";
+            		}
+            	}
+            },
+        	methods:{
+        		pass1Focus:function(){
+        			this.isButtonOn=false;
+        		},
+        		pass1Chk:function(){
+        			var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/; //  8 ~ 20자 영문, 숫자 조합
+        			if(!regExp.test(this.pass1)){
+        				this.alertMsg="비밀번호는 8~20자 영문과 숫자를 조합해야합니다.";
+        				this.fontColor="red";
+        				this.isShake=true;
+        				setTimeout(()=>{
+        					this.isShake=false;
+        				},500);
+        				this.pass1="";
+        			} else {
+        				this.alertMsg="";
+        			}
+        		},
+        		pass2Chk:function(){
+        			if(this.pass1!==this.pass2){
+        				this.alertMsg="비밀번호가 일치하지 않습니다.";
+        				this.fontColor="red";
+        				this.isShake=true;
+        				setTimeout(()=>{
+        					this.isShake=false;
+        				},500);
+        				this.pass2="";
+        			} else {
+        				this.alertMsg="비밀번호가 일치합니다.";
+        				this.fontColor="green";
+        				this.isBounce=true;
+        				setTimeout(()=>{
+        					this.isBounce=false;
+        				},500);
+        				this.isButtonOn=true;
+        			}
+        		},
+        		changePass:function(){
+        			this.alertMsg="비밀번호 변경 중입니다...";
+        			this.fontColor="black";
+        			this.$emit('changePass', this.pass1);
+        		}
+        	}
         });
         
         var formFindPass=Vue.extend({
@@ -198,17 +289,43 @@
             		isResetForm:false,
             		fontColor:"red",
             		alertMsg:"",
+            		isBounce:false,
+            		isDisabled:false,
+            		changeResult:false,
             	}
             },
             methods:{
+            	changePass:function(pass){
+            		$.ajax({
+    					type:"post",
+    					url:"${path}/changePass.do?mem_email="+this.inputEmail+"&mem_pw="+pass,
+    					dataType:"json",
+    					success:(data)=>{
+    						console.log("비밀번호 변경완료");
+    						if(data.result===true){
+    							this.changeResult=true;
+    						}
+    					},
+    					error:(err)=>{
+    						console.log("ajax처리 에러");
+    						console.log(err);
+    					}
+    				});
+            		
+            	},
                 changeForm:function(){
                     this.$emit('change');
                 },
                 callResetForm:function(){
                 	this.isResetForm=true;
+                	this.isBounce=true;
+                	this.isDisabled=true;
+                	setTimeout(()=>{
+                		this.isBounce=false;
+                	},500);
+                	
                 },
                 checkEmail:function(){
-                	console.log(this.isShake);
                 	if(this.inputEmail===''){
                 		this.alertMsg="이메일을 입력해주세요..";
                 		this.fontColor="red";

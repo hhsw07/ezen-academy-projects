@@ -15,7 +15,7 @@
 	$(document).ready(function(){
 		// 카테고리
 		$("#all").click(function(){
-			$("[name=category]").val("all");
+			$("[name=category]").val("");
 			$("#category").submit();
 		});
 		$("#edu").click(function(){
@@ -61,7 +61,7 @@
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
 		<form method="post" id="category">
-			<input type="hidden" name="category" id="category" />
+			<input type="hidden" name="category"/>
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -149,7 +149,7 @@
 									</div>
 									<div>
 										<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
-										<span class="ProjectList-date">남은기간 : 7일</span>
+										<span class="ProjectList-date">남은기간 : ${proj.dday}일</span>
 									</div>
 								</div>
 							</div>
