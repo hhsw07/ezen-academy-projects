@@ -57,7 +57,9 @@ public class HT_MSCtrl {
 	}
 	
 	@RequestMapping(params="method=proRegReady")
-	public String proRegReady() {
+	public String proRegReady(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
