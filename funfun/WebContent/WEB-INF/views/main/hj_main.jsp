@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="${path }/css/slider.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>FunFun 펀펀</title>
-
+	<link rel="stylesheet" href="${path }/css/shakeAndBounce.css" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 </head>
@@ -51,9 +51,8 @@
 	<br><br><br><br>
 	<h1>추천 프로젝트</h1>
 	<div class="row" id="project-list">
-		<div v-for="item in projectList" >
-      <p>??????</p>
-    </div>
+    <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:img-src="item.imgSrc"
+    v-bind:category="item.category" v-bind:percent="item.percent" ></project-component>
 	</div>
            
            
@@ -91,10 +90,15 @@
 <script>
   const sampleData ={
         "title":`STOLI 립파우치 - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요`,
-        "imgSrc":`https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize`,
+        "imgSrc":`https://picsum.photos/400/400`,
         "category":"패션.잡화",
         "percent":"90%"
         };
+  const options = {
+	root: null,
+  rootMargin: '0px 0px 30px 0px',
+  threshold: 0
+}
 
   var vm=new Vue({
     el:'#project-list',
@@ -105,10 +109,7 @@
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
-        console.dir("scrollTop:"+document.documentElement.scrollTop);
-        console.dir("clientHeight:"+document.documentElement.clientHeight);
-        console.dir("scrollHeight:"+document.documentElement.scrollHeight);
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) { 
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 50 >= document.documentElement.scrollHeight) { 
           this.loadMore();
         }
       })
@@ -119,11 +120,16 @@
     methods:{
       loadMore:function(){
         setTimeout(() => {
-          for (var i = 0; i < 16; i++) {
-            this.projectList.push(sampleData);
-            console.log(this.projectList);
+          for (var i = 0; i < 15; i++) {
+        	let ranNumber=Math.round(Math.random()*50);
+        	let sample= new Object();
+        	sample.title=sampleData.title;
+        	sample.category=sampleData.category;
+        	sample.percent=sampleData.percent;
+        	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
+            this.projectList.push(sample);
           }
-        }, 200);
+        }, 500);
       }
     }
   })
