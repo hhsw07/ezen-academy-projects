@@ -14,7 +14,7 @@ public interface Sw_RtqnaDao {
 	public int rtqnatotCnt();
 	
 	// 검색된 데이터 리스트
-	public ArrayList<Rtqna> list();
+	public ArrayList<Rtqna> list(Paging sch);
 	public void insert(Rtqna ins);
 	
 	// 데이터 상세보기
