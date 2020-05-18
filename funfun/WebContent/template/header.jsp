@@ -121,7 +121,7 @@
               </div>
               </c:if>
               
-              <c:if test="${user==null }">
+              <c:if test="${empty user}">
               <ul class="nav navbar-nav navbar-right">
                     <li><a href="${path }/signup.do">회원가입</a></li>
                     
@@ -140,8 +140,8 @@
 </div> <!-- end menu-dropdown -->
 
 <!-- 채팅 버튼 -->
-<div class="" style="position:fixed; bottom:50px; right:50px; z-index:10">
-	<a href="#" ><img src="${path}/img/chatting.png" style="width:150px; height:150px;"/></a>
+<div class="" style="position:fixed; bottom:50px; right:50px; z-index:10" >
+	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:150px; height:150px;"/></a>
 </div>
 
 
@@ -164,6 +164,18 @@
   			window.location.href="${path}/logout.do";
   		}
   	}
+  	function goRtqna(){
+  		var mem_code = "${user.mem_code}";
+  		if(mem_code == ""){
+  			alert("로그인이 필요합니다.");
+			$(location).attr("href","${path}/login.do");
+  		}else{
+  			alert("채팅페이지로 이동");
+  			//$(location).attr("href","${path}/rtqna.do?method=detail&mem_code="+mem_code);
+  		}
+  		
+  	}
+  	
   </script>
 
 </html>
