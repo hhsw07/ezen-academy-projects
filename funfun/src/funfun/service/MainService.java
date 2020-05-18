@@ -39,4 +39,9 @@ public class MainService {
 	public void insertMember(MemberInfo m) {
 		repo.insertMember(m);
 	}
+	
+	public boolean changePass(MemberInfo m) {
+		repo.changePass(m);
+		return true;
+	}
 }

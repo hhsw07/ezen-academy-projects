@@ -26,4 +26,8 @@
 		insert into member(mem_code, mem_email, mem_pw, mem_name, mem_favor) values(member_seq.nextval, #{mem_email},
 			#{mem_pw}, #{mem_name}, #{mem_favor})
 	</insert>
+	
+	<update id="changePass" parameterType="funfun.vo.MemberInfo">
+		update member set mem_pw = #{mem_pw} where mem_email=#{mem_email}
+	</update>
 </mapper>
