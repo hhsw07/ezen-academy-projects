@@ -13,45 +13,8 @@
 <script>
 		
 </script>
-<style>
+<link rel="stylesheet" href="${path }/css/shakeAndBounce.css" />
 
-.shaking {
-  /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake 0.5s;
-
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
-.bounce{
-	animation:BounceIn 500ms;
-}
-
-@keyframes BounceIn{
-	0%{
-		transform:scale(1.1);
-		opacity:0.3;
-	}
-	100%{
-		transform:scale(1);
-		opacity:1;
-	}
-}
-</style>
 <script>
 	$(document).ready(function(){
 		$('.main').addClass('bounce');
@@ -63,122 +26,263 @@
 </head>
 <body>
 	<div class="main">
-	    <div id="vue-container" v-bind:class="{bounce:isBounce}" class="container tim-container" style="max-width:1200px; padding-top:100px">
-	        <h1 class="text-center">{{state[0].mainText}}</h1>
-	        <br><br><br>
-	        <div class="row">
-		        <div class="col-md-4"></div>
-		        <div class="col-md-4">
-		        	<div class="btn-group btn-group-justified">
-					  <a id="changeBtn" href="#" class="btn btn-warning">{{state[0].button1}}</a>
-				</div>
-		        </div>
-    		</div>
-	        <br><br>
-	        <div class="row">
-		        <div class="col-md-4"></div>
-		        <div class="col-md-4">
-		        	<div class="form-group">
-					  <label for="usr">{{state[0].inputText}}</label>
-					  <input type="text" class="form-control" name="mem_email">
-					</div>
-		        </div>
-    		</div>
-	        
-	        <div class="row">
-		        <div class="col-md-4"></div>
-		        <div class="col-md-4">
-		        	<div v-bind:class="{shaking:isShaking}" v-bind:style="{color:fontColor}">{{state[0].inputText2}}</div>
-		        </div>
-    		</div>
-	        
-        	<br><br>
-        	<div class="row">
-        		<div class="col-md-4"></div>
-        		<div class="col-md-4">
-        			<button type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">{{state[0].button2}}</button>
-        		</div>
-        	</div>
-        	
-   
-			  
-     	 
+	    <div id="vue-container"  class="container tim-container" style="max-width:1200px; padding-top:100px">
+	       <form-find-id  v-bind:class="{bounce:isBounce}" v-if="status==='id'" v-on:change="change"></form-find-id>
+           <form-find-pass  v-bind:class="{bounce:isBounce}" v-if="status==='pass'" v-on:change="change"></form-find-pass>
 	    </div>
 	</div>
 	<!-- end main -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script>
-	
-		var idx=0;
-		var vm = new Vue({
-			el:'#vue-container',
-			data:{
-				state:[
-					{
-						mainText:"아이디 찾기",
-						button1:"비밀번호 찾기 >",
-						inputText:"가입 시 등록한 이메일 주소 입력:",
-						button2:"가입여부 확인",
-						inputText2:"",
-					},
-					{
-						mainText:"비밀번호 찾기",
-						button1:"< 아이디찾기",
-						inputText:"가입 시 등록한 이메일 주소 입력:",
-						button2:"비밀번호 재설정",
-						inputText2:"",
-					}
-				],
-				isBounce:false,
-				fontColor:"red",
-				isShaking:false,
-				isToggle:false,
-				isTarget:false
-			}
-		});
-		
-		$('#changeBtn').on('click', ()=>{
-			vm.state=[vm.state[1], vm.state[0]];
-			vm.isToggle=!vm.isToggle;
-			vm.isTarget=!vm.isTarget;
-			vm.isBounce=true;
-			setTimeout(()=>{
-				vm.isBounce=false;
-			}, 500);
-			idx++;
-			idx=idx%2;
-		});
-		
-		$('button').on('click', (event)=>{
-			event.preventDefault();
-			if(idx===0){
-				$.ajax({
-					type:"post",
-					url:"${path}/signupIdCheck.do",
-					data:$("input[name=mem_email]").serialize(),
-					dataType:"json",
-					success:function(data){
-						if(data.verification===false){
-							vm.state[0].inputText2="이미 해당 이메일로 가입하셨습니다";
-							vm.fontColor="red";
-							vm.isShaking=true;
-							setTimeout(()=>{
-								vm.isShaking=false;
-							}, 500);
-						} else {
-							vm.state[0].inputText2="아직 가입하지 않으셨습니다.";
-							vm.fontColor="green";
-						}
-					},
-					error:function(err){
-						console.log("ajax처리 에러");
-						console.log(err);
-					}
-				});
-			} else if(idx===1){
-				
-			}
-		});
+	<script type="text/x-template" id="form-find-id">
+    <div>
+    <h1 class="text-center">아이디 찾기</h1>
+        <br><br><br>
+        <div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<div class="btn-group btn-group-justified">
+				  <a id="changeBtn" v-on:click="changeForm" class="btn btn-warning">비밀번호 찾기 > </a>
+			</div>
+	        </div>
+		</div>
+        <br><br>
+        <div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<div class="form-group">
+				  <label for="usr">가입 시 등록한 이메일 주소 입력</label>
+				  <input v-model="inputEmail" type="text" class="form-control" name="mem_email">
+				</div>
+	        </div>
+		</div>
+        
+        <div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<div v-bind:style="{color:fontColor}" v-bind:class="{shaking:isShake}">{{alertMsg}}</div>
+	        </div>
+		</div>
+        
+    	<br><br>
+    	<div class="row">
+    		<div class="col-md-4"></div>
+    		<div class="col-md-4">
+    			<button v-on:click="checkIsEmailReg" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">가입여부 확인</button>
+    		</div>
+        </div>
+    </div>
 	</script>
+
+<script type="text/x-template" id="form-find-pass">
+    <div>
+        <h1 class="text-center">비밀번호 찾기</h1>
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="btn-group btn-group-justified">
+                      <a v-on:click="changeForm" id="changeBtn" class="btn btn-warning"> < 아이디 찾기</a>
+                </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="usr">가입 시 등록한 이메일 주소 입력</label>
+                      <input v-model="inputEmail" type="text" class="form-control" name="mem_email">
+                    </div>
+                </div>
+            </div>
+
+			<div class="row">
+	        <div class="col-md-4"></div>
+	        <div class="col-md-4">
+	        	<div v-bind:style="{color:fontColor}" v-bind:class="{shaking:isShake}">{{alertMsg}}</div>
+	        </div>
+		</div>
+            
+            <form-reset-pass v-if="isResetForm"></form-reset-pass>
+            
+            <br><br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <button v-on:click="checkEmail" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">비밀번호 재설정</button>
+                </div>
+            </div>
+        </div>
+</script>
+<script type="text/x-template" id="form-reset-pass">
+<div>
+	<div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="form-group">
+              <label for="usr">재설정할 비밀번호</label>
+              <input type="text" class="form-control">
+          </div>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="form-group">
+              <label for="usr">재설정할 비밀번호 확인</label>
+              <input type="text" class="form-control">
+          </div>
+      </div>
+    </div>
+</div>
+</script>
+<script>
+        var formFindId=Vue.extend({
+            template:"#form-find-id",
+            data:function(){
+                return {
+                    inputEmail:"",
+                    alertMsg:"",
+                    isShake:false,
+                    fontColor:"green",
+                }
+                
+            },
+            methods:{
+                changeForm:function(){
+                    this.$emit('change');
+                },
+                checkIsEmailReg:function(){
+                    if(this.inputEmail!==''){
+                    	console.log("${path}/signupIdCheck.do?mem_email="+this.inputEmail);
+                    	this.fontColor="black";
+                    	this.alertMsg="확인중...";
+                    	$.ajax({
+        					type:"post",
+        					url:"${path}/signupIdCheck.do?mem_email="+this.inputEmail,
+        					dataType:"json",
+        					success:(data)=>{
+        						if(data.verification===false){
+        							this.alertMsg="이미 등록된 이메일입니다."
+        							this.isShake=true;
+        							this.fontColor="red";
+        							setTimeout(()=>{
+        								this.isShake=false;
+        							}, 500)
+        							
+        						} else {
+        							this.alertMsg="등록가능한 이메일입니다."
+        							this.fontColor="green";
+        						}
+        					},
+        					error:(err)=>{
+        						console.log("ajax처리 에러");
+        						console.log(err);
+        					}
+        				});
+                    }
+                }
+            }
+        });
+        
+        var formResetPass=Vue.extend({
+        	template:"#form-reset-pass",
+        });
+        
+        var formFindPass=Vue.extend({
+            template:"#form-find-pass",
+            data:function(){
+            	return{
+            		inputEmail:"",
+            		isShake:false,
+            		isResetForm:false,
+            		fontColor:"red",
+            		alertMsg:"",
+            	}
+            },
+            methods:{
+                changeForm:function(){
+                    this.$emit('change');
+                },
+                callResetForm:function(){
+                	this.isResetForm=true;
+                },
+                checkEmail:function(){
+                	console.log(this.isShake);
+                	if(this.inputEmail===''){
+                		this.alertMsg="이메일을 입력해주세요..";
+                		this.fontColor="red";
+                		this.isShake=true;
+                		setTimeout(()=>{
+                			this.isShake=false;
+                		}, 500);
+                	} else {
+                		this.fontColor="black";
+                    	this.alertMsg="확인중...";
+                    	$.ajax({
+        					type:"post",
+        					url:"${path}/signupIdCheck.do?mem_email="+this.inputEmail,
+        					dataType:"json",
+        					success:(data)=>{
+        						this.alertMsg="";
+        						if(data.verification===false){
+        							this.callResetForm();
+        							
+        						} else {
+        							this.alertMsg="등록되지 않은 이메일입니다."
+        							this.fontColor="red";
+        							this.isShake=true;
+        							this.fontColor="red";
+        							setTimeout(()=>{
+        								this.isShake=false;
+        							}, 500)
+        						}
+        					},
+        					error:(err)=>{
+        						console.log("ajax처리 에러");
+        						console.log(err);
+        					}
+        				});
+                	}
+                }
+                
+            },
+            components:{
+            	'form-reset-pass':formResetPass,
+            }
+        });
+        
+        
+        
+
+        var vm = new Vue({
+            el:'#vue-container',
+            data:{
+                status:"id",
+				isBounce:false
+            },
+			components:{
+                'form-find-id':formFindId,
+                'form-find-pass':formFindPass
+            },
+            methods:{
+                change:function(){
+                	if(this.status==='id'){
+                        this.isBounce=true;
+                        this.status='pass';
+                        setTimeout(function(){
+                            this.isBounce=false;
+                        }, 1000);
+                    } else if(this.status==='pass'){
+                        this.status='id';
+                        this.isBounce=true;
+                        setTimeout(function(){
+                            this.isBounce=false;
+                        }, 1000);
+                    }
+                }
+            }
+		});
+   </script>
 </body>
 </html>

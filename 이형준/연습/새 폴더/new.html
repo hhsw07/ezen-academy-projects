@@ -57,8 +57,8 @@
 <body>
 	<div class="main">
 	    <div id="vue-container"  class="container tim-container" style="max-width:1200px; padding-top:100px">
-            <form-find-id v-if="status==='id'" v-on:change="change"></form-find-id>
-            <form-find-pass v-if="status==='pass'" v-on:change="change"></form-find-pass>
+            <form-find-id v-bind:class="{bounce:isBounce}" v-if="status==='id'" v-on:change="change"></form-find-id>
+            <form-find-pass v-bind:class="{bounce:isBounce}" v-if="status==='pass'" v-on:change="change"></form-find-pass>
 	    </div>
 	</div>
 	<!-- end main -->
@@ -121,7 +121,7 @@
 		        <div class="col-md-4">
 		        	<div class="form-group">
 					  <label for="usr">가입 시 등록한 이메일 주소 입력</label>
-					  <input type="text" class="form-control" name="mem_email">
+					  <input v-model="inputEmail" type="text" class="form-control" name="mem_email">
 					</div>
 		        </div>
     		</div>
@@ -137,7 +137,7 @@
         	<div class="row">
         		<div class="col-md-4"></div>
         		<div class="col-md-4">
-        			<button type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">가입여부 확인</button>
+        			<button v-on:click="checkEmailReg" type="button" class="btn btn-warning btn-lg" style="width:100%; background-color:rgb(255,150,0); color:white;">가입여부 확인</button>
         		</div>
             </div>
         </div>
@@ -185,9 +185,19 @@
     <script>
         var formFindId=Vue.extend({
             template:"#form-find-id",
+            data:function(){
+                return {
+                    inputEmail:"",
+
+                }
+                
+            },
             methods:{
                 changeForm:function(){
                     this.$emit('change');
+                },
+                checkEmailReg:function(){
+                    console.log(inputEmail);
                 }
             }
         });
@@ -205,7 +215,7 @@
             el:'#vue-container',
             data:{
                 status:"id",
-
+                isBounce:false,
             },
 			components:{
                 'form-find-id':formFindId,
@@ -214,9 +224,17 @@
             methods:{
                 change:function(){
                     if(this.status==='id'){
+                        this.isBounce=true;
                         this.status='pass';
+                        setTimeout(function(){
+                            this.isBounce=false;
+                        }, 1000);
                     } else if(this.status==='pass'){
                         this.status='id';
+                        this.isBounce=true;
+                        setTimeout(function(){
+                            this.isBounce=false;
+                        }, 1000);
                     }
                 }
             }
