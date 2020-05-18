@@ -50,47 +50,10 @@
     	
 	<br><br><br><br>
 	<h1>추천 프로젝트</h1>
-	<div class="row">
-		<div class="col-xs-12 col-md-3 item">
-        	<div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3 item">
-        	<div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3 item">
-        	<div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3 item">
-        	<div class="thumbnail">
-                <img src="https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize" alt="...">
-                <div class="caption">
-                  
-                  <p class="item__title">"STOLI 립파우치" - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요</p>
-                  <span class="item__category">패션.잡화 | MOD</span><span class="item__money">모금율 : 90%</span>
-                </div>
-            </div>
-        </div>
+	<div class="row" id="project-list">
+		<div v-for="item in projectList" >
+      <p>??????</p>
+    </div>
 	</div>
            
            
@@ -123,6 +86,48 @@
 </div>
 <!-- end main -->
 <script src="${path }/js/slider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="${path }/js/projectComponent.js"></script>
+<script>
+  const sampleData ={
+        "title":`STOLI 립파우치 - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요`,
+        "imgSrc":`https://cdn.wadiz.kr/wwwwadiz/green001/2020/0416/20200416012327812_63526.jpg/wadiz/format/jpg/quality/80/optimize`,
+        "category":"패션.잡화",
+        "percent":"90%"
+        };
+
+  var vm=new Vue({
+    el:'#project-list',
+    data:{
+      projectList:[
+        
+      ]
+    },
+    mounted(){
+      window.addEventListener('scroll', (e)=>{
+        console.dir("scrollTop:"+document.documentElement.scrollTop);
+        console.dir("clientHeight:"+document.documentElement.clientHeight);
+        console.dir("scrollHeight:"+document.documentElement.scrollHeight);
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) { 
+          this.loadMore();
+        }
+      })
+    },
+    components:{
+      'project-component':projectComponent,
+    },
+    methods:{
+      loadMore:function(){
+        setTimeout(() => {
+          for (var i = 0; i < 16; i++) {
+            this.projectList.push(sampleData);
+            console.log(this.projectList);
+          }
+        }, 200);
+      }
+    }
+  })
+</script>
 </body>
 
 </html>

@@ -120,7 +120,7 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
           <div class="form-group">
-              <label for="usr">재설정할 비밀번호</label>
+              <label for="usr">재 설정할 비밀번호</label>
               <input v-model="pass1" v-on:blur="pass1Chk" v-on:focus="pass1Focus" type="password" class="form-control">
           </div>
       </div>
@@ -129,7 +129,7 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
           <div class="form-group">
-              <label for="usr">재설정할 비밀번호 확인</label>
+              <label for="usr">재 설정할 비밀번호 확인</label>
               <input v-on:blur="pass2Chk" v-model="pass2" type="password" class="form-control">
           </div>
       </div>
@@ -178,16 +178,15 @@
         					dataType:"json",
         					success:(data)=>{
         						if(data.verification===false){
-        							this.alertMsg="이미 등록된 이메일입니다."
+        							this.alertMsg="이미 가입된 이메일입니다."
+        							this.fontColor="green";
+        						} else {
+        							this.alertMsg="등록되지 않은 이메일입니다."
         							this.isShake=true;
         							this.fontColor="red";
         							setTimeout(()=>{
         								this.isShake=false;
-        							}, 500)
-        							
-        						} else {
-        							this.alertMsg="등록가능한 이메일입니다."
-        							this.fontColor="green";
+        							}, 500);
         						}
         					},
         					error:(err)=>{
@@ -257,12 +256,13 @@
         			if(this.pass1!==this.pass2){
         				this.alertMsg="비밀번호가 일치하지 않습니다.";
         				this.fontColor="red";
+        				this.isButtonOn=false;
         				this.isShake=true;
         				setTimeout(()=>{
         					this.isShake=false;
         				},500);
         				this.pass2="";
-        			} else {
+        			} else if(this.pass1!==''){
         				this.alertMsg="비밀번호가 일치합니다.";
         				this.fontColor="green";
         				this.isBounce=true;
