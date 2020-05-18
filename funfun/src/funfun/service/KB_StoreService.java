@@ -15,4 +15,9 @@ public class KB_StoreService {
 	public ArrayList<RewardStore> slist(RewardStore sch){
 		return dao.slist(sch);
 	}
+	
+	public RewardStore sdetail(int sto_code) {
+		return dao.sdetail(sto_code);
+	}
+	
 }

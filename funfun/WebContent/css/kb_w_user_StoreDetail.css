@@ -20,12 +20,7 @@
     font-weight: 800;
     font-size:20pt;
     margin-top:5%;
-    height:150px;
-    color:black;
-    padding-top:3%;
 }
-#sto_cate_Span{
-    color:rgb(255,128,0);}
 
 #sto_pay_Div{
     float:left;
@@ -68,7 +63,7 @@
 
 #sto_menu_Div{
   position: sticky;
-    top: 20px;
+    top: 70px;
     z-index: 99;
     margin-bottom: 0;
     box-shadow: 0 1px 0 0 rgba(0,0,0,.08);

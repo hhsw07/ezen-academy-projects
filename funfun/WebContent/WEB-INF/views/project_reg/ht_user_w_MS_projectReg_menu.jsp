@@ -37,7 +37,7 @@ $(document).ready(function(){
 	<div class="panel-body">
 	
 	<span class="sub_gray_font">
-	님의<br> 
+	${makerInfo.maker_name }님의<br> 
 	프로젝트
 	</span>
 	

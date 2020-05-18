@@ -19,6 +19,7 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/mybatis/MSMapper.xml"/>
+		<mapper resource="resource/mybatis/ProjectRegisterMapper.xml"/>
 		<mapper resource="resource/mybatis/StoreMapper.xml"/>
 		<mapper resource="resource/mybatis/Sw_NoticeMapper.xml"/>
 		<mapper resource="resource/mybatis/Sw_FaqMapper.xml"/>

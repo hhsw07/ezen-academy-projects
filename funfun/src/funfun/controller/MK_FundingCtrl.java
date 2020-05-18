@@ -52,6 +52,7 @@ public class MK_FundingCtrl {
 				d.addAttribute("cate_title", "전체보기");
 				break;
 		}
+		System.out.println(category);
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	

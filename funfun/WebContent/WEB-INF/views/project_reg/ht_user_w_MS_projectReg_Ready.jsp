@@ -30,8 +30,8 @@
 		})
 		$(".proQnaBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
-		})		
-				
+		})	
+
 		
 	})
 </script>

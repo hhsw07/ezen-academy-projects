@@ -16,13 +16,16 @@
 	<select id="projectList" resultMap="projectResult" parameterType="project">
 		SELECT *
 		FROM (SELECT rownum cnt, c.*
-			FROM (SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, b.maker_name FROM project a, MAKER b
-				WHERE a.MAKER_CODE = b.MAKER_CODE) c)
+			FROM (SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name FROM project a, MAKER b
+				WHERE a.MAKER_CODE = b.MAKER_CODE
+			<if test="cate_title!=null and cate_title!= ''">
+				and cate_title like '%' || #{cate_title} ||'%'
+			</if>) c)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="detail" resultType="project" parameterType="int">
-		SELECT a.*, b.maker_name FROM project a, MAKER b
+		SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name FROM project a, MAKER b
 		WHERE a.MAKER_CODE = b.MAKER_CODE
 		AND PRO_CODE = #{pro_code}
 	</select>

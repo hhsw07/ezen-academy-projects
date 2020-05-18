@@ -47,19 +47,21 @@ public class HT_MSCtrl {
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		
 		if (memberinfo==null) {
+			System.out.println("에러페이지 뜸???");
 			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member-error.jsp";
 		} else {
 			d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
-			System.out.println("이거 찍힘???");
 			return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 		}
 		
 	}
 	
 	@RequestMapping(params="method=proRegReady")
-	public String proRegReady(HttpServletRequest request) {
+	public String proRegReady(HttpServletRequest request, Model d) {
+		System.out.println("요거 찍힘???");
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	

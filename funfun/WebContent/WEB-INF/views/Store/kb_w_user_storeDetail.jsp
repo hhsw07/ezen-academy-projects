@@ -1,27 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/template/header.jsp" %>
+<c:set var="path" value="${pageContext.request.contextPath }" />
+<fmt:requestEncoding value="utf-8" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/kb_w_user_StoreDetail.css">
-    <link rel="stylesheet" href="CSS/bootstrap.css">
-    <style>
-        main{
-            width:1200px;
-            margin-left:auto;
-            margin-right:auto;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/kb_w_user_StoreDetail.css">
+<script>
+		$(document).ready(function(){
+		
+		})
+</script>
 </head>
 <body>
-  
-    <main>
-        <div class="store-title" style="text-align: center;" >
-	    		<div class="label label-warning">푸드</div>
-	    		<h3 style="font-weight:800;">초~달아서 초당! 옥수수가 이렇게 달았다고??</h3>
-        </div>
-        </div>
+	<div class="main">
+	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
+	  		<div class="store-title" style="text-align: center; margin-top:0;" >
+	    		<div class="label label-warning">${store.cate_title}</div>
+	    		<h3 style="font-weight:800;">${store.sto_title}</h3>
+        	</div>
         <div id="sto_menu_Div">
             <ul class="sto_menu_ul">
                 <li class="sto_menu_li"><a href="#sto_Title_Div" class="sto_menu_a">상단</a></li>
@@ -32,13 +34,13 @@
         <div id="sto_Main_Info_Div">
             
             <div id="sto_Image_Div">
-                <img src="img/oksusu.PNG" class="img-responsive" alt="Responsive image" 
+                <img src="img/${store.sto_image}" class="img-responsive" alt="Responsive image" 
                 style="width:80%;
                 height:100%; margin-left:auto; margin-right:auto;">
             </div>
 
             <div id="sto_pay_Div">
-                <div id="maker_name_Div"> 메이커 명 : 야수네</div>
+                <div id="maker_name_Div"> 메이커 명 : ${store.maker_name}</div>
                 <div id="option_Div">
                     <span id="option_title">옵션 : </span>
                     <select class="form-data" id="option_select">
@@ -62,9 +64,7 @@
         </div>
         <div id="sto_Story_Div">
             <div id="sto_Story_Title">상세 스토리</div>
-            <img src="img/oksusu2.PNG" style="width:100%">
-            <img src="img/oksusu3.PNG" style="width:100%">
-            <img src="img/oksusu4.PNG" style="width:100%">
+            ${store.sto_detai}
         </div>
 
         <div id="sto_QnA_Div">
@@ -127,6 +127,9 @@
                 </ul>
             </div>
         </div>
-    </main>
+	        
+	    </div>
+	</div>
+	<!-- end main -->
 </body>
 </html>
