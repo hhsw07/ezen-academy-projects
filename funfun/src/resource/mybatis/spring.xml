@@ -15,6 +15,7 @@
 		<typeAlias alias="parti" type="funfun.vo.PartiFunding"/>
 		<typeAlias alias="trans" type="funfun.vo.TranLookUp"/>
 		<typeAlias alias="mypageinfo" type="funfun.vo.MyPageInfo"/>
+		<typeAlias alias="storeOption" type="funfun.vo.storeOption"/>
 
 	</typeAliases>
 	<mappers>
@@ -27,6 +28,7 @@
 		<mapper resource="resource/mybatis/loginMapper.xml" />
 		<mapper resource="resource/mybatis/mypageMapper.xml" />
 		<mapper resource="resource/mybatis/FundingMapper.xml" />
+		<mapper resource="resource/mybatis/storeOptionMapper.xml"/>
 		
 
 	</mappers>

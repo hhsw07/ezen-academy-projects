@@ -58,6 +58,7 @@ public class kb_Store_Controller {
 	public String detail(@RequestParam("sto_code") int sto_code, Model d) {
 		System.out.println("테스트 : " + sto_code);
 		d.addAttribute("store",service.sdetail(sto_code));
+		d.addAttribute("option", service.stoOptlist(sto_code));
 		
 		return "WEB-INF\\views\\Store\\kb_w_user_storeDetail.jsp";
 	}

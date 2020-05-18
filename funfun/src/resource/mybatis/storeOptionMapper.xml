@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+	
+<mapper namespace="funfun.repository.KB_RSOptionRep">
+	<resultMap type="storeOption" id="stoOptlist"/>
+	
+	<select id="stoOptList" resultMap="stoOptlist" parameterType="int">
+		SELECT sto_opt_code, sto_opt_price, STO_OPT_DETAIL , STO_OPT_CURR FROM store_option WHERE sto_code = #{sto_code}
+	</select>
+</mapper>

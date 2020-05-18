@@ -44,8 +44,9 @@
                 <div id="option_Div">
                     <span id="option_title">옵션 : </span>
                     <select class="form-data" id="option_select">
-                        <option> 1kg (25,000)</option>
-                        <option> 2kg (35,000)</option>
+                    	<c:forEach var="opt" items="${option}">
+                    		  <option value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} (${opt.sto_opt_price})</option>
+                    	</c:forEach>
                     </select>
                 </div>
                 <div id="option_cnt_div">
