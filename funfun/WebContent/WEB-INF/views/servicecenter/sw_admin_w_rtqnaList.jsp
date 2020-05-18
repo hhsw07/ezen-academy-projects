@@ -14,24 +14,44 @@
 <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
-	    $("#pageSize").change(function(){
+	    $.ajax({
+	    	type:"post",
+	    	url:"${path}/rtqna.do?method=ajaxlist",
+	    	data: $("form").serialize(),
+   			dataType:"json",
+	    	success:function(data){
+	    		var list = data.list;
+	    		//$("h2").text("data.list.lenght:"+list.length);
+	    		var show = "";
+	    		$.each(list, function(idx,rtqna){
+	    			show += '<tr class="item" onclick="javascript:go('+rtqna.rtqna_code+')"><td>'+rtqna.cnt+'</td>';
+	    			show += '<td>'+rtqna.rtqna_detail+'</td>';
+	    			show += '<td>'+rtqna.mem_name+'</td>';
+	    			show += '<td>'+rtqna.rtqna_state+'</td></tr>';
+	    		});
+	    		show += '<tr><td colspan="4"></td></tr>';
+    			$(".sctable").html($(".sctable").html()+show);
+	    	},
+	    	error:function(err){
+	    		
+	    	}
+	    });
+		
+		
+		
+		
+		
+		$("#pageSize").change(function(){
 	    	$("#curPage").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
 			$("form").submit();
 		});
 	    
-	    $("#notice").click(function(){
-	    	$(location).attr("href","${path}/notice.do?method=admList");
-	    });
-	    $("#faq").click(function(){
-	    	$(location).attr("href","${path}/faq.do?method=admList");
-	    });
-	    $("#chatting").click(function(){
-	    //	$(location).attr("href","${path}/rtqna.do?method=list");
-	    });
+	    
 	    
 	})
 	
 	function go(rtqna_code){
+		alert("rtqna_code:"+rtqna_code);
 		// $(location).attr("href","${path}/rtqna.do?method=detail&rtqna_code="+rtqna_code);
 	}
 	function goPage(no){
@@ -73,16 +93,9 @@
 		        	<col width="20%">
 		        	<col width="20%">
 		        	<tr><th>번호</th>
-		        		<th>상담내용</th>
-		        		<th>작성자</th>
+		        		<th>마지막 채팅내용</th>
+		        		<th>회원명</th>
 		        		<th>등록일</th></tr>
-		        	<c:forEach var="rtqna" items="${list}">
-			        	<tr class="item" onclick="javascript:go(${rtqna.rtqna_code})"><td>${rtqna.cnt}</td>
-			        		<td>${noti.noti_title}</td>
-			        		<td>${noti.admin_name}</td>
-			        		<td>${noti.noti_reg_date}</td></tr>
-		        	</c:forEach>
-		        	<tr><td colspan="4"></td></tr>
 		        </table>
 			</div>
 	        <div class="text-center">
@@ -94,9 +107,6 @@
 					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
-	        <div class="text-right">
-				<button class="btn btn-fill btn-warning insertNoti">등록</button>
-			</div>
 	    </div>
 	</div>
 	<!-- end main -->

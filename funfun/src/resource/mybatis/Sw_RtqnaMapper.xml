@@ -11,17 +11,17 @@
 		WHERE 1=1
 	</select>
 	
-	<!-- ArrayList<Rtqna> list(Paging sch) -->
+	<!-- ArrayList<Rtqna> list2() -->
 	<select id= "list2" resultMap="RtqnaResult" >
-		SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state
+		SELECT rownum cnt, d.rtQNA_CODE, d.rtqna_detail, d.mem_name, d.rtqna_state, d.rtqna_time
 		from(
-		SELECT a.*, b.rtqna_detail, c.mem_name
+		SELECT a.*, b.rtqna_detail, c.mem_name, b.rtqna_time
 		FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
 		GROUP by rtqna_code) b
 		where b.lastqna = a.rtqna_detail_code) b, MEMBER c
 		WHERE a.rtqna_code = b.rtqna_code
 		AND a.mem_code = c.mem_code
-		ORDER BY rtqna_state) a
+		ORDER BY rtqna_state) d
 	</select>
 	
 	

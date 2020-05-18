@@ -2,7 +2,7 @@ package funfun.vo;
 
 public class Paging {
 	// 검색과 페이징 처리를 위한 VO 객체..
-	// 1. 검색(제목, 작성자, 내용)
+	// 1. 검색(제목, 작성자, 내용, 회원번호)
 	private String title;
 	private String writer;
 	private String content;
