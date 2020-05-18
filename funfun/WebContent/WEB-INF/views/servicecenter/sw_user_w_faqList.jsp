@@ -96,7 +96,8 @@
 			        	<tr class="item" ><td>${faq.cnt}</td>
 			        		<td>${faq.faq_title}</td>
 			        		<td>${faq.admin_name}</td>
-			        	<tr class="hide"><td></td><td colspan="3">${faq.faq_detail}</td></tr>
+			        	<tr class="hide"><td></td><td colspan="3"><pre><c:out value="${faq.faq_detail}" /></pre></td></tr>
+			        	
 		        	</c:forEach>
 		        	<tr><td colspan="3"></td></tr>
 		        </table>

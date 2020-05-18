@@ -90,14 +90,15 @@
 			        		<td>${noti.noti_title}</td>
 			        		<td>${noti.admin_name}</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide"><td></td><td colspan="3">${noti.noti_detail}</td></tr>	
+			        	<tr class="hide"><td></td><td colspan="3"><pre><c:out value="${noti.noti_detail}" /></pre></td></tr>	
 		        	</c:forEach>
 		        	<c:forEach var="noti" items="${list}">
 			        	<tr class="item"><td>${noti.cnt}</td>
 			        		<td>${noti.noti_title}</td>
 			        		<td>${noti.admin_name}</td>
 			        		<td>${noti.noti_reg_date}</td></tr>
-			        	<tr class="hide"><td></td><td colspan="3">${noti.noti_detail}</td></tr>
+			        		<!-- style="white-space:pre;" -->
+			        	<tr class="hide"><td></td><td colspan="3" ><pre><c:out value="${noti.noti_detail}" /></pre></td></tr>
 		        	</c:forEach>
 		        	<tr><td colspan="4"></td></tr>
 		        </table>
