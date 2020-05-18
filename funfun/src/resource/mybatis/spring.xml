@@ -8,6 +8,7 @@
 		<typeAlias alias="RewardStore" type="funfun.vo.RewardStore"/>
 		<typeAlias alias="notice" type="funfun.vo.Notice"/>
 		<typeAlias alias="faq" type="funfun.vo.Faq"/>
+		<typeAlias alias="rtqna" type="funfun.vo.Rtqna"/>
 		<typeAlias alias="paging" type="funfun.vo.Paging"/>
 		<typeAlias alias="project" type="funfun.vo.Project"/>
 		<typeAlias alias="favor" type="funfun.vo.Favor"/>
