@@ -2,21 +2,23 @@ package funfun.vo;
 
 public class Project {
 
-	private int pro_code;
-	private int maker_code;
-	private String mem_code;
-	private String pro_reg_date;
-	private String pro_sub_date;
-	private String pro_title;
-	private String cate_title;
-	private int pro_target;
-	private String pro_start_date;
-	private String pro_finish_date;
-	private String pro_image;
-	private String pro_story;
-	private String pro_docu;
-	private String pro_keyword;
-	private String pro_curr;
+	private int pro_code; // 프로젝트 번호
+	private int maker_code; // 메이커 번호
+	private String mem_code; // 회원번호
+	private String pro_reg_date; // 프로젝트 신청 날짜
+	private String pro_sub_date; // 프로젝트 승인 날짜
+	private String pro_title; // 프로젝트 명
+	private String cate_title; // 카테고리 명
+	private int pro_target; // 목표금액
+	private String pro_start_date; // 프로젝트 시작 날짜
+	private String pro_finish_date; // 프로젝트 종료 날짜
+	private String pro_image; // 대표이미지
+	private String pro_story; // 프로젝트 스토리
+	private String pro_docu; // 리워드 인증서류
+	private String pro_keyword; // 키워드
+	private String pro_curr; // 현재 상태
+	private int pro_money; // 현재 모금액
+	private int percent; // 모금률
 	
 	private String maker_name;
 	
