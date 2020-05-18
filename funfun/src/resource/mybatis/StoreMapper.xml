@@ -16,5 +16,13 @@
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>
 		</select>
+		<select id="sdetail" resultType="RewardStore" parameterType="int">
+		SELECT a.sto_code, a.STO_TITLE , a.sto_image,a.sto_detai, b.CATE_TITLE , c.maker_name 
+		FROM store a, project b, maker c WHERE a.PRO_CODE = b.PRO_CODE AND 
+		b.MAKER_CODE = c.MAKER_CODE 
+		AND a.sto_code = #{sto_code}
+
+		</select>
+		
 	</mapper>
 	

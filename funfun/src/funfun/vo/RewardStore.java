@@ -7,7 +7,7 @@ public class RewardStore {
 	private String reg_date;
 	private String sub_date;
 	private String sto_title;
-	private String sto_detail;
+	private String sto_detai;
 	private String sto_image;
 	private String sto_curr;
 	private String cate_title;
@@ -43,11 +43,11 @@ public class RewardStore {
 	public void setSto_title(String sto_title) {
 		this.sto_title = sto_title;
 	}
-	public String getSto_detail() {
-		return sto_detail;
+	public String getSto_detai() {
+		return sto_detai;
 	}
-	public void setSto_detail(String sto_detail) {
-		this.sto_detail = sto_detail;
+	public void setSto_detail(String sto_detai) {
+		this.sto_detai = sto_detai;
 	}
 	public String getSto_image() {
 		return sto_image;

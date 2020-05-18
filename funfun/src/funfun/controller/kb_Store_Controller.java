@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.KB_StoreService;
 import funfun.vo.RewardStore;
@@ -51,6 +52,14 @@ public class kb_Store_Controller {
 		}
 		
 		return "WEB-INF\\views\\Store\\kb_w_user_StoreList.jsp";
+	}
+	
+	@RequestMapping("storeDetail.do")
+	public String detail(@RequestParam("sto_code") int sto_code, Model d) {
+		System.out.println("테스트 : " + sto_code);
+		d.addAttribute("store",service.sdetail(sto_code));
+		
+		return "WEB-INF\\views\\Store\\kb_w_user_storeDetail.jsp";
 	}
 	
 }
