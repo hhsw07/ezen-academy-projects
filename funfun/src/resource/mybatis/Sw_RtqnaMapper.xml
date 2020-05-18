@@ -2,50 +2,63 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
-<mapper namespace="funfun.repository.Sw_NoticeDao">
-	<resultMap type="Notice" id="NoticeResult"/>
+<mapper namespace="funfun.repository.Sw_RtqnaDao">
+	<resultMap type="Rtqna" id="RtqnaResult"/>
 	<!-- int totCnt() 총 데이터 건수 -->
-	<select id="notitotCnt" resultType="int">
+	<select id="rtqnatotCnt" resultType="int">
 		SELECT COUNT(*)
-		FROM Notice
+		FROM rtqna
 		WHERE 1=1
 	</select>
 	
-	<!-- ArrayList<Notice> toplist() -->
-	<select id="toplist" resultMap="NoticeResult" >
-		SELECT rownum cnt, c.*
-		FROM ( SELECT a.*, b.ADMIN_NAME 
-			   FROM NOTICE a, ADMIN b
-			   WHERE a.ADMIN_CODE = b.ADMIN_CODE 
-			   AND NOTI_CK = 'Y'
-			   ORDER BY NOTI_CODE DESC) c
+	<!-- ArrayList<Rtqna> list(Paging sch) -->
+	<select id= "list2" resultMap="RtqnaResult" >
+		SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state
+		from(
+		SELECT a.*, b.rtqna_detail, c.mem_name
+		FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
+		GROUP by rtqna_code) b
+		where b.lastqna = a.rtqna_detail_code) b, MEMBER c
+		WHERE a.rtqna_code = b.rtqna_code
+		AND a.mem_code = c.mem_code
+		ORDER BY rtqna_state) a
 	</select>
-	<!-- ArrayList<Notice> list(Paging sch) -->
-	<select id="list" resultMap="NoticeResult" parameterType="paging">
+	
+	
+	<!-- ArrayList<Rtqna> list(Paging sch) -->
+	<select id="list" resultMap="RtqnaResult" parameterType="paging">
 		SELECT *
-		FROM(SELECT rownum cnt, c.*
-			 FROM (SELECT a.*, b.ADMIN_NAME 
-			 	   FROM NOTICE a, ADMIN b
-				   WHERE a.ADMIN_CODE = b.ADMIN_CODE 
-				   ORDER BY NOTI_CODE DESC) c)
+		from(
+			SELECT rownum cnt, a.rtQNA_CODE, a.rtqna_detail, a.mem_name, a.rtqna_state
+			from(
+			SELECT a.*, b.rtqna_detail, c.mem_name
+			FROM rtqna a, (SELECT a.* FROM rtqna_detail a, (SELECT max(rtqna_detail_code) lastqna FROM rtqna_detail
+			GROUP by rtqna_code) b
+			where b.lastqna = a.rtqna_detail_code) b, MEMBER c
+			WHERE a.rtqna_code = b.rtqna_code
+			AND a.mem_code = c.mem_code
+			ORDER BY rtqna_state) a)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
-	<!-- void insert(Notice ins) -->
-	<insert id="insert" parameterType="notice">
+	<!-- void insert(Rtqna ins) -->
+	<insert id="insert" parameterType="rtqna">
+		<!-- 코드수정 -->
 		INSERT INTO notice 
 		VALUES(notice_seq.nextval,#{noti_title},#{noti_detail},current_date, NULL, #{noti_ck}, #{admin_code})
 	</insert>
 	
 	
-	<!-- Notice detail(int noti_code) -->
-	<select id="detail" resultType="notice" parameterType="int">
+	<!-- Rtqna detail(int rtqna_code) -->
+	<select id="detail" resultType="rtqna" parameterType="int">
+		<!-- 코드수정 -->
 		SELECT rownum cnt, a.*, b.ADMIN_NAME
 		FROM Notice a, ADMIN b
 		WHERE a.ADMIN_CODE = b.ADMIN_CODE
 		AND noti_code = #{noti_code}
 	</select>
-	<!-- void update(Notice upt) -->
-	<update id="update" parameterType="notice">
+	<!-- void update(Rtqna upt) -->
+	<update id="update" parameterType="rtqna">
+		<!-- 코드수정 -->
 		UPDATE notice
 		SET noti_title = #{noti_title},
 			noti_detail = #{noti_detail},
@@ -54,11 +67,7 @@
 			admin_code = #{admin_code}
 		WHERE noti_code = #{noti_code}
 	</update>
-	<!-- void delete(int noti_code) -->
-	<delete id="delete" parameterType="int">
-		DELETE FROM NOTICE 
-		WHERE noti_code = #{noti_code}
-	</delete>
+	
 </mapper>
 
 
