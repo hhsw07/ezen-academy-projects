@@ -33,7 +33,12 @@
 		})
 		$(".proQnaBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
-		})		
+		})
+		
+		$("#proCreateBtn").click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=proCreate")
+		})
+			
 				
 	})
 	
@@ -131,7 +136,7 @@
 
 	<br><br><br><br>
 	
-  	<button class="btn btn-warning btn_custom" style="width:40%">저장하기</button>
+  	<button class="btn btn-warning btn_custom" id="proCreateBtn" style="width:40%">저장하기</button>
 	
 	</div>
 

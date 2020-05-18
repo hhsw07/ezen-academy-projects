@@ -27,12 +27,15 @@
 		
 		
 		--%>
-		
-		if(alert("메이커 등록이 필요한 서비스입니다.")){
-			$(location).attr("href", "${path}/MakerStudio.do?method=makerReg");
-		};
+		if(confirm("로그인 하셈 \n 로그인 긔?")){
+			$(location).attr("href", "${path}/login.do")
+		} else {
+			$(location).attr("href", "${path}/main.do")
+		}
 		
 	});
+	
+
 </script>
 </head>
 
