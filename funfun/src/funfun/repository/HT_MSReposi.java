@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import funfun.vo.MakerStudio;
+import funfun.vo.MemberInfo;
 import funfun.vo.Project;
 
 @Repository

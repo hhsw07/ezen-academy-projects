@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.HT_MSReposi;
 import funfun.vo.MakerStudio;
+import funfun.vo.MemberInfo;
 import funfun.vo.Project;
 
 @Service
@@ -15,9 +16,9 @@ public class HT_MSService {
 	@Autowired(required=false)
 	private HT_MSReposi dao;
 	
+	
 	public void regMaker(MakerStudio reg) {
 		dao.regMaker(reg);
-		System.out.println("얘는 찍혀???");
 	}
 	
 	public MakerStudio makerInfo(int maker_code) {
@@ -30,4 +31,5 @@ public class HT_MSService {
 		
 		return dao.myProjectList(mem_code);
 	}
+	
 }

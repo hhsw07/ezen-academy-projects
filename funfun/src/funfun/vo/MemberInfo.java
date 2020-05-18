@@ -8,8 +8,7 @@ public class MemberInfo {
 	String mem_pw;
 	String mem_favor;
 	
-	
-	
+
 	public int getMem_code() {
 		return mem_code;
 	}

@@ -27,7 +27,6 @@ public class HT_MSCtrl {
 
 	@Autowired(required=false)
 	private HT_MSService service;
-	private MainService serviceM;
 	
 	
 	@RequestMapping(params="method=makerReg")
@@ -42,20 +41,19 @@ public class HT_MSCtrl {
 	}
 	
 	@RequestMapping(params="method=myProject")
-	public String myProjectList(@ModelAttribute("project")int mem_code, MemberLogin m, HttpServletRequest request, Model d) {
+	public String myProjectList(HttpServletRequest request, Model d) {
 		
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		
 		if (memberinfo==null) {
-			
+			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member-error.jsp";
 		} else {
-			d.addAttribute("mInfo", serviceM.getMemberInfo(m.getMem_code()));
-			d.addAttribute("list", service.myProjectList(mem_code));
+			d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
+			System.out.println("이거 찍힘???");
+			return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 		}
 		
-		
-		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 	}
 	
 	@RequestMapping(params="method=proRegReady")

@@ -11,4 +11,6 @@ LIB 구글 검색 ==> pom.xml spring-webmvc
 
 1. Dynamic Web project
 
-2. 
+2. configure - convert to Maven Project
+
+3. WEB-INF/web.xml
