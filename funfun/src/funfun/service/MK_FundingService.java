@@ -6,15 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import funfun.repository.MK_FundingReposi;
+import funfun.repository.MK_ProjectOptReposi;
 import funfun.vo.Paging;
+import funfun.vo.ProOption;
 import funfun.vo.Project;
+import funfun.vo.ProjectSch;
 
 @Service
 public class MK_FundingService {
 	@Autowired(required=false)
 	private MK_FundingReposi dao;
+	private MK_ProjectOptReposi opt_dao;
 	// 프로젝트 목록
-	public ArrayList<Project> projectList(Project sch){
+	public ArrayList<Project> projectList(ProjectSch sch){
 		sch.setCount(dao.projcnt());
 		
 		if(sch.getPageSize()==0) {
@@ -42,5 +46,9 @@ public class MK_FundingService {
 	public Project detail(int pro_code) {
 		return dao.detail(pro_code);
 	}
-
+	// 프로젝트 옵션
+/*	public ArrayList<ProOption> proOptList(int pro_code){
+		return opt_dao.proOptList(pro_code);
+	} 
+*/
 }
