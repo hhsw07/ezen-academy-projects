@@ -9,7 +9,7 @@ const lazyLoad = {
             if (isImg) {
                 el.src = el.dataset.url;
                 el.classList.add('bounce');
-                console.log('이미지로드실행!');
+                console.log("image load");
             }
         }
 
@@ -29,7 +29,7 @@ const lazyLoad = {
             });
 
             observer.observe(el);
-            console.log("이미지관찰실행");
+            console.log("image observe");
         }
         createObserver();
     }

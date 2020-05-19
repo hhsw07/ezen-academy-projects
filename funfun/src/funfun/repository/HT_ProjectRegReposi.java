@@ -10,5 +10,6 @@ public interface HT_ProjectRegReposi {
 	
 	public MakerStudio makerInfo(int mem_code);
 	public void proCreate(Project cre);
+	public void proBasicInfo(Project cre);
 
 }

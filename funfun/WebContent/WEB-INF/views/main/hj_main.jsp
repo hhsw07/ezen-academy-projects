@@ -14,13 +14,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>FunFun 펀펀</title>
 	<link rel="stylesheet" href="${path }/css/shakeAndBounce.css" />
+	<link rel="stylesheet" href="${path }/css/shadowOnOff.css" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 </head>
 
 <body>
 <div class="main">
-<div class="container tim-container" style="max-width:1200px; padding-top:100px">
+<div class="container tim-container" id="vue-container" v-bind:class="{shadowOn:isShadowOn, shadowOff:isShadowOff}">
 <h1 class="text-center">남의 눈치 보지말고<br> FunFun하게 투자하세요! <small class="subtitle">Better Funding Better Business Better Life</small></h1>
 <p class="text-center">사람들은 자신이 지지하는 기업에 투자합니다.<br>
 한 사람 한 사람의 투자가 모여 기업은 성장합니다.<br>
@@ -49,7 +50,7 @@
     	</div>
     	
 	<br><br><br><br>
-	<h1>추천 프로젝트</h1>
+	<h1 style="padding-left:30px; ">당신을 위한 프로젝트</h1>
 	<div class="row" id="project-list">
     <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:img-src="item.imgSrc"
     v-bind:category="item.category" v-bind:percent="item.percent" ></project-component>
@@ -94,22 +95,27 @@
         "category":"패션.잡화",
         "percent":"90%"
         };
-  const options = {
-	root: null,
-  rootMargin: '0px 0px 30px 0px',
-  threshold: 0
-}
 
   var vm=new Vue({
-    el:'#project-list',
+    el:'#vue-container',
     data:{
       projectList:[
         
-      ]
+      ],
+      isShadowOn:true,
+      isShadowOff:false
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 50 >= document.documentElement.scrollHeight) { 
+    	if(document.documentElement.scrollTop >= 900) { 
+              this.isShadowOn=false;
+              this.isShadowOff=true;
+        }
+    	if(document.documentElement.scrollTop < 900) { 
+         	  this.isShadowOn=true;
+         	  this.isShadowOff=false;
+      	}
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) { 
           this.loadMore();
         }
       })
@@ -119,20 +125,18 @@
     },
     methods:{
       loadMore:function(){
-        setTimeout(() => {
-          for (var i = 0; i < 15; i++) {
-        	let ranNumber=Math.round(Math.random()*50);
-        	let sample= new Object();
-        	sample.title=sampleData.title;
-        	sample.category=sampleData.category;
-        	sample.percent=sampleData.percent;
-        	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
+    	  for (var i = 0; i < 15; i++) {
+          	let ranNumber=Math.round(Math.random()*50);
+          	let sample= new Object();
+          	sample.title=sampleData.title;
+          	sample.category=sampleData.category;
+          	sample.percent=sampleData.percent;
+          	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
             this.projectList.push(sample);
-          }
-        }, 500);
+    	  }
       }
     }
-  })
+  });
 </script>
 </body>
 

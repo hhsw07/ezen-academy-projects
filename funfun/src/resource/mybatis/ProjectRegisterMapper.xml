@@ -21,5 +21,19 @@
 	INSERT INTO PROJECT VALUES (project_seq.nextval, #{maker_code}, '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y')
 	
 	</insert>
+	
+	<update id="proBasicInfo" parameterType="project">
+	
+	UPDATE PROJECT
+	SET PRO_TITLE = #{pro_title},
+		PRO_TARGET = #{pro_target},
+		PRO_IMAGE = #{pro_image},
+		CATE_TITLE = #{cate_title},
+		PRO_START_DATE = #{pro_start_date},
+		PRO_FINISH_DATE = #{pro_finish_date},
+		PRO_KEYWORD = #{pro_keyword}
+	WHERE PRO_CODE = #{pro_code}
+	
+	</update>
 
 </mapper>

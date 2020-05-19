@@ -25,7 +25,7 @@
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 
-	<h2>${maker_name}님, 반갑습니다</h2>
+	<h2>${makerInfo.maker_name}님, 반갑습니다</h2>
 	
 	<br><br><br><br>
 	

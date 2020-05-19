@@ -15,6 +15,10 @@
 .project-opt{text-align:right;}
 .project-opt-info{margin:10px 0;}
 .opt-cont{text-align:left; padding:20px 10px 20px 30px;}
+.report-modal{width:100%;}
+.report-modal tr th, td {padding: 10px 5px;}
+.report-cont{resize: none;}
+
 </style>
 <script>
 	$(document).ready(function(){
@@ -23,11 +27,11 @@
 </script>
 </head>
 <body>
-	<div class="main">
+	<div class="main" style="overflow:hidden;">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 	    	<div class="project-title" >
 	    		<div class="label label-warning">${project.cate_title}</div>
-	    		<h3 style="font-weight:800;">"${project.pro_title}</h3>
+	    		<h3 style="font-weight:800;">${project.pro_title}</h3>
 	    	</div>
 	    	<div class="row project-basic col-md-8 col-sm-6">
 	    		<div class="projectDetail_img">
@@ -74,9 +78,9 @@
 				<div class="project-report">
 					<p style="font-size:13px;">신고하기란?</p>
 					<p>해당 프로젝트에 허위내용 및 지적재산권을<br>침해하는 내용이 있다면 제보해주세요.</p>
-					<button class="btn btn-block btn-lg btn-default" >프로젝트 신고하기</button>
-					
-					<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+					<button class="btn btn-block btn-lg btn-default" data-toggle="modal" data-target="#myModal">프로젝트 신고하기</button>
+					<!-- 신고하기 Modal -->
+					<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -84,7 +88,25 @@
 									<h4 class="modal-title" id="myModalLabel">프로젝트 신고하기</h4>
 								</div>
 								<div class="modal-body">
-									...
+									<table class="report-modal">
+										<colgroup>
+											<col width="20%">
+											<col width="80%">
+										</colgroup>
+										<tr>
+											<th>프로젝트명</th><th>${project.pro_title}</th>
+										</tr>
+										<tr>
+											<th>신고내용</th>
+											<td>
+												<textarea placeholder="신고할 내용을 작성해주세요" class="form-control report-cont" rows="5" ></textarea>
+											</td>
+										</tr>
+										<tr>
+											<th>파일첨부</th>
+											<td><input type="file" /></td>
+										</tr>
+									</table>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
@@ -117,41 +139,21 @@
 			
 			<!-- 프로젝트 옵션 -->
 			<div class="project-opt col-md-4 col-sm-6">
+			<c:forEach var="opt" items="${opt}">
 				<div class="project-opt-info">
 					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>opt_title</h6>
-						<p>opt_detail</p><br>
-						<p class="text-muted">opt_condition</p><br>
+						<h6>${opt.opt_title}</h6>
+						<p>${opt.opt_detail}</p><br>
+						<p class="text-muted">${opt.opt_condition}</p><br>
 						<p class="text-muted">배송비</p>
-						<p>opt_delivery</p>
+						<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 						<p class="text-muted">리워드 발송 시작일</p>
 						<p>opt_delivery_date</p>
 					</button>
 				</div>
-				<div class="project-opt-info">
-					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>opt_title</h6>
-						<p>opt_detail</p><br>
-						<p class="text-muted">opt_condition</p><br>
-						<p class="text-muted">배송비</p>
-						<p>opt_delivery</p>
-						<p class="text-muted">리워드 발송 시작일</p>
-						<p>opt_delivery_date</p>
-					</button>
-				</div>
-				<div class="project-opt-info">
-					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>opt_title</h6>
-						<p>opt_detail</p><br>
-						<p class="text-muted">opt_condition</p><br>
-						<p class="text-muted">배송비</p>
-						<p>opt_delivery</p>
-						<p class="text-muted">리워드 발송 시작일</p>
-						<p>opt_delivery_date</p>
-					</button>
-				</div>
-			
+			</c:forEach>
 			</div>
+			
 	    	<!-- 문의 -->
 	    	<div>
 	    	
