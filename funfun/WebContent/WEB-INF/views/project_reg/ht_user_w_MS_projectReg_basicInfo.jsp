@@ -36,6 +36,11 @@
 		})		
 		
 		
+		$("#subBtn").click(function(){
+			$("form").submit();
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfoReg")
+		})
+		
 	})
 	
 	$( function() {
@@ -62,7 +67,7 @@
  	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
  
  
-
+	<form>
 
   	<div class="col-sm-10" style="padding-left:30px;">
   	
@@ -79,14 +84,14 @@
 	
 	<span class="reg_content_title">프로젝트 제목 *</span><br><br>
 
-    <input type="text" name="maker_name" value="" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" />
+    <input type="text" name="pro_title" value="" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" />
 	
 	
 	<br><br>
 
 	<span class="reg_content_title">목표 금액 *</span><br><br>
 
-    <input type="text" name="maker_name" value="" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" />
+    <input type="text" name="pro_target" value="" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" />
 
 	<br><br>	
 	
@@ -98,7 +103,7 @@
 	
 	<span class="reg_content_title">카테고리 *</span><br><br>
 
-	<select class="form-control" id="sel1" style="width:60%;" name="maker_type">
+	<select class="form-control" id="sel1" style="width:60%;" name="cate_title">
 		<option>교육·키즈</option>
 		<option>패션·잡화·뷰티</option>
 		<option>홈리빙·디자인소품</option>
@@ -112,35 +117,35 @@
 	
 	<span class="reg_content_title">프로젝트 시작 예정일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="date" id="startDate" class="form-control" style="width:60%;" >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" id="startDate" class="form-control" style="width:60%;" >
 	
 	<br><br>
 	
 	<span class="reg_content_title">프로젝트 종료일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="date" id="finishDate" class="form-control" style="width:60%;" >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" id="finishDate" class="form-control" style="width:60%;" >
 
     	
 	<br><br>
 	
 	<span class="reg_content_title">검색용 태그 *</span><br><br>
 
-    <input type="text" name="maker_name" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" />
+    <input type="text" name="pro_keyword" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" />
 	
 
 	<br><br><br><br>
 	
-  	<button class="btn btn-warning btn_custom" style="width:40%">저장하기</button>
+  	<button class="btn btn-warning btn_custom" style="width:40%" id="subBtn">저장하기</button>
 	
 	</div>
 
-
+	
 
 
   	
   	</div>
 
-
+	</form>
 
 
 	</div>
