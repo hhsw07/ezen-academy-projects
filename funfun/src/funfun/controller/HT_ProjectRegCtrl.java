@@ -20,7 +20,7 @@ public class HT_ProjectRegCtrl {
 	@Autowired(required=false)
 	private HT_ProjectRegService service;
 	
-	//http://localhost:6080/funfun/ProjectReg.do?method=ready
+	// http://localhost:6080/funfun/ProjectReg.do?method=ready
 	
 	@RequestMapping(params="method=ready")
 	public String proReady(HttpServletRequest request, Model d) {
@@ -29,6 +29,11 @@ public class HT_ProjectRegCtrl {
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
+
+	
+	
+	
+	
 	
 	@RequestMapping(params="method=basicReq")
 	public String proRegBasicReq(HttpServletRequest request, Model d) {
@@ -39,15 +44,34 @@ public class HT_ProjectRegCtrl {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(params="method=proCreate")
 	public String proCreate(HttpServletRequest request, Model d, Project cre) {
 		HttpSession session = request.getSession();
 		MakerStudio makerinfo = (MakerStudio)session.getAttribute("makerInfo");
 		d.addAttribute("makerInfo", service.makerInfo(makerinfo.getMaker_code()));
 		System.out.println(makerinfo.getMaker_code());
+		cre.setMaker_code(makerinfo.getMaker_code());
 		service.proCreate(cre);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(params="method=basicInfo")
 	public String proRegBasicInfo(HttpServletRequest request, Model d) {
@@ -56,6 +80,7 @@ public class HT_ProjectRegCtrl {
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicInfo.jsp";
 	}
+
 	@RequestMapping(params="method=story")
 	public String proRegStory(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
@@ -70,6 +95,7 @@ public class HT_ProjectRegCtrl {
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_reward.jsp";
 	}
+
 	@RequestMapping(params="method=risk")
 	public String proRegRisk(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
