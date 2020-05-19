@@ -22,7 +22,7 @@
 	
 	</insert>
 	
-	<insert id="proBasicInfo" parameterType="project">
+	<update id="proBasicInfo" parameterType="project">
 	
 	UPDATE PROJECT
 	SET PRO_TITLE = #{PRO_TITLE},
@@ -34,6 +34,6 @@
 		PRO_KEYWORD = #{PRO_KEYWORD}
 	WHERE PRO_CODE = #{PRO_CODE}
 	
-	</insert>
+	</update>
 
 </mapper>
