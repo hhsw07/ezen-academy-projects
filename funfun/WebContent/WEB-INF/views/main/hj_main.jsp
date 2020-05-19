@@ -115,7 +115,7 @@
          	  this.isShadowOn=true;
          	  this.isShadowOff=false;
       	}
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 150 >= document.documentElement.scrollHeight) { 
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) { 
           this.loadMore();
         }
       })
