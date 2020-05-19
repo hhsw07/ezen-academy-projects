@@ -160,11 +160,11 @@
 		<!-- 페이징 -->
 			<div class="text-center">
 		        <ul class="pagination ct-orange"> 
-					<li><a href="javascript:goPage(${project.startBlock-1})">&laquo;</a></li>
-					<c:forEach var="cnt" begin="${project.startBlock}" end="${project.endBlock}">
-						<li class="${project.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+					<li><a href="javascript:goPage(${projSch.startBlock-1})">&laquo;</a></li>
+					<c:forEach var="cnt" begin="${projSch.startBlock}" end="${projSch.endBlock}">
+						<li class="${projSch.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 					</c:forEach>
-					<li><a href="javascript:goPage(${project.endBlock==project.pageCount?project.pageCount:project.endBlock+1})">&raquo;</a></li>
+					<li><a href="javascript:goPage(${projSch.endBlock==projSch.pageCount?projSch.pageCount:projSch.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
 		

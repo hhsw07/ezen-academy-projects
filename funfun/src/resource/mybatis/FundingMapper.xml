@@ -34,9 +34,9 @@
 			</if>) c
 			WHERE 1=1
 		<if test="projectsch!=null and projectsch!=''">
-			and (pro_title like '%'||#{pro_title}||'%'
-			or pro_keyword like '%'||#{pro_keyword}||'%'
-			or maker_name like '%'||#{maker_name}||'%')
+			and (pro_title like '%'||#{projectsch}||'%'
+			or pro_keyword like '%'||#{projectsch}||'%'
+			or maker_name like '%'||#{projectsch}||'%')
 		</if>)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
