@@ -60,7 +60,7 @@
 <body>
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
-		<form method="post" id="category">
+		<form method="post" id="category" action="${path}/funding.do?method=list">
 			<input type="hidden" name="category"/>
 		<!-- 카테고리 -->
 			<div class="row project-category" >

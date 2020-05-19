@@ -47,10 +47,10 @@
 		AND PRO_CODE = #{pro_code}
 	</select>
 	<!-- 프로젝트 옵션 -->
-<!--	<resultMap type="ProOption" id="proOptResult"/>
+	<resultMap type="projectOpt" id="proOptResult"/>
 	<select id="proOptList" resultMap="proOptResult" parameterType="int">
 		SELECT * FROM PRO_OPTION
 		WHERE PRO_CODE = #{pro_code}
-	</select> -->
+	</select>
 	
 </mapper>

@@ -78,11 +78,12 @@
                 </li>
                 
               </ul>
-              <form>
+              <form method="post" action="${path }/funding.do">
                 <ul class="nav navbar-nav">
                   <li class="active">
                     <div class="form-group">
-                      <input type="text" value="" placeholder="프로젝트를 검색해보세요!" class="form-control" style="background-color: transparent; color:white;
+                      <input type="hidden" name="method" value="list" />
+                      <input type="text" name="projectsch" placeholder="프로젝트를 검색해보세요!" class="form-control" style="background-color: transparent; color:white;
                       margin:15px 3px; border:none" />
                     </div>
                   </li>

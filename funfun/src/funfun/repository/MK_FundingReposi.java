@@ -17,6 +17,6 @@ public interface MK_FundingReposi {
 	// 프로젝트 상세보기
 	public Project detail(int pro_code);
 	// 프로젝트 옵션
-//	public ArrayList<ProOption> proOptList(int pro_code);
+	public ArrayList<ProOption> proOptList(int pro_code);
 	
 }

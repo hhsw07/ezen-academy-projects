@@ -39,13 +39,12 @@ public class AndroidLoginCtrl {
 	}
 	
 	//가입여부 확인
-	@ResponseBody
-	@RequestMapping(value="/isSignup.do", produces="text/html; charset=UTF-8")
-	public ResponseEntity isSignup(MemberLogin m, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value="/isSignup.do")
+	public ResponseEntity isSignup(MemberLogin m) {
 		HttpHeaders responseHeaders = new HttpHeaders();
 	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		boolean serviceResult=service.signupIdCheck(m.getMem_email());
-		String result="{\"result\":"+"홍길동"+"}";
+		String result="{\"result\":"+serviceResult+"}";
 		
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
