@@ -23,4 +23,9 @@ public class HT_ProjectRegService {
 		dao.proCreate(cre);
 	}
 	
+	public void proBasicInfo(Project cre) {
+		System.out.println("기본 정보 업뎃 찍힘???");
+		dao.proBasicInfo(cre);
+	}
+	
 }
