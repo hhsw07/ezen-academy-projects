@@ -111,9 +111,9 @@
 					<li style="font-weight:700;"><a href="#">종료된 프로젝트</a></li>
 					<li style="right:0px; position:absolute;">	
 						<div>
-						<form class="ProjectListHead_search">
+						<form class="ProjectListHead_search" method="post" action="${path}/funding.do?method=list">
 							<label for="search-keyword">
-								<input class="form-control" id="search-keyword" type="search" placeholder="검색어를 입력하세요" value="">
+								<input class="form-control" id="search-keyword" type="text" placeholder="검색어를 입력하세요" name="projectsch" value="${param.projectsch}">
 								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
 							</label>
 						</form>
@@ -160,11 +160,11 @@
 		<!-- 페이징 -->
 			<div class="text-center">
 		        <ul class="pagination ct-orange"> 
-					<li><a href="javascript:goPage(${project.startBlock-1})">&laquo;</a></li>
-					<c:forEach var="cnt" begin="${project.startBlock}" end="${project.endBlock}">
-						<li class="${project.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+					<li><a href="javascript:goPage(${projSch.startBlock-1})">&laquo;</a></li>
+					<c:forEach var="cnt" begin="${projSch.startBlock}" end="${projSch.endBlock}">
+						<li class="${projSch.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 					</c:forEach>
-					<li><a href="javascript:goPage(${project.endBlock==project.pageCount?project.pageCount:project.endBlock+1})">&raquo;</a></li>
+					<li><a href="javascript:goPage(${projSch.endBlock==projSch.pageCount?projSch.pageCount:projSch.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
 		
