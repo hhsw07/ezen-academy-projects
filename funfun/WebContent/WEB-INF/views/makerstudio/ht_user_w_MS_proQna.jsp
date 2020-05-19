@@ -37,8 +37,7 @@
 		
 		
 	})
-	
-	} );	
+		
 </script>
 </head>
 <body>
@@ -53,11 +52,11 @@
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
   	
-  	<h3 style="font-weight:bolder">기본 정보</h3>
+  	<h3 style="font-weight:bolder">프로젝트 문의 관리</h3>
   	
   	<br><br>
   	
-  	<span class="sub_gray_font">프로젝트를 대표할 주요 기본 정보를 입력하세요</span>
+  	<span class="sub_gray_font">프로젝트에 등록된 문의사항에 답변을 등록해 주세요</span>
 
   	<br><br><br><br>
 
