@@ -13,8 +13,37 @@
 <link rel="stylesheet" href="css/kb_w_user_StoreDetail.css">
 <script>
 		$(document).ready(function(){
+			var price = 0;
+			var detai = "";
+			$("#option_select").change(function(){
+				price = $("#option_select option:selected").val();
+				detail = $("#option_select").val();
+				$("#cnt_input").val("1");
+				$("#price_Span").html(numberWithCommas(price));
+			});
+			
+			$("#cnt_input").change(function(){
+				price = $("#option_select option:selected").val();
+				var tot = 0;
+				var cnt = $("#cnt_input").val();
+				if(cnt < 0){
+					$("#cnt_input").val("0");
+				}
+				tot = price * cnt;
+				
+				$("#price_Span").html(numberWithCommas(tot));
+
+			})
+			
+
+			
+			})
 		
-		})
+		
+		
+		function numberWithCommas(x) {
+	        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	    }
 </script>
 </head>
 <body>
@@ -43,18 +72,20 @@
                 <div id="maker_name_Div"> 메이커 명 : ${store.maker_name}</div>
                 <div id="option_Div">
                     <span id="option_title">옵션 : </span>
-                    <select class="form-data" id="option_select">
+                    <select class="form-data" id="option_select" name="sto_opt_code">
+                    	<option></option>
                     	<c:forEach var="opt" items="${option}">
-                    		  <option value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} (${opt.sto_opt_price})</option>
+                    		  <option value="${opt.sto_opt_price}"> ${opt.sto_opt_detail} </option>
                     	</c:forEach>
-                    </select>
+                    </select>    
                 </div>
                 <div id="option_cnt_div">
                     <span id="option_cnt_title">수량 : </span>
-                    <input type="number" class="form-data" id="cnt_input">
+                    <input type="number" class="form-data" id="cnt_input" value="1">
                 </div>
                 <div id="option_price_Div">
-                    25,000원
+                
+                    <span id="price_Span"></span>원
                 </div>
                 <div id="pay_Btn_Div">
                     <button id="Pay_Btn">주문하기</button>

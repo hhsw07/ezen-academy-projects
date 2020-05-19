@@ -26,4 +26,8 @@ public class KB_StoreService {
 	public ArrayList<storeOption> stoOptlist(int sto_code){
 		return opt_dao.stoOptList(sto_code);
 	}
+	
+	public storeOption stoOpt(int sto_opt_code) {
+		return opt_dao.stoOpt(sto_opt_code);
+	}
 }
