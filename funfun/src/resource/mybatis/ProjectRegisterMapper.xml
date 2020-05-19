@@ -22,18 +22,18 @@
 	
 	</insert>
 	
-	<insuert id="proBasicInfo" parameterType="project">
+	<update id="proBasicInfo" parameterType="project">
 	
 	UPDATE PROJECT
-	SET PRO_TITLE = #{PRO_TITLE},
-		PRO_TARGET = #{PRO_TARGET},
-		PRO_IMAGE = #{PRO_IMAGE},
-		CATE_TITLE = #{CATE_TITLE},
-		PRO_START_DATE = #{PRO_START_DATE},
-		PRO_FINISH_DATE = #{PRO_FINISH_DATE},
-		PRO_KEYWORD = #{PRO_KEYWORD}
-	WHERE PRO_CODE = #{PRO_CODE}
+	SET PRO_TITLE = #{pro_title},
+		PRO_TARGET = #{pro_target},
+		PRO_IMAGE = #{pro_image},
+		CATE_TITLE = #{cate_title},
+		PRO_START_DATE = #{pro_start_date},
+		PRO_FINISH_DATE = #{pro_finish_date},
+		PRO_KEYWORD = #{pro_keyword}
+	WHERE PRO_CODE = #{pro_code}
 	
-	</insuert>
+	</update>
 
 </mapper>
