@@ -42,7 +42,6 @@ public class HT_ProjectRegCtrl {
 		cre.setMaker_code(makerinfo.getMaker_code());
 		service.proCreate(cre);
 		session.setAttribute("proInfo", cre);
-
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
