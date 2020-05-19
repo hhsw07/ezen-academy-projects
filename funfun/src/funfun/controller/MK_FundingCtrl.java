@@ -19,11 +19,43 @@ public class MK_FundingCtrl {
 	
 	// http://localhost:5080/funfun/funding.do?method=list
 	@RequestMapping(params="method=list")
-	public String projectList(@ModelAttribute("project") Project sch, Model d) {
+	public String projectList(@ModelAttribute("project") Project sch,@RequestParam("category") String cate, Model d) {
+		
+		
+		switch(cate) {
+		case "edu" :
+			sch.setCate_title("교육·키즈");
+			break;
+		case "beauty" :
+			sch.setCate_title("패션,잡화");
+			break;
+		case "homeLiving":
+			sch.setCate_title("홈리빙, 디자인소품");
+			break;
+		case "culture" :
+			sch.setCate_title("공연, 컬쳐");
+			break; 
+		case "sports":
+			sch.setCate_title("스포츠, 모빌리티");
+			break;
+		case "book":
+			sch.setCate_title("출판");
+			break;
+		case "dog":
+			sch.setCate_title("반려동물");
+			break;
+		case "electro":
+			sch.setCate_title("테크, 가전");
+			break;
+		default:
+			d.addAttribute("cate_title", "전체보기");
+			break;
+		}
+		
 		d.addAttribute("plist", service.projectList(sch));
-		String category = sch.getCate_title();
-		if(category == null) category =  "";
-		switch(category) {
+		
+		if(cate == null) cate =  "";
+		switch(cate) {
 			case "edu" :
 				d.addAttribute("cate_title","교육·키즈");
 				break;
@@ -52,7 +84,7 @@ public class MK_FundingCtrl {
 				d.addAttribute("cate_title", "전체보기");
 				break;
 		}
-		System.out.println(category);
+		System.out.println(cate);
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	

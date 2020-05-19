@@ -16,6 +16,7 @@
 		<typeAlias alias="trans" type="funfun.vo.TranLookUp"/>
 		<typeAlias alias="mypageinfo" type="funfun.vo.MyPageInfo"/>
 		<typeAlias alias="storeOption" type="funfun.vo.storeOption"/>
+		<typeAlias alias="projectOpt" type="funfun.vo.ProOption"/>
 
 	</typeAliases>
 	<mappers>
