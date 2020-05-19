@@ -35,10 +35,8 @@ public class HT_MSCtrl {
 	}
 	
 	@RequestMapping(params="method=makerReg_done")
-	public String regDone(HttpServletRequest request,MakerStudio reg) {
-		HttpSession session = request.getSession();
+	public String regDone(MakerStudio reg) {
 		service.regMaker(reg);
-		session.setAttribute("makerInfo", reg);
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
 	}
 	
@@ -56,6 +54,15 @@ public class HT_MSCtrl {
 			return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 		}
 		
+	}
+	
+	@RequestMapping(params="method=proRegReady")
+	public String proRegReady(HttpServletRequest request, Model d) {
+		System.out.println("요거 찍힘???");
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
 	@RequestMapping(params="method=makerInfo")
