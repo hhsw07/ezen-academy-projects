@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.MK_FundingReposi;
 import funfun.vo.Paging;
+import funfun.vo.ProOption;
 import funfun.vo.Project;
 
 @Service
@@ -41,6 +42,10 @@ public class MK_FundingService {
 	// 프로젝트 상세보기
 	public Project detail(int pro_code) {
 		return dao.detail(pro_code);
+	}
+	// 프로젝트 옵션
+	public ArrayList<ProOption> proOptList(int pro_code){
+		return dao.proOptList(pro_code);
 	}
 
 }

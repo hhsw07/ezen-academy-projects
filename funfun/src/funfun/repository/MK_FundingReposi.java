@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import funfun.vo.Paging;
+import funfun.vo.ProOption;
 import funfun.vo.Project;
 
 @Repository
@@ -14,5 +15,7 @@ public interface MK_FundingReposi {
 	public ArrayList<Project> projectList(Project sch);
 	// 프로젝트 상세보기
 	public Project detail(int pro_code);
+	// 프로젝트 옵션
+	public ArrayList<ProOption> proOptList(int pro_code);
 	
 }
