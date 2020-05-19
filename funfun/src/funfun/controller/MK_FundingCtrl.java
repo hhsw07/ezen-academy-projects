@@ -19,44 +19,72 @@ public class MK_FundingCtrl {
 	
 	// http://localhost:5080/funfun/funding.do?method=list
 	@RequestMapping(params="method=list")
-	public String projectList(@ModelAttribute("project") Project sch, Model d) {
-		String cate = sch.getCate_title();
+	public String projectList(@ModelAttribute("project") Project sch,@RequestParam("category") String cate, Model d) {
 		
-		if(cate == null) cate =  "";
 		
 		switch(cate) {
-		case "교육" :
-			d.addAttribute("cateTitle","교육·키즈");
+		case "edu" :
+			sch.setCate_title("교육·키즈");
 			break;
-		case "패션" :
-			d.addAttribute("cateTitle","패션·잡화·뷰티");
+		case "beauty" :
+			sch.setCate_title("패션,잡화");
 			break;
-		case  "홈리빙":
-			d.addAttribute("cateTitle","홈리빙·디자인소품");
+		case "homeLiving":
+			sch.setCate_title("홈리빙, 디자인소품");
 			break;
-		case "공연" :
-			d.addAttribute("cateTitle","공연·컬쳐");
+		case "culture" :
+			sch.setCate_title("공연, 컬쳐");
+			break; 
+		case "sports":
+			sch.setCate_title("스포츠, 모빌리티");
 			break;
-		case "스포츠":
-			d.addAttribute("cateTitle","스포츠·모빌리티");
+		case "book":
+			sch.setCate_title("출판");
 			break;
-		case "출판":
-			d.addAttribute("cateTitle","출판");
+		case "dog":
+			sch.setCate_title("반려동물");
 			break;
-		case "반려동물":
-			d.addAttribute("cateTitle","반려동물");
-			break;
-		case "테크":
-			d.addAttribute("cateTitle","테크·가전");
+		case "electro":
+			sch.setCate_title("테크, 가전");
 			break;
 		default:
-			d.addAttribute("cateTitle", "전체보기");
+			d.addAttribute("cate_title", "전체보기");
 			break;
 		}
 		
 		d.addAttribute("plist", service.projectList(sch));
 		
-		
+		if(cate == null) cate =  "";
+		switch(cate) {
+			case "edu" :
+				d.addAttribute("cate_title","교육·키즈");
+				break;
+			case "beauty" :
+				d.addAttribute("cate_title","패션·잡화·뷰티");
+				break;
+			case "homeLiving":
+				d.addAttribute("cate_title","홈리빙·디자인소품");
+				break;
+			case "culture" :
+				d.addAttribute("cate_title","공연·컬쳐");
+				break;
+			case "sports":
+				d.addAttribute("cate_title","스포츠·모빌리티");
+				break;
+			case "book":
+				d.addAttribute("cate_title","출판");
+				break;
+			case "dog":
+				d.addAttribute("cate_title","반려동물");
+				break;
+			case "electro":
+				d.addAttribute("cate_title","테크·가전");
+				break;
+			default:
+				d.addAttribute("cate_title", "전체보기");
+				break;
+		}
+		System.out.println(cate);
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	
