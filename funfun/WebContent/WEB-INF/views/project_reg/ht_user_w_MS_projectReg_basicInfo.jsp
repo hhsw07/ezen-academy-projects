@@ -37,8 +37,7 @@
 		
 		
 		$("#subBtn").click(function(){
-			$("form").submit();
-			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfoReg")
+			$("#basicInfoForm").submit();
 		})
 		
 	})
@@ -67,7 +66,11 @@
  	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
  
  
-	<form>
+	<form id="basicInfoForm" action="${path}/ProjectReg.do">
+
+	<input type="hidden" name="method" value="basicInfoReg"/>
+	<input type="hidden" name="pro_image" value="xxx.png"/>
+
 
   	<div class="col-sm-10" style="padding-left:30px;">
   	

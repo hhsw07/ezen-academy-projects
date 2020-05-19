@@ -25,25 +25,24 @@ public class HT_ProjectRegCtrl {
 	
 	@RequestMapping(params="method=ready")
 	public String proReady(HttpServletRequest request, Model d) {
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
-*/
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
 	}
 	
 	
 	@RequestMapping(params="method=proCreate")
 	public String proCreate(HttpServletRequest request, Model d, Project cre) {
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		MakerStudio makerinfo = (MakerStudio)session.getAttribute("makerInfo");
 		d.addAttribute("makerInfo", service.makerInfo(makerinfo.getMaker_code()));
 		System.out.println(makerinfo.getMaker_code());
 		cre.setMaker_code(makerinfo.getMaker_code());
 		service.proCreate(cre);
 		session.setAttribute("proInfo", cre);
-*/
+
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
@@ -51,30 +50,37 @@ public class HT_ProjectRegCtrl {
 
 	@RequestMapping(params="method=basicReq")
 	public String proRegBasicReq(HttpServletRequest request, Model d) {
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		Project projectinfo = (Project)session.getAttribute("proInfo");
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
-*/		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
 	}		
 	
 	
 	@RequestMapping(params="method=basicInfo")
 	public String proRegBasicInfo(HttpServletRequest request, Model d, Project cre) {
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		Project projectinfo = (Project)session.getAttribute("proInfo");
+		System.out.println("basicInfo : " + projectinfo.getPro_code());
+		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicInfo.jsp";
 	}
 	
 	@RequestMapping(params="method=basicInfoReg")
 	public String proRegBasicInfoReg(HttpServletRequest request, Model d, Project cre) {
-/*		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		Project projectinfo = (Project)session.getAttribute("proInfo");
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		System.out.println("basicInfoReg : " + projectinfo.getPro_code());
 		cre.setPro_code(projectinfo.getPro_code());
 		service.proBasicInfo(cre);
 		session.setAttribute("proInfo", cre);
-*/		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp.jsp";
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
 
