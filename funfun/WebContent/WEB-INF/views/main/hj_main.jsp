@@ -115,7 +115,7 @@
          	  this.isShadowOn=true;
          	  this.isShadowOff=false;
       	}
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 150 >= document.documentElement.scrollHeight) { 
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) { 
           this.loadMore();
         }
       })
@@ -125,20 +125,18 @@
     },
     methods:{
       loadMore:function(){
-        setTimeout(() => {
-          for (var i = 0; i < 15; i++) {
-        	let ranNumber=Math.round(Math.random()*50);
-        	let sample= new Object();
-        	sample.title=sampleData.title;
-        	sample.category=sampleData.category;
-        	sample.percent=sampleData.percent;
-        	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
+    	  for (var i = 0; i < 15; i++) {
+          	let ranNumber=Math.round(Math.random()*50);
+          	let sample= new Object();
+          	sample.title=sampleData.title;
+          	sample.category=sampleData.category;
+          	sample.percent=sampleData.percent;
+          	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
             this.projectList.push(sample);
-          }
-        }, 500);
+    	  }
       }
     }
-  })
+  });
 </script>
 </body>
 

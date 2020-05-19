@@ -1,6 +1,12 @@
 package funfun.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,13 +38,14 @@ public class AndroidLoginCtrl {
 		return str;
 	}
 	
-//	//가입여부 확인
-//	@RequestMapping("/isSignup.do")
-//	@ResponseBody
-//	public String isSignup(MemberLogin m) {
-//		boolean serviceResult=service.signupIdCheck(m.getMem_email());
-//		
-//		String result="{\"result\":"+serviceResult+"}";
-//		return result;
-//	}
+	//가입여부 확인
+	@RequestMapping(value="/isSignup.do")
+	public ResponseEntity isSignup(MemberLogin m) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		boolean serviceResult=service.signupIdCheck(m.getMem_email());
+		String result="{\"result\":"+serviceResult+"}";
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
 }

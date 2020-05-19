@@ -10,4 +10,8 @@
 	<select id="stoOptList" resultMap="stoOptlist" parameterType="int">
 		SELECT sto_opt_code, sto_opt_price, STO_OPT_DETAIL , STO_OPT_CURR FROM store_option WHERE sto_code = #{sto_code}
 	</select>
+	
+	<select id="stoOpt" resultType="storeOPtion" parameterType="int">
+		SELECT STO_OPT_CODE, STO_OPT_PRICE FROM store_option WHERE STO_OPT_CODE = #{sto_opt_code}
+	</select>
 </mapper>
