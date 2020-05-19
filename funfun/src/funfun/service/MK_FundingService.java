@@ -45,8 +45,8 @@ public class MK_FundingService {
 		return dao.detail(pro_code);
 	}
 	// 프로젝트 옵션
-/*	public ArrayList<ProOption> proOptList(int pro_code){
+	public ArrayList<ProOption> proOptList(int pro_code){
 		return dao.proOptList(pro_code);
 	} 
-*/
+
 }

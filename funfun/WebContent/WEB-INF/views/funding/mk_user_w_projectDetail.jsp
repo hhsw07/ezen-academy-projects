@@ -146,25 +146,12 @@
 						<p>${opt.opt_detail}</p><br>
 						<p class="text-muted">${opt.opt_condition}</p><br>
 						<p class="text-muted">배송비</p>
-						<p>${opt.opt_delivery}</p>
-						<p class="text-muted">리워드 발송 시작일</p>
-						<p>${opt.opt_delivery_date}</p>
-					</button>
-				</div>
-			</c:forEach>
-			
-				<div class="project-opt-info">	
-					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>opt_title</h6>
-						<p>opt_detail</p><br>
-						<p class="text-muted">opt_condition</p><br>
-						<p class="text-muted">배송비</p>
-						<p>opt_delivery</p>
+						<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 						<p class="text-muted">리워드 발송 시작일</p>
 						<p>opt_delivery_date</p>
 					</button>
 				</div>
-				
+			</c:forEach>
 			</div>
 			
 	    	<!-- 문의 -->
