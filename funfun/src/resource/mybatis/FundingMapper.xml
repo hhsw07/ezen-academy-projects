@@ -9,12 +9,10 @@
 	<!-- int totCnt() 총 데이터 건수 -->
 	<select id="projcnt" resultType="int">
 		SELECT COUNT(*)
-		FROM (SELECT a.*, b.maker_name
-			FROM project a, MAKER b
-			WHERE a.MAKER_CODE = b.MAKER_CODE)
+		FROM project
 		WHERE 1=1
 	</select>
-	<!-- 프로젝트 리스트 -->
+	
 	<select id="projectList" resultMap="projectResult" parameterType="project">
 		SELECT *
 		FROM (SELECT rownum cnt, c.*
@@ -25,16 +23,10 @@
 			</if>) c)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
-	<!-- 프로젝트 상세보기 -->
+	
 	<select id="detail" resultType="project" parameterType="int">
 		SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name FROM project a, MAKER b
 		WHERE a.MAKER_CODE = b.MAKER_CODE
 		AND PRO_CODE = #{pro_code}
-	</select>
-	<!-- 프로젝트 옵션 -->
-	<resultMap type="ProOption" id="proOptResult"/>
-	<select id="proOptList" resultMap="proOptResult" parameterType="projectOpt">
-		SELECT * FROM PRO_OPTION
-		WHERE PRO_CODE = #{pro_code}
 	</select>
 </mapper>

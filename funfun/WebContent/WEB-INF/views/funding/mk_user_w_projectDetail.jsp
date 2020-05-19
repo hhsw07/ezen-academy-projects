@@ -79,7 +79,7 @@
 					<p style="font-size:13px;">신고하기란?</p>
 					<p>해당 프로젝트에 허위내용 및 지적재산권을<br>침해하는 내용이 있다면 제보해주세요.</p>
 					<button class="btn btn-block btn-lg btn-default" data-toggle="modal" data-target="#myModal">프로젝트 신고하기</button>
-					<!-- 신고하기 Modal -->
+					
 					<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -139,21 +139,41 @@
 			
 			<!-- 프로젝트 옵션 -->
 			<div class="project-opt col-md-4 col-sm-6">
-			<c:forEach var="opt" items="${opt}">
 				<div class="project-opt-info">
 					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>${opt.opt_title}</h6>
-						<p>${opt.opt_detail}</p><br>
-						<p class="text-muted">${opt.opt_condition}</p><br>
+						<h6>opt_title</h6>
+						<p>opt_detail</p><br>
+						<p class="text-muted">opt_condition</p><br>
 						<p class="text-muted">배송비</p>
-						<p>${opt.opt_delivery}</p>
+						<p>opt_delivery</p>
 						<p class="text-muted">리워드 발송 시작일</p>
-						<p>${opt.opt_delivery_date}</p>
+						<p>opt_delivery_date</p>
 					</button>
 				</div>
-			</c:forEach>	
-			</div>
+				<div class="project-opt-info">
+					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
+						<h6>opt_title</h6>
+						<p>opt_detail</p><br>
+						<p class="text-muted">opt_condition</p><br>
+						<p class="text-muted">배송비</p>
+						<p>opt_delivery</p>
+						<p class="text-muted">리워드 발송 시작일</p>
+						<p>opt_delivery_date</p>
+					</button>
+				</div>
+				<div class="project-opt-info">
+					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
+						<h6>opt_title</h6>
+						<p>opt_detail</p><br>
+						<p class="text-muted">opt_condition</p><br>
+						<p class="text-muted">배송비</p>
+						<p>opt_delivery</p>
+						<p class="text-muted">리워드 발송 시작일</p>
+						<p>opt_delivery_date</p>
+					</button>
+				</div>
 			
+			</div>
 	    	<!-- 문의 -->
 	    	<div>
 	    	
