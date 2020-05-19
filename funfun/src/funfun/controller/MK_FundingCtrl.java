@@ -21,10 +21,39 @@ public class MK_FundingCtrl {
 	// http://localhost:5080/funfun/funding.do?method=list
 	@RequestMapping(params="method=list")
 	public String projectList(@ModelAttribute("projSch") ProjectSch sch, Model d) {
-		
 		System.out.println(sch.getProjectsch());
 		d.addAttribute("plist", service.projectList(sch));
-		
+		String cate = sch.getCate_title();
+		if(cate == null) cate =  "";
+		switch(cate) {
+		case "교육" :
+			d.addAttribute("cate_title","교육·키즈");
+			break;
+		case "패션" :
+			d.addAttribute("cate_title","패션·잡화·뷰티");
+			break;
+		case "홈리빙":
+			d.addAttribute("cate_title","홈리빙·디자인소품");
+			break;
+		case "공연" :
+			d.addAttribute("cate_title","공연·컬쳐");
+			break;
+		case "스포츠":
+			d.addAttribute("cate_title","스포츠·모빌리티");
+			break;
+		case "출판":
+			d.addAttribute("cate_title","출판");
+			break;
+		case "반려동물":
+			d.addAttribute("cate_title","반려동물");
+			break;
+		case "테크":
+			d.addAttribute("cate_title","테크·가전");
+			break;
+		default:
+			d.addAttribute("cate_title", "전체보기");
+			break;
+		}
 		
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
@@ -36,7 +65,7 @@ public class MK_FundingCtrl {
 		// view를 json형 뷰로 선언
 		d.addAttribute("plist", service.projectList(sch));
 		// 모델에 있는 plist로 된 ArrayList 객체를 json형식으로 변경
-		return "jsonReport";
+		return "pageJsonReport";
 	}
 	
 	// 프로젝트 상세보기
