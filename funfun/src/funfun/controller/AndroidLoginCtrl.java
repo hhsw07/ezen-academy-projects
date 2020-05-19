@@ -15,9 +15,11 @@ public class AndroidLoginCtrl {
 	@Autowired
 	MainService service;
 	
+	
+	//로그인에 사용
 	@RequestMapping("/androidlogin.do")
 	@ResponseBody
-	public String verificationId(MemberLogin m, Model d) {
+	public String verificationId(MemberLogin m) {
 		
 		System.out.println("안드로이드 로그인 아이디 비밀번호 검증...");
 		boolean result;
@@ -29,4 +31,14 @@ public class AndroidLoginCtrl {
 			
 		return str;
 	}
+	
+//	//가입여부 확인
+//	@RequestMapping("/isSignup.do")
+//	@ResponseBody
+//	public String isSignup(MemberLogin m) {
+//		boolean serviceResult=service.signupIdCheck(m.getMem_email());
+//		
+//		String result="{\"result\":"+serviceResult+"}";
+//		return result;
+//	}
 }
