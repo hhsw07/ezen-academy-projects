@@ -3,9 +3,6 @@ package funfun.vo;
 public class ProjectSch {
 	private String projectsch;
 	private String cate_title; // 카테고리 명
-	private String pro_title; // 프로젝트 명
-	private String pro_keyword; // 키워드
-	private String maker_name; // 메이커 명
 	// 2. 페이지
 	private int count; 		// 총 데이터 건수
 	private int pageSize; 	// 한번에 보여줄 페이지 크기..
@@ -31,24 +28,7 @@ public class ProjectSch {
 	public void setCate_title(String cate_title) {
 		this.cate_title = cate_title;
 	}
-	public String getPro_title() {
-		return pro_title;
-	}
-	public void setPro_title(String pro_title) {
-		this.pro_title = pro_title;
-	}
-	public String getPro_keyword() {
-		return pro_keyword;
-	}
-	public void setPro_keyword(String pro_keyword) {
-		this.pro_keyword = pro_keyword;
-	}
-	public String getMaker_name() {
-		return maker_name;
-	}
-	public void setMaker_name(String maker_name) {
-		this.maker_name = maker_name;
-	}
+	
 	public int getCount() {
 		return count;
 	}
