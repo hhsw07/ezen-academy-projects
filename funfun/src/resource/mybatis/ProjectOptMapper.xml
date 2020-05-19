@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+
+<mapper namespace="funfun.repository.MK_ProjectOptReposi">
+	
+	<!-- 프로젝트 옵션 -->
+	<resultMap type="ProOption" id="proOptResult"/>
+	<select id="proOptList" resultMap="proOptResult" parameterType="projectOpt">
+		SELECT * FROM PRO_OPTION
+		WHERE PRO_CODE = #{pro_code}
+	</select> 
+</mapper>
