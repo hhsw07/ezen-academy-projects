@@ -28,7 +28,7 @@ public class HT_MSService {
 	}
 	
 	public ArrayList<Project> myProjectList(int mem_code){
-		
+		System.out.println(mem_code);
 		return dao.myProjectList(mem_code);
 	}
 	
