@@ -48,5 +48,10 @@ public class MK_FundingService {
 	public ArrayList<ProOption> proOptList(int pro_code){
 		return dao.proOptList(pro_code);
 	} 
+	// 관심프로젝트 등록
+	public void insFavor(Project proj) {
+		System.out.println("관심service");
+		dao.insFavor(proj);
+	}
 
 }

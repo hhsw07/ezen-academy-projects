@@ -13,42 +13,61 @@
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <script type="text/javascript">
 	$(document).ready(function(){
+		console.log("카테고리:"+$("[name=cate_title]").val());
 		// 카테고리
 		$("#all").click(function(){
-			$("[name=cate]").val("");
-			$("#category").submit();
+			$("[name=cate_title]").val("");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#edu").click(function(){
-			$("[name=cate]").val("교육");
-			$("#category").submit();
+			$("[name=cate_title]").val("교육");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#beauty").click(function(){
-			$("[name=cate]").val("패션");
-			$("#category").submit();
+			$("[name=cate_title]").val("패션");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#homeLiving").click(function(){
-			$("[name=cate]").val("홈리빙");
-			$("#category").submit();
+			$("[name=cate_title]").val("홈리빙");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#culture").click(function(){
-			$("[name=cate]").val("공연");
-			$("#category").submit();
+			$("[name=cate_title]").val("공연");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#sports").click(function(){
-			$("[name=cate]").val("스포츠");
-			$("#category").submit();
+			$("[name=cate_title]").val("스포츠");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#book").click(function(){
-			$("[name=cate]").val("출판");
-			$("#category").submit();
+			$("[name=cate_title]").val("출판");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#dog").click(function(){
-			$("[name=cate]").val("반려동물");
-			$("#category").submit();
+			$("[name=cate_title]").val("반려동물");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 		$("#electro").click(function(){
-			$("[name=cate]").val("테크");
-			$("#category").submit();
+			$("[name=cate_title]").val("테크");
+			alert("cate_title"+$("[name=cate_title]").val());
+			$("[name=projectsch]").val("");
+			$("form").submit();
 		});
 	});
 	
@@ -64,8 +83,9 @@
 <body>
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
-		<form method="post" id="category" action="${path}/funding.do?method=list">
-			<input type="hidden" name="cate"/>
+		<h2>펀딩하기</h2>
+		<form method="post" action="${path}/funding.do?method=list">
+			<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -107,7 +127,7 @@
             </div>
 		</form>
 			<div class="ProjectListHead_bar">
-				<h3 class="ProjectListHead_title">${cate_title}</h3>
+				<h3 class="ProjectListHead_title">${category}</h3>
 			</div>
 		<!-- 분류 -->
 	    	<div class="ProjectListHead_bar">
@@ -160,14 +180,14 @@
 						</div>
 				</c:forEach>
 					</div>
-			</form:form>
+		
 			</div>
 		<!-- 페이징 -->
 			<div class="text-center">
 		        <ul class="pagination ct-orange"> 
 					<li><a href="javascript:goPage(${projSch.startBlock-1})">&laquo;</a></li>
 					<c:forEach var="cnt" begin="${projSch.startBlock}" end="${projSch.endBlock}">
-						<li class="${projSch.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+						<li class="${projSch.curPage==cnt?'active':''}"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 					</c:forEach>
 					<li><a href="javascript:goPage(${projSch.endBlock==projSch.pageCount?projSch.pageCount:projSch.endBlock+1})">&raquo;</a></li>
 				</ul>
