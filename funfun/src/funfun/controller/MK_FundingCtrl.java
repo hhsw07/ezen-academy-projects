@@ -21,40 +21,41 @@ public class MK_FundingCtrl {
 	// http://localhost:5080/funfun/funding.do?method=list
 	@RequestMapping(params="method=list")
 	public String projectList(@ModelAttribute("projSch") ProjectSch sch, Model d) {
-		System.out.println(sch.getProjectsch());
+		System.out.println("카테고리1"+sch.getCate_title());
 		d.addAttribute("plist", service.projectList(sch));
-		String cate = sch.getCate_title();
-		if(cate == null) cate =  "";
-		switch(cate) {
+		String category = sch.getCate_title();
+		if(category == null) category =  "";
+		switch(category) {
 		case "교육" :
-			d.addAttribute("cate_title","교육·키즈");
+			d.addAttribute("category","교육·키즈");
 			break;
 		case "패션" :
-			d.addAttribute("cate_title","패션·잡화·뷰티");
+			d.addAttribute("category","패션·잡화·뷰티");
 			break;
-		case "홈리빙":
-			d.addAttribute("cate_title","홈리빙·디자인소품");
+		case  "홈리빙":
+			d.addAttribute("category","홈리빙·디자인소품");
 			break;
 		case "공연" :
-			d.addAttribute("cate_title","공연·컬쳐");
+			d.addAttribute("category","공연·컬쳐");
 			break;
 		case "스포츠":
-			d.addAttribute("cate_title","스포츠·모빌리티");
+			d.addAttribute("category","스포츠·모빌리티");
 			break;
 		case "출판":
-			d.addAttribute("cate_title","출판");
+			d.addAttribute("category","출판");
 			break;
 		case "반려동물":
-			d.addAttribute("cate_title","반려동물");
+			d.addAttribute("category","반려동물");
 			break;
 		case "테크":
-			d.addAttribute("cate_title","테크·가전");
+			d.addAttribute("category","테크·가전");
 			break;
 		default:
-			d.addAttribute("cate_title", "전체보기");
+			d.addAttribute("category", "전체보기");
 			break;
 		}
-		
+		System.out.println("카테고리"+sch.getCate_title());
+		System.out.println("검색"+sch.getProjectsch());
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	
@@ -75,6 +76,15 @@ public class MK_FundingCtrl {
 		d.addAttribute("opt", service.proOptList(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
 	}
-	
+	// 관심프로젝트 등록
+	@RequestMapping(params="method=favor")
+	public String insFavor(@ModelAttribute("project") Project proj) {
+		System.out.println(proj.getMem_code());
+		System.out.println(proj.getPro_code());
+		service.insFavor(proj);
+		System.out.println("관심Controller");
+		return "forward:/funding.do?method=detail";
+	}
+	// 펀딩하기
 
 }

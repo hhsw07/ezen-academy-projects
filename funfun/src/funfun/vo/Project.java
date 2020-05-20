@@ -4,7 +4,7 @@ public class Project {
 
 	private int pro_code; // 프로젝트 번호
 	private int maker_code; // 메이커 번호
-	private String mem_code; // 회원번호
+	private int mem_code; // 회원번호
 	private String pro_reg_date; // 프로젝트 신청 날짜
 	private String pro_sub_date; // 프로젝트 승인 날짜
 	private String pro_title; // 프로젝트 명
@@ -134,10 +134,10 @@ public class Project {
 	public void setMaker_name(String maker_name) {
 		this.maker_name = maker_name;
 	}
-	public String getMem_code() {
+	public int getMem_code() {
 		return mem_code;
 	}
-	public void setMem_code(String mem_code) {
+	public void setMem_code(int mem_code) {
 		this.mem_code = mem_code;
 	}
 	

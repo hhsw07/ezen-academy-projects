@@ -22,8 +22,20 @@
 </style>
 <script>
 	$(document).ready(function(){
+		var mem_code = "${user.mem_code}";
+		$("#favor").click(function(){
+	  		if(mem_code == ""){
+	  			alert("로그인이 필요합니다.");
+				$(location).attr("href","${path}/login.do");
+	  		} else{
+	  			alert("관심프로젝트에 추가되었습니다");
+	  			$("#favor").attr("action","${path}/funding.do?method=favor");
+	  			$("#favor").submit();
+	  		}
+		});
 		
 	});
+	
 </script>
 </head>
 <body>
@@ -70,8 +82,12 @@
 				</div>
 
 				<div class="btn-wrap share">
+				<form method="post" id="favor">
+					<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+					<input type="hidden" name="pro_code" value="${project.pro_code}" />
+				</form>
 					<div class="btn-wrap-flex">
-						<button class="btn btn-block btn-lg btn-round btn-warning">관심프로젝트 등록</button>
+						<button class="btn btn-block btn-lg btn-round btn-warning" id="favor">관심프로젝트 등록</button>
 					</div>
 				</div>
 				
