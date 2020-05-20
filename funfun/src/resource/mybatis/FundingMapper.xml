@@ -31,13 +31,22 @@
 				WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
-			</if>) c
+			</if>
+			) c
 			WHERE 1=1
 		<if test="projectsch!=null and projectsch!=''">
 			and (pro_title like '%'||#{projectsch}||'%'
 			or pro_keyword like '%'||#{projectsch}||'%'
 			or maker_name like '%'||#{projectsch}||'%')
-		</if>)
+		</if>
+		<if test="sort=='recent'">
+			ORDER BY PRO_START_DATE DESC
+		</if>
+		<if test="sort=='amount'">
+			ORDER BY PRO_TARGET DESC
+		</if>
+		
+		)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	<!-- 프로젝트 상세보기 -->
@@ -53,6 +62,12 @@
 		WHERE PRO_CODE = #{pro_code}
 	</select>
 	<!-- 관심프로젝트 등록 -->
+	<select id="ckfavor" resultType="int" parameterType="project">
+		SELECT count(*)
+		FROM FAVOR
+		WHERE MEM_CODE = #{mem_code}
+		AND PRO_CODE = #{pro_code}
+	</select>
 	<insert id="insFavor" parameterType="project">
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
