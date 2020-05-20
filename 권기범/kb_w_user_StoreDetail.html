@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS/kb_w_user_StoreDetail.css">
     <link rel="stylesheet" href="CSS/bootstrap.css">
+    <script
+  src="http://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="js/bootstrap.js"></script>
     <style>
         main{
             width:1200px;
@@ -13,6 +16,28 @@
             margin-right:auto;
         }
     </style>
+    <script>
+        $(document).ready(function(){
+            
+            var article = ("#sto_QnA_Div .qnaShow");
+            $("#sto_QnA_Div .item td").click(function(){
+                var myArticle = $(this).parent().next("tr");
+                if($(myArticle).hasClass('hide')){
+                    $(article).removeClass('qnaShow').addClass('hide');
+                    $(myArticle).removeClass('hide').addClass('qnaShow');
+                } else {
+                    $(myArticle).addClass('hide').removeClass('qnaShow');
+                }
+            });
+            $(".btn btn-primary").modal("show");
+
+            $("#qnaSubmit").click(function(){
+                $("#qnaForm").submit();
+                $(".btn btn-primary").modal("hide");
+                $("#sto_QnA_Div").focus();
+            })
+        });
+    </script>
 </head>
 <body>
   
@@ -68,12 +93,11 @@
         </div>
 
         <div id="sto_QnA_Div">
-            <div id="sto_QnA_Title">스토어 문의</div>
+            <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right" >문의하기</button></div>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>구분</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성날짜</th>
@@ -81,9 +105,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr class="item">
+                        <td>1</td>
+                        <td class="title_td">배송 언제 되나요? 정말 기대되서 기다리고 있는데
+                            언제 되는지 알고 싶습니다.
+                        </td>
+                        <td> 이젠임당 </td>
+                        <td> 2020.05.18 </td>
+                        <td> 미답변 </td>
+                    </tr>
+                    <tr class="hide">
+                        <td colspan="5">배송 언제 되나요? 정말 기대되서 기다리고 있는데
+                            언제 되는지 알고 싶습니다.</td>
+                    </tr>
                     <tr>
                         <td>1</td>
-                        <td>배송</td>
+                        
                         <td>배송 언제 되나요?</td>
                         <td> 이젠임당 </td>
                         <td> 2020.05.18 </td>
@@ -91,7 +128,6 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>배송</td>
                         <td>배송 언제 되나요?</td>
                         <td> 이젠임당 </td>
                         <td> 2020.05.18 </td>
@@ -99,15 +135,6 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>배송</td>
-                        <td>배송 언제 되나요?</td>
-                        <td> 이젠임당 </td>
-                        <td> 2020.05.18 </td>
-                        <td> 미답변 </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>배송</td>
                         <td>배송 언제 되나요?</td>
                         <td> 이젠임당 </td>
                         <td> 2020.05.18 </td>
@@ -126,6 +153,29 @@
                     <li><a href="#">5</a></li>
                 </ul>
             </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">스토어 문의하기</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form method=post id="qnaForm">
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">문의내용:</label>
+                          <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                      <button type="submit" class="btn btn-primary" id="qnaSubmit">문의하기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     </main>
 </body>

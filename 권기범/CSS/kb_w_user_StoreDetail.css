@@ -190,3 +190,24 @@ option{
 #pagination_Div{
     text-align:center;
 }
+
+.title_td{
+    display:inline-block;
+    width:200px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left:20px;
+}
+
+th{
+    text-align:center;
+}
+
+.hide{
+    display: none;
+}
+
+.qnaShow{
+    display: show;
+}

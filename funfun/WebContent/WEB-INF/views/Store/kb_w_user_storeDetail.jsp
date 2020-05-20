@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/kb_w_user_StoreDetail.css">
 <script>
 		$(document).ready(function(){
+			
 			var price = 0;
 			var detai = "";
 			$("#option_select").change(function(){
@@ -33,9 +34,25 @@
 				
 				$("#price_Span").html(numberWithCommas(tot));
 
-			})
+			});
 			
-
+			 var article = ("#sto_QnA_Div .qnaShow");
+	            $("#sto_QnA_Div .item td").click(function(){
+	                var myArticle = $(this).parent().next("tr");
+	                if($(myArticle).hasClass('hide')){
+	                    $(article).removeClass('qnaShow').addClass('hide');
+	                    $(myArticle).removeClass('hide').addClass('qnaShow');
+	                } else {
+	                    $(myArticle).addClass('hide').removeClass('qnaShow');
+	                }
+	            });
+			
+	            $("#qnaSubmit").click(function(){
+	            	alert($("[name=sto_code]").val());
+	                $("#qnaForm").submit();
+	                $(".btn btn-primary").modal("hide");
+	                $("#sto_QnA_Div").focus();
+	            })
 			
 			})
 		
@@ -100,12 +117,11 @@
         </div>
 
         <div id="sto_QnA_Div">
-            <div id="sto_QnA_Title">스토어 문의</div>
-            <table class="table table-hover">
+            <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right;" >문의하기</button></div>
+            <table class="table table-hover" style="margin-top:2%;">
                 <thead>
-                    <tr>
+                    <tr style="text-align:center">
                         <th>번호</th>
-                        <th>구분</th>
                         <th>제목</th>
                         <th>작성자</th>
                         <th>작성날짜</th>
@@ -113,38 +129,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>배송</td>
-                        <td>배송 언제 되나요?</td>
-                        <td> 이젠임당 </td>
-                        <td> 2020.05.18 </td>
-                        <td> 미답변 </td>
+                	<c:forEach var="qna" items="${qna}">
+                    <tr  class="item" style="text-align:center">
+                        <td>${qna.qna_code}</td>
+                        <td><span class="title_td">${qna.qna_detail}</span></td>
+                        <td>${qna.mem_name} </td>
+                        <td>${qna.qna_reg_date} </td>
+                        <td>
+                        	<c:if test="${qna.qna_ans==null}">
+                        		미답변
+                        	</c:if>
+                        	<c:if test="${qna.qna_ans!=null}">
+                        		답변
+                        	</c:if>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>배송</td>
-                        <td>배송 언제 되나요?</td>
-                        <td> 이젠임당 </td>
-                        <td> 2020.05.18 </td>
-                        <td> 미답변 </td>
+                    <tr class="hide">
+                    	<td colspan="5"><pre>${qna.qna_detail}</pre></td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>배송</td>
-                        <td>배송 언제 되나요?</td>
-                        <td> 이젠임당 </td>
-                        <td> 2020.05.18 </td>
-                        <td> 미답변 </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>배송</td>
-                        <td>배송 언제 되나요?</td>
-                        <td> 이젠임당 </td>
-                        <td> 2020.05.18 </td>
-                        <td> 미답변 </td>
-                    </tr>
+                    </c:forEach>
+                  
                 </tbody>
 
             </table>
@@ -158,6 +162,36 @@
                     <li><a href="#">5</a></li>
                 </ul>
             </div>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">스토어 문의하기</h4>
+                    
+                    </div>
+                    <div class="modal-body">
+                      <form method=post id="qnaForm" action="store.do?method=insert">
+                      	<div class="form-group">
+                      		<label for="message-text" class="control-label">비밀글 유무</label>
+                      		<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open"> 비밀글로 안하기
+                      	</div>
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">문의내용:</label>
+                          <textarea class="form-control" id="message-text" name="qna_detail"></textarea>
+                          <input type="hidden" name="mem_code" value="${user.mem_code}">
+                          <input type="hidden" name="sto_code" value="${stocode}">
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                      <button type="submit" class="btn btn-primary" id="qnaSubmit">문의하기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
 	        
 	    </div>

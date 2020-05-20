@@ -22,7 +22,7 @@
                                 회원관리</a>
                             <a class="nav-link" href="${path }/maker-management.do"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                메이커 목록</a>
+                                메이커 관리</a>
                             <a class="nav-link" href="${path }/project-management.do"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 프로젝트 관리</a>
