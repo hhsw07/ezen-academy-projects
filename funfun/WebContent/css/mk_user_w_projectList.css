@@ -38,7 +38,7 @@
 	.project-basic{display:inline-block;}
 	.project-title{text-align:center;}
 	.projectDetail_img{margin:50px 10px;}
-	.projectDetail_img img{width:678px;}
+	.projectDetail_img img{width:678px; height:373px;}
 
 	.project-state{display:inline-block; vertical-align: top; -webkit-font-smoothing: antialiased;padding-top: 50px;
     margin-bottom: 15px; margin-left: 28px;}

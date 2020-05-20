@@ -39,6 +39,19 @@ public class Sw_NoticeCtrl {
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeList.jsp";
 	}
 	
+	// http://localhost:5080/funfun/notice.do?method=ajaxlist
+	@RequestMapping(params="method=ajaxlist")
+	public String ajaxlist(@ModelAttribute("paging") Paging sch, Model d) {
+		d.addAttribute("list",service.list(sch));
+		//d.addAttribute("toplist", service.toplist());
+		return "pageJsonReport";
+	}
+	// http://localhost:5080/funfun/notice.do?method=ajaxtoplist
+	@RequestMapping(params="method=ajaxtoplist")
+	public String ajaxtoplist(Model d) {
+		d.addAttribute("toplist", service.toplist());
+		return "pageJsonReport";
+	}
 	
 	// http://localhost:5080/funfun/notice.do?method=insForm
 	@RequestMapping(params="method=insForm")

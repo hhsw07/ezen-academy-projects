@@ -11,7 +11,7 @@
 		SELECT COUNT(*)
 		FROM (SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name
 			FROM project a, MAKER b
-			WHERE a.MAKER_CODE = b.MAKER_CODE
+			WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>)
@@ -28,7 +28,7 @@
 		FROM (SELECT rownum cnt, c.*
 			FROM (SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name 
 				FROM project a, MAKER b
-				WHERE a.MAKER_CODE = b.MAKER_CODE
+				WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>) c
@@ -52,5 +52,9 @@
 		SELECT * FROM PRO_OPTION
 		WHERE PRO_CODE = #{pro_code}
 	</select>
+	<!-- 관심프로젝트 등록 -->
+	<insert id="insFavor" parameterType="project">
+		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
+	</insert>
 	
 </mapper>

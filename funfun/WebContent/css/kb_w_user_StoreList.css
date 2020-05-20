@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 
+#store_title{
+	height:40px;
+	font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 800;
+    font-size:20pt;
+    padding-left:40px;
+}
 .Product_Div{
     width:70%;
     height:300px;
