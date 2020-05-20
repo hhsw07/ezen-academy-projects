@@ -142,37 +142,42 @@
         </div>
 
     </div><br>
-    <div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
-    <div class="row" style="padding-bottom:100px;">
-    		
-          <c:forEach items="${slist}" var="store">
-        	<div class="col-xs-12 col-md-3 item" onclick="go(${store.sto_code})">
-            <div class="thumbnail storeList-item">
-              <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
-              <div class="caption store-info">
-                
-                <p class="item__title">${store.sto_title }</p>
-                <span class="item__category">${store.cate_title}</span><span class="item__money"><span id="price">
-                <fmt:formatNumber type="number" maxFractionDigits="3" value="${store.sto_price}"/></span>원</span>
-              </div>
-            </div>
-          </div>
-          </c:forEach>
-          
-      </div>	
-      </div>
+    
+	    <div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
+	    <div class="row" style="padding-bottom:100px;">
+	    	<form id="cntForm" method="get">
+			<input type="hidden" id="curPage" name="curPage" value="${sch.curPage}">
+			<input type="hidden" name="method" value="detail">
+	          <c:forEach items="${slist}" var="store">
+	        	<div class="col-xs-12 col-md-3 item" onclick="go(${store.sto_code})">
+	            <div class="thumbnail storeList-item">
+	              <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
+	              <div class="caption store-info">
+	                
+	                <p class="item__title">${store.sto_title }</p>
+	                <span class="item__category">${store.cate_title}</span><span class="item__money"><span id="price">
+	                <fmt:formatNumber type="number" maxFractionDigits="3" value="${store.sto_price}"/></span>원</span>
+	              </div>
+	            </div>
+	          </div>
+	          </c:forEach>
+	          
+	      </div>	
+	      </div>
 
-      <div id="pagination_Div">
-        <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-        </ul>
-    </div>
-	    </div>
+	     <div class="text-center">
+			        <ul class="pagination ct-orange"> 
+						<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
+						<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
+							<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+						</c:forEach>
+						<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
+					</ul>
+		        </div>
+		    </div>
+	  </form>
 	</div>
+	
 	<!-- end main -->
 </body>
 </html>
