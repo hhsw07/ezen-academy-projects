@@ -6,6 +6,27 @@ public class Paging {
 	private String title;
 	private String writer;
 	private String content;
+	private int sto_code;
+	private String sto_title;
+	private String cate_title;
+	public String getSto_title() {
+		return sto_title;
+	}
+	public void setSto_title(String sto_title) {
+		this.sto_title = sto_title;
+	}
+	public String getCate_title() {
+		return cate_title;
+	}
+	public void setCate_title(String cate_title) {
+		this.cate_title = cate_title;
+	}
+	public int getSto_code() {
+		return sto_code;
+	}
+	public void setSto_code(int sto_code) {
+		this.sto_code = sto_code;
+	}
 	// 2. 페이징 처리
 	private int count; 		// 총 데이터 건수
 	private int pageSize; 	// 한번에 보여줄 페이지 크기..
