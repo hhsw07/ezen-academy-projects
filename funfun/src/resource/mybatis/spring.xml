@@ -18,6 +18,7 @@
 		<typeAlias alias="storeOption" type="funfun.vo.storeOption"/>
 		<typeAlias alias="projectOpt" type="funfun.vo.ProOption"/>
 		<typeAlias alias="projSch" type="funfun.vo.ProjectSch"/>
+		<typeAlias alias="storeQnA" type="funfun.vo.storeQnA"/>
 
 	</typeAliases>
 	<mappers>
@@ -31,6 +32,7 @@
 		<mapper resource="resource/mybatis/mypageMapper.xml" />
 		<mapper resource="resource/mybatis/FundingMapper.xml" />
 		<mapper resource="resource/mybatis/storeOptionMapper.xml"/>
+		<mapper resource="resource/mybatis/storeQnAMapper.xml"/>
 
 	</mappers>
  

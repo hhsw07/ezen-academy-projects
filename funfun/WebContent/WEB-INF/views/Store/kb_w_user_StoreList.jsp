@@ -63,7 +63,7 @@
 		});
 		
 		function go(code){
-			$(location).attr("href", "storeDetail.do?sto_code="+code);
+			$(location).attr("href", "store.do?method=detail&sto_code="+code);
 		}
 		
 	
@@ -75,6 +75,7 @@
 	
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
+	    <div id="store_title">리워드 스토어</div>
 	    <form method="post" id="cate_form">
 	    <div class="row" style="text-align:center; margin-top:50px;">
 				<div class="" style="text-align:center; width:120px; display:inline-block; cursor:pointer" id="cate_all">
