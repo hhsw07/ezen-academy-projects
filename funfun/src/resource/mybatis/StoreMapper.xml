@@ -6,8 +6,19 @@
 	<mapper namespace="funfun.repository.KB_RSReposi">
 		<resultMap type="RewardStore" id="Storelist"/>
 		
-		<select id="slist" resultMap="Storelist" parameterType="RewardStore">
-			SELECT a.sto_code, a.sto_title, a.sto_image, a.sto_price, b.CATE_TITLE FROM 
+		<select id="storeCnt" resultType="int" parameterType="Paging">
+			select count(*) from store a, project b where
+			a.pro_code = b.pro_code
+			<if test="sto_title != null and sto_title != ''">
+				and a.sto_title like '%'||#{sto_title} || '%'
+			</if>
+			<if test="cate_title!=null and cate_title!= ''">
+				and b.cate_title like '%' || #{cate_title} ||'%'
+			</if>
+		</select>
+		
+		<select id="slist" resultMap="Storelist" parameterType="Paging">
+			select * from (select rownum cnt, c.* from (SELECT a.sto_code, a.sto_title, a.sto_image, a.sto_price, b.CATE_TITLE FROM 
 			store a, PROJECT b WHERE a.PRO_CODE  = b.PRO_CODE
 			<if test="sto_title!=null and sto_title!=''">
 				and sto_title like '%'||#{sto_title} || '%'
@@ -15,6 +26,8 @@
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>
+			)c) where cnt between #{start} and #{end}
+			
 		</select>
 		<select id="sdetail" resultType="RewardStore" parameterType="int">
 		SELECT a.sto_code, a.STO_TITLE , a.sto_image,a.sto_detai, b.CATE_TITLE , c.maker_name 

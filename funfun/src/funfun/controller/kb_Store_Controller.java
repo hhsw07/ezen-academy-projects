@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.KB_StoreService;
+import funfun.vo.Paging;
 import funfun.vo.RewardStore;
 import funfun.vo.storeOption;
 import funfun.vo.storeQnA;
@@ -18,7 +19,7 @@ public class kb_Store_Controller {
 	@Autowired(required=false)
 	KB_StoreService service;
 	@RequestMapping(params="method=list")
-	public String storeList(@ModelAttribute("sch") RewardStore sch,Model d) {
+	public String storeList(@ModelAttribute("paging") Paging sch,Model d) {
 		d.addAttribute("slist", service.slist(sch));
 		String cate = sch.getCate_title();
 		
@@ -59,18 +60,14 @@ public class kb_Store_Controller {
 	
 	@RequestMapping(params="method=detail")
 	
-	public String detail(@RequestParam(value = "sto_code") int sto_code, storeQnA store, Model d) {
+	public String detail(@RequestParam(value = "sto_code") int sto_code, @ModelAttribute("paging") Paging sch,Model d) {
 		System.out.println("테스트 : " + sto_code);
 		d.addAttribute("store",service.sdetail(sto_code));
 		d.addAttribute("option", service.stoOptlist(sto_code));
-		d.addAttribute("qna", service.qnaList(sto_code));
+		d.addAttribute("qna", service.qnaList(sch));
 		d.addAttribute("stocode", sto_code);
-		System.out.println("테스트 로 : " + store.getMem_code());
-		if(store.getMem_name() != null) {
-			service.qnaInsert(store);
-			
-			return "WEB-INF\\views\\Store\\kb_w_user_storeDetail.jsp";
-		}
+
+		
 		return "WEB-INF\\views\\Store\\kb_w_user_storeDetail.jsp";
 	}
 
@@ -79,7 +76,7 @@ public class kb_Store_Controller {
 		
 		service.qnaInsert(qna);
 		
-		return "redirect:/store.do?method=detail&sto_code" + qna.getSto_code();
+		return "redirect:/store.do?method=detail&sto_code=" + qna.getSto_code();
 	}
 	
 	

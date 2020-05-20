@@ -48,7 +48,6 @@
 	            });
 			
 	            $("#qnaSubmit").click(function(){
-	            	alert($("[name=sto_code]").val());
 	                $("#qnaForm").submit();
 	                $(".btn btn-primary").modal("hide");
 	                $("#sto_QnA_Div").focus();
@@ -61,6 +60,11 @@
 		function numberWithCommas(x) {
 	        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	    }
+		
+		function goPage(no){
+			$("#curPage").val(no);
+			$("#cntForm").submit();
+		}
 </script>
 </head>
 <body>
@@ -115,7 +119,11 @@
             <div id="sto_Story_Title">상세 스토리</div>
             ${store.sto_detai}
         </div>
-
+		<form id="cntForm" method="get">
+			<input type="hidden" id="curPage" name="curPage" value="${sch.curPage}">
+			<input type="hidden" name="method" value="detail">
+			<input type="hidden" name="sto_code" value="${stocode}">
+		
         <div id="sto_QnA_Div">
             <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right;" >문의하기</button></div>
             <table class="table table-hover" style="margin-top:2%;">
@@ -153,16 +161,18 @@
 
             </table>
 
-            <div id="pagination_Div">
-                <ul class="pagination">
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                </ul>
+            <div class="text-center">
+		        <ul class="pagination ct-orange"> 
+					<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
+					<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
+						<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+					</c:forEach>
+					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
+				</ul>
+	        </div>
+	       
             </div>
-            
+             </form>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -172,7 +182,7 @@
                     
                     </div>
                     <div class="modal-body">
-                      <form method=post id="qnaForm" action="store.do?method=insert">
+                      <form method="post" id="qnaForm" action="store.do?method=insert">
                       	<div class="form-group">
                       		<label for="message-text" class="control-label">비밀글 유무</label>
                       		<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open"> 비밀글로 안하기

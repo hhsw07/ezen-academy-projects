@@ -23,14 +23,32 @@
 <script>
 	$(document).ready(function(){
 		var mem_code = "${user.mem_code}";
-		$("#favor").click(function(){
+		$("#favBtn").click(function(){
 	  		if(mem_code == ""){
-	  			alert("로그인이 필요합니다.");
-				$(location).attr("href","${path}/login.do");
+	  			if(confirm("로그인이 필요합니다.")){
+	  				$(location).attr("href","${path}/login.do");
+	  			}
 	  		} else{
-	  			alert("관심프로젝트에 추가되었습니다");
-	  			$("#favor").attr("action","${path}/funding.do?method=favor");
-	  			$("#favor").submit();
+	  			$.ajax({
+	  				type:"post",
+	  				url:"${path}/funding.do?method=ckfavor",
+	  				data:$("#favor").serialize(),
+	  				dataType:"json",
+	  				success:function(data){
+	  					if(data.ckfavor){
+	  						alert("관심프로젝트에 추가되었습니다");
+	  			  			$("#favor").attr("action","${path}/funding.do?method=favor");
+	  			  			$("#favor").submit();
+	  					} else{
+	  						alert("이미 등록된 프로젝트입니다");
+	  					}
+	  				},
+					error:function(err){
+						console.log("ajax처리 에러");
+						console.log(err);
+					}
+	  			});
+	  			
 	  		}
 		});
 		
@@ -87,7 +105,7 @@
 					<input type="hidden" name="pro_code" value="${project.pro_code}" />
 				</form>
 					<div class="btn-wrap-flex">
-						<button class="btn btn-block btn-lg btn-round btn-warning" id="favor">관심프로젝트 등록</button>
+						<button class="btn btn-block btn-lg btn-round btn-warning" id="favBtn">관심프로젝트 등록</button>
 					</div>
 				</div>
 				

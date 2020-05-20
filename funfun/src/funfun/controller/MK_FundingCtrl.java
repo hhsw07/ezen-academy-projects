@@ -17,7 +17,6 @@ import funfun.vo.ProjectSch;
 public class MK_FundingCtrl {
 	@Autowired(required=false)
 	private MK_FundingService service;
-	
 	// http://localhost:5080/funfun/funding.do?method=list
 	@RequestMapping(params="method=list")
 	public String projectList(@ModelAttribute("projSch") ProjectSch sch, Model d) {
@@ -58,7 +57,6 @@ public class MK_FundingCtrl {
 		System.out.println("검색"+sch.getProjectsch());
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
-	
 	// for json
 	// http://localhost:5080/funfun/funding.do?method=ajaxList
 	@RequestMapping(params="method=ajaxList")
@@ -68,13 +66,19 @@ public class MK_FundingCtrl {
 		// 모델에 있는 plist로 된 ArrayList 객체를 json형식으로 변경
 		return "pageJsonReport";
 	}
-	
 	// 프로젝트 상세보기
 	@RequestMapping(params="method=detail")
 	public String detail(@RequestParam("pro_code") int pro_code, Model d) {
 		d.addAttribute("project", service.detail(pro_code));
 		d.addAttribute("opt", service.proOptList(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
+	}
+	// 관심프로젝트 등록 확인
+	@RequestMapping(params="method=ckfavor")
+	public String ckfavor(@ModelAttribute("project") Project proj, Model d) {
+		System.out.println("관심프로젝트등록확인");
+		d.addAttribute("ckfavor", service.ckfavor(proj));
+		return "pageJsonReport";
 	}
 	// 관심프로젝트 등록
 	@RequestMapping(params="method=favor")
