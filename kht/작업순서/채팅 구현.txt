@@ -1,0 +1,7 @@
+1. A03_ChattingHandler 선언
+
+public class A03_ChattingHandler extends TextWebSocketHandler
+
+	> override
+	> AbstractWebSocketHandler
+		> 1, 2, 5, 6 오버라이드
