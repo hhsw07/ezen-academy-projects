@@ -15,44 +15,48 @@
 	$(document).ready(function(){
 		// 카테고리
 		$("#all").click(function(){
-			$("[name=category]").val("");
+			$("[name=cate]").val("");
 			$("#category").submit();
 		});
 		$("#edu").click(function(){
-			$("[name=category]").val("edu");
+			$("[name=cate]").val("교육");
 			$("#category").submit();
 		});
 		$("#beauty").click(function(){
-			$("[name=category]").val("beauty");
+			$("[name=cate]").val("패션");
 			$("#category").submit();
 		});
 		$("#homeLiving").click(function(){
-			$("[name=category]").val("homeLiving");
+			$("[name=cate]").val("홈리빙");
 			$("#category").submit();
 		});
 		$("#culture").click(function(){
-			$("[name=category]").val("culture");
+			$("[name=cate]").val("공연");
 			$("#category").submit();
 		});
 		$("#sports").click(function(){
-			$("[name=category]").val("sports");
+			$("[name=cate]").val("스포츠");
 			$("#category").submit();
 		});
 		$("#book").click(function(){
-			$("[name=category]").val("book");
+			$("[name=cate]").val("출판");
 			$("#category").submit();
 		});
 		$("#dog").click(function(){
-			$("[name=category]").val("dog");
+			$("[name=cate]").val("반려동물");
 			$("#category").submit();
 		});
 		$("#electro").click(function(){
-			$("[name=category]").val("electro");
+			$("[name=cate]").val("테크");
 			$("#category").submit();
 		});
 	});
+	
 	function go_detail(no){
 		$(location).attr("href", "funding.do?method=detail&pro_code="+no);
+	}
+	function goPage(no){
+		
 	}
 
 </script>
@@ -61,7 +65,7 @@
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
 		<form method="post" id="category" action="${path}/funding.do?method=list">
-			<input type="hidden" name="category"/>
+			<input type="hidden" name="cate"/>
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -102,6 +106,9 @@
 				</div>
             </div>
 		</form>
+			<div class="ProjectListHead_bar">
+				<h3 class="ProjectListHead_title">${cate_title}</h3>
+			</div>
 		<!-- 분류 -->
 	    	<div class="ProjectListHead_bar">
 	    		
@@ -131,10 +138,7 @@
 				</ul>
 			</div>
 		
-			<div class="ProjectListHead_bar">
-				<h3 class="ProjectListHead_title">${cate_title}</h3>
-				
-			</div>
+		
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
 					<div class="row">
@@ -156,6 +160,7 @@
 						</div>
 				</c:forEach>
 					</div>
+			</form:form>
 			</div>
 		<!-- 페이징 -->
 			<div class="text-center">
