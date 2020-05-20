@@ -36,6 +36,13 @@ public class Sw_FaqCtrl {
 		d.addAttribute("list",service.list(sch));
 		return "WEB-INF\\views\\servicecenter\\sw_admin_w_faqList.jsp";
 	}
+	// http://localhost:5080/funfun/faq.do?method=ajaxlist
+	@RequestMapping(params="method=ajaxlist")
+	public String ajaxlist(@ModelAttribute("paging") Paging sch, Model d) {
+		d.addAttribute("list",service.list(sch));
+		return "pageJsonReport";
+	}
+	
 	
 	
 	// http://localhost:5080/funfun/faq.do?method=insForm
