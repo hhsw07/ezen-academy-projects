@@ -16,6 +16,7 @@ import funfun.vo.TranLookUp;
 public class sh_myPageService {
 	@Autowired(required=false)
 	private sh_myPageReposi dao;
+	
 	public ArrayList<Favor> list(String memEmail){
 		return dao.list(memEmail);
 	}
