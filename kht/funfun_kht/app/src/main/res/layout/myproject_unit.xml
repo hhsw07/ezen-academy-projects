@@ -31,8 +31,8 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:layout_height="30dp"
+        android:background="@drawable/border_unit_button"
         android:layout_marginTop="10dp"
         android:text="프로젝트 관리" />
 </LinearLayout>
