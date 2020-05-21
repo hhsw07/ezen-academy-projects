@@ -30,30 +30,46 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fm;
+    FragmentManager fm2;
     FragmentTransaction tr;
+    FragmentTransaction tr2;
     Fragment fragment;
+    Fragment fragment2;
     NoticeFragment noticeFragment;
     FaqFragment faqFragment;
     RtqnaFragment rtqnaFragment;
-    static RequestQueue requestQueue;
+    ServiceCenterFragment scFragment;
+
+    //static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_sc);
+        setContentView(R.layout.activity_main);
 
         fm = getSupportFragmentManager();
-        fragment = fm.findFragmentById(R.id.sc_frame);
+        fragment = fm.findFragmentById(R.id.frame);
+
+        scFragment = new ServiceCenterFragment();
+
+        tr = fm.beginTransaction();
+        tr.add(R.id.frame,scFragment,"serviceCenter");
+        tr.commit();
+
+
+
+        fm2 = getSupportFragmentManager();
+        fragment2 = fm2.findFragmentById(R.id.sc_frame);
 
         noticeFragment = new NoticeFragment();
         faqFragment = new FaqFragment();
         rtqnaFragment = new RtqnaFragment();
 
         // fragment 초기할당
-        tr = fm.beginTransaction();
-        //tr.add(R.id.sc_frame, noticeFragment, "notice");
-        tr.add(R.id.sc_frame, faqFragment, "faq");
-        tr.commit();
+        tr2 = fm2.beginTransaction();
+        tr2.add(R.id.sc_frame, noticeFragment, "notice");
+        //tr.add(R.id.sc_frame, faqFragment, "faq");
+        tr2.commit();
 
 
     }

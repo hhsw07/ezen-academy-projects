@@ -4,10 +4,10 @@
 const lazyLoad = {
     inserted: el => {
         function loadImage() {
-            const isImg = el.nodeName === "IMG";
+            const isA = el.nodeName === "A";
             // 이미지 태그일 경우만 url 입력 로딩
-            if (isImg) {
-                el.src = el.dataset.url;
+            if (isA) {
+                el.style.backgroundImage = `url(${el.dataset.url})`;
                 el.classList.add('bounce');
                 console.log("image load");
             }
@@ -38,15 +38,33 @@ const lazyLoad = {
 Vue.directive("lazyload", lazyLoad);
 
 let projectComponent = Vue.extend({
-    template:`<div class="col-xs-12 col-md-4 item">
-                <div class="thumbnail">
-                    <img v-lazyload v-bind:data-url="imgSrc" alt="random image">
-                    <div class="caption">
-                        <p class="item__title">{{title}}</p>
-                        <span class="item__category">{{category}} | MOD</span><span class="item__money">모금율 : {{percent}}</span>
-                    </div>
-                </div>
-              </div>`,
+    template:`<div class="col-xs-12 col-md-4 item" style="margin-bottom:10px;">
+        <div class="row" style="position:relative; width:100%; height:233px; margin:0; box-sizing: border-box;">
+            <div style=" position: absolute;border-radius:7px; width:100%; height:100%; background-color: #666;"></div>
+            <a v-lazyload
+            v-bind:data-url="imgSrc"
+            style="border-radius:7px; width:100%; height:100%; position: absolute; background-repeat:no-repeat; background-size: 100% 233px;"></a>
+        </div>
+        <div class="row">
+            <span style="display:block;width:100%; font-size:17px; font-weight: bold; padding: 2px 12px;">이게 가능? 가장 진화한 소재 기술, 뉴나인 울트라드라이 더블 쿠션 덧신</span>
+        </div>
+        <div class="row">
+            <span style="color:#666; padding-left: 12px;">패션.잡화</span>
+        </div>
+        <div class="row" style="position: relative; padding:0px 12px 0px 12px; box-sizing: border-box; width:100%; height:6px;">
+            <div style="background-color: #eee; width:100%; height:6px; position:absolute; box-sizing: border-box; border-radius: 4px;"></div>
+            <div style="background-color: rgb(255,150,0); width:90%; height:6px; position:absolute; border-radius: 4px;"></div>
+        </div>
+        <div class="row" style="padding:8px 12px;">
+            <div class="col-md-6" style="padding:0">
+                <span style="color:rgb(255,150,0); font-weight: bold;">90%</span>
+                <span style="color:#666; font-weight: bold;">192,000원</span>
+            </div>
+            <div class="col-md-6" style="text-align:right;">
+                <span style="color:#666; font-weight: bold;">21일남음</span>
+            </div>
+        </div>
+    </div>`,
     methods:{
 
     },
