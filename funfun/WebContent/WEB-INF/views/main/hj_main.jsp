@@ -107,6 +107,12 @@
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
+    	  
+    	  console.log("scrollTop:"+document.documentElement.scrollTop);
+    	  console.log("clientHeight:"+document.documentElement.clientHeight);
+    	  console.log("scrollHeight:"+document.documentElement.scrollHeight);
+    	  
+    	  
     	if(document.documentElement.scrollTop >= 900) { 
               this.isShadowOn=false;
               this.isShadowOff=true;
@@ -115,7 +121,8 @@
          	  this.isShadowOn=true;
          	  this.isShadowOff=false;
       	}
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) { 
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) {
+        	
           this.loadMore();
         }
       })
