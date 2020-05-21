@@ -9,6 +9,13 @@ public class Paging {
 	private int sto_code;
 	private String sto_title;
 	private String cate_title;
+	private String store_sort;
+	public String getStore_sort() {
+		return store_sort;
+	}
+	public void setStore_sort(String store_sort) {
+		this.store_sort = store_sort;
+	}
 	public String getSto_title() {
 		return sto_title;
 	}
