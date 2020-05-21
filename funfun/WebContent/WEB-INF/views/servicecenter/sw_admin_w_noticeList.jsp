@@ -16,6 +16,63 @@
 <link href="${path }/adminTemplate/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+ 
+<style type="text/css">
+	div {cursor:default;}
+	.sctable td {cursor:pointer;}
+	.pagination {
+	  display: inline-block;
+	  padding-left: 0;
+	  margin: 20px 0;
+	  border-radius: 4px; }
+
+	.pagination > li {
+	  display: inline;	}
+
+	.pagination > li > a,
+	.pagination > li > span {
+	  position: relative;
+	  float: left;
+	  padding: 6px 12px;
+	  margin-left: -1px;
+	  line-height: 1.428571429;
+	  text-decoration: none;
+	  background-color: #ffffff;
+	  border: 1px solid #dddddd; }
+	
+	.pagination > li:first-child > a,
+	.pagination > li:first-child > span {
+	  margin-left: 0;
+	  border-bottom-left-radius: 4px;
+	  border-top-left-radius: 4px;	}
+	
+	.pagination > li:last-child > a,
+	.pagination > li:last-child > span {
+	  border-top-right-radius: 4px;
+	  border-bottom-right-radius: 4px;	}
+	
+	.pagination > li > a:hover,
+	.pagination > li > span:hover,
+	.pagination > li > a:focus,
+	.pagination > li > span:focus {
+	  background-color: #eeeeee; }
+	
+	.pagination.pagination-no-border > li > a,
+	.pagination.pagination-no-border > li > span {
+	  border: 0; }
+	
+	.pagination > li > a, .pagination > li > span, .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span {
+	  border-radius: 50%;
+	  margin: 0 2px;
+	  color: #777777; }
+	
+	.pagination > li.active > a, .pagination > li.active > span, .pagination > li.active > a:hover, .pagination > li.active > span:hover, .pagination > li.active > a:focus, .pagination > li.active > span:focus {
+	  background-color: #ffc107;
+	  border: 0;
+	  color: #FFFFFF;
+	  padding: 7px 13px; }
+
+</style>
 </head>
 <body class="sb-nav-fixed">
     <%@ include file="/adminTemplate/navi.jsp" %>
@@ -23,15 +80,15 @@
         <%@ include file="/adminTemplate/leftSidebar.jsp" %>
         <div id="layoutSidenav_content">
             <main>
-            	<div class="container tim-container noticeList" style="max-width:1200px; padding-top:100px">
-			        <div class="navbar-collapse text-center">
-			        	<div class="btn-group btn-group-lg scnav" style="width:80%;">
+            	<div class="container tim-container noticeList" style="max-width:1200px;">
+			        <div class=" text-center" style=> <!-- navbar-collapse -->
+			        	<div class="btn-group btn-group-lg scnav text-center" style="width:80%;margin:50px 0px;">
 							<button type="button" class="btn btn-warning" id="notice" style="width:30%;">공지사항</button>
 							<button type="button" class="btn" id="faq" style="width:30%;">FAQ</button>
 							<button type="button" class="btn" id="chatting" style="width:30%;">실시간 채팅 상담</button>
 						</div>
 			        </div>
-			        <div class="sctitle">
+			        <div class="sctitle" style="margin-bottom:30px;">
 				        <h2>공지사항 목록(관리자)</h2>
 				    </div>
 			    	<form:form class="form" commandName="paging" method="post">
@@ -49,9 +106,9 @@
 					<div>
 				        <table class="table table-hover sctable">
 				        	<col width="10%">
-				        	<col width="50%">
-				        	<col width="20%">
-				        	<col width="20%">
+				        	<col width="60%">
+				        	<col width="15%">
+				        	<col width="15%">
 				        	<tr><th class="text-center">번호</th>
 				        		<th>제목</th>
 				        		<th>작성자</th>
@@ -74,12 +131,12 @@
 				        </table>
 					</div>
 			        <div class="text-center" style="text-align:center;">
-				        <ul class="pagination"> 
-							<li class="paginate_button page-item"><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
+				        <ul class="pagination" > 
+							<li class="" ><a href="javascript:goPage(${paging.startBlock-1})" style="">&laquo;</a></li>
 							<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
-								<li class="paginate_button page-item ${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+								<li class=" ${paging.curPage==cnt?'active':'' }" ><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 							</c:forEach>
-							<li class="paginate_button page-item"><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
+							<li class=""><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 						</ul>
 			        </div>
 			        <div class="text-right">
@@ -99,8 +156,8 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${path }/adminTemplate/assets/demo/datatables-demo.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <!-- <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" /> -->
 </body>
+
 <script>
 	$(document).ready(function(){
 	    $("#pageSize").change(function(){

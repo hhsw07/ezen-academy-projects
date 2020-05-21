@@ -25,7 +25,7 @@ public class Sw_RtqnaCtrl {
 	private Sw_RtqnaService service;
 	
 	
-	// http://localhost:5080/funfun/rtqna.do?method=ajaxlist
+	// http://localhost:5080/funfun/rtqna.do?method=ajaxlist?curPage=1&pageSize=5
 	@RequestMapping(params="method=ajaxlist")
 	public String ajaxlist(@RequestParam("curPage") int curPage,
 			 			   @RequestParam("pageSize") int pageSize, Model d) {
@@ -35,6 +35,7 @@ public class Sw_RtqnaCtrl {
 		d.addAttribute("list",service.list(sch));
 		return "pageJsonReport";
 	}
+	
 	
 	// http://localhost:5080/funfun/rtqna.do?method=admList
 	@RequestMapping(params="method=admList")
@@ -60,9 +61,17 @@ public class Sw_RtqnaCtrl {
 	@RequestMapping(params="method=detail")
 	public String detail(@RequestParam("mem_code") int mem_code, Model d) {
 		d.addAttribute("mem_code", mem_code);
-		return "WEB-INF\\views\\servicecenter\\sw_user_w_RtqnaDetail.jsp";
+		return "WEB-INF\\views\\servicecenter\\sw_user_w_rtqnaDetail.jsp";
 		//return "pageJsonReport";
 	}
+	// http://localhost:5080/funfun/rtqna.do?method=admdetail
+	@RequestMapping(params="method=admdetail")
+	public String admdetail(@RequestParam("mem_code") int mem_code, Model d) {
+		d.addAttribute("mem_code", mem_code);
+		return "WEB-INF\\views\\servicecenter\\sw_admin_w_rtqnaDetail.jsp";
+		//return "pageJsonReport";
+	}
+	
 	// http://localhost:5080/funfun/rtqna.do?method=ajaxdetail
 	@RequestMapping(params="method=ajaxdetail")
 	public String ajaxdetail(@RequestParam("mem_code") int mem_code, Model d) {

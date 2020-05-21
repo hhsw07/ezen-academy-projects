@@ -66,8 +66,8 @@
 			    <input type="hidden" name="" value=""/>
 			    <input type="hidden" name="" value=""/>
 			    <div class="row">
-			    	<div class="col-md-10">
-			    		<textarea></textarea>
+			    	<div class="col-md-10" >
+			    		<input type="text" style="width:100%; margin-top:6px;" name="rtqna_detail" placeholder="내용을 작성하세요." />
 			    	</div>
 			    	<div class="col-md-1">
 			    		<input type="button" class="btn btn-fill btn-warning" value="등록">

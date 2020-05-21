@@ -15,6 +15,9 @@
 <link href="${path }/adminTemplate/css/styles.css" rel="stylesheet" />
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+<style type="text/css">
+	div {cursor:default;}
+</style>
 </head>
 <body class="sb-nav-fixed">
     <%@ include file="/adminTemplate/navi.jsp" %>
@@ -23,28 +26,31 @@
         <div id="layoutSidenav_content">
             <main>
 			<div class="main">
-			    <div class="container tim-container noticeList" style="max-width:1200px; padding-top:100px">
-			        <div class="collapse navbar-collapse text-center">
+			    <div class="container tim-container noticeList" style="max-width:1200px;">
+			        <div class="text-left" style="margin:100px 0px 30px;">
 			            <h2>실시간 채팅 상담</h2>
 				    </div>
 				    <div>
 				    	<table class="table table-bordered">
-				    		<tr><th>회원명</th><th colspan="2"></th><th>관리자명</th></tr>
+				    		<col width="10%">
+				    		<col width="80%">
+				    		<col width="10%">
+				    		<tr><th>회원명</th><th></th><th>관리자명</th></tr>
 				    	</table>
 				    </div>
-				    <form method="post">
+				    <form method="post" action="${path}/rtqna.do?method=insert">
 					    <input type="hidden" name="" value=""/>
 					    <input type="hidden" name="" value=""/>
 					    <input type="hidden" name="" value=""/>
 					    <div class="row">
 					    	<div class="col-md-10">
-					    		<textarea></textarea>
+					    		<input type="text" style="width:100%; margin-top:6px;" name="rtqna_detail" placeholder="내용을 작성하세요." />
 					    	</div>
 					    	<div class="col-md-1">
-					    		<input type="button" class="btn-warning" value="등록">
+					    		<input type="button" class="btn btn-warning" value="등록">
 					    	</div>
 					    	<div class="col-md-1">
-					    		<input type="button" class="btn-warning" value="목록">
+					    		<input type="button" class="btn btn-warning goList" value="목록">
 					    	</div>
 					    </div>
 				    </form>
@@ -75,18 +81,16 @@
 			dataType:"json",
 			success:function(data){
 				var list = data.list;
-				$("h3").text("data.list.lenght:"+list.length);
 				var show = $(".table").html();
 				$.each(list,function(idx,rtqna){
 					if(rtqna.rtqna_writer == mem_code){
 						show += '<tr><td>'+rtqna.name+'</td>';
-						show += '<td style="backgroundColor:red;">'+rtqna.rtqna_detail+'</td><td></td><td></td></tr>';
+						show += '<td style="background-color:skyblue;" colspan="2" class="text-left">'+rtqna.rtqna_detail+'</td></tr>';
 					}else{
-						show += '<tr><td></td><td></td><td style="backgroundColor:yellow;">'+rtqna.rtqna_detail+'</td>';
+						show += '<tr><td style="background-color:gray;" class="text-right" colspan="2">'+rtqna.rtqna_detail+'</td>';
 						show += '<td>'+rtqna.name+'</td></tr>';
 					}
 				});
-				$("h3").text(show);
 				$(".table").html(show);
 			},
 			error:function(err){
@@ -95,10 +99,18 @@
 		});
 	})
 	
+	$(".insert").click(function(){
+			alert("등록");
+			/*
+			$("form").submit();
+			
+			*/
+			
+	});
 	$(".goList").click(function(){
 			//alert("목록으로 이동");
 			$(location).attr("href","${path}/rtqna.do?method=admList");
-		});
+	});
 </script>
 </html>
 
