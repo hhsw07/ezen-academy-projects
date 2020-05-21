@@ -5,3 +5,14 @@ public class A03_ChattingHandler extends TextWebSocketHandler
 	> override
 	> AbstractWebSocketHandler
 		> 1, 2, 5, 6 오버라이드
+
+2. dispatcher-servlet
+
+	1. socket handler를 처리하기 위한 servlet-handler 선언
+	2. handler를 호출하기 위한 url 패턴
+
+
+	3. <!-- 채팅 프로세스 - handler를 처리하기 위한 urlmapping 방식과 adapter 설정 -->
+	<bean id="annotationUrlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+	<bean id="controllerClassNameHandlerMapping" class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+	<bean id="annotationMethodHandlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
