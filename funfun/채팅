@@ -15,3 +15,27 @@
 	
 	3) 채팅 화면단 web socket를 통해 서버와 연동 처리
 		- js로 서버와 연동 처리 내용 구현.
+		
+4. 서버에 있는 chatting handler 개발
+	1) 소켓 통신을 위한 TextWebSocketHandler를 상속
+	2) 주요 핵심 메서드 overriding
+		- client의 접속에 대한 처리 메서드
+			afterConnectionEstablished
+		- client에서 온 메시지 받아서, 접속한 client에게 전달하는 메서드
+			handle TextMessage
+		- client가 접속을 종료했을 때, 처리 메서드
+			afterConnectionClosed
+		- socket 통신 도중에 예외가 발생했을 때, 처리할 메서드
+			handleTransportError
+	3) 전역 필드로 선언하여야 한 내용
+		- 접속한 client 정보를 저장할 Map의 객체.
+			users
+	4) 처리 프로세스
+		-client의 접속 session과 기본 정보를 
+			afterConnection Established 메서드에 의해서 수행되고 users에 put()으로 누적 추가
+			
+		- handleTextMessage에 의해서 client에 온 메시지를 받아, 현재 접속한 모든 client인 users에 sendMessage를 통해서 메시지를 전달.
+		
+		- 특정한 client가 접속을 종료하는 경우,
+			afterConnectionClosed가 호출되고,
+			users에 있는 특정 client 정보가 삭제 처리된다.
