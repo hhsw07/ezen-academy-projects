@@ -23,28 +23,31 @@
         <div id="layoutSidenav_content">
             <main>
 			<div class="main">
-			    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-			        <div class="sctitle">
-				        <h2>FAQ 등록</h2>
+			    <div class="container tim-container noticeList" style="max-width:1200px; padding-top:100px">
+			        <div class="collapse navbar-collapse text-center">
+			            <h2>실시간 채팅 상담</h2>
 				    </div>
-			        <div>
-				    	<form class="form-group" method="post">
-					    	<input type="hidden" name="admin_code" value="1001" />
-					    	<table class="table table-bordered">
-					        	<col style="width:15%">
-					        	<col style="width:85%">
-					        	<tr><th>제목</th>
-					        		<td colspan="3"><input type="text" class="form-control" name="faq_title" placeholder="FAQ 제목" /></td></tr>
-					        	<tr><th>내용</th>
-					        		<td colspan="3">
-					        			<textarea class="form-control" name="faq_detail" placeholder="FAQ 내용" style="resize: none;" rows="20"></textarea></td></tr>
-					        </table>
-				        </form>
+				    <div>
+				    	<table class="table table-bordered">
+				    		<tr><th>회원명</th><th colspan="2"></th><th>관리자명</th></tr>
+				    	</table>
 				    </div>
-				    <div class="text-right">
-				    	<button class="btn btn-fill btn-warning insertFaq">등록</button>
-				    	<button class="btn btn-fill btn-warning goList">목록</button>
-				    </div>
+				    <form method="post">
+					    <input type="hidden" name="" value=""/>
+					    <input type="hidden" name="" value=""/>
+					    <input type="hidden" name="" value=""/>
+					    <div class="row">
+					    	<div class="col-md-10">
+					    		<textarea></textarea>
+					    	</div>
+					    	<div class="col-md-1">
+					    		<input type="button" class="btn-warning" value="등록">
+					    	</div>
+					    	<div class="col-md-1">
+					    		<input type="button" class="btn-warning" value="목록">
+					    	</div>
+					    </div>
+				    </form>
 			    </div>
 			</div>
 			<!-- end main -->
@@ -64,31 +67,38 @@
 </body>
 <script>
 	$(document).ready(function(){
-		var faq_title = "${faq.faq_title}";
-		if(faq_title != ""){
-			if(!confirm("추가로 등록하시겠습니까?")){
-				$(location).attr("href","${path}/faq.do?method=admList");
-			}
-		}
-		
-		
-		$(".insertFaq").click(function(){
-			if(confirm("등록하시겠습니까?")){
-				if($("[name=faq_title]").val() != "" && $("[name=faq_detail]").val() != ""){
-					$("form").attr("action","${path}/faq.do?method=insert");
-					$("form").submit();
-				}else{
-					alert("제목 및 내용을 입력하세요.");
-				}
+		var mem_code = "${mem_code}";
+		console.log(mem_code);
+		$.ajax({
+			type:"post",
+			url:"${path}/rtqna.do?method=ajaxdetail&mem_code="+mem_code,
+			dataType:"json",
+			success:function(data){
+				var list = data.list;
+				$("h3").text("data.list.lenght:"+list.length);
+				var show = $(".table").html();
+				$.each(list,function(idx,rtqna){
+					if(rtqna.rtqna_writer == mem_code){
+						show += '<tr><td>'+rtqna.name+'</td>';
+						show += '<td style="backgroundColor:red;">'+rtqna.rtqna_detail+'</td><td></td><td></td></tr>';
+					}else{
+						show += '<tr><td></td><td></td><td style="backgroundColor:yellow;">'+rtqna.rtqna_detail+'</td>';
+						show += '<td>'+rtqna.name+'</td></tr>';
+					}
+				});
+				$("h3").text(show);
+				$(".table").html(show);
+			},
+			error:function(err){
+				
 			}
 		});
-		
-		$(".goList").click(function(){
-			//alert("목록으로 이동");
-			$(location).attr("href","${path}/faq.do?method=admList");
-		});
-		
 	})
+	
+	$(".goList").click(function(){
+			//alert("목록으로 이동");
+			$(location).attr("href","${path}/rtqna.do?method=admList");
+		});
 </script>
 </html>
 

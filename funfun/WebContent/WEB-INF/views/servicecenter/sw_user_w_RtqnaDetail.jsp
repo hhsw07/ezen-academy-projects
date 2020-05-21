@@ -27,9 +27,9 @@
 				$.each(list,function(idx,rtqna){
 					if(rtqna.rtqna_writer == mem_code){
 						show += '<tr><td>'+rtqna.name+'</td>';
-						show += '<td style="backgroundColor:red;">'+rtqna.rtqna_detail+'</td><td></td><td></td></tr>';
+						show += '<td style="background-color:skyblue;" colspan="3">'+rtqna.rtqna_detail+'</td></tr>';
 					}else{
-						show += '<tr><td></td><td></td><td style="backgroundColor:yellow;">'+rtqna.rtqna_detail+'</td>';
+						show += '<tr><td style="background-color:gray; text-align:right;" colspan="3">'+rtqna.rtqna_detail+'</td>';
 						show += '<td>'+rtqna.name+'</td></tr>';
 					}
 				});
@@ -54,13 +54,29 @@
 		    </div>
 		    <div>
 		    	<table class="table table-bordered">
+		    		<col width="15%">
+		    		<col width="35%">
+		    		<col width="35%">
+		    		<col width="15%">
 		    		<tr><th>회원명</th><th colspan="2"></th><th>관리자명</th></tr>
 		    	</table>
 		    </div>
-		    <div>
-		    	인풋 글작성 등록버튼<br>
-		    	목록 버튼
-		    </div>
+		    <form method="post">
+			    <input type="hidden" name="" value=""/>
+			    <input type="hidden" name="" value=""/>
+			    <input type="hidden" name="" value=""/>
+			    <div class="row">
+			    	<div class="col-md-10">
+			    		<textarea></textarea>
+			    	</div>
+			    	<div class="col-md-1">
+			    		<input type="button" class="btn btn-fill btn-warning" value="등록">
+			    	</div>
+			    	<div class="col-md-1">
+			    		<input type="button" class="btn btn-fill btn-warning" value="목록">
+			    	</div>
+			    </div>
+	    	</form>
 	    </div>
 	</div>
 	<!-- end main -->
