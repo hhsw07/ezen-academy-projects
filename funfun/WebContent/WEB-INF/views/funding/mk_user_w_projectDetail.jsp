@@ -156,9 +156,9 @@
 			
 			<!-- 메이커정보 -->
 			<div class="project-maker">
-				<div class="img-thumbnail" style="width:100%">
-                    <img src="${path}/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 40px; height: 40px;">
-                    <h4>Circle Image</h4>
+				<div class="img-thumbnail" style="width:100%; padding:10px;">
+                    <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
+                    <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
                 </div>
 			
 			</div>
