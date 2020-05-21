@@ -3,4 +3,28 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:text="펀펀 - 프로젝트 QnA" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:text="프로젝트 QnA" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myProjectQnARecyclerView"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+
+
 </LinearLayout>

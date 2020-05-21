@@ -8,13 +8,13 @@
     <item
         android:id="@+id/funding1"
         android:icon="@drawable/fundingicon"
-        android:title="펀딩" />
+        android:title="프로젝트 문의관리" />
     <item
         android:id="@+id/store1"
         android:icon="@drawable/storeicon"
-        android:title="스토어" />
+        android:title="스토어 주문관리" />
     <item
         android:id="@+id/notice1"
         android:icon="@drawable/qnaicon"
-        android:title="공지사항" />
+        android:title="스토어 문의관리" />
 </menu>

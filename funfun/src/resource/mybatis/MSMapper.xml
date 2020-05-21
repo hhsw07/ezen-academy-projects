@@ -32,4 +32,26 @@
 	
 	</select>
 	
+	<resultMap type="storeQnA" id="qnaResult"/>
+	
+	<select id="myProjectQnaList" resultMap="qnaResult" parameterType="storeQnA">
+	
+	SELECT * FROM QNA
+	WHERE PRO_CODE = #{PRO_CODE}
+	
+	</select>
+	
+	<resultMap type="storeOrder" id="storeOrderResult"/>
+
+	<select id="myStoreManage" resultMap="storeOrderResult" parameterType="storeOrder">
+	
+	SELECT *
+	FROM STORE_ORDER
+	WHERE STO_OPT_CODE IN (
+	SELECT STO_OPT_CODE
+	FROM STORE_OPTION
+	WHERE STO_CODE = #{STO_CODE})
+	
+	</select>
+	
 </mapper>

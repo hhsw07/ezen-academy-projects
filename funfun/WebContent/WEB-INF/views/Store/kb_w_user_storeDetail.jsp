@@ -17,9 +17,8 @@
 			var price = 0;
 			var detai = "";
 			$("#option_select").change(function(){
-				//price = $("#option_select option:selected").val();
-				var 셀렉트태그=document.querySelector("#option_select");
-				price = 셀렉트태그.options[셀렉트태그.selectedIndex].dataset.price;
+				var Select=document.querySelector("#option_select");
+				price = Select.options[Select.selectedIndex].dataset.price;
 				console.dir(price);
 				
 				detail = $("#option_select").val();
@@ -28,7 +27,8 @@
 			});
 			
 			$("#cnt_input").change(function(){
-				price = $("#option_select option:selected").val();
+				var Select=document.querySelector("#option_select");
+				price = Select.options[Select.selectedIndex].dataset.price;
 				var tot = 0;
 				var cnt = $("#cnt_input").val();
 				if(cnt < 0){
@@ -100,13 +100,13 @@
                     <select class="form-data" id="option_select" name="sto_opt_code">
                     	<option></option>
                     	<c:forEach var="opt" items="${option}">
-                    		  <option data-price="${opt.sto_opt_price}" value="1"> ${opt.sto_opt_detail} </option>
+                    		  <option data-price="${opt.sto_opt_price}" value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} </option>
                     	</c:forEach>
                     </select>    
                 </div>
                 <div id="option_cnt_div">
                     <span id="option_cnt_title">수량 : </span>
-                    <input type="number" class="form-data" id="cnt_input" value="1">
+                    <input type="number" class="form-data" id="cnt_input" value="1" style="text-align:center">
                 </div>
                 <div id="option_price_Div">
                 

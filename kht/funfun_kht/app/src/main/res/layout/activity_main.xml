@@ -22,7 +22,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        layout="@layout/ht_user_m_ms_myproject"/>
+        layout="@layout/ht_user_m_ms_store_manage"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
