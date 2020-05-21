@@ -21,7 +21,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
+    <include
+        layout="@layout/ht_user_m_ms_myproject"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

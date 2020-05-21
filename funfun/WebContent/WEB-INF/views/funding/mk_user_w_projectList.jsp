@@ -17,56 +17,51 @@
 		// 카테고리
 		$("#all").click(function(){
 			$("[name=cate_title]").val("");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#edu").click(function(){
 			$("[name=cate_title]").val("교육");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#beauty").click(function(){
 			$("[name=cate_title]").val("패션");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#homeLiving").click(function(){
 			$("[name=cate_title]").val("홈리빙");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#culture").click(function(){
 			$("[name=cate_title]").val("공연");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#sports").click(function(){
 			$("[name=cate_title]").val("스포츠");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#book").click(function(){
 			$("[name=cate_title]").val("출판");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#dog").click(function(){
 			$("[name=cate_title]").val("반려동물");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
 			$("form").submit();
 		});
 		$("#electro").click(function(){
 			$("[name=cate_title]").val("테크");
-			alert("cate_title"+$("[name=cate_title]").val());
 			$("[name=projectsch]").val("");
+			$("form").submit();
+		});
+		$("[name=prosort]").on("change", function(){
+			$("[name=sort]").val($("[name=prosort]").val());
 			$("form").submit();
 		});
 	});
@@ -75,7 +70,8 @@
 		$(location).attr("href", "funding.do?method=detail&pro_code="+no);
 	}
 	function goPage(no){
-		
+		$("[name=curPage]").val(no);
+		$("form").submit();
 	}
 
 </script>
@@ -84,8 +80,7 @@
 	<div class="main">
 		<div class="container tim-container" style="max-width:1200px; padding-top:100px">
 		<h2>펀딩하기</h2>
-		<form method="post" action="${path}/funding.do?method=list">
-			<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
+			
 		<!-- 카테고리 -->
 			<div class="row project-category" >
 				<div class="categoryList" id="all">
@@ -125,7 +120,6 @@
 					<h6>테크·가전</h6>
 				</div>
             </div>
-		</form>
 			<div class="ProjectListHead_bar">
 				<h3 class="ProjectListHead_title">${category}</h3>
 			</div>
@@ -139,25 +133,27 @@
 					<li style="right:0px; position:absolute;">	
 						<div>
 						<form class="ProjectListHead_search" method="post" action="${path}/funding.do?method=list">
+							<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
+							<input type="hidden" name="curPage" value="${projSch.curPage}"/>
+							<input type="hidden" name="sort" value="${projSch.sort}"/>
 							<label for="search-keyword">
 								<input class="form-control" id="search-keyword" type="text" placeholder="검색어를 입력하세요" name="projectsch" value="${param.projectsch}">
 								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
 							</label>
+							<div class="select-sort ProjectListHead_sort">
+								<select name="prosort" class="">
+									<option value="recommend">추천순</option>
+									<option value="popluar">인기순</option>
+									<option value="recent">최신순</option>
+									<option value="amount">펀딩액순</option>
+									<option value="closing">마감임박순</option>
+								</select>
+							</div>
 						</form>
-						<div class="select-sort ProjectListHead_sort">
-							<select name="sort" class="">
-								<option value="recommend">추천순</option>
-								<option value="popluar">인기순</option>
-								<option value="recent">최신순</option>
-								<option value="amount">펀딩액순</option>
-								<option value="closing">마감임박순</option>
-							</select>
-						</div>
 					</div>
 				</li>
 				</ul>
 			</div>
-		
 		
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
@@ -173,7 +169,17 @@
 									</div>
 									<div>
 										<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
-										<span class="ProjectList-date">남은기간 : ${proj.dday}일</span>
+									<c:choose>
+										<c:when test="${proj.dday>0}">
+											<span class="ProjectList-date">${proj.dday}일 남음</span>
+										</c:when>
+										<c:when test="${proj.dday<0}">
+											<span class="ProjectList-date">펀딩 종료</span>
+										</c:when>
+										<c:when test="${proj.dday==0}">
+											<span class="ProjectList-date">오늘 마감/span>
+										</c:when>
+									</c:choose>
 									</div>
 								</div>
 							</div>
