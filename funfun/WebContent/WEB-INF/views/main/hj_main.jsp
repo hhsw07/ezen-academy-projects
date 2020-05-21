@@ -50,7 +50,7 @@
     	</div>
     	
 	<br><br><br><br>
-	<h1 style="padding-left:30px; ">당신을 위한 프로젝트</h1>
+	<h1 style="padding-left:10px; ">당신을 위한 프로젝트</h1>
 	<div class="row" id="project-list">
     <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:img-src="item.imgSrc"
     v-bind:category="item.category" v-bind:percent="item.percent" ></project-component>
@@ -126,12 +126,13 @@
     methods:{
       loadMore:function(){
     	  for (var i = 0; i < 15; i++) {
-          	let ranNumber=Math.round(Math.random()*50);
+          	let ranNumber=Math.round(Math.random()*100);
+          	let ranPercent=Math.round(Math.random()*101);
           	let sample= new Object();
           	sample.title=sampleData.title;
           	sample.category=sampleData.category;
-          	sample.percent=sampleData.percent;
-          	sample.imgSrc=`https://picsum.photos/600/400/?random?`+ranNumber;
+          	sample.percent=ranPercent+'%';
+          	sample.imgSrc=`https://picsum.photos/300/200/?random?`+ranNumber;
             this.projectList.push(sample);
     	  }
       }
