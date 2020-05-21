@@ -17,7 +17,11 @@
 			var price = 0;
 			var detai = "";
 			$("#option_select").change(function(){
-				price = $("#option_select option:selected").val();
+				//price = $("#option_select option:selected").val();
+				var 셀렉트태그=document.querySelector("#option_select");
+				price = 셀렉트태그.options[셀렉트태그.selectedIndex].dataset.price;
+				console.dir(price);
+				
 				detail = $("#option_select").val();
 				$("#cnt_input").val("1");
 				$("#price_Span").html(numberWithCommas(price));
@@ -96,7 +100,7 @@
                     <select class="form-data" id="option_select" name="sto_opt_code">
                     	<option></option>
                     	<c:forEach var="opt" items="${option}">
-                    		  <option value="${opt.sto_opt_price}"> ${opt.sto_opt_detail} </option>
+                    		  <option data-price="${opt.sto_opt_price}" value="1"> ${opt.sto_opt_detail} </option>
                     	</c:forEach>
                     </select>    
                 </div>

@@ -1,8 +1,10 @@
 package funfun.vo;
 
 public class ProjectSch {
-	private String projectsch;
+	// 1. 검색
+	private String projectsch; // 프로젝트 검색(키워드, 프로젝트, 메이커)
 	private String cate_title; // 카테고리 명
+	private String sort; // 프로젝트 정렬
 	// 2. 페이지
 	private int count; 		// 총 데이터 건수
 	private int pageSize; 	// 한번에 보여줄 페이지 크기..
@@ -14,7 +16,6 @@ public class ProjectSch {
 	private int blocksize;  // 한번에 보여줄 block의 크기
 	private int startBlock;	// block의 시작번호
 	private int endBlock;	// block의 마지막번호
-	
 	
 	public String getProjectsch() {
 		return projectsch;
@@ -28,7 +29,12 @@ public class ProjectSch {
 	public void setCate_title(String cate_title) {
 		this.cate_title = cate_title;
 	}
-	
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 	public int getCount() {
 		return count;
 	}
