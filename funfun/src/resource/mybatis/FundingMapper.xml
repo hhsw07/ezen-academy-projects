@@ -43,10 +43,10 @@
 			ORDER BY PRO_START_DATE DESC
 		</if>
 		<if test="sort=='amount'">
-			ORDER BY PRO_TARGET DESC
+			ORDER BY PRO_MONEY ASC
 		</if>
 		<if test="sort=='closing'">
-			ORDER BY dday DESC
+			ORDER BY dday ASC
 		</if>
 		)
 		WHERE cnt BETWEEN #{start} AND #{end}
