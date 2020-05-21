@@ -21,8 +21,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        layout="@layout/ht_user_m_ms_store_manage"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frameLayout"
+     />
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,11 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="#ffffff"
-        app:lsayout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
         app:menu="@menu/bottom_menu" />
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

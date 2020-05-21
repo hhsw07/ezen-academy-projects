@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 import funfun.service.sh_myPageService;
 import funfun.vo.MyPageInfo;
+import funfun.vo.PartiFunding;
 import funfun.vo.Favor;
 
 @Controller
@@ -65,6 +66,19 @@ public class AndroidMypageCtrl {
 		request.setAttribute("JSON", jsonFavorList);
 		
 		return "WEB-INF\\views\\myPage\\favorJson.jsp";
+	}
+	
+	@RequestMapping(value="/androidMypageParti.do")
+	public String Parti(Model d, HttpServletRequest request) {
+		String email = "yuseohee27@gmail.com";	
+		
+		Gson gson = new Gson();
+		
+		ArrayList<PartiFunding> array=service.plist(email);
+		String jsonPartiList = gson.toJson(array);
+		request.setAttribute("JSON", jsonPartiList);
+		
+		return "WEB-INF\\views\\myPage\\partiJson.jsp";
 	}
 	
 }
