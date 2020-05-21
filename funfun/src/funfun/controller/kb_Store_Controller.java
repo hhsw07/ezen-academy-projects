@@ -22,7 +22,7 @@ public class kb_Store_Controller {
 	public String storeList(@ModelAttribute("paging") Paging sch,Model d) {
 		d.addAttribute("slist", service.slist(sch));
 		String cate = sch.getCate_title();
-		
+		System.out.println("테스트2 : " + sch.getStore_sort());
 		if(cate == null) cate =  "";
 		
 		switch(cate) {
@@ -62,6 +62,7 @@ public class kb_Store_Controller {
 	
 	public String detail(@RequestParam(value = "sto_code") int sto_code, @ModelAttribute("paging") Paging sch,Model d) {
 		System.out.println("테스트 : " + sto_code);
+		
 		d.addAttribute("store",service.sdetail(sto_code));
 		d.addAttribute("option", service.stoOptlist(sto_code));
 		d.addAttribute("qna", service.qnaList(sch));

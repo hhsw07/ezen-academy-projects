@@ -26,6 +26,15 @@
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>
+			<if test="store_sort != null and store_sort != ''">
+				order by a.sto_price 
+				<if test='store_sort.equals("up")'>
+					ASC
+				</if>
+				<if test='store_sort.equals("down")'>
+					DESC
+				</if>
+			</if>
 			)c) where cnt between #{start} and #{end}
 			
 		</select>

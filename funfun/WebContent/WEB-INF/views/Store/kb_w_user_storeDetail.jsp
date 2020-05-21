@@ -17,6 +17,7 @@
 			var price = 0;
 			var detai = "";
 			$("#option_select").change(function(){
+				
 				var Select=document.querySelector("#option_select");
 				price = Select.options[Select.selectedIndex].dataset.price;
 				console.dir(price);
