@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:lsayout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:menu="@menu/bottom_menu" />
