@@ -12,8 +12,9 @@
 	
 	<select id="qnaList" resultMap="QnAList" parameterType="paging">
 		select * from (select rownum cnt, c.* from
-		(SELECT a.qna_code, a.sto_code, a.QNA_DETAIL , to_char(a.QNA_REG_DATE, 'YYYY-MM-DD') QNA_REG_DATE, a.qna_open, a.QNA_ANS ,
-		a.QNA_ANS_REG_DATE , a.QNA_CHK , b.MEM_NAME FROM qna a, MEMBER b WHERE a.MEM_CODE = b.MEM_CODE
+		(SELECT a.qna_code, a.sto_code, a.QNA_DETAIL , to_char(a.QNA_REG_DATE, 'YYYY-MM-DD') QNA_REG_DATE, 
+		a.qna_open, a.QNA_ANS , a.QNA_ANS_REG_DATE , a.QNA_CHK ,
+		 b.MEM_NAME FROM qna a, MEMBER b WHERE a.MEM_CODE = b.MEM_CODE
 		AND a.STO_CODE = #{sto_code}) c) where cnt between #{start} and #{end}
 	</select>
 	

@@ -60,6 +60,12 @@
 
 			});
 			
+			$("#sort_select").change(function(){
+				var sort = $("#sort_select  option:selected").val();
+				$("#store_sort").val(sort);
+				$("#sort_form").submit();
+				
+			})
 		});
 		
 		function go(code){
@@ -120,7 +126,7 @@
 			 <div id="Product_Search_Div">
         <span id="Cate_Search_Span">${cateTitle}</span>
         <div id="Search_Div">
-        	<form method="post">
+        	<form method="post" id="search_form">
                 <ul class="nav navbar-nav">
                   <li class="active">
                     <div class="form-group">
@@ -130,15 +136,17 @@
                   </li>
                   <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
                     margin: 26px 3px; margin-top:12px; margin-right:30px"></button></li>
-                    <li><select class="form-control" style="width:150px">
-                	<option></option>
-                	<option>낮은가격순</option>
-                	<option>높은가격순</option>
+                    <li><select class="form-control" id="sort_select" style="width:150px">
+                	<option value=""></option>
+                	<option value="up">낮은가격순</option>
+                	<option value="down">높은가격순</option>
                 </select></li>
                 </ul>
-               
+              
               </form>
-        	
+        	  <form method="post" id="sort_form">
+        	  	 <input type="hidden" id="store_sort" name="store_sort">
+        	  </form>
         </div>
 
     </div><br>
