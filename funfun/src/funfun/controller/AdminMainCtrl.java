@@ -29,7 +29,7 @@ public class AdminMainCtrl {
 	
 	@RequestMapping(value="/customer-service-management.do")
 	public String enterCustomerService() {
-		return "WEB-INF\\views\\admin\\customerServiceManagement.jsp";
+		return "redirect:/notice.do?method=admList";
 	}
 	
 	@RequestMapping(value="/maker-management.do")
