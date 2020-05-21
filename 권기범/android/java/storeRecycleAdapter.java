@@ -1,6 +1,7 @@
 package com.example.fun_funding;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +24,26 @@ public class storeRecycleAdapter extends RecyclerView.Adapter<storeRecycleAdapte
         TextView cate;
         TextView price ;
 
-        ViewHolder(View itemView){
+
+
+        ViewHolder(final View itemView){
             super(itemView);
             img = itemView.findViewById(R.id.storeImage);
             title = itemView.findViewById(R.id.storeTitle);
             cate = itemView.findViewById(R.id.storeCate);
             price = itemView.findViewById(R.id.storePrice);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    if(pos != RecyclerView.NO_POSITION){
+                        Intent intent = new Intent(itemView.getContext(), storeDetail.class);
+                        itemView.getContext().startActivity(intent);
+
+                    }
+                }
+            });
         }
     }
 
@@ -54,7 +69,7 @@ public class storeRecycleAdapter extends RecyclerView.Adapter<storeRecycleAdapte
         holder.cate.setText(storelist.get(position).getCate_title());
         DecimalFormat df = new DecimalFormat("###,###");
         String priceStr = df.format(storelist.get(position).getSto_price());
-        holder.price.setText(priceStr + "원");
+        holder.price.setText(priceStr + "원  ");
     }
 
     public int getItemCount(){
