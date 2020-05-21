@@ -6,11 +6,11 @@
         android:icon="@drawable/homeicon"
         android:title="홈" />
     <item
-        android:id="@+id/funding1"
+        android:id="@+id/btn_fragmentA"
         android:icon="@drawable/fundingicon"
         android:title="프로젝트 문의관리" />
     <item
-        android:id="@+id/store1"
+        android:id="@+id/btn_fragmentB"
         android:icon="@drawable/storeicon"
         android:title="스토어 주문관리" />
     <item
