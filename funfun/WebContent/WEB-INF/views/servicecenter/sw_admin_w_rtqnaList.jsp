@@ -151,14 +151,17 @@
 		
 		$.ajax({
 	    	type:"post",
-	    	url:"${path}/rtqna.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
+	    	url:"${path}/rtqna.do?method=ajaxlist&curPage=${paging.curPage}"+
+	    					"&pageSize=${paging.pageSize}",
    			dataType:"json",
 	    	success:function(data){
 	    		var list = data.list;
 	    		//$("h2").text("data.list.lenght:"+list.length);
 	    		var show = $(".sctable").html();
 	    		$.each(list, function(idx,rtqna){
-	    			show += '<tr class="item" onclick="javascript:go('+rtqna.mem_code+')"><td class="text-center">'+rtqna.cnt+'</td>';
+	    			show += '<tr class="item" onclick="javascript:go('+
+	    						rtqna.mem_code+')"><td class="text-center">'+
+	    						rtqna.cnt+'</td>';
 	    			show += '<td>'+rtqna.rtqna_detail+'</td>';
 	    			show += '<td>'+rtqna.mem_name+'</td>';
 	    			show += '<td>'+rtqna.rtqna_state+'</td></tr>';
@@ -167,7 +170,7 @@
     			$(".sctable").html(show);
 	    	},
 	    	error:function(err){
-	    		
+	    		console.log("에러 : "+err);
 	    	}
 	    });
 		
