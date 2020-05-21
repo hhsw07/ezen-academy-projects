@@ -21,7 +21,8 @@ public class Project {
 	private int percent; // 모금률
 	private int dday; // 남은기간
 	
-	private String maker_name;
+	private String maker_name; // 메이커이름
+	private String maker_profile; // 메이커프로필
 	
 	public Project() {
 		super();
@@ -139,6 +140,12 @@ public class Project {
 	}
 	public void setMem_code(int mem_code) {
 		this.mem_code = mem_code;
+	}
+	public String getMaker_profile() {
+		return maker_profile;
+	}
+	public void setMaker_profile(String maker_profile) {
+		this.maker_profile = maker_profile;
 	}
 	
 	

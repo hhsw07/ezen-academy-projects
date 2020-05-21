@@ -25,33 +25,33 @@ public class MK_FundingCtrl {
 		String category = sch.getCate_title();
 		if(category == null) category =  "";
 		switch(category) {
-		case "교육" :
-			d.addAttribute("category","교육·키즈");
-			break;
-		case "패션" :
-			d.addAttribute("category","패션·잡화·뷰티");
-			break;
-		case  "홈리빙":
-			d.addAttribute("category","홈리빙·디자인소품");
-			break;
-		case "공연" :
-			d.addAttribute("category","공연·컬쳐");
-			break;
-		case "스포츠":
-			d.addAttribute("category","스포츠·모빌리티");
-			break;
-		case "출판":
-			d.addAttribute("category","출판");
-			break;
-		case "반려동물":
-			d.addAttribute("category","반려동물");
-			break;
-		case "테크":
-			d.addAttribute("category","테크·가전");
-			break;
-		default:
-			d.addAttribute("category", "전체보기");
-			break;
+			case "교육" :
+				d.addAttribute("category","교육·키즈");
+				break;
+			case "패션" :
+				d.addAttribute("category","패션·잡화·뷰티");
+				break;
+			case  "홈리빙":
+				d.addAttribute("category","홈리빙·디자인소품");
+				break;
+			case "공연" :
+				d.addAttribute("category","공연·컬쳐");
+				break;
+			case "스포츠":
+				d.addAttribute("category","스포츠·모빌리티");
+				break;
+			case "출판":
+				d.addAttribute("category","출판");
+				break;
+			case "반려동물":
+				d.addAttribute("category","반려동물");
+				break;
+			case "테크":
+				d.addAttribute("category","테크·가전");
+				break;
+			default:
+				d.addAttribute("category", "전체보기");
+				break;
 		}
 		System.out.println("카테고리"+sch.getCate_title());
 		System.out.println("검색"+sch.getProjectsch());
