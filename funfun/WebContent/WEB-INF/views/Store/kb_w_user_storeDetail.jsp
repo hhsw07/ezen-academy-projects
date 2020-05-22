@@ -16,6 +16,7 @@
 			
 			var price = 0;
 			var detai = "";
+			var user = '${user.mem_name}';
 			$("#option_select").change(function(){
 				
 				var Select=document.querySelector("#option_select");
@@ -53,9 +54,14 @@
 	            });
 			
 	            $("#qnaSubmit").click(function(){
+	            	
+	            	if(user != ''){
 	                $("#qnaForm").submit();
 	                $(".btn btn-primary").modal("hide");
 	                $("#sto_QnA_Div").focus();
+	            	} else {
+	            		alert("로그인이 필요합니다");
+	            	}
 	            })
 			
 			})
@@ -145,7 +151,11 @@
                 	<c:forEach var="qna" items="${qna}">
                     <tr  class="item" style="text-align:center">
                         <td>${qna.qna_code}</td>
-                        <td><span class="title_td">${qna.qna_detail}</span></td>
+                        <td><span class="title_td">
+                        <c:if test="${qna.qna_open=='Y'}">
+                        	[비밀글]
+                        </c:if>
+                        ${qna.qna_detail}</span></td>
                         <td>${qna.mem_name} </td>
                         <td>${qna.qna_reg_date} </td>
                         <td>
@@ -153,12 +163,33 @@
                         		미답변
                         	</c:if>
                         	<c:if test="${qna.qna_ans!=null}">
-                        		답변
+                        		답변완료
                         	</c:if>
                         </td>
                     </tr>
                     <tr class="hide">
-                    	<td colspan="5"><pre>${qna.qna_detail}</pre></td>
+                    	<c:if test="${qna.qna_open=='Y' && qna.mem_name==user.mem_name}">
+                    		<td colspan="5"><pre>${qna.qna_detail}</pre>
+                    		<c:if test="${qna.qna_ans!=null }">
+                    		 <pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre></td>
+                    		</c:if>
+                    		<c:if test="${qna.qna_ans==null }">
+                    		</td>
+                    		</c:if>
+                    	</c:if>
+                    	<c:if test="${qna.qna_open=='Y' && qna.mem_name!=user.mem_name}">
+                    		<td colspan="5"><pre>[비밀글 입니다]</pre></td>
+                    	</c:if>
+                    	<c:if test="${qna.qna_open=='N'}">
+                    		<td colspan="5"><pre>${qna.qna_detail}</pre>
+                    		<c:if test="${qna.qna_ans!=null }">
+                    		 <pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre></td>
+                    		</c:if>
+                    		<c:if test="${qna.qna_ans==null }">
+                    		</td>
+                    		</c:if>
+                    		
+                    	</c:if>
                     </tr>
                     </c:forEach>
                   

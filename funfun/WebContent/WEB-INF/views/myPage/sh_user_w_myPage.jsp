@@ -22,11 +22,6 @@
 		}
 		
 		
-		$(document).ready(function(){
-			
-			
-		})
-		
 
 </script>
 </head>
@@ -169,9 +164,54 @@
           </div>
           </div>
         </div>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+
+		          <div class="form-group">
+		            <label for="recipient-name" class="col-form-label">기존 주소</label><br>
+		            	${list.orderAddress}	          
+		          </div>
+		          <div style="display:none;">주문 코드 : ${list.orderCode}</div>
+		          <div class="form-group">
+		            <label for="message-text" class="col-form-label">새로운 주소를 입력해주세요</label>
+		            <input class="form-control" id="message-text"/>
+		          </div>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
+		        <button onclick="changeOrderAdr()" type="button" class="btn btn-primary">변경하기</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<script>
+			function changeOrderAdr(){
+				var newAdr = $("#message-text").val()
+				var orderCode = "${list.orderCode}"
+				$("[name=fundAddress]").val(newAdr)
+				$("[name=orderCode]").val(orderCode)
+				$("form").submit()
+			}
+        </script>
 </c:forEach>
 </c:if>
 </div>
+
+<form style="display:hidden" action="/funfun/changeOrderAdr.do" method="POST">
+	<input type="hidden" name="newAdr">
+	<input type="hidden" name="orderCode">
+	<input type="submit">
+</form>
+
 
 <!-- 주문 및 배송 조회 끝 -->
 <!-- 모달 -->
@@ -232,7 +272,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">기존 주소</label>
             <input type="text" class="form-control" id="recipient-name">
@@ -241,7 +281,7 @@
             <label for="message-text" class="col-form-label">새로운 주소를 입력해주세요</label>
             <textarea class="form-control" id="message-text"></textarea>
           </div>
-        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>

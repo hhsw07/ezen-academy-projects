@@ -39,5 +39,8 @@ public class sh_myPageService {
 	public MyPageInfo mypageinfo(String memEmail){ 
 		return dao.mypageinfo(memEmail); 
 	}
+	public String changeOrderAdr(String orderCode, String newAdr) {
+		return dao.changeOrderAdr(orderCode,newAdr);
+	}
 	
 }
