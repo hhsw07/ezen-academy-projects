@@ -23,9 +23,9 @@ public class HT_MSService {
 		dao.regMaker(reg);
 	}
 	
-	public MakerStudio makerInfo(int maker_code) {
-		System.out.println(maker_code);
-		MakerStudio d = dao.makerInfo(maker_code);
+	public MakerStudio makerInfo(int mem_code) {
+		System.out.println(mem_code);
+		MakerStudio d = dao.makerInfo(mem_code);
 		return d;
 	}
 	
