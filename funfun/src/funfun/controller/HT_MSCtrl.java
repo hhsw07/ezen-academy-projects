@@ -50,7 +50,7 @@ public class HT_MSCtrl {
 		
 		if (memberinfo==null) {
 			System.out.println("에러페이지 뜸???");
-			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member-error.jsp";
+			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member_error.jsp";
 		} else {
 			d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
 			return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
