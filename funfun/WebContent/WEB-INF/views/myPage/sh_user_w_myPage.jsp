@@ -197,8 +197,8 @@
 			function changeOrderAdr(){
 				var newAdr = $("#message-text").val()
 				var orderCode = "${list.orderCode}"
-				$("[name=fundAddress]").val(newAdr)
-				$("[name=orderCode]").val(orderCode)
+				$("[name=newAdr]").val(newAdr)
+				$("[name=oc]").val(orderCode)
 				$("form").submit()
 			}
         </script>
@@ -206,9 +206,9 @@
 </c:if>
 </div>
 
-<form style="display:hidden" action="/funfun/changeOrderAdr.do" method="POST">
+<form style="display:hidden" action="/funfun/changeOrderAdr.do">
 	<input type="hidden" name="newAdr">
-	<input type="hidden" name="orderCode">
+	<input type="hidden" name="oc">
 	<input type="submit">
 </form>
 

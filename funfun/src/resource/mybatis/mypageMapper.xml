@@ -38,10 +38,10 @@
 		order by d.FUND_CODE desc
 	</select>
 
-	<update id="changeOrderAdr" parameterType="String">
+	<update id="changeOrderAdr" parameterType="java.util.HashMap">
  		UPDATE STORE_ORDER
 		SET STO_ORDER_ADDRESS = #{newAdr}
-	    WHERE STO_ORDER_CODE = #{orderCode}
+	    WHERE STO_ORDER_CODE = #{oc}
  	</update>
 
 	<resultMap type="trans" id="transResult"/>
