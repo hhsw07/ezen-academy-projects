@@ -9,14 +9,15 @@
 	
 	<insert id="regMaker" parameterType="makerstudio">
 	
- 	INSERT INTO MAKER VALUES (maker_seq.nextval, #{mem_code}, #{maker_profile}, #{maker_type}, #{maker_name}, #{maker_email}, #{maker_curr}, #{maker_bankbook})
+	INSERT INTO MAKER(MAKER_CODE, MEM_CODE, MAKER_TYPE, MAKER_NAME)
+	VALUES(maker_seq.nextval, #{mem_code}, #{maker_type}, #{maker_name})
 	
 	</insert>
 	
 	<select id="makerInfo" resultType="makerstudio" parameterType="int">
 	
 	SELECT * FROM MAKER
-	WHERE MAKER_CODE = #{MAKER_CODE}
+	WHERE MEM_CODE = #{mem_code}
 	
 	</select>
 	
@@ -53,5 +54,7 @@
 	WHERE STO_CODE = #{STO_CODE})
 	
 	</select>
+	
+
 	
 </mapper>
