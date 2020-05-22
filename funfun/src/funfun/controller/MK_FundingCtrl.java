@@ -57,7 +57,7 @@ public class MK_FundingCtrl {
 		System.out.println("검색"+sch.getProjectsch());
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
-	// for json
+	// 프로젝트 목록 for json
 	// http://localhost:5080/funfun/funding.do?method=ajaxList
 	@RequestMapping(params="method=ajaxList")
 	public String ajaxList(ProjectSch sch, Model d) {
@@ -72,6 +72,16 @@ public class MK_FundingCtrl {
 		d.addAttribute("project", service.detail(pro_code));
 		d.addAttribute("opt", service.proOptList(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
+	}
+	// 프로젝트 상세보기 for json
+	// http://localhost:5080/funfun/funding.do?method=ajaxDetail&pro_code=21000002
+	@RequestMapping(params="method=ajaxDetail")
+	public String ajaxDetail(@RequestParam("pro_code") int pro_code, Model d) {
+		// view를 json형 뷰로 선언
+		d.addAttribute("project", service.detail(pro_code));
+		d.addAttribute("opt", service.proOptList(pro_code));
+		// 모델에 있는 plist로 된 ArrayList 객체를 json형식으로 변경
+		return "pageJsonReport";
 	}
 	// 관심프로젝트 등록 확인
 	@RequestMapping(params="method=ckfavor")
