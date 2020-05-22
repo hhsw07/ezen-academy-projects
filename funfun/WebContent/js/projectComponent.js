@@ -14,7 +14,6 @@ const lazyLoad = {
         }
 
          function createObserver() {
-
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) { // 감지대상이 교차영역에 진입 할 경우

@@ -71,12 +71,13 @@
 					<li class="active">
 						<div class="form-group">
 							<input type="text" name="title" placeholder="검색" class="form-control" style="background-color: transparent; 
-									color:black; margin:-10px 0px -25px 760px; border:none; " value="${paging.title}" />
+									color:black; margin:-10px 0px -25px 700px; border:none; " value="${paging.title}" />
 						</div>
 					</li>
 					<li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent;
 									color:black; margin-right:15px;"></button></li>
-					<li><form:select path="pageSize">
+					<li>페이지수 : 
+						<form:select path="pageSize">
 		        		<form:option value="5">5건</form:option>
 		        		<form:option value="10">10건</form:option>
 		        		<form:option value="20">20건</form:option>
