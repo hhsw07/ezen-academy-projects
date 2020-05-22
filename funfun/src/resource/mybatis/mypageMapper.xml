@@ -38,6 +38,12 @@
 		order by d.FUND_CODE desc
 	</select>
 
+	<update id="changeOrderAdr" parameterType="String">
+ 		UPDATE STORE_ORDER
+		SET STO_ORDER_ADDRESS = #{newAdr}
+	    WHERE STO_ORDER_CODE = #{orderCode}
+ 	</update>
+
 	<resultMap type="trans" id="transResult"/>
  	<select id="tlist" resultMap="transResult" 
  		parameterType="trans">
@@ -69,5 +75,7 @@
  	<select id="mypageinfo" resultMap="mypageinfoResult" parameterType="mypageinfo">
  		SELECT MEM_EMAIL memEmail, MEM_NAME memName, MEM_PROFILE memProfile FROM MEMBER WHERE MEM_EMAIL = #{memEamil}
  	</select>
+
+ 	
  	
 </mapper>	
