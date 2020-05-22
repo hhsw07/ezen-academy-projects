@@ -7,8 +7,15 @@ public class MemberInfo {
 	String mem_profile;
 	String mem_pw;
 	String mem_favor;
+	int maker_code;
 	
-
+	
+	public int getMaker_code() {
+		return maker_code;
+	}
+	public void setMaker_code(int maker_code) {
+		this.maker_code = maker_code;
+	}
 	public int getMem_code() {
 		return mem_code;
 	}

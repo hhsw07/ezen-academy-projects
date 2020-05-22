@@ -30,4 +30,12 @@
 	<update id="changePass" parameterType="funfun.vo.MemberInfo">
 		update member set mem_pw = #{mem_pw} where mem_email=#{mem_email}
 	</update>
+	
+	<select id="isMaker" parameterType="int" resultType="int">
+		select count(*) from maker where mem_code = #{code}
+	</select>
+	
+	<select id="getMakerCode" parameterType="int" resultType="int">
+		select maker_code from maker where mem_code = #{code}
+	</select>
 </mapper>
