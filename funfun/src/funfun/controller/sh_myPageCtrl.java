@@ -8,13 +8,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.sh_myPageService;
 import funfun.vo.Favor;
 import funfun.vo.MemberInfo;
+import funfun.vo.MyPageInfo;
+import funfun.vo.PartiFunding;
 
 @Controller
+
 public class sh_myPageCtrl {
 	// http://localhost:1254/funfun/mypage.do
 	@Autowired(required=false)
@@ -39,10 +43,18 @@ public class sh_myPageCtrl {
 			 }
 			 d.addAttribute("fundCnt", service.fundCnt(memberinfo.getMem_email()));
 			 d.addAttribute("orderCnt", service.orderCnt(memberinfo.getMem_email()));
-			 d.addAttribute("meminfo", service.mypageinfo(memberinfo.getMem_email()));
-			 
+			 d.addAttribute("meminfo", service.mypageinfo(memberinfo.getMem_email()));			 
 		 }
-		 	
-		return "WEB-INF\\views\\myPage\\sh_user_w_myPage.jsp";
+		 return "WEB-INF\\views\\myPage\\sh_user_w_myPage.jsp";
 	}
+	
+		@RequestMapping("/changeOrderAdr.do")
+		public String changeOrderAdr(@RequestParam("orderCode") String orderCode,@RequestParam("newAdr") String newAdr, Model d) {
+			System.out.println("컨트롤러 접근");
+		
+			System.out.println(orderCode);
+			System.out.println(newAdr);
+			service.changeOrderAdr(orderCode,newAdr);
+			return "forward:/mypage.do";
+		}
 }

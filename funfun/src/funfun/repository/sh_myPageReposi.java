@@ -19,4 +19,5 @@ public interface sh_myPageReposi {
 	public int fundCnt(String memEmail);
 	public int orderCnt(String memEmail);
 	public MyPageInfo mypageinfo(String memEmail);
+	public String changeOrderAdr(String orderCode, String newAdr);
 }
