@@ -64,14 +64,14 @@
 		    </div>
 	    	<form:form class="form" commandName="paging" method="post">
 	    	<form:hidden path="curPage" />
-	    	<div>
-	        	총건수 : ${paging.count}건 
-	        	<span style="margin-left:930px;" >페이지수 : </span>
+	    	<div class="row">
+	        	<div class="col-sm-3 text-left">총건수 : ${paging.count}건</div> 
+	        	<div class="col-sm-9 text-right" >페이지수 : <!-- style="margin-left:930px;" -->
 	        	<form:select path="pageSize">
 	        		<form:option value="5">5건</form:option>
 	        		<form:option value="10">10건</form:option>
 	        		<form:option value="20">20건</form:option>
-	        	</form:select>
+	        	</form:select></div>
 			</div>
 			</form:form>
 			<div>
