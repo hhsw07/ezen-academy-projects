@@ -30,15 +30,20 @@ public class HT_MSCtrl {
 	
 	
 	@RequestMapping(params="method=makerReg")
-	public String regForm() {
+	public String regForm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg.jsp";
 	}
 	
 	@RequestMapping(params="method=makerReg_done")
 	public String regDone(HttpServletRequest request,MakerStudio reg) {
 		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		reg.setMem_code(memberinfo.getMem_code());
 		service.regMaker(reg);
-		session.setAttribute("makerInfo", reg);
+		session.setAttribute("makerinfo", reg);
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
 	}
 	
@@ -47,13 +52,22 @@ public class HT_MSCtrl {
 		
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		MakerStudio makerinfo = (MakerStudio)session.getAttribute("makerinfo");
 		
 		if (memberinfo==null) {
 			System.out.println("에러페이지 뜸???");
 			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member_error.jsp";
 		} else {
-			d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
-			return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
+			
+			if (makerinfo==null) {
+				return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-maker_error.jsp";
+				
+			} else {
+				System.out.println(makerinfo.getMaker_code());
+				d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
+				return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
+
+			}
 		}
 		
 	}

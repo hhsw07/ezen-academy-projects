@@ -34,7 +34,7 @@
 		<mapper resource="resource/mybatis/FundingMapper.xml" />
 		<mapper resource="resource/mybatis/storeOptionMapper.xml"/>
 		<mapper resource="resource/mybatis/storeQnAMapper.xml"/>
-
+		<mapper resource="resource/mybatis/mailAuthMapper.xml" />
 	</mappers>
  
 </configuration>

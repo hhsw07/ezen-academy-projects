@@ -108,6 +108,33 @@ $(document).ready(function(){
         		</div>
         	</div>
         	
+        	<div id="emailAuth" v-if="isAuth">
+        	<div class="row bounce" style="margin-top:10px;">
+        		<div class="col-md-3"></div>
+        		<div class="col-md-6">
+        			<div class="form-group">
+						<p style="color:green;">해당 이메일로 인증코드를 발송하였습니다.</p>
+						<span>인증코드를 입력하여 회원가입을 완료해주세요.({{minutes}}:{{sec}})</span>
+					</div>
+        		</div>
+        	</div>
+        	<div class="row bounce">
+        		<div class="col-md-3"></div>
+        		<div class="col-md-6">
+        			<div class="form-group">
+					  <label for="auth">인증코드(*):</label>
+ 					<input type="text" v-model="myCode" class="form-control" id="auth">
+					</div>
+        		</div>
+        	</div>
+        	<div class="row bounce">
+        		<div class="col-md-3"></div>
+        		<div class="col-md-6">
+        			<span v-if="msgOn" v-bind:class="{bounce:isBounce}" style="color:red;" class="bounce">인증번호를 다시 확인해주세요</span>
+        		</div>
+        	</div>
+        	</div>
+        	
         	<br>
         	<div class="row">
         		<div class="col-md-3"></div>
@@ -240,7 +267,7 @@ $(document).ready(function(){
 			el:"#nameChk",
 			data:{
 				msg:"",
-				isShaking:false
+				isShaking:false,
 			}
 		});
 		//회원 가입 서밋
@@ -280,7 +307,53 @@ $(document).ready(function(){
 			} else {
 				//모든 조건 충족
 				if(confirm('회원가입을 완료하시겠습니까?')){
-					$('form').submit();	
+					//이메일 인증
+					if(!vm4.isAuth){
+						//인증폼 on
+						vm4.isAuth=true;
+						//이메일 발송
+						let _email=$('input[name=mem_email]').val();
+						$.ajax({
+							type:"post",
+							url:"${path}/Mail.do?email="+_email,
+							dataType:"text",
+							success:function(data){
+								console.log("이메일전송");
+							},
+							error:function(err){
+								console.log("ajax처리 에러");
+								console.log(err);
+							}
+						});
+						
+						
+						
+					} else {
+						//이메일로 보낸 코드와 입력한 코드가 일치하는지 검증
+						let _email=$('input[name=mem_email]').val();
+						$.ajax({
+							type:"post",
+							url:"${path}/getMailCode.do?email="+_email,
+							dataType:"json",
+							success:function(data){
+								console.log(data.code);
+								console.log(vm4.myCode);
+								if(Number(vm4.myCode)===data.code){
+									$('form').submit();
+								} else {
+									vm4.msgOn=true;
+									vm4.isBounce=true;
+									setTimeout(()=>{
+										vm4.isBounce=false;
+									},1000);
+								}
+							},
+							error:function(err){
+								console.log("ajax처리 에러");
+								console.log(err);
+							}
+						});
+					}
 				}
 			}
 		});
@@ -289,6 +362,42 @@ $(document).ready(function(){
 		$('input[name=mem_name]').on('focusout', ()=>{
 			vm3.msg="";
 		})
+		
+		//이메일인증
+		var vm4= new Vue({
+			el:"#emailAuth",
+			data:{
+				isAuth:false,
+				count:180,
+				counter:null,
+				minutes:0,
+				sec:0,
+				myCode:null,
+				isBounce:false,
+				msgOn:false
+			},
+			watch:{
+				isAuth:function(val){
+					if(val===true){
+						this.count=180;
+						this.counter=setInterval(()=>{
+							this.count=this.count-1;
+						}, 1000);
+					}
+				},
+				count:function(val){
+					this.minutes=Math.floor(val/60);
+					this.sec=val-this.minutes*60;
+					if(this.count===0){
+						alert("timeout!");
+						this.isAuth=false;
+						clearInterval(this.counter);
+					}
+				}
+			},
+		});
+		
+		
 	</script>
 </body>
 </html>

@@ -34,12 +34,6 @@
 	 
 	<input type="hidden" name="method" value="makerReg_done" />
 
-	<input type="hidden" name="mem_code" value="123132"/>
-	<input type="hidden" name="maker_profile" value="123123"/>
-	<input type="hidden" name="maker_email" value="123123"/>
-	<input type="hidden" name="maker_curr" value=""/>
-	<input type="hidden" name="maker_bankbook" value="123123"/>
-
 	<div class="form-group">
 	
 	<h5>메이커(기업)명 *</h5>
