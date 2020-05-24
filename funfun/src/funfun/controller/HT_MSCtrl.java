@@ -52,24 +52,22 @@ public class HT_MSCtrl {
 		
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		MakerStudio makerinfo = (MakerStudio)session.getAttribute("makerinfo");
 		
 		if (memberinfo==null) {
 			System.out.println("에러페이지 뜸???");
 			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member_error.jsp";
 		} else {
 			
-			if (makerinfo==null) {
+			if (memberinfo.getMaker_code()==-1) {
 				return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-maker_error.jsp";
 				
 			} else {
-				System.out.println(makerinfo.getMaker_code());
+				System.out.println(memberinfo.getMaker_code());
 				d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
 				return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 
 			}
 		}
-		
 	}
 	
 	@RequestMapping(params="method=makerInfo")
