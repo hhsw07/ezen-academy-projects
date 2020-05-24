@@ -20,6 +20,7 @@
 		<typeAlias alias="projSch" type="funfun.vo.ProjectSch"/>
 		<typeAlias alias="storeQnA" type="funfun.vo.storeQnA"/>
 		<typeAlias alias="storeOrder" type="funfun.vo.storeOrder"/>
+		<typeAlias alias="report" type="funfun.vo.Report"/>
 
 	</typeAliases>
 	<mappers>

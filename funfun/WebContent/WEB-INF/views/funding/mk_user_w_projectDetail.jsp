@@ -50,7 +50,9 @@
 	  			});
 	  		}
 		});
-		
+		$("#gofun").click(function(){
+			$(location).attr("href","${path}/funding.do?method=option");
+		});
 		
 	});
 	
@@ -67,7 +69,7 @@
 	    		<div class="projectDetail_img">
 	    			<img alt="" src="img/${project.pro_image}">
 	    			<div class="container alert alert-warning" style="width:678px; margin:50px 0;">
-           			<b>목표 금액 <fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_target}"/>원     펀딩기간 ${project.pro_start_date}-${project.pro_finish_date}</b><br><br>
+           			<b>목표 금액 <fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_target}"/>원     펀딩기간${project.pro_start_date}-${project.pro_finish_date}</b><br><br>
             		100% 이상 모이면 펀딩이 성공되는 프로젝트<br>
 					이 프로젝트는 펀딩 마감일까지 목표 금액이 100% 모이지 않으면 결제가 진행되지 않습니다.
 		        	</div>
@@ -95,7 +97,7 @@
 					<p class=""><strong>${project.percent}</strong>% 달성</p>
 					<p class=""><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_money}"/></strong>원  펀딩</p>
 				</div>
-				<div class="btn-funding">
+				<div class="btn-funding" id="gofun">
 					<button class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
 				</div>
 

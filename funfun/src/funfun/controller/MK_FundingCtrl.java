@@ -100,5 +100,9 @@ public class MK_FundingCtrl {
 		return "forward:/funding.do?method=detail";
 	}
 	// 펀딩하기
+	@RequestMapping(params="method=option")
+	public String option() {
+		return "WEB-INF\\views\\funding\\mk_user_w_fundingOpt.jsp";
+	}
 
 }
