@@ -80,7 +80,10 @@ public class kb_Store_Controller {
 		return "redirect:/store.do?method=detail&sto_code=" + qna.getSto_code();
 	}
 	
-	
+	@RequestMapping(params="method=pay")
+	public String pay() {
+		return "WEB-INF\\views\\Store\\kb_w_user_storePay.jsp";
+	}
 	
 	
 	
