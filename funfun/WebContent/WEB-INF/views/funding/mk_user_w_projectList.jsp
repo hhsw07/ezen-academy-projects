@@ -177,7 +177,7 @@
 											<span class="ProjectList-date">펀딩 종료</span>
 										</c:when>
 										<c:when test="${proj.dday==0}">
-											<span class="ProjectList-date">오늘 마감/span>
+											<span class="ProjectList-date">오늘 마감</span>
 										</c:when>
 									</c:choose>
 									</div>

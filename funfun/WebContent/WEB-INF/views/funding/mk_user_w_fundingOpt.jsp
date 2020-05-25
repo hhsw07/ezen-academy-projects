@@ -9,25 +9,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.funding-noti{margin-bottom: 24px;line-height: 1.29;font-size: 28px;font-weight: 400;}
-.noti-check {border: 1px solid #f0f2f5; margin-top: 12px;}
-.noti-check label {margin-right: 0; padding: 12px; color: #babdc0; font-size: 17px;}
-.noti-check label input[type=checkbox]{margin-top: -4px;border-radius: 50%;border-color: #e6eaed; width: 22px;height: 22px; margin-right: 8px;}
-.noti-detail{border: 1px solid #f0f2f5;border-top: 0; padding: 16px;}
-.funding-opt{margin-bottom: 42px;}
-.funding-opt h3 {margin-bottom: 28px;}
-.top-area {margin-bottom: 20px;}
-.sub-text {margin-bottom: 5px;padding: 0 5px; font-size: 14px; font-weight: 500; line-height: 18px;}
-ul {list-style: none;}
-.opt-list{width: 100%; margin-bottom: 5px;}
-.opt-box { padding: 15px; background: #f9f9f9; border: 1px solid #fff; border-radius: 5px;}
-
-
+.check-noti{margin: 12px auto 0; width:1000px; color:#888888;font-size: 13px; font-weight: 600;}
+ul {list-style: none;padding:0;}
+.opt-list{width: 100%; margin-bottom: 5px;padding:0 10px;}
+.opt-box {padding: 15px; background: #f9f9f9; border: 1px solid #fff; border-radius: 5px;}
 .next-step{width:250px; margin:20px auto;}
 
 </style>
 <script type="text/javascript">
+	$(document).ready(function(){
+		$("#funding").click(function(){
+			$(location).attr("href","${path}/funding.do?method=funding");
+		});
+		if($("[name=projectOpt]:checked")){
+			
+		}
+	});
 
 </script>
 </head>
@@ -43,8 +42,8 @@ ul {list-style: none;}
                        			<span class="first-icon fa fa-square-o"></span>
                         		<span class="second-icon fa fa-check-square-o"></span>
                         	</span>
-                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
-                        	펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.
+                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"/>
+                        	<p class="noti-ck">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</p>
 						</label>
 					</div>
 					<div class="noti-detail">
@@ -57,13 +56,13 @@ ul {list-style: none;}
                        			<span class="first-icon fa fa-square-o"></span>
                         		<span class="second-icon fa fa-check-square-o"></span>
                         	</span>
-                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
-                        	바로 결제되지 않으며, 펀딩 종료 후에는 결제를 취소할 수 없습니다.
+                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"/>
+                        	<p class="noti-ck">바로 결제되지 않으며, 펀딩 종료 후에는 결제를 취소할 수 없습니다.</p>
 						</label>
 					</div>
 					<div class="noti-detail">
 						<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-						<p>펀딩이 종료되고 목표 금액이 달성될 경우 <strong><fmt:formatDate value="${pro_finish+1}" pattern="yyyy.MM.dd"/></strong>에 결제가 진행됩니다.</p>
+						<p>펀딩이 종료되고 목표 금액이 달성될 경우 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong>에 결제가 진행됩니다.</p>
 						<p>펀딩 종료 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
 					</div>
 					<div class="noti-check">
@@ -72,8 +71,8 @@ ul {list-style: none;}
                        			<span class="first-icon fa fa-square-o"></span>
                         		<span class="second-icon fa fa-check-square-o"></span>
                         	</span>
-                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
-                        	펀딩한 리워드는 즉시 배송되지 않습니다.
+                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox"/>
+                        	<p class="noti-ck">펀딩한 리워드는 즉시 배송되지 않습니다.</p>
 						</label>
 					</div>
 					<div class="noti-detail">
@@ -82,7 +81,7 @@ ul {list-style: none;}
 					</div>
 				</div>
 				
-				<p class="" data-toggle="modal" data-target="#myModal">프로젝트 상세 정책</p>
+				<p class="check-noti" data-toggle="modal" data-target="#myModal">프로젝트 상세 정책</p>
 				<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" >
 					<div class="modal-dialog" style="width: 800px;">
 						<div class="modal-content">
@@ -138,18 +137,21 @@ ul {list-style: none;}
 						<li class="opt-list">
 						<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 							<div class="opt-box">
-								<label class="checkbox" for="checkbox1">
+								<label class="radio" for="checkbox1">
 		                       		<span class="icons">
-		                       			<span class="first-icon fa fa-square-o"></span>
-		                        		<span class="second-icon fa fa-check-square-o"></span>
+		                       			<span class="first-icon fa fa-circle-o"></span>
+		                        		<span class="second-icon fa fa-dot-circle-o"></span>
 		                        	</span>
-		                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
+		                        	<input type="radio" value="" id="checkbox1" data-toggle="radio" name="projectOpt">
 								</label>
-								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.price}"/>원 펀딩합니다.</p>
+								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩합니다.</p>
 								<p class="">${opt.opt_detail}</p>
 								<p class="">${opt.opt_condition}</p>
 								<p class="">배송비 <fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원 | 리워드 제공 예상일 : 
 								<em><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</em></p>
+								<div>
+									수량 및 옵션 조건 추가
+								</div>
 							</div>
 						</li>
 					</c:forEach>
@@ -158,7 +160,7 @@ ul {list-style: none;}
 			</div>
 			
 			<div class="next-step">
-				<button href="#fakelink" class="btn btn-block btn-lg btn-fill btn-warning">다음 단계로</button>
+				<button id="funding" class="btn btn-block btn-lg btn-fill btn-warning">다음 단계로</button>
 			</div>
 			
 		</div>
