@@ -22,7 +22,7 @@
 		<typeAlias alias="storeOrder" type="funfun.vo.storeOrder"/>
 		<typeAlias alias="report" type="funfun.vo.Report"/>
 		<typeAlias alias="funding" type="funfun.vo.Funding"/>
-		<typeAlias alias="projectRisk" type="funfun.vo.ProRisk"/>
+ 		<typeAlias alias="projectRisk" type="funfun.vo.ProRisk"/>
 
 	</typeAliases>
 	<mappers>
