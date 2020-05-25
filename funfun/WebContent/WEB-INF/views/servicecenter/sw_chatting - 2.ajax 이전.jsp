@@ -43,47 +43,12 @@
 		$("h2").text("채팅 시작");
 		
 		// 화면 크기 고정
-		
+		/*
 		$(window).resize(function(){
-			window.resizeTo(460,680);
+			window.resizeTo(470,680);
 		});
+		*/
 		
-		
-		// 채팅 데이터 호출
-		var mem_code = "${param.mem_code}";
-		var my_code = "${user.mem_code}";
-		if(my_code == "") my_code = "1001"; 
-		console.log("mem_code:"+mem_code);
-		console.log("my_code:"+my_code);
-		$.ajax({
-			type:"post",
-			url:"${path}/rtqna.do?method=ajaxdetail&mem_code="+mem_code,
-			dataType:"json",
-			success:function(data){
-				var list = data.list;
-				var show = "";
-				var mem_name = "";
-				$.each(list,function(idx,rtqna){
-					show += "<div class='sc-message'>";
-					if(rtqna.rtqna_writer == my_code){
-						show += "	<div class='sc-message--content sent'>";
-					}else{
-						show += "	<div class='sc-message--content received'>";
-					}
-					show += "		<div class='sc-message--avatar' ></div>";
-					show += "		<div class='sc-message--text'>";
-					show += "			<span class='Linkify'>"+rtqna.rtqna_detail+"</span>";
-					show += "		</div></div></div>";
-					
-					if(mem_name == "") mem_name = rtqna.name;
-				});
-				$(".sc-message-list").html(show);
-				$(".sc-header--team-name").text(mem_name);
-			},
-			error:function(err){
-				console.log(err);
-			}
-		});
 		
 		$("#sendBtn").click(function(){
 			sendMsg();
@@ -157,7 +122,7 @@
 <body>
 <div class="sc-chat-window" style="z-index:10;">
 	<div class="sc-header">
-		<img class="sc-header--img" src="${path }/template/assets/img/new_logo.png" alt="">
+		<img class="sc-header--img" src="https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png" alt="">
 		<div class="sc-header--team-name">
 			회원이름
 		</div>
@@ -182,7 +147,18 @@
 				</div>
 			</div>
 		</div>
+		<div class="sc-message">
+			<div class="sc-message--content sent">
+				<div class="sc-message--avatar" ></div>
+				<div class="sc-message--text">
+					<span class="Linkify">Salsa is now the number one condiment in America.</span>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="preChatting">
+		ajax로 반복문 삽입
+	</div> 
 	<div class="sc-user-input">
 		<div role="button" tabindex="0" contenteditable="true" 
 			placeholder="Write a reply..." class="sc-user-input--text">

@@ -164,18 +164,13 @@
   	}
   	function goRtqna(){
   		var mem_code = "${user.mem_code}";
-  		// 추후 삭제
-  		window.open("${path}/chatting.do", "실시간 상담 채팅", "width=460, height=680");
-  		
-  		/*
   		if(mem_code == ""){
   			alert("로그인이 필요합니다.");
 			$(location).attr("href","${path}/login.do");
   		}else{
   			//alert("채팅페이지로 이동");
-  			window.open("${path}/chatting.do", "실시간 상담 채팅", "width=460, height=680"); 
+  			window.open("${path}/chatting.do?mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
   		}
-  		*/
   	}
   	
   </script>

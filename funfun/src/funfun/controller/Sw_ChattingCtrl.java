@@ -11,4 +11,6 @@ public class Sw_ChattingCtrl {
 	public String chatting() {
 		return "WEB-INF\\views\\servicecenter\\sw_chatting.jsp";
 	}
+	
+	
 }
