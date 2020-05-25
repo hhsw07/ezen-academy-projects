@@ -39,15 +39,16 @@
 	.project-title{text-align:center;}
 	.projectDetail_img{margin:50px 10px;}
 	.projectDetail_img img{width:678px; height:373px;}
-
-	.project-state{display:inline-block; vertical-align: top; -webkit-font-smoothing: antialiased;padding-top: 50px;
-    margin-bottom: 15px; margin-left: 28px;}
+	.project-state{display:inline-block; vertical-align: top; -webkit-font-smoothing: antialiased;padding-top: 50px; margin-bottom: 15px; margin-left: 28px;}
 	.state-box {width: 100%;} 
 	.state-box p {margin-bottom: 25px;color: #4a4a4a;line-height: 36px;}
 	.remainday {font-size: 28px;line-height: 36px;font-weight: 500;color: #4a4a4a;}
 	.btn-funding {width: 100%; margin-bottom: 10px; padding-top: 10px;}
-	
 	.project-report{margin-top: 20px;margin-bottom: 20px; border: 1px solid rgba(144,148,156,.3);padding: 12px 16px;}
-	
-	
-	
+	.project-maker{width:100%; padding: 10px 10px 20px;}
+	.project-opt{text-align:right;}
+	.project-opt-info{margin:10px 0;}
+	.opt-cont{text-align:left; padding:20px 10px 20px 30px;}
+	.report-modal{width:100%;}
+	.report-modal tr th, td {padding: 10px 5px;}
+	.report-cont{resize: none;}

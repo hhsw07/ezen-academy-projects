@@ -62,8 +62,9 @@ ul {list-style: none;}
 						</label>
 					</div>
 					<div class="noti-detail">
-						<p>펀딩이 종료되고 목표 금액이 달성될 경우 <strong>2020.07.01</strong>에 결제가 진행됩니다.</p>
-						<p>펀딩 종료 <strong>2020.06.30</strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
+						<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+						<p>펀딩이 종료되고 목표 금액이 달성될 경우 <strong><fmt:formatDate value="${pro_finish+1}" pattern="yyyy.MM.dd"/></strong>에 결제가 진행됩니다.</p>
+						<p>펀딩 종료 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
 					</div>
 					<div class="noti-check">
 						<label class="checkbox" for="checkbox1">
@@ -133,7 +134,9 @@ ul {list-style: none;}
 				</div>
 				<div>
 					<ul>
+					<c:forEach var="opt" items="${opt}" >
 						<li class="opt-list">
+						<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 							<div class="opt-box">
 								<label class="checkbox" for="checkbox1">
 		                       		<span class="icons">
@@ -142,13 +145,14 @@ ul {list-style: none;}
 		                        	</span>
 		                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
 								</label>
-								<p class="">43,900원 펀딩합니다.</p>
-								<p class="">[슈퍼울트라 얼리버드] 레드닥터 아치패드 "나홀로1세트"<em class="">(105개 남음)</em></p>
-								<p class="">레드닥터 아치패드 "나홀로 1세트" - 깔창 낱개로 2개가 1세트 입니다. - 45% 혜택</p>
-								<p class="">배송비 2,500원 | 리워드 제공 예상일 : <em>2020년 07월</em><em>중순 (11~20일) 예정</em></p>
+								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.price}"/>원 펀딩합니다.</p>
+								<p class="">${opt.opt_detail}</p>
+								<p class="">${opt.opt_condition}</p>
+								<p class="">배송비 <fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원 | 리워드 제공 예상일 : 
+								<em><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</em></p>
 							</div>
 						</li>
-					
+					</c:forEach>
 					</ul>
 				</div>
 			</div>

@@ -10,6 +10,7 @@ import funfun.vo.Paging;
 import funfun.vo.ProOption;
 import funfun.vo.Project;
 import funfun.vo.ProjectSch;
+import funfun.vo.Report;
 
 @Service
 public class MK_FundingService {
@@ -60,6 +61,10 @@ public class MK_FundingService {
 	public void insFavor(Project proj) {
 		System.out.println("관심service");
 		dao.insFavor(proj);
+	}
+	// 프로젝트 신고
+	public void insReport(Report ins) {
+		dao.insReport(ins);
 	}
 
 }
