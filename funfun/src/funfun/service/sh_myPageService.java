@@ -1,15 +1,10 @@
 package funfun.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import funfun.repository.sh_myPageReposi;
 import funfun.vo.Favor;
@@ -45,15 +40,19 @@ public class sh_myPageService {
 	public MyPageInfo mypageinfo(String memEmail){ 
 		return dao.mypageinfo(memEmail); 
 	}
-	public void changeOrderAdr(String oc, String newAdr) {
-		usingMap(oc,newAdr);
-		dao.changeOrderAdr(oc,newAdr);
+	public void changeAdr(HashMap<String,String> hm) {
+		dao.changeAdr(hm);
 	}
-	private void usingMap(String oc, String newAdr) {
-		HashMap<String, String> hm = new HashMap<String, String>();
-		hm.put("newAdr", newAdr);
-		hm.put("oc", oc);	
-	}			
-		
-	
+	public void changeFundingAdr(HashMap<String,String> hm2) {
+		dao.changeFundingAdr(hm2);
+	}
+	public void cancelOrder(String oc) {
+		dao.cancleOrder(oc);
+	}
+	public void cancelFunding(String fc) {
+		dao.cancleFunding(fc);
+	}
+	public void deleteFavor(HashMap<String,String> hmDF) {
+		dao.deleteFavor(hmDF);
+	}
 }
