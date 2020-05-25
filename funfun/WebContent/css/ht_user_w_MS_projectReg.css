@@ -91,3 +91,45 @@ details > summary::-webkit-details-marker {
 	text-align:center;
 }
 
+.optUnitContainer{
+	display:inline-block;
+	width:280px;
+	margin:10px;
+	padding:20px;
+	border:solid 2px #EAEAEA;
+}
+
+
+
+.optUnitPrice{
+	margin:10px 0px 10px 0;
+	font-weight:900;
+	font-size:18px;
+	}
+
+.optUnitTitle{
+	margin:10px 0px 10px 0;
+	font-size:12px;
+	}
+
+.optUnitDetail{
+	margin:10px 0px 10px 0;
+	font-size:12px;
+	}
+
+.optUnitCondition{
+	margin:10px 10px 10px 0;
+	font-size:12px;
+	}
+
+.optUnitDeliver{
+	margin:10px 0px 10px 0;
+	font-size:12px;
+	}
+
+.optUnitDeliverDate{
+	margin:10px 0px 10px 0;
+	font-size:12px;	
+}
+
+

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import funfun.vo.MakerStudio;
 import funfun.vo.ProOption;
+import funfun.vo.ProRisk;
 import funfun.vo.Project;
 
 @Repository
@@ -18,5 +19,7 @@ public interface HT_ProjectRegReposi {
 	public void proStory(Project cre);
 	public ArrayList<ProOption> getProOptionList(int pro_code);
 	public void regProOption(ProOption cre);
+	public ArrayList<ProRisk> getProRiskList(int pro_code);
+	public void regProRisk(ProRisk cre);
 
 }
