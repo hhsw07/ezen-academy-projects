@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
-import funfun.vo.Funding;
 import funfun.vo.Paging;
 import funfun.vo.ProOption;
 import funfun.vo.Project;
-import funfun.vo.ProjectQna;
 import funfun.vo.ProjectSch;
 import funfun.vo.Report;
 
@@ -27,12 +25,5 @@ public interface MK_FundingReposi {
 	public void insFavor(Project proj);
 	// 프로젝트 신고
 	public void insReport(Report ins);
-	// 문의하기
-	public void inquiry(ProjectQna ins);
-	// 문의 답변
-	public void answer(ProjectQna upt);
-	// 펀딩하기
-	public void funding(Funding ins);
-	public void uptMoney(Funding upt);
 	
 }

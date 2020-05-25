@@ -307,29 +307,4 @@ body {
   display: inline-block;
   margin: 100px auto;
 }
-
-#deleteFavor {
-  position: relative;
-  bottom: 180px;
-  left: 230px;
-  color: gray;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-#deleteFavor:hover {
-  color: white;
-}
-
-.MovedetailPage {
-  width: 100%;
-  background-color: white;
-  color: orange;
-  border: 2px solid orange;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 20px;
-  font-weight: bold;
-}
 /*# sourceMappingURL=sh_user_w_myPage.css.map */

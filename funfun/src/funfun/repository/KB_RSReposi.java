@@ -16,6 +16,5 @@ public interface KB_RSReposi {
 	
 	public int storeCnt(Paging sch);
 	
-
 	
 }

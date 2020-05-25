@@ -38,35 +38,11 @@
 		order by d.FUND_CODE desc
 	</select>
 
-	<update id="changeAdr" parameterType="java.util.HashMap">
+	<update id="changeOrderAdr" parameterType="java.util.HashMap">
  		UPDATE STORE_ORDER
 		SET STO_ORDER_ADDRESS = #{newAdr}
 	    WHERE STO_ORDER_CODE = #{oc}
  	</update>
- 	
- 	<update id="changeFundingAdr" parameterType="java.util.HashMap">
-	    UPDATE funding
-		SET FUND_ADDRESS = #{newAdr2}
-		WHERE FUND_CODE = #{fc}
- 	</update>
- 	
- 	<update id="cancleOrder" parameterType="String">
-	    UPDATE STORE_ORDER
-		SET STO_ORDER_CURR = '주문취소'
-	    WHERE STO_ORDER_CODE = #{oc}
- 	</update>
- 	
- 	<update id="cancleFunding" parameterType="String">
-	    UPDATE funding
-		SET FUND_STATE = '펀딩취소'
-		WHERE FUND_CODE = #{fc}
- 	</update>
- 	
- 	<delete id="deleteFavor" parameterType="java.util.HashMap">
-		DELETE FROM (SELECT * FROM favor f LEFT JOIN MEMBER m ON f.MEM_CODE = m.MEM_CODE )
-		WHERE
-		PRO_CODE = #{pc} AND MEM_EMAIL = #{memEmail}
- 	</delete> 
 
 	<resultMap type="trans" id="transResult"/>
  	<select id="tlist" resultMap="transResult" 

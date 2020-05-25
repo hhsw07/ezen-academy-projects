@@ -11,7 +11,6 @@ import funfun.service.KB_StoreService;
 import funfun.vo.Paging;
 import funfun.vo.RewardStore;
 import funfun.vo.storeOption;
-import funfun.vo.storePay;
 import funfun.vo.storeQnA;
 
 @Controller
@@ -88,22 +87,8 @@ public class kb_Store_Controller {
 		return "pageJsonReport";
 	}
 	
-	@RequestMapping(params="method=pay")
-	public String pay(@RequestParam("sto_opt_code") int sto_opt_code,@RequestParam("mem_code") int mem_code, 
-			Model d) {
-		System.out.println("결제 테스트 : " + sto_opt_code);
-		d.addAttribute("opt_title", service.opt_title(sto_opt_code));
-		d.addAttribute("mem_balance", service.mem_balance(mem_code));
-		return "WEB-INF\\views\\Store\\kb_w_user_storePay.jsp";
-	}
 	
-	@RequestMapping(params="method=payOrder")
-	public String payOrder(@ModelAttribute("storePay") storePay pay) {
-		service.payInsert(pay);
-		service.UptMemBalance(pay);
-		System.out.println("성공");
-		return "WEB-INF\\views\\Store\\kb_w_user_StorePayDone.jsp";
-	}
+	
 	
 	
 }

@@ -38,18 +38,4 @@
 	<select id="getMakerCode" parameterType="int" resultType="int">
 		select maker_code from maker where mem_code = #{code}
 	</select>
-	
-	<select id="getNameByEmail" parameterType="String" resultType="String">
-		select mem_name from member where mem_email=#{email}
-	</select>
-	
-	<resultMap type="java.lang.Integer" id="IntegerArray"></resultMap>
-	<select id="getFavorCodeListByEmail" parameterType="String" resultMap="IntegerArray">
-		select pro_code from favor
-	</select>
-	
-	<select id="getFavorByCode" parameterType="java.lang.Integer" resultType="funfun.vo.Favor">
-		SELECT pro_title proTitle, cate_title cateTitle,
-		pro_finish_date-current_date dDay FROM project WHERE pro_code=#{code}
-	</select>
 </mapper>

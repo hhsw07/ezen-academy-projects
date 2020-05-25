@@ -47,14 +47,7 @@
 		});
 		// 펀딩하기
 		$("#gofun").click(function(){
-			if(mem_code == ""){
-	  			if(confirm("로그인이 필요합니다.")){
-	  				$(location).attr("href","${path}/login.do");
-	  			}
-	  		} else{
-	  			var no = $("[name=pro_code]").val();
-				$(location).attr("href","${path}/funding.do?method=option&pro_code="+no);
-	  		}
+			$(location).attr("href","${path}/funding.do?method=option");
 		});
 		// 신고하기
 		$("#reportBtn").click(function(){
@@ -65,12 +58,8 @@
 	  		}
 		});
 		$("#report").click(function(){
-			alert("신고가 접수되었습니다");
 			$(location).attr("href","${path}/funding.do?method=report");
-			$("#favor").submit(); // 신고자(회원번호), 프로젝트번호
-			$("#report-content").submit(); // 신고내용, 이미지
 		});
-		// 문의하기
 		
 	});
 	
@@ -118,8 +107,8 @@
 					<p class=""><strong>${project.percent}</strong>% 달성</p>
 					<p class=""><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_money}"/></strong>원  펀딩</p>
 				</div>
-				<div class="btn-funding">
-					<button id="gofun" class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
+				<div class="btn-funding" id="gofun">
+					<button class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
 				</div>
 
 				<div class="btn-wrap share">
@@ -145,7 +134,6 @@
 									<h4 class="modal-title" id="myModalLabel">프로젝트 신고하기</h4>
 								</div>
 								<div class="modal-body">
-								<form method="post" id="report-content">
 									<table class="report-modal">
 										<colgroup>
 											<col width="20%">
@@ -157,19 +145,18 @@
 										<tr>
 											<th>신고내용</th>
 											<td>
-												<textarea name="report_detail" placeholder="신고할 내용을 작성해주세요" class="form-control report-cont" rows="5" ></textarea>
+												<textarea placeholder="신고할 내용을 작성해주세요" class="form-control report-cont" rows="5" ></textarea>
 											</td>
 										</tr>
 										<tr>
 											<th>파일첨부</th>
 											<td class="input-group">
 												<div class="custom-file">
-													<input type="file" name="report_img" class="custom-file-input" id="file01"/>
+													<input type="file" name="report" class="custom-file-input" id="file01"/>
 												</div>
 											</td>
 										</tr>
 									</table>
-								</form>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
@@ -186,12 +173,10 @@
 			<!-- 메이커정보 -->
 			<div class="project-maker">
 				<div class="img-thumbnail" style="width:100%; padding:10px;">
-					<div  class="col-md-10">
-                 	   <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
-                 	   <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
-                    </div>
-                    <span class="col-md-2"><button id="goinq" class="btn btn-block btn-lg btn-warning">문의하기</button></span>
+                    <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
+                    <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
                 </div>
+			
 			</div>
 			
 			<!-- 프로젝트 소개 -->
@@ -221,8 +206,8 @@
 			</div>
 			
 	    	<!-- 문의 -->
-	    	<div class="project-inquiry">
-	    		문의글 리스트
+	    	<div>
+	    	
 	    	</div>
 	    
 	    

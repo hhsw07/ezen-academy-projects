@@ -12,52 +12,25 @@
 <link rel="stylesheet" href="${path}/css/kb_w_user_StorePay.css">
 <title>Insert title here</title>
 <script>
-function goPopup(){
-	var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
-}
-
-function jusoCallBack(roadFullAddr,zipNo){
-	$("[name=pay_zipcode]").val(zipNo);
-	$("[name=pay_addr]").val(roadFullAddr);
 	
-	
-}
-
-$(document).ready(function(){
-	var mem_price = '${mem_balance}';
-	var pay_price = '${param.sto_price}';
-	console.log(mem_price);
-	console.log(pay_price);
-	
-	$("#pay_btn").click(function(){
-		if(parseInt(mem_price) >= parseInt(pay_price)){
-			alert("충분~");
-		} else {
-			alert("예치금이 부족합니다.");
-		}
-	});
-	
-	
-})
 </script>
 </head>
 <body>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	        <h2 class="store_pay_Title">주문/결제</h2>
-		<form method="post" action="store.do?method=payOrder">
+	        <h2 class="store_pay_Title">주문/결제</h1>
+
         <div class="user_info_div">
             <h3>구매자정보</h3>
             <div class="user_info">
                 <table class="store_table">
                     <tr class="store_tr">
                         <th class="store_th">이름</th>
-                        <td class="store_td">${user.mem_name}
-                        <input type="hidden" name="mem_code" value="${user.mem_code }"></td>
+                        <td class="store_td">권기범</td>
                     </tr>
                     <tr class="store_tr">
                         <th class="store_th">이메일</th>
-                        <td class="store_td">${user.mem_email}</td>
+                        <td class="store_td">rlqja914kg@naver.com</td>
                     </tr>
                 </table>
             </div>
@@ -72,17 +45,13 @@ $(document).ready(function(){
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">배송지정보</th>
-                    <td class="store_td"><input type="text" name="pay_zipcode"><button type="button" style="margin-left:10px;" onclick="goPopup()">우편번호찾기</button><br>
+                    <td class="store_td"><input type="text" name="pay_zipcode"><button>우편번호찾기</button><br>
                     <input type="text" name="pay_addr" class="inputs" style="margin-top:10px;"></td>
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">연락처</th>
-                    <td class="store_td"><input type="text" name="pay_phone" placeholder="xxx-xxxx-xxxx"></td>
+                    <td class="store_td"><input type="text" name="pay_phone"></td>
                 </tr>
-                <tr class="store_tr">
-                	<th class="store_th">배송 요청사항</th>
-                	<td class="store_td"><input type="text" name="pay_ship_req" class="inputs">
-                </td></tr> 
                 
             </table>
         </div>
@@ -92,17 +61,15 @@ $(document).ready(function(){
             <table class="store_table">
                 <tr class="store_tr">
                     <th class="store_th">상품 이름</th>
-                    <td class="store_td">${param.sto_title}</td>
+                    <td class="store_td">초~달아서 초당! 초당 옥수수</td>
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">상품 옵션</th>
-                    <td class="store_td">${opt_title}
-                    <input type="hidden" name="sto_opt_code" value="${param.sto_opt_code}"></td>
+                    <td class="store_td">초당옥수수 2KG</td>
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">상품 수량</th>
-                    <td class="store_td">${param.opt_cnt} 개
-                    <input type="hidden" name="pay_cnt" value="${param.opt_cnt }"></td>
+                    <td class="store_td">3 개</td>
                 </tr>
 
             </table>
@@ -112,25 +79,23 @@ $(document).ready(function(){
             <table class="store_table">
                 <tr class="store_tr">
                     <th class="store_th">상품가격</th>
-                    <td class="store_td"> <fmt:formatNumber type="number" maxFractionDigits="3" value="${param.sto_price}"/>원
-                    <input type="hidden" name="pay_price" value="${param.sto_price}"/></td>
+                    <td class="store_td">105,000원</td>
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">보유 예치금</th>
-                    <td class="store_td"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mem_balance}"/>원</td>
+                    <td class="store_td">120,000원</td>
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">결제후 잔액</th>
-                    <td class="store_td"><fmt:formatNumber type="number" maxFractionDigits="3" value="${mem_balance - param.sto_price}"/>원</td>
+                    <td class="store_td">15,000원</td>
                 </tr>
             </table>
         </div>
         <div class="pay_btn_Div">
-            <button type="button" id="pay_btn">결제하기</button>
+            <button id="pay_btn">결제하기</button>
         </div>
-	     </form>   
+	        
 	    </div>
-	  
 	</div>
 	<!-- end main -->
 </body>

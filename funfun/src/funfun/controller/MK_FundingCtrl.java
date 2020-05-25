@@ -106,22 +106,14 @@ public class MK_FundingCtrl {
 		return "forward:/funding.do?method=detail";
 	}
 	// 문의하기
-	@RequestMapping(params="method=inquiry")
-	public String inquiry() {
-		return "";
-	}
+	
 	// 펀딩하기 - 옵션선택
-	// http://localhost:5080/funfun/funding.do?method=option&pro_code=21000002
 	@RequestMapping(params="method=option")
-	public String option(@ModelAttribute("project") Project proj, Model d) {
-		d.addAttribute("project", service.detail(proj.getPro_code()));
-		d.addAttribute("opt", service.proOptList(proj.getPro_code()));
+	public String option(@RequestParam("pro_code") int pro_code, Model d) {
+		d.addAttribute("project", service.detail(pro_code));
+		d.addAttribute("opt", service.proOptList(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_fundingOpt.jsp";
 	}
 	// 펀딩하기
-	@RequestMapping(params="method=funding")
-	public String funding() {
-		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
-	}
 
 }

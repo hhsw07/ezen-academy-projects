@@ -1,7 +1,6 @@
 package funfun.repository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +19,5 @@ public interface sh_myPageReposi {
 	public int fundCnt(String memEmail);
 	public int orderCnt(String memEmail);
 	public MyPageInfo mypageinfo(String memEmail);
-	public void changeAdr(HashMap<String,String> map);
-	public void changeFundingAdr(HashMap<String,String> map);
-	public void cancleOrder(String oc);
-	public void cancleFunding(String fc);
-	public void deleteFavor(HashMap<String,String> hmDF);
+	public void changeOrderAdr(String oc, String newAdr);
 }

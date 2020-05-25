@@ -16,7 +16,6 @@
 			
 			var price = 0;
 			var detai = "";
-			var opt_code;
 			var user = '${user.mem_name}';
 			$("#option_select").change(function(){
 				
@@ -24,13 +23,9 @@
 				price = Select.options[Select.selectedIndex].dataset.price;
 				console.dir(price);
 				
-				opt_code = $("#option_select option:selected").val();
-				$("[name=sto_opt_code").val(opt_code);
 				detail = $("#option_select").val();
-				$("[name=sto_option_detail]").val(detail);
 				$("#cnt_input").val("1");
 				$("#price_Span").html(numberWithCommas(price));
-				$("[name=sto_price]").val(price);
 			});
 			
 			$("#cnt_input").change(function(){
@@ -44,7 +39,6 @@
 				tot = price * cnt;
 				
 				$("#price_Span").html(numberWithCommas(tot));
-				$("[name=sto_price]").val(tot);
 
 			});
 			
@@ -65,14 +59,6 @@
 	                $("#qnaForm").submit();
 	                $(".btn btn-primary").modal("hide");
 	                $("#sto_QnA_Div").focus();
-	            	} else {
-	            		alert("로그인이 필요합니다");
-	            	}
-	            });
-	            
-	            $("#Pay_Btn").click(function(){
-	            	if(user != ''){
-	            		$("#pay_form").submit();
 	            	} else {
 	            		alert("로그인이 필요합니다");
 	            	}
@@ -108,41 +94,36 @@
         </div>
         <div id="sto_Main_Info_Div">
             
-	            <div id="sto_Image_Div">
-	                <img src="img/${store.sto_image}" class="img-responsive" alt="Responsive image" 
-	                style="width:80%;
-	                height:100%; margin-left:auto; margin-right:auto;">
-	            </div>
-				<form method="post" id="pay_form" action="store.do?method=pay">
-	            <div id="sto_pay_Div">
-	                <div id="maker_name_Div"> 메이커 명 : ${store.maker_name}</div>
-	                <div id="option_Div">
-	                    <span id="option_title">옵션 : </span>
-	                    <select class="form-data" id="option_select" name="sto_option">
-	                    	<option></option>
-	                    	<c:forEach var="opt" items="${option}">
-	                    		  <option data-price="${opt.sto_opt_price}" value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} </option>
-	                    	</c:forEach>
-	                    </select>
-	                    <input type="hidden" name="sto_opt_code"> 
-	                    <input type="hidden" name="sto_title" value="${store.sto_title}">
-	                    <input type="hidden" name="mem_code" value="${user.mem_code}">   
-	                </div>
-	                <div id="option_cnt_div">
-	                    <span id="option_cnt_title">수량 : </span>
-	                    <input type="number" class="form-data" id="cnt_input" name="opt_cnt" value="1" style="text-align:center">
-	                </div>
-	                <div id="option_price_Div">
-	                
-	                    <span id="price_Span"></span>원
-	                    <input type="hidden" name="sto_price">
-	                    <input type="hidden" name="sto_code" value="${param.sto_code}">
-	                </div>
-	                <div id="pay_Btn_Div">
-	                    <button type="button" id="Pay_Btn">주문하기</button>
-	                </div>
-	            </div>
-			</form>
+            <div id="sto_Image_Div">
+                <img src="img/${store.sto_image}" class="img-responsive" alt="Responsive image" 
+                style="width:80%;
+                height:100%; margin-left:auto; margin-right:auto;">
+            </div>
+
+            <div id="sto_pay_Div">
+                <div id="maker_name_Div"> 메이커 명 : ${store.maker_name}</div>
+                <div id="option_Div">
+                    <span id="option_title">옵션 : </span>
+                    <select class="form-data" id="option_select" name="sto_opt_code">
+                    	<option></option>
+                    	<c:forEach var="opt" items="${option}">
+                    		  <option data-price="${opt.sto_opt_price}" value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} </option>
+                    	</c:forEach>
+                    </select>    
+                </div>
+                <div id="option_cnt_div">
+                    <span id="option_cnt_title">수량 : </span>
+                    <input type="number" class="form-data" id="cnt_input" value="1" style="text-align:center">
+                </div>
+                <div id="option_price_Div">
+                
+                    <span id="price_Span"></span>원
+                </div>
+                <div id="pay_Btn_Div">
+                    <button id="Pay_Btn">주문하기</button>
+                </div>
+            </div>
+
            
         </div>
         <div id="sto_Story_Div">

@@ -20,7 +20,7 @@
     <link href="${path }/template/bootstrap3/css/font-awesome.css" rel="stylesheet" />
     
 	<link href="${path }/template/assets/css/gsdk.css" rel="stylesheet" />   
-    <link href="${path }/template/assets/css/demo.css" rel="stylesheet" />
+    <link href="${path }/template/assets/css/demo.css" rel="stylesheet" /> 
 
     <!--     Font Awesome     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -141,9 +141,12 @@
 </div> <!-- end menu-dropdown -->
 
 <!-- 채팅 버튼 -->
-<div class="" style="position:fixed; bottom:25px; right:25px; z-index:10" >
-	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:60px; height:60px;"/></a>
+<div class="" style="position:fixed; bottom:50px; right:50px; z-index:10" >
+	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:150px; height:150px;"/></a>
 </div>
+
+
+
 </body>
 
   
@@ -168,9 +171,10 @@
   			alert("로그인이 필요합니다.");
 			$(location).attr("href","${path}/login.do");
   		}else{
-  			//alert("채팅페이지로 이동");
-  			window.open("${path}/chatting.do?mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
+  			alert("채팅페이지로 이동");
+  			//$(location).attr("href","${path}/rtqna.do?method=detail&mem_code="+mem_code);
   		}
+  		
   	}
   	
   </script>

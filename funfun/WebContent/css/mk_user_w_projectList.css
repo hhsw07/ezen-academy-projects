@@ -34,11 +34,11 @@
 	.ProjectList-rate{color: orange; font-weight: bold; font-size: 15px; position: absolute; bottom: 26px;left: 27px;}
 	.ProjectList-date{font-weight: bold; font-size: 13px; position: absolute; bottom: 26px;color:#90949c;right: 26px;}
 	
-/* 상세보기 */
+/* Project Detail */
 	.project-basic{display:inline-block;}
 	.project-title{text-align:center;}
 	.projectDetail_img{margin:50px 10px;}
-	.projectDetail_img img{width:678px; height:373px;display: block;}
+	.projectDetail_img img{width:678px; height:373px;}
 	.project-state{display:inline-block; vertical-align: top; -webkit-font-smoothing: antialiased;padding-top: 50px; margin-bottom: 15px; margin-left: 28px;}
 	.state-box {width: 100%;} 
 	.state-box p {margin-bottom: 25px;color: #4a4a4a;line-height: 36px;}
@@ -52,19 +52,3 @@
 	.report-modal{width:100%;}
 	.report-modal tr th, td {padding: 10px 5px;}
 	.report-cont{resize: none;}
-
-/* 옵션선택 */
-	.funding-noti{margin-bottom: 24px;line-height: 1.29;font-size: 28px;font-weight: 400;}
-	.noti-check {border: 1px solid #f0f2f5; margin: 12px auto 0; width:1000px;}
-	.noti-check .icons{left: 10px; top: 5px;}
-	.icons span{left: 10px; top: 5px;}
-	.noti-check label {margin-right: 0; padding: 12px; color: #babdc0; font-size: 17px;}
-	.noti-check label input[type=checkbox]{margin-top: -4px;border-radius: 50%;border-color: #e6eaed; width: 22px;height: 22px; margin-right: 8px;}
-	.noti-ck{position:absolute; left:40px; top: 3px;}
-	.checkbox.checked, .radio.checked {color: #ff9500 !important;}
-	.checked .second-icon{color: #ff9500 !important;}
-	.noti-detail{border: 1px solid #f0f2f5;border-top: 0; padding: 16px;width:1000px; margin:0 auto;}
-	.funding-opt{margin-bottom: 42px;}
-	.funding-opt h3 {margin-bottom: 28px;}
-	.top-area {margin-bottom: 20px; margin-top: 80px;}
-	.sub-text {margin-bottom: 5px;padding: 0 5px; font-size: 14px; font-weight: 500; line-height: 18px;}

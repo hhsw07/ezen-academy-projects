@@ -339,7 +339,6 @@ $(document).ready(function(){
 								console.log(data.code);
 								console.log(vm4.myCode);
 								if(Number(vm4.myCode)===data.code){
-									alert("회원가입이 완료되었습니다.");
 									$('form').submit();
 								} else {
 									vm4.msgOn=true;
