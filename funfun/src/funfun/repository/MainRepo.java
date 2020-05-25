@@ -18,4 +18,8 @@ public interface MainRepo {
 	public void insertMember(MemberInfo m);
 	
 	public void changePass(MemberInfo m);
+	
+	public int isMaker(int mem_code);
+	
+	public int getMakerCode(int mem_code);
 }

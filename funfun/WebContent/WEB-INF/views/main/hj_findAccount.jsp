@@ -103,7 +103,8 @@
 	        </div>
 		</div>
             
-            <form-reset-pass v-bind:change-result="changeResult"  v-on:changePass="changePass" v-bind:class="{bounce:isBounce}" v-if="isResetForm"></form-reset-pass>
+            <form-reset-pass v-bind:change-result="changeResult"  v-on:trAuthCode="reAuthCode" v-on:changePass="changePass" v-bind:class="{bounce:isBounce}" v-if="isResetForm"
+				v-bind:is-email-auth-form="isEmailAuthForm"></form-reset-pass>
             
             <br><br>
             <div class="row">
@@ -143,6 +144,17 @@
 	        </div>
 		</div>
 	<br>
+	
+	<div class="row" v-if="isEmailAuthForm">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="form-group">
+              <label for="authCode">인증코드(*)</label>
+              <input v-model="authCode" type="text" class="form-control" v-on:change="trAuthCode">
+          </div>
+      </div>
+    </div>
+
 	<div class="row">
        <div class="col-md-4"></div>
        <div class="col-md-4">
@@ -212,9 +224,10 @@
         			isBounce:false,
         			countOn:false,
         			count:5,
+        			authCode:"",
         		}
         	},
-        	props:['change-result'],
+        	props:['change-result','is-email-auth-form'],
             watch:{
             	changeResult:function(val){
             		this.alertMsg="변경이 완료되었습니다.";
@@ -273,9 +286,12 @@
         			}
         		},
         		changePass:function(){
-        			this.alertMsg="비밀번호 변경 중입니다...";
+        			this.alertMsg=`해당 이메일로 인증번호를 발송하였습니다.`;
         			this.fontColor="black";
         			this.$emit('changePass', this.pass1);
+        		},
+        		trAuthCode:function(){
+        			this.$emit('trAuthCode', this.authCode);
         		}
         	}
         });
@@ -292,26 +308,62 @@
             		isBounce:false,
             		isDisabled:false,
             		changeResult:false,
+            		//이메일 인증을 위한 data isEmailAuthForm
+            		isEmailAuthForm:false,
+            		authCode:"",
             	}
             },
             methods:{
+            	reAuthCode:function(val){
+            		this.authCode=Number(val);
+            	},
             	changePass:function(pass){
-            		$.ajax({
-    					type:"post",
-    					url:"${path}/changePass.do?mem_email="+this.inputEmail+"&mem_pw="+pass,
-    					dataType:"json",
-    					success:(data)=>{
-    						console.log("비밀번호 변경완료");
-    						if(data.result===true){
-    							this.changeResult=true;
-    						}
-    					},
-    					error:(err)=>{
-    						console.log("ajax처리 에러");
-    						console.log(err);
-    					}
-    				});
-            		
+            		//이메일 인증 전인 경우
+            		if(!this.isEmailAuthForm){
+            			//인증 이메일 발송
+            			var _email= this.inputEmail;
+            			$.ajax({
+							type:"post",
+							url:"${path}/Mail.do?email="+_email,
+							dataType:"text",
+							success:function(data){
+								console.log("이메일전송");
+							},
+							error:function(err){
+								console.log("ajax처리 에러");
+								console.log(err);
+							}
+						});
+            			//이메일 인증 폼 On
+            			this.isEmailAuthForm=true;
+            			
+            		// 이미 이메일 인증코드를 발송한 경우
+            		} else {
+            			//이메일 인증코드와 입력한 인증코드가 일치하는지 비교
+            			var _email= this.inputEmail;
+            			var _authCode=this.authCode;
+            			var _changePass2=this.changePass2;
+            			$.ajax({
+							type:"post",
+							url:"${path}/getMailCode.do?email="+_email,
+							dataType:"json",
+							success:function(data){
+								console.log(data.code);
+								if(Number(_authCode===data.code)){
+									_changePass2(_email, pass);
+								} else {
+									alert("인증번호를 확인해주세요");
+								}
+							},
+							error:function(err){
+								console.log("ajax처리 에러");
+								console.log(err);
+							}
+						});
+            			/*
+            			
+            			*/
+            		}
             	},
                 changeForm:function(){
                     this.$emit('change');
@@ -361,6 +413,23 @@
         					}
         				});
                 	}
+                },
+                changePass2:function(email, pass){
+                	$.ajax({
+    					type:"post",
+    					url:"${path}/changePass.do?mem_email="+email+"&mem_pw="+pass,
+    					dataType:"json",
+    					success:(data)=>{
+    						console.log("비밀번호 변경완료");
+    						if(data.result===true){
+    							this.changeResult=true;
+    						}
+    					},
+    					error:(err)=>{
+    						console.log("ajax처리 에러");
+    						console.log(err);
+    					}
+    				});
                 }
                 
             },

@@ -73,5 +73,10 @@
 	<insert id="insFavor" parameterType="project">
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
+	<!-- 프로젝트 신고 -->
+	<insert id="insReport" parameterType="report">
+		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, REPORT_DETAIL, REPORT_IMG, current_date)
+	</insert>
+	
 	
 </mapper>

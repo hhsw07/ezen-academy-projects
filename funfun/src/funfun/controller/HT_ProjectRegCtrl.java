@@ -41,6 +41,8 @@ public class HT_ProjectRegCtrl {
 		System.out.println(makerinfo.getMaker_code());
 		cre.setMaker_code(makerinfo.getMaker_code());
 		service.proCreate(cre);
+		
+		System.out.println("새로 만든 프로젝트 코드 : " + cre.getPro_code());
 		session.setAttribute("proInfo", cre);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}

@@ -49,12 +49,11 @@ public class sh_myPageCtrl {
 	}
 	
 		@RequestMapping("/changeOrderAdr.do")
-		public String changeOrderAdr(@RequestParam("orderCode") String orderCode,@RequestParam("newAdr") String newAdr, Model d) {
+		public String changeOrderAdr(@RequestParam("oc") String oc,@RequestParam("newAdr") String newAdr, Model d) {
 			System.out.println("컨트롤러 접근");
-		
-			System.out.println(orderCode);
+			System.out.println(oc);
 			System.out.println(newAdr);
-			service.changeOrderAdr(orderCode,newAdr);
+			service.changeOrderAdr(oc,newAdr);
 			return "forward:/mypage.do";
 		}
 }

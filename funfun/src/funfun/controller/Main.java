@@ -70,7 +70,11 @@ public class Main {
 	@RequestMapping("/loginSuccess.do")
 	public String loginSuccess(MemberLogin m, HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		session.setAttribute("user", service.getMemberInfo(m.getMem_email()));
+		//로그인 성공 시 이메일로 멤버(이름, 이메일, 멤버코드, 메이커코드 정보 가져옴)
+		//메이커가 아닌 경우 메이커코드에 -1 set
+		MemberInfo memberInfo = service.getMemberInfo(m.getMem_email());
+		System.out.println("메이커코드:"+memberInfo.getMaker_code());
+		session.setAttribute("user", memberInfo);
 		System.out.println("로그인성공");
 		return "redirect:/main.do";
 	}
