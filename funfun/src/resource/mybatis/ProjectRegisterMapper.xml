@@ -50,14 +50,14 @@
 	<insert id="regProOption" parameterType="projectOpt">
 	INSERT INTO PRO_OPTION VALUES (option_seq.nextval, #{pro_code}, #{opt_price}, #{opt_title}, #{opt_detail}, #{opt_condition}, #{opt_delivery}, #{opt_max}, #{opt_deliver_date})
 	</insert>
-	
+ 	
 	<select id="getProRiskList" resultType="projectRisk" parameterType="int">
 	SELECT * FROM RISK
 	WHERE pro_code = #{pro_code}
 	</select>
 	
 	<insert id="regProRisk" parameterType="projectRisk">
-	INSERT INTO RISK VALUES (risk_seq.nextval, ${pro_code}, ${risk_detail}, ${risk_title})
+	INSERT INTO RISK VALUES (risk_seq.nextval, #{pro_code}, #{risk_detail}, #{risk_title})
 	</insert>
 
 </mapper>

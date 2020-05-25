@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import funfun.repository.HT_ProjectRegReposi;
 import funfun.vo.MakerStudio;
 import funfun.vo.ProOption;
+import funfun.vo.ProRisk;
 import funfun.vo.Project;
 
 @Service
@@ -50,4 +51,11 @@ public class HT_ProjectRegService {
 		dao.regProOption(cre);
 	}
 	
+	public ArrayList<ProRisk> getProRiskList(int pro_code){
+		return dao.getProRiskList(pro_code);
+	}
+	
+	public void regProRisk(ProRisk cre) {
+		dao.regProRisk(cre);
+	}
 }

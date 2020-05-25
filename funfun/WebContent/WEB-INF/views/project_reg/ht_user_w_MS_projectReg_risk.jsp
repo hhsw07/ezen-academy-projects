@@ -33,6 +33,7 @@
 		})		
 			
 	})
+	
 </script>
 </head>
 <body>
@@ -58,10 +59,21 @@
 
   	<br><br><br><br>
 
+	<c:forEach var="risk" items="${riskList}">
+			<div class="riskUnitContainer">
+			<div class="riskUnitPrice">${risk.risk_title}</div>
+			<div class="riskUnitTitle">${risk.risk_detail}</div>
+			</div>
+	</c:forEach>	
+
+
 	<div class="form-group">
 
 	<button class="btn btn-warning btn_custom" data-toggle="modal" data-target="#myModal">+ 추가하기</button>
 
+
+	<form method="post" action="${path}/ProjectReg.do" id="RiskUnitSubmitForm">
+	<input type="hidden" name="method" value="riskUnitReg"/>
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
@@ -75,7 +87,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">위험내용 제목</div>
 						<div class="reward_reg_content_container2">
-							<input type="text" class="form-control"/>
+							<input type="text" name="risk_title" class="form-control"/>
 							<span class="sub_gray_font">xx자 남음</span>
 						</div>
 					</div>
@@ -83,7 +95,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">상세설명</div>
 						<div class="reward_reg_content_container2">
-							<textarea class="form-control"></textarea>
+							<textarea class="form-control" name="risk_detail"></textarea>
 							<span class="sub_gray_font">xx자 남음</span>
 						</div>
 					</div>
@@ -93,17 +105,17 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
 						<div class="divider"></div>
-					<button type="button" class="btn btn-info btn-simple">등록</button>
+					<button type="button" class="btn btn-info btn-simple" id="subBtn">등록</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+	</form>
 
 	<br><br><br><br>
 
-  	<button class="btn btn-warning btn_custom" style="width:40%">저장하기</button>
+  	<button class="btn btn-warning btn_custom" style="width:40%" id="saveBtn">저장하기</button>
 
 	<br><br><br><br>
 
@@ -120,4 +132,18 @@
 	</div>
 	<!-- end main -->
 </body>
+
+<script>
+
+	$("#subBtn").click(function(){
+		$("#RiskUnitSubmitForm").submit();
+	})
+	$("#saveBtn").click(function(){
+		if(confirm("저장 하시겠습니까?")){
+			$(location).attr("href", "${path}/ProjectReg.do?method=initPage")
+		}
+	})
+
+</script>
+
 </html>
