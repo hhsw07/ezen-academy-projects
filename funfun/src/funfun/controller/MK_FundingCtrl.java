@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.MK_FundingService;
-import funfun.vo.Paging;
 import funfun.vo.Project;
 import funfun.vo.ProjectSch;
+import funfun.vo.Report;
 
 @Controller
 @RequestMapping("/funding.do")
@@ -93,16 +93,27 @@ public class MK_FundingCtrl {
 	// 관심프로젝트 등록
 	@RequestMapping(params="method=favor")
 	public String insFavor(@ModelAttribute("project") Project proj) {
-		System.out.println(proj.getMem_code());
-		System.out.println(proj.getPro_code());
+		System.out.println("회원 번호"+proj.getMem_code());
+		System.out.println("프로젝트 번호"+proj.getPro_code());
 		service.insFavor(proj);
 		System.out.println("관심Controller");
 		return "forward:/funding.do?method=detail";
 	}
-	// 펀딩하기
+	// 신고하기
+	@RequestMapping(params="method=report")
+	public String report(Report report) {
+		service.insReport(report);
+		return "forward:/funding.do?method=detail";
+	}
+	// 문의하기
+	
+	// 펀딩하기 - 옵션선택
 	@RequestMapping(params="method=option")
-	public String option() {
+	public String option(@RequestParam("pro_code") int pro_code, Model d) {
+		d.addAttribute("project", service.detail(pro_code));
+		d.addAttribute("opt", service.proOptList(pro_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_fundingOpt.jsp";
 	}
+	// 펀딩하기
 
 }

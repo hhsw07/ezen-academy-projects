@@ -8,6 +8,7 @@ import funfun.vo.Paging;
 import funfun.vo.ProOption;
 import funfun.vo.Project;
 import funfun.vo.ProjectSch;
+import funfun.vo.Report;
 
 @Repository
 public interface MK_FundingReposi {
@@ -22,5 +23,7 @@ public interface MK_FundingReposi {
 	public int ckfavor(Project sf);
 	// 관심프로젝트 등록
 	public void insFavor(Project proj);
+	// 프로젝트 신고
+	public void insReport(Report ins);
 	
 }
