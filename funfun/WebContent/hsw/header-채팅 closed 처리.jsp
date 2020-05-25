@@ -146,6 +146,55 @@
 <div class="" style="position:fixed; bottom:25px; right:25px; z-index:10" >
 	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:60px; height:60px;"/></a>
 </div>
+<div class="sc-chat-window closed" style="z-index:10;">
+	<div class="sc-header">
+		<img class="sc-header--img" src="https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png" alt="">
+		<div class="sc-header--team-name">
+			회원이름
+		</div>
+		<div class="sc-header--close-button" onclick="javascript:goRtqna()">
+			<img src="../img/close-icon.png">
+		</div>
+	</div>
+	<div class="sc-message-list">
+		<div class="sc-message">
+			<div class="sc-message--content sent">
+				<div class="sc-message--avatar" ></div>
+				<div class="sc-message--text">
+					<span class="Linkify">Why don't they have salsa on the table?</span>
+				</div>
+			</div>
+		</div>
+		<div class="sc-message">
+			<div class="sc-message--content received">
+				<div class="sc-message--avatar" ></div>
+				<div class="sc-message--text">
+					<span class="Linkify">What do you need salsa for?</span>
+				</div>
+			</div>
+		</div>
+		<div class="sc-message">
+			<div class="sc-message--content sent">
+				<div class="sc-message--avatar" ></div>
+				<div class="sc-message--text">
+					<span class="Linkify">Salsa is now the number one condiment in America.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sc-user-input">
+		<div role="button" tabindex="0" contenteditable="true" 
+			placeholder="Write a reply..." class="sc-user-input--text">
+		</div>
+		<div class="sc-user-input--button">
+			<button class="sc-user-input--send-icon-wrapper">
+				<img class="sc-user-input--send-icon" src="../img/send-message.png" />
+			</button>
+		</div>
+	</div>
+</div>
+
+
 </body>
 
   
@@ -166,7 +215,6 @@
   	}
   	function goRtqna(){
   		var mem_code = "${user.mem_code}";
-  		// 추후 삭제
   		window.open("${path}/chatting.do", "실시간 상담 채팅", "width=460, height=680");
   		
   		/*
@@ -175,7 +223,8 @@
 			$(location).attr("href","${path}/login.do");
   		}else{
   			//alert("채팅페이지로 이동");
-  			window.open("${path}/chatting.do", "실시간 상담 채팅", "width=460, height=680"); 
+  			window.open("${path}/funfun/chatting.do", "네이버새창", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" ); 
+  			//$(location).attr("href","${path}/rtqna.do?method=detail&mem_code="+mem_code);
   		}
   		*/
   	}
