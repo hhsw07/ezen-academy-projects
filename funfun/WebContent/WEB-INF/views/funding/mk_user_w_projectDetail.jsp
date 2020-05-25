@@ -186,10 +186,12 @@
 			<!-- 메이커정보 -->
 			<div class="project-maker">
 				<div class="img-thumbnail" style="width:100%; padding:10px;">
-                    <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
-                    <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
+					<div  class="col-md-10">
+                 	   <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
+                 	   <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
+                    </div>
+                    <span class="col-md-2"><button id="goinq" class="btn btn-block btn-lg btn-warning">문의하기</button></span>
                 </div>
-			
 			</div>
 			
 			<!-- 프로젝트 소개 -->
@@ -219,8 +221,8 @@
 			</div>
 			
 	    	<!-- 문의 -->
-	    	<div>
-	    	
+	    	<div class="project-inquiry">
+	    		문의글 리스트
 	    	</div>
 	    
 	    
