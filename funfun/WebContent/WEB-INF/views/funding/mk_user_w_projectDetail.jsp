@@ -11,18 +11,13 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.project-maker{width:100%; padding: 10px 10px 20px;}
-.project-opt{text-align:right;}
-.project-opt-info{margin:10px 0;}
-.opt-cont{text-align:left; padding:20px 10px 20px 30px;}
-.report-modal{width:100%;}
-.report-modal tr th, td {padding: 10px 5px;}
-.report-cont{resize: none;}
+
 
 </style>
 <script>
 	$(document).ready(function(){
 		var mem_code = "${user.mem_code}";
+		// 관심프로젝트
 		$("#favBtn").click(function(){
 	  		if(mem_code == ""){
 	  			if(confirm("로그인이 필요합니다.")){
@@ -50,9 +45,32 @@
 	  			});
 	  		}
 		});
+		// 펀딩하기
 		$("#gofun").click(function(){
-			$(location).attr("href","${path}/funding.do?method=option");
+			if(mem_code == ""){
+	  			if(confirm("로그인이 필요합니다.")){
+	  				$(location).attr("href","${path}/login.do");
+	  			}
+	  		} else{
+	  			var no = $("[name=pro_code]").val();
+				$(location).attr("href","${path}/funding.do?method=option&pro_code="+no);
+	  		}
 		});
+		// 신고하기
+		$("#reportBtn").click(function(){
+			if(mem_code == ""){
+	  			if(confirm("로그인이 필요합니다.")){
+	  				$(location).attr("href","${path}/login.do");
+	  			}
+	  		}
+		});
+		$("#report").click(function(){
+			alert("신고가 접수되었습니다");
+			$(location).attr("href","${path}/funding.do?method=report");
+			$("#favor").submit(); // 신고자(회원번호), 프로젝트번호
+			$("#report-content").submit(); // 신고내용, 이미지
+		});
+		// 문의하기
 		
 	});
 	
@@ -69,7 +87,10 @@
 	    		<div class="projectDetail_img">
 	    			<img alt="" src="img/${project.pro_image}">
 	    			<div class="container alert alert-warning" style="width:678px; margin:50px 0;">
-           			<b>목표 금액 <fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_target}"/>원     펀딩기간${project.pro_start_date}-${project.pro_finish_date}</b><br><br>
+	    			<fmt:parseDate var="pro_start" value="${project.pro_start_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+	    			<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />  
+           			<b>목표 금액 <fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_target}"/>원     펀딩기간
+           			<fmt:formatDate value="${pro_start}" pattern="yyyy-MM-dd"/> - <fmt:formatDate value="${pro_finish}" pattern="yyyy-MM-dd"/></b><br><br>
             		100% 이상 모이면 펀딩이 성공되는 프로젝트<br>
 					이 프로젝트는 펀딩 마감일까지 목표 금액이 100% 모이지 않으면 결제가 진행되지 않습니다.
 		        	</div>
@@ -97,8 +118,8 @@
 					<p class=""><strong>${project.percent}</strong>% 달성</p>
 					<p class=""><strong><fmt:formatNumber type="number" maxFractionDigits="3" value="${project.pro_money}"/></strong>원  펀딩</p>
 				</div>
-				<div class="btn-funding" id="gofun">
-					<button class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
+				<div class="btn-funding">
+					<button id="gofun" class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
 				</div>
 
 				<div class="btn-wrap share">
@@ -114,7 +135,7 @@
 				<div class="project-report">
 					<p style="font-size:13px;">신고하기란?</p>
 					<p>해당 프로젝트에 허위내용 및 지적재산권을<br>침해하는 내용이 있다면 제보해주세요.</p>
-					<button class="btn btn-block btn-lg btn-default" data-toggle="modal" data-target="#myModal">프로젝트 신고하기</button>
+					<button id="reportBtn" class="btn btn-block btn-lg btn-default" data-toggle="modal" data-target="#myModal">프로젝트 신고하기</button>
 					<!-- 신고하기 Modal -->
 					<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 						<div class="modal-dialog">
@@ -124,6 +145,7 @@
 									<h4 class="modal-title" id="myModalLabel">프로젝트 신고하기</h4>
 								</div>
 								<div class="modal-body">
+								<form method="post" id="report-content">
 									<table class="report-modal">
 										<colgroup>
 											<col width="20%">
@@ -135,19 +157,24 @@
 										<tr>
 											<th>신고내용</th>
 											<td>
-												<textarea placeholder="신고할 내용을 작성해주세요" class="form-control report-cont" rows="5" ></textarea>
+												<textarea name="report_detail" placeholder="신고할 내용을 작성해주세요" class="form-control report-cont" rows="5" ></textarea>
 											</td>
 										</tr>
 										<tr>
 											<th>파일첨부</th>
-											<td><input type="file" /></td>
+											<td class="input-group">
+												<div class="custom-file">
+													<input type="file" name="report_img" class="custom-file-input" id="file01"/>
+												</div>
+											</td>
 										</tr>
 									</table>
+								</form>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
 									<div class="divider"></div>
-									<button type="button" class="btn btn-warning btn-simple">신고하기</button>
+									<button id="report" type="button" class="btn btn-warning btn-simple">신고하기</button>
 								</div>
 							</div>
 						</div>
@@ -177,6 +204,7 @@
 			<div class="project-opt col-md-4 col-sm-6">
 			<c:forEach var="opt" items="${opt}">
 				<div class="project-opt-info">
+				<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
 						<h6>${opt.opt_title}</h6>
 						<p>${opt.opt_detail}</p><br>
@@ -184,7 +212,7 @@
 						<p class="text-muted">배송비</p>
 						<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 						<p class="text-muted">리워드 발송 시작일</p>
-						<p>opt_delivery_date</p>
+						<p><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</p>
 					</button>
 				</div>
 			</c:forEach>

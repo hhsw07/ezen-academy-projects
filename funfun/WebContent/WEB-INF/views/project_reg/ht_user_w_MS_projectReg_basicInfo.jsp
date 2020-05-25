@@ -11,8 +11,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
 
@@ -43,10 +41,10 @@
 	})
 	
 	$( function() {
-		$( "#startDate" ).datepicker();
+		$( "#startDate" ).datepicker({dateFormat:'yy-mm-dd'});		
 	} );	
 	$( function() {
-		$( "#finishDate" ).datepicker();
+		$( "#finishDate" ).datepicker({dateFormat:'yy-mm-dd'});
 	} );	
 	$( function() {
 		$( ".widget input[type=submit], .widget a, .widget button" ).button();

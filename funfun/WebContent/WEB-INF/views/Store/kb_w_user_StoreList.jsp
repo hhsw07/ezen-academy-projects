@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
 <script>
 
 		$(document).ready(function(){
@@ -66,6 +67,7 @@
 				$("#sort_form").submit();
 				
 			})
+			
 		});
 		
 		function go(code){

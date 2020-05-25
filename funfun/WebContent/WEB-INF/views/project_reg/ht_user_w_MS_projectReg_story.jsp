@@ -40,12 +40,15 @@
 			filebrowserUploadUrl : "img"
 	};			
 			
-
-
-	
-	CKEDITOR.replace("storyDetail", ckeditor_config);
 		
+	CKEDITOR.replace("storyDetail", ckeditor_config);
+	
+	
 	})
+	$("#subBtn").click(function(){
+		$("#StorySubmitForm").submit();
+	})	
+
 </script>
 </head>
 <body>
@@ -69,6 +72,9 @@
 
 	<div class="form-group">
 
+	<form id="StorySubmitForm" method="post" action="${path}/ProjectReg.do">
+	<input type="hidden" name="method" value="storyReg"/>
+	
 	<span class="reg_content_title">소개 사진 등록 *</span><br><br>
 	
 	<button class="btn btn-warning">이미지 업로드</button>
@@ -83,12 +89,13 @@
 	
 	<span class="reg_content_title">프로젝트 스토리 *</span><br><br>
 
-	<textarea class="form-control" id="storyDetail"></textarea>
+	<textarea class="form-control" id="storyDetail" name="pro_story"></textarea>
 
 	<br><br><br><br>
 	
-  	<button class="btn btn-warning">저장하기</button>
+  	<button class="btn btn-warning" id="subBtn">저장하기</button>
 
+	</form>
 
 	<br><br><br><br><br><br><br><br>
 

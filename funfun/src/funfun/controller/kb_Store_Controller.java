@@ -80,10 +80,13 @@ public class kb_Store_Controller {
 		return "redirect:/store.do?method=detail&sto_code=" + qna.getSto_code();
 	}
 	
-	@RequestMapping(params="method=pay")
-	public String pay() {
-		return "WEB-INF\\views\\Store\\kb_w_user_storePay.jsp";
+	@RequestMapping(params="method=listJson")
+	public String listJson(Paging sch, Model d) {
+		d.addAttribute("slist", service.slist(sch));
+		
+		return "pageJsonReport";
 	}
+	
 	
 	
 	

@@ -57,6 +57,7 @@ public class HT_MSCtrl {
 			System.out.println("에러페이지 뜸???");
 			return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-member_error.jsp";
 		} else {
+			System.out.println(memberinfo.getMaker_code());
 			
 			if (memberinfo.getMaker_code()==-1) {
 				return "WEB-INF\\views\\makerstudio\\ht_user_MS_non-maker_error.jsp";

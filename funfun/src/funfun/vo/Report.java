@@ -1,5 +1,7 @@
 package funfun.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Report {
 	private int report_code; // 신고번호
 	private int mem_code; // 회원번호
@@ -44,6 +46,8 @@ public class Report {
 	public void setReport_date(String report_date) {
 		this.report_date = report_date;
 	}
+
+	
 	
 
 }

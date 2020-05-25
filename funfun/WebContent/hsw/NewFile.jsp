@@ -7,7 +7,7 @@
 <style>
 
 </style>
-<!--
+
 <link href="react-chat/src/styles/chat-window.css" rel="stylesheet" />
 <link href="react-chat/src/styles/emojiPicker.css" rel="stylesheet" />
 <link href="react-chat/src/styles/header.css" rel="stylesheet" />
@@ -29,9 +29,9 @@
 <script src="react-chat/src/index.js"></script>
 <script src="react-chat/src/messageTypes.js"></script>
 <script src="react-chat/nwb.config.js"></script>
--->
+<!-- 
 <script src="react-chat/src/index.js"></script>
-
+ -->
 
 <script type="text/javascript">
 	window.onload = function(){
@@ -61,43 +61,43 @@ style 속성들
 					react-chat-window<!-- /react-text --><!-- react-text: 34 --> <!-- /react-text -->
 				</div>
 				<div class="sc-header--close-button">
-					<img src="close-icon.png" alt="../hsw/react-chat/src/assets/close-icon.png">
+					<img src="close-icon.c30463a5.png" alt="">
 				</div>
 			</div>
 			<div class="sc-message-list">
 				<div class="sc-message">
 					<div class="sc-message--content sent">
-						<div class="sc-message--avatar" style="background-image: url("chat-icon.e0d2b748.svg");">
+						<div class="sc-message--avatar" style="background-image: url(&quot;chat-icon.e0d2b748.svg&quot;);">
 						</div>
 						<div class="sc-message--text">
-							<span class="Linkify">Sent 01</span>
+							<span class="Linkify">Why don't they have salsa on the table?</span>
 						</div>
 					</div>
 				</div>
 				<div class="sc-message">
 					<div class="sc-message--content received">
-						<div class="sc-message--avatar" style="background-image: url("chat-icon.e0d2b748.svg");">
+						<div class="sc-message--avatar" style="background-image: url(&quot;chat-icon.e0d2b748.svg&quot;);">
 						</div>
 						<div class="sc-message--text">
-							<span class="Linkify">receiced 01</span>
+							<span class="Linkify">What do you need salsa for?</span>
 						</div>
 					</div>
 				</div>
 				<div class="sc-message">
 					<div class="sc-message--content sent">
-						<div class="sc-message--avatar" style="background-image: url("chat-icon.e0d2b748.svg");">
+						<div class="sc-message--avatar" style="background-image: url(&quot;chat-icon.e0d2b748.svg&quot;);">
 						</div>
 						<div class="sc-message--text">
-							<span class="Linkify">sent 02</span>
+							<span class="Linkify">Salsa is now the number one condiment in America.</span>
 						</div>
 					</div>
 				</div>
 				<div class="sc-message">
 					<div class="sc-message--content received">
-						<div class="sc-message--avatar" style="background-image: url("chat-icon.e0d2b748.svg");">
+						<div class="sc-message--avatar" style="background-image: url(&quot;chat-icon.e0d2b748.svg&quot;);">
 						</div>
 						<div class="sc-message--text">
-							<span class="Linkify">receiced 02</span>
+							<span class="Linkify">You know why? Because people like to say 'salsa.' 'Excuse me, do you have salsa?' 'We need more salsa.' 'Where is the salsa? No salsa?'</span>
 						</div>
 					</div>
 				</div>

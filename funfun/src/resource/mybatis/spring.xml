@@ -21,6 +21,8 @@
 		<typeAlias alias="storeQnA" type="funfun.vo.storeQnA"/>
 		<typeAlias alias="storeOrder" type="funfun.vo.storeOrder"/>
 		<typeAlias alias="report" type="funfun.vo.Report"/>
+		<typeAlias alias="funding" type="funfun.vo.Funding"/>
+		<typeAlias alias="inquiry" type="funfun.vo.ProjectQna"/>
 
 	</typeAliases>
 	<mappers>
