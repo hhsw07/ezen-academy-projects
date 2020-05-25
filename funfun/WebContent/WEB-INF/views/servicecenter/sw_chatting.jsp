@@ -52,6 +52,7 @@
 		// 채팅 데이터 호출
 		var mem_code = "${param.mem_code}";
 		var my_code = "${user.mem_code}";
+//		if(my_code == "") my_code = "${admin.admin_code}"; 
 		if(my_code == "") my_code = "1001"; 
 		console.log("mem_code:"+mem_code);
 		console.log("my_code:"+my_code);
