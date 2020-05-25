@@ -40,7 +40,7 @@
 		SET PRO_STORY = #{pro_story} 
 	WHERE PRO_CODE = #{pro_code}
 	</update>
-	
+<!-- 	
 	<select id="getProOptionList" resultMap="projectOpt" parameterType="int">
 	SELECT * FROM PRO_OPTION
 	WHERE pro_code = #{pro_code};
@@ -49,5 +49,5 @@
 	<insert id="regProOption" parameterType="projectOpt">
 	INSERT INTO PRO_OPTION VALUES (option_seq.nextval, #{pro_code}, #{opt_price}, #{opt_title}, #{opt_detail}, #{opt_condition), #{opt_delivery}, #{opt_max}, #{opt_deliver_date})
 	</insert>
-
+ -->
 </mapper>
