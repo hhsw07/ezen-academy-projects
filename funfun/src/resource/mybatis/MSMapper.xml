@@ -23,6 +23,13 @@
 	
 	<resultMap type="project" id="proResult"/>
 	
+<!-- 	<select id="projectInfo" resultType="proResult" parameterType="int">
+	
+	SELECT * FROM PROJECT
+	WHERE PRO_CODE = #{pro_code}
+	
+	</select>
+ -->	
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	
 	SELECT * FROM PROJECT

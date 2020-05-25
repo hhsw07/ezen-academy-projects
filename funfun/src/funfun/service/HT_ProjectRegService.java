@@ -20,7 +20,12 @@ public class HT_ProjectRegService {
 	
 	public void proCreate(Project cre) {
 		System.out.println("프로젝트 등록 찍혔음???");
-		dao.proCreate(cre);
+		dao.proCreate(cre); 
+
+	}
+
+	public int getProjectCode() {
+		return dao.getProjectCode();
 	}
 	
 	public void proBasicInfo(Project cre) {

@@ -42,4 +42,8 @@ public class HT_MSService {
 		return dao.myStoreManage(sto_code);
 	}
 	
+	public Project projectInfo(int pro_code) {
+		return dao.projectInfo(pro_code);
+	}
+	
 }

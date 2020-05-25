@@ -17,10 +17,16 @@
 	<resultMap type="project" id="proResult"/>
 
 	<insert id="proCreate" parameterType="project">
-	
+
 	INSERT INTO PROJECT VALUES (project_seq.nextval, #{maker_code}, '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y')
-	
+
 	</insert>
+	
+	<select id="getProjectCode" resultType="int">
+
+	SELECT project_seq.currval FROM dual
+
+	</select>
 	
 	<update id="proBasicInfo" parameterType="project">
 	

@@ -1,4 +1,4 @@
-1. A03_ChattingHandler 선언
+1. z02_util.A03_ChattingHandler 선언
 
 public class A03_ChattingHandler extends TextWebSocketHandler
 
@@ -16,3 +16,10 @@ public class A03_ChattingHandler extends TextWebSocketHandler
 	<bean id="annotationUrlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 	<bean id="controllerClassNameHandlerMapping" class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 	<bean id="annotationMethodHandlerAdapter" class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+
+************ A03_ChattingHandler와 dispatcher-servletdml ㅌㅌㅌㅌㅌㅌㅌ가 연결됨
+
+3. a03_mvc.a01_controller.A05_ChattingCtrl
+
+
+4. views/a03_mvc/a05_chatting.jsp
