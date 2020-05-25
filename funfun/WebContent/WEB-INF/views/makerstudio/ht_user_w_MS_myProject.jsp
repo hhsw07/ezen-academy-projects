@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
+<link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <script>
 	$(document).ready(function(){
 		
@@ -22,8 +23,13 @@
 		})			
 		$("#makerInfoBtn").click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=makerInfo")
-		})			
+		})		
+		
 	})
+	
+	function go_manage(pro_code){
+		$(location).attr("href", "${path}/MakerStudio.do?method=ready")
+	}
 </script>
 
 </head>
@@ -45,20 +51,42 @@
 	<div class="container tim-container" style="max-width:1200px;background-color:#EEEEEE;"> 
 
 
-		<c:forEach var="pList" items="${list}">
-		<div class="display_item" class="row">
-			<div class="col-xs-12 col-md-3 item">
-				<div class="thumbnail">
-					<img class="item__img" src="${pList.pro_image}" alt="...">
-					<div class="caption">
-						<p class="item__title">${pList.pro_title}</p>
-						<span class="item__category">패션.잡화 | MOD</span>
-						<span class="item__money">모금율 : 90%</span>
+
+
+	<form method="post">
+		<div class="row">
+			<c:forEach var="proj" items="${list}">
+				<div class="col-xs-12 col-md-3 item">
+					<div class="thumbnail projectList-item"  onclick="javascript:go_manage('${proj.pro_code}')">
+						<img alt="..." src="img/${proj.pro_image}">
+						<div class="caption proj-info">
+							<p class="ProjectList-title">${proj.pro_title}</p>
+							<div class="maker-info">
+								<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+							</div>
+							<div>
+								<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
+							<c:choose>
+								<c:when test="${proj.dday>0}">
+									<span class="ProjectList-date">${proj.dday}일 남음</span>
+								</c:when>
+								<c:when test="${proj.dday<0}">
+									<span class="ProjectList-date">펀딩 종료</span>
+								</c:when>
+								<c:when test="${proj.dday==0}">
+									<span class="ProjectList-date">오늘 마감</span>
+								</c:when>
+							</c:choose>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
-		</c:forEach>
+	</form>	
+
+
+
 
 	</div>
 	</div>
@@ -70,4 +98,7 @@
 	
 	<!-- end main -->
 </body>
+
+
+
 </html>

@@ -18,5 +18,6 @@ public interface HT_MSReposi {
 	public ArrayList<Project> myProjectList(int mem_code);
 	public ArrayList<storeQnA> myProjectQnaList(int pro_code);
 	public ArrayList<storeOrder> myStoreManage(int sto_code);
+	public Project projectInfo(int pro_code);
 
 }

@@ -72,7 +72,7 @@ public class Sw_RtqnaCtrl {
 		//return "pageJsonReport";
 	}
 	
-	// http://localhost:5080/funfun/rtqna.do?method=ajaxdetail
+	// http://localhost:5080/funfun/rtqna.do?method=ajaxdetail&mem_code=11000000
 	@RequestMapping(params="method=ajaxdetail")
 	public String ajaxdetail(@RequestParam("mem_code") int mem_code, Model d) {
 		d.addAttribute("list", service.detail(mem_code));
