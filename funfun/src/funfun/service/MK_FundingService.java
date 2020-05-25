@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import funfun.repository.MK_FundingReposi;
+import funfun.vo.Funding;
 import funfun.vo.Paging;
 import funfun.vo.ProOption;
 import funfun.vo.Project;
+import funfun.vo.ProjectQna;
 import funfun.vo.ProjectSch;
 import funfun.vo.Report;
 
@@ -65,6 +67,19 @@ public class MK_FundingService {
 	// 프로젝트 신고
 	public void insReport(Report ins) {
 		dao.insReport(ins);
+	}
+	// 문의하기
+	public void inquiry(ProjectQna ins) {
+		dao.inquiry(ins);
+	}
+	// 문의 답변
+	public void answer(ProjectQna upt) {
+		dao.answer(upt);
+	}
+	// 펀딩하기
+	public void funding(Funding ins) {
+		dao.funding(ins); // 펀딩
+		dao.uptMoney(ins); // 프로젝트 현재 펀딩금액 변경
 	}
 
 }

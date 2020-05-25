@@ -63,20 +63,42 @@
 		SELECT * FROM PRO_OPTION
 		WHERE PRO_CODE = #{pro_code}
 	</select>
-	<!-- 관심프로젝트 등록 -->
+	<!-- 관심프로젝트 등록 여부 -->
 	<select id="ckfavor" resultType="int" parameterType="project">
 		SELECT count(*)
 		FROM FAVOR
 		WHERE MEM_CODE = #{mem_code}
 		AND PRO_CODE = #{pro_code}
 	</select>
+	<!-- 관심프로젝트 등록 -->
 	<insert id="insFavor" parameterType="project">
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
 	<!-- 프로젝트 신고 -->
 	<insert id="insReport" parameterType="report">
-		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, REPORT_DETAIL, REPORT_IMG, current_date)
+		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date)
 	</insert>
-	
+	<!-- 프로젝트 문의 -->
+	<insert id="inquiry" parameterType="inquiry">
+		INSERT INTO QNA(QNA_CODE, PRO_CODE, MEM_CODE, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN)
+		VALUES (QNA_SEQ.nextval, #{pro_code}, #{mem_code}, #{qna_detail}, current_date, #{qna_open})
+	</insert>
+	<!-- 프로젝트 문의 답변 -->
+	<update id="answer" parameterType="inquiry">
+		UPDATE QNA
+		SET QNA_ANS = #{qna_ans}, QNA_ANS_REG_DATE = current_date, QNA_CHK = 'N'
+		WHERE QNA_CODE = #{qna_code}
+	</update>
+	<!-- 펀딩하기 -->
+	<insert id="funding" parameterType="funding">
+		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, 
+		#{fund_price}, #{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩참여')
+	</insert>
+	<!-- 펀딩하기 - 프로젝트 현재 펀딩 금액 변경 -->
+	<update id="uptMoney" parameterType="funding">
+		UPDATE PROJECT
+		SET PRO_MONEY = PRO_MONEY + #{fund_price}
+		WHERE PRO_CODE = #{pro_code}
+	</update>
 	
 </mapper>

@@ -1,9 +1,13 @@
 package funfun.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import funfun.repository.MainRepo;
+import funfun.vo.Favor;
+import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 
@@ -54,5 +58,21 @@ public class MainService {
 	public boolean changePass(MemberInfo m) {
 		repo.changePass(m);
 		return true;
+	}
+	
+	public String getNameByEmail(String email) {
+		return repo.getNameByEmail(email);
+	}
+	
+	public FavorCodeList getFavorCodeListByEmail(String email){
+		FavorCodeList favorCodeList= new FavorCodeList();
+		favorCodeList.setList(repo.getFavorCodeListByEmail(email));
+		return favorCodeList;
+	}
+	
+	public Favor getFavorByCode(Integer i) {
+		Favor favor = repo.getFavorByCode(i);
+		favor.setdDay(favor.getdDay().substring(0,4));
+		return favor;
 	}
 }

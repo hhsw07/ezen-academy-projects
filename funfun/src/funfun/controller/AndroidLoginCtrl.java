@@ -1,5 +1,7 @@
 package funfun.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,9 +12,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import funfun.service.MainService;
+import funfun.vo.Favor;
+import funfun.vo.FavorCodeList;
 import funfun.vo.MemberLogin;
 
 @Controller
@@ -20,7 +28,6 @@ public class AndroidLoginCtrl {
 	
 	@Autowired
 	MainService service;
-	
 	
 	//로그인에 사용
 	@RequestMapping("/androidlogin.do")
@@ -45,6 +52,38 @@ public class AndroidLoginCtrl {
 	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		boolean serviceResult=service.signupIdCheck(m.getMem_email());
 		String result="{\"result\":"+serviceResult+"}";
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	//이메일 입력하면 이름 리턴
+	@RequestMapping(value="/getName.do")
+	public ResponseEntity getNameByEmail(@RequestParam String email) {
+		System.out.println(email);
+		HttpHeaders responseHeaders = new HttpHeaders();
+	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+	    String name=service.getNameByEmail(email);
+		String result="{\"name\":\""+name+"\"}";
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	//관심프로젝트 리스트 가져오기
+	@RequestMapping(value="/getFavorList.do")
+	public ResponseEntity getFavorListByEmail(@RequestParam String email) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		System.out.println(email);
+	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+	    FavorCodeList favorCodeList=service.getFavorCodeListByEmail(email);
+	    // 가져온 ArrayList로 실제 데이터로 쓸 JSON 만들기
+	    ArrayList<Favor> favorList=new ArrayList<Favor>();
+	    for(Integer i:favorCodeList.getList()) {
+	    	favorList.add(service.getFavorByCode(i));
+	    }
+		
+	    Gson gson= new Gson();
+	    String result="{\"favorList\":"+gson.toJson(favorList)+"}";
+	    
 		
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}

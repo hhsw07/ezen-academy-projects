@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.KB_QnAReposi;
 import funfun.repository.KB_RSOptionRep;
+import funfun.repository.KB_RSPayReposi;
 import funfun.repository.KB_RSReposi;
 import funfun.vo.*;
 import java.util.*;
@@ -17,6 +18,8 @@ public class KB_StoreService {
 	KB_RSOptionRep opt_dao;
 	@Autowired(required=false)
 	KB_QnAReposi qna_dao;
+	@Autowired(required=false)
+	KB_RSPayReposi pay_dao;
 	
 	public ArrayList<RewardStore> slist(Paging sch){
 		sch.setCount(dao.storeCnt(sch));
@@ -89,5 +92,21 @@ public class KB_StoreService {
 
 	public void qnaInsert(storeQnA store) {
 		 qna_dao.qnaInsert(store);
+	}
+	
+	public String opt_title(int sto_opt_code) {
+		return opt_dao.opt_title(sto_opt_code);
+	}
+	
+	public int mem_balance(int mem_code) {
+		return opt_dao.mem_balance(mem_code);
+	}
+	
+	public void payInsert(storePay pay) {
+		pay_dao.payInsert(pay);
+	}
+	
+	public void UptMemBalance(storePay pay) {
+		pay_dao.UptMemBalance(pay);
 	}
 }

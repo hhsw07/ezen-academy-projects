@@ -197,7 +197,8 @@
 	
 	function go(mem_code){
 		// alert("mem_code:"+mem_code);
-		$(location).attr("href","${path}/rtqna.do?method=admdetail&mem_code="+mem_code);
+		//$(location).attr("href","${path}/chatting.do?mem_code="+mem_code);
+		window.open("${path}/chatting.do?mem_code="+mem_code, "실시간 상담 채팅", "width=460, height=680, left=100, top=200");
 	}
 	function goPage(no){
 		$("#curPage").val(no);
