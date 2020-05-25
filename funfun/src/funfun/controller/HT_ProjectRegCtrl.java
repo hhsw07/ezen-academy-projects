@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import funfun.service.HT_ProjectRegService;
 import funfun.vo.MakerStudio;
 import funfun.vo.MemberInfo;
+import funfun.vo.ProOption;
 import funfun.vo.Project;
 
 @Controller
@@ -58,7 +59,6 @@ public class HT_ProjectRegCtrl {
 	public String proRegBasicReq(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		Project projectinfo = (Project)session.getAttribute("proInfo");
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicReq.jsp";
@@ -85,27 +85,47 @@ public class HT_ProjectRegCtrl {
 
 	@RequestMapping(params="method=story")
 	public String proRegStory(HttpServletRequest request, Model d) {
-		HttpSession session = request.getSession();
-		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		Project projectinfo = (Project)session.getAttribute("proInfo");
-		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_story.jsp";
 	}
+	
+	@RequestMapping(params="method=storyReg")
+	public String proStoryReg(HttpServletRequest request, Project cre) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		cre.setPro_code(projectCode);
+		service.proStory(cre);
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+	}
+	
 	@RequestMapping(params="method=reward")
 	public String proRegReward(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
-		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		Project projectinfo = (Project)session.getAttribute("proInfo");
-		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		int projectCode = (int)session.getAttribute("projectCode");
+		d.addAttribute("optList", service.getProOptionList(projectCode));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_reward.jsp";
 	}
-
+	
+	@RequestMapping(params="method=rewardUnitReg")
+	public String proRegRewardUnitReg(HttpServletRequest request, Model d, ProOption cre) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		cre.setPro_code(projectCode);
+		service.regProOption(cre);
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_reward.jsp";
+	}
+	
+	@RequestMapping(params="method=rewardReg")
+	public String proRegRewardReg(HttpServletRequest request, Model d, Project cre) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		cre.setPro_code(projectCode);
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+	}
+	
+	
 	@RequestMapping(params="method=risk")
 	public String proRegRisk(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
-		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		Project projectinfo = (Project)session.getAttribute("proInfo");
-		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
 	}
 

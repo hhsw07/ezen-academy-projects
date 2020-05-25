@@ -63,6 +63,10 @@
 
   	<br><br><br><br>
 
+
+
+	
+
 	<div class="form-group">
 
 	<button class="btn btn-warning btn_custom" data-toggle="modal" data-target="#myModal">+ 추가하기</button>

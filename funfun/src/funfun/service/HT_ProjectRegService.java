@@ -1,10 +1,13 @@
 package funfun.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import funfun.repository.HT_ProjectRegReposi;
 import funfun.vo.MakerStudio;
+import funfun.vo.ProOption;
 import funfun.vo.Project;
 
 @Service
@@ -31,6 +34,19 @@ public class HT_ProjectRegService {
 	public void proBasicInfo(Project cre) {
 		System.out.println("기본 정보 업뎃 찍힘???");
 		dao.proBasicInfo(cre);
+	}
+	
+	public void proStory(Project cre) {
+		System.out.println("프로젝트 스토리 업뎃");
+		dao.proStory(cre);
+	}
+	
+	public ArrayList<ProOption> getProOptionList(int pro_code){
+		return dao.getProOptionList(pro_code);
+	}
+	
+	public void regProOption(ProOption cre) {
+		dao.regProOption(cre);
 	}
 	
 }
