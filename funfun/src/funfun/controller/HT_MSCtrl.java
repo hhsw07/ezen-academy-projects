@@ -75,10 +75,31 @@ public class HT_MSCtrl {
 	public String proRegMakerInfo() {
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerInfo.jsp";
 	}
-
-	@RequestMapping(params="method=proQna")
-	public String proQna() {
-		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proQna.jsp";
-	}
 	
+	//proCancel proCurrnet proQnAManage storeReg storeOrderManage storeQnAManage
+	
+	@RequestMapping(params="method=proCancel")
+	public String proCancel() {
+		return "";
+	}
+	@RequestMapping(params="method=proCurrnet")
+	public String proCurrnet() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
+	}
+	@RequestMapping(params="method=proQnAManage")
+	public String proQnAManage() {
+		return "";
+	}
+	@RequestMapping(params="method=storeReg")
+	public String storeReg() {
+		return "";
+	}
+	@RequestMapping(params="method=storeOrderManage")
+	public String storeOrderManage() {
+		return "";
+	}
+	@RequestMapping(params="method=storeQnAManage")
+	public String storeQnAManage() {
+		return "";
+	}
 }
