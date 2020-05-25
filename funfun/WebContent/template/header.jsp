@@ -21,8 +21,6 @@
     
 	<link href="${path }/template/assets/css/gsdk.css" rel="stylesheet" />   
     <link href="${path }/template/assets/css/demo.css" rel="stylesheet" />
-    
-    <link href="${path }/css/sw_user_w_chat.css" rel="stylesheet" /> 
 
     <!--     Font Awesome     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
