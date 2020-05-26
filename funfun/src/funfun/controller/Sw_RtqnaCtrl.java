@@ -50,15 +50,6 @@ public class Sw_RtqnaCtrl {
 	
 	
 	
-	// http://localhost:5080/funfun/rtqna.do?method=insert
-	@RequestMapping(params="method=insertrtqna")
-	public String insertrtqna(Rtqna ins) {
-		service.insertrtqna(ins);
-		System.out.println("ctrl rtqna 채팅방 등록완료");
-		
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
-	}
-	
 	
 	// http://localhost:5080/funfun/rtqna.do?method=insert
 	@RequestMapping(params="method=insert")
@@ -75,21 +66,7 @@ public class Sw_RtqnaCtrl {
 	}
 
 	
-	// http://localhost:5080/funfun/rtqna.do?method=detail
-	@RequestMapping(params="method=detail")
-	public String detail(@RequestParam("mem_code") int mem_code, Model d) {
-		d.addAttribute("mem_code", mem_code);
-		return "WEB-INF\\views\\servicecenter\\sw_user_w_rtqnaDetail.jsp";
-		//return "pageJsonReport";
-	}
-	// http://localhost:5080/funfun/rtqna.do?method=admdetail
-	@RequestMapping(params="method=admdetail")
-	public String admdetail(@RequestParam("mem_code") int mem_code, Model d) {
-		d.addAttribute("mem_code", mem_code);
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_rtqnaDetail.jsp";
-		//return "pageJsonReport";
-	}
-	
+		
 	// http://localhost:5080/funfun/rtqna.do?method=ajaxdetail&mem_code=11000000
 	@RequestMapping(params="method=ajaxdetail")
 	public String ajaxdetail(@RequestParam("mem_code") int mem_code, Model d) {
@@ -101,13 +78,22 @@ public class Sw_RtqnaCtrl {
 	// http://localhost:5080/funfun/rtqna.do?method=chatting
 	@RequestMapping(params="method=chatting")
 	public String chatting(@RequestParam("mem_code") int mem_code, Model d, HttpServletRequest req) {
-		HttpSession session = req.getSession();
+		// 채팅방이 없으면 생성
+		if(service.ckrtqna(mem_code) == 0) {
+			service.insertrtqna(mem_code);
+			Rtqna ins = new Rtqna();
+			ins.setRtqna_code(service.rtqna_code(mem_code));
+			ins.setRtqna_writer(1001);
+			ins.setRtqna_detail("펀펀에 오신 것을 환영합니다.");
+			service.insert(ins);
+		}
 		
+		HttpSession session = req.getSession();
 		if( session.getAttribute("user")!= null) {
 			// 회원인 경우 채팅방 입장시 미확인 ==> 확인으로 수정
 			service.uptSt3(mem_code);
 		}
-		
+		d.addAttribute("rtqna", service.chatdetail(mem_code));
 		return "WEB-INF\\views\\servicecenter\\sw_chatting.jsp";
 	}
 	

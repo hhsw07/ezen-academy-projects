@@ -26,10 +26,22 @@
 			ORDER BY rtqna_state) a)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
+	
+	<!-- 채팅방 유무확인 -->
+	<select id="ckrtqna" resultType="int" parameterType="int">
+		select count(*)
+		from rtqna
+		where mem_code = #{mem_code}
+	</select>
+	<select id="rtqna_code" resultType="int" parameterType="int">
+		select rtqna_code
+		from rtqna
+		where mem_code = #{mem_code}
+	</select>
 	<!-- 채팅방 등록 -->
-	<insert id="insertrtqna" parameterType="rtqna">
+	<insert id="insertrtqna" parameterType="int">
 		insert into rtqna
-		values (rtqna_seq.nextval,#{mem_code},#{rtqna_state})
+		values (rtqna_seq.nextval,#{mem_code},'확인')
 	</insert>
 	
 	<!-- 채팅 내용 등록 -->
@@ -52,6 +64,13 @@
 		and b.RTQNA_WRITER = c."code"
 		AND a.MEM_CODE = #{mem_code}
 		ORDER BY rtqna_time
+	</select>
+	<!-- Rtqna chatdetail(int mem_code) -->
+	<select id="chatdetail" resultType="rtqna" parameterType="int" >
+		SELECT a.rtqna_code, a.mem_code, b.mem_name
+		FROM RTQNA a, member b
+		WHERE a.MEM_CODE = b.MEM_CODE
+		AND a.mem_code = #{mem_code}
 	</select>
 	
 	<!-- 회원입력 : 채팅방 확인 ==> 문의중-->
