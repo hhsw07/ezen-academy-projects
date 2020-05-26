@@ -107,7 +107,7 @@
 	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
 	                     <div class="logo-container dropdown-toggle" data-toggle="dropdown">
 	                        <div class="logo">
-	                            <img src="${path }/template/assets/img/new_logo.png">
+	                            <img src="${user.mem_profile }">
 	                        </div>
 	                        <div class="brand">
 	                            ${user.mem_name }

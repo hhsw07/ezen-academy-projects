@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
+import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
+import funfun.vo.MyFundingInfo;
+import funfun.vo.OptCodeAndCnt;
 
 
 @Repository
@@ -32,4 +35,14 @@ public interface MainRepo {
 	public ArrayList<Integer> getFavorCodeListByEmail(String email);
 	
 	public Favor getFavorByCode(Integer i);
+	
+	public int getBalanceByEmail(String email);
+	
+	public int getMemCodeByEmail(String email);
+	
+	public int getUsedByMemCode(int code);
+	
+	public ArrayList<OptCodeAndCnt> getOptCodeAndCntByMemCode(int mem_code);
+	
+	public MyFundingInfo getOptionInfoByOptCode(int opt_code);
 }

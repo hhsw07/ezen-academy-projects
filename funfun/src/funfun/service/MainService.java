@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import funfun.repository.MainRepo;
+import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
+import funfun.vo.MyFundingInfo;
+import funfun.vo.OptCodeAndCnt;
 
 @Service
 public class MainService {
@@ -29,6 +32,7 @@ public class MainService {
 		
 		//이름, 멤버코드, 이메일주소 가져옴
 		MemberInfo memberInfo=repo.getMemberInfo(email);
+		System.out.println("서비스프로필"+memberInfo.getMem_profile());
 		// count로 메이커인지 아닌지 확인 카운트 0-> 메이커아님, 카운트1->메이커
 		boolean isMaker=(repo.isMaker(memberInfo.getMem_code())==1)? true:false;
 		if(isMaker) {
@@ -74,5 +78,36 @@ public class MainService {
 		Favor favor = repo.getFavorByCode(i);
 		favor.setdDay(favor.getdDay().substring(0,4));
 		return favor;
+	}
+	
+	public AccountInfo getAccountInfo(String email) {
+		int balance=repo.getBalanceByEmail(email);
+		int memCode=repo.getMemCodeByEmail(email);
+		int used=repo.getUsedByMemCode(memCode);
+		
+		
+		AccountInfo accountInfo = new AccountInfo();
+		accountInfo.setTotal(balance);
+		accountInfo.setUsed(used);
+		
+		return accountInfo;
+	}
+	
+	public ArrayList<MyFundingInfo> getMyFundingList(String email){
+		
+		ArrayList<MyFundingInfo> list=new ArrayList<MyFundingInfo>();
+		//먼저 이메일로 mem_code를 가져온다.
+		System.out.println("먼저 이메일로 mem_code를 가져온다."+email);
+		int mem_code=repo.getMemCodeByEmail(email);
+		//가져온 code로 Funding Table로부터 Optioncode와 수량을 가져온다.
+		System.out.println("가져온 code로 Funding Table로부터 Optioncode와 수량을 가져온다."+mem_code);
+		ArrayList<OptCodeAndCnt> optCodeAndCnt=repo.getOptCodeAndCntByMemCode(mem_code);
+		System.out.println(optCodeAndCnt.size());
+		for(OptCodeAndCnt o:optCodeAndCnt) {
+			MyFundingInfo tmp=repo.getOptionInfoByOptCode(o.getOptionCode());
+			tmp.setOrderCnt(o.getCnt());
+			list.add(tmp);
+		}
+		return list;
 	}
 }

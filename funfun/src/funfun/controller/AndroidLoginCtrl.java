@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import funfun.service.MainService;
+import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
 import funfun.vo.MemberLogin;
+import funfun.vo.MyFundingInfo;
 
 @Controller
 public class AndroidLoginCtrl {
@@ -84,6 +86,31 @@ public class AndroidLoginCtrl {
 	    Gson gson= new Gson();
 	    String result="{\"favorList\":"+gson.toJson(favorList)+"}";
 	    
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	//예치금 정보 가져오기
+	@RequestMapping(value="/getAccountInfo.do")
+	public ResponseEntity getAccountInfo(@RequestParam String email) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		AccountInfo info=service.getAccountInfo(email);
+		Gson gson = new Gson();
+		String result=gson.toJson(info);
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	//펀딩리스트 정보 가져오기
+	@RequestMapping(value="/getMyFundingList.do")
+	public ResponseEntity getMyFundingList(@RequestParam String email) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		ArrayList<MyFundingInfo> list=service.getMyFundingList(email);
+		Gson gson = new Gson();
+		String result=gson.toJson(list);
+		result="{\"list\":"+result+"}";
 		
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
