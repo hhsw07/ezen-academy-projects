@@ -26,6 +26,38 @@ public class Favor {
 	public String getProTitle() {
 		return proTitle;
 	}
+	public String getMemEmail() {
+		return memEmail;
+	}
+
+	public void setProTitle(String proTitle) {
+		this.proTitle = proTitle;
+	}
+
+	public void setCateTitle(String cateTitle) {
+		this.cateTitle = cateTitle;
+	}
+
+	public void setdDay(String dDay) {
+		this.dDay = dDay;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setMakerName(String makerName) {
+		this.makerName = makerName;
+	}
+
+	public void setPercent(String percent) {
+		this.percent = percent;
+	}
+
+	public void setProCode(String proCode) {
+		this.proCode = proCode;
+	}
+
 	public String getCateTitle() {
 		return cateTitle;
 	}
