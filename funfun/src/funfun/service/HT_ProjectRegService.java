@@ -43,6 +43,7 @@ public class HT_ProjectRegService {
 	}
 	
 	public ArrayList<ProOption> getProOptionList(int pro_code){
+		System.out.println("프로옵션리스트 프로세스입니다");
 		return dao.getProOptionList(pro_code);
 	}
 	
