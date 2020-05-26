@@ -46,7 +46,7 @@
 	.btn-funding {width: 100%; margin-bottom: 10px; padding-top: 10px;}
 	.project-report{margin-top: 20px;margin-bottom: 20px; border: 1px solid rgba(144,148,156,.3);padding: 12px 16px;}
 	.project-maker{width:100%; padding: 10px 10px 20px;}
-	.project-opt{text-align:right;}
+	.project-opt{text-align:right;margin-bottom: 100px;}
 	.project-opt-info{margin:10px 0;}
 	.opt-cont{text-align:left; padding:20px 10px 20px 30px;}
 	.report-modal{width:100%;}
