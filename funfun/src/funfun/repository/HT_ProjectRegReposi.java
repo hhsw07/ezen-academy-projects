@@ -23,5 +23,4 @@ public interface HT_ProjectRegReposi {
 	public void regProRisk(ProRisk cre);
 	public Project projectInfo(int pro_code);
 	public void projectRegister(int pro_code);
-
 }

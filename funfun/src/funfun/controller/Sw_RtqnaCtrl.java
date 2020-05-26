@@ -1,5 +1,8 @@
 package funfun.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,31 +50,23 @@ public class Sw_RtqnaCtrl {
 	
 	
 	
+	
 	// http://localhost:5080/funfun/rtqna.do?method=insert
 	@RequestMapping(params="method=insert")
 	public String insert(Rtqna ins) {
 		service.insert(ins);
-		System.out.println("rtqna 등록완료");
-		
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
+		if(ins.getRtqna_writer() >= 11000000) {
+			// 회원이 글 입력시 확인 ==> 문의중으로 수정
+			service.uptSt1(ins.getMem_code());
+		}else {
+			// 관리자가 글 입력시 문의중 ==> 미확인 으로 수정
+			service.uptSt2(ins.getMem_code());
+		}
+		return "WEB-INF\\views\\servicecenter\\sw_chatting.jsp";
 	}
 
 	
-	// http://localhost:5080/funfun/rtqna.do?method=detail
-	@RequestMapping(params="method=detail")
-	public String detail(@RequestParam("mem_code") int mem_code, Model d) {
-		d.addAttribute("mem_code", mem_code);
-		return "WEB-INF\\views\\servicecenter\\sw_user_w_rtqnaDetail.jsp";
-		//return "pageJsonReport";
-	}
-	// http://localhost:5080/funfun/rtqna.do?method=admdetail
-	@RequestMapping(params="method=admdetail")
-	public String admdetail(@RequestParam("mem_code") int mem_code, Model d) {
-		d.addAttribute("mem_code", mem_code);
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_rtqnaDetail.jsp";
-		//return "pageJsonReport";
-	}
-	
+		
 	// http://localhost:5080/funfun/rtqna.do?method=ajaxdetail&mem_code=11000000
 	@RequestMapping(params="method=ajaxdetail")
 	public String ajaxdetail(@RequestParam("mem_code") int mem_code, Model d) {
@@ -79,12 +74,27 @@ public class Sw_RtqnaCtrl {
 		return "pageJsonReport";
 	}
 	
-	// http://localhost:5080/funfun/rtqna.do?method=update
-	@RequestMapping(params="method=update")
-	public String update(Rtqna upt) {
-		service.update(upt);
-		System.out.println("rtqna 수정완료");
-		return "forward:/notice.do?method=detail&noti_code+"+upt.getRtqna_code();
+	
+	// http://localhost:5080/funfun/rtqna.do?method=chatting
+	@RequestMapping(params="method=chatting")
+	public String chatting(@RequestParam("mem_code") int mem_code, Model d, HttpServletRequest req) {
+		// 채팅방이 없으면 생성
+		if(service.ckrtqna(mem_code) == 0) {
+			service.insertrtqna(mem_code);
+			Rtqna ins = new Rtqna();
+			ins.setRtqna_code(service.rtqna_code(mem_code));
+			ins.setRtqna_writer(1001);
+			ins.setRtqna_detail("펀펀에 오신 것을 환영합니다.");
+			service.insert(ins);
+		}
+		
+		HttpSession session = req.getSession();
+		if( session.getAttribute("user")!= null) {
+			// 회원인 경우 채팅방 입장시 미확인 ==> 확인으로 수정
+			service.uptSt3(mem_code);
+		}
+		d.addAttribute("rtqna", service.chatdetail(mem_code));
+		return "WEB-INF\\views\\servicecenter\\sw_chatting.jsp";
 	}
 	
 	

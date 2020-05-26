@@ -36,14 +36,14 @@
           <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  class="profile__img" src="${path}/img/${meminfo.memProfile}" alt="">
+          <img  class="profile__img" src="${meminfo.memProfile}" alt="">
           <table class="profile__times--table">
             <tr><td class="profile__times--num">${fundCnt}</td><td class="profile__times--num">${orderCnt}</td></tr>
             <tr><td class="profile__times--text">펀딩</td><td class="profile__times--text">주문</td></tr>
           </table>
           <button class="btn btn-default profile__detail" onclick="location.href='${path}/profileEdit.do'">프로필 편집</button>
           <button class="btn btn-default profile__detail" onclick="location.href='${path}/myaccount.do'">예치금 관리</button>
-          <button class="btn btn-default profile__detail">회원탈퇴</button>
+          <button class="btn btn-default profile__detail" onclick="location.href='${path}/secession.do'">회원탈퇴</button>
           <table class="profile__choice--table">
             <tr>
               <td class="profile__choice">관심프로젝트<br><br><div id="myProject" class="clicked" style="width:70px;height:3px"></div></td>
@@ -69,7 +69,7 @@
 	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
 	            <div class="col-xs-12 col-md-3 item">
 	              <div class="thumbnail">
-	                <img src="${path}/img/${list.image}" style="height:180px; width:320px" alt="...">
+	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
 	                  

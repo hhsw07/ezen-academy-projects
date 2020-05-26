@@ -64,10 +64,10 @@
 			<div class="thumbnail projectList-item">
 				<c:choose>
 					<c:when test="${proj.pro_reg_date==null}">
-					<span onclick="javascript:go_update('${proj.pro_code}')">수정하기</span>
+					<div class="myProjectFunction" onclick="javascript:go_update('${proj.pro_code}')">수정하기</div>
 					</c:when>
 					<c:otherwise>
-					<span onclick="javascript:go_manage('${proj.pro_code}')">프로젝트 관리</span>
+					<div class="myProjectFunction" onclick="javascript:go_manage('${proj.pro_code}')">프로젝트 관리</div>
 					</c:otherwise>
 				</c:choose>
 				<img alt="..." src="img/${proj.pro_image}">

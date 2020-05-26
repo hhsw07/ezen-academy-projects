@@ -43,6 +43,7 @@
 		<mapper resource="resource/mybatis/mailAuthMapper.xml" />
 		<mapper resource="resource/mybatis/storePayMapper.xml"/>
 		<mapper resource="resource/mybatis/userProfileMapper.xml" />
+		<mapper resource="resource/mybatis/HT_StoreManageMapper.xml" />
 	</mappers>
  
 </configuration>

@@ -26,17 +26,36 @@
 			ORDER BY rtqna_state) a)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
+	
+	<!-- 채팅방 유무확인 -->
+	<select id="ckrtqna" resultType="int" parameterType="int">
+		select count(*)
+		from rtqna
+		where mem_code = #{mem_code}
+	</select>
+	<select id="rtqna_code" resultType="int" parameterType="int">
+		select rtqna_code
+		from rtqna
+		where mem_code = #{mem_code}
+	</select>
+	<!-- 채팅방 등록 -->
+	<insert id="insertrtqna" parameterType="int">
+		insert into rtqna
+		values (rtqna_seq.nextval,#{mem_code},'확인')
+	</insert>
+	
+	<!-- 채팅 내용 등록 -->
 	<!-- void insert(Rtqna ins) -->
 	<insert id="insert" parameterType="rtqna">
 		<!-- 코드수정 -->
-		INSERT INTO notice 
-		VALUES(notice_seq.nextval,#{noti_title},#{noti_detail},current_date, NULL, #{noti_ck}, #{admin_code})
+		INSERT INTO rtqna_detail 
+		values(rtqna_detail_seq.nextval, #{rtqna_code}, current_date, #{rtqna_writer},#{rtqna_detail})
 	</insert>
 	
 	
 	<!-- ArrayList<Rtqna> detail(int mem_code) -->
 	<select id="detail" resultMap="RtqnaResult" parameterType="int">
-		SELECT a.mem_code, a.RTQNA_STATE, b.RTQNA_TIME , b.RTQNA_WRITER , b.RTQNA_DETAIL ,c."name"
+		SELECT a.rtqna_code, a.mem_code, a.RTQNA_STATE, b.RTQNA_TIME , b.RTQNA_WRITER , b.RTQNA_DETAIL ,c."name"
 		FROM rtqna a, rtqna_detail b, 
 			(SELECT mem_code "code", mem_name "name" FROM MEMBER 
 			UNION
@@ -46,16 +65,31 @@
 		AND a.MEM_CODE = #{mem_code}
 		ORDER BY rtqna_time
 	</select>
-	<!-- void update(Rtqna upt) -->
-	<update id="update" parameterType="rtqna">
-		<!-- 코드수정 -->
-		UPDATE notice
-		SET noti_title = #{noti_title},
-			noti_detail = #{noti_detail},
-			noti_upt_date = CURRENT_DATE,
-			noti_ck = #{noti_ck},
-			admin_code = #{admin_code}
-		WHERE noti_code = #{noti_code}
+	<!-- Rtqna chatdetail(int mem_code) -->
+	<select id="chatdetail" resultType="rtqna" parameterType="int" >
+		SELECT a.rtqna_code, a.mem_code, b.mem_name
+		FROM RTQNA a, member b
+		WHERE a.MEM_CODE = b.MEM_CODE
+		AND a.mem_code = #{mem_code}
+	</select>
+	
+	<!-- 회원입력 : 채팅방 확인 ==> 문의중-->
+	<update id="uptSt1" parameterType="int">
+		update rtqna
+		set rtqna_state = '문의중'
+		where mem_code = #{mem_code}
+	</update>
+	<!-- 관리자 입력 : 채팅방 문의중 ==> 미확인 -->
+	<update id="uptSt2" parameterType="int">
+		update rtqna
+		set rtqna_state = '미확인'
+		where mem_code = #{mem_code}
+	</update>
+	<!-- 회원확인 : 채팅방 미확인 ==> 확인 -->
+	<update id="uptSt3" parameterType="int">
+		update rtqna
+		set rtqna_state = '확인'
+		where mem_code = #{mem_code}
 	</update>
 	
 </mapper>

@@ -61,8 +61,8 @@
 
 	<c:forEach var="risk" items="${riskList}">
 			<div class="riskUnitContainer">
-			<div class="riskUnitPrice">${risk.risk_title}</div>
-			<div class="riskUnitTitle">${risk.risk_detail}</div>
+			<div class="riskUnitTitle">${risk.risk_title}</div>
+			<div class="riskUnitDetail">${risk.risk_detail}</div>
 			</div>
 	</c:forEach>	
 

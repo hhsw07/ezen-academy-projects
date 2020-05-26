@@ -47,8 +47,16 @@ $(document).ready(function(){
 			<div class="panel-body sub_gray_font proQnAManage" style="font-size:1.1em;">
 			프로젝트 문의 관리
 			</div>
-			<div class="panel-body sub_gray_font storeReg" style="font-size:1.1em;">
-			스토어 등록
+			<div class="panel panel-default">
+				<div class="panel-body">
+				 	<details open>
+				    <summary class="sub_gray_font" style="font-size:1.1em;">스토어 등록<br><br></summary>
+					<ul style="list-style:none;line-height:3em">
+				  		<li class="sub_gray_font ">기본 정보</li>
+				  		<li class="sub_gray_font ">옵션 설계</li>
+					</ul>
+			  		</details> 	
+				</div>
 			</div>
 			<div class="panel-body sub_gray_font storeOrderManage" style="font-size:1.1em;">
 			스토어 주문 관리

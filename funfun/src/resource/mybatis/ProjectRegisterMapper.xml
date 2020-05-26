@@ -57,7 +57,13 @@
 	</select>
 	
 	<insert id="regProRisk" parameterType="projectRisk">
-	INSERT INTO RISK VALUES (risk_seq.nextval, ${pro_code}, ${risk_detail}, ${risk_title})
+	INSERT INTO RISK VALUES (risk_seq.nextval, #{pro_code}, #{risk_detail}, #{risk_title})
 	</insert>
+	
+	<update id="projectRegister" parameterType="int">
+	UPDATE project
+	SET PRO_REG_DATE = SYSDATE
+	WHERE PRO_CODE = #{pro_code}
+	</update>
 
 </mapper>

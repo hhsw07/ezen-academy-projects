@@ -9,6 +9,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -18,10 +19,26 @@
 			alert("로그인해주세요");
 		}
 		
+		function goPopup(){
+			var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
+		}
+
+		function jusoCallBack(roadFullAddr,zipNo){
+			$("[name=pay_zipcode]").val(zipNo);
+			$("[name=pay_addr]").val(roadFullAddr);
+			
+			
+		}
+		function changeImg(){
+			$("[name=profileImg]").trigger("click");
+
+		}
 		$(document).ready(function(){
-			$(':checkbox').on('toggle', function() {
-				  $("label").css('color','black')
-				});
+			var memFavor = "${mlist.memFavor}";
+			var memFavorArray = memFavor.split(',');
+			for(let i=0; i<memFavorArray.length; i++){
+				$("input:checkbox[value="+memFavorArray[i]+"]").prop("checked", true);
+			}
 		})
 </script>
 </head>
@@ -36,18 +53,19 @@
 		    	<p class="profile__img--title">프로필 사진</p>
 		    	
 		    	<!-- 이미지 -->
-		    	<img src="${path}/img/${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
+		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST" enctype="multipart/form-data">
+		    	<img src="${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
 		    	<div style="text-align:center;margin-bottom:50px;">
-		    	<span class="profile__img-edit">바꾸기</span>
+		    	<span onclick="changeImg()" class="profile__img-edit">바꾸기</span>
+		    	<input style="display:none" type="file" name="profileImg"/>
 		    	<span class="profile__img-edit">삭제</span>
 		    	</div>
 		    	
 		    	<!-- 정보 입력 -->
-		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="" method="POST">
 		    		<p class="profile__innertitle">이메일 주소</p>
 		    		
 		    		<div style="display:flex;margin-bottom:30px;" class="profile__input">
-		    		<input style="width:100%" name="email" style="width:350px;padding-left:10px;" value="${mlist.memEmail}" disabled>
+		    		<input style="width:100%;padding-left:10px;" name="email" value="${mlist.memEmail}" disabled>
 					</div>
 		    		<p class="profile__innertitle">휴대폰 번호</p>
 		    		<div style="display:flex; height:35px;margin-bottom:30px;">
@@ -59,82 +77,100 @@
 					    <option>KT 알뜰폰</option>
 					    <option>LGU 알뜰폰</option>
 					</select>
-		    		<input class="profile__input" class="" name="phoneNum" style="padding-left:10px;" value="${mlist.memPhone}">
+		    		<input class="profile__input" class="" style="padding-left:10px;" name="memPhone" value="${mlist.memPhone}">
 		    		<button class="profile__btn" style="width:145px;">번호받기</button>
 		    		</div>
 		    		
 		    		<p class="profile__innertitle">인증 번호 확인</p>
 		    		<div style="display:flex;margin-bottom:30px;">
 		    		<input class="profile__input" name="checkNum">
-		    		<button class="profile__btn">인증하기</button>
+		    		<button type="button" class="profile__btn">인증하기</button>
 		    		</div>
 		    		
 		    		<p class="profile__innertitle">주소</p>
-		    		<div style="display:flex; width:100%;margin-bottom:30px;">
-		    		<input class="profile__input" name="Adr">
-		    		<button class="profile__btn">주소검색</button>
+		    		<div style="width:100%;margin-bottom:30px;">
+		    		<input class="profile__input" value="${mlist.pay_zipcode}" style="width:30%;margin-bottom:15px;padding-left:10px;" name="pay_zipcode" readonly>
+		    		<input class="profile__input" value="${mlist.pay_addr}" style="margin-bottom:15px;padding-left:10px;" name="pay_addr" readonly>
+		    		<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:10px;height:35px;"class="profile__btn">주소검색</button>
 		    		</div>
 		    		
-		    		<p class="profile__innertitle">상세주소</p>
-		    		<input class="profile__input" style="margin-bottom:30px;"name="detailAdr">
-		    		
 		    		<p class="profile__innertitle">관심사</p>
-		    		<p class="profile__innertitle--subtitle">최소 1개 이상의 관심사를 선택해주세요</p>
+		    		<p class="profile__innertitle--subtitle" style="margin-bottom:20px;">최소 1개 이상의 관심사를 선택해주세요</p>
 		    		
 		    		<div style="display:flex">
-		    		<div>
-		    		
-		    		<label class="checkbox ct-orange" for="checkbox1">
-				    <input type="checkbox" value="edu" id="checkbox1" data-toggle="checkbox">
-					교육.키즈
-					</label>
-					
-					<label class="checkbox ct-orange" for="checkbox2">
-					<input type="checkbox" value="beauty" id="checkbox2" data-toggle="checkbox">
-					패션.잡화.뷰티
-					</label>
-					
-					<label class="checkbox ct-orange" for="checkbox3">
-					<input type="checkbox" value="living" id="checkbox3" data-toggle="checkbox">
-					홈리빙.디자인소품
-					</label>
-					
-					<label class="checkbox ct-orange" for="checkbox4">
-					<input type="checkbox" value="culture" id="checkbox4" data-toggle="checkbox">
-					공연.컬쳐
-					</label>
+		    		<div>  
+
+					<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="교육·키즈"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>교육·키즈</label>
+				        </div>
+			    	</div>
+			    	<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="패션·잡화·뷰티"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>패션·잡화·뷰티</label>
+				        </div>
+			    	</div><div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="홈리빙·디자인소품"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>홈리빙·디자인소품</label>
+				        </div>
+			    	</div><div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="공연·컬쳐"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>공연·컬쳐</label>
+				        </div>
+			    	</div>
 					
 					</div>
 					
 					<div style="margin-left : 150px;">
 					
-					<label class="checkbox ct-orange" for="checkbox5">
-					<input type="checkbox" value="sports" id="checkbox5" data-toggle="checkbox">
-					스포츠.모빌리티
-					</label>
+					<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="스포츠·모빌리티"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>스포츠·모빌리티</label>
+				        </div>
+			    	</div>
 					
-					<label class="checkbox ct-orange" for="checkbox6">
-					<input type="checkbox" value="publishing" id="checkbox6" data-toggle="checkbox">
-					출판
-					</label>
+					<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="출판"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>출판</label>
+				        </div>
+			    	</div>
 					
-					<label class="checkbox ct-orange" for="checkbox7">
-					<input type="checkbox" value="animals" id="checkbox7" data-toggle="checkbox">
-					반려동물
-					</label>
+					<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="반려동물"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>반려동물</label>
+				        </div>
+			    	</div>
 					
-					<label class="checkbox ct-orange" for="checkbox8">
-					<input type="checkbox" value="tech" id="checkbox8" data-toggle="checkbox">
-					테크.가전
-					</label>
+					<div class="pretty p-icon p-jelly p-round p-bigger">
+				        <input name="favorChk" type="checkbox" value="테크·가전"/>
+					        <div class="state p-warning">
+					            <i class="icon material-icons">done</i>
+					            	<label>테크·가전</label>
+				        </div>
+			    	</div>
 					
 					</div>
 					</div>
 					
 					<div style="display:flex;margin-top:30px;">
-						<button class="profile__cancle">취소</button>
-						<input class="profile__submit" type="submit" value="제출">
+						<button type="button" class="profile__cancle">취소</button>
+						<input class="profile__submit" type="submit" value="수정">
 		    		</div>
+	    		  	
 		    	</form>
 	    	</div>
 	    	</div>
