@@ -42,7 +42,6 @@
 		$( "#deliveryDate" ).datepicker();
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 	});
 	
 	
@@ -54,11 +53,6 @@
 	} );	
 
 >>>>>>> parent of 7f1046d... 1111
-=======
-	} );
-	
-	}
->>>>>>> parent of 3e0c965... 1234
 </script>
 </head>
 <body>
