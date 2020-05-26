@@ -41,14 +41,9 @@
 	$( function() {
 		$( "#deliveryDate" ).datepicker();
 <<<<<<< HEAD
-<<<<<<< HEAD
 	});
 	
 	
-=======
-	} );	
-
->>>>>>> parent of 7f1046d... 1111
 =======
 	} );	
 

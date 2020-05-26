@@ -23,11 +23,8 @@
 		<typeAlias alias="report" type="funfun.vo.Report"/>
 		<typeAlias alias="funding" type="funfun.vo.Funding"/>
 <<<<<<< HEAD
-<<<<<<< HEAD
  		<typeAlias alias="projectRisk" type="funfun.vo.ProRisk"/>
  		<typeAlias alias="userprofile" type="funfun.vo.UserProfile"/>
-=======
->>>>>>> parent of 7f1046d... 1111
 =======
 >>>>>>> parent of 7f1046d... 1111
 

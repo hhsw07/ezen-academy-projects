@@ -48,7 +48,6 @@
 	<select id="getProOptionList" resultMap="projectOpt" parameterType="int">
 	SELECT * FROM PRO_OPTION
 <<<<<<< HEAD
-<<<<<<< HEAD
 	WHERE pro_code = #{pro_code}
 	</select>
 
@@ -71,15 +70,6 @@
 	WHERE PRO_CODE = #{pro_code}
 	</update>
 
-=======
-	WHERE pro_code = #{pro_code};
-	</select>
-	
-	<insert id="regProOption" parameterType="projectOpt">
-	INSERT INTO PRO_OPTION VALUES (option_seq.nextval, #{pro_code}, #{opt_price}, #{opt_title}, #{opt_detail}, #{opt_condition), #{opt_delivery}, #{opt_max}, #{opt_deliver_date})
-	</insert>
- -->
->>>>>>> parent of 7f1046d... 1111
 =======
 	WHERE pro_code = #{pro_code};
 	</select>
