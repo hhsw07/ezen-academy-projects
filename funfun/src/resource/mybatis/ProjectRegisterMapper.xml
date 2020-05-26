@@ -15,10 +15,6 @@
 	WHERE MEM_CODE = #{MEM_CODE}
 	</select>
 
-	<select id="projectInfo" resultType="project" parameterType="int">
-	SELECT * FROM PROJECT
-	WHERE PRO_CODE = #{PRO_CODE}
-	</select>
 
 	<insert id="proCreate" parameterType="project">
 	INSERT INTO PROJECT VALUES (project_seq.nextval, #{maker_code}, '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y')
@@ -63,11 +59,5 @@
 	<insert id="regProRisk" parameterType="projectRisk">
 	INSERT INTO RISK VALUES (risk_seq.nextval, ${pro_code}, ${risk_detail}, ${risk_title})
 	</insert>
-	
-	<update id="projectRegister" parameterType="int">
-	UPDATE PROJECT 
-	SET PRO_REG_DATE = SYSDATE
-	WHERE PRO_CODE = #{pro_code}
-	</update>
 
 </mapper>

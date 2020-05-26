@@ -34,8 +34,6 @@
 
 		
 	})
-	
-
 </script>
 </head>
 <body>
@@ -79,7 +77,7 @@
 
   	<br><br>
   	
-  	<button class="btn btn-warning btn_custom" id="proRegBtn">프로젝트 등록 신청</button>
+  	<button class="btn btn-warning btn_custom">프로젝트 등록 신청</button>
   	
   	<br><br><br><br><br><br>
   	
@@ -94,16 +92,4 @@
 	</div>
 	<!-- end main -->
 </body>
-
-<script>
-
-	$("#proRegBtn").click(function(){
-		if(confirm("등록 신청 후에는 더 이상 수정할 수 없습니다.\n진행할까용??")){
-			$(location).attr("href", "${path}/ProjectReg.do?method=projectRegister")
-		}
-	})
-
-</script>
-
-
 </html>

@@ -31,17 +31,6 @@ public class HT_ProjectRegCtrl {
 	public String initPage(HttpServletRequest request, Model d) {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
-
-
-	
-	@RequestMapping(params="method=projectManage")
-	public String projectManage(HttpServletRequest request, Model d, int pro_code) {
-		HttpSession session = request.getSession();
-		System.out.println(pro_code);
-		session.setAttribute("projectCode", pro_code);
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
-	}
-	
 	
 	
 	@RequestMapping(params="method=ready")
@@ -62,6 +51,14 @@ public class HT_ProjectRegCtrl {
 		d.addAttribute("projectCode", service.getProjectCode());
 		session.setAttribute("projectCode", service.getProjectCode());
 		System.out.println("새로 만든 프로젝트 코드 : " + service.getProjectCode());
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+	}
+	
+	
+	
+	
+	@RequestMapping(params="method=projectManage")
+	public String projectManage(HttpServletRequest request, Model d, Project proInfo) {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
@@ -151,14 +148,6 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		return "redirect:/ProjectReg.do?method=risk";
-	}
-	
-	@RequestMapping(params="method=projectRegister")
-	public String projectRegister(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		int projectCode = (int)session.getAttribute("projectCode");
-		service.projectRegister(projectCode);
-		return "redirect:/MakerStudio.do?method=myProject";
 	}
 
 }

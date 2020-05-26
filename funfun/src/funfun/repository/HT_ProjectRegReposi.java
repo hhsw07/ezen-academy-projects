@@ -21,7 +21,5 @@ public interface HT_ProjectRegReposi {
 	public void regProOption(ProOption cre);
 	public ArrayList<ProRisk> getProRiskList(int pro_code);
 	public void regProRisk(ProRisk cre);
-	public Project projectInfo(int pro_code);
-	public void projectRegister(int pro_code);
 
 }

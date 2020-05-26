@@ -27,12 +27,8 @@
 		
 	})
 	
-	function go_update(pro_code){
-		$(location).attr("href", "${path}/ProjectReg.do?method=projectManage&pro_code="+pro_code)
-	}
-
 	function go_manage(pro_code){
-		$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet&pro_code="+pro_code)
+		$(location).attr("href", "${path}/MakerStudio.do?method=ready")
 	}
 </script>
 
@@ -57,44 +53,37 @@
 
 
 
-
-	<div class="row">
-		<c:forEach var="proj" items="${list}">
-		<div class="col-xs-12 col-md-3 item">
-			<div class="thumbnail projectList-item">
-				<c:choose>
-					<c:when test="${proj.pro_reg_date==null}">
-					<span onclick="javascript:go_update('${proj.pro_code}')">수정하기</span>
-					</c:when>
-					<c:otherwise>
-					<span onclick="javascript:go_manage('${proj.pro_code}')">프로젝트 관리</span>
-					</c:otherwise>
-				</c:choose>
-				<img alt="..." src="img/${proj.pro_image}">
-				<div class="caption proj-info">
-					<p class="ProjectList-title">${proj.pro_title}</p>
-					<div class="maker-info">
-						<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
-					</div>
-					<div>
-						<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
-					<c:choose>
-						<c:when test="${proj.dday>0}">
-							<span class="ProjectList-date">${proj.dday}일 남음</span>
-						</c:when>
-						<c:when test="${proj.dday<0}">
-							<span class="ProjectList-date">펀딩 종료</span>
-						</c:when>
-						<c:when test="${proj.dday==0}">
-							<span class="ProjectList-date">오늘 마감</span>
-						</c:when>
-					</c:choose>
+	<form method="post">
+		<div class="row">
+			<c:forEach var="proj" items="${list}">
+				<div class="col-xs-12 col-md-3 item">
+					<div class="thumbnail projectList-item"  onclick="javascript:go_manage('${proj.pro_code}')">
+						<img alt="..." src="img/${proj.pro_image}">
+						<div class="caption proj-info">
+							<p class="ProjectList-title">${proj.pro_title}</p>
+							<div class="maker-info">
+								<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+							</div>
+							<div>
+								<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
+							<c:choose>
+								<c:when test="${proj.dday>0}">
+									<span class="ProjectList-date">${proj.dday}일 남음</span>
+								</c:when>
+								<c:when test="${proj.dday<0}">
+									<span class="ProjectList-date">펀딩 종료</span>
+								</c:when>
+								<c:when test="${proj.dday==0}">
+									<span class="ProjectList-date">오늘 마감</span>
+								</c:when>
+							</c:choose>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
-		</c:forEach>
-	</div>
+	</form>	
 
 
 

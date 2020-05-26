@@ -16,24 +16,25 @@
 <script>
 	$(document).ready(function(){
 
-		$(".proCancel").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
+		$(".basicReqBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicReq")
 		})
-		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet")
+		$(".basicInfoBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfo")
 		})
-		$(".proQnAManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
+		$(".storyBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=story")
 		})
-		$(".storeReg").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeReg")
+		$(".rewardBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=reward")
 		})
-		$(".storeOrderManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeOrderManage")
+		$(".riskBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/ProjectReg.do?method=risk")
 		})
-		$(".storeQnAManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeQnAManage")
-		})
+		$(".proQnaBtn").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
+		})		
+		
 		
 	})
 		
@@ -46,7 +47,7 @@
 	<div class="row">
 
  
- 	<jsp:include page="ht_user_w_MS_menu.jsp"/>
+ 	<jsp:include page="../project_reg/ht_user_w_MS_projectReg_menu.jsp"/>
  
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">

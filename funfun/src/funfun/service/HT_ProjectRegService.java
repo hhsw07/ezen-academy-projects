@@ -58,6 +58,7 @@ public class HT_ProjectRegService {
 	public void regProRisk(ProRisk cre) {
 		dao.regProRisk(cre);
 	}
+<<<<<<< HEAD
 	
 	public void projectInfo(int pro_code) {
 		dao.projectInfo(pro_code);
@@ -68,4 +69,6 @@ public class HT_ProjectRegService {
 	}
 =======
 >>>>>>> parent of 3e0c965... 1234
+=======
+>>>>>>> parent of 5e57446... 1111
 }
