@@ -90,7 +90,6 @@
 			};
 			wsocket.onmessage=function(evt){
 				var data = evt.data;
-				alert("data:"+data);
 				if(data == mem_code){
 					$(location).attr("href","");
 				}
