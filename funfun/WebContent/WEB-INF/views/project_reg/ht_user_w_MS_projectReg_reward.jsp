@@ -41,9 +41,9 @@
 
 	$( function() {
 		$( "#deliveryDate" ).datepicker();
-	});
+	} );
 	
-	
+	}
 </script>
 </head>
 <body>
