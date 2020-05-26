@@ -45,6 +45,15 @@
 		AND a.sto_code = #{sto_code}
 
 		</select>
-		
+		<select id="adminList" resultMap="Storelist" parameterType="Paging">
+			select * from (select rownum cnt, c.* from (
+				SELECT a.sto_code, a.STO_TITLE, c.MAKER_NAME , to_char(STO__REG_DATE, 'YYYY-MM-DD') STO__REG_DATE, STO_CURR FROM store a, project b, maker c
+				WHERE a.PRO_CODE = b.PRO_CODE  AND b.MAKER_CODE = c.MAKER_CODE 
+			)c)where cnt between #{start} and #{end}
+		</select>
+		<select id="adminDetail" resultType="RewardStore" parameterType="int">
+			select sto_code, sto_title, sto_image, sto_detai from store 
+			where sto_code = #{sto_code}
+		</select>
 	</mapper>
 	
