@@ -25,6 +25,7 @@
 		<typeAlias alias="projectRisk" type="funfun.vo.ProRisk"/>
 		<typeAlias alias="storePay" type="funfun.vo.storePay"/>
 		<typeAlias alias="userprofile" type="funfun.vo.UserProfile"/>
+		<typeAlias alias="inquiry" type="funfun.vo.ProjectQna"/>
 
 	</typeAliases>
 	<mappers>
