@@ -1,0 +1,45 @@
+1. springweb/WebContent/WEB-INF/view/a02_mvc/a02_board.jsp
+
+
+2. BoardMapper
+
+3. BoardDAO
+public ArrayList<Board> getAllList();
+
+4. A01_BoardCtrl
+
+
+5. z02_util/B01_ExcelViewer
+
+************************poi api for excel 구글 검색 ==>>> excel 스타일 속성 지정
+
+6. dispatcher-servlet
+bean 등록
+
+
+
+@RequestMapping(params="method=proCancel")
+	public String proCancel() {
+		return "";
+	}
+	@RequestMapping(params="method=proCurrnet")
+	public String proCurrnet() {
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
+	}
+	@RequestMapping(params="method=proQnAManage")
+	public String proQnAManage() {
+		return "";
+	}
+	@RequestMapping(params="method=storeReg")
+	public String storeReg() {
+		return "";
+	}
+	@RequestMapping(params="method=storeOrderManage")
+	public String storeOrderManage() {
+		return "";
+	}
+	@RequestMapping(params="method=storeQnAManage")
+	public String storeQnAManage() {
+		return "";
+	}
+}
