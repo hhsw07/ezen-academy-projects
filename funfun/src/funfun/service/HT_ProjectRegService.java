@@ -51,6 +51,7 @@ public class HT_ProjectRegService {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public ArrayList<ProRisk> getProRiskList(int pro_code){
 		return dao.getProRiskList(pro_code);
 	}
@@ -71,4 +72,6 @@ public class HT_ProjectRegService {
 >>>>>>> parent of 3e0c965... 1234
 =======
 >>>>>>> parent of 5e57446... 1111
+=======
+>>>>>>> parent of 3e0c965... 1234
 }
