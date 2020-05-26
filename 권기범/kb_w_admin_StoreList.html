@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <link rel="stylesheet" href="CSS/kb_w_admin_storeList.css">
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js" type="text/javascript"></script>
     <style>
         main{
             width:1200px;
@@ -29,7 +32,7 @@
     </script>
 </head>
 <body>
-    <main>
+    <main id="test">
         <h1 id="list_Title">스토어 상품 목록</h1>
         <div id="list_Div">
             <table class="table table-hover">
@@ -50,7 +53,7 @@
                         <td>등록날짜</td>
                         <td>승인</td>
                     </tr>
-                    <tr>
+                    <tr v-on:click="search('31000004')">
                         <td>1</td>
                         <td>초~달아서 초당! 초당옥수수</td>
                         <td>야수네</td>
@@ -137,4 +140,64 @@
     </main>
     
 </body>
+
+<script>
+	var vm = new Vue({
+		el:"#test",
+		data:{msg:"key이벤트로 검색!!",sto_code:"",
+			  contactlist:[]},
+		methods:{
+			search:function(sto_code){
+				// e.keyCode : 입력한 코드값
+                    console.log("코드 테스트 : " + sto_code);
+					if(sto_code != null){
+						// 현재 객체의 메서드명fetchContacts를 호출한다.
+						this.fetchContacts();
+					}
+				}
+			},
+			fetchContacts:function(){
+				// 모델데이터 초기화.
+				this.contactlist=[];
+				// 비동기로 처리할 url 주소..
+				var url = "http://192.168.0.12:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				/*
+				# fetch api를 통한 비동기 통신 처리..
+				1. 기본 형식.
+					fetch(url).then(함수1).then(함수2).catch(함수3);
+					1) url : 요청할 주소
+					2) 함수1: 서버에서 받은 response
+						function(response){   
+							return response.json()
+						}
+					3) 함수2 : 함수1의 return값을 매개값을 받아서 처리.
+						function(json){
+							받은 json데이터 객체로 vue화면 구성처리
+						}
+					3) 함수3 : 위에 내용을 처리했을 때, 예외에 대한 함수
+						처리..
+				*/
+				var vm = this; // 현재 Vue객체를 fetch api
+				// 함수 안에 쓰기위해 이름을 지정..
+				fetch(url).then(function(response){
+					console.log("## 서버에서 온 response 값 ##");
+					console.log(response);
+					return response.json();
+				}).then(function(json){
+					console.log("## 서버에서 온 json데이터 ##");
+					console.log(json);
+					// 서버에서 온 json 데이터 model데이터로 mapping
+					// this: fetch 구분..
+					// 모델데이터에 mapping 처리.
+					// ajax로 온 json데이터를 model데이터에 mapping
+					vm.contactlist=json;
+					
+				}).catch(function(err){
+					console.log("## 에러 발생 ##");
+					console.log(err);
+				});
+			}
+		});
+	
+</script>
 </html>
