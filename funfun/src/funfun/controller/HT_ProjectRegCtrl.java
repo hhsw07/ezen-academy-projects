@@ -1,7 +1,5 @@
 package funfun.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -27,6 +25,7 @@ public class HT_ProjectRegCtrl {
 	// http://localhost:6080/funfun/ProjectReg.do?method=ready
 
 	
+<<<<<<< HEAD
 
 	@RequestMapping(params="method=initPage")
 	public String initPage(HttpServletRequest request, Model d) {
@@ -45,6 +44,8 @@ public class HT_ProjectRegCtrl {
 	
 	
 	
+=======
+>>>>>>> parent of 7f1046d... 1111
 	@RequestMapping(params="method=ready")
 	public String proReady(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
@@ -110,13 +111,10 @@ public class HT_ProjectRegCtrl {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
-	
-	
 	@RequestMapping(params="method=reward")
 	public String proRegReward(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
-		System.out.println(projectCode);
 		d.addAttribute("optList", service.getProOptionList(projectCode));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_reward.jsp";
 	}
@@ -127,9 +125,8 @@ public class HT_ProjectRegCtrl {
 		int projectCode = (int)session.getAttribute("projectCode");
 		cre.setPro_code(projectCode);
 		service.regProOption(cre);
-		return "redirect:/ProjectReg.do?method=reward";
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_reward.jsp";
 	}
-	
 	
 	@RequestMapping(params="method=rewardReg")
 	public String proRegRewardReg(HttpServletRequest request, Model d, Project cre) {
@@ -143,6 +140,7 @@ public class HT_ProjectRegCtrl {
 	@RequestMapping(params="method=risk")
 	public String proRegRisk(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
+<<<<<<< HEAD
 		int projectCode = (int)session.getAttribute("projectCode");
 		System.out.println(projectCode);
 		d.addAttribute("riskList", service.getProRiskList(projectCode));
@@ -165,5 +163,9 @@ public class HT_ProjectRegCtrl {
 		service.projectRegister(projectCode);
 		return "redirect:/MakerStudio.do?method=myProject";
 	}
+=======
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
+	}
+>>>>>>> parent of 7f1046d... 1111
 
 }

@@ -8,7 +8,6 @@
 	<resultMap type="makerstudio" id="msResult"/>
 	<resultMap type="project" id="proResult"/>
 	<resultMap type="projectOpt" id="proOptResult"/>
-	<resultMap type="projectRisk" id="proRiskResult"/>
 
 	<select id="makerInfo" resultType="makerstudio" parameterType="int">
 	SELECT * FROM MAKER
@@ -45,9 +44,10 @@
 		SET PRO_STORY = #{pro_story} 
 	WHERE PRO_CODE = #{pro_code}
 	</update>
-
-	<select id="getProOptionList" resultType="projectOpt" parameterType="int">
+<!-- 	
+	<select id="getProOptionList" resultMap="projectOpt" parameterType="int">
 	SELECT * FROM PRO_OPTION
+<<<<<<< HEAD
 	WHERE pro_code = #{pro_code}
 	</select>
 
@@ -70,4 +70,13 @@
 	WHERE PRO_CODE = #{pro_code}
 	</update>
 
+=======
+	WHERE pro_code = #{pro_code};
+	</select>
+	
+	<insert id="regProOption" parameterType="projectOpt">
+	INSERT INTO PRO_OPTION VALUES (option_seq.nextval, #{pro_code}, #{opt_price}, #{opt_title}, #{opt_detail}, #{opt_condition), #{opt_delivery}, #{opt_max}, #{opt_deliver_date})
+	</insert>
+ -->
+>>>>>>> parent of 7f1046d... 1111
 </mapper>
