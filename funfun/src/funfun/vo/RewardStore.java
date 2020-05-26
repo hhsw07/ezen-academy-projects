@@ -4,8 +4,8 @@ package funfun.vo;
 public class RewardStore {
 	private int sto_code;
 	private int pro_code;
-	private String reg_date;
-	private String sub_date;
+	private String STO__REG_DATE;
+	private String sto_sub_date;
 	private String sto_title;
 	private String sto_detai;
 	private String sto_image;
@@ -25,17 +25,27 @@ public class RewardStore {
 	public void setPro_code(int pro_code) {
 		this.pro_code = pro_code;
 	}
-	public String getReg_date() {
-		return reg_date;
+	
+	public String getSTO__REG_DATE() {
+		return STO__REG_DATE;
 	}
-	public void setReg_date(String reg_date) {
-		this.reg_date = reg_date;
+	public void setSTO__REG_DATE(String sTO__REG_DATE) {
+		STO__REG_DATE = sTO__REG_DATE;
+	}
+	public String getSto_sub_date() {
+		return sto_sub_date;
+	}
+	public void setSto_sub_date(String sto_sub_date) {
+		this.sto_sub_date = sto_sub_date;
+	}
+	public void setSto_detai(String sto_detai) {
+		this.sto_detai = sto_detai;
 	}
 	public String getSub_date() {
-		return sub_date;
+		return sto_sub_date;
 	}
-	public void setSub_date(String sub_date) {
-		this.sub_date = sub_date;
+	public void setSub_date(String sto_sub_date) {
+		this.sto_sub_date = sto_sub_date;
 	}
 	public String getSto_title() {
 		return sto_title;

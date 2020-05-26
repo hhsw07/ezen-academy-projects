@@ -31,7 +31,7 @@ $(document).ready(function(){
 	
 	$("#pay_btn").click(function(){
 		if(parseInt(mem_price) >= parseInt(pay_price)){
-			alert("충분~");
+			$("form").submit();
 		} else {
 			alert("예치금이 부족합니다.");
 		}

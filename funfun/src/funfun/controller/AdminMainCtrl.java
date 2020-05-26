@@ -1,12 +1,18 @@
 package funfun.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import funfun.service.KB_StoreService;
+import funfun.vo.Paging;
 
 @Controller
 public class AdminMainCtrl {
 	
-	
+	@Autowired(required=false)
+	KB_StoreService kb_service;
 	@RequestMapping(value="/admin-main.do")
 	public String enterMain() {
 		return "WEB-INF\\views\\admin\\adminMain.jsp";
@@ -38,7 +44,9 @@ public class AdminMainCtrl {
 	}
 	
 	@RequestMapping(value="/reward-store-management.do")
-	public String enterRewardStoreManagement() {
+	public String enterRewardStoreManagement(Paging sch, Model d) {
+		
+		d.addAttribute("slist", kb_service.adminList(sch));
 		return "WEB-INF\\views\\admin\\rewardStoreManagement.jsp";
 	}
 	

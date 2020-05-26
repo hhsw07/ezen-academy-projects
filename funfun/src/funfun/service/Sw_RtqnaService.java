@@ -49,23 +49,41 @@ public class Sw_RtqnaService {
 		int endblock = blocknum*sch.getBlocksize();
 		sch.setEndBlock(endblock>sch.getPageCount()?sch.getPageCount():endblock);
 		
-		
 		return dao.list(sch);
 	}
-
+	
+	
+	public int ckrtqna(int mem_code) {
+		return dao.ckrtqna(mem_code);
+	}
+	public int rtqna_code(int mem_code) {
+		return dao.rtqna_code(mem_code);
+	}
+	public void insertrtqna(int mem_code){
+		dao.insertrtqna(mem_code);
+	};
 	public void insert(Rtqna ins){
 		dao.insert(ins);
-		System.out.println("rtqna 등록 완료");
 	};
+	
 	
 	public ArrayList<Rtqna> detail(int mem_code) {
 		System.out.println("rtqna 상세화면 호출");
 		return dao.detail(mem_code);
 	};
-	public void update(Rtqna upt) {
-		dao.update(upt);
-		System.out.println("rtqna 수정 완료");
-	};
+	public Rtqna chatdetail(int mem_code) {
+		return dao.chatdetail(mem_code);
+	}
 	
+	// rtqna_state 변경
+	public void uptSt1(int mem_code) {
+		dao.uptSt1(mem_code);
+	}
+	public void uptSt2(int mem_code) {
+		dao.uptSt2(mem_code);
+	}
+	public void uptSt3(int mem_code) {
+		dao.uptSt3(mem_code);
+	}
 	
 }

@@ -1,7 +1,5 @@
 package funfun.service;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +13,8 @@ public class sh_profileEditService {
 	
 	public UserProfile mlist(String memEmail){
 		return dao.mlist(memEmail);
+	}
+	public int changeProfile(UserProfile uf){
+		return dao.changeProfile(uf);
 	}
 }
