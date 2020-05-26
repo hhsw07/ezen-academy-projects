@@ -29,7 +29,10 @@
 			
 			
 		}
-		
+		function changeImg(){
+			$("[name=profileImg]").trigger("click");
+
+		}
 		$(document).ready(function(){
 			var memFavor = "${mlist.memFavor}";
 			var memFavorArray = memFavor.split(',');
@@ -50,14 +53,15 @@
 		    	<p class="profile__img--title">프로필 사진</p>
 		    	
 		    	<!-- 이미지 -->
-		    	<img src="${path}/img/${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
+		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST" enctype="multipart/form-data">
+		    	<img src="${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
 		    	<div style="text-align:center;margin-bottom:50px;">
-		    	<span class="profile__img-edit">바꾸기</span>
+		    	<span onclick="changeImg()" class="profile__img-edit">바꾸기</span>
+		    	<input style="display:none" type="file" name="profileImg"/>
 		    	<span class="profile__img-edit">삭제</span>
 		    	</div>
 		    	
 		    	<!-- 정보 입력 -->
-		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST">
 		    		<p class="profile__innertitle">이메일 주소</p>
 		    		
 		    		<div style="display:flex;margin-bottom:30px;" class="profile__input">
