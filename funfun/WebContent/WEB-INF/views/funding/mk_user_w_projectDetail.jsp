@@ -11,7 +11,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-
+input[type=file]{display:inline;}
+.project-inquiry{width:100%; padding: 15px;}
+.inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
+.title_td {display: inline-block; width: 300px; padding-left: 25%; padding-right: 25%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 20px;}
+th{text-align:center;}
 
 </style>
 <script>
@@ -67,11 +71,32 @@
 		$("#report").click(function(){
 			alert("신고가 접수되었습니다");
 			$(location).attr("href","${path}/funding.do?method=report");
-			$("#favor").submit(); // 신고자(회원번호), 프로젝트번호
-			$("#report-content").submit(); // 신고내용, 이미지
+			$("#report-content").submit(); 
+		});
+
+		$(".custom-file-input").on("change", function(){
+			$(this).next(".custom-file-label").text($(this).val());
 		});
 		// 문의하기
-		
+		var article = $(".qnaShow");
+        $(".question td").click(function(){
+            var myArticle = $(this).parent().next("tr");
+            if($(myArticle).hasClass('hide')){
+                $(article).removeClass('qnaShow').addClass('hide');
+                $(myArticle).removeClass('hide').addClass('qnaShow');
+            } else {
+                $(myArticle).addClass('hide').removeClass('qnaShow');
+            }
+        });
+        $("#qnaSubmit").click(function(){
+        	if(user != ''){
+            $("#qnaForm").submit();
+            $(".btn btn-warning").modal("hide");
+            $(".project-inquiry").focus();
+        	} else {
+        		alert("로그인이 필요합니다");
+        	}
+        });
 	});
 	
 </script>
@@ -145,7 +170,9 @@
 									<h4 class="modal-title" id="myModalLabel">프로젝트 신고하기</h4>
 								</div>
 								<div class="modal-body">
-								<form method="post" id="report-content">
+								<form method="post" id="report-content" enctype="multipart/form-data">
+								<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+								<input type="hidden" name="pro_code" value="${project.pro_code}" />
 									<table class="report-modal">
 										<colgroup>
 											<col width="20%">
@@ -162,9 +189,11 @@
 										</tr>
 										<tr>
 											<th>파일첨부</th>
-											<td class="input-group">
+											<td class="input-group mb-3">
 												<div class="custom-file">
-													<input type="file" name="report_img" class="custom-file-input" id="file01"/>
+													<input type="file" name="report" class="custom-file-input" id="file01"/>
+																		<label class="custom-file-label" for="file01">파일을 선택하세요</label>					
+													
 												</div>
 											</td>
 										</tr>
@@ -195,7 +224,7 @@
 			</div>
 			
 			<!-- 프로젝트 소개 -->
-			<div class="col-md-8 col-sm-6">
+			<div class="col-md-8 col-sm-6" style="min-height:500px;margin-bottom: 100px;">
 				<h3>프로젝트 스토리</h3>
 				<div>
 					${project.pro_story}
@@ -203,7 +232,7 @@
 			</div>
 			
 			<!-- 프로젝트 옵션 -->
-			<div class="project-opt col-md-4 col-sm-6">
+			<div class="project-opt col-md-4 col-sm-6" style="min-height:500px;">
 			<c:forEach var="opt" items="${opt}">
 				<div class="project-opt-info">
 				<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -220,10 +249,91 @@
 			</c:forEach>
 			</div>
 			
-	    	<!-- 문의 -->
+	    	<!-- 문의 리스트 -->
 	    	<div class="project-inquiry">
-	    		문의글 리스트
-	    	</div>
+	    		<div class="inquiry-title">프로젝트 문의
+	    			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="float:right;margin-bottom: 40px;" >문의하기</button>
+	    		</div>
+           		<table class="table table-hover" style="margin-top:2%;border-top: 1px solid #EaEaEa;">
+					<thead>
+						<tr style="text-align:center;padding:20px;">
+							<th>번호</th><th>제목</th><th>작성자</th><th>작성날짜</th><th>답변여부</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="qna" items="${qna}">
+						<tr class="question" style="text-align:center">
+							<td>${qna.qna_code}</td>
+							<td>
+								<span class="title_td"><c:if test="${qna.qna_open=='Y'}">[비밀글]</c:if>${qna.qna_detail}</span>
+							</td>
+							<td>${qna.mem_name} </td>
+							<td>${qna.qna_reg_date} </td>
+							<td>
+								<c:if test="${qna.qna_ans==null}">미답변</c:if>
+								<c:if test="${qna.qna_ans!=null}">답변완료</c:if>
+							</td>
+						</tr>
+						<tr class="hide">
+						<c:if test="${qna.qna_open=='Y' && qna.mem_name==user.mem_name}">
+							<td colspan="5">
+								<pre>${qna.qna_detail}</pre>
+                    			<c:if test="${qna.qna_ans!=null }">
+                    				<pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre>
+                    		</td>
+                    			</c:if>
+                    			<c:if test="${qna.qna_ans==null }">
+                    		</td>
+                    			</c:if>
+                    	</c:if>
+                    	<c:if test="${qna.qna_open=='Y' && qna.mem_name!=user.mem_name}">
+                    		<td colspan="5"><pre>[비밀글 입니다]</pre></td>
+                    	</c:if>
+                    	<c:if test="${qna.qna_open=='N'}">
+                    		<td colspan="5">
+                    			<pre>${qna.qna_detail}</pre>
+                    			<c:if test="${qna.qna_ans!=null }">
+									<pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre>
+							</td>
+                    			</c:if>
+                    			<c:if test="${qna.qna_ans==null }">
+                    		</td>
+                    			</c:if>
+                    	</c:if>
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<!-- 문의글 작성 -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">스토어 문의하기</h4>
+                    
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" id="qnaForm" action="store.do?method=insert">
+                      	<div class="form-group">
+                      		<label for="message-text" class="control-label">비밀글 유무</label>
+                      		<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open"> 비밀글로 안하기
+                      	</div>
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">문의내용:</label>
+                          <textarea class="form-control report-cont" id="message-text" name="qna_detail"></textarea>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+						<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">닫기</button>
+						<div class="divider"></div>
+						<button type="submit" class="btn btn-warning btn-simple" id="qnaSubmit">문의하기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 	    
 	    
 		</div>

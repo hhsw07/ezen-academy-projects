@@ -15,5 +15,13 @@
 		SET MEM_PHONENO=#{memPhone,jdbcType=VARCHAR},MEM_ADDRESS=#{pay_addr,jdbcType=VARCHAR},MEM_POST=#{pay_zipcode,jdbcType=VARCHAR},MEM_FAVOR = #{memFavor}
 		WHERE MEM_EMAIL = #{memEmail,jdbcType=VARCHAR}
  	</update>
+ 	
+ 	<!--<update id="uptProfileImg" parameterType="java.util.HashMap">
+		UPDATE boardfile
+			SET fname = #{tar},
+	        uptdte= sysdate
+	    WHERE NO = ${no}
+		AND fname = #{org}	    	
+	</update>-->
 	
 </mapper>	

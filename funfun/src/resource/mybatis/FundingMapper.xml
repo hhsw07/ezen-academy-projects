@@ -78,7 +78,13 @@
 	<insert id="insReport" parameterType="report">
 		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date)
 	</insert>
-	<!-- 프로젝트 문의 -->
+	<!-- 프로젝트 문의리스트 -->
+	<resultMap type="inquiry" id="inquiryResult"/>
+	<select id="inquiryList" resultMap="inquiryResult" parameterType="int">
+		SELECT QNA_CODE, PRO_CODE, mem_name, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN, QNA_ANS, QNA_ANS_REG_DATE FROM QNA a, MEMBER b
+		WHERE a.MEM_CODE = b.MEM_CODE AND PRO_CODE = #{pro_code}
+	</select>
+	<!-- 프로젝트 문의하기 -->
 	<insert id="inquiry" parameterType="inquiry">
 		INSERT INTO QNA(QNA_CODE, PRO_CODE, MEM_CODE, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN)
 		VALUES (QNA_SEQ.nextval, #{pro_code}, #{mem_code}, #{qna_detail}, current_date, #{qna_open})

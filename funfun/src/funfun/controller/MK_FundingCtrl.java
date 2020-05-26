@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.MK_FundingService;
+import funfun.vo.Funding;
 import funfun.vo.Project;
+import funfun.vo.ProjectQna;
 import funfun.vo.ProjectSch;
 import funfun.vo.Report;
 
@@ -69,8 +71,9 @@ public class MK_FundingCtrl {
 	// 프로젝트 상세보기
 	@RequestMapping(params="method=detail")
 	public String detail(@RequestParam("pro_code") int pro_code, Model d) {
-		d.addAttribute("project", service.detail(pro_code));
-		d.addAttribute("opt", service.proOptList(pro_code));
+		d.addAttribute("project", service.detail(pro_code)); // 프로젝트 상세정보
+		d.addAttribute("opt", service.proOptList(pro_code)); // 프로젝트 옵션
+		d.addAttribute("qna", service.inquiryList(pro_code)); // 프로젝트 문의
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
 	}
 	// 프로젝트 상세보기 for json
@@ -101,13 +104,13 @@ public class MK_FundingCtrl {
 	}
 	// 신고하기
 	@RequestMapping(params="method=report")
-	public String report(Report report) {
+	public String report(@ModelAttribute("report") Report report) {
 		service.insReport(report);
 		return "forward:/funding.do?method=detail";
 	}
 	// 문의하기
 	@RequestMapping(params="method=inquiry")
-	public String inquiry() {
+	public String inquiry(@ModelAttribute("inquiry") ProjectQna qna) {
 		return "";
 	}
 	// 펀딩하기 - 옵션선택
@@ -120,7 +123,7 @@ public class MK_FundingCtrl {
 	}
 	// 펀딩하기
 	@RequestMapping(params="method=funding")
-	public String funding() {
+	public String funding(@ModelAttribute("funding") Funding fund) {
 		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
 	}
 

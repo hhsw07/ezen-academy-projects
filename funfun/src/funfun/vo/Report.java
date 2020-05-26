@@ -1,5 +1,7 @@
 package funfun.vo;
 
+import java.util.ArrayList;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Report {
@@ -9,6 +11,12 @@ public class Report {
 	private String report_detail; // 신고내용
 	private String report_img; // 첨부파일
 	private String report_date; // 신고날짜
+	
+	// 파일 등록 처리 객체
+		private MultipartFile[] report;
+		private ArrayList<String> filenames;
+		// 파일 로딩 정보 가지고 오기
+		private String[] fnames;
 	
 	public int getReport_code() {
 		return report_code;
@@ -46,7 +54,24 @@ public class Report {
 	public void setReport_date(String report_date) {
 		this.report_date = report_date;
 	}
-
+	public MultipartFile[] getReport() {
+		return report;
+	}
+	public void setReport(MultipartFile[] report) {
+		this.report = report;
+	}
+	public ArrayList<String> getFilenames() {
+		return filenames;
+	}
+	public void setFilenames(ArrayList<String> filenames) {
+		this.filenames = filenames;
+	}
+	public String[] getFnames() {
+		return fnames;
+	}
+	public void setFnames(String[] fnames) {
+		this.fnames = fnames;
+	}
 	
 	
 

@@ -45,6 +45,7 @@
 		<mapper resource="resource/mybatis/storePayMapper.xml"/>
 		<mapper resource="resource/mybatis/userProfileMapper.xml" />
 		<mapper resource="resource/mybatis/HT_StoreManageMapper.xml" />
+		<mapper resource="resource/mybatis/secessionMapper.xml" />
 	</mappers>
  
 </configuration>

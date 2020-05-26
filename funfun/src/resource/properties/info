@@ -5,5 +5,5 @@ user=ezen_team_2
 pass=123123
 
 #파일 업로드 위치 (컴퓨터마다 다릅니다.)
-upload=C:/a01_javaexp/springweb/springweb1/WebContent/z01_upload/
-tmpUpload=C:/a01_javaexp/springweb/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/z01_upload/
+upload=C:/img/org/
+tmpUpload=C:/img/tmp/
