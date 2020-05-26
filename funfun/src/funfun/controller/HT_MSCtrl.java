@@ -16,6 +16,7 @@ import funfun.vo.MakerStudio;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.Project;
+import funfun.vo.storeQnA;
 
 @Controller
 @RequestMapping("/MakerStudio.do")
@@ -33,7 +34,6 @@ public class HT_MSCtrl {
 	public String regForm(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg.jsp";
 	}
 	
@@ -78,7 +78,15 @@ public class HT_MSCtrl {
 
 	@RequestMapping(params="method=proCancel")
 	public String proCancel() {
-		return "";
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_projectCancel.jsp";
+	}
+	
+	@RequestMapping(params="method=proCancelSubmit")
+	public String proCancelSubmit(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		service.projectCancel(projectCode);
+		return "redirect:/MakerStudio.do?method=myProject";
 	}
 
 	@RequestMapping(params="method=proCurrnet")
@@ -94,6 +102,13 @@ public class HT_MSCtrl {
 		int projectCode = (int)session.getAttribute("projectCode");
 		d.addAttribute("qnaList", service.proQnAList(projectCode));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proQna.jsp";
+	}
+
+	@RequestMapping(params="method=proQnAAnsReg")
+	public String proQnAAnsReg(int qna_code, storeQnA qna) {
+		qna.setQna_code(qna_code);
+		service.proQnAAnsReg(qna);
+		return "redirect:/MakerStudio.do?method=proQnAManage";
 	}
 
 	@RequestMapping(params="method=storeReg")

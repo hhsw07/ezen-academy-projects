@@ -149,3 +149,10 @@ details > summary::-webkit-details-marker {
 	font-size:12px;	
 }
 
+.myProjectFunction{
+	padding:5px 0px 5px 0px;
+	text-align:center;
+	font-size:20px;
+	font-weight:900;
+}
+

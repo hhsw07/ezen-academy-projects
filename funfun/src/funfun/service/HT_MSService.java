@@ -51,4 +51,12 @@ public class HT_MSService {
 		return dao.proQnAList(pro_code);
 	}
 	
+	public void proQnAAnsReg(storeQnA qna) {
+		dao.proQnAAnsReg(qna);
+	}
+	
+	public void projectCancel(int pro_code) {
+		dao.projectCancel(pro_code);
+	}
+	
 }

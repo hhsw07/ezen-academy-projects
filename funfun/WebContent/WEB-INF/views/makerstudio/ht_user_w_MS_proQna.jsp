@@ -65,19 +65,43 @@
 			<th style="width:15%;">문의자 이름</th>
 			<th style="width:15%;">등록 날짜</th>
 			<th style="width:55%;">내용</th>
-			<th style="width:15%;text-align:center;">등록하기</th>
+			<th style="width:15%;text-align:center;">답변</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="qnaList" items="${qnaList}">
+			
+			<c:choose>
+			<c:when test="${qnaList.qna_ans==null }">
 			<tr>
 			<td>${qnaList.mem_code }</td>
 			<td>${qnaList.qna_reg_date }</td>
 			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
 			<td style="text-align:center;">
-				<button class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
+				<button data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
 			</td>
 			</tr>
+			</c:when>
+			
+			<c:otherwise>
+			<tr>
+			<td>${qnaList.mem_code }</td>
+			<td>${qnaList.qna_reg_date }</td>
+			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
+			<td>
+			</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td>답변</td>
+			<td>${qnaList.qna_ans }</td>
+			<td style="text-align:center;">
+				<button data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변수정</button>
+			</td>
+			</tr>
+			</c:otherwise>
+			</c:choose>
+			
 			</c:forEach>
 		</tbody>
 	</table>
@@ -93,6 +117,9 @@
 	
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
+		<form method=post id="qnaAnsSubForm" action="${path}/MakerStudio.do">
+		<input type="hidden" name="method" value="proQnAAnsReg"/>
+		<input type="hidden" id="qna_code" name="qna_code"/>
 			<div class="modal-content">
 				<div class="modal-header" style="padding:30px 20px 20px 30px;">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -102,9 +129,9 @@
 				
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">문의 내용</div>
-						<div class="reward_reg_content_container2">
+						<div id="qna_detail" class="reward_reg_content_container2">
 							
-							<span class="sub_gray_font">xx자 남음</span>
+
 						</div>
 					</div>
 				
@@ -113,7 +140,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">답변 내용</div>
 						<div class="reward_reg_content_container2">
-							<textarea class="form-control"></textarea>
+							<textarea class="form-control" name="qna_ans"></textarea>
 							<span class="sub_gray_font">xx자 남음</span>
 						</div>
 					</div>
@@ -123,9 +150,10 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
 						<div class="divider"></div>
-					<button type="button" class="btn btn-info btn-simple">등록</button>
+					<button type="button" class="btn btn-info btn-simple" id="ansSubmit">등록</button>
 				</div>
 			</div>
+		</form>
 		</div>
 	</div>
 
@@ -146,5 +174,16 @@
 	    </div>
 	</div>
 	<!-- end main -->
+	<script>
+		$(".regAnswerBtn").on('click',function(event){
+			$("#qna_code").val(event.target.dataset.qna_code);
+			$("#qna_detail").text(event.target.dataset.qna_detail);
+		})
+		$("#ansSubmit").click(function(){
+			if(confirm("등록 하시겠습니까?")){
+			$("#qnaAnsSubForm").submit();
+			}
+		})
+	</script>
 </body>
 </html>
