@@ -23,4 +23,5 @@ public interface HT_MSReposi {
 	public ArrayList<ProjectQna> proQnAList(int pro_code);
 	public void proQnAAnsReg(storeQnA qna);
 	public void projectCancel(int pro_code);
+	public int getStoCode(int pro_code);
 }

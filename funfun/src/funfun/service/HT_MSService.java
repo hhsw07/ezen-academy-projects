@@ -59,4 +59,8 @@ public class HT_MSService {
 		dao.projectCancel(pro_code);
 	}
 	
+	public int getStoCode(int pro_code) {
+		return dao.getStoCode(pro_code);
+	}
+	
 }

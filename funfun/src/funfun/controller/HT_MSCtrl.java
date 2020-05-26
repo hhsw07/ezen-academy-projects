@@ -93,6 +93,7 @@ public class HT_MSCtrl {
 	public String proCurrnet(HttpServletRequest request, int pro_code, Model d) {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
+		session.setAttribute("storeCode", service.getStoCode(pro_code));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
 	}
 

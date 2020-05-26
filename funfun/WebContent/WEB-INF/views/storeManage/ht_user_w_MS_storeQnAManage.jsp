@@ -69,7 +69,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="qnaList" items="${qnaList}">
+			<c:forEach var="qnaList" items="${storeQnAList}">
 			
 			<c:choose>
 			<c:when test="${qnaList.qna_ans==null }">

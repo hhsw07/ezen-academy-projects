@@ -9,6 +9,7 @@
 	<resultMap type="storeQnA" id="qnaResult"/>	
 	<resultMap type="project" id="proResult"/>
 	<resultMap type="storeOrder" id="storeOrderResult"/>
+	<resultMap type="store" id="storeResult"/>
 
 	
 	<insert id="regMaker" parameterType="makerstudio">
@@ -71,6 +72,9 @@
 	WHERE pro_code = #{pro_code}
 	</delete>
 	
-	
+	<select id="getStoCode" parameterType="int">
+	SELECT STO_CODE FROM STORE
+	WHERE PRO_CODE = #{pro_code}
+	</select>
 	
 </mapper>

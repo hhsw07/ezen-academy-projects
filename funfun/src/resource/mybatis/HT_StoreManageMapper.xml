@@ -4,6 +4,11 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
 
 <mapper namespace="funfun.repository.HT_StoreManageReposi">
-
+	<resultMap type="storeQnA" id="qnaResult"/>
+	
+	<select id="storeQnAList" parameterType="storeQnA">
+	SELECT * FROM QNA
+	WHERE STO_CODE = #{sto_code}
+	</select>
 
 </mapper>
