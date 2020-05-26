@@ -5,10 +5,27 @@
 
 <mapper namespace="funfun.repository.HT_StoreManageReposi">
 	<resultMap type="storeQnA" id="qnaResult"/>
+	<resultMap type="storeOrder" id="storeOrderResult"/>
 	
-	<select id="storeQnAList" parameterType="storeQnA">
+	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
 	SELECT * FROM QNA
 	WHERE STO_CODE = #{sto_code}
 	</select>
+
+	<update id="storeQnAAnsReg" parameterType="storeQnA">
+	UPDATE QNA
+	SET QNA_ANS = #{qna_ans},
+		QNA_ANS_REG_DATE = sysdate
+	WHERE STO_CODE = #{sto_code}
+	</update>
+	
+	<select id="orderList" resultMap="storeOrderResult" parameterType="int">
+	SELECT *
+	FROM STORE_ORDER
+	WHERE STO_OPT_CODE
+	IN (SELECT STO_OPT_CODE FROM STORE_OPTION
+	WHERE STO_CODE = #{sto_code})
+	</select>
+	
 
 </mapper>

@@ -15,7 +15,7 @@
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
-
+	
 		$(".proCancel").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
@@ -26,13 +26,13 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
 		})
 		$(".storeReg").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeReg")
+			$(location).attr("href", "${path}/Store.do?method=storeReg")
 		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeOrderManage")
+			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
 		})
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeQnAManage")
+			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
 		
 	})
@@ -51,11 +51,11 @@
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
   	
-  	<h3 style="font-weight:bolder">프로젝트 문의 관리</h3>
+  	<h3 style="font-weight:bolder">스토어 문의 관리</h3>
   	
   	<br><br>
   	
-  	<span class="sub_gray_font">프로젝트에 등록된 문의사항에 답변을 등록해 주세요</span>
+  	<span class="sub_gray_font">스토어에 등록된 문의사항에 답변을 등록해 주세요</span>
 
   	<br><br><br><br>
 
@@ -117,8 +117,8 @@
 	
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
-		<form method=post id="qnaAnsSubForm" action="${path}/MakerStudio.do">
-		<input type="hidden" name="method" value="proQnAAnsReg"/>
+		<form method=post id="qnaAnsSubForm" action="${path}/Store.do">
+		<input type="hidden" name="method" value="storeQnAAnsReg"/>
 		<input type="hidden" id="qna_code" name="qna_code"/>
 			<div class="modal-content">
 				<div class="modal-header" style="padding:30px 20px 20px 30px;">

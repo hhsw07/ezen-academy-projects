@@ -12,6 +12,7 @@ public class Store {
 	private String sto_curr;
 	private String sto_cate;
 	private int sto_price;
+	private int cnt;
 	public int getSto_code() {
 		return sto_code;
 	}
@@ -72,6 +73,13 @@ public class Store {
 	public void setSto_price(int sto_price) {
 		this.sto_price = sto_price;
 	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
 	
 	
 }

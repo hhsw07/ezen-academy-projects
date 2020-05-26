@@ -26,13 +26,13 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
 		})
 		$(".storeReg").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeReg")
+			$(location).attr("href", "${path}/Store.do?method=storeReg")
 		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeOrderManage")
+			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
 		})
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeQnAManage")
+			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
 		
 	})

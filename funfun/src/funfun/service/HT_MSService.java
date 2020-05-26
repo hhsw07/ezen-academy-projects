@@ -60,7 +60,13 @@ public class HT_MSService {
 	}
 	
 	public int getStoCode(int pro_code) {
-		return dao.getStoCode(pro_code);
+		if(dao.isStoOpen(pro_code)==0) {
+			return -1;	
+		} else {
+			int d = dao.getStoCode(pro_code).intValue();
+			return d;
+		}
+		
 	}
 	
 }

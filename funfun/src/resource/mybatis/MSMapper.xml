@@ -22,13 +22,6 @@
 	WHERE MEM_CODE = #{mem_code}
 	</select>
 	
-<!-- 	<select id="projectInfo" resultType="proResult" parameterType="int">
-	
-	SELECT * FROM PROJECT
-	WHERE PRO_CODE = #{pro_code}
-	
-	</select>
- -->	
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	SELECT * FROM PROJECT
 	WHERE MAKER_CODE =( 
@@ -72,7 +65,12 @@
 	WHERE pro_code = #{pro_code}
 	</delete>
 	
-	<select id="getStoCode" parameterType="int">
+	<select id="isStoOpen" resultType="int" parameterType="int">
+	SELECT count(*) cnt FROM STORE
+	WHERE PRO_CODE = #{pro_code}
+	</select>
+	
+	<select id="getStoCode" resultType="int" parameterType="int">
 	SELECT STO_CODE FROM STORE
 	WHERE PRO_CODE = #{pro_code}
 	</select>
