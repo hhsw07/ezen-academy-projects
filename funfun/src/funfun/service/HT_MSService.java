@@ -9,6 +9,7 @@ import funfun.repository.HT_MSReposi;
 import funfun.vo.MakerStudio;
 import funfun.vo.MemberInfo;
 import funfun.vo.Project;
+import funfun.vo.ProjectQna;
 import funfun.vo.storeOrder;
 import funfun.vo.storeQnA;
 
@@ -35,7 +36,7 @@ public class HT_MSService {
 	}
 	
 	public ArrayList<storeQnA> myProjectQnaList(int pro_code){
-		return dao.myProjectQnaList(pro_code);
+		return dao.storeQnaList(pro_code);
 	}
 	
 	public ArrayList<storeOrder> myStoreManage(int sto_code){
@@ -44,6 +45,10 @@ public class HT_MSService {
 	
 	public Project projectInfo(int pro_code) {
 		return dao.projectInfo(pro_code);
+	}
+	
+	public ArrayList<ProjectQna> proQnAList(int pro_code){
+		return dao.proQnAList(pro_code);
 	}
 	
 }

@@ -62,6 +62,9 @@
 	
 	</select>
 	
-
+	<select id="proQnAList" resultMap="qnaResult" parameterType="int">
+	SELECT * FROM QNA
+	WHERE PRO_CODE = #{pro_code}
+	</select>
 	
 </mapper>

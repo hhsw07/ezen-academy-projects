@@ -16,25 +16,24 @@
 <script>
 	$(document).ready(function(){
 
-		$(".basicReqBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=basicReq")
+		$(".proCancel").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
-		$(".basicInfoBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=basicInfo")
+		$(".proCurrnet").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet")
 		})
-		$(".storyBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=story")
+		$(".proQnAManage").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
 		})
-		$(".rewardBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=reward")
+		$(".storeReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=storeReg")
 		})
-		$(".riskBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=risk")
+		$(".storeOrderManage").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=storeOrderManage")
 		})
-		$(".proQnaBtn").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
-		})		
-		
+		$(".storeQnAManage").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/MakerStudio.do?method=storeQnAManage")
+		})
 		
 	})
 		
@@ -47,7 +46,7 @@
 	<div class="row">
 
  
- 	<jsp:include page="../project_reg/ht_user_w_MS_projectReg_menu.jsp"/>
+ 	<jsp:include page="ht_user_w_MS_menu.jsp"/>
  
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
@@ -70,14 +69,16 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="qnaList" items="${qnaList}">
 			<tr>
-			<td>John</td>
-			<td>Doe</td>
-			<td style="word-break:break-all;">john@example.com</td>
+			<td>${qnaList.mem_code }</td>
+			<td>${qnaList.qna_reg_date }</td>
+			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
 			<td style="text-align:center;">
 				<button class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
 			</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 

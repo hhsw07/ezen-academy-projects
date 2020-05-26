@@ -14,6 +14,7 @@ import funfun.service.HT_ProjectRegService;
 import funfun.vo.MakerStudio;
 import funfun.vo.MemberInfo;
 import funfun.vo.ProOption;
+import funfun.vo.ProRisk;
 import funfun.vo.Project;
 
 @Controller
@@ -140,14 +141,26 @@ public class HT_ProjectRegCtrl {
 	public String proRegRisk(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
+		d.addAttribute("riskList", service.getProRiskList(projectCode));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
 	}
 	
 	@RequestMapping(params="method=riskUnitReg")
-	public String proRiskUnitReg(HttpServletRequest request, Model d) {
+	public String proRiskUnitReg(HttpServletRequest request, Model d, ProRisk cre) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
+		System.out.println("리스크등록 프로젝트 코드:" + projectCode);
+		cre.setPro_code(projectCode);
+		service.regProRisk(cre);
 		return "redirect:/ProjectReg.do?method=risk";
+	}
+	
+	@RequestMapping(params="method=projectRegister")
+	public String projectRegister(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		service.projectRegister(projectCode);
+		return "redirect:/MakerStudio.do?method=myProject";
 	}
 
 }

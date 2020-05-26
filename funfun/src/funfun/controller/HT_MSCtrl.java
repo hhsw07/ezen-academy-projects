@@ -76,9 +76,39 @@ public class HT_MSCtrl {
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerInfo.jsp";
 	}
 
-	@RequestMapping(params="method=proQna")
-	public String proQna() {
+	@RequestMapping(params="method=proCancel")
+	public String proCancel() {
+		return "";
+	}
+
+	@RequestMapping(params="method=proCurrnet")
+	public String proCurrnet(HttpServletRequest request, int pro_code, Model d) {
+		HttpSession session = request.getSession();
+		session.setAttribute("projectCode", pro_code);
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
+	}
+
+	@RequestMapping(params="method=proQnAManage")
+	public String proQnAManage(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		int projectCode = (int)session.getAttribute("projectCode");
+		d.addAttribute("qnaList", service.proQnAList(projectCode));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proQna.jsp";
 	}
-	
+
+	@RequestMapping(params="method=storeReg")
+	public String storeReg() {
+		return "";
+	}
+
+	@RequestMapping(params="method=storeOrderManage")
+	public String storeOrderManage() {
+		return "";
+	}
+
+	@RequestMapping(params="method=storeQnAManage")
+	public String storeQnAManage() {
+		return "";
+	}
 }
+	
