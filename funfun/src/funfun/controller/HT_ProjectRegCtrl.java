@@ -26,6 +26,7 @@ public class HT_ProjectRegCtrl {
 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	@RequestMapping(params="method=initPage")
 	public String initPage(HttpServletRequest request, Model d) {
@@ -44,6 +45,8 @@ public class HT_ProjectRegCtrl {
 	
 	
 	
+=======
+>>>>>>> parent of 7f1046d... 1111
 =======
 >>>>>>> parent of 7f1046d... 1111
 	@RequestMapping(params="method=ready")
@@ -141,6 +144,7 @@ public class HT_ProjectRegCtrl {
 	public String proRegRisk(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		int projectCode = (int)session.getAttribute("projectCode");
 		System.out.println(projectCode);
 		d.addAttribute("riskList", service.getProRiskList(projectCode));
@@ -163,6 +167,10 @@ public class HT_ProjectRegCtrl {
 		service.projectRegister(projectCode);
 		return "redirect:/MakerStudio.do?method=myProject";
 	}
+=======
+		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
+	}
+>>>>>>> parent of 7f1046d... 1111
 =======
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_risk.jsp";
 	}
