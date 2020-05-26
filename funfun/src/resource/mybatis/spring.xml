@@ -24,6 +24,7 @@
 		<typeAlias alias="funding" type="funfun.vo.Funding"/>
 		<typeAlias alias="projectRisk" type="funfun.vo.ProRisk"/>
 		<typeAlias alias="storePay" type="funfun.vo.storePay"/>
+		<typeAlias alias="userprofile" type="funfun.vo.UserProfile"/>
 
 	</typeAliases>
 	<mappers>
@@ -40,6 +41,7 @@
 		<mapper resource="resource/mybatis/storeQnAMapper.xml"/>
 		<mapper resource="resource/mybatis/mailAuthMapper.xml" />
 		<mapper resource="resource/mybatis/storePayMapper.xml"/>
+		<mapper resource="resource/mybatis/userProfileMapper.xml" />
 	</mappers>
  
 </configuration>
