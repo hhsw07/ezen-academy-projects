@@ -105,5 +105,11 @@ public class kb_Store_Controller {
 		return "WEB-INF\\views\\Store\\kb_w_user_StorePayDone.jsp";
 	}
 	
+	@RequestMapping(params="method=adminDetail")
+	public String adminDetail(int sto_code, Model d) {
+		d.addAttribute("detail", service.adminDetail(sto_code));
+		return "pageJsonReport";
+	}
+
 	
 }

@@ -42,13 +42,12 @@
 		
 		
 		// 채팅 데이터 호출
-		var mem_code = "${param.mem_code}";
-		var my_code = "${user.mem_code}";
-//		if(my_code == "") my_code = "${admin.admin_code}"; 
-		if(my_code == "") my_code = "1001"; 
-		console.log("mem_code:"+mem_code);
-		console.log("my_code:"+my_code);
-		var rtqna_code = "";
+		var rtqna_code = "${rtqna.rtqna_code}";
+		var mem_code = "${rtqna.mem_code}";
+		var rtqna_writer = "${user.mem_code}";
+		var mem_name = "${rtqna.mem_name}";
+//		if(rtqna_writer == "") rtqna_writer = "${admin.admin_code}"; 
+		if(rtqna_writer == "") rtqna_writer = "1001"; 
 		
 		$.ajax({
 			type:"post",
@@ -60,7 +59,7 @@
 				var mem_name = "";
 				$.each(list,function(idx,rtqna){
 					show += "<div class='sc-message'>";
-					if(rtqna.rtqna_writer == my_code){
+					if(rtqna.rtqna_writer == rtqna_writer){
 						show += "	<div class='sc-message--content sent'>";
 					}else{
 						show += "	<div class='sc-message--content received'>";
@@ -69,11 +68,7 @@
 					show += "		<div class='sc-message--text'>";
 					show += "			<span class='Linkify'>"+rtqna.rtqna_detail+"</span>";
 					show += "		</div></div></div>";
-					
-					if(mem_name == "") mem_name = rtqna.name;
-					if(rtqna_code == "") rtqna_code = rtqna.rtqna_code;
 				});
-				$(".sc-header--team-name").text(mem_name);
 				$(".sc-message-item").html(show);
 				var hx = parseInt($(".sc-message-list").height());
 				var mx = parseInt($(".sc-message-item").height());
@@ -88,19 +83,17 @@
 		start();
 		$("sc-user-input--text").focus();
 		function start(){
-			// (내 PC:192.168.4.34) (선생님 PC:211.238.140.48) (민기 PC:192.168.4.20)
-			// 0. 접속
+			// (송우 PC:192.168.4.34) (선생님 PC:211.238.140.48) (민기 PC:192.168.4.20)
 			wsocket = new WebSocket("ws://192.168.4.34:5080/${path}/chat-ws.do");
-			// 1. 접속 처리 후, 처리할 메서드.
 			wsocket.onopen=function(evt){
 				console.log(evt);
 			};
-			// 2. 메세지를 전송해주고, 전송 받을 때 처리 내용.
 			wsocket.onmessage=function(evt){
-				// 새로고침?
-				$(location).attr("href","");
+				var data = evt.data;
+				if(data == mem_code){
+					$(location).attr("href","");
+				}
 			};
-			// 3. 접속 종료 후, 처리할 메서드.
 			wsocket.onclose=function(){
 				recieveMsg("연결을 종료했습니다.");
 			};
@@ -110,23 +103,19 @@
 		$("#sendBtn").click(function(){
 			sendMsg();
 		});
-		$("#msg").keyup(function(e){
+		$("#msg").keydown(function(e){
 			if(e.keyCode==13){
 				sendMsg();
 			}
 		});
 		function sendMsg(){
-			$("[name=rtqna_code]").val(rtqna_code);
-			$("[name=mem_code]").val(mem_code);
-			$("[name=rtqna_writer]").val(my_code);
+			$("[name=rtqna_writer]").val(rtqna_writer);
 			$("[name=rtqna_detail]").val($("#msg").text());
-			alert("rtqna_code:"+rtqna_code+" mem_code:"+mem_code+" writer:"+my_code+" detail:"+$("#msg").text());
 			
 			$("form").attr("action","${path}/rtqna.do?method=insert");
 			$("form").submit();
 			
-			alert("form submit");
-			wsocket.send("msg:"+my_code);
+			wsocket.send(mem_code);
 		}
 		
 		$(".exitBtn").click(function(){
@@ -142,8 +131,7 @@
 <div class="sc-chat-window" style="z-index:10;">
 	<div class="sc-header">
 		<img class="sc-header--img" src="${path }/template/assets/img/new_logo.png" alt="">
-		<div class="sc-header--team-name">
-			회원이름
+		<div class="sc-header--team-name">${rtqna.mem_name}
 		</div>
 		<div class="sc-header--close-button exitBtn">
 			<img src="img/close-icon.png">
@@ -155,8 +143,8 @@
 	</div>
 	<div class="sc-user-input">
 		<form method="post">
-			<input type="hidden" name="rtqna_code" />
-			<input type="hidden" name="mem_code" />
+			<input type="hidden" name="rtqna_code" value="${rtqna.rtqna_code}" />
+			<input type="hidden" name="mem_code" value="${rtqna.mem_code}" />
 			<input type="hidden" name="rtqna_writer" />
 			<input type="hidden" name="rtqna_detail" />
 		</form>

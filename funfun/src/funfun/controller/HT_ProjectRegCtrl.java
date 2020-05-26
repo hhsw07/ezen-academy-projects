@@ -59,7 +59,9 @@ public class HT_ProjectRegCtrl {
 	
 	
 	@RequestMapping(params="method=projectManage")
-	public String projectManage(HttpServletRequest request, Model d, Project proInfo) {
+	public String projectManage(HttpServletRequest request, Model d, Project proInfo,int pro_code) {
+		HttpSession session = request.getSession();
+		session.setAttribute("projectCode", pro_code);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	

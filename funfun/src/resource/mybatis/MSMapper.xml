@@ -6,22 +6,20 @@
 <mapper namespace="funfun.repository.HT_MSReposi">
 	
 	<resultMap type="makerstudio" id="msResult"/>
+	<resultMap type="storeQnA" id="qnaResult"/>	
+	<resultMap type="project" id="proResult"/>
+	<resultMap type="storeOrder" id="storeOrderResult"/>
+
 	
 	<insert id="regMaker" parameterType="makerstudio">
-	
 	INSERT INTO MAKER(MAKER_CODE, MEM_CODE, MAKER_TYPE, MAKER_NAME)
 	VALUES(maker_seq.nextval, #{mem_code}, #{maker_type}, #{maker_name})
-	
 	</insert>
 	
 	<select id="makerInfo" resultType="makerstudio" parameterType="int">
-	
 	SELECT * FROM MAKER
 	WHERE MEM_CODE = #{mem_code}
-	
 	</select>
-	
-	<resultMap type="project" id="proResult"/>
 	
 <!-- 	<select id="projectInfo" resultType="proResult" parameterType="int">
 	
@@ -31,25 +29,19 @@
 	</select>
  -->	
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
-	
 	SELECT * FROM PROJECT
 	WHERE MAKER_CODE =( 
 	SELECT MAKER_CODE
 	FROM MAKER 
 	WHERE MEM_CODE = #{mem_code})
-	
 	</select>
 	
-	<resultMap type="storeQnA" id="qnaResult"/>
 	
 	<select id="myProjectQnaList" resultMap="qnaResult" parameterType="storeQnA">
-	
 	SELECT * FROM QNA
 	WHERE PRO_CODE = #{PRO_CODE}
-	
 	</select>
 	
-	<resultMap type="storeOrder" id="storeOrderResult"/>
 
 	<select id="myStoreManage" resultMap="storeOrderResult" parameterType="storeOrder">
 	
@@ -66,5 +58,19 @@
 	SELECT * FROM QNA
 	WHERE PRO_CODE = #{pro_code}
 	</select>
+	
+	<update id="proQnAAnsReg" parameterType="storeQnA">
+	UPDATE QNA
+	SET QNA_ANS = #{qna_ans},
+		QNA_ANS_REG_DATE = sysdate
+	WHERE QNA_CODE = #{qna_code}
+	</update>
+	
+	<delete id="projectCancel" parameterType="int">
+	DELETE FROM PROJECT
+	WHERE pro_code = #{pro_code}
+	</delete>
+	
+	
 	
 </mapper>

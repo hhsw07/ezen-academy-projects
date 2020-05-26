@@ -80,6 +80,12 @@
   	<br><br>
   	
   	<button class="btn btn-warning btn_custom" id="proRegBtn">프로젝트 등록 신청</button>
+
+	<br><br>
+
+	<div style="text-align:right;margin-right:40%">
+  	<button class="btn btn-warning btn_custom" id="proCancelBtn">프로젝트 취소</button>
+  	</div>
   	
   	<br><br><br><br><br><br>
   	
@@ -102,6 +108,13 @@
 			$(location).attr("href", "${path}/ProjectReg.do?method=projectRegister")
 		}
 	})
+	
+		$("#proCancelBtn").click(function(){
+		if(confirm("정말 삭제하시겠습니까?")){
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCancelSubmit")
+		}
+	})
+
 
 </script>
 

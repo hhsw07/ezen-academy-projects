@@ -52,9 +52,6 @@ $(document).ready(function(){
 		</ul>
 	  	</details> 	
 	</div>
-	<div class="panel-body sub_gray_font proQnaBtn" style="font-size:1.1em;">
-	프로젝트 문의 관리
-	</div>
 	</div>
 	</div>
 </div>

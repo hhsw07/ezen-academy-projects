@@ -2,6 +2,7 @@ package funfun.vo;
 
 public class storeQnA {
 	private int qna_code;
+	private int pro_code;
 	private int sto_code;
 	private int mem_code;
 	private String qna_detail;
@@ -16,6 +17,13 @@ public class storeQnA {
 	}
 	public void setQna_code(int qna_code) {
 		this.qna_code = qna_code;
+	}
+	
+	public int getPro_code() {
+		return pro_code;
+	}
+	public void setPro_code(int pro_code) {
+		this.pro_code = pro_code;
 	}
 	public int getSto_code() {
 		return sto_code;
