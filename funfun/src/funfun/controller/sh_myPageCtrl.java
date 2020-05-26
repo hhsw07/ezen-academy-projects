@@ -64,19 +64,19 @@ public class sh_myPageCtrl {
 			hm2.put("fc", fc);
 			hm2.put("newAdr2", newAdr2);
 			service.changeFundingAdr(hm2);
-			return "forward:/mypage.do";
+			return "redirect:/mypage.do";
 		}
 		
 		@RequestMapping("/cancleOrder.do")
 		public String cancelOrder(@RequestParam("ocCancle") String oc) {
 			service.cancelOrder(oc);
-			return "forward:/mypage.do";
+			return "redirect:/mypage.do";
 		}
 		
 		@RequestMapping("/cancleFunding.do")
 		public String cancelFunding(@RequestParam("fcCancle") String fc) {
 			service.cancelFunding(fc);
-			return "forward:/mypage.do";
+			return "redirect:/mypage.do";
 		}
 		
 		@RequestMapping("/deleteFavor.do")
@@ -94,7 +94,7 @@ public class sh_myPageCtrl {
 					service.deleteFavor(hmDF);
 				}	
 			
-			return "forward:/mypage.do";
+			return "redirect:/mypage.do";
 		}
 		
 }

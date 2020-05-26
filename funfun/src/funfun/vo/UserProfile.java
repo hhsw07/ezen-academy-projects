@@ -3,15 +3,16 @@ package funfun.vo;
 public class UserProfile {
 	private String memEmail;
 	private String memPhone;
-	private String memAdr; 
-	private String memFavor;
+	private String pay_addr; 
+	private String pay_zipcode;
 	private String memProfile;
-	
-	public String getMemProfile() {
-		return memProfile;
+	private String memPost;
+	private String memFavor;
+	public String getMemFavor() {
+		return memFavor;
 	}
-	public void setMemProfile(String memProfile) {
-		this.memProfile = memProfile;
+	public void setMemFavor(String memFavor) {
+		this.memFavor = memFavor;
 	}
 	public String getMemEmail() {
 		return memEmail;
@@ -25,16 +26,30 @@ public class UserProfile {
 	public void setMemPhone(String memPhone) {
 		this.memPhone = memPhone;
 	}
-	public String getMemAdr() {
-		return memAdr;
+	public String getPay_addr() {
+		return pay_addr;
 	}
-	public void setMemAdr(String memAdr) {
-		this.memAdr = memAdr;
+	public void setPay_addr(String pay_addr) {
+		this.pay_addr = pay_addr;
 	}
-	public String getMemFavor() {
-		return memFavor;
+	public String getPay_zipcode() {
+		return pay_zipcode;
 	}
-	public void setMemFavor(String memFavor) {
-		this.memFavor = memFavor;
+	public void setPay_zipcode(String pay_zipcode) {
+		this.pay_zipcode = pay_zipcode;
 	}
+	public String getMemProfile() {
+		return memProfile;
+	}
+	public void setMemProfile(String memProfile) {
+		this.memProfile = memProfile;
+	}
+	public String getMemPost() {
+		return memPost;
+	}
+	public void setMemPost(String memPost) {
+		this.memPost = memPost;
+	}
+
+
 }
