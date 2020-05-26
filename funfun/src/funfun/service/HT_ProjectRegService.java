@@ -56,6 +56,7 @@ public class HT_ProjectRegService {
 	}
 	
 	public void regProRisk(ProRisk cre) {
+		System.out.println("리스크 등록 서비스");
 		dao.regProRisk(cre);
 	}
 	

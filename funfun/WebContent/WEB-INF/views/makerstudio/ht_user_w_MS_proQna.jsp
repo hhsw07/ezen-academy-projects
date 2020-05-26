@@ -69,14 +69,16 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="qnaList" items="${qnaList}">
 			<tr>
-			<td>John</td>
-			<td>Doe</td>
-			<td style="word-break:break-all;">john@example.com</td>
+			<td>${qnaList.mem_code }</td>
+			<td>${qnaList.qna_reg_date }</td>
+			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
 			<td style="text-align:center;">
 				<button class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
 			</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
