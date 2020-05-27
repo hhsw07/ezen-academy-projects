@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title></title>
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
+<style type="text/css">
+a{cursor:pointer;}
+</style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		console.log("카테고리:"+$("[name=cate_title]").val());
@@ -64,6 +67,31 @@
 			$("[name=sort]").val($("[name=prosort]").val());
 			$("form").submit();
 		});
+		$("#come").click(function(){
+			if($("#come").hasClass("pro")){
+				$("#come").removeClass("pro").addClass("active");
+				$(".active").removeClass("active").addClass("pro");
+				$("[name=proday]").val("come");
+				$("form").submit();
+			}
+		});
+		$("#end").click(function(){
+			if($("#end").hasClass("pro")){
+				$("#end").removeClass("pro").addClass("active");
+				$(".active").removeClass("active").addClass("pro");
+				$("[name=proday]").val("end");
+				$("form").submit();
+			}
+		});
+		$("#ing").click(function(){
+			if($("#ing").hasClass("pro")){
+				$("#ing").removeClass("pro").addClass("active");
+				$(".active").removeClass("active").addClass("pro");
+				$("[name=proday]").val("ing");
+				$("form").submit();
+			}
+		});
+		
 	});
 	
 	function go_detail(no){
@@ -127,15 +155,17 @@
 	    	<div class="ProjectListHead_bar">
 	    		
 		  		<ul class="nav nav-tabs ">
-					<li class="active" style="font-weight:700;"><a href="#">진행중인 프로젝트</a></li>
-					<li style="font-weight:700;"><a href="#">오픈예정 프로젝트</a></li>
-					<li style="font-weight:700;"><a href="#">종료된 프로젝트</a></li>
+		  		
+					<li id="ing" class="active" style="font-weight:700;"><a>진행중인 프로젝트</a></li>
+					<li id="come" class="pro" style="font-weight:700;"><a>오픈예정 프로젝트</a></li>
+					<li id="end" class="pro"  style="font-weight:700;"><a>종료된 프로젝트</a></li>
 					<li style="right:0px; position:absolute;">	
+					<form class="ProjectListHead_search" method="post" action="${path}/funding.do?method=list">
 						<div>
-						<form class="ProjectListHead_search" method="post" action="${path}/funding.do?method=list">
 							<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
 							<input type="hidden" name="curPage" value="${projSch.curPage}"/>
 							<input type="hidden" name="sort" value="${projSch.sort}"/>
+							<input type="hidden" name="proday" value="${projSch.proday}"/>
 							<label for="search-keyword">
 								<input class="form-control" id="search-keyword" type="text" placeholder="검색어를 입력하세요" name="projectsch" value="${param.projectsch}">
 								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
@@ -149,15 +179,17 @@
 									<option value="closing">마감임박순</option>
 								</select>
 							</div>
-						</form>
-					</div>
-				</li>
+						</div>
+						
+				</form>
+					</li>
 				</ul>
 			</div>
 		
 		<!-- 리스트 -->
 			<div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
 					<div class="row">
+					
 				<c:forEach var="proj" items="${plist}">
 						<div class="col-xs-12 col-md-3 item" onclick="javascript:go_detail('${proj.pro_code}')">
 							<div class="thumbnail projectList-item">
