@@ -157,9 +157,12 @@
 	<script src="${path }/template/assets/js/get-shit-done-header.js"></script>
   <script src="${path }/template/assets/js/custom.js"></script>
   <script>
+  	var chatting_window = "";	
+  
   	function logOut(){
   		if(confirm('로그아웃하시겠습니까?')){
   			window.location.href="${path}/logout.do";
+  			if(chatting_window != "") chatting_window.close();
   		}
   	}
   	function goRtqna(){
@@ -169,7 +172,7 @@
 			$(location).attr("href","${path}/login.do");
   		}else{
   			//alert("채팅페이지로 이동");
-  			window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
+  			chatting_window = window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
   		}
   	}
   	
