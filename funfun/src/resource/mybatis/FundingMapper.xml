@@ -73,6 +73,11 @@
 		SELECT * FROM PRO_OPTION
 		WHERE PRO_CODE = #{pro_code}
 	</select>
+	<!-- 선택옵션 -->
+	<select id="option" resultMap="proOptResult" parameterType="int">
+		SELECT * FROM PRO_OPTION
+		WHERE OPT_CODE = #{opt_code}
+	</select>
 	<!-- 관심프로젝트 등록 여부 -->
 	<select id="ckfavor" resultType="int" parameterType="project">
 		SELECT count(*)

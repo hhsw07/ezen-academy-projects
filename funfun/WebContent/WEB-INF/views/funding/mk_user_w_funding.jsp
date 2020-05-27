@@ -35,10 +35,10 @@
 <body>
 	<div class="main" style="overflow:hidden;">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	    	<div class="project-title" >
+	    	<%--<div class="project-title" >
 	    		<div class="label label-warning">${project.cate_title}</div>
 	    		<h3 style="font-weight:800;">${project.pro_title}</h3>
-	    	</div>
+	    	</div> --%>
 	    	<div class="funding-page">
 	    		<form name="fundingForm" method="post" action="${path}/funding.do?method=funding">
 	    			<div class="funding-wrap">

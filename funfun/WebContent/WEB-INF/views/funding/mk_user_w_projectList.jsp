@@ -69,27 +69,30 @@ a{cursor:pointer;}
 		});
 		$("#come").click(function(){
 			if($("#come").hasClass("pro")){
+				$("#ing").removeClass("active").addClass("pro");
+				$("#end").removeClass("active").addClass("pro");
 				$("#come").removeClass("pro").addClass("active");
-				$(".active").removeClass("active").addClass("pro");
-				$("[name=proday]").val("come");
-				$("form").submit();
 			}
+			$("[name=proday]").val("come");
+			$("form").submit();
 		});
 		$("#end").click(function(){
 			if($("#end").hasClass("pro")){
+				$("#ing").removeClass("active").addClass("pro");
+				$("#come").removeClass("active").addClass("pro");
 				$("#end").removeClass("pro").addClass("active");
-				$(".active").removeClass("active").addClass("pro");
-				$("[name=proday]").val("end");
-				$("form").submit();
 			}
+			$("[name=proday]").val("end");
+			$("form").submit();
 		});
 		$("#ing").click(function(){
 			if($("#ing").hasClass("pro")){
+				$("#come").removeClass("active").addClass("pro");
+				$("#end").removeClass("active").addClass("pro");
 				$("#ing").removeClass("pro").addClass("active");
-				$(".active").removeClass("active").addClass("pro");
-				$("[name=proday]").val("ing");
-				$("form").submit();
 			}
+			$("[name=proday]").val("ing");
+			$("form").submit();
 		});
 		
 	});
