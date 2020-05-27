@@ -70,9 +70,7 @@
 					show += "		</div></div></div>";
 				});
 				$(".sc-message-item").html(show);
-				var hx = parseInt($(".sc-message-list").height());
 				var mx = parseInt($(".sc-message-item").height());
-				console.log("list: "+hx+"item:"+mx)
 				$(".sc-message-list").scrollTop(mx);
 			},
 			error:function(err){
@@ -81,7 +79,6 @@
 		});
 		
 		start();
-		$("sc-user-input--text").focus();
 		function start(){
 			// (송우 PC:192.168.4.34) (선생님 PC:211.238.140.48) (민기 PC:192.168.4.20)
 			wsocket = new WebSocket("ws://192.168.4.34:5080/${path}/chat-ws.do");
@@ -90,8 +87,23 @@
 			};
 			wsocket.onmessage=function(evt){
 				var data = evt.data;
-				if(data == mem_code){
-					$(location).attr("href","");
+				var content = data.split(':');
+				if(content[0] == mem_code){
+					//$(location).attr("href","");
+					var show = $(".sc-message-item").html();
+					show += "<div class='sc-message'>";
+					if(content[1] == rtqna_writer){
+						show += "	<div class='sc-message--content sent'>";
+					}else{
+						show += "	<div class='sc-message--content received'>";
+					}
+					show += "		<div class='sc-message--avatar' ></div>";
+					show += "		<div class='sc-message--text'>";
+					show += "			<span class='Linkify'>"+content[2]+"</span>";
+					show += "		</div></div></div>";
+					$(".sc-message-item").html(show);
+					var mx = parseInt($(".sc-message-item").height());
+					$(".sc-message-list").scrollTop(mx);
 				}
 			};
 			wsocket.onclose=function(){
@@ -115,7 +127,7 @@
 			$("form").attr("action","${path}/rtqna.do?method=insert");
 			$("form").submit();
 			
-			wsocket.send(mem_code);
+			wsocket.send(mem_code+":"+rtqna_writer+":"+$("#msg").text());
 		}
 		
 		$(".exitBtn").click(function(){
