@@ -10,6 +10,7 @@ import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
+import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
 
 
@@ -45,4 +46,14 @@ public interface MainRepo {
 	public ArrayList<OptCodeAndCnt> getOptCodeAndCntByMemCode(int mem_code);
 	
 	public MyFundingInfo getOptionInfoByOptCode(int opt_code);
+	
+	public int getActiveInfo(MemberLogin m);
+	
+	public ArrayList<NotificationInfo> getProjectOrStoreCodeListByMemCode(int memCode);
+	
+	public ArrayList<Integer> getFavorProjectCodeListByMemCode(int memCode);
+	
+	public NotificationInfo getProjectInfoLeft7DaysOrLessByProjectCode(int projectCode);
+	
+
 }

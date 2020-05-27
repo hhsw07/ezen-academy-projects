@@ -64,7 +64,7 @@
 		    <hr>
 		    
 		    <p class="profile__innertitle" style="font-size:15px">예치금 불이익 감수</p>
-		    <p class="profile__img--title" style="font-size:14px">My와디즈 계좌에 예치금이 남았을 경우 탈퇴시 돌려 받지 못할 위험 존재</p>
+		    <p class="profile__img--title" style="font-size:14px">계좌에 예치금이 남았을 경우 탈퇴시 돌려 받지 못할 위험 존재</p>
 		    <hr>
 
 		    <div class="pretty p-icon p-jelly p-round p-bigger">

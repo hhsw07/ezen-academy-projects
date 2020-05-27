@@ -140,13 +140,19 @@
 					data:$("form").serialize(),
 					dataType:"json",
 					success:function(data){
-						if(data.verification===false){
+						if(data.verification===0){
 							vm.msg="올바른 아이디/비밀번호를 입력해주세요.";
 							vm.isShaking=true;
 							setTimeout(()=>{
 								vm.isShaking=false;
 							}, 500);
-						} else {
+						} else if(data.verification===-1){
+							vm.msg="사용이 중지된 계정입니다.";
+							vm.isShaking=true;
+							setTimeout(()=>{
+								vm.isShaking=false;
+							}, 500);
+						} else{
 							window.location="${path}/loginSuccess.do?"+$("form").serialize();
 						}
 					},
