@@ -32,7 +32,6 @@
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post">
-					    	<input type="hidden" name="curPage" value="" />
 					    	<table class="table table-bordered">
 					        	<col style="width:15%">
 					        	<col style="width:35%">

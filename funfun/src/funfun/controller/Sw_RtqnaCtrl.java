@@ -31,15 +31,10 @@ public class Sw_RtqnaCtrl {
 	
 	// http://localhost:5080/funfun/rtqna.do?method=ajaxlist?curPage=1&pageSize=5
 	@RequestMapping(params="method=ajaxlist")
-	public String ajaxlist(@RequestParam("curPage") int curPage,
-			 			   @RequestParam("pageSize") int pageSize, Model d) {
-		Paging sch = new Paging();
-		sch.setCurPage(curPage);
-		sch.setPageSize(pageSize);
+	public String ajaxlist(@ModelAttribute("paging") Paging sch, Model d) {
 		d.addAttribute("list",service.list(sch));
 		return "pageJsonReport";
 	}
-	
 	
 	// http://localhost:5080/funfun/rtqna.do?method=admList
 	@RequestMapping(params="method=admList")

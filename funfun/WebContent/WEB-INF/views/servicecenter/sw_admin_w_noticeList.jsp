@@ -81,7 +81,7 @@
         <div id="layoutSidenav_content">
             <main>
             	<div class="container tim-container noticeList" style="max-width:1200px;">
-			        <div class=" text-center" style=> <!-- navbar-collapse -->
+			        <div class=" text-center" > <!-- navbar-collapse -->
 			        	<div class="btn-group btn-group-lg scnav text-center" style="width:80%;margin:50px 0px;">
 							<button type="button" class="btn btn-warning" id="notice" style="width:30%;">공지사항</button>
 							<button type="button" class="btn" id="faq" style="width:30%;">FAQ</button>

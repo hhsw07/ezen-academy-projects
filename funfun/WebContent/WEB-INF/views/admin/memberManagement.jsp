@@ -85,15 +85,16 @@
         <div id="layoutSidenav_content">
             <div class="main">
 			    <div class="container tim-container AdminMemberList" style="max-width:1200px;">
-			        <div class="title" style="margin-bottom:30px;">
+			        <div class="memtitle" style="margin:150px 0 30px;">
 				        <h2>회원 목록</h2>
 				    </div>
 			    	<form method="post">
 				    	<input type="hidden" name="curPage" value="${paging.curPage}"/>
+				    	<input type="hidden" name="mem_code"/>
 				    	<div class="row">
 				        	<div class="text-left col-sm-3 ">총건수 : ${paging.count}건</div> 
 				        	<div class="text-right col-sm-9">페이지수 : 
-					        	<select name="pageSize" value="${paging.pageSize}">
+					        	<select name="pageSize">
 					        		<option value="5">5건</option>
 					        		<option value="10">10건</option>
 					        		<option value="20">20건</option>
@@ -152,8 +153,6 @@
 			$("form").submit();
 		});
 		
-		console.log("curPage:${paging.curPage} pageSize:${paging.pageSize}")
-		
 		// ajax
 		$.ajax({
 			type:"post",
@@ -163,7 +162,8 @@
 				var list = data.list;
 				var show = $(".memtable").html();
 				$.each(list,function(idx,AdminMember){
-					show += "<tr><td class='text-center'>"+AdminMember.cnt+"</td>";
+					show += "<tr onclick='javascript:go("+AdminMember.mem_code+")'>";
+					show += "	<td class='text-center'>"+AdminMember.cnt+"</td>";
 					show += "	<td>"+AdminMember.mem_code+"</td>";
 					show += "	<td>"+AdminMember.mem_name+"</td>";
 					show += "	<td>"+AdminMember.mem_email+"</td>";
@@ -185,8 +185,9 @@
 		
 	})
 	function go(mem_code){
-		// 회원 detail 화면
-		//$(location).attr("href","${path}/notice.do?method=detail&noti_code="+noti_code);
+		$("[name=mem_code]").val(mem_code);
+		$("form").attr("action","${path}/AdminMember.do?method=detail");
+		$("form").submit();
 	}
 	function goPage(no){
 		$("[name=curPage]").val(no);
