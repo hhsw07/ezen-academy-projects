@@ -56,6 +56,11 @@ public class MK_FundingService {
 	public ArrayList<ProOption> proOptList(int pro_code){
 		return dao.proOptList(pro_code);
 	} 
+	// 선택 옵션
+	public ProOption option(int opt_code) {
+		System.out.println("선택옵션:"+opt_code);
+		return dao.option(opt_code);
+	}
 	// 관심프로젝트 등록 확인
 	public boolean ckfavor(Project sf) {
 		if(dao.ckfavor(sf)==1) {

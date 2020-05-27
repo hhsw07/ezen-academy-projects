@@ -18,7 +18,6 @@
 		$("#funding").click(function(){
 			alert("펀딩완료되었습니다");
 			$("form").submit();
-			$(location).attr("href","${path}/funding.do?method=list");
 		});
 
 	});
@@ -45,8 +44,8 @@
 	    			<div class="funding-wrap">
 						<div class="order-list" data-choiced-legnth="1">
 							<div class="order-cont">
-								<p class="fund-tit">슈퍼 얼리버드 보드 1대</p>
-								<p class="text">기본 리워드 1대</p>
+								<p class="fund-tit">${option.opt_detail}</p>
+								<p class="text">${option.opt_condition}</p>
 								<div>
 									<div class="option">
 										<span class="option-cont">옵션-</span>
@@ -63,7 +62,7 @@
 						<div class="order-info conf-info">
 							<div>
 								<p class="order-infodt">펀딩금액</p>
-								<p class="order-infodd"><span id="fundingPrice"> 168,000</span>원</p>
+								<p class="order-infodd"><span id="fundingPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/></span>원</p>
 							</div>
 							<div>
 								<p class="order-infodt">추가 후원금</p>
@@ -71,7 +70,7 @@
 							</div>
 							<div>
 								<p class="order-infodt">배송비</p>
-								<p class="order-infodd">0원</p>
+								<p class="order-infodd"><fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_delivery}"/>원</p>
 							</div>
 							<div class="total">
 								<p class="order-infodt">최종결제금액</p>

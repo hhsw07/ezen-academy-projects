@@ -63,7 +63,6 @@ th{text-align:center;}
 	  		} else{
 	  			var no = $("[name=pro_code]").val();
 				$(location).attr("href","${path}/funding.do?method=option&pro_code="+no);
-				$("#favor").submit();
 	  		}
 		});
 		// 신고하기

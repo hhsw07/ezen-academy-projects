@@ -116,5 +116,9 @@
 		SET PRO_MONEY = PRO_MONEY + #{fund_price}
 		WHERE PRO_CODE = #{pro_code}
 	</update>
+	<!-- 펀딩하기 - 예치금 -->
+	<insert id="balance">
+		INSERT INTO BALANCE VALUES (BALANCE_SEQ.nextval, #{mem_code}, '사용', '펀딩하기', #{bal_amount}, current_date)
+	</insert>
 	
 </mapper>

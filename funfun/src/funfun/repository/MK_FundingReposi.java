@@ -21,6 +21,8 @@ public interface MK_FundingReposi {
 	public Project detail(int pro_code);
 	// 프로젝트 옵션
 	public ArrayList<ProOption> proOptList(int pro_code);
+	// 선택 옵션
+	public ProOption option(int opt_code);
 	// 관심프로젝트 등록 확인
 	public int ckfavor(Project sf);
 	// 관심프로젝트 등록

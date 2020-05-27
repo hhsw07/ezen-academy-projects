@@ -133,16 +133,18 @@ public class MK_FundingCtrl {
 		d.addAttribute("opt", service.proOptList(proj.getPro_code()));
 		return "WEB-INF\\views\\funding\\mk_user_w_fundingOpt.jsp";
 	}
+	// 펀딩 페이지
+	@RequestMapping(params="method=fund")
+	public String fund(@ModelAttribute("opt_code") int opt_code, Model d) {
+		d.addAttribute("option", service.option(opt_code));
+		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
+	}
 	// 펀딩하기 - 정보입력
 	@RequestMapping(params="method=funding")
 	public String funding(@ModelAttribute("funding") Funding fund) {
+		System.out.println("선택옵션:"+fund.getOpt_code());
 		service.funding(fund);
-		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
-	}
-	// 펀딩 완료
-	@RequestMapping(params="method=finish")
-	public String finish() {
-		return "";
+		return "forward:/funding.do?method=list";
 	}
 
 }

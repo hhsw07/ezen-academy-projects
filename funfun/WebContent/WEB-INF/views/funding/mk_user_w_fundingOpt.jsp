@@ -21,8 +21,9 @@ ul {list-style: none;padding:0;}
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#funding").click(function(){
-			var opt_no = $("[name=opt_code]:checked").val();
-			$(location).attr("href","${path}/funding.do?method=funding");
+			$("[name=opt_code]").val($("[name=projectOpt]:checked").val());
+			var opt_no = $("[name=projectOpt]:checked").val();
+			$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no);
 		});
 		
 	});
