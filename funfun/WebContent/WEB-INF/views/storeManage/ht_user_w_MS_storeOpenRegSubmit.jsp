@@ -44,8 +44,6 @@
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
-
-
 		
 	})
 		
@@ -58,27 +56,21 @@
 	<div class="row">
 
  
- 	<jsp:include page="ht_user_w_MS_menu.jsp"/>
+ 	<jsp:include page="../makerstudio/ht_user_w_MS_menu.jsp"/>
  
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
   	
-  	<h3 style="font-weight:bolder">프로젝트 삭제</h3>
+  	<h3 style="font-weight:bolder">스토어 등록 신청 하기</h3>
   	
   	<br><br>
   	
-  	<span class="sub_gray_font" style="color:red;">
-  	한 번 삭제하신 프로젝트는 다시 되돌릴 수 없습니다.<br>
-  	삭제를 진행하시는 메이커님께서는<br>
-  	신중하게 결정해 주세요!
-  	</span>
+  	<span class="sub_gray_font">스토어 등록 신청하겠습니다.<br>
+  	신청 이 후에는 수정할 수 없으니<br>
+  	기본 사항 및 옵션 설계사항을 다시 한 번 확인해 주세요.<br></span>
 
   	<br><br><br><br>
 
-	
-		
-  	<button class="btn btn-warning btn_custom" id="proCancelBtn">프로젝트 삭제</button>
-	
 
 
   	
@@ -91,16 +83,7 @@
 	        
 	    </div>
 	</div>
+	<!-- end main -->
 
 </body>
-
-<script>
-
-	$("#proCancelBtn").click(function(){
-		if(confirm("정말 삭제하시겠습니까?")){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCancelSubmit")
-		}
-	})
-
-</script>
 </html>
