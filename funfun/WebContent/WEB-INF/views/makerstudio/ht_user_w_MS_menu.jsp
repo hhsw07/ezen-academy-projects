@@ -69,7 +69,6 @@ $(document).ready(function(){
 				<ul style="list-style:none;line-height:3em">
 			  		<li class="sub_gray_font_inact ">기본 정보</li>
 			  		<li class="sub_gray_font_inact ">옵션 설계</li>
-			  		<li class="sub_gray_font_inact ">스토어 오픈 신청</li>
 				</ul>
 		  		</details> 	
 			</div>
@@ -94,7 +93,6 @@ $(document).ready(function(){
 				<ul style="list-style:none;line-height:3em">
 			  		<li class="sub_gray_font storeBasicInfoReg">기본 정보</li>
 			  		<li class="sub_gray_font storeOptionReg">옵션 설계</li>
-			  		<li class="sub_gray_font storeOpenRegSubmit">스토어 오픈 신청</li>
 				</ul>
 		  		</details> 	
 			</div>
@@ -117,7 +115,6 @@ $(document).ready(function(){
 				<ul style="list-style:none;line-height:3em">
 			  		<li class="sub_gray_font_inact ">기본 정보</li>
 			  		<li class="sub_gray_font_inact ">옵션 설계</li>
-			  		<li class="sub_gray_font_inact ">스토어 오픈 신청</li>			  		
 				</ul>
 		  		</details> 	
 			</div>

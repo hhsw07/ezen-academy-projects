@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import funfun.vo.ProOption;
 import funfun.vo.Store;
+import funfun.vo.storeOption;
 import funfun.vo.storeOrder;
 import funfun.vo.storeQnA;
 
@@ -19,4 +20,6 @@ public interface HT_StoreManageReposi {
 	public int getStoreCode();
 	public void storeBasicInfoReg(Store sto);
 	public ArrayList<ProOption> getProOptList(int pro_code);
+	public void stoOptUnitReg(storeOption sto);
+	public void storeOpenRegConfirm(int sto_code);
 }

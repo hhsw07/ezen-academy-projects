@@ -20,7 +20,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet")
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -34,9 +34,6 @@
 		})
 		$(".storeOptionReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOption")
-		})
-		$(".storeOpenRegSubmit").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit")
 		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
@@ -72,10 +69,11 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			<th style="width:15%;">주문자 이름</th>
-			<th style="width:15%;">주문 갯수</th>
-			<th style="width:55%;">주문 총 가격</th>
-			<th style="width:15%;text-align:center;">주문 상세 내용</th>
+			<th style="width:13%;">주문자 이름</th>
+			<th style="width:13%;">주문 갯수</th>
+			<th style="width:13%;">주문 총 가격</th>
+			<th style="width:48%;text-align:center;">주문 상세 내용</th>
+			<th style="width:13%;">주문 상태</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -84,8 +82,14 @@
 			<tr>
 			<td>${orderList.mem_code}</td>
 			<td>${orderList.sto_order_cnt}</td>
-			<td style="word-break:break-all;">${orderList.sto_order_price}</td>
-			<td style="text-align:center;"></td>
+			<td>${orderList.sto_order_price}</td>
+			<td style="word-break:break-all;">
+			주문 날짜 : ${orderList.sto_order_date}<br>
+			받는 사람 : ${orderList.sto_order_receiver}<br>
+			전화 번호 : ${orderList.sto_order_phoneno}<br>
+			배송 주소 : ${orderList.sto_order_address}<br>
+			배송 요청 : ${orderList.sto_order_ask}
+			<td style="text-align:center;">${orderList.sto_order_curr}</td>
 			</tr>
 			
 			</c:forEach>

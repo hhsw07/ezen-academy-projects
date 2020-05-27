@@ -20,7 +20,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet")
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -35,15 +35,16 @@
 		$(".storeOptionReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOption")
 		})
-		$(".storeOpenRegSubmit").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit")
-		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
 		})
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
+
+		$("#stoRegBtn").click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm");
+		})	
 		
 	})
 		
@@ -71,6 +72,8 @@
 
   	<br><br><br><br>
 
+
+  	<button class="btn btn-warning btn_custom" id="stoRegBtn">스토어 오픈 신청</button>
 
 
   	

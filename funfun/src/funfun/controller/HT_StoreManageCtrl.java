@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import funfun.service.HT_StoreManageService;
 import funfun.vo.Store;
 import funfun.vo.storeQnA;
+import funfun.vo.storeOption;
 
 @Controller
 @RequestMapping("/Store.do")
@@ -57,20 +58,36 @@ public class HT_StoreManageCtrl {
 		int projectCode = (int)session.getAttribute("projectCode");
 		int storeCode = (int)session.getAttribute("storeCode");
 		d.addAttribute("proOptList", service.getProOptList(projectCode));
-		
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeOptionReg.jsp";
 	}
-
+	
+	@RequestMapping(params="method=storeRegReady")
+	public String storeRegReady(HttpServletRequest request, Store sto) {
+		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeRegReady.jsp"; 
+	}
+	
 	@RequestMapping(params="method=storeOptionReg")
-	public String storeOptionReg() {
-		return "redirect:/Studio.do?method=storeOption";
+	public String storeOptionReg(HttpServletRequest request, storeOption sto) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		System.out.println("스토어옵션등록됨??");
+		sto.setSto_code(storeCode);
+		return "redirect:/Store.do?method=storeOption";
 	}
 	
 	
 	
 	@RequestMapping(params="method=storeOpenRegSubmit")
 	public String storeOpenRegSubmit() {
-		return "redirect:/MakerStudio.do?method=proCurrent";
+		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeOpenRegSubmit.jsp";
+	}
+	
+	@RequestMapping(params="method=storeOpenRegConfirm")
+	public String storeOpenRegConfirm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		service.storeOpenRegConfirm(storeCode);
+		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
 	}
 	
 	
@@ -80,6 +97,7 @@ public class HT_StoreManageCtrl {
 		session.getAttribute("user");
 		int storeCode = (int)session.getAttribute("storeCode");
 		d.addAttribute("orderList", service.orderList(storeCode));
+		System.out.println("주문 관리 storeCode : "+ storeCode);
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeOrderManage.jsp";
 	}
 

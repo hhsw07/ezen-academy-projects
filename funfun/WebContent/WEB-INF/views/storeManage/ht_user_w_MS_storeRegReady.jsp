@@ -19,7 +19,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet")
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -34,9 +34,6 @@
 		$(".storeOptionReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOption")
 		})
-		$(".storeOpenRegSubmit").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit")
-		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
 		})
@@ -45,8 +42,8 @@
 		})
 		
 	
-	$("#proRegBtn").click(function(){
-
+	$("#stoRegBtn").click(function(){
+		$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit");
 	})	
 	
 	})
@@ -75,16 +72,16 @@
 
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">스토어 기본 정보</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storeBasicInfoReg">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">옵션 설계</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storeOptionReg">작성하기</button></span>
   	</div>
 
   	<br><br>
   	
-  	<button class="btn btn-warning btn_custom" id="proRegBtn">스토어 오픈 신청</button>
+  	<button class="btn btn-warning btn_custom" id="stoRegBtn">스토어 오픈 신청</button>
 
 	
 	</div>

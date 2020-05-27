@@ -8,6 +8,7 @@
 	<resultMap type="storeOrder" id="storeOrderResult"/>
 	<resultMap type="store" id="storeResult"/>
 	<resultMap type="projectOpt" id="proOptResult"/>
+	<resultMap type="storeOption" id="stoOptResult"/>
 	
 	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
 	SELECT * FROM QNA
@@ -52,7 +53,20 @@
 	WHERE pro_code = #{pro_code}
 	</select>
 	
+	<select id="getStoOptList" resultType="storeOption" parameterType="int">
+	SELECT * FROM STORE_OPTION
+	WHERE STO_CODE = #{sto_code}
+	</select>
 	
+	<insert id="stoOptUnitReg" parameterType="storeOption">
+	INSERT INTO STORE_OPTION VALUES (store_option_seq.nextval, #{sto_code}, #{opt_code}, #{sto_opt_price}, #{sto_opt_detail}, '정상')
+	</insert>
+	
+	<update id="storeOpenRegConfirm" parameterType="int">
+	UPDATE STORE
+	SET STO__REG_DATE = sysdate
+	WHERE sto_code = #{sto_code}
+	</update>
 	
 	
 
