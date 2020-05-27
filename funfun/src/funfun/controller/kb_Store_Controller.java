@@ -1,5 +1,7 @@
 package funfun.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -116,9 +118,10 @@ public class kb_Store_Controller {
 	}
 
 	@RequestMapping(params="method=listTest")
-	public String listText(Paging sch, Model d) {
-		
-		String listJson = gson.toJson(service.slist(sch));
+	public String listTest(@ModelAttribute("paging") Paging sch, Model d) {
+		ArrayList<RewardStore> Storelist = new ArrayList<RewardStore>();
+		Storelist.addAll(service.slist(sch));
+		String listJson = gson.toJson(Storelist);
 		System.out.println(listJson);
 		d.addAttribute("list", listJson);
 		d.addAttribute("slist", service.slist(sch));
