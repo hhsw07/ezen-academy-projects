@@ -27,6 +27,7 @@
 		<typeAlias alias="userprofile" type="funfun.vo.UserProfile"/>
 		<typeAlias alias="inquiry" type="funfun.vo.ProjectQna"/>
 		<typeAlias alias="store" type="funfun.vo.Store"/>
+		<typeAlias alias="AdminMember" type="funfun.vo.AdminMember"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/mybatis/MSMapper.xml"/>
@@ -45,6 +46,7 @@
 		<mapper resource="resource/mybatis/userProfileMapper.xml" />
 		<mapper resource="resource/mybatis/HT_StoreManageMapper.xml" />
 		<mapper resource="resource/mybatis/secessionMapper.xml" />
+		<mapper resource="resource/mybatis/Sw_AdminMemberMapper.xml" />
 	</mappers>
  
 </configuration>
