@@ -92,7 +92,7 @@
                 </ul>
               </form>
               
-              <c:if test="${user!=null }">
+              <c:if test="${not empty user}">
               <div class="navbar-right">
 	              <div class="nav navbar-nav dropdown" id="noti-wrap" style="cursor:pointer; position:relative; margin:0; width:24px; height: 24px; box-sizing: border-box;
 	              margin:24px 20px;">

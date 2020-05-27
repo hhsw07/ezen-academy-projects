@@ -1,0 +1,7 @@
+1. src/message/msg.properties 파일 생성
+
+mapping 시킬 key & value값
+
+msg.properties
+msg_en.properties
+msg_ko.properties

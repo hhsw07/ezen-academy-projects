@@ -75,4 +75,9 @@
 	WHERE PRO_CODE = #{pro_code}
 	</select>
 	
+	<select id="getStoRegDate" resultType="string" parameterType="int">
+	SELECT STO__REG_DATE FROM STORE
+	WHERE pro_code = #{pro_code}
+	</select>
+	
 </mapper>

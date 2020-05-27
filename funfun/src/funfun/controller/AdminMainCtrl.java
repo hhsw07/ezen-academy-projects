@@ -53,7 +53,10 @@ public class AdminMainCtrl {
 	
 	@RequestMapping(value="/member-management.do")
 	public String enterMemberManagement() {
-		return "WEB-INF\\views\\admin\\memberManagement.jsp";
+		// 회원목록 조회
+		// 회원상세 내용
+		// 회원상태(정상,제제,제명) 관리
+		return "forward:/AdminMember.do?method=list";
 	}
 	
 	@RequestMapping(value="/store-update-curr.do")
