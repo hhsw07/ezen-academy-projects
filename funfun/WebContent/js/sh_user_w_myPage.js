@@ -62,3 +62,28 @@ $(order[1]).click(function(e){
     $("#myProject").removeClass('clicked');
     $("#myFunding").removeClass('clicked');
 })
+
+$("#chargeM").click(function(){
+    $("#chargeM_div").css('display','block');
+    $("#withdrawlM_div").css('display','none');
+    $("#usingM_div").css('display','none');
+    $("#infoM_div").css('display','none');
+})
+$("#withdrawlM").click(function(){
+    $("#withdrawlM_div").css('display','block');
+    $("#chargeM_div").css('display','none');
+    $("#usingM_div").css('display','none');
+    $("#infoM_div").css('display','none');
+})
+$("#usingM").click(function(){
+    $("#usingM_div").css('display','block');
+    $("#chargeM_div").css('display','none');
+    $("#withdrawlM_div").css('display','none');
+    $("#infoM_div").css('display','none');
+})
+$("#infoM").click(function(){
+    $("#infoM_div").css('display','block');
+    $("#chargeM_div").css('display','none');
+    $("#withdrawlM_div").css('display','none');
+    $("#usingM_div").css('display','none');
+})

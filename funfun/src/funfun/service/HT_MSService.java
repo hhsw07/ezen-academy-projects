@@ -59,4 +59,18 @@ public class HT_MSService {
 		dao.projectCancel(pro_code);
 	}
 	
+	public int getStoCode(int pro_code) {
+		if(dao.isStoOpen(pro_code)==0) {
+			return -1;	
+		} else {
+			int d = dao.getStoCode(pro_code).intValue();
+			return d;
+		}
+		
+	}
+	
+	public String getStoRegDate(int pro_code) {
+		return dao.getStoRegDate(pro_code);
+	}
+	
 }

@@ -5,6 +5,7 @@ public class ProjectSch {
 	private String projectsch; // 프로젝트 검색(키워드, 프로젝트, 메이커)
 	private String cate_title; // 카테고리 명
 	private String sort; // 프로젝트 정렬
+	private String proday; // 프로젝트 분류(진행중, 오픈예정, 종료)
 	// 2. 페이지
 	private int count; 		// 총 데이터 건수
 	private int pageSize; 	// 한번에 보여줄 페이지 크기..
@@ -34,6 +35,12 @@ public class ProjectSch {
 	}
 	public void setSort(String sort) {
 		this.sort = sort;
+	}
+	public String getProday() {
+		return proday;
+	}
+	public void setProday(String proday) {
+		this.proday = proday;
 	}
 	public int getCount() {
 		return count;

@@ -13,15 +13,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-		/* var mlist = "${mlist}";
-		if(mlist ===''){
+		var memEmail = "${memEmail}";
+		if(memEmail ===''){
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
-		 */
+		
+		 function openConfirm(){
+			 if($("input:checkbox[name=favorChk]").is(":checked")){
+				 $(".openConfirm").css('display','block') 
+			 }else{
+				 alert('탈퇴 전 유의사항을 확인해주세요') 
+			 }
+		 }
+		 function secessionFinal(memEmail){
+			 $("[name=memEmail]").val(memEmail)
+			 $("form").submit();
+		 }
 </script>
 </head>
 <body>
+<form style="display:none;" action="/funfun/secession.do/finalPrc.do" method="POST">
+<input type="hidden" name="memEmail">
+</form>
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 			<div class="row">
@@ -41,6 +55,18 @@
 		    <p class="profile__img--title" style="font-size:14px">문의글, 오픈한 프로젝트에 남겨진 이름 등 삭제 불가</p>
 		    <hr>
 		    
+		    <p class="profile__innertitle" style="font-size:15px">미환급 투자금 불이익 감수</p>
+		    <p class="profile__img--title" style="font-size:14px">아직 환급되지 않은 투자금이 있을때, 투자금을 돌려받지 못할 불이익과 위험 감수</p>
+		    <hr>
+		    
+		    <p class="profile__innertitle" style="font-size:15px">탈퇴 후 재가입 시 신규 회원혜택 제한</p>
+		    <p class="profile__img--title" style="font-size:14px">재가입 후 신규 회원혜택 및 제휴 프로모션 관련 혜택 지급 불가</p>
+		    <hr>
+		    
+		    <p class="profile__innertitle" style="font-size:15px">예치금 불이익 감수</p>
+		    <p class="profile__img--title" style="font-size:14px">My와디즈 계좌에 예치금이 남았을 경우 탈퇴시 돌려 받지 못할 위험 존재</p>
+		    <hr>
+
 		    <div class="pretty p-icon p-jelly p-round p-bigger">
 		        <input name="favorChk" type="checkbox" value="secessionAgreement"/>
 			        <div class="state p-warning">
@@ -51,17 +77,19 @@
 	    	
 	    	<p class="profile__innertitle" style="margin-top:50px;font-size:18px;">본인확인</p>
 		    <p class="profile__img--title" style="font-size:14px">안전한 탈퇴를 위해 본인 인증 절차를 진행합니다. 본인확인하기 버튼을 클릭해주세요</p>
-	    	<button type="button" class="profile__submit" style="width:30%;margin:0;background-color:orange;color:white;margin-top:20px;font-size:14px;">본인 확인하기</button>
-	    	<div style="display:flex;">
-	    		<p>yuseohee27@gmail.com</p>
-	    		<button type="button">재전송</button>
+	    	<button onclick="openConfirm()" type="button" id="personCheck" class="profile__submit" style="width:30%;margin:0;background-color:orange;color:white;margin-top:20px;font-size:14px;">본인 확인하기</button>
+	    	<div class="openConfirm" style="display:none;">
+		    	<div class="confirmInputDiv" style="display:flex;background-color:#f2f2f2;margin-top:20px;margin-bottom:10px;">
+		    		<p class="mailInput" style="border:none;position:relative;top:14px;left:8px;padding-bottom:-5px;">${memEmail}</p>
+		    		<button type="button" style="height:35px;position:relative;top:7px;margin-left:84px;background-color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;color:gray;">재전송</button>
+		    	</div>
+		    	<div class="confirmInputDiv" style="display:flex;">
+		    		<input style="height:35px;position:relative;top:7px;" class="confirmInput" placeholder="인증번호입력">
+		    		<button style="height:35px;position:relative;top:7px;margin-left:72px;background-color:gray;color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;" type="button">인증확인</button>
+		    	</div>
 	    	</div>
-	    	<div class="confirmInputDiv" style="display:flex;">
-	    		<input class="confirmInput" placeholder="인증번호입력">
-	    		<button type="button">재전송</button>
-	    	</div>
-	    	<hr>
-	    	<button type="button" class="profile__submit" style="width:30%;margin:0;background-color:red;color:white;border:red;font-size:14px;">회원탈퇴</button>
+	    	<hr style="color:gray;">
+	    	<button onclick="secessionFinal('${memEmail}')"type="button" class="profile__submit" style="width:30%;margin:0;background-color:red;color:white;border:red;font-size:14px;margin-bottom:30px;">회원탈퇴</button>
 	    	
 	    	</div>
 	    	<div class="col-md-3"></div>

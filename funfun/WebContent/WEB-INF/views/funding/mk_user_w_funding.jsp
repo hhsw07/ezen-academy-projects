@@ -12,24 +12,123 @@
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
 
-
 </style>
 <script>
 	$(document).ready(function(){
+		$("#funding").click(function(){
+			alert("펀딩완료되었습니다");
+			$("form").submit();
+			$(location).attr("href","${path}/funding.do?method=list");
+		});
 
-
-		
 	});
+	// 우편번호 찾기
+	function goPopup(){
+		var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
+	}
+	function jusoCallBack(roadFullAddr,zipNo){
+		$("[name=fund_post]").val(zipNo);
+		$("[name=fund_address]").val(roadFullAddr);
+	}
 	
 </script>
 </head>
 <body>
 	<div class="main" style="overflow:hidden;">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-
-	    
-	    
-		</div>
+	    	<div class="project-title" >
+	    		<div class="label label-warning">${project.cate_title}</div>
+	    		<h3 style="font-weight:800;">${project.pro_title}</h3>
+	    	</div>
+	    	<div class="funding-page">
+	    		<form name="fundingForm" method="post" action="${path}/funding.do?method=funding">
+	    			<div class="funding-wrap">
+						<div class="order-list" data-choiced-legnth="1">
+							<div class="order-cont">
+								<p class="fund-tit">슈퍼 얼리버드 보드 1대</p>
+								<p class="text">기본 리워드 1대</p>
+								<div>
+									<div class="option">
+										<span class="option-cont">옵션-</span>
+										<span>마블 2</span>
+									</div>
+									<p class="sum"><em>수량 : 1개</em>168,000원</p>
+								</div>
+							</div>
+						</div>
+						<div class="balance order-info">
+							<p class="order-infodt">보유 예치금 <p>
+							<span class="order-infodd"><span id="usablePoint">0</span>P</span>
+						</div>
+						<div class="order-info conf-info">
+							<div>
+								<p class="order-infodt">펀딩금액</p>
+								<p class="order-infodd"><span id="fundingPrice"> 168,000</span>원</p>
+							</div>
+							<div>
+								<p class="order-infodt">추가 후원금</p>
+								<p class="order-infodd">0원</p>
+							</div>
+							<div>
+								<p class="order-infodt">배송비</p>
+								<p class="order-infodd">0원</p>
+							</div>
+							<div class="total">
+								<p class="order-infodt">최종결제금액</p>
+								<p class="order-infodd"><input type="hidden" id="totalPrice" value="168000"><em id="totalPriceView">168,000</em>원</p>
+							</div>
+						</div>
+					</div>
+					<div class="payment-noti">
+					<!-- 결제 예약시 유의사항 -->
+						<p class="fund-tit">결제 예약시 유의사항</p>
+						<ul>
+							<li>- 결제실행일에 결제자 귀책사유(예치금 잔액 부족, 이용정지 등)로 인하여 결제가 실패할 수 있으니, 결제수단이 유효한지 한번 확인하세요.</li>
+							<li>- 1차 결제 실패 시 실패일로부터 3 영업일 동안 재 결제를 실행합니다.</li>
+						</ul>
+					</div>
+					<div class="funding-wrap" style="height:400px;">
+						<div class="col-md-4 col-sm-6" style="padding: 0;">
+							<h3><em>펀딩 서포터</em></h3>
+							<div class="mem-info">
+								<div>
+									<p class="mem-info-tit">이름</p>
+									<p class="mem-info-txt">김길동</p>
+								</div>
+								<div>
+									<p class="mem-info-tit">이메일</p>
+									<p class="mem-info-txt">himan77@gmail.com</p>
+								</div>
+								<div class="supporter-phone-number">
+									<p class="mem-info-tit">휴대폰 번호</p>
+									<p class="mem-info-txt">01012345678</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-6" style="padding: 0; float: right;">
+							<h3><em>리워드 배송지</em></h3>
+							<div class="delivery-list"></div>
+							<div class="deliver-new active">
+								<div class="deliver-info">
+									<p class="deliver-tit">이름</p>
+									<input type="text" name="fund_receiver" id="newPresenteeName" class="form-control">
+									<p class="deliver-tit">휴대폰 번호</p>
+									<input type="tel" name="fund_rec_tel" id="newContactNumber" maxlength="13" class="form-control">
+									<p class="deliver-tit">주소</p>
+									<input name="fund_post" type="text" id="newAddressDetails" placeholder="우편번호" class="form-control deliver-post">
+									<button type="button" class="btn btn-block btn-fill btn-warning find-post" onclick="goPopup()">우편번호 검색</button>
+									<p class="text" id="newAddress"></p>
+									<input name="fund_address" type="text" maxlength="96" id="newAddressDetails" placeholder="상세주소" class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
+	    		</form>
+	    	</div>
+	    	<div class="btn-wrap funding-btn">
+				<button type="button" id="funding" class="btn btn-block btn-lg btn-fill btn-warning">결제 예약하기</button>
+			</div>
+	    </div>
 	</div>
 	
 </body>

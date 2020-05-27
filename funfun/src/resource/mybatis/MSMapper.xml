@@ -9,6 +9,7 @@
 	<resultMap type="storeQnA" id="qnaResult"/>	
 	<resultMap type="project" id="proResult"/>
 	<resultMap type="storeOrder" id="storeOrderResult"/>
+	<resultMap type="store" id="storeResult"/>
 
 	
 	<insert id="regMaker" parameterType="makerstudio">
@@ -21,13 +22,6 @@
 	WHERE MEM_CODE = #{mem_code}
 	</select>
 	
-<!-- 	<select id="projectInfo" resultType="proResult" parameterType="int">
-	
-	SELECT * FROM PROJECT
-	WHERE PRO_CODE = #{pro_code}
-	
-	</select>
- -->	
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	SELECT * FROM PROJECT
 	WHERE MAKER_CODE =( 
@@ -71,6 +65,19 @@
 	WHERE pro_code = #{pro_code}
 	</delete>
 	
+	<select id="isStoOpen" resultType="int" parameterType="int">
+	SELECT count(*) cnt FROM STORE
+	WHERE PRO_CODE = #{pro_code}
+	</select>
 	
+	<select id="getStoCode" resultType="int" parameterType="int">
+	SELECT STO_CODE FROM STORE
+	WHERE PRO_CODE = #{pro_code}
+	</select>
+	
+	<select id="getStoRegDate" resultType="string" parameterType="int">
+	SELECT STO__REG_DATE FROM STORE
+	WHERE pro_code = #{pro_code}
+	</select>
 	
 </mapper>

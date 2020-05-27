@@ -12,6 +12,9 @@ public class Funding {
 	private String fund_address; // 주소
 	private String fund_receiver; // 수령인
 	private String fund_state; // 상태
+	private String fund_rec_tel; // 수령인 연락처
+	
+	private int pro_code; // 프로젝트번호
 	
 	public int getFund_code() {
 		return fund_code;
@@ -78,6 +81,18 @@ public class Funding {
 	}
 	public void setFund_state(String fund_state) {
 		this.fund_state = fund_state;
+	}
+	public int getPro_code() {
+		return pro_code;
+	}
+	public void setPro_code(int pro_code) {
+		this.pro_code = pro_code;
+	}
+	public String getFund_rec_tel() {
+		return fund_rec_tel;
+	}
+	public void setFund_rec_tel(String fund_rec_tel) {
+		this.fund_rec_tel = fund_rec_tel;
 	}
 	
 	

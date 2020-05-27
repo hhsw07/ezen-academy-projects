@@ -27,8 +27,12 @@ public interface MK_FundingReposi {
 	public void insFavor(Project proj);
 	// 프로젝트 신고
 	public void insReport(Report ins);
+	// 파일정보 등록
+	public void reportImg(String img);
+	// 문의 리스트
+	public ArrayList<ProjectQna> inquiryList(int pro_code);
 	// 문의하기
-	public void inquiry(ProjectQna ins);
+	public void inquiry(ProjectQna qna);
 	// 문의 답변
 	public void answer(ProjectQna upt);
 	// 펀딩하기

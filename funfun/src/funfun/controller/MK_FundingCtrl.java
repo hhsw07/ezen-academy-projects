@@ -1,5 +1,7 @@
 package funfun.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.MK_FundingService;
+import funfun.vo.Funding;
 import funfun.vo.Project;
+import funfun.vo.ProjectQna;
 import funfun.vo.ProjectSch;
 import funfun.vo.Report;
 
@@ -55,6 +59,7 @@ public class MK_FundingCtrl {
 		}
 		System.out.println("카테고리"+sch.getCate_title());
 		System.out.println("검색"+sch.getProjectsch());
+		System.out.println("분류:"+sch.getProday());
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	// 프로젝트 목록 for json
@@ -69,8 +74,9 @@ public class MK_FundingCtrl {
 	// 프로젝트 상세보기
 	@RequestMapping(params="method=detail")
 	public String detail(@RequestParam("pro_code") int pro_code, Model d) {
-		d.addAttribute("project", service.detail(pro_code));
-		d.addAttribute("opt", service.proOptList(pro_code));
+		d.addAttribute("project", service.detail(pro_code)); // 프로젝트 상세정보
+		d.addAttribute("opt", service.proOptList(pro_code)); // 프로젝트 옵션
+		d.addAttribute("qna", service.inquiryList(pro_code)); // 프로젝트 문의
 		return "WEB-INF\\views\\funding\\mk_user_w_projectDetail.jsp";
 	}
 	// 프로젝트 상세보기 for json
@@ -102,13 +108,22 @@ public class MK_FundingCtrl {
 	// 신고하기
 	@RequestMapping(params="method=report")
 	public String report(Report report) {
-		service.insReport(report);
-		return "forward:/funding.do?method=detail";
+		System.out.println("1 : "+report.getMem_code());
+		System.out.println("2 : "+report.getPro_code());
+		System.out.println("3 : "+report.getReport_detail());
+		System.out.println("4 : "+report.getReport()[0].getOriginalFilename());
+		//service.insReport(report);
+		return "redirect:/funding.do?method=detail&pro_code="+report.getPro_code();
 	}
 	// 문의하기
 	@RequestMapping(params="method=inquiry")
-	public String inquiry() {
-		return "";
+	public String inquiry(@ModelAttribute("inquiry") ProjectQna qna) {
+		System.out.println("회원 번호"+qna.getMem_code());
+		System.out.println("프로젝트 번호"+qna.getPro_code());
+		System.out.println("비밀글여부:"+qna.getQna_open());
+		System.out.println("내용:"+qna.getQna_detail());
+		service.inquiry(qna);
+		return "redirect:/funding.do?method=detail&pro_code="+qna.getPro_code();
 	}
 	// 펀딩하기 - 옵션선택
 	// http://localhost:5080/funfun/funding.do?method=option&pro_code=21000002
@@ -118,10 +133,16 @@ public class MK_FundingCtrl {
 		d.addAttribute("opt", service.proOptList(proj.getPro_code()));
 		return "WEB-INF\\views\\funding\\mk_user_w_fundingOpt.jsp";
 	}
-	// 펀딩하기
+	// 펀딩하기 - 정보입력
 	@RequestMapping(params="method=funding")
-	public String funding() {
+	public String funding(@ModelAttribute("funding") Funding fund) {
+		service.funding(fund);
 		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
+	}
+	// 펀딩 완료
+	@RequestMapping(params="method=finish")
+	public String finish() {
+		return "";
 	}
 
 }

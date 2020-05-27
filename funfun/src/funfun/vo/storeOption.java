@@ -2,6 +2,8 @@ package funfun.vo;
 
 public class storeOption {
 	private int sto_opt_code;
+	private int sto_code;
+	private int opt_code;
 	private int sto_opt_price;
 	private String sto_opt_detail;
 	private String sto_opt_curr;
@@ -13,6 +15,19 @@ public class storeOption {
 	}
 	public int getSto_opt_price() {
 		return sto_opt_price;
+	}
+	
+	public int getSto_code() {
+		return sto_code;
+	}
+	public void setSto_code(int sto_code) {
+		this.sto_code = sto_code;
+	}
+	public int getOpt_code() {
+		return opt_code;
+	}
+	public void setOpt_code(int opt_code) {
+		this.opt_code = opt_code;
 	}
 	public void setSto_opt_price(int sto_opt_price) {
 		this.sto_opt_price = sto_opt_price;

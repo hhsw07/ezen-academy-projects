@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.Sw_RtqnaService;
+import funfun.vo.MemberInfo;
 import funfun.vo.Paging;
 import funfun.vo.Rtqna;
 
@@ -89,7 +90,9 @@ public class Sw_RtqnaCtrl {
 		}
 		
 		HttpSession session = req.getSession();
-		if( session.getAttribute("user")!= null) {
+		MemberInfo user = new MemberInfo();
+		if(session.getAttribute("user")!= null) user = (MemberInfo)session.getAttribute("user");
+		if( user.getMem_code() == mem_code) {
 			// 회원인 경우 채팅방 입장시 미확인 ==> 확인으로 수정
 			service.uptSt3(mem_code);
 		}

@@ -11,11 +11,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
+<link rel="stylesheet" href="css/ht_user_w_MS_projectManage.css">
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
-
 		$(".proCancel").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
@@ -25,16 +25,26 @@
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
 		})
-		$(".storeReg").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeReg")
+
+		$(".storeOpenReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
+		})
+		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
+		})
+		$(".storeOptionReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOption")
+		})
+		$(".storeOpenRegSubmit").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit")
 		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeOrderManage")
+			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
 		})
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/MakerStudio.do?method=storeQnAManage")
+			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
-		
+
 	})
 		
 </script>

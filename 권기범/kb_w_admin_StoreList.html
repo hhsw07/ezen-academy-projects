@@ -6,6 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS/bootstrap.css">
     <link rel="stylesheet" href="CSS/kb_w_admin_storeList.css">
+    <script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+    <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js" type="text/javascript"></script>
     <style>
         main{
             width:1200px;
@@ -29,7 +32,7 @@
     </script>
 </head>
 <body>
-    <main>
+    <main id="test">
         <h1 id="list_Title">스토어 상품 목록</h1>
         <div id="list_Div">
             <table class="table table-hover">
@@ -50,7 +53,7 @@
                         <td>등록날짜</td>
                         <td>승인</td>
                     </tr>
-                    <tr>
+                    <tr v-on:click="search('31000004')">
                         <td>1</td>
                         <td>초~달아서 초당! 초당옥수수</td>
                         <td>야수네</td>
@@ -95,7 +98,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                       <label for="message-text" class="control-label">상품제목 : </label><br>
-                      <label for="message-text" class="control-label">초~달아서 초당! 초당 옥수수</label>
+                      <label for="message-text" class="control-label">{{contactlist.sto_title}}</label>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">상품이미지</label><br>
@@ -122,19 +125,29 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">스토어 상품 승인</h4>
                       </div>
+                      <form method="post">
                       <div class="modal-body">
+                          
                           <div class="form-group">
-                                <input type="checkbox" class="custom-control-input">
+                                <label for="message-text" class="control-label">해당 상품을 승인하시겠습니까? </label><br><br>
+                                <div style="text-align: center;">
+                                    <input type="radio" class="form-data" value="정상" name="sto_curr">승인&nbsp;
+                                    <input type="radio" class="form-data" value="정지" name="sto_curr">거절&nbsp;
+                                </div>
                           </div>
+                        
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">거절</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
                         <button type="submit" class="btn btn-primary" id="appr_Btn">승인</button>
                       </div>
+                    </form>
                   </div>
               </div>
           </div>
     </main>
     
 </body>
+
+
 </html>

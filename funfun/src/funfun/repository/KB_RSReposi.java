@@ -20,4 +20,5 @@ public interface KB_RSReposi {
 	
 	public RewardStore adminDetail(int sto_code);
 	
+	public void UptCurr(RewardStore rs);
 }

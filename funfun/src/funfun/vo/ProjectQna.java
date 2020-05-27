@@ -10,6 +10,7 @@ public class ProjectQna {
 	private String qna_ans; // 문의 답변
 	private String qna_ans_reg_date; // 답변날짜
 	private String qna_chk; // 문의 확인 여부
+	private String mem_name; // 회원이름
 	
 	public int getQna_code() {
 		return qna_code;
@@ -65,5 +66,12 @@ public class ProjectQna {
 	public void setQna_chk(String qna_chk) {
 		this.qna_chk = qna_chk;
 	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+	
 
 }

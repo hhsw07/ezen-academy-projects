@@ -48,6 +48,7 @@
 		var mem_name = "${rtqna.mem_name}";
 //		if(rtqna_writer == "") rtqna_writer = "${admin.admin_code}"; 
 		if(rtqna_writer == "") rtqna_writer = "1001"; 
+		var rtqna_time = "";
 		
 		$.ajax({
 			type:"post",
@@ -56,8 +57,13 @@
 			success:function(data){
 				var list = data.list;
 				var show = "";
-				var mem_name = "";
 				$.each(list,function(idx,rtqna){
+					console.log("rtqna_time:"+rtqna.rtqna_time)
+					if(rtqna_time != rtqna.rtqna_time){
+						rtqna_time = rtqna.rtqna_time;
+						show += "<div class='sc-message text-center'>"
+						show += "<p style='margin-left:60px'>------- "+rtqna_time+" -------</p></div>"
+					}
 					show += "<div class='sc-message'>";
 					if(rtqna.rtqna_writer == rtqna_writer){
 						show += "	<div class='sc-message--content sent'>";
@@ -70,9 +76,7 @@
 					show += "		</div></div></div>";
 				});
 				$(".sc-message-item").html(show);
-				var hx = parseInt($(".sc-message-list").height());
 				var mx = parseInt($(".sc-message-item").height());
-				console.log("list: "+hx+"item:"+mx)
 				$(".sc-message-list").scrollTop(mx);
 			},
 			error:function(err){
@@ -81,7 +85,6 @@
 		});
 		
 		start();
-		$("sc-user-input--text").focus();
 		function start(){
 			// (송우 PC:192.168.4.34) (선생님 PC:211.238.140.48) (민기 PC:192.168.4.20)
 			wsocket = new WebSocket("ws://192.168.4.34:5080/${path}/chat-ws.do");
@@ -90,8 +93,32 @@
 			};
 			wsocket.onmessage=function(evt){
 				var data = evt.data;
-				if(data == mem_code){
-					$(location).attr("href","");
+				var content = data.split(':');
+				if(content[0] == mem_code){
+					//$(location).attr("href","");
+					var show = $(".sc-message-item").html();
+					var date = new Date();
+					var yyyy = date.getFullYear()
+					var mm = date.getMonth()+1; if(mm<10) mm = "0"+mm;
+					var dd = date.getDate(); if(dd<10) dd = "0"+dd;
+					var curDate = yyyy+"-"+mm+"-"+dd;
+					if(rtqna_time != curDate){
+						show += "<div class='sc-message text-center'>"
+						show += "<p style='margin-left:60px'>------- "+curDate+" -------</p></div>"
+					}
+					show += "<div class='sc-message'>";
+					if(content[1] == rtqna_writer){
+						show += "	<div class='sc-message--content sent'>";
+					}else{
+						show += "	<div class='sc-message--content received'>";
+					}
+					show += "		<div class='sc-message--avatar' ></div>";
+					show += "		<div class='sc-message--text'>";
+					show += "			<span class='Linkify'>"+content[2]+"</span>";
+					show += "		</div></div></div>";
+					$(".sc-message-item").html(show);
+					var mx = parseInt($(".sc-message-item").height());
+					$(".sc-message-list").scrollTop(mx);
 				}
 			};
 			wsocket.onclose=function(){
@@ -115,7 +142,7 @@
 			$("form").attr("action","${path}/rtqna.do?method=insert");
 			$("form").submit();
 			
-			wsocket.send(mem_code);
+			wsocket.send(mem_code+":"+rtqna_writer+":"+$("#msg").text());
 		}
 		
 		$(".exitBtn").click(function(){
@@ -145,6 +172,7 @@
 		<form method="post">
 			<input type="hidden" name="rtqna_code" value="${rtqna.rtqna_code}" />
 			<input type="hidden" name="mem_code" value="${rtqna.mem_code}" />
+			<input type="hidden" name="mem_name" value="${rtqna.mem_name}"/>
 			<input type="hidden" name="rtqna_writer" />
 			<input type="hidden" name="rtqna_detail" />
 		</form>
