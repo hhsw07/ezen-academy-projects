@@ -12,6 +12,7 @@ import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
+import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
 
 @Service
@@ -20,12 +21,24 @@ public class MainService {
 	@Autowired
 	private MainRepo repo;
 	
-	public boolean verifyId(MemberLogin m) {
+	public int verifyId(MemberLogin m) {
+		
+		//이메일, 비밀번호가 일치하는지 먼저 검증.
 		if(repo.verifyId(m)==1) {
-			return true;
+			//일치하는 경우
+			if(repo.getActiveInfo(m)>0) {
+				//정지되지 않은 사용자
+				return 1;
+			} else {
+				//정지된 사용자
+				return -1;
+			}
+			
 		} else {
-			return false;
+			return 0;
 		}
+		
+		
 	}
 	
 	public MemberInfo getMemberInfo(String email) {
@@ -110,4 +123,33 @@ public class MainService {
 		}
 		return list;
 	}
+	
+	public ArrayList<NotificationInfo> getNotificationList(int memCode){
+		
+		ArrayList<NotificationInfo> list = repo.getProjectOrStoreCodeListByMemCode(memCode);
+		for(NotificationInfo info:list) {
+			int code = info.getCode();
+			int tmp=code/10000000;
+			if(tmp==2) {
+				info.setType("project");
+			} else if(tmp==3) {
+				info.setType("store");
+			}
+		}
+		return list;
+	}
+	
+	public ArrayList<NotificationInfo> getFavorProjectListLeft7DaysOrLess(int memCode){
+		ArrayList<NotificationInfo> tmp= new ArrayList<NotificationInfo>();
+		ArrayList<Integer> codeList= repo.getFavorProjectCodeListByMemCode(memCode);
+		for(Integer i:codeList) {
+			if(repo.getProjectInfoLeft7DaysOrLessByProjectCode(i)!=null) {
+				tmp.add(repo.getProjectInfoLeft7DaysOrLessByProjectCode(i));
+			} else {
+			}
+		}
+		return tmp;
+	}
+	
+	
 }

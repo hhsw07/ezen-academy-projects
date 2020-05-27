@@ -141,4 +141,8 @@ public class KB_StoreService {
 	public RewardStore adminDetail(int sto_code) {
 		return dao.adminDetail(sto_code);
 	}
+	
+	public void UptCurr(RewardStore rs) {
+		dao.UptCurr(rs);
+	}
 }

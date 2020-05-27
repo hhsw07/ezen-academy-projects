@@ -133,7 +133,73 @@ label {
 }
 
 .confirmInputDiv {
-  border: 1px solid gray;
-  width: 30%;
+  border: 1px solid #D8D8D8;
+  width: 60%;
+  height: 50px;
+  padding-left: 5px;
+}
+
+.confirmInputDiv > button {
+  height: 40px;
+}
+
+* {
+  outline: none;
+}
+
+.titleNav {
+  height: 60px;
+  background-color: #ff9705;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.innerNav {
+  height: 60px;
+  font-size: 14px;
+  color: #424242;
+  background-color: white;
+  width: 100%;
+}
+
+.navText {
+  position: relative;
+  top: 19px;
+  padding-left: 13px;
+}
+
+.txinner:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.chargInfo > td {
+  font-size: 12px;
+  color: gray;
+  line-height: 30px;
+}
+
+.secondTd {
+  text-align: right;
+  width: 440px;
+  font-size: 14px;
+}
+
+.chargInfo {
+  line-height: 25px;
+  margin-bottom: -10px;
+}
+
+.moneyTable {
+  line-height: 26px;
+}
+
+.ifText {
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  top: 5px;
 }
 /*# sourceMappingURL=sh_user_w_userProfile.css.map */

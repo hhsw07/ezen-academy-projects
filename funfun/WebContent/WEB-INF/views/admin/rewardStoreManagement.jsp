@@ -16,7 +16,9 @@
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <link href="${path }/adminTemplate/css/styles.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+<script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
+    <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
  <script>
         $(document).ready(function(){
@@ -40,7 +42,7 @@
     <div id="layoutSidenav">
         <%@ include file="/adminTemplate/leftSidebar.jsp" %>
         <div id="layoutSidenav_content">
-            <main style="width:1000px; margin-left:auto; margin-right:auto">
+            <main style="width:1000px; margin-left:auto; margin-right:auto" id="store_main">
             <!-- 메인태그 안의 내용을 수정해서 작성하세요 -->
                 <h1 id="list_Title">스토어 상품 목록</h1>
         <div id="list_Div">
@@ -56,7 +58,7 @@
                 </thead>
                 <tbody>
                 	<c:forEach var="store" items="${slist}">
-	                    <tr class="tr_btn" data-target="#myModal">
+	                    <tr class="tr_btn" data-target="#myModal" v-on:click="search('${store.sto_code}')">
 	                        <td>${store.sto_code}</td>
 	                        <td>${store.sto_title }</td>
 	                        <td>${store.maker_name }</td>
@@ -79,9 +81,7 @@
 				</ul>
 	        </div>
 			</form>
-       
-            </main>
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -92,15 +92,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                       <label for="message-text" class="control-label">상품제목 : </label><br>
-                      <label for="message-text" class="control-label">초~달아서 초당! 초당 옥수수</label>
+                      <label for="message-text" class="control-label">{{detail.sto_title}}</label>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">상품이미지</label><br>
-                        <img src="img/oksusu.PNG" style="width:300px; height:120px">
+                        <img :src="'img/'+detail.sto_image" style="width:300px; height:120px">
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">내용</label><br>
-                        <textarea class="form-control" id="message-text"><div>헤이요</div></textarea>
+                        <textarea class="form-control" id="message-text">{{detail.sto_detai}}</textarea>
                     </div>
 
                 </div>
@@ -111,6 +111,37 @@
               </div>
             </div>
           </div>
+          <div class="modal fade" id="appr_modal" tabindex="-1" role="dialog" aria-labelleby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    	 <h4 class="modal-title" id="exampleModalLabel">스토어 상품 승인</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                       
+                      </div>
+                      <form method="post" action="store-update-curr.do">
+                      <div class="modal-body">
+                          
+                          <div class="form-group">
+                                <label for="message-text" class="control-label">해당 상품을 승인하시겠습니까? </label><br><br>
+                                <div style="text-align: center;">
+                                    <input type="radio" class="form-data" value="정상" name="sto_curr">승인&nbsp;
+                                    <input type="radio" class="form-data" value="정지" name="sto_curr">거절&nbsp;
+                                    <input type="hidden" name="sto_code" :value="detail.sto_code">
+                                </div>
+                          </div>
+                        
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="submit" class="btn btn-primary" id="appr_Btn">승인</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+            </main>
+             
             <%@ include file="/adminTemplate/footer.jsp" %>
         </div>
     </div>
@@ -124,4 +155,67 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${path }/adminTemplate/assets/demo/datatables-demo.js"></script>
 </body>
+<script>
+	var vm = new Vue({
+		el:"#store_main",
+		data:{msg:"key이벤트로 검색!!",sto_code:"",
+			 detail:""},
+		methods:{
+			search:function(sto_code){
+				// e.keyCode : 입력한 코드값
+                    console.log("코드 테스트 : " + sto_code);
+					if(sto_code != null){
+						// 현재 객체의 메서드명fetchContacts를 호출한다.
+						this.fetchData(sto_code);
+						
+					}
+				},
+			
+			fetchData:function(sto_code){
+				// 모델데이터 초기화.
+				this.contactlist=[];
+                console.log("페치 코드 : " + sto_code);
+				// 비동기로 처리할 url 주소..
+				var url = "http://192.168.4.168:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				/*
+				# fetch api를 통한 비동기 통신 처리..
+				1. 기본 형식.
+					fetch(url).then(함수1).then(함수2).catch(함수3);
+					1) url : 요청할 주소
+					2) 함수1: 서버에서 받은 response
+						function(response){   
+							return response.json()
+						}
+					3) 함수2 : 함수1의 return값을 매개값을 받아서 처리.
+						function(json){
+							받은 json데이터 객체로 vue화면 구성처리
+						}
+					3) 함수3 : 위에 내용을 처리했을 때, 예외에 대한 함수
+						처리..
+				*/
+				var vm = this; // 현재 Vue객체를 fetch api
+				// 함수 안에 쓰기위해 이름을 지정..
+				fetch(url).then(function(response){
+					console.log("## 서버에서 온 response 값 ##");
+					console.log(response);
+					return response.json();
+				}).then(function(json){
+					console.log("## 서버에서 온 json데이터 ##");
+					console.log(json);
+					// 서버에서 온 json 데이터 model데이터로 mapping
+					// this: fetch 구분..
+					// 모델데이터에 mapping 처리.
+					// ajax로 온 json데이터를 model데이터에 mapping
+					vm.detail=json.detail;
+
+					
+				}).catch(function(err){
+					console.log("## 에러 발생 ##");
+					console.log(err);
+				})
+                }
+			},
+		});
+	
+</script>
 </html>

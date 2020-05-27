@@ -37,7 +37,7 @@ public class AndroidLoginCtrl {
 	public String verificationId(MemberLogin m) {
 		
 		System.out.println("안드로이드 로그인 아이디 비밀번호 검증...");
-		boolean result;
+		int result;
 		String mem_email;
 		
 		result=service.verifyId(m);

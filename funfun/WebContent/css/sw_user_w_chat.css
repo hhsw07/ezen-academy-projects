@@ -1,5 +1,8 @@
 @charset "UTF-8";
-  
+.text-center{text-align:center;}
+ 
+ 
+ 
 .sc-header {
   background: #4e8cff;
   min-height: 75px;

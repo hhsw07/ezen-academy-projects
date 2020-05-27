@@ -9,7 +9,8 @@ public class sh_secessionService {
 	@Autowired(required=false)
 	private sh_secessionReposi dao;
 	
-//	public UserProfile mlist(String memEmail){
-//		return dao.mlist(memEmail);
-//	}
+	public int finalPrc(String memEmail){
+		return dao.finalPrc(memEmail);
+	
+	}
 }

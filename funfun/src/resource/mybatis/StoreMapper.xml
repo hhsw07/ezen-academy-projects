@@ -19,7 +19,7 @@
 		
 		<select id="slist" resultMap="Storelist" parameterType="Paging">
 			select * from (select rownum cnt, c.* from (SELECT a.sto_code, a.sto_title, a.sto_image, a.sto_price, b.CATE_TITLE FROM 
-			store a, PROJECT b WHERE a.PRO_CODE  = b.PRO_CODE
+			store a, PROJECT b WHERE a.PRO_CODE  = b.PRO_CODE and sto_curr = '정상'
 			<if test="sto_title!=null and sto_title!=''">
 				and sto_title like '%'||#{sto_title} || '%'
 			</if>
@@ -55,5 +55,8 @@
 			select sto_code, sto_title, sto_image, sto_detai from store 
 			where sto_code = #{sto_code}
 		</select>
+		<update id="UptCurr" parameterType="RewardStore">
+			update store set sto_curr = #{sto_curr}, sto_sub_date = current_date where sto_code = #{sto_code}
+		</update>
 	</mapper>
 	

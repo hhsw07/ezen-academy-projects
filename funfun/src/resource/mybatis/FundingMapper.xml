@@ -32,7 +32,17 @@
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>
-			) c
+			<if test="proday=='ing' or proday==null or proday==''">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[>]]> 0
+				AND PRO_START_DATE <![CDATA[<]]>  CURRENT_DATE
+			</if>
+			<if test="proday=='come'">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[>]]> 0
+				AND PRO_START_DATE <![CDATA[>]]>  CURRENT_DATE
+			</if>
+			<if test="proday=='end'">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[<]]>  0
+			</if>) c
 			WHERE 1=1
 		<if test="projectsch!=null and projectsch!=''">
 			and (pro_title like '%'||#{projectsch}||'%'
@@ -87,7 +97,7 @@
 	<!-- 프로젝트 문의하기 -->
 	<insert id="inquiry" parameterType="inquiry">
 		INSERT INTO QNA(QNA_CODE, PRO_CODE, MEM_CODE, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN)
-		VALUES (QNA_SEQ.nextval, #{pro_code}, #{mem_code}, #{qna_detail}, current_date, #{qna_open})
+		VALUES (qna_seq.nextval, #{pro_code}, #{mem_code}, #{qna_detail}, current_date, #{qna_open})
 	</insert>
 	<!-- 프로젝트 문의 답변 -->
 	<update id="answer" parameterType="inquiry">
@@ -97,8 +107,8 @@
 	</update>
 	<!-- 펀딩하기 -->
 	<insert id="funding" parameterType="funding">
-		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, 
-		#{fund_price}, #{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩참여')
+		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, #{fund_price}, 
+		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩참여', #{fund_rec_tel})
 	</insert>
 	<!-- 펀딩하기 - 프로젝트 현재 펀딩 금액 변경 -->
 	<update id="uptMoney" parameterType="funding">

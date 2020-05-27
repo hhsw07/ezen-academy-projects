@@ -74,4 +74,22 @@
 		SELECT b.pro_title title, a.opt_detail option0, a.opt_price unitPrice
 		FROM PRO_OPTION a, project b  WHERE a.opt_code=#{opt_code} AND b.PRO_CODE=a.PRO_CODE
 	</select>
+	
+	<select id="getActiveInfo" parameterType="funfun.vo.MemberInfo" resultType="int">
+		SELECT current_date-nvl(mem_curr,to_date('1980-01-01', 'yyyy-MM-DD')) active FROM MEMBER WHERE mem_email=#{mem_email} AND mem_pw=#{mem_pw}
+	</select>
+	
+	<resultMap type="funfun.vo.NotificationInfo" id="NotificationResultMap"></resultMap>
+	<select id="getProjectOrStoreCodeListByMemCode" parameterType="int" resultMap="NotificationResultMap">
+		SELECT nvl(pro_code, sto_code) code, qna_detail title FROM qna WHERE mem_code=#{mem_code} AND qna_chk = 'N' AND qna_ans IS not null
+	</select>
+	
+	 <select id="getFavorProjectCodeListByMemCode" parameterType="int" resultMap="IntegerArray">
+	 	SELECT pro_code FROM favor WHERE mem_code =#{mem_code}
+	 </select>
+	 
+	 <select id="getProjectInfoLeft7DaysOrLessByProjectCode" parameterType="int" resultMap="NotificationResultMap">
+	 	SELECT pro_title title, pro_code code FROM project WHERE pro_code=#{code} AND PRO_FINISH_DATE-CURRENT_DATE Between 0 and 7
+	 </select>
+	
 </mapper>

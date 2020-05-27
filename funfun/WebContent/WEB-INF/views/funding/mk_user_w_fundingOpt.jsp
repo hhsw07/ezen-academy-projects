@@ -21,11 +21,10 @@ ul {list-style: none;padding:0;}
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#funding").click(function(){
+			var opt_no = $("[name=opt_code]:checked").val();
 			$(location).attr("href","${path}/funding.do?method=funding");
 		});
-		if($("[name=projectOpt]:checked")){
-			
-		}
+		
 	});
 
 </script>
@@ -131,6 +130,10 @@ ul {list-style: none;padding:0;}
 					<h3><em>리워드 선택</em></h3>
 					<p class="sub-text">펀딩해주시는 금액에 따라 감사의 의미로 리워드를 제공해 드립니다.</p>
 				</div>
+				<form method="post">
+				<input type="hidden" name="opt_code"/>
+				<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+				<input type="hidden" name="pro_code" value="${project.pro_code}" />
 				<div>
 					<ul>
 					<c:forEach var="opt" items="${opt}" >
@@ -157,6 +160,7 @@ ul {list-style: none;padding:0;}
 					</c:forEach>
 					</ul>
 				</div>
+				</form>
 			</div>
 			
 			<div class="next-step">

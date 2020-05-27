@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+<mapper namespace="funfun.repository.sh_accountReposi">
+
+ 	<resultMap type="balance" id="balanceResult"/>
+ 	<select id="blist" resultMap="balanceResult" 
+ 		parameterType="balance">
+		SELECT m.MEM_EMAIL memEmail, b.BAL_TYPE balType, b.BAL_HIS balHis, b.BAL_AMOUNT balAmount, b.BAL_DATE balDate 
+		FROM balance b LEFT JOIN MEMBER m ON b.MEM_CODE = m.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail} order by b.BAL_DATE desc
+ 	</select>
+ 	
+ 	<resultMap type="userprofile" id="userprofileResult"/>
+ 	<select id="clist" resultMap="userprofileResult" 
+ 		parameterType="userprofile">
+		SELECT mem_balance memBalance, MEM_ACCOUNT memAccount, MEM_BANK memBank, MEM_NAME memName FROM MEMBER WHERE MEM_EMAIL = #{memEmail}
+ 	</select>
+ 	
+ 	<update id="chargeQuery" parameterType="userprofile">
+	    UPDATE MEMBER
+		SET MEM_BALANCE = MEM_BALANCE + #{chargeQueryAmount,jdbcType=NUMERIC}
+		WHERE MEM_EMAIL = #{memEmail}
+ 	</update>
+	
+	<update id="uptBalance" parameterType="userprofile">
+	    UPDATE MEMBER
+		SET MEM_BALANCE = MEM_BALANCE + #{chargeQueryAmount,jdbcType=NUMERIC}
+		WHERE MEM_EMAIL = #{memEmail}
+ 	</update>
+	
+ 	<!--<insert id="uptDeposit" parameterType="deposit">
+	    
+ 	</insert>
+ 	-->
+ 	<resultMap type="deposit" id="depositResult"/>
+ 	<select id="rdlist" resultMap="depositResult" 
+ 		parameterType="deposit">
+		SELECT m.MEM_EMAIL memEmail, d.rd_amount amount, d.RD_DATE rddate, d.RD_CURR curr FROM DEPOSIT d LEFT JOIN MEMBER m ON m.MEM_CODE = d.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail}
+ 	</select>
+ 	
+</mapper>	
