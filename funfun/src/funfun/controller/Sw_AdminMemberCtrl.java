@@ -24,13 +24,13 @@ public class Sw_AdminMemberCtrl {
 	// http://localhost:5080/funfun/AdminMember.do?method=list
 	@RequestMapping(params="method=list")
 	public String list(@ModelAttribute("paging") Paging sch, Model d) {
-		//d.addAttribute("list",service.list(sch));
+		d.addAttribute("list",service.list(sch));
 		return "WEB-INF\\views\\admin\\memberManagement.jsp";
 	}
-	// http://localhost:5080/funfun/AdminMember.do?method=ajax?curPage=1&pageSize=5
-	@RequestMapping(params="method=ajax")
-	public String ajax(@RequestParam("curPage") int curPage,
-			 		   @RequestParam("pageSize") int pageSize, Model d) {
+	// http://localhost:5080/funfun/AdminMember.do?method=ajaxlist&curPage=1&pageSize=5
+	@RequestMapping(params="method=ajaxlist")
+	public String ajaxlist(@RequestParam("curPage") int curPage,
+	 		   @RequestParam("pageSize") int pageSize, Model d) {
 		Paging sch = new Paging();
 		sch.setCurPage(curPage);
 		sch.setPageSize(pageSize);

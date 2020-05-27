@@ -8,7 +8,7 @@ public class AdminMember {
 	// 회원계좌은행, 회원 계좌번호, 회원 보유 예치금
 	// 메이커유무, 펀딩기록, 구매기록
 	
-	
+	private int cnt;
 	private int mem_code;
 	private String mem_email;
 	private String mem_pw;
@@ -23,6 +23,18 @@ public class AdminMember {
 	
 	
 	private int maker_code;
+	
+	
+	
+
+	public int getCnt() {
+		return cnt;
+	}
+
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 
 
 	public int getMem_code() {

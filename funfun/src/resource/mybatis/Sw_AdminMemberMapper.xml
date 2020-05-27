@@ -3,8 +3,8 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
 <mapper namespace="funfun.repository.Sw_AdminMemberDao">
-	<resultMap type="adminMember" id="AdminMemberResult"/>
-	<!-- int totCnt() 총 데이터 건수 -->
+	<resultMap type="AdminMember" id="AdminMemberResult"/>
+	<!-- int AdminMemberCnt() 총 데이터 건수 -->
 	<select id="AdminMemberCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM member
@@ -23,14 +23,14 @@
 	
 	
 	<!-- AdminMember detail(int mem_code) -->
-	<select id="detail" resultType="adminMember" parameterType="int">
+	<select id="detail" resultType="AdminMember" parameterType="int">
 		SELECT rownum cnt, a.*, b.ADMIN_NAME
 		FROM Notice a, ADMIN b
 		WHERE a.ADMIN_CODE = b.ADMIN_CODE
 		AND noti_code = #{noti_code}
 	</select>
 	<!-- void update(AdminMember upt) -->
-	<update id="update" parameterType="adminMember">
+	<update id="update" parameterType="AdminMember">
 		UPDATE notice
 		SET noti_title = #{noti_title},
 			noti_detail = #{noti_detail},

@@ -77,42 +77,6 @@
 	  padding: 7px 13px; }
 
 </style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#pageSize").change(function(){
-	    	$("#curPage").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
-			$("form").submit();
-		});
-		
-		// ajax
-		$.ajax({
-			type:"post",
-			url:"${path}/",
-			dataType:"json",
-			success:function(data){
-				var list = data.list;
-				var show = $(".memtable").html();
-				$.each(list,function(idx,AdminMember)){
-					
-				});
-				$(".memtable").html(show);
-			},
-			error:function(err){
-				console.log("에러:"+err);
-			}
-		});
-		
-		
-	})
-	function go(mem_code){
-		// 회원 detail 화면
-		//$(location).attr("href","${path}/notice.do?method=detail&noti_code="+noti_code);
-	}
-	function goPage(no){
-		$("#curPage").val(no);
-		$("form").submit();
-	}
-</script>
 </head>
 <body class="sb-nav-fixed">
     <%@ include file="/adminTemplate/navi.jsp" %>
@@ -138,26 +102,18 @@
 					</form>
 					<div class="memList">
 				        <table class="table table-hover memtable">
-				        	<col width="">
-				        	<col width="">
-				        	<col width="">
-				        	<col width="">
-				        	<col width="">
-				        	<tr><th class="text-center">회원번호</th>
+				        	<col width="10%">
+				        	<col width="15%">
+				        	<col width="10%">
+				        	<col width="25%">
+				        	<col width="15%">
+				        	<col width="15%">
+				        	<tr><th class="text-center">번호</th>
+				        		<th>회원번호</th>
 				        		<th>이름</th>
 				        		<th>이메일</th>
 				        		<th>휴대폰</th>
 				        		<th>관심카테고리</th></tr>
-				        	<tr><td>1</td>
-				        		<td>홍길동</td>
-				        		<td>himan77@gmail.com</td>
-				        		<td>01023625362</td>
-				        		<td>홈리빙·디자인소품,공연·컬쳐,출판,반려동물</td></tr>
-				        	<tr><td>1</td>
-				        		<td>홍길동</td>
-				        		<td>himan77@gmail.com</td>
-				        		<td>01023625362</td>
-				        		<td>홈리빙·디자인소품,공연·컬쳐,출판,반려동물</td></tr>
 				        </table>
 					</div>
 			        <div class="text-center">
@@ -169,6 +125,9 @@
 							<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 						</ul>
 			        </div>
+			        <div class="text-right">
+						<button class="btn btn-warning excelBtn">Excel 다운</button>
+					</div>
 			    </div>
 			</div>    
             <%@ include file="/adminTemplate/footer.jsp" %>
@@ -184,4 +143,54 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="${path }/adminTemplate/assets/demo/datatables-demo.js"></script>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("[name=pageSize]").val("${paging.pageSize}");
+		
+		$("[name=pageSize]").change(function(){
+	    	$("[name=curPage]").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
+			$("form").submit();
+		});
+		
+		console.log("curPage:${paging.curPage} pageSize:${paging.pageSize}")
+		
+		// ajax
+		$.ajax({
+			type:"post",
+			url:"${path}/AdminMember.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
+			dataType:"json",
+			success:function(data){
+				var list = data.list;
+				var show = $(".memtable").html();
+				$.each(list,function(idx,AdminMember){
+					show += "<tr><td class='text-center'>"+AdminMember.cnt+"</td>";
+					show += "	<td>"+AdminMember.mem_code+"</td>";
+					show += "	<td>"+AdminMember.mem_name+"</td>";
+					show += "	<td>"+AdminMember.mem_email+"</td>";
+					show += "	<td>"+AdminMember.mem_phoneno+"</td>";
+					show += "	<td>"+AdminMember.mem_favor+"</td></tr>";
+				});
+				show += "<tr><td colspan='6'></td></tr>"
+				$(".memtable").html(show);
+			},
+			error:function(err){
+				console.log("에러:"+err);
+			}
+		});
+		
+		
+		$(".excelBtn").click(function(){
+			alert("excel 파일 다운");
+		});
+		
+	})
+	function go(mem_code){
+		// 회원 detail 화면
+		//$(location).attr("href","${path}/notice.do?method=detail&noti_code="+noti_code);
+	}
+	function goPage(no){
+		$("[name=curPage]").val(no);
+		$("form").submit();
+	}
+</script>
 </html>
