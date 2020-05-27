@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import funfun.service.KB_StoreService;
 import funfun.vo.Paging;
+import funfun.vo.RewardStore;
 
 @Controller
 public class AdminMainCtrl {
@@ -53,5 +54,11 @@ public class AdminMainCtrl {
 	@RequestMapping(value="/member-management.do")
 	public String enterMemberManagement() {
 		return "WEB-INF\\views\\admin\\memberManagement.jsp";
+	}
+	
+	@RequestMapping(value="/store-update-curr.do")
+	public String stocurrUpt(RewardStore rs) {
+		kb_service.UptCurr(rs);
+		return "redirect:/reward-store-management.do";
 	}
 }

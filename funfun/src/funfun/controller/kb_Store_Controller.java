@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
+
 import funfun.service.KB_StoreService;
 import funfun.vo.Paging;
 import funfun.vo.RewardStore;
@@ -19,6 +21,8 @@ import funfun.vo.storeQnA;
 public class kb_Store_Controller {
 	@Autowired(required=false)
 	KB_StoreService service;
+	@Autowired(required=false)
+	Gson gson;
 	@RequestMapping(params="method=list")
 	public String storeList(@ModelAttribute("paging") Paging sch,Model d) {
 		d.addAttribute("slist", service.slist(sch));
@@ -111,5 +115,14 @@ public class kb_Store_Controller {
 		return "pageJsonReport";
 	}
 
+	@RequestMapping(params="method=listTest")
+	public String listText(Paging sch, Model d) {
+		
+		String listJson = gson.toJson(service.slist(sch));
+		System.out.println(listJson);
+		d.addAttribute("list", listJson);
+		d.addAttribute("slist", service.slist(sch));
+		return "WEB-INF\\views\\Store\\kb_w_user_StoreList-Test.jsp";
 	
+	}
 }
