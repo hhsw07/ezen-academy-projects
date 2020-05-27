@@ -25,4 +25,5 @@ public interface HT_MSReposi {
 	public void projectCancel(int pro_code);
 	public int isStoOpen(int pro_code);
 	public Integer getStoCode(int pro_code);
+	public String getStoRegDate(int pro_code);
 }

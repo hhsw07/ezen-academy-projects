@@ -69,4 +69,8 @@ public class HT_MSService {
 		
 	}
 	
+	public String getStoRegDate(int pro_code) {
+		return dao.getStoRegDate(pro_code);
+	}
+	
 }

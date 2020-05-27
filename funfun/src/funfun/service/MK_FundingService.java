@@ -114,8 +114,8 @@ public class MK_FundingService {
 		return dao.inquiryList(pro_code);
 	}
 	// 문의하기
-	public void inquiry(ProjectQna ins) {
-		dao.inquiry(ins);
+	public void inquiry(ProjectQna qna) {
+		dao.inquiry(qna);
 	}
 	// 문의 답변
 	public void answer(ProjectQna upt) {

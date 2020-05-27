@@ -11,11 +11,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
+<link rel="stylesheet" href="css/ht_user_w_MS_projectManage.css">
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
-	
 		$(".proCancel").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
@@ -25,8 +25,18 @@
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
 		})
-		$(".storeReg").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeReg")
+
+		$(".storeOpenReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
+		})
+		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
+		})
+		$(".storeOptionReg").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOption")
+		})
+		$(".storeOpenRegSubmit").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeOpenRegSubmit")
 		})
 		$(".storeOrderManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOrderManage")
@@ -34,7 +44,7 @@
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
-		
+
 	})
 		
 </script>
@@ -46,7 +56,7 @@
 	<div class="row">
 
  
- 	<jsp:include page="ht_user_w_MS_menu.jsp"/>
+ 	<jsp:include page="../makerstudio/ht_user_w_MS_menu.jsp"/>
  
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
@@ -62,10 +72,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			<th style="width:15%;">문의자 이름</th>
-			<th style="width:15%;">등록 날짜</th>
-			<th style="width:55%;">내용</th>
-			<th style="width:15%;text-align:center;">답변</th>
+			<th style="width:15%;">주문자 이름</th>
+			<th style="width:15%;">주문 갯수</th>
+			<th style="width:55%;">주문 총 가격</th>
+			<th style="width:15%;text-align:center;">주문 상세 내용</th>
 			</tr>
 		</thead>
 		<tbody>

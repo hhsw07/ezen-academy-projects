@@ -32,7 +32,7 @@ public interface MK_FundingReposi {
 	// 문의 리스트
 	public ArrayList<ProjectQna> inquiryList(int pro_code);
 	// 문의하기
-	public void inquiry(ProjectQna ins);
+	public void inquiry(ProjectQna qna);
 	// 문의 답변
 	public void answer(ProjectQna upt);
 	// 펀딩하기

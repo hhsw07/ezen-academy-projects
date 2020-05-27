@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
 <link rel="stylesheet" href="css/ht_user_w_MS_projectManage.css">
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<script src="js/bootstrap-datepicker.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".proCancel").css('cursor','pointer').click(function(){
@@ -44,9 +43,12 @@
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
-
-
 		
+	
+	$("#proRegBtn").click(function(){
+
+	})	
+	
 	})
 		
 </script>
@@ -58,49 +60,39 @@
 	<div class="row">
 
  
- 	<jsp:include page="ht_user_w_MS_menu.jsp"/>
+ 	<jsp:include page="../makerstudio/ht_user_w_MS_menu.jsp"/>
  
  
   	<div class="col-sm-10" style="padding-left:30px;padding-right:200px;">
   	
-  	<h3 style="font-weight:bolder">프로젝트 삭제</h3>
+  	<h3 style="font-weight:bolder">스토어 오픈 준비</h3>
   	
   	<br><br>
   	
-  	<span class="sub_gray_font" style="color:red;">
-  	한 번 삭제하신 프로젝트는 다시 되돌릴 수 없습니다.<br>
-  	삭제를 진행하시는 메이커님께서는<br>
-  	신중하게 결정해 주세요!
-  	</span>
+  	<span class="sub_gray_font">투자 유치에 성공한 프로젝트의 스토어를 오픈합니다.</span>
 
   	<br><br><br><br>
 
-	
-		
-  	<button class="btn btn-warning btn_custom" id="proCancelBtn">프로젝트 삭제</button>
-	
-
-
-  	
+  	<div class="reg_item_container">
+	  	<span class="reg_content_title">스토어 기본 정보</span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">작성하기</button></span>
+  	</div>
+  	<div class="reg_item_container">
+	  	<span class="reg_content_title">옵션 설계</span>
+	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
   	</div>
 
+  	<br><br>
+  	
+  	<button class="btn btn-warning btn_custom" id="proRegBtn">스토어 오픈 신청</button>
 
-
+	
+	</div>
 
 	</div>
 	        
 	    </div>
 	</div>
-
+	<!-- end main -->
 </body>
-
-<script>
-
-	$("#proCancelBtn").click(function(){
-		if(confirm("정말 삭제하시겠습니까?")){
-			$(location).attr("href", "${path}/MakerStudio.do?method=proCancelSubmit")
-		}
-	})
-
-</script>
 </html>

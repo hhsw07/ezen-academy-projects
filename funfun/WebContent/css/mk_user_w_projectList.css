@@ -68,3 +68,32 @@
 	.funding-opt h3 {margin-bottom: 28px;}
 	.top-area {margin-bottom: 20px; margin-top: 80px;}
 	.sub-text {margin-bottom: 5px;padding: 0 5px; font-size: 14px; font-weight: 500; line-height: 18px;}
+	
+/* 펀딩하기 */
+	.funding-wrap{margin:20px auto;width: 900px;}
+	.order-list {border-top: 1px solid #666;}
+	.order-cont {padding: 15px; border-bottom: 1px solid #e4e4e4;}
+	.fund-tit {margin-bottom: 8px;font-size: 14px;line-height: 17px; color: #ff9500;}
+	.text {margin-bottom: 20px; font-size: 12px; line-height: 16px; color: #686868;}
+	.option {position: relative; font-size: 12px; line-height: 15px; padding-left: 28px;}
+	.option-cont { position: absolute;left: 0;}
+	.sum {font-size: 14px; line-height: 24px; font-weight: 500; text-align: right;}
+	.sum em { padding-right: 25px;}
+	.balance {background: #f9f9f9; border-top: 1px dashed #666;}
+	.order-info{display:table; width:100%}
+	.order-infodt {display: table-cell; width: 140px; padding: 7px 0 7px 15px; font-size: 14px; font-weight: 900; box-sizing: border-box;}
+	.order-infodd {display: table-cell; padding: 15px 15px 15px 0; font-size: 14px; text-align: right;width:760px;}
+	.conf-info{padding: 10px 0; background: #ececec;}
+	.total{color: #ff9500;}
+	.payment-noti{width:900px;margin:10px auto;}
+	.payment-noti ul{color: rgba(0, 0, 0, 0.54);list-style: none; padding: 0 15px;}
+	.mem-info{padding: 15px 12px 24px 12px; background: #EEEDE9; border-radius: 3px;}
+	.mem-info div{margin-bottom: 15px;}
+	.mem-info-tit{margin-bottom: 8px; font-size: 14px;}
+	.mem-info-txt{line-height: 36px; font-size: 14px; color: #9B9B9B;}
+	.delivery-list {border-top: 1px solid #e4e4e4;}
+	.deliver-info{padding:20px 100px 43px 10px; border-bottom: 1px solid #e4e4e4;}
+	.deliver-tit{margin: 5px 0; font-size: 14px;font-weight: 900;}
+	.deliver-post{width: 100px; display: inline-block; margin-right: 20px;}
+	.find-post{width: 150px; display: inline-block;}
+	.funding-btn {width:250px; margin:50px auto;}
