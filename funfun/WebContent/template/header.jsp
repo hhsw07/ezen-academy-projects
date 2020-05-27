@@ -27,6 +27,7 @@
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <!-- 아이콘 추가 -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   	<style>
   	.fadeIn{
   		animation:fadein 2s;
@@ -98,10 +99,10 @@
 	              margin:24px 20px;">
 	                <i class="medium material-icons dropdown-toggle" data-toggle="dropdown" style="position:absolute; color:white;">notifications</i>
 	                <div id="noti-number" style="position:absolute; top:-2px; right:-2px; color:white; background-color: red;
-	                font-size: 12px; width:12px; height: 12px; border-radius: 6px; line-height: 12px; text-align: center;">2</div>
+	                font-size: 12px; width:12px; height: 12px; border-radius: 6px; line-height: 12px; text-align: center;">{{totalCnt}}</div>
 	                <ul class="dropdown-menu">
-                        <li><a href="#">문의사항 답변(#1231)</a></li>
-                        <li><a href="#">마감 예정인 프로젝트(#1232)</a></li>
+                        <li v-for="item in notiList"><a style="width:300px; height:50px; overflow:hidden; text-overflow: ellipsis;
+                        white-space:normal; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;" v-bind:href="item.link">{{item.title}}</a></li>
                     </ul>
 	              </div>
 	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
@@ -172,7 +173,12 @@
   			window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
   		}
   	}
-  	
   </script>
+  <script>
+  	var loginUser="${user.mem_code}";
+  	var path="${path}";
+  </script>
+  <script src="${path }/js/notification.js"></script>
+  
 
 </html>
