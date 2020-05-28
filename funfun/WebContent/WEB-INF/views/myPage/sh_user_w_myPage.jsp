@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <%@ include file="/template/header.jsp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <fmt:requestEncoding value="utf-8" />
 
 <!DOCTYPE html>
@@ -66,7 +67,7 @@
 </c:if>
 <c:if test="${!empty flist}">
 <div class="row">
-	<c:forEach var="list" items="${flist}" begin="0" end="5" step="1">
+	<c:forEach var="list" items="${flist}">
 	            <div class="col-xs-12 col-md-3 item">
 	              <div class="thumbnail">
 	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
@@ -74,7 +75,18 @@
 	                <div class="caption">
 	                  
 	                  <p class="item__title">${list.proTitle}</p>
-	                  <span class="item__category">${list.cateTitle} | ${list.makerName}</span><span class="item__money">모금율 : ${list.percent}</span>
+	                  <span class="item__category">${list.cateTitle} | 
+	                  
+					  <c:choose>
+				        <c:when test="${fn:length(${list.makerName}) gt 4}">
+				        <c:out value="${fn:substring(list.makerName, 0, 4)}">...
+				        </c:out></c:when>
+				        <c:otherwise>
+				        <c:out value="${list.makerName}">
+				        </c:out></c:otherwise>
+					  </c:choose>
+					  
+					  </span><span class="item__money">모금율 : ${list.percent}</span>
 	                </div>
 	              </div>
 	            </div>    
@@ -178,7 +190,7 @@
 
 </c:if>
 	<c:if test="${!empty tlist}">
-	<c:forEach var="list" items="${tlist}" begin="0" end="5" step="1">
+	<c:forEach var="list" items="${tlist}">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
           <div class="col-xs-10 col-md-10" style="margin-top:10px">
