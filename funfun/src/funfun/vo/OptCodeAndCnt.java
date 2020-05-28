@@ -3,6 +3,15 @@ package funfun.vo;
 public class OptCodeAndCnt {
 	int optionCode;
 	int cnt;
+	String state;
+	
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public int getOptionCode() {
 		return optionCode;
 	}

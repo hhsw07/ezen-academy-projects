@@ -15,6 +15,7 @@ import funfun.vo.MyFundingInfo;
 import funfun.vo.MyOrderInfo;
 import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
+import funfun.vo.StoreTitleImageDetailPrice;
 
 @Service
 public class MainService {
@@ -153,15 +154,28 @@ public class MainService {
 	}
 	
 	public ArrayList<MyOrderInfo> getMyOrderList(String email){
+		// 리턴할 어레이
+		ArrayList<MyOrderInfo> list0=new ArrayList<MyOrderInfo>();
 		//이메일로 멤버코드
 		int memCode=repo.getMemCodeByEmail(email);
 		//멤버코드로 옵션 및 수량 
 		ArrayList<OptCodeAndCnt> list1=repo.getStoreOptNoAndCnt(memCode);
-		for (OptCodeAndCnt sonac:list1) {
-			System.out.println(sonac.getOptionCode());
+		System.out.println(list1.size());
+		for (OptCodeAndCnt ocac:list1) {
+			StoreTitleImageDetailPrice restInfo =repo.getStoreInfo(ocac.getOptionCode());
+			if(restInfo!=null) {
+				MyOrderInfo tmp=new MyOrderInfo();
+				tmp.setOrderCnt(ocac.getCnt());
+				tmp.setState(ocac.getState());
+				tmp.setImage(restInfo.getImage());
+				tmp.setTitle(restInfo.getTitle());
+				tmp.setPrice(restInfo.getPrice());
+				tmp.setOption(restInfo.getDetail());
+				list0.add(tmp);
+			}
 		}
 		
-		return new ArrayList<MyOrderInfo>();
+		return list0;
 	}
 	
 	
