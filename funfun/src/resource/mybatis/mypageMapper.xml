@@ -7,7 +7,7 @@
  	<resultMap type="favor" id="favorResult"/>
  	<select id="list" resultMap="favorResult" 
  		parameterType="favor">
-		SELECT  b.MEM_EMAIL memEmail,p.PRO_CODE proCode, round(p.PRO_MONEY/p.PRO_TARGET*100)||'%' percent, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, floor(p.PRO_FINISH_DATE-sysdate) dDay, p.PRO_IMAGE image, m.MAKER_NAME makerName
+		SELECT  b.MEM_EMAIL memEmail,p.PRO_CODE proCode, round(p.PRO_MONEY/p.PRO_TARGET*100)||'%' percent, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, floor(p.PRO_FINISH_DATE-current_date) dDay, p.PRO_IMAGE image, m.MAKER_NAME makerName
 		FROM favor f LEFT JOIN project p ON f.PRO_CODE = p.PRO_CODE LEFT JOIN maker m ON p.MAKER_CODE = m.MAKER_CODE 
 		LEFT JOIN MEMBER b ON f.MEM_CODE = b.MEM_CODE 
 		WHERE b.MEM_EMAIL = #{memEmail} AND p.PRO_CURR ='정상'
@@ -16,7 +16,7 @@
 	<resultMap type="parti" id="partiResult"/>
  	<select id="plist" resultMap="partiResult" 
  		parameterType="parti">
-		SELECT d.FUND_CODE fundingCode, d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-sysdate,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
+		SELECT d.FUND_CODE fundingCode, d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-current_date,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
 		FROM funding d 
 		LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE 
 		LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE 
