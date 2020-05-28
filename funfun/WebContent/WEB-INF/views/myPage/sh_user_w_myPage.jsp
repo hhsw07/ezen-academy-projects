@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <%@ include file="/template/header.jsp" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <fmt:requestEncoding value="utf-8" />
 
 <!DOCTYPE html>
@@ -76,15 +76,14 @@
 	                  
 	                  <p class="item__title">${list.proTitle}</p>
 	                  <span class="item__category">${list.cateTitle} | 
-	                  
-					  <c:choose>
-				        <c:when test="${fn:length(${list.makerName}) gt 4}">
-				        <c:out value="${fn:substring(list.makerName, 0, 4)}">...
-				        </c:out></c:when>
-				        <c:otherwise>
-				        <c:out value="${list.makerName}">
-				        </c:out></c:otherwise>
-					  </c:choose>
+		                  <c:choose>
+				           <c:when test="${fn:length(list.makerName) > 4}">
+				            <c:out value="${fn:substring(list.makerName,0,4)}"/>....
+				           </c:when>
+				           <c:otherwise>
+				            <c:out value="${list.makerName}"/>
+				           </c:otherwise> 
+			          </c:choose>
 					  
 					  </span><span class="item__money">모금율 : ${list.percent}</span>
 	                </div>
