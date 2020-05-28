@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="css/sh_user_w_account.css">
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <script>
-		var blist = "${blist}";
-		if(blist ===''){
+		var rdlist = "${rdlist}";
+		if(rdlist ===''){
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
@@ -77,7 +77,7 @@
 	        <div class="row">
 			<div class="col-md-12" style="display:flex;">
 				<div style="width:25%;">
-					<div style="height : 300px;margin-top:50px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;">
+					<div style="height : 305px;margin-top:50px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;">
 						<div class="titleNav"><p class="navText">예치금 관리</p></div>
 						<div class="innerNav"><p class="navText txinner" id="chargeM">예치금 충전</p></div>
 						<div class="innerNav"><p class="navText txinner" id="withdrawlM">예치금 출금</p></div>

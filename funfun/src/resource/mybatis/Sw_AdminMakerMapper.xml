@@ -15,9 +15,9 @@
 	<!-- ArrayList<AdminMaker> list(Paging sch) -->
 	<select id="list" resultMap="AdminMakerResult" parameterType="paging">
 		SELECT *
-		FROM (SELECT rownum cnt,a.*
-			  FROM maker a
-			  ORDER BY a.maker_code)
+		FROM (SELECT a.*, b.mem_name 
+			  FROM maker a, MEMBER b
+			  WHERE a.MEM_CODE = b.mem_code)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	
