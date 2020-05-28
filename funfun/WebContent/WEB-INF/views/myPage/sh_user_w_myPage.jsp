@@ -37,10 +37,10 @@
           <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  class="profile__img" src="${meminfo.memProfile}" alt="">
-          <table class="profile__times--table">
-            <tr><td class="profile__times--num">${fundCnt}</td><td class="profile__times--num">${orderCnt}</td></tr>
-            <tr><td class="profile__times--text">펀딩</td><td class="profile__times--text">주문</td></tr>
+          <img  style="border:1px solid gray;padding:5px;" class="profile__img" src="${meminfo.memProfile}" alt="">
+          <table class="profile__times--table" style="position:relative;right:20px;margin-top:30px;">
+            <tr><td class="profile__times--num" style="text-align:center;">${fundCnt}</td><td class="profile__times--num" style="text-align:center">${orderCnt}</td></tr>
+            <tr><td class="profile__times--text" style="text-align:right;padding-left:33px;">펀딩</td><td class="profile__times--text" style="text-align:right;padding-left:35px;">주문</td></tr>
           </table>
           <button class="btn btn-default profile__detail" onclick="location.href='${path}/profileEdit.do'">프로필 편집</button>
           <button class="btn btn-default profile__detail" onclick="location.href='${path}/myaccount.do'">예치금 관리</button>
@@ -74,7 +74,16 @@
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
 	                  
-	                  <p class="item__title">${list.proTitle}</p>
+	                  <p class="item__title">
+	                  <c:choose>
+				           <c:when test="${fn:length(list.proTitle) > 37}">
+				            <c:out value="${fn:substring(list.proTitle,0,34)}"/>&nbsp;....
+				           </c:when>
+				           <c:otherwise>
+				            <c:out value="${list.proTitle}"/>
+				           </c:otherwise> 
+			          </c:choose>
+	                  </p>
 	                  <span class="item__category">${list.cateTitle} | 
 		                  <c:choose>
 				           <c:when test="${fn:length(list.makerName) > 4}">
@@ -146,13 +155,18 @@
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
             </table>
+            <c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
              <button onclick="openFundingAdrChangeModal('${list.fundAddress}','${list.fundingCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">주소지 정보 변경하기</button>
             <span style="width:3%"></span>
             <a onclick="cancleFundingModal('${list.fundingCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right;" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal" data-toggle="modal">펀딩 취소 하기</a>
+         	</c:if>
+         	<c:if test="${list.fundState eq '펀딩취소' || list.fundState eq '펀딩실패'}">
+         			<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.fundState} 상태에서는 펀딩 취소 및 주소지 수정이 불가능합니다</p>
+             		<button onclick="movingDetailPageF()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
+         	</c:if>
          </div>
         </div>
         </div>
-        
         <script>
         var fundingCode;
 		function openFundingAdrChangeModal(oldAdr,fundingCode){
@@ -174,6 +188,9 @@
 			$("[name=fcCancle]").val(fundingCode)
 			$("#cancleFunding").submit()
 			alert('펀딩이 취소되었습니다')
+		}
+		function movingDetailPageF(){
+			location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
 		}
         </script>
       
@@ -221,7 +238,7 @@
             <c:choose>
              	<c:when test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
              		<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.orderCurr} 상태에서는 주문 취소 및 주소지 수정이 불가능합니다</p>
-             		<button class="MovedetailPage">상품 상세페이지로 이동하기</button>
+             		<button onclick="movingDetailPageO()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
              	</c:when>
 				<c:when test="${list.orderCurr eq '주문완료'}">
 					<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
@@ -254,6 +271,9 @@
 			$("#cancleOrder").submit()
 			alert('주문이 취소되었습니다')
 		}
+		function movingDetailPageO(){
+			location.href='/funfun/store.do?method=detail&sto_code='+${list.orderCode}
+		}
         </script>
 	</c:forEach>
 	</c:if>
@@ -268,9 +288,11 @@
 
 <form id="form2" style="display:none" action="/funfun/changeFundingAdr.do">
 	<input type="hidden" name="newAdr2">
-	<input type="hidden" name="fc">
+	<input type="hidden" name="fc">	
 	<input type="submit">
 </form>
+
+
 
 <form id="cancleOrder" style="display:none" action="/funfun/cancleOrder.do">
 	<input type="hidden" name="ocCancle">
