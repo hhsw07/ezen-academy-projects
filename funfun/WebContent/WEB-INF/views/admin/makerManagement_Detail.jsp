@@ -53,7 +53,8 @@
 					        		<th></th>
 					        		<td></td></tr>
 					        	<tr><th>메이커프로필</th>
-					        		<td><img src="${AdminMaker.maker_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'"/></td>
+					        		<td><img src="${AdminMaker.maker_profile}" 
+					        			onerror="this.src='${path }/template/assets/img/new_logo.png'"/></td>
 					        		<th>통장사본</th>
 					        		<td><img src="${AdminMaker.maker_bankbook}" onerror="this.src='${path }/template/assets/img/new_logo.png'"/></td></tr>
 					        </table>
