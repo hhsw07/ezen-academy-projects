@@ -55,6 +55,6 @@ public interface MainRepo {
 	
 	public NotificationInfo getProjectInfoLeft7DaysOrLessByProjectCode(int projectCode);
 	
-	
+	public ArrayList<OptCodeAndCnt> getStoreOptNoAndCnt(int memCode);
 
 }
