@@ -11,7 +11,11 @@ public class ProOption {
 	private int opt_delivery;
 	private int opt_max;
 	private String opt_deliver_date;
-	
+
+	public ProOption() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getOpt_code() {
 		return opt_code;
 	}
@@ -53,7 +57,7 @@ public class ProOption {
 	}
 	public void setOpt_delivery(int opt_delivery) {
 		this.opt_delivery = opt_delivery;
-	} 
+	}
 	public int getOpt_max() {
 		return opt_max;
 	}
@@ -66,6 +70,7 @@ public class ProOption {
 	public void setOpt_deliver_date(String opt_deliver_date) {
 		this.opt_deliver_date = opt_deliver_date;
 	}
+	
 	
 
 }

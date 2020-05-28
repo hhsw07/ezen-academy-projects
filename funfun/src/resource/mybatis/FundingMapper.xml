@@ -74,7 +74,7 @@
 		WHERE PRO_CODE = #{pro_code}
 	</select>
 	<!-- 선택옵션 -->
-	<select id="option" resultMap="proOptResult" parameterType="int">
+	<select id="option" resultType="projectOpt" parameterType="int">
 		SELECT * FROM PRO_OPTION
 		WHERE OPT_CODE = #{opt_code}
 	</select>
@@ -122,8 +122,6 @@
 		WHERE PRO_CODE = #{pro_code}
 	</update>
 	<!-- 펀딩하기 - 예치금 -->
-	<insert id="balance">
-		INSERT INTO BALANCE VALUES (BALANCE_SEQ.nextval, #{mem_code}, '사용', '펀딩하기', #{bal_amount}, current_date)
-	</insert>
+	
 	
 </mapper>

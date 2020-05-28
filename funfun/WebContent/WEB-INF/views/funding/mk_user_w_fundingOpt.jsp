@@ -20,11 +20,15 @@ ul {list-style: none;padding:0;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		console.log("옵션선택");
 		$("#funding").click(function(){
-			var opt_no = $("[name=optcode:checked]").val();
-			$("[name=opt_code]").val(opt_no);
+			console.log("버튼클릭");
+			var opt_no = $("[name=optcode]:checked").val();
+			//$("[name=opt_code]").val(opt_no);
+			console.log("옵션번호"+opt_no);
+			//$("form").attr("action", "${path}/funding.do?method=fund&opt_code="+opt_no);
+			//$("form").submit();
 			$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no);
-			$("form").submit();
 		});
 		
 	});
@@ -133,8 +137,6 @@ ul {list-style: none;padding:0;}
 					<p class="sub-text">펀딩해주시는 금액에 따라 감사의 의미로 리워드를 제공해 드립니다.</p>
 				</div>
 				<form method="post">
-				<input type="hidden" name="mem_code" value="${user.mem_code}"/>
-				<input type="hidden" name="pro_code" value="${project.pro_code}"/>
 				<input type="hidden" name="opt_code"/>
 				<div>
 					<ul>
@@ -147,7 +149,7 @@ ul {list-style: none;padding:0;}
 		                       			<span class="first-icon fa fa-circle-o"></span>
 		                        		<span class="second-icon fa fa-dot-circle-o"></span>
 		                        	</span>
-		                        	<input type="radio" value="" id="checkbox1" data-toggle="radio" name="optcode">
+		                        	<input type="radio" value="${opt.opt_code}" id="checkbox1" data-toggle="radio" name="optcode">
 								</label>
 								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩합니다.</p>
 								<p class="">${opt.opt_detail}</p>

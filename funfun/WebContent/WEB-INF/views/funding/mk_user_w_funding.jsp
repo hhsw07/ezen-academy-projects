@@ -51,22 +51,18 @@
 										<span class="option-cont">옵션-</span>
 										<span>마블 2</span>
 									</div>
-									<p class="sum"><em>수량 : 1개</em>168,000원</p>
+									<p class="sum"><em>수량 : 1개</em><fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원</p>
 								</div>
 							</div>
 						</div>
 						<div class="balance order-info">
 							<p class="order-infodt">보유 예치금 <p>
-							<span class="order-infodd"><span id="usablePoint">0</span>P</span>
+							<span class="order-infodd"><span id="usablePoint"><fmt:formatNumber type="number" maxFractionDigits="3" value="${user.mem_balance}"/></span>원</span>
 						</div>
 						<div class="order-info conf-info">
 							<div>
 								<p class="order-infodt">펀딩금액</p>
-								<p class="order-infodd"><span id="fundingPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/></span>원</p>
-							</div>
-							<div>
-								<p class="order-infodt">추가 후원금</p>
-								<p class="order-infodd">0원</p>
+								<p class="order-infodd"><span id="fundingPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/></span>원</p>
 							</div>
 							<div>
 								<p class="order-infodt">배송비</p>
@@ -74,7 +70,9 @@
 							</div>
 							<div class="total">
 								<p class="order-infodt">최종결제금액</p>
-								<p class="order-infodd"><input type="hidden" id="totalPrice" value="168000"><em id="totalPriceView">168,000</em>원</p>
+								<p class="order-infodd">
+									<input type="hidden" id="totalPrice" value="${option.opt_price+option.opt_delivery}"><em id="totalPriceView">
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price+option.opt_delivery}"/></em>원</p>
 							</div>
 						</div>
 					</div>
@@ -92,15 +90,15 @@
 							<div class="mem-info">
 								<div>
 									<p class="mem-info-tit">이름</p>
-									<p class="mem-info-txt">김길동</p>
+									<p class="mem-info-txt">${user.mem_name}</p>
 								</div>
 								<div>
 									<p class="mem-info-tit">이메일</p>
-									<p class="mem-info-txt">himan77@gmail.com</p>
+									<p class="mem-info-txt">${user.mem_email}</p>
 								</div>
 								<div class="supporter-phone-number">
 									<p class="mem-info-tit">휴대폰 번호</p>
-									<p class="mem-info-txt">01012345678</p>
+									<p class="mem-info-txt">${user.mem_phoneno}</p>
 								</div>
 							</div>
 						</div>

@@ -2,15 +2,14 @@ package funfun.vo;
 
 public class Deposit {
 	private String rddate;
-	private String amount;
+	private int chargeQueryAmount;
 	private String curr;
 	private String memEmail;
-	private String chargeQueryAmount;
 	
-	public String getChargeQueryAmount() {
+	public int getChargeQueryAmount() {
 		return chargeQueryAmount;
 	}
-	public void setChargeQueryAmount(String chargeQueryAmount) {
+	public void setChargeQueryAmount(int chargeQueryAmount) {
 		this.chargeQueryAmount = chargeQueryAmount;
 	}
 	public String getMemEmail() {
@@ -24,12 +23,6 @@ public class Deposit {
 	}
 	public void setRddate(String rddate) {
 		this.rddate = rddate;
-	}
-	public String getAmount() {
-		return amount;
-	}
-	public void setAmount(String amount) {
-		this.amount = amount;
 	}
 	public String getCurr() {
 		return curr;

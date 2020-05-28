@@ -18,10 +18,23 @@
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
+		function rdCharge(){
+			alert('신청이 완료되었습니다')
+			alert('충전이 완료되었습니다(입금확인 프로세스 미적용)')
+		}
+		function rdWithdrawl(){
+			var memBalance = ${clist.memBalance};
+			if(memBalance >= $("#wiAmount").val()){
+				alert('신청이 완료되었습니다')
+				alert('출금이 완료되었습니다(출금확인 프로세스 미적용)')
+				$("#wiForm").submit()
+			}else{
+				alert('보유금액이 부족합니다')
+			}
+		}
 		$(document).ready(function(){
 			var memBank = "${clist.memBank}";
-			$('#selectBox').val(memBank).prop("selected", true);
-
+			$("#selectBox").val(memBank).prop("selected", true);
 		})
 
 </script>
@@ -40,15 +53,15 @@
 						<div class="innerNav"><p class="navText txinner" id="infoM">계좌정보</p></div>
 					</div>
 					
-					<div style="height : 130px;margin-top:30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;padding:10px;">
+					<div style="height : 110px;margin-top:30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;padding:10px;">
 						<table class="moneyTable">
 						<tr><td colspan="2" style="text-align:center">${clist.memName}님의 예치금</td></tr>
 						<tr><td style="height:18px;"colspan="2"></td></tr>
-						<tr><td style="font-weight:bold;font-size:14px;">보유금액</td><td style="font-weight:bold;font-size:14px;text-align:right;">${clist.memBalance}원</td></tr>
-						<tr><td style="font-size:13px;">거래대기</td><td style="font-size:13px;text-align:right;width:120px;">100,000원</td></tr>
+						<tr><td style="font-weight:bold;font-size:14px;">보유금액</td><td style="font-weight:bold;font-size:14px;text-align:right;">
+						<fmt:formatNumber value = "${clist.memBalance}" type = "number" pattern = "#,###,###,###,###원"/>
+						</td></tr>
 						</table>
 					</div>
-				
 				</div>
 				
 				<!-- 예치금 충전 -->			
@@ -66,14 +79,16 @@
 			    	<form action="/funfun/myaccount.do/chargeQuery.do">
 			    	<input style="margin-top:15px;width:100%;height:40px;" class="ph" name="chargeQuery" placeholder="충전할 금액을 입력해주세요">
 			    	<div style="display:flex;margin-top:45px;">
-						<input style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="submit" value="신청하기">
+						<input onclick="rdCharge()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="submit" value="신청하기">
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
 			    	<table style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
-			    		<c:forEach var="rdlist" items="${rdlist}">
-			    		<tr><td>${rdlist.rddate}</td><td>${rdlist.amount}</td><td>${rdlist.curr}</td></tr>
+			    		<c:forEach var="list" items="${rdlist}">
+			    		<tr><td>${list.rddate}</td><td>
+			    		<fmt:formatNumber value = "${list.chargeQueryAmount}" type = "number" pattern = "#,###,###,###,###원"/>
+			    		</td><td>${list.curr}</td></tr>
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		</c:forEach>
 			    	</table>
@@ -84,7 +99,9 @@
 				<div id="withdrawlM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">예치금 출금</p>
 			    	<div style="display:flex;font-size:14px;margin-bottom:20px;">
-			    	<span style="font-size:14px;font-weight:bold;">출금 가능 금액</span><span style="width:80%;text-align:right;font-size:14px;font-weight:bold;">200,000원</span>
+			    	<span style="font-size:14px;font-weight:bold;">보유 금액</span><span style="width:80%;text-align:right;font-size:14px;font-weight:bold;">
+			    	<fmt:formatNumber value = "${clist.memBalance}" type = "number" pattern = "#,###,###,###,###원"/>
+			    	</span>
 			    	</div>
 			    	<table class="chargInfo">
 			    	<tr><td>출금은행</td><td class="secondTd">${clist.memBank}</td></tr>
@@ -92,23 +109,21 @@
 			    	<tr><td>예금주</td><td class="secondTd">${clist.memName}</td></tr>
 			    	</table>
 			    	<hr style="margin-bottom: 20px;">
-			    	
-			    	<input style="margin-top:15px;width:100%;height:40px;" class="ph" placeholder="출금할 금액을 입력해주세요">
+			    	<form id="wiForm" action="/funfun/myaccount.do/withdrawlQuery.do">
+			    	<input id="wiAmount" name="minusBal" style="margin-top:15px;width:100%;height:40px;" class="ph" placeholder="출금할 금액을 입력해주세요">
 			    	<div style="display:flex;margin-top:45px;">
-						<input style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="submit" value="신청하기">
+						<button onclick="rdWithdrawl()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="button">신청하기</button>
 			    	</div>
-			    	
+			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
 			    	<table style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
-			    		<tr><td>2020.05.2022:48</td><td>30,000원</td><td>출금완료</td></tr>
+			    		<c:forEach var="list" items="${wilist}">
+			    		<tr><td>${list.wiDate}</td><td>
+			    		<fmt:formatNumber value = "${list.minusBal}" type = "number" pattern = "#,###,###,###,###원"/>
+			    		</td><td>${list.wiCurr}</td></tr>
 			    		<tr><td colspan="3"><hr></td></tr>
-			    		<tr><td>2020.05.2022:48</td><td>30,000원</td><td>출금완료</td></tr>
-			    		<tr><td colspan="3"><hr></td></tr>
-			    		<tr><td>2020.05.2022:48</td><td>30,000원</td><td>출금완료</td></tr>
-			    		<tr><td colspan="3"><hr></td></tr>
-			    		<tr><td>2020.05.2022:48</td><td>30,000원</td><td>출금완료</td></tr>
-			    		<tr><td colspan="3"><hr></td></tr>
+			    		</c:forEach>
 			    	</table>
 			    	
 				</div>	
@@ -120,7 +135,9 @@
 			    	<table style="width:100%;margin:auto;text-align:center">
 			    		<tr><td colspan="4"><hr></td></tr>
 			    		<c:forEach var="list" items="${blist}">
-			    		<tr><td>${list.balDate}</td><td>${list.balAmount}원</td><td>${list.balHis}</td>
+			    		<tr><td>${list.balDate}</td><td>
+			    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
+			    		</td><td>${list.balHis}</td>
 			    		<td>
 			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:red;">입금</p></c:if>
 			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:blue;">출금</p></c:if>
@@ -137,18 +154,18 @@
 				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">계좌 정보 등록 및 수정</p>
 
-			    	<form>
+			    	<form action="/funfun/myaccount.do/chgAccountInfo.do">
 			    	<p style="margin-top:40px;font-weight:bold;"class="profile__img--title">은행 선택</p>
-			    	<select style="margin-top:5px;width:100%;height:40px;">
+			    	<select id="selectBox" name="bankName" style="margin-top:5px;width:100%;height:40px;">
 						    <option selected>은행선택</option>
-						    <option id="selectBox" name="bankName" value="신한은행">신한은행</option>
-						    <option id="selectBox" name="bankName" value="우리은행">우리은행</option>
-						    <option id="selectBox" name="bankName" value="농협은행">농협은행</option>
-						    <option id="selectBox" name="bankName" value="기업은행">기업은행</option>
-						    <option id="selectBox" name="bankName" value="산업은행">산업은행</option>
+						    <option value="신한은행">신한은행</option>
+						    <option value="우리은행">우리은행</option>
+						    <option value="농협은행">농협은행</option>
+						    <option value="기업은행">기업은행</option>
+						    <option value="산업은행">산업은행</option>
 					</select>
 					<p style="margin-top:30px;font-weight:bold;"class="profile__img--title">계좌 번호</p>
-			    	<input value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
+			    	<input name="memAccount" value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
 			    	<div style="display:flex;margin-top:40px;">
 							<button style="background-color:gray;color:white;" class="profile__cancle">취소</button>
 							<input style="background-color:orange;color:white;" class="profile__submit" type="submit" value="제출">
