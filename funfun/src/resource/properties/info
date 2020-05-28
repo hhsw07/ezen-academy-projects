@@ -5,5 +5,5 @@ user=ezen_team_2
 pass=123123
 
 #파일 업로드 위치 (컴퓨터마다 다릅니다.)
-upload=C:/img/org/
-tmpUpload=C:/img/tmp/
+upload=C:/funfun/funfun/WebContent/z01_upload
+tmpUpload=C:/funfun/funfun/WebContent/z01_temp
