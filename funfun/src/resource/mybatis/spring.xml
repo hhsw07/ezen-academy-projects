@@ -31,6 +31,7 @@
 		<typeAlias alias="balance" type="funfun.vo.Balance"/>
 		<typeAlias alias="deposit" type="funfun.vo.Deposit"/>
 		<typeAlias alias="proStoOptionJoin" type="funfun.vo.ProStoOptionJoin"/>
+		<typeAlias alias="wi" type="funfun.vo.Withdrawl"/>
 		
 	</typeAliases>
 	<mappers>

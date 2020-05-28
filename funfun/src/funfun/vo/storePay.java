@@ -5,7 +5,7 @@ import lombok.Setter;
 
 
 public class storePay {
-	private int pay_code;
+	private int sto_order_code;
 	private int sto_opt_code;
 	private int mem_code;
 	private int pay_cnt;
@@ -16,11 +16,12 @@ public class storePay {
 	private String pay_name;
 	private String pay_phone;
 	private String pay_ship_req;
-	public int getPay_code() {
-		return pay_code;
+	
+	public int getSto_order_code() {
+		return sto_order_code;
 	}
-	public void setPay_code(int pay_code) {
-		this.pay_code = pay_code;
+	public void setSto_order_code(int sto_order_code) {
+		this.sto_order_code = sto_order_code;
 	}
 	public int getSto_opt_code() {
 		return sto_opt_code;

@@ -16,4 +16,12 @@
 	<update id="UptMemBalance" parameterType="storePay">
 		update member set mem_balance = mem_balance - #{pay_price} where mem_code = #{mem_code}
 	</update>
+	
+	<select id="payCode" parameterType="int" resultType="int">
+		select max(sto_order_code) sto_order_code from store_order where mem_code = #{mem_code}
+	</select>
+	
+	<insert id="InsertBalance" parameterType="storePay">
+		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '스토어구매', #{sto_order_code}, #{pay_price}, CURRENT_date)
+	</insert>
 </mapper>

@@ -107,7 +107,9 @@ public class kb_Store_Controller {
 	public String payOrder(@ModelAttribute("storePay") storePay pay) {
 		service.payInsert(pay);
 		service.UptMemBalance(pay);
-		System.out.println("성공");
+		int pay_code = service.payCode(pay.getMem_code());
+		pay.setSto_order_code(pay_code);
+		service.InsertBalance(pay);
 		return "WEB-INF\\views\\Store\\kb_w_user_StorePayDone.jsp";
 	}
 	

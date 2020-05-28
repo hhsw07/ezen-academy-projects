@@ -7,9 +7,25 @@ public class MemberInfo {
 	String mem_profile;
 	String mem_pw;
 	String mem_favor;
+	int mem_balance;
+	String mem_phoneno;
 	int maker_code;
 	
 	
+	
+	
+	public int getMem_balance() {
+		return mem_balance;
+	}
+	public void setMem_balance(int mem_balance) {
+		this.mem_balance = mem_balance;
+	}
+	public String getMem_phoneno() {
+		return mem_phoneno;
+	}
+	public void setMem_phoneno(String mem_phoneno) {
+		this.mem_phoneno = mem_phoneno;
+	}
 	public int getMaker_code() {
 		return maker_code;
 	}
