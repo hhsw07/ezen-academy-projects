@@ -13,6 +13,7 @@ public class Funding {
 	private String fund_receiver; // 수령인
 	private String fund_state; // 상태
 	private String fund_rec_tel; // 수령인 연락처
+	private int fund_tot; // 최종 결제 금액
 	
 	private int pro_code; // 프로젝트번호
 	
@@ -93,6 +94,12 @@ public class Funding {
 	}
 	public void setFund_rec_tel(String fund_rec_tel) {
 		this.fund_rec_tel = fund_rec_tel;
+	}
+	public int getFund_tot() {
+		return fund_tot;
+	}
+	public void setFund_tot(int fund_tot) {
+		this.fund_tot = fund_tot;
 	}
 	
 	

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+<mapper namespace="funfun.repository.Sw_AdminMakerDao">
+	<resultMap type="AdminMaker" id="AdminMakerResult"/>
+	<!-- int AdminMakerCnt() 총 데이터 건수 -->
+	<select id="AdminMakerCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM maker
+		WHERE 1=1
+	</select>
+	
+	
+	<!-- ArrayList<AdminMaker> list(Paging sch) -->
+	<select id="list" resultMap="AdminMakerResult" parameterType="paging">
+		SELECT *
+		FROM (SELECT rownum cnt,a.*
+			  FROM maker a
+			  ORDER BY a.maker_code)
+		WHERE cnt BETWEEN #{start} AND #{end}
+	</select>
+	
+	
+	<!-- AdminMember detail(int mem_code) -->
+	<select id="detail" resultType="AdminMaker" parameterType="int">
+		select a.*, b.MAKER_CODE 
+		FROM MEMBER a, MAKER b
+		WHERE a.MEM_CODE = b.MEM_CODE(+)
+		and a.MEM_CODE = #{mem_code} 
+	</select>
+	<!-- void update(AdminMaker upt) -->
+	<update id="update" parameterType="AdminMaker">
+		UPDATE notice
+		SET noti_title = #{noti_title},
+			noti_detail = #{noti_detail},
+			noti_upt_date = CURRENT_DATE,
+			noti_ck = #{noti_ck},
+			admin_code = #{admin_code}
+		WHERE noti_code = #{noti_code}
+	</update>
+	<!-- void delete(int mem_code) -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM NOTICE 
+		WHERE noti_code = #{noti_code}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
