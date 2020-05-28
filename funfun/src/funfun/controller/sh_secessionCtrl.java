@@ -40,6 +40,7 @@ public class sh_secessionCtrl {
 			 
 		 }else {
 			 service.finalPrc(memEmail);
+			 session.invalidate();
 		 }
 		 
 		return "redirect:/main.do";

@@ -55,7 +55,7 @@
       </div>
 
 <!--하단 푸른 박스 -->
-      <div style="background-color: rgb(245, 247, 250); margin-top: -20px; min-height: 490px">
+      <div style="background-color: rgb(245, 247, 250); margin-top: -20px; min-height: 510px">
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
@@ -309,7 +309,8 @@
 	<input type="submit">
 </form>
 
-
+</div>
+</div>
 
 <!-- 주문 및 배송 조회 끝 -->
 
