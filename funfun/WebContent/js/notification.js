@@ -27,7 +27,7 @@
 							if(el.type==='project'){
 								tmp.link=window.location.origin+path+"/funding.do?method=detail&pro_code="+el.code;
 							} else if(el.type==='store'){
-								tmp.link=window.location.origin+path+"/store.do?method=detail&sto_code="+el.code;
+								tmp.link=window.location.origin+path+"/store.do?method=detail&sto_code="+el.code+"#sto_QnA_Div";
 							}
 							vm0.notiList.push(tmp);
 						})
