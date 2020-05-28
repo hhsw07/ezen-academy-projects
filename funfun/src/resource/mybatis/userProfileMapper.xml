@@ -12,7 +12,7 @@
  	
  	<update id="changeProfile" parameterType="userprofile">
 	    UPDATE member
-		SET MEM_PHONENO=#{memPhone,jdbcType=VARCHAR},MEM_ADDRESS=#{pay_addr,jdbcType=VARCHAR},MEM_POST=#{pay_zipcode,jdbcType=VARCHAR},MEM_FAVOR = #{memFavor}
+		SET MEM_PHONENO=#{memPhone,jdbcType=VARCHAR},MEM_ADDRESS=#{pay_addr,jdbcType=VARCHAR},MEM_POST=#{pay_zipcode,jdbcType=VARCHAR},MEM_FAVOR = #{memFavor}, mem_profile = #{memProfile}
 		WHERE MEM_EMAIL = #{memEmail,jdbcType=VARCHAR}
  	</update>
  	

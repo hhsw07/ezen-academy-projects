@@ -37,7 +37,7 @@
           <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  style="border:1px solid gray;padding:5px;" class="profile__img" src="${meminfo.memProfile}" alt="">
+          <img  style="border:1px solid gray;padding:5px;" class="profile__img" src="${path}/${meminfo.memProfile}" alt="">
           <table class="profile__times--table" style="position:relative;right:20px;margin-top:30px;">
             <tr><td class="profile__times--num" style="text-align:center;">${fundCnt}</td><td class="profile__times--num" style="text-align:center">${orderCnt}</td></tr>
             <tr><td class="profile__times--text" style="text-align:right;padding-left:33px;">펀딩</td><td class="profile__times--text" style="text-align:right;padding-left:35px;">주문</td></tr>

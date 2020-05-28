@@ -39,12 +39,41 @@
 			for(let i=0; i<memFavorArray.length; i++){
 				$("input:checkbox[value="+memFavorArray[i]+"]").prop("checked", true);
 			}
-		})
-		$(document).ready(function(){
+
+
 			$('.main').addClass('bounce');
 			setTimeout(()=>{
 				$('.main').removeClass('bounce');
 			},500);
+			var fileName;
+			$("input[type=file]").change(function () {
+	            
+	            var fileInput = document.getElementById("myImage");
+	            var files = fileInput.files;
+	            var file;
+
+	            for (var i = 0; i < files.length; i++) {
+	                
+	                file = files[i];
+	 
+	                fileName=file.name;
+	            }
+	            $("[name=memProfile]").val("z01_upload/"+fileName);
+	           
+	        });
+			function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#imgId').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#myImage").change(function() {
+                readURL(this);
+            });
 		})
 </script>
 </head>
@@ -60,11 +89,11 @@
 		    	
 		    	<!-- 이미지 -->
 		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST" enctype="multipart/form-data">
-		    	<img src="${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
+		    	<img src="${path}/${mlist.memProfile}" id="imgId" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 157px;margin-bottom:8px" class="profile__img"/>
 		    	<div style="text-align:center;margin-bottom:50px;">
 		    	<span onclick="changeImg()" class="profile__img-edit">바꾸기</span>
 		    	
-		    	<input style="display:none" type="file" class="custom-file-input" name="profileImg"/>
+		    	<input style="display:none" type="file" id="myImage" class="custom-file-input" name="profileImg"/>
 		    	
 		    	<span class="profile__img-edit">삭제</span>
 		    	</div>
@@ -176,6 +205,7 @@
 					
 					<div style="display:flex;margin-top:30px;">
 						<button type="button" class="profile__cancle">취소</button>
+						<input style="display:none;" type="hidden" name="memProfile">
 						<input class="profile__submit" type="submit" value="수정">
 		    		</div>
 	    		  	
