@@ -50,4 +50,14 @@ public class Sw_AdminMemberCtrl {
 		return "redirect:/AdminMember.do?method=admList";
 	}
 	
+	
+	@RequestMapping(params="method=excel")
+	public String excel(Model d) {
+		Paging sch = new Paging();
+		sch.setPageSize(service.AdminMemberCnt());
+		System.out.println("데이터 크기:"+service.list(sch).size());
+		d.addAttribute("memlist", service.list(sch));
+		//return "pageJsonReport"; // json 호출
+		return "excelViewer"; // View 호출
+	}
 }

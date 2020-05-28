@@ -15,6 +15,10 @@ public class Sw_AdminMemberService {
 	@Autowired(required=false)
 	private Sw_AdminMemberDao dao;
 	
+	public int AdminMemberCnt() {
+		return dao.AdminMemberCnt();
+	}
+	
 	public ArrayList<AdminMember> list(Paging sch){
 		/*
 		// 2. 페이징 처리

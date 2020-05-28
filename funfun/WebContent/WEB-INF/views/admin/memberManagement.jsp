@@ -107,8 +107,8 @@
 					<div class="memList">
 				        <table class="table table-hover memtable">
 				        	<col width="10%">
-				        	<col width="15%">
-				        	<col width="10%">
+				        	<col width="12%">
+				        	<col width="13%">
 				        	<col width="25%">
 				        	<col width="15%">
 				        	<col width="15%">
@@ -174,7 +174,10 @@
 					show += "	<td>"+AdminMember.mem_code+"</td>";
 					show += "	<td>"+AdminMember.mem_name+"</td>";
 					show += "	<td>"+AdminMember.mem_email+"</td>";
-					show += "	<td>"+AdminMember.mem_phoneno+"</td>";
+					var phone = ""+AdminMember.mem_phoneno;
+					if(phone == "null") phone="없음";
+					console.log("phone2:"+phone);
+					show += "	<td>"+phone+"</td>";
 					show += "	<td>"+AdminMember.mem_favor+"</td></tr>";
 				});
 				show += "<tr><td colspan='6'></td></tr>"
@@ -187,7 +190,9 @@
 		
 		
 		$(".excelBtn").click(function(){
-			alert("excel 파일 다운");
+			if(confirm("모든 회원의 정보를 excel로 다운받습니다.")){
+				$(location).attr("href","${path}/AdminMember.do?method=excel");
+			}
 		});
 		
 	})
