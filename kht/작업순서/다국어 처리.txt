@@ -1,3 +1,7 @@
+
+
+------ chrome 브라우저에서 언어 설정 하는 경우
+
 1. src/message/msg.properties 파일 생성
 
 mapping 시킬 key & value값
@@ -5,3 +9,27 @@ mapping 시킬 key & value값
 msg.properties
 msg_en.properties
 msg_ko.properties
+
+2. dispatcher-servlet
+
+	 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+
+3. Controller
+
+4. a06_multiLanguage.jsp
+
+
+
+------ 셀렉트 형식으로 언어 설정 하는 경우
+
+1. dispatcher-servlet
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+
+2. a06_multiLanguage.jsp
+
+	<select>
+
+3. Controller
+
+>>>>> 수업한 내용 마무리 해야 함

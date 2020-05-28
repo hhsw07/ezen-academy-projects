@@ -11,48 +11,9 @@ public class UserProfile {
 	private String memName;
 	private String memAccount;
 	private String memBank;
-	private String memBalance;
-	private String chargeQueryAmount;
-	
-	public String getChargeQueryAmount() {
-		return chargeQueryAmount;
-	}
-	public void setChargeQueryAmount(String chargeQueryAmount) {
-		this.chargeQueryAmount = chargeQueryAmount;
-	}
-	public void setMemBalance(String memBalance) {
-		this.memBalance = memBalance;
-	}
-	public String getMemBalance() {
-		return memBalance;
-	}
-	public void setMembalance(String membalance) {
-		this.memBalance = membalance;
-	}
-	public String getMemName() {
-		return memName;
-	}
-	public void setMemName(String memName) {
-		this.memName = memName;
-	}
-	public String getMemAccount() {
-		return memAccount;
-	}
-	public void setMemAccount(String memAccount) {
-		this.memAccount = memAccount;
-	}
-	public String getMemBank() {
-		return memBank;
-	}
-	public void setMemBank(String memBank) {
-		this.memBank = memBank;
-	}
-	public String getMemFavor() {
-		return memFavor;
-	}
-	public void setMemFavor(String memFavor) {
-		this.memFavor = memFavor;
-	}
+	private int memBalance;
+	private int chargeQueryAmount;
+	private int minusBal;
 	public String getMemEmail() {
 		return memEmail;
 	}
@@ -89,6 +50,48 @@ public class UserProfile {
 	public void setMemPost(String memPost) {
 		this.memPost = memPost;
 	}
-
+	public String getMemFavor() {
+		return memFavor;
+	}
+	public void setMemFavor(String memFavor) {
+		this.memFavor = memFavor;
+	}
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+	public String getMemAccount() {
+		return memAccount;
+	}
+	public void setMemAccount(String memAccount) {
+		this.memAccount = memAccount;
+	}
+	public String getMemBank() {
+		return memBank;
+	}
+	public void setMemBank(String memBank) {
+		this.memBank = memBank;
+	}
+	public int getMemBalance() {
+		return memBalance;
+	}
+	public void setMemBalance(int memBalance) {
+		this.memBalance = memBalance;
+	}
+	public int getChargeQueryAmount() {
+		return chargeQueryAmount;
+	}
+	public void setChargeQueryAmount(int chargeQueryAmount) {
+		this.chargeQueryAmount = chargeQueryAmount;
+	}
+	public int getMinusBal() {
+		return minusBal;
+	}
+	public void setMinusBal(int minusBal) {
+		this.minusBal = minusBal;
+	}
+	
 
 }

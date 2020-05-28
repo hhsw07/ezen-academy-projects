@@ -30,6 +30,7 @@
 		<typeAlias alias="AdminMember" type="funfun.vo.AdminMember"/>
 		<typeAlias alias="balance" type="funfun.vo.Balance"/>
 		<typeAlias alias="deposit" type="funfun.vo.Deposit"/>
+		<typeAlias alias="proStoOptionJoin" type="funfun.vo.ProStoOptionJoin"/>
 		
 	</typeAliases>
 	<mappers>

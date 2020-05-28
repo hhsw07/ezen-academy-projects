@@ -100,6 +100,13 @@ details > summary::-webkit-details-marker {
 }
 
 
+.optUnitIntro{
+	text-align:center;
+	color:#787878;
+	font-weight:900;
+	font-size:20px;
+	padding:0px 0px 10px 0px;
+}
 
 .optUnitPrice{
 	margin:10px 0px 10px 0;

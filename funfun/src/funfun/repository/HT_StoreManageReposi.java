@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Repository;
 
 import funfun.vo.ProOption;
+import funfun.vo.ProStoOptionJoin;
 import funfun.vo.Store;
 import funfun.vo.storeOption;
 import funfun.vo.storeOrder;
@@ -22,4 +23,5 @@ public interface HT_StoreManageReposi {
 	public ArrayList<ProOption> getProOptList(int pro_code);
 	public void stoOptUnitReg(storeOption sto);
 	public void storeOpenRegConfirm(int sto_code);
+	public ArrayList<ProStoOptionJoin> getProStoOptionJoinList(int pro_code);
 }

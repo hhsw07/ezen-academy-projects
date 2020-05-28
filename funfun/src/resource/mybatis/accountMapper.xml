@@ -17,26 +17,56 @@
 		SELECT mem_balance memBalance, MEM_ACCOUNT memAccount, MEM_BANK memBank, MEM_NAME memName FROM MEMBER WHERE MEM_EMAIL = #{memEmail}
  	</select>
  	
+ 	<insert id="uptDepoBalanceTb" parameterType="userprofile">
+ 	INSERT INTO balance values(balance_seq.nextval,(SELECT MEM_CODE FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),'입금','deposit',#{chargeQueryAmount},sysdate)
+ 	</insert>
+ 	
+ 	<insert id="uptWithBalanceTb" parameterType="userprofile">
+ 	INSERT INTO balance values(balance_seq.nextval,(SELECT MEM_CODE FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),'출금','withdrawl',#{minusBal},sysdate)
+ 	</insert>
+ 	
+ 	<update id="chgAccountInfo" parameterType="userprofile">
+ 	UPDATE member
+	SET mem_bank = #{memBank}, mem_account=#{memAccount}
+	WHERE MEM_EMAIL = #{memEmail}
+ 	</update>
+	
+	<insert id="insDeposit" parameterType="deposit">
+	    INSERT INTO DEPOSIT (RD_CODE,MEM_CODE,RD_AMOUNT,RD_DATE,RD_CURR) 
+		values(deposit_seq.nextval,(SELECT MEM_CODE FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),#{chargeQueryAmount,jdbcType=NUMERIC},sysdate,'입금완료')
+ 	</insert>
+ 	
+ 	<insert id="insWithdrawl" parameterType="wi">
+	    INSERT INTO WITHDRAWL values(WITHDRAWL_seq.nextval,
+		(SELECT mem_code FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),
+		#{minusBal},sysdate,'출금완료')
+ 	</insert>
+
+ 	<resultMap type="deposit" id="depositResult"/>
+ 	<select id="rdlist" resultMap="depositResult" parameterType="deposit">
+		SELECT m.MEM_EMAIL memEmail, d.rd_amount chargeQueryAmount, d.RD_DATE rddate, d.RD_CURR curr FROM DEPOSIT d LEFT JOIN MEMBER m ON m.MEM_CODE = d.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail}
+ 	</select>
+ 	
+ 	<resultMap type="wi" id="wiResult"/>
+ 	<select id="wilist" resultMap="wiResult" parameterType="wi">
+		SELECT w.WI_CURR wiCurr,w.wi_date wiDate, w.wi_amount minusBal, m.MEM_EMAIL memEmail FROM withdrawl w LEFT JOIN MEMBER m ON w.mem_code = m.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail}
+ 	</select>
+ 	
  	<update id="chargeQuery" parameterType="userprofile">
 	    UPDATE MEMBER
-		SET MEM_BALANCE = MEM_BALANCE + #{chargeQueryAmount,jdbcType=NUMERIC}
+	    <if test="#{memBalance} != null">
+		SET MEM_BALANCE = MEM_BALANCE + #{chargeQueryAmount}
+		</if>
+		<if test="#{memBalance} == null">
+		SET MEM_BALANCE = 0 + #{chargeQueryAmount}
+		</if>
 		WHERE MEM_EMAIL = #{memEmail}
  	</update>
-	
-	<update id="uptBalance" parameterType="userprofile">
+ 	
+ 	<update id="minusBal" parameterType="userprofile">
 	    UPDATE MEMBER
-		SET MEM_BALANCE = MEM_BALANCE + #{chargeQueryAmount,jdbcType=NUMERIC}
+		SET MEM_BALANCE = MEM_BALANCE - #{minusBal}
 		WHERE MEM_EMAIL = #{memEmail}
  	</update>
-	
- 	<!--<insert id="uptDeposit" parameterType="deposit">
-	    
- 	</insert>
- 	-->
- 	<resultMap type="deposit" id="depositResult"/>
- 	<select id="rdlist" resultMap="depositResult" 
- 		parameterType="deposit">
-		SELECT m.MEM_EMAIL memEmail, d.rd_amount amount, d.RD_DATE rddate, d.RD_CURR curr FROM DEPOSIT d LEFT JOIN MEMBER m ON m.MEM_CODE = d.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail}
- 	</select>
  	
 </mapper>	
