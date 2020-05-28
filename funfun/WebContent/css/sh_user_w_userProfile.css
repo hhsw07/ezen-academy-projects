@@ -170,6 +170,10 @@ label {
   padding-left: 13px;
 }
 
+.txinner {
+  color: #383737;
+}
+
 .txinner:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -201,5 +205,16 @@ label {
   font-weight: bold;
   position: relative;
   top: 5px;
+}
+
+#chargeM, #withdrawlM, #usingM, #infoM {
+  padding-top: 9px;
+  padding-bottom: 7px;
+}
+
+#chargeM {
+  padding-top: 9px;
+  padding-bottom: 7px;
+  background-color: rgba(255, 151, 5, 0.5);
 }
 /*# sourceMappingURL=sh_user_w_userProfile.css.map */
