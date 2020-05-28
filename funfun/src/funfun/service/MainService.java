@@ -12,6 +12,7 @@ import funfun.vo.FavorCodeList;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
+import funfun.vo.MyOrderInfo;
 import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
 
@@ -43,9 +44,9 @@ public class MainService {
 	
 	public MemberInfo getMemberInfo(String email) {
 		
-		//이름, 멤버코드, 이메일주소 가져옴
+		//이름, 멤버코드, 이메일주소, balance, phoneno 가져옴
 		MemberInfo memberInfo=repo.getMemberInfo(email);
-		System.out.println("서비스프로필"+memberInfo.getMem_profile());
+		System.out.println("멤버밸런스"+memberInfo.getMem_balance());
 		// count로 메이커인지 아닌지 확인 카운트 0-> 메이커아님, 카운트1->메이커
 		boolean isMaker=(repo.isMaker(memberInfo.getMem_code())==1)? true:false;
 		if(isMaker) {
@@ -150,6 +151,12 @@ public class MainService {
 		}
 		return tmp;
 	}
+	
+//	public ArrayList<MyOrderInfo> getMyOrderList(String email){
+//		int memCode=repo.getMemCodeByEmail(email);
+//		
+//		return new ArrayList<MyOrderInfo>();
+//	}
 	
 	
 }
