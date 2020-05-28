@@ -12,7 +12,18 @@ public class AdminProject {
 	private int maker_code;
 	private Date pro_reg_date;
 	private Date pro_sub_date;
-	private String 
+	private String pro_title;
+	private String cate_title;
+	private int pro_target;
+	private Date pro_start_date;
+	private Date pro_finish_date;
+	private String pro_image;
+	private String pro_story;
+	private String pro_docu;
+	private String pro_keyword;
+	private String pro_curr;
+	private int pro_money;
+	private String pro_agree;
 	
 	
 	
