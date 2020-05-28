@@ -145,4 +145,12 @@ public class KB_StoreService {
 	public void UptCurr(RewardStore rs) {
 		dao.UptCurr(rs);
 	}
+	
+	public int payCode(int mem_code) {
+		return pay_dao.payCode(mem_code);
+	}
+	
+	public void InsertBalance(storePay pay) {
+		pay_dao.InsertBalance(pay);
+	}
 }
