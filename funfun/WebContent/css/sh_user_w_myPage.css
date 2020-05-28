@@ -332,4 +332,9 @@ body {
   margin-top: 20px;
   font-weight: bold;
 }
+
+.CancelText {
+  position: relative;
+  top: 3px;
+}
 /*# sourceMappingURL=sh_user_w_myPage.css.map */
