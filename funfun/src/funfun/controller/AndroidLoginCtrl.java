@@ -24,6 +24,7 @@ import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
+import funfun.vo.MyOrderInfo;
 
 @Controller
 public class AndroidLoginCtrl {
@@ -116,12 +117,12 @@ public class AndroidLoginCtrl {
 	}
 	
 	//주문리스트 정보 가져오기
-	@RequestMapping(value="/getMyOrderList.do")
-	public ResponseEntity getMyOrderList(@RequestParam String email) {
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-		ArrayList<MyOrderInfo> list = service.getMyOrderList(email);
-		String result="";
-		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
-	}
+//	@RequestMapping(value="/getMyOrderList.do")
+//	public ResponseEntity getMyOrderList(@RequestParam String email) {
+//		HttpHeaders responseHeaders = new HttpHeaders();
+//		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+//		ArrayList<MyOrderInfo> list = service.getMyOrderList(email);
+//		String result="";
+//		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+//	}
 }
