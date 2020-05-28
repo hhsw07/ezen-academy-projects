@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import funfun.service.HT_ProjectRegService;
+import funfun.util.Uploader;
 import funfun.vo.MakerStudio;
 import funfun.vo.MemberInfo;
 import funfun.vo.ProOption;
@@ -83,12 +86,19 @@ public class HT_ProjectRegCtrl {
 	}
 
 	@RequestMapping(params="method=basicInfoReg")
-	public String proRegBasicInfoReg(HttpServletRequest request, Model d, Project cre) {
+	public String proRegBasicInfoReg(HttpServletRequest request, Model d, Project cre, @RequestParam("projectImg") MultipartFile[] projectImg) {
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		int projectCode = (int)session.getAttribute("projectCode");
+		
+		Uploader uploader;
+		uploader = new Uploader();
+		String proImageAddress = uploader.upload(projectImg[0]);
+		
 		cre.setPro_code(projectCode);
+		cre.setPro_image(proImageAddress);
 		service.proBasicInfo(cre);
+		
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";

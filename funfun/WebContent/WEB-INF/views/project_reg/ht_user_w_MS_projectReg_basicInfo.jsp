@@ -52,6 +52,7 @@
 			event.preventDefault();
 		} );
 	} );	
+	
 </script>
 </head>
 <body>
@@ -64,12 +65,10 @@
  	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
  
  
-	<form id="basicInfoForm" action="${path}/ProjectReg.do">
+	<form id="basicInfoForm" enctype="multipart/form-data" action="${path}/ProjectReg.do">
 
 	<input type="hidden" name="method" value="basicInfoReg"/>
-	<input type="hidden" name="pro_image" value="xxx.png"/>
-
-
+	
   	<div class="col-sm-10" style="padding-left:30px;">
   	
   	<h3 style="font-weight:bolder">기본 정보</h3>
@@ -85,20 +84,27 @@
 	
 	<span class="reg_content_title">프로젝트 제목 *</span><br><br>
 
-    <input type="text" name="pro_title" value="" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" />
+    <input type="text" name="pro_title" value="" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" required/>
 	
 	
 	<br><br>
 
 	<span class="reg_content_title">목표 금액 *</span><br><br>
 
-    <input type="text" name="pro_target" value="" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" />
+ 
+    <input type="text" name="pro_target" value="" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" required/>
 
 	<br><br>	
 	
 	<span class="reg_content_title">대표 이미지 *</span><br><br>
 
-	<button class="btn btn-warning">대표 이미지 업로드</button>
+	<input type="file" name="projectImg" accept=".gif, .jpg, .png" style="display:none;"/>
+	<button class="btn btn-warning btn_custom" >스토어 이미지 업로드</button>
+	 
+	
+	<br><br>
+	
+	<span class="sub_gray_font">&nbsp&nbsp&nbsp&nbsp&nbsp GIF, JPG, PNG 파일만 등록 가능합니다.</span>
 	
 	<br><br><br>
 	
@@ -118,20 +124,20 @@
 	
 	<span class="reg_content_title">프로젝트 시작 예정일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" id="startDate" class="form-control" style="width:60%;" >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" id="startDate" class="form-control" style="width:60%;" required >
 	
 	<br><br>
 	
 	<span class="reg_content_title">프로젝트 종료일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" id="finishDate" class="form-control" style="width:60%;" >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" id="finishDate" class="form-control" style="width:60%;" required >
 
     	
 	<br><br>
 	
 	<span class="reg_content_title">검색용 태그 *</span><br><br>
 
-    <input type="text" name="pro_keyword" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" />
+    <input type="text" name="pro_keyword" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" required />
 	
 
 	<br><br><br><br>
@@ -147,7 +153,6 @@
   	</div>
 
 	</form>
-
 
 	</div>
 	        

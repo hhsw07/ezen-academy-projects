@@ -63,10 +63,9 @@ public class sh_profileEditCtrl {
 			System.out.println("파일업로드처리");
 			String result = uploader.upload(profileImg[0]);
 			System.out.println(result);
-			return "";
 		}
 		 
-		return "redirect:/profileEdit.do";
+		return "redirect:/mypage.do";
 	}
 	
 }
