@@ -9,13 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Uploader {
 	
-	@Value("${upload}")
-	private String upload; // 저장위치
+	private String upload="C:/funfun/funfun/WebContent/z01_upload/"; // 저장위치
+	private String tmpUpload="C:/funfun/funfun/WebContent/z01_temp/"; // 임시저장위치
 	
-	@Value("${tmpUpload}")
-	private String tmpUpload; // 임시저장위치
-	
-	private String upload(MultipartFile file) {
+	public String upload(MultipartFile file) {
 		String fileName=file.getOriginalFilename();
 		if(fileName!=null&&!fileName.equals("")) {
 			try {
@@ -24,7 +21,6 @@ public class Uploader {
 				
 				file.transferTo(tmpFile);
 				File orgFile = new File(upload+fileName);
-				System.out.println(upload+fileName);
 				Files.copy(tmpFile.toPath(), orgFile.toPath());
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
@@ -33,7 +29,7 @@ public class Uploader {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String result="/z01/"+fileName;
+			String result="/z01_upload/"+fileName;
 			return result;
 		} else {
 			return "";
