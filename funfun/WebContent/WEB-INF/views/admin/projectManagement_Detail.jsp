@@ -27,7 +27,7 @@
             <main>
 			<div class="main">
 			    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-			        <div class="memtitle" style="margin:150px 0 30px;">
+			        <div class="protitle" style="margin:150px 0 30px;">
 				        <h2>회원 상세보기</h2>
 				    </div>
 			        <div>
@@ -37,25 +37,38 @@
 					        	<col style="width:30%">
 					        	<col style="width:20%">
 					        	<col style="width:30%">
-					        	<!-- // 회원번호, 회원이메일, 회원이름, 회원휴대폰번호,
-									// 회원관심카테고리, 회원 프로필 이미지, 회원상태(제제여부),
-									// 회원계좌은행, 회원 계좌번호, 회원 보유 예치금
-									// 메이커유무, 펀딩기록, 구매기록 -->
-					        	<tr><th>회원번호</th>
-					        		<td><input type="hidden" name="mem_code" value="${AdminMember.mem_code}"/>${AdminMember.mem_code}</td>
-					        		<th>이메일</th>
-					        		<td>${AdminMember.mem_email}</td></tr>
+					        	<!-- 프로젝트 번호, 프로젝트명, 목표금액, 마감기한, 카테고리, 프로젝트상태, -->
+					        	<!-- 펀딩금액, 메이커이름(코드),  -->
+					        	<tr><th>프로젝트 번호</th>
+					        		<td><input type="text" name="pro_code" value="${AdminProject.pro_code}" readonly/></td>
+					        		<th>프로젝트명</th>
+					        		<td><input type="text" name="pro_title" value="${AdminProject.pro_title}" readonly/></td></tr>
+					        		
+					        	<tr><th>목표금액</th>
+					        		<td><input type="text" name="" value="${AdminProject.pro_target}" readonly/></td>
+					        		<th>마감기한</th>
+					        		<td><input type="text" name="" value="${AdminProject.pro_finish_date}" readonly/></td></tr>
+					        	<tr><th>카테고리</th>
+					        		<td><input type="text" name="" value="${AdminProject.cate_title}" readonly/></td>
+					        		<th>프로젝트상태</th>
+					        		<td><input type="text" name="" value="${AdminProject.pro_curr}" readonly/></td></tr>
+					        	<tr><th>펀딩금액</th>
+					        		<td><input type="text" name="" value="${AdminProject.pro_money}" readonly/></td>
+					        		<th>메이커명(번호)</th>
+					        		<td><input type="text" value="${AdminProject.mem_name}(${AdminProject.mem_code})" readonly/></td></tr>
+					        		
+					        	<!-- 
 					        	<tr><th>이름</th>
-					        		<td>${AdminMember.mem_name}</td>
+					        		<td>${AdminProject.mem_name}</td>
 					        		<th>휴대폰번호</th>
-					        		<td>${not empty AdminMember.mem_phoneno?AdminMember.mem_phoneno:"없음"}</td></tr>
-					        	<tr><th rowspan="2">프로필</th>
-					        		<td rowspan="2"><img src="${AdminMember.mem_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'" style="width:90px; height:90px;"/></td>
+					        		<td>${not empty AdminProject.mem_phoneno?AdminProject.mem_phoneno:"없음"}</td></tr>
+					        	<tr><th>프로필</th>
+					        		<td><img src="${AdminProject.mem_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'" style="width:90px; height:90px;"/></td>
 					        		<th>관심 카테고리</th>
-					        		<td>${AdminMember.mem_favor}</td></tr>
+					        		<td>${AdminProject.mem_favor}</td></tr>
 					        	<tr><th>회원상태</th>
-					        		<td><c:if test="${not empty AdminMember.mem_curr}">제재 회원<br>(${AdminMember.mem_curr})</c:if>
-					        			<c:if test="${empty AdminMember.mem_curr}" >일반 회원</c:if>
+					        		<td><c:if test="${not empty AdminProject.mem_curr}">제재 회원<br>(${AdminProject.mem_curr})</c:if>
+					        			<c:if test="${empty AdminProject.mem_curr}" >일반 회원</c:if>
 					        		</td></tr>
 					        	<tr><th>계좌은행</th>
 					        		<td>${not empty AdminMember.mem_bank?AdminMember.mem_bank:"없음"}</td>
@@ -65,6 +78,7 @@
 					        		<td><fmt:formatNumber pattern="###,###" value="${AdminMember.mem_balance}"/></td>
 					        		<th>메이커유무</th>
 					        		<td>${AdminMember.maker_code == 0?"일반회원":"메이커회원"}</td></tr>
+					        	-->
 					        </table>
 				        </form>
 				    </div>

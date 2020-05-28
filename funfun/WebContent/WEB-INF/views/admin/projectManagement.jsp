@@ -17,8 +17,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
-	div {cursor:default;}
-	.sctable td {cursor:pointer;}
+	div {cursor:default; word-break: break-word;}
+	.protable td {cursor:pointer;}
 	.text-right{text-align:right;}
 	.text-left{text-align:left;}
 	.text-center{text-align:center;}
@@ -84,8 +84,8 @@
         <%@ include file="/adminTemplate/leftSidebar.jsp" %>
         <div id="layoutSidenav_content">
             <div class="main">
-			    <div class="container tim-container AdminMemberList" style="max-width:1200px;">
-			        <div class="memtitle" style="margin:150px 0 30px;">
+			    <div class="container tim-container AdminProjectList" style="max-width:1200px;">
+			        <div class="protitle" style="margin:150px 0 30px;">
 				        <h2>프로젝트 목록</h2>
 				    </div>
 			    	<form method="post">
@@ -103,20 +103,20 @@
 					</form>
 					<div class="proList">
 				        <table class="table table-hover protable">
-				        	<col width="10%">
-				        	<col width="10%">
-				        	<col width="25%">
-				        	<col width="15%">
-				        	<col width="10%">
-				        	<col width="15%">
-				        	<col width="15%">
+				        	<col width="8%">
+				        	<col width="13%">
+				        	<col width="28%">
+				        	<col width="12%">
+				        	<col width="13%">
+				        	<col width="14%">
+				        	<col width="12%">
 				        	<tr><th class="text-center">번호</th>
-				        		<th>프로젝트번호</th>
+				        		<th>프로젝트 번호</th>
 				        		<th>프로젝트명</th>
 				        		<th>목표금액</th>
 				        		<th>마감기한</th>
 				        		<th>카테고리</th>
-				        		<th>프로젝트 상태</th></tr>
+				        		<th>상태</th></tr>
 				        </table>
 					</div>
 			        <div class="text-center">
@@ -154,26 +154,24 @@
 		// ajax
 		$.ajax({
 			type:"post",
-			url:"${path}/AdminMember.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
+			url:"${path}/AdminProject.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
 			dataType:"json",
 			success:function(data){
 				var list = data.list;
 				var show = $(".protable").html();
-				$.each(list,function(idx,AdminMember){
-					show += "<tr onclick='javascript:go("+AdminMember.mem_code+")'";
-					if(AdminMember.mem_curr != null ){
-						show += "class='dropColor'"
-					}
-					show += ">";
-					show += "	<td class='text-center'>"+AdminMember.cnt+"</td>";
-					show += "	<td>"+AdminMember.mem_code+"</td>";
-					show += "	<td>"+AdminMember.mem_name+"</td>";
-					show += "	<td>"+AdminMember.mem_email+"</td>";
-					show += "	<td>"+AdminMember.mem_phoneno+"</td>";
-					show += "	<td>"+AdminMember.mem_favor+"</td></tr>";
+				$.each(list,function(idx,AdminProject){
+					show += "<tr onclick='javascript:go("+AdminProject.pro_code+")' >";
+					show += "	<td class='text-center'>"+AdminProject.cnt+"</td>";
+					show += "	<td>"+AdminProject.pro_code+"</td>";
+					show += "	<td>"+AdminProject.pro_title+"</td>";
+					var target = numberWithCommas(AdminProject.pro_target);
+					show += "	<td class='text-right'>"+target+"</td>";
+					show += "	<td>"+AdminProject.pro_finish_date+"</td>";
+					show += "	<td>"+AdminProject.cate_title+"</td>";
+					show += "	<td>"+AdminProject.pro_curr+"</td></tr>";
 				});
-				show += "<tr><td colspan='6'></td></tr>"
-				$(".memtable").html(show);
+				show += "<tr><td colspan='7'></td></tr>"
+				$(".protable").html(show);
 			},
 			error:function(err){
 				console.log("에러:"+err);
@@ -190,5 +188,8 @@
 		$("[name=curPage]").val(no);
 		$("form").submit();
 	}
+	function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 </html>
