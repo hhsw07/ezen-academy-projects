@@ -113,7 +113,7 @@
 	<!-- 펀딩하기 -->
 	<insert id="funding" parameterType="funding">
 		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, #{fund_price}, 
-		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩참여', #{fund_rec_tel})
+		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩완료', #{fund_rec_tel})
 	</insert>
 	<!-- 펀딩하기 - 프로젝트 현재 펀딩 금액 변경 -->
 	<update id="uptMoney" parameterType="funding">
@@ -122,6 +122,8 @@
 		WHERE PRO_CODE = #{pro_code}
 	</update>
 	<!-- 펀딩하기 - 예치금 -->
-	
+	<insert id="useBalance" parameterType="balance">
+		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '펀딩', #{fund_code}'사용', #{fund_price}, current_date)
+	</insert>
 	
 </mapper>

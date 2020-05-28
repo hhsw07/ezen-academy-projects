@@ -15,6 +15,7 @@
 </style>
 <script>
 	$(document).ready(function(){
+		console.log("프로젝트 번호:"+$("[name=pro_code]").val());
 		$("#funding").click(function(){
 			alert("펀딩완료되었습니다");
 			$("form").submit();
@@ -41,6 +42,12 @@
 	    	</div> --%>
 	    	<div class="funding-page">
 	    		<form name="fundingForm" method="post" action="${path}/funding.do?method=funding">
+	    			<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+	    			<input type="hidden" name="pro_code" value="${project.pro_code}"/>
+	    			<input type="hidden" name="opt_code" value="${option.opt_code}"/>
+	    			<input type="hidden" name="opt_cnt" value="1"/>
+	    			<input type="hidden" name="fund_opt_detail" value=""/>
+	    			
 	    			<div class="funding-wrap">
 						<div class="order-list" data-choiced-legnth="1">
 							<div class="order-cont">
@@ -71,7 +78,7 @@
 							<div class="total">
 								<p class="order-infodt">최종결제금액</p>
 								<p class="order-infodd">
-									<input type="hidden" id="totalPrice" value="${option.opt_price+option.opt_delivery}"><em id="totalPriceView">
+									<input type="hidden" name="fund_price" value="${option.opt_price+option.opt_delivery}"><em id="totalPriceView">
 									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price+option.opt_delivery}"/></em>원</p>
 							</div>
 						</div>
