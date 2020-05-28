@@ -16,12 +16,12 @@
 <link rel="stylesheet" href="${path }/css/shakeAndBounce.css" />
 
 <script>
-	$(document).ready(function(){
-		$('.main').addClass('bounce');
-		setTimeout(()=>{
-			$('.main').removeClass('bounce');
-		},500);
-	})
+$(document).ready(function(){
+	$('.main').addClass('bounce');
+	setTimeout(()=>{
+		$('.main').removeClass('bounce');
+	},500);
+})
 </script>
 </head>
 <body>

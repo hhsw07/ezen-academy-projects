@@ -40,6 +40,12 @@
 				$("input:checkbox[value="+memFavorArray[i]+"]").prop("checked", true);
 			}
 		})
+		$(document).ready(function(){
+			$('.main').addClass('bounce');
+			setTimeout(()=>{
+				$('.main').removeClass('bounce');
+			},500);
+		})
 </script>
 </head>
 <body>
@@ -57,7 +63,9 @@
 		    	<img src="${mlist.memProfile}" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 210px;margin-bottom:8px" src="" class="profile__img"/>
 		    	<div style="text-align:center;margin-bottom:50px;">
 		    	<span onclick="changeImg()" class="profile__img-edit">바꾸기</span>
-		    	<input style="display:none" type="file" name="profileImg"/>
+		    	
+		    	<input style="display:none" type="file" class="custom-file-input" name="profileImg"/>
+		    	
 		    	<span class="profile__img-edit">삭제</span>
 		    	</div>
 		    	
