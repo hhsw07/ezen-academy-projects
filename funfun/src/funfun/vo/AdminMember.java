@@ -25,7 +25,6 @@ public class AdminMember {
 	private int maker_code;
 	
 	
-	
 
 	public int getCnt() {
 		return cnt;

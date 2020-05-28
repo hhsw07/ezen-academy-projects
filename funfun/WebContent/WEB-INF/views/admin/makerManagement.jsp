@@ -75,7 +75,7 @@
 	  border: 0;
 	  color: #FFFFFF;
 	  padding: 7px 13px; }
-	
+	.dropcolor {background-color:lightcoral;}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -90,7 +90,7 @@
 				    </div>
 			    	<form method="post">
 				    	<input type="hidden" name="curPage" value="${paging.curPage}"/>
-				    	<input type="hidden" name="pro_code"/>
+				    	<input type="hidden" name="maker_code"/>
 				    	<div class="row">
 				        	<div class="text-left col-sm-3 ">총건수 : ${paging.count}건</div> 
 				        	<div class="text-right col-sm-9">페이지수 : 
@@ -103,20 +103,26 @@
 					</form>
 					<div class="proList">
 				        <table class="table table-hover protable">
-				        	<col width="8%">
-				        	<col width="13%">
-				        	<col width="28%">
-				        	<col width="12%">
-				        	<col width="13%">
-				        	<col width="14%">
-				        	<col width="12%">
+				        	<col width="10%">
+				        	<col width="15%">
+				        	<col width="30%">
+				        	<col width="10%">
+				        	<col width="15%">
 				        	<tr><th class="text-center">번호</th>
-				        		<th>프로젝트 번호</th>
-				        		<th>프로젝트명</th>
-				        		<th>목표금액</th>
-				        		<th>마감기한</th>
-				        		<th>카테고리</th>
-				        		<th>상태</th></tr>
+				        		<th>메이커번호</th>
+				        		<th>메이커명</th>
+				        		<th>구분</th>
+				        		<th>회원명</th></tr>
+				        	<c:forEach var="maker" items="${list}">
+				        		<tr onclick='javascript:go(${maker.maker_code})' 
+				        			${not empty maker.maker_curr?"class='dropcolor'":"" }>
+									<td class='text-center'>${maker.cnt}</td>
+									<td>${maker.maker_code }</td>
+									<td>${maker.maker_name }</td>
+									<td>${maker.maker_type }</td>
+									<td>${maker.mem_name}</td></tr>
+				        	</c:forEach>
+				        	<tr><td colspan="5"></td></tr>
 				        </table>
 					</div>
 			        <div class="text-center">
@@ -151,37 +157,10 @@
 			$("form").submit();
 		});
 		
-		// ajax
-		$.ajax({
-			type:"post",
-			url:"${path}/AdminProject.do?method=ajaxlist&curPage=${paging.curPage}&pageSize=${paging.pageSize}",
-			dataType:"json",
-			success:function(data){
-				var list = data.list;
-				var show = $(".protable").html();
-				$.each(list,function(idx,AdminProject){
-					show += "<tr onclick='javascript:go("+AdminProject.pro_code+")' >";
-					show += "	<td class='text-center'>"+AdminProject.cnt+"</td>";
-					show += "	<td>"+AdminProject.pro_code+"</td>";
-					show += "	<td>"+AdminProject.pro_title+"</td>";
-					var target = numberWithCommas(AdminProject.pro_target);
-					show += "	<td class='text-right'>"+target+"</td>";
-					show += "	<td>"+AdminProject.pro_finish_date+"</td>";
-					show += "	<td>"+AdminProject.cate_title+"</td>";
-					show += "	<td>"+AdminProject.pro_curr+"</td></tr>";
-				});
-				show += "<tr><td colspan='7'></td></tr>"
-				$(".protable").html(show);
-			},
-			error:function(err){
-				console.log("에러:"+err);
-			}
-		});
-		
 	})
-	function go(pro_code){
-		$("[name=pro_code]").val(pro_code);
-		$("form").attr("action","${path}/AdminProject.do?method=detail");
+	function go(maker_code){
+		$("[name=maker_code]").val(maker_code);
+		$("form").attr("action","${path}/AdminMaker.do?method=detail");
 		$("form").submit();
 	}
 	function goPage(no){

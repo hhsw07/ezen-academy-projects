@@ -1,5 +1,6 @@
 package com.example.fun_funding;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,7 @@ public class storeDetail extends AppCompatActivity {
     static int price = 0;
     static int totprice = 0;
     DecimalFormat df = new DecimalFormat("###,###");
-
+    static String options = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storedetail);
@@ -28,7 +29,18 @@ public class storeDetail extends AppCompatActivity {
         final EditText cnt = (EditText) findViewById(R.id.cnt);
         Spinner optionSpinner = (Spinner)findViewById(R.id.optionSpinner);
         final TextView priceText = (TextView)findViewById(R.id.priceText);
+        Button movePay = (Button)findViewById(R.id.movePayBtn);
 
+        movePay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), storePay.class);
+                intent.putExtra("cnt", count);
+                intent.putExtra("price", totprice);
+                intent.putExtra("option", options);
+                startActivity(intent);
+            }
+        });
         cntPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +72,7 @@ public class storeDetail extends AppCompatActivity {
         optionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String options = parent.getSelectedItem().toString();
+                options = parent.getSelectedItem().toString();
 
                 String str = "";
                 switch (options){

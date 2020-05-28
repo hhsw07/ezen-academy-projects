@@ -21,33 +21,28 @@ public class Sw_AdminMakerCtrl {
 	@RequestMapping(params="method=list")
 	public String list(@ModelAttribute("paging") Paging sch, Model d) {
 		d.addAttribute("list",service.list(sch));
-		return "WEB-INF\\views\\admin\\projectManagement.jsp";
-	}
-	// http://localhost:5080/funfun/AdminMaker.do?method=ajaxlist&curPage=1&pageSize=5
-	@RequestMapping(params="method=ajaxlist")
-	public String ajaxlist(@ModelAttribute("paging") Paging sch, Model d) {
-		d.addAttribute("list",service.list(sch));
-		return "pageJsonReport";
+		return "WEB-INF\\views\\admin\\makerManagement.jsp";
 	}
 	
 	// http://localhost:5080/funfun/AdminMaker.do?method=detail
 	@RequestMapping(params="method=detail")
-	public String detail(@ModelAttribute("AdminProject") AdminMaker AdminProject, Model d) {
-		d.addAttribute("AdminProject", service.detail(AdminProject.getPro_code()));
-		return "WEB-INF\\views\\admin\\memberManagement_Detail.jsp";
+	public String detail(@ModelAttribute("AdminMaker") AdminMaker AdminMaker, Model d) {
+		System.out.println("Ctrl단 maker_code:"+AdminMaker.getMaker_code());
+		d.addAttribute("AdminMaker", service.detail(AdminMaker.getMaker_code()));
+		return "WEB-INF\\views\\admin\\makerManagement_Detail.jsp";
 	}
 
 	@RequestMapping(params="method=update")
 	public String update(AdminMaker upt) {
 		//service.update(upt);
-		System.out.println("AdminProject 수정완료");
-		return "forward:/AdminMember.do?method=detail&noti_code+"+upt.getPro_code();
+		System.out.println("AdminMaker 수정완료");
+		return "forward:/AdminMaker.do?method=detail&maker_code+"+upt.getMaker_code();
 	}
 	@RequestMapping(params="method=delete")
-	public String delete(@RequestParam("noti_code") int noti_code) {
+	public String delete(@RequestParam("maker_code") int maker_code) {
 		//service.delete(noti_code);
-		System.out.println("AdminProject 삭제완료");
-		return "redirect:/AdminMember.do?method=admList";
+		System.out.println("AdminMaker 삭제완료");
+		return "redirect:/AdminMaker.do?method=list";
 	}
 	
 }

@@ -121,7 +121,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:textColor="#FFF"
-                android:background="#FF8000"/>
+                android:background="#FF8000"
+                android:id="@+id/movePayBtn"/>
         </LinearLayout>
 
         <TextView

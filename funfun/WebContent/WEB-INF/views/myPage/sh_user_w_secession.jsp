@@ -27,9 +27,21 @@
 			 }
 		 }
 		 function secessionFinal(memEmail){
-			 $("[name=memEmail]").val(memEmail)
-			 $("form").submit();
+			 if($("input:checkbox[name=favorChk]").is(":checked")){
+				 var result = confirm('회원 탈퇴시 동일 이메일로 재가입 할수 없습니다. 정말 탈퇴하시겠습니까?'); 
+					if(result) { 
+						$("[name=memEmail]").val(memEmail)
+						 $("form").submit();
+						alert('탈퇴가 완료되었습니다')
+					} else {
+						
+					} 
+			 
+			 }else{
+				 alert('탈퇴 전 유의사항을 확인해주세요') 
+			 }
 		 }
+			 
 </script>
 </head>
 <body>

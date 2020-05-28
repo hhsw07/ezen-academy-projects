@@ -16,6 +16,16 @@ a{cursor:pointer;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var proDay="${style}";
+		console.log(proDay);
+		var lists=document.querySelectorAll('.pro');
+		if(proDay===''||proDay==='ing'){
+			lists[0].classList.add('active');
+		} else  if(proDay==='come'){
+			lists[1].classList.add('active');
+		} else {
+			lists[2].classList.add('active');
+		}
 		console.log("카테고리:"+$("[name=cate_title]").val());
 		// 카테고리
 		$("#all").click(function(){
@@ -79,24 +89,7 @@ a{cursor:pointer;}
 			$("[name=proday]").val("ing");
 			$("form").submit();
 		});
-		var proday = $("[name=proday]").val();
-
-		if(proday=='come'){
-			$("#ing").removeClass("active").addClass("pro");
-			$("#end").removeClass("active").addClass("pro");
-			$("#come").removeClass("pro").addClass("active");
-		} else if (proday=='end'){
-			$("#ing").removeClass("active").addClass("pro");
-			$("#come").removeClass("active").addClass("pro");
-			$("#end").removeClass("pro").addClass("active");
-		} else{
-			$("#come").removeClass("active").addClass("pro");
-			$("#end").removeClass("active").addClass("pro");
-			$("#ing").removeClass("pro").addClass("active");
-		}
-		
 	});
-	
 	function go_detail(no){
 		$(location).attr("href", "funding.do?method=detail&pro_code="+no);
 	}
@@ -159,7 +152,7 @@ a{cursor:pointer;}
 	    		
 		  		<ul class="nav nav-tabs ">
 		  		
-					<li id="ing" class="active" style="font-weight:700;"><a>진행중인 프로젝트</a></li>
+					<li id="ing" class="pro" style="font-weight:700;"><a>진행중인 프로젝트</a></li>
 					<li id="come" class="pro" style="font-weight:700;"><a>오픈예정 프로젝트</a></li>
 					<li id="end" class="pro"  style="font-weight:700;"><a>종료된 프로젝트</a></li>
 					<li style="right:0px; position:absolute;">	
