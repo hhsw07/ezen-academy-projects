@@ -54,7 +54,7 @@
 		<mapper resource="resource/mybatis/Sw_AdminMemberMapper.xml" />
 		<mapper resource="resource/mybatis/secessionMapper.xml" />
 		<mapper resource="resource/mybatis/accountMapper.xml" />
-		
+		<mapper resource="resource/mybatis/adminProjectMapper.xml"/>
 	</mappers>
  
 </configuration>

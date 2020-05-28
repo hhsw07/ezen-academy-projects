@@ -5,4 +5,23 @@
 	
 <mapper namespace="funfun.repository.KB_adminPrjReposi">
 	<resultMap type="Project" id="ProjectList"/>
+	<select id="proCnt" resultType="int">
+		select count(*) from project
+	</select>
+	<select id="projectList" resultMap="ProjectList" parameterType="Paging">
+		select * from (select rownum cnt, c.* from (
+				SELECT a.pro_code, to_char(pro_reg_date, 'YYYY-MM-DD') pro_reg_date, a.pro_title,a.pro_curr,b.maker_name FROM 
+				project a, maker b WHERE a.MAKER_CODE = b.MAKER_CODE order by a.pro_code desc
+			)c)where cnt between #{start} and #{end}
+	</select>
+	
+	<select id="proDetail" resultType="Project" parameterType="int">
+		SELECT pro_code, pro_title, pro_image, pro_story FROM project WHERE pro_code = #{pro_code}
+	</select>
+	
+	<update id="UptCurr" parameterType="Project">
+		update project set pro_curr = #{pro_curr}, pro_sub_date = current_date where pro_code = #{pro_code}
+	</update>
 </mapper>
+
+	
