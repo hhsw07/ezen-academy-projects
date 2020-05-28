@@ -2,35 +2,35 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
-<mapper namespace="funfun.repository.Sw_AdminProjectDao">
-	<resultMap type="AdminProject" id="AdminProjectResult"/>
-	<!-- int AdminProjectCnt() 총 데이터 건수 -->
-	<select id="AdminProjectCnt" resultType="int">
+<mapper namespace="funfun.repository.Sw_AdminMakerDao">
+	<resultMap type="AdminMaker" id="AdminMakerResult"/>
+	<!-- int AdminMakerCnt() 총 데이터 건수 -->
+	<select id="AdminMakerCnt" resultType="int">
 		SELECT COUNT(*)
-		FROM project
+		FROM maker
 		WHERE 1=1
 	</select>
 	
 	
-	<!-- ArrayList<AdminProject> list(Paging sch) -->
-	<select id="list" resultMap="AdminProjectResult" parameterType="paging">
+	<!-- ArrayList<AdminMaker> list(Paging sch) -->
+	<select id="list" resultMap="AdminMakerResult" parameterType="paging">
 		SELECT *
 		FROM (SELECT rownum cnt,a.*
-			  FROM PROJECT a
-			  ORDER BY a.pro_code)
+			  FROM maker a
+			  ORDER BY a.maker_code)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	
 	
 	<!-- AdminMember detail(int mem_code) -->
-	<select id="detail" resultType="AdminProject" parameterType="int">
+	<select id="detail" resultType="AdminMaker" parameterType="int">
 		select a.*, b.MAKER_CODE 
 		FROM MEMBER a, MAKER b
 		WHERE a.MEM_CODE = b.MEM_CODE(+)
 		and a.MEM_CODE = #{mem_code} 
 	</select>
-	<!-- void update(AdminMember upt) -->
-	<update id="update" parameterType="AdminProject">
+	<!-- void update(AdminMaker upt) -->
+	<update id="update" parameterType="AdminMaker">
 		UPDATE notice
 		SET noti_title = #{noti_title},
 			noti_detail = #{noti_detail},
