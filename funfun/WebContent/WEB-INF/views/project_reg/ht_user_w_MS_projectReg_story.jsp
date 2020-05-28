@@ -75,17 +75,6 @@
 	<form id="StorySubmitForm" method="post" action="${path}/ProjectReg.do">
 	<input type="hidden" name="method" value="storyReg"/>
 	
-	<span class="reg_content_title">소개 사진 등록 *</span><br><br>
-	
-	<button class="btn btn-warning">이미지 업로드</button>
-
-	<br><br><br>
-
-	<span class="reg_content_title">프로젝트 요약 *</span><br><br>
-
-	<textarea class="form-control" rows="5" id="comment"></textarea>	
-
-	<br><br>
 	
 	<span class="reg_content_title">프로젝트 스토리 *</span><br><br>
 
@@ -103,8 +92,6 @@
 
   	
   	</div>
-
-
 
 
 	</div>
