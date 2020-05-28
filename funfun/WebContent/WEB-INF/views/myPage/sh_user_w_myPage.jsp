@@ -55,7 +55,7 @@
       </div>
 
 <!--하단 푸른 박스 -->
-      <div style="background-color: rgb(245, 247, 250); margin-top: -20px; min-height: 490px">
+      <div style="background-color: rgb(245, 247, 250); margin-top: -20px; min-height: 510px">
         <div class="container my-container" style="max-width:1200px; padding-top:10px; background-color: rgb(245, 247, 250);">
 
 <!-- 아이템들 -->
@@ -158,7 +158,7 @@
             <c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
              <button onclick="openFundingAdrChangeModal('${list.fundAddress}','${list.fundingCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">주소지 정보 변경하기</button>
             <span style="width:3%"></span>
-            <a onclick="cancleFundingModal('${list.fundingCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right;" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal" data-toggle="modal">펀딩 취소 하기</a>
+            <a onclick="cancleFundingModal('${list.fundingCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right;" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal" data-toggle="modal"><span class="CancelText">펀딩 취소 하기</span></a>
          	</c:if>
          	<c:if test="${list.fundState eq '펀딩취소' || list.fundState eq '펀딩실패'}">
          			<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.fundState} 상태에서는 펀딩 취소 및 주소지 수정이 불가능합니다</p>
@@ -243,7 +243,7 @@
 				<c:when test="${list.orderCurr eq '주문완료'}">
 					<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
             		<span style="width:3%"></span>
-					<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal">주문 취소 하기</a>
+					<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
 				</c:when>
 			  </c:choose> 
             
@@ -309,7 +309,8 @@
 	<input type="submit">
 </form>
 
-
+</div>
+</div>
 
 <!-- 주문 및 배송 조회 끝 -->
 

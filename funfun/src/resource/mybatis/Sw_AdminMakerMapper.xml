@@ -15,19 +15,21 @@
 	<!-- ArrayList<AdminMaker> list(Paging sch) -->
 	<select id="list" resultMap="AdminMakerResult" parameterType="paging">
 		SELECT *
-		FROM (SELECT a.*, b.mem_name 
-			  FROM maker a, MEMBER b
-			  WHERE a.MEM_CODE = b.mem_code)
+		FROM ((SELECT rownum cnt, c.*
+			   FROM (SELECT  a.*, b.mem_name
+					 FROM maker a, MEMBER b
+					 WHERE a.MEM_CODE = b.mem_code
+					 ORDER BY maker_code DESC) c))
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>
 	
 	
 	<!-- AdminMember detail(int mem_code) -->
 	<select id="detail" resultType="AdminMaker" parameterType="int">
-		select a.*, b.MAKER_CODE 
-		FROM MEMBER a, MAKER b
-		WHERE a.MEM_CODE = b.MEM_CODE(+)
-		and a.MEM_CODE = #{mem_code} 
+		SELECT  a.*, b.mem_name
+		 FROM maker a, MEMBER b
+		 WHERE a.MEM_CODE = b.mem_code
+		and a.maker_code = #{mem_code} 
 	</select>
 	<!-- void update(AdminMaker upt) -->
 	<update id="update" parameterType="AdminMaker">

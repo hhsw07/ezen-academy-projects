@@ -46,7 +46,7 @@ public class AdminMainCtrl {
 	
 	@RequestMapping(value="/maker-management.do")
 	public String enterMakerManagement() {
-		return "WEB-INF\\views\\admin\\makerManagement.jsp";
+		return "redirect:/AdminMaker.do?method=list";
 	}
 	
 	@RequestMapping(value="/reward-store-management.do")
