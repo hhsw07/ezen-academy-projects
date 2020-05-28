@@ -50,7 +50,7 @@
 					        		<th>휴대폰번호</th>
 					        		<td>${not empty AdminMember.mem_phoneno?AdminMember.mem_phoneno:"없음"}</td></tr>
 					        	<tr><th rowspan="2">프로필</th>
-					        		<td rowspan="2"><img src="${AdminMember.mem_profile}" alt="" style="width:90px; height:90px;"/></td>
+					        		<td rowspan="2"><img src="${AdminMember.mem_profile}" alt="이미지없음" style="width:90px; height:90px;"/></td>
 					        		<th>관심 카테고리</th>
 					        		<td>${AdminMember.mem_favor}</td></tr>
 					        	<tr><th>회원상태</th>
@@ -71,6 +71,7 @@
 				    <div class="text-right">
 				    	<button class="btn btn-fill btn-warning restrictionBtn">제재</button>
 				    	<button class="btn btn-fill btn-warning dropBtn">제명</button>
+				    	<button class="btn btn-fill btn-warning clearBtn">제재 해제</button>
 				    	<button class="btn btn-fill btn-warning goList">목록</button>
 				    </div>
 				    <div>
@@ -109,6 +110,15 @@
 		});
 		$(".dropBtn").click(function(){
 			alert("제명 조치 (10년 정지)");
+			/*
+			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
+				$("form").attr("action","${path}/notice.do?method=update");
+				$("form").submit();
+			}
+			*/
+		});
+		$(".cleatBtn").click(function(){
+			alert("제재 해제 조치");
 			/*
 			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
 				$("form").attr("action","${path}/notice.do?method=update");

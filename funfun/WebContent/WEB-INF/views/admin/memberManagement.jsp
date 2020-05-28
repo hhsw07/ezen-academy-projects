@@ -75,7 +75,8 @@
 	  border: 0;
 	  color: #FFFFFF;
 	  padding: 7px 13px; }
-
+	
+	.dropColor {background-color:lightcoral}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -93,7 +94,9 @@
 				    	<input type="hidden" name="mem_code"/>
 				    	<div class="row">
 				        	<div class="text-left col-sm-3 ">총건수 : ${paging.count}건</div> 
-				        	<div class="text-right col-sm-9">페이지수 : 
+				        	<div class="text-right col-sm-9">
+				        		제재회원:<span class="dropColor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				        		페이지수 : 
 					        	<select name="pageSize">
 					        		<option value="5">5건</option>
 					        		<option value="10">10건</option>
@@ -162,7 +165,11 @@
 				var list = data.list;
 				var show = $(".memtable").html();
 				$.each(list,function(idx,AdminMember){
-					show += "<tr onclick='javascript:go("+AdminMember.mem_code+")'>";
+					show += "<tr onclick='javascript:go("+AdminMember.mem_code+")'";
+					if(AdminMember.mem_curr != null ){
+						show += "class='dropColor'"
+					}
+					show += ">";
 					show += "	<td class='text-center'>"+AdminMember.cnt+"</td>";
 					show += "	<td>"+AdminMember.mem_code+"</td>";
 					show += "	<td>"+AdminMember.mem_name+"</td>";
