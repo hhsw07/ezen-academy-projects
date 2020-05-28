@@ -43,22 +43,24 @@
 	    	<div class="funding-page">
 	    		<form name="fundingForm" method="post" action="${path}/funding.do?method=funding">
 	    			<input type="hidden" name="mem_code" value="${user.mem_code}"/>
-	    			<input type="hidden" name="pro_code" value="${project.pro_code}"/>
+	    			<input type="hidden" name="pro_code" value="${option.pro_code}"/>
 	    			<input type="hidden" name="opt_code" value="${option.opt_code}"/>
-	    			<input type="hidden" name="opt_cnt" value="1"/>
+	    			<input type="hidden" name="fund_cnt" value="1"/>
 	    			<input type="hidden" name="fund_opt_detail" value=""/>
 	    			
 	    			<div class="funding-wrap">
 						<div class="order-list" data-choiced-legnth="1">
 							<div class="order-cont">
-								<p class="fund-tit">${option.opt_detail}</p>
-								<p class="text">${option.opt_condition}</p>
+								<p class="fund-tit">${option.opt_title}</p>
+								<p class="text">${option.opt_detail}</p>
 								<div>
 									<div class="option">
 										<span class="option-cont">옵션-</span>
-										<span>마블 2</span>
+										<span>${option.opt_condition}</span>
 									</div>
-									<p class="sum"><em>수량 : 1개</em><fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원</p>
+									<p class="sum"><em>수량 : 1개</em>
+									<input type="hidden" name="fund_price" value="${option.opt_price}">
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원</p>
 								</div>
 							</div>
 						</div>
@@ -78,7 +80,7 @@
 							<div class="total">
 								<p class="order-infodt">최종결제금액</p>
 								<p class="order-infodd">
-									<input type="hidden" name="fund_price" value="${option.opt_price+option.opt_delivery}"><em id="totalPriceView">
+									<input type="hidden" name="fund_tot" value="${option.opt_price+option.opt_delivery}"><em id="totalPriceView">
 									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price+option.opt_delivery}"/></em>원</p>
 							</div>
 						</div>

@@ -113,7 +113,7 @@
 	<!-- 펀딩하기 -->
 	<insert id="funding" parameterType="funding">
 		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, #{fund_price}, 
-		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩완료', #{fund_rec_tel})
+		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩완료', #{fund_rec_tel, #{fund_tot})
 	</insert>
 	<!-- 펀딩하기 - 프로젝트 현재 펀딩 금액 변경 -->
 	<update id="uptMoney" parameterType="funding">

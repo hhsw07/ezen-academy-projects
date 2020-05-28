@@ -24,18 +24,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 
 import funfun.service.FileUploadService;
+import funfun.util.Uploader;
 
 
 @Controller
 public class FileUploadCtrl {
 	
-	
-	@Value("${upload}")
-	private String upload; // 저장위치
-	
-	@Value("${tmpUpload}")
-	private String tmpUpload; // 임시저장위치
-	//파일업로드페이지
+	Uploader uploader;
 	@RequestMapping("/test1.do")
 	public String test1() {
 		
@@ -47,33 +42,12 @@ public class FileUploadCtrl {
 	//파일업로드처리
 	@RequestMapping("/fileUpload.do")
 	public String fileUpload(@RequestParam("myfile") MultipartFile[] myfiles) {
-		
+		uploader=new Uploader();
 		System.out.println("파일업로드처리");
-		System.out.println(upload);
-		System.out.println(tmpUpload);
-		upload(myfiles[0]);
-		
+		String result = uploader.upload(myfiles[0]);
+		System.out.println(result);
 		return "";
 	}
 	
-	private void upload(MultipartFile file) {
-		String fileName=file.getOriginalFilename();
-		if(fileName!=null&&!fileName.equals("")) {
-			try {
-				File tmpFile = new File(tmpUpload+fileName);
-				//insertRepo(fileName); db에 파일이름 넣는 것
-				
-				file.transferTo(tmpFile);
-				File orgFile = new File(upload+fileName);
-				System.out.println(upload+fileName);
-				Files.copy(tmpFile.toPath(), orgFile.toPath());
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+
 }
