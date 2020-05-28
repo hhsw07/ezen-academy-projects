@@ -40,5 +40,7 @@ public interface MK_FundingReposi {
 	// 펀딩하기
 	public void funding(Funding ins);
 	public void uptMoney(Funding upt);
+	public void useBalance(Funding use);
+	public void uptBalance(Funding upt);
 	
 }

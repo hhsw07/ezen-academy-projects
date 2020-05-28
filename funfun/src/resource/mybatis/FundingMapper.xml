@@ -90,7 +90,7 @@
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
 	<!-- 프로젝트 신고 -->
-	<insert id="insReport" parameterType="report">
+	<insert id="insReport" parameterType="report">	
 		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date)
 	</insert>
 	<!-- 프로젝트 문의리스트 -->
@@ -113,7 +113,7 @@
 	<!-- 펀딩하기 -->
 	<insert id="funding" parameterType="funding">
 		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, #{fund_price}, 
-		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩완료', #{fund_rec_tel, #{fund_tot})
+		#{fund_cnt}, #{fund_opt_detail}, #{fund_post}, #{fund_address}, #{fund_receiver}, '펀딩중', #{fund_rec_tel}, #{fund_tot})
 	</insert>
 	<!-- 펀딩하기 - 프로젝트 현재 펀딩 금액 변경 -->
 	<update id="uptMoney" parameterType="funding">
@@ -121,9 +121,15 @@
 		SET PRO_MONEY = PRO_MONEY + #{fund_price}
 		WHERE PRO_CODE = #{pro_code}
 	</update>
-	<!-- 펀딩하기 - 예치금 -->
-	<insert id="useBalance" parameterType="balance">
-		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '펀딩', #{fund_code}'사용', #{fund_price}, current_date)
+	<!-- 펀딩하기 - 예치금사용내역 -->
+	<insert id="useBalance" parameterType="funding">
+		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '펀딩투자', FUNDING_SEQ.currval||'사용', #{fund_tot}, current_date)
 	</insert>
+	<!-- 펀딩하기 - 회원 예치금 잔액 변경 -->
+	<update id="uptBalance" parameterType="funding">
+		UPDATE MEMBER 
+		SET MEM_BALANCE = MEM_BALANCE - #{fund_tot}
+		WHERE MEM_CODE = #{mem_code}
+	</update>
 	
 </mapper>

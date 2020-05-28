@@ -121,10 +121,10 @@
 									<p class="deliver-tit">휴대폰 번호</p>
 									<input type="tel" name="fund_rec_tel" id="newContactNumber" maxlength="13" class="form-control">
 									<p class="deliver-tit">주소</p>
-									<input name="fund_post" type="text" id="newAddressDetails" placeholder="우편번호" class="form-control deliver-post">
+									<input name="fund_post" type="text" id="newAddressDetails" placeholder="우편번호" class="form-control deliver-post"  readonly />
 									<button type="button" class="btn btn-block btn-fill btn-warning find-post" onclick="goPopup()">우편번호 검색</button>
 									<p class="text" id="newAddress"></p>
-									<input name="fund_address" type="text" maxlength="96" id="newAddressDetails" placeholder="상세주소" class="form-control">
+									<input name="fund_address" type="text" maxlength="96" id="newAddressDetails" placeholder="상세주소" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -132,7 +132,7 @@
 	    		</form>
 	    	</div>
 	    	<div class="btn-wrap funding-btn">
-				<button type="button" id="funding" class="btn btn-block btn-lg btn-fill btn-warning">결제 예약하기</button>
+				<button type="button" id="funding" class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
 			</div>
 	    </div>
 	</div>
