@@ -19,22 +19,54 @@
 			alert("로그인해주세요");
 		}
 		function rdCharge(){
-			alert('신청이 완료되었습니다')
-			alert('충전이 완료되었습니다(입금확인 프로세스 미적용)')
+			var amount = $("[name=chargeQuery]").val()
+			if(amount == null){
+				alert('충전할 금액을 입력해주세요')
+			}else if(amount < 1000){
+				alert('최소 충전 금액은 1000원 입니다')
+			}else{
+				var result = confirm(amount+'원을 충전 신청 하시겠습니까?'); 
+				if(result) { 
+					$("#chargeForm").submit();
+					alert('신청이 완료되었습니다')
+					alert('충전이 완료되었습니다(입금확인 프로세스 미적용)')
+				} else {
+					
+				}
+			}
 		}
 		function rdWithdrawl(){
 			var memBalance = ${clist.memBalance};
-			if(memBalance >= $("#wiAmount").val()){
+			var amount = $("#wiAmount").val();
+			if(amount == null || amount == 0){
+				alert('출금 신청 금액을 정확히 입력해주세요')
+			}else if(memBalance < amount){
+				alert('보유금액이 부족합니다')
+			}else{
 				alert('신청이 완료되었습니다')
 				alert('출금이 완료되었습니다(출금확인 프로세스 미적용)')
 				$("#wiForm").submit()
-			}else{
-				alert('보유금액이 부족합니다')
+			}
+		}
+		function chgAct(){
+			var result = confirm('계좌 정보를 수정/등록 하시겠습니까?'); 
+			if(result) { 
+				$("#actForm").submit();
+			} else {
+				
 			}
 		}
 		$(document).ready(function(){
 			var memBank = "${clist.memBank}";
-			$("#selectBox").val(memBank).prop("selected", true);
+			$("#selectBox").val(memBank).prop("selected", true);			
+			
+			$(".numberic").keyup(function(){
+				function numberWithCommas(x) {
+				    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				}
+				numberWithCommas($(".numberic").val());
+			})
+			
 		})
 
 </script>
@@ -53,11 +85,11 @@
 						<div class="innerNav"><p class="navText txinner" id="infoM">계좌정보</p></div>
 					</div>
 					
-					<div style="height : 110px;margin-top:30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;padding:10px;">
-						<table class="moneyTable">
-						<tr><td colspan="2" style="text-align:center">${clist.memName}님의 예치금</td></tr>
-						<tr><td style="height:18px;"colspan="2"></td></tr>
-						<tr><td style="font-weight:bold;font-size:14px;">보유금액</td><td style="font-weight:bold;font-size:14px;text-align:right;">
+					<div style="height:90px;margin-top:30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;padding:10px;">
+						<table style="margin-left:5px;" class="moneyTable">
+						<tr><td colspan="2" style="text-align:center;text-decoration:underline;font-weight:bold;">${clist.memName}님의 예치금</td></tr>
+						<tr><td style="height:10px;"colspan="2"></td></tr>
+						<tr><td style="font-weight:bold;font-size:14px;">보유금액</td><td style="width:120px;font-weight:bold;font-size:14px;text-align:right;">
 						<fmt:formatNumber value = "${clist.memBalance}" type = "number" pattern = "#,###,###,###,###원"/>
 						</td></tr>
 						</table>
@@ -76,10 +108,12 @@
 			    	<tr><td>예금주</td><td class="secondTd">펀펀(${clist.memName})</td></tr>
 			    	</table>
 			    	<hr style="margin-bottom: 20px;">
-			    	<form action="/funfun/myaccount.do/chargeQuery.do">
-			    	<input style="margin-top:15px;width:100%;height:40px;" class="ph" name="chargeQuery" placeholder="충전할 금액을 입력해주세요">
+			    	<form id="chargeForm" action="/funfun/myaccount.do/chargeQuery.do">
+			    	<input style="margin-top:15px;width:100%;height:40px;" class="numberic ph" name="chargeQuery" placeholder="충전할 금액을 입력해주세요">
 			    	<div style="display:flex;margin-top:45px;">
-						<input onclick="rdCharge()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="submit" value="신청하기">
+						<button onclick="rdCharge()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="button">
+						신청하기
+						</button>
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
@@ -98,10 +132,16 @@
 				<!-- 예치금 출금 -->	
 				<div id="withdrawlM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">예치금 출금</p>
-			    	<div style="display:flex;font-size:14px;margin-bottom:20px;">
-			    	<span style="font-size:14px;font-weight:bold;">보유 금액</span><span style="width:80%;text-align:right;font-size:14px;font-weight:bold;">
-			    	<fmt:formatNumber value = "${clist.memBalance}" type = "number" pattern = "#,###,###,###,###원"/>
-			    	</span>
+			    	<div style="display:flex;font-size:14px;">
+			    	<table style="font-size:14px;margin-bottom:20px;">
+			    	<tr>
+				    	<td style="font-size:14px;font-weight:bold;">보유 금액
+				    	</td>
+				    	<td style="width:440px;text-align:right;font-size:14px;font-weight:bold;">
+				    		<fmt:formatNumber value = "${clist.memBalance}" type = "number" pattern = "#,###,###,###,###원"/>
+				    	</td>
+			    	</tr>
+			    	</table>
 			    	</div>
 			    	<table class="chargInfo">
 			    	<tr><td>출금은행</td><td class="secondTd">${clist.memBank}</td></tr>
@@ -139,12 +179,12 @@
 			    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
 			    		</td><td>${list.balHis}</td>
 			    		<td>
-			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:red;">입금</p></c:if>
-			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:blue;">출금</p></c:if>
-			    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:orange;">스토어 구매</p></c:if>
-			    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:orange;">펀딩 투자</p></c:if>
-			    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:green;">펀딩 수입</p></c:if>
-			    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:green;">스토어 수입</p></c:if>
+			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:rgb(247,0,0);">입금</p></c:if>
+			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:rgb(9,54,135)">출금</p></c:if>
+			    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 구매</p></c:if>
+			    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:rgb(255,151,5);">펀딩 투자</p></c:if>
+			    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:gray;">펀딩 수입</p></c:if>
+			    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:gray;">스토어 수입</p></c:if>
 			    		</td></tr>
 			    		<tr><td colspan="4"><hr></td></tr>
 			    		</c:forEach>
@@ -154,7 +194,7 @@
 				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">계좌 정보 등록 및 수정</p>
 
-			    	<form action="/funfun/myaccount.do/chgAccountInfo.do">
+			    	<form id="actForm" action="/funfun/myaccount.do/chgAccountInfo.do">
 			    	<p style="margin-top:40px;font-weight:bold;"class="profile__img--title">은행 선택</p>
 			    	<select id="selectBox" name="bankName" style="margin-top:5px;width:100%;height:40px;">
 						    <option selected>은행선택</option>
@@ -167,8 +207,7 @@
 					<p style="margin-top:30px;font-weight:bold;"class="profile__img--title">계좌 번호</p>
 			    	<input name="memAccount" value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
 			    	<div style="display:flex;margin-top:40px;">
-							<button style="background-color:gray;color:white;" class="profile__cancle">취소</button>
-							<input style="background-color:orange;color:white;" class="profile__submit" type="submit" value="제출">
+							<button onclick="chgAct()" style="background-color:orange;color:white;width:100%;" class="profile__submit" type="button">제출</button>
 			    	</div>
 			    	</form>
 							
