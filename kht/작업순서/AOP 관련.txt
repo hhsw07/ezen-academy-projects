@@ -1,0 +1,5 @@
+********* 얘네들을 앞으로 쓰일 템플릿 
+springweb/src/a04_aop/A00_AOP.java
+springweb/src/a04_aop/A00_AOP.xml
+
+3. springweb/src/a04_aop/vo/A01_Loggin.java
