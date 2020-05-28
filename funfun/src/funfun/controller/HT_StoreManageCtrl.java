@@ -57,6 +57,7 @@ public class HT_StoreManageCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		int storeCode = (int)session.getAttribute("storeCode");
+		d.addAttribute("proStoOptList", service.getProStoOptionJoinList(projectCode));
 		d.addAttribute("proOptList", service.getProOptList(projectCode));
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeOptionReg.jsp";
 	}
@@ -71,7 +72,9 @@ public class HT_StoreManageCtrl {
 		HttpSession session = request.getSession();
 		int storeCode = (int)session.getAttribute("storeCode");
 		System.out.println("스토어옵션등록됨??");
+		System.out.println(storeCode);
 		sto.setSto_code(storeCode);
+		service.stoOptUnitReg(sto);
 		return "redirect:/Store.do?method=storeOption";
 	}
 	

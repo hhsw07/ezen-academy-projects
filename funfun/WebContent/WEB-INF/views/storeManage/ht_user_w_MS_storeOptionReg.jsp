@@ -63,26 +63,46 @@
   	<br><br>
   	
   	<span class="sub_gray_font">
-  	프로젝트에 등록한 옵션과 관련하여<br>
+  	프로젝트에 등록한 리워드와 관련하여<br>
 	스토어에 등록될 옵션 사항을 등록할 수 있습니다.</span>
 
   	<br><br><br><br>
 
-	<c:forEach var="opt" items="${proOptList}">
-			<div class="optUnitContainer">
-			<div class="optUnitTitle">${opt.opt_title}</div>
-			<div class="optUnitDetail">${opt.opt_detail}</div>
-			<hr>
-			<div>
-				<button class="btn btn-warning btn_custom stoOptAdd" 
-						data-toggle="modal"
-						data-target="#myModal"
-						data-opt_code="${opt.opt_code}"
-						data-opt_title="${opt.opt_title}"
-						data-opt_detail="${opt.opt_detail}"
-						>+ 추가하기</button>
-			</div>
-			</div>
+	<c:forEach var="opt" items="${proStoOptList}">
+		<div class="optUnitContainer">
+		<div class="optUnitIntro">프로젝트 리워드</div>
+		<div class="optUnitPrice">${opt.opt_title}</div>
+		<div class="optUnitTitle">${opt.opt_detail}</div>
+		<hr>
+		<div>
+
+		<c:choose>
+		<c:when test="${opt.sto_opt_code==0 }">
+			<button class="btn btn-warning btn_custom stoOptAdd" 
+					data-toggle="modal"
+					data-target="#myModal"
+					data-opt_code="${opt.opt_code}"
+					data-opt_title="${opt.opt_title}"
+					data-opt_detail="${opt.opt_detail}"
+					>+ 스토어 옵션 추가</button>
+		</c:when>
+		<c:otherwise>
+				<div class="optUnitIntro">스토어 옵션</div>
+		<div class="optUnitPrice">${opt.sto_opt_price}원</div>
+		<div class="optUnitTitle">${opt.sto_opt_detail}</div>
+
+			<button class="btn btn-warning btn_custom stoOptAdd" 
+					data-toggle="modal"
+					data-target="#myModal"
+					data-opt_code="${opt.opt_code}"
+					data-opt_title="${opt.opt_title}"
+					data-opt_detail="${opt.opt_detail}"
+					>+ 스토어 옵션 수정</button>
+		</c:otherwise>
+		</c:choose>
+		</div>
+
+		</div>
 	</c:forEach>	
 	
 
@@ -90,7 +110,7 @@
 
 	<form method="post" action="${path}/Store.do" id="StoOptUnitSubmitForm">
 	<input type="hidden" name="method" value="storeOptionReg"/>
-	<input type="hidden" name="opt_code" value="" id="opt_code"/>
+	<input type="hidden" name="opt_code" id="opt_code"/>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
