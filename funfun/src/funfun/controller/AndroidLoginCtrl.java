@@ -114,4 +114,14 @@ public class AndroidLoginCtrl {
 		
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
+	
+	//주문리스트 정보 가져오기
+	@RequestMapping(value="/getMyOrderList.do")
+	public ResponseEntity getMyOrderList(@RequestParam String email) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		ArrayList<MyOrderInfo> list = service.getMyOrderList(email);
+		String result="";
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
 }
