@@ -152,11 +152,17 @@ public class MainService {
 		return tmp;
 	}
 	
-//	public ArrayList<MyOrderInfo> getMyOrderList(String email){
-//		int memCode=repo.getMemCodeByEmail(email);
-//		
-//		return new ArrayList<MyOrderInfo>();
-//	}
+	public ArrayList<MyOrderInfo> getMyOrderList(String email){
+		//이메일로 멤버코드
+		int memCode=repo.getMemCodeByEmail(email);
+		//멤버코드로 옵션 및 수량 
+		ArrayList<OptCodeAndCnt> list1=repo.getStoreOptNoAndCnt(memCode);
+		for (OptCodeAndCnt sonac:list1) {
+			System.out.println(sonac.getOptionCode());
+		}
+		
+		return new ArrayList<MyOrderInfo>();
+	}
 	
 	
 }

@@ -129,7 +129,11 @@ public class MK_FundingService {
 	// 펀딩하기
 	public void funding(Funding ins) {
 		dao.funding(ins); // 펀딩
-		dao.uptMoney(ins); // 프로젝트 현재 펀딩금액 변경
+
+	}
+	// 프로젝트 현재 펀딩금액 변경
+	public void uptMoney(Funding upt) {
+		dao.uptMoney(upt);
 	}
 
 }

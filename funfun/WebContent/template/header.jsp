@@ -143,7 +143,7 @@
 
 <!-- 채팅 버튼 -->
 <div class="" style="position:fixed; bottom:25px; right:25px; z-index:10" >
-	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:60px; height:60px;"/></a>
+	<a href="javascript:goRtqna()" ><img src="${path}/img/chatting.png" style="width:100px; height:100px;"/></a>
 </div>
 </body>
 

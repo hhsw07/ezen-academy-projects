@@ -91,5 +91,10 @@
 	 <select id="getProjectInfoLeft7DaysOrLessByProjectCode" parameterType="int" resultMap="NotificationResultMap">
 	 	SELECT pro_title title, pro_code code FROM project WHERE pro_code=#{code} AND PRO_FINISH_DATE-CURRENT_DATE Between 0 and 7
 	 </select>
+	 
+	
+	 <select id="getStoreOptNoAndCnt" parameterType="int" resultMap="optCodeAndCnt">
+	 	SELECT sto_opt_code optionCode, sto_order_cnt cnt FROM STORE_ORDER WHERE mem_code=#{mem_code}
+	 </select>
 	
 </mapper>
