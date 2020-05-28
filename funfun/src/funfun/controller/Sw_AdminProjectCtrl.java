@@ -12,7 +12,7 @@ import funfun.vo.AdminMember;
 import funfun.vo.Paging;
 
 @Controller
-@RequestMapping("/AdminMember.do")
+@RequestMapping("/AdminProject.do")
 public class Sw_AdminProjectCtrl {
 	@Autowired(required=false)
 	private Sw_AdminMemberService service;
