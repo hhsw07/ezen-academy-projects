@@ -25,7 +25,9 @@ public class MK_FundingCtrl {
 	@RequestMapping(params="method=list")
 	public String projectList(@ModelAttribute("projSch") ProjectSch sch, Model d) {
 		System.out.println("카테고리1"+sch.getCate_title());
+		
 		d.addAttribute("plist", service.projectList(sch));
+		d.addAttribute("style", sch.getProday());
 		String category = sch.getCate_title();
 		if(category == null) category =  "";
 		switch(category) {
@@ -147,6 +149,8 @@ public class MK_FundingCtrl {
 		System.out.println("선택옵션:"+fund.getOpt_code());
 		service.funding(fund);
 		service.uptMoney(fund);
+		service.useBalance(fund);
+		service.uptBalance(fund);
 		return "forward:/funding.do?method=list";
 	}
 

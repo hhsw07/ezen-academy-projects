@@ -114,7 +114,7 @@ th{text-align:center;}
 	    	</div>
 	    	<div class="row project-basic col-md-8 col-sm-6">
 	    		<div class="projectDetail_img">
-	    			<img alt="" src="img/${project.pro_image}">
+	    			<img alt="" src="${project.pro_image}">
 	    			<div class="container alert alert-warning" style="width:678px; margin:50px 0;">
 	    			<fmt:parseDate var="pro_start" value="${project.pro_start_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 	    			<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />  
@@ -228,7 +228,7 @@ th{text-align:center;}
                  	   <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
                  	   <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
                     </div>
-                    <span class="col-md-2"><button id="goinq" class="btn btn-block btn-lg btn-warning">문의하기</button></span>
+                    <span class="col-md-2"><a href="#goinq"><button class="btn btn-block btn-lg btn-warning">문의하기</button></a></span>
                 </div>
 			</div>
 			
@@ -263,10 +263,10 @@ th{text-align:center;}
 	    		<div class="inquiry-title">프로젝트 문의
 	    			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="float:right;margin-bottom: 40px;" >문의하기</button>
 	    		</div>
-           		<table class="table table-hover" style="margin-top:2%;border-top: 1px solid #EaEaEa;">
+           		<table class="table table-hover" style="margin-top:2%;border-top: 1px solid #EaEaEa;" id="goinq">
 					<thead>
 						<tr style="text-align:center;padding:20px;">
-							<th>번호</th><th>제목</th><th>작성자</th><th>작성날짜</th><th>답변여부</th>
+							<th>번호</th><th>문의</th><th>작성자</th><th>작성날짜</th><th>답변여부</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -328,7 +328,7 @@ th{text-align:center;}
 							<input type="hidden" name="pro_code" value="${project.pro_code}" />
 							<div class="form-group">
 								<label for="message-text" class="control-label">비밀글 유무</label>
-                      			<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open"> 비밀글로 안하기
+                      			<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="N" name="qna_open"> 비밀글로 안하기
 							</div>
 							<div class="form-group">
 								<label for="message-text" class="control-label">문의내용:</label>
