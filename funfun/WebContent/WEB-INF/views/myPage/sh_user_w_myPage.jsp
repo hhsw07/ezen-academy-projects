@@ -211,7 +211,9 @@
           <div class="col-xs-1 col-md-1 "></div>
           <div class="col-xs-10 col-md-10" style="margin-top:10px">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
+          
           <div class="funding" style="margin-top:5px">
+          
             <table class="col-xs-12 col-md-12">
               <tr><td class="funding__state">
                <c:choose>
@@ -246,7 +248,7 @@
 					<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
 				</c:when>
 			  </c:choose> 
-            
+           
           </div>
           </div>
         </div>
