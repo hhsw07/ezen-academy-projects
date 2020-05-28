@@ -4,6 +4,6 @@ url=jdbc:oracle:thin:@34.64.177.9:1521:xe
 user=ezen_team_2
 pass=123123
 
-#파일 업로드 위치 (컴퓨터마다 다릅니다.)
+#파일 업로드 위치
 upload=C:/funfun/funfun/WebContent/z01_upload
 tmpUpload=C:/funfun/funfun/WebContent/z01_temp
