@@ -36,7 +36,7 @@ public class AdminMainCtrl {
 	@RequestMapping(value="/project-management.do")
 	public String enterProjectManagement(Paging sch, Model d) {
 		d.addAttribute("plist", kb_admin_service.projectList(sch));
-		return "WEB-INF\\views\\admin\\projectManagement222.jsp";
+		return "WEB-INF\\views\\admin\\projectManagement.jsp";
 	}
 	
 	@RequestMapping(value="/customer-service-management.do")
