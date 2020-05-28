@@ -9,6 +9,7 @@
 	<resultMap type="store" id="storeResult"/>
 	<resultMap type="projectOpt" id="proOptResult"/>
 	<resultMap type="storeOption" id="stoOptResult"/>
+	<resultMap type="proStoOptionJoin" id="proStoOptionJoinResult"/>
 	
 	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
 	SELECT * FROM QNA
@@ -30,8 +31,10 @@
 	WHERE STO_CODE = #{sto_code})
 	</select>
 	
+	
+	
 	<insert id="storeOpenStart" parameterType="store">
-	INSERT INTO STORE VALUES (store_seq.nextval, '', '', #{pro_code}, '', '', '', '정상', '', '')
+	INSERT INTO STORE VALUES (store_seq.nextval, '', '', #{pro_code}, '', '', '', '정지', '', '')
 	</insert>
 	
 	<select id="getStoreCode" resultType="int">
@@ -51,6 +54,13 @@
 	<select id="getProOptList" resultType="projectOpt" parameterType="int">
 	SELECT * FROM PRO_OPTION
 	WHERE pro_code = #{pro_code}
+	</select>
+	
+	<select id="getProStoOptionJoinList" resultType="proStoOptionJoin" parameterType="int">
+	SELECT a.*, b.*
+	FROM PRO_OPTION a LEFT JOIN STORE_OPTION b
+	ON a.OPT_CODE = b.OPT_CODE
+	WHERE a.PRO_CODE = #{pro_code}
 	</select>
 	
 	<select id="getStoOptList" resultType="storeOption" parameterType="int">

@@ -68,32 +68,32 @@ a{cursor:pointer;}
 			$("form").submit();
 		});
 		$("#come").click(function(){
-			if($("#come").hasClass("pro")){
-				$("#ing").removeClass("active").addClass("pro");
-				$("#end").removeClass("active").addClass("pro");
-				$("#come").removeClass("pro").addClass("active");
-			}
 			$("[name=proday]").val("come");
 			$("form").submit();
 		});
 		$("#end").click(function(){
-			if($("#end").hasClass("pro")){
-				$("#ing").removeClass("active").addClass("pro");
-				$("#come").removeClass("active").addClass("pro");
-				$("#end").removeClass("pro").addClass("active");
-			}
 			$("[name=proday]").val("end");
 			$("form").submit();
 		});
 		$("#ing").click(function(){
-			if($("#ing").hasClass("pro")){
-				$("#come").removeClass("active").addClass("pro");
-				$("#end").removeClass("active").addClass("pro");
-				$("#ing").removeClass("pro").addClass("active");
-			}
 			$("[name=proday]").val("ing");
 			$("form").submit();
 		});
+		var proday = $("[name=proday]").val();
+
+		if(proday=='come'){
+			$("#ing").removeClass("active").addClass("pro");
+			$("#end").removeClass("active").addClass("pro");
+			$("#come").removeClass("pro").addClass("active");
+		} else if (proday=='end'){
+			$("#ing").removeClass("active").addClass("pro");
+			$("#come").removeClass("active").addClass("pro");
+			$("#end").removeClass("pro").addClass("active");
+		} else{
+			$("#come").removeClass("active").addClass("pro");
+			$("#end").removeClass("active").addClass("pro");
+			$("#ing").removeClass("pro").addClass("active");
+		}
 		
 	});
 	
@@ -168,7 +168,7 @@ a{cursor:pointer;}
 							<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
 							<input type="hidden" name="curPage" value="${projSch.curPage}"/>
 							<input type="hidden" name="sort" value="${projSch.sort}"/>
-							<input type="hidden" name="proday" value="${projSch.proday}"/>
+							<input type="hidden" name="proday" value="ing"/>
 							<label for="search-keyword">
 								<input class="form-control" id="search-keyword" type="text" placeholder="검색어를 입력하세요" name="projectsch" value="${param.projectsch}">
 								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
@@ -196,7 +196,7 @@ a{cursor:pointer;}
 				<c:forEach var="proj" items="${plist}">
 						<div class="col-xs-12 col-md-3 item" onclick="javascript:go_detail('${proj.pro_code}')">
 							<div class="thumbnail projectList-item">
-								<img alt="..." src="img/${proj.pro_image}">
+								<img alt="..." src="${proj.pro_image}">
 								<div class="caption proj-info">
 									<p class="ProjectList-title">${proj.pro_title}</p>
 									<div class="maker-info">

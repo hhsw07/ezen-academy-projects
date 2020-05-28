@@ -17,7 +17,7 @@
 
 
 	<insert id="proCreate" parameterType="project">
-	INSERT INTO PROJECT VALUES (project_seq.nextval, #{maker_code}, '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y')
+	INSERT INTO PROJECT VALUES (project_seq.nextval, #{maker_code}, '', '', '', '', '', '', '', '', '', '', '', '정지', '', 'Y')
 	</insert>
 	
 	<select id="getProjectCode" resultType="int">

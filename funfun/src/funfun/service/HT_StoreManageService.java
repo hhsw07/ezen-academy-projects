@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import funfun.repository.HT_StoreManageReposi;
 import funfun.vo.ProOption;
+import funfun.vo.ProStoOptionJoin;
 import funfun.vo.Store;
 import funfun.vo.storeOption;
 import funfun.vo.storeOrder;
@@ -53,6 +54,10 @@ public class HT_StoreManageService {
 	
 	public void storeOpenRegConfirm(int sto_code) {
 		dao.storeOpenRegConfirm(sto_code);
+	}
+	
+	public ArrayList<ProStoOptionJoin> getProStoOptionJoinList(int pro_code){
+		return dao.getProStoOptionJoinList(pro_code);
 	}
 	
 }
