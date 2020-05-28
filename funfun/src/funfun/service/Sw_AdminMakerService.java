@@ -24,7 +24,7 @@ public class Sw_AdminMakerService {
 		private int start;		// 화면에 보여줄 페이지의 시작번호
 		private int end;		// 화면에 보여줄 페이지의 마지막번호
 		*/
-		sch.setCount(dao.AdminProjectCnt());
+		sch.setCount(dao.AdminMakerCnt());
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(5);
 		}
@@ -52,17 +52,18 @@ public class Sw_AdminMakerService {
 	}
 
 	
-	public AdminMaker detail(int pro_code) {
-		System.out.println("AdminProject 상세화면 호출");
-		return dao.detail(pro_code);
+	public AdminMaker detail(int maker_code) {
+		System.out.println("AdminMaker 상세화면 호출");
+		System.out.println("service단 maker_code:"+maker_code);
+		return dao.detail(maker_code);
 	};
 	public void update(AdminMaker upt) {
 		dao.update(upt);
-		System.out.println("AdminProject 수정 완료");
+		System.out.println("AdminMaker 수정 완료");
 	};
-	public void delete(int pro_code) {
-		dao.delete(pro_code);
-		System.out.println("AdminProject 삭제 완료");
+	public void delete(int maker_code) {
+		dao.delete(maker_code);
+		System.out.println("AdminMaker 삭제 완료");
 	};
 	
 }

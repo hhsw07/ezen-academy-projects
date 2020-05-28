@@ -21,6 +21,7 @@ public class AdminMaker {
 	private String maker_bankbook;
 	
 	private String pro_title;
+	private String mem_name;
 
 	public int getCnt() {
 		return cnt;
@@ -100,6 +101,14 @@ public class AdminMaker {
 
 	public void setPro_title(String pro_title) {
 		this.pro_title = pro_title;
+	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 	
 	
