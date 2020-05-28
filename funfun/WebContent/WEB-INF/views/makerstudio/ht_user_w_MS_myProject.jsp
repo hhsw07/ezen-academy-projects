@@ -70,7 +70,7 @@
 					<div class="myProjectFunction" onclick="javascript:go_manage('${proj.pro_code}')">프로젝트 관리</div>
 					</c:otherwise>
 				</c:choose>
-				<img alt="..." src="img/${proj.pro_image}">
+				<img src="img/${proj.pro_image}" onerror="this.src='img/img_alter.png'">
 				<div class="caption proj-info">
 					<p class="ProjectList-title">${proj.pro_title}</p>
 					<div class="maker-info">

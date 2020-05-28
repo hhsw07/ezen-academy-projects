@@ -15,6 +15,10 @@ tmpUpload=C:/a01_javaexp/workspace_web/.metadata/.plugins/org.eclipse.wst.server
 	<property name="order" value="1"/>
 </bean>
 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+         <property name="maxUploadSize" value="52428800" />
+         <property name="defaultEncoding" value="utf-8" />
+
+
 </bean>
 
 4. VO 객체 추가
