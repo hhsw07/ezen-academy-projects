@@ -157,7 +157,7 @@
 <body>
 <div class="sc-chat-window" style="z-index:10;">
 	<div class="sc-header">
-		<img class="sc-header--img" src="${path }/template/assets/img/new_logo.png" alt="">
+		<img class="sc-header--img" src="${user.mem_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'">
 		<div class="sc-header--team-name">${rtqna.mem_name}
 		</div>
 		<div class="sc-header--close-button exitBtn">
