@@ -94,7 +94,12 @@
 	 
 	
 	 <select id="getStoreOptNoAndCnt" parameterType="int" resultMap="optCodeAndCnt">
-	 	SELECT sto_opt_code optionCode, sto_order_cnt cnt FROM STORE_ORDER WHERE mem_code=#{mem_code}
+	 	SELECT sto_opt_code optionCode, sto_order_cnt cnt, sto_order_curr state FROM STORE_ORDER WHERE mem_code=#{mem_code}
+	 </select>
+	 
+	 <select id="getStoreInfo" parameterType="int" resultType="funfun.vo.StoreTitleImageDetailPrice">
+	 	SELECT nvl(b.sto_title, ' ') title, nvl(b.sto_image, ' ') image, nvl(a.sto_opt_detail, ' ') detail, nvl(a.sto_opt_price, 0) price FROM STORE_OPTION a, store b
+	 	WHERE a.STO_CODE =b.sto_code AND STO_OPT_CODE=#{optcode}
 	 </select>
 	
 </mapper>

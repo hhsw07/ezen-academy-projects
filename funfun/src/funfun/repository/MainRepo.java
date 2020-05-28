@@ -12,6 +12,7 @@ import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
 import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
+import funfun.vo.StoreTitleImageDetailPrice;
 
 
 @Repository
@@ -56,5 +57,7 @@ public interface MainRepo {
 	public NotificationInfo getProjectInfoLeft7DaysOrLessByProjectCode(int projectCode);
 	
 	public ArrayList<OptCodeAndCnt> getStoreOptNoAndCnt(int memCode);
+	
+	public StoreTitleImageDetailPrice getStoreInfo(int optCode);
 
 }

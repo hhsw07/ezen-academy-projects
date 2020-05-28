@@ -122,7 +122,9 @@ public class AndroidLoginCtrl {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		ArrayList<MyOrderInfo> list = service.getMyOrderList(email);
-		String result="{\"list\":[]}";
+		Gson gson = new Gson();
+		String result=gson.toJson(list);
+		result="{\"list\":"+result+"}";
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
 }

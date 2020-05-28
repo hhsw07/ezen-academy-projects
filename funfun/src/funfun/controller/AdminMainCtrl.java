@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import funfun.service.KB_StoreService;
 import funfun.vo.Paging;
+import funfun.vo.Project;
 import funfun.vo.RewardStore;
+import funfun.service.*;
 
 @Controller
 public class AdminMainCtrl {
 	
 	@Autowired(required=false)
 	KB_StoreService kb_service;
+	@Autowired(required=false)
+	KB_adminService kb_admin_service;
 	@RequestMapping(value="/admin-main.do")
 	public String enterMain() {
 		return "WEB-INF\\views\\admin\\adminMain.jsp";
@@ -30,7 +34,8 @@ public class AdminMainCtrl {
 	}
 	
 	@RequestMapping(value="/project-management.do")
-	public String enterProjectManagement() {
+	public String enterProjectManagement(Paging sch, Model d) {
+		d.addAttribute("plist", kb_admin_service.projectList(sch));
 		return "WEB-INF\\views\\admin\\projectManagement.jsp";
 	}
 	
@@ -63,5 +68,19 @@ public class AdminMainCtrl {
 	public String stocurrUpt(RewardStore rs) {
 		kb_service.UptCurr(rs);
 		return "redirect:/reward-store-management.do";
+	}
+	
+	@RequestMapping(value="/project-detail.do")
+	public String proDetail(int pro_code, Model d) {
+		d.addAttribute("detail", kb_admin_service.proDetail(pro_code));
+		
+		return "pageJsonReport";
+	}
+	
+	@RequestMapping(value="project-update-curr.do")
+	public String proCurrUpt(Project pro) {
+		kb_admin_service.UptCurr(pro);
+		
+		return "redirect:/project-management.do";
 	}
 }

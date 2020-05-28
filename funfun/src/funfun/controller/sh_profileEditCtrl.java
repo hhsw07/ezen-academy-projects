@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import funfun.service.sh_profileEditService;
+import funfun.util.Uploader;
 import funfun.vo.MemberInfo;
 import funfun.vo.UserProfile;
 
@@ -18,6 +20,8 @@ import funfun.vo.UserProfile;
 public class sh_profileEditCtrl {
 	@Autowired(required=false)
 	private sh_profileEditService service;
+	
+	Uploader uploader;
 	
 	@RequestMapping("/profileEdit.do")
 	public String mlist(HttpServletRequest request, Model d) {
@@ -34,7 +38,7 @@ public class sh_profileEditCtrl {
 	}
 	
 	@RequestMapping("/profileEdit.do/changeProfile.do")
-	public String changeProfile(@RequestParam("favorChk") String[] favorChk,HttpServletRequest request, @ModelAttribute("uf") UserProfile uf, Model d) {
+	public String changeProfile(@RequestParam("profileImg") MultipartFile[] profileImg,@RequestParam("favorChk") String[] favorChk,HttpServletRequest request, @ModelAttribute("uf") UserProfile uf, Model d) {
 		
 		HttpSession session = request.getSession(); 
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
@@ -50,10 +54,16 @@ public class sh_profileEditCtrl {
 				}else {
 					memFavor += favorChk[i]+",";
 				}
+				
 			}
 			uf.setMemEmail(memberinfo.getMem_email());
 			uf.setMemFavor(memFavor);
 			service.changeProfile(uf);
+			uploader=new Uploader();
+			System.out.println("파일업로드처리");
+			String result = uploader.upload(profileImg[0]);
+			System.out.println(result);
+			return "";
 		}
 		 
 		return "redirect:/profileEdit.do";

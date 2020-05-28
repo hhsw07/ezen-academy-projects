@@ -64,25 +64,34 @@ $(order[1]).click(function(e){
 })
 
 $("#chargeM").click(function(){
-    $("#chargeM_div").css('display','block');
+
+    $("#chargeM_div").css('display','block')
+    $("#chargeM").css('background-color','rgba(255,151,5,0.5)');
+    $("#withdrawlM, #usingM, #infoM").css('background-color','white');
     $("#withdrawlM_div").css('display','none');
     $("#usingM_div").css('display','none');
     $("#infoM_div").css('display','none');
 })
 $("#withdrawlM").click(function(){
     $("#withdrawlM_div").css('display','block');
+    $("#withdrawlM").css('background-color','rgba(255,151,5,0.5)');
+    $("#chargeM, #usingM, #infoM").css('background-color','white');
     $("#chargeM_div").css('display','none');
     $("#usingM_div").css('display','none');
     $("#infoM_div").css('display','none');
 })
 $("#usingM").click(function(){
     $("#usingM_div").css('display','block');
+    $("#usingM").css('background-color','rgba(255,151,5,0.5)');
+    $("#chargeM, #withdrawlM, #infoM").css('background-color','white');
     $("#chargeM_div").css('display','none');
     $("#withdrawlM_div").css('display','none');
     $("#infoM_div").css('display','none');
 })
 $("#infoM").click(function(){
     $("#infoM_div").css('display','block');
+    $("#infoM").css('background-color','rgba(255,151,5,0.5)');
+    $("#chargeM, #withdrawlM, #usingM").css('background-color','white');
     $("#chargeM_div").css('display','none');
     $("#withdrawlM_div").css('display','none');
     $("#usingM_div").css('display','none');
