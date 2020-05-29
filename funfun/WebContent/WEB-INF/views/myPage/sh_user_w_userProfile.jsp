@@ -34,13 +34,13 @@
 
 		}
 		$(document).ready(function(){
+			
 			var memFavor = "${mlist.memFavor}";
 			var memFavorArray = memFavor.split(',');
 			for(let i=0; i<memFavorArray.length; i++){
-				$("input:checkbox[value="+memFavorArray[i]+"]").prop("checked", true);
+				$('input:checkbox[value=\"'+$(memFavorArray)[i]+'\"]').prop("checked", true);
 			}
-
-
+			
 			$('.main').addClass('bounce');
 			setTimeout(()=>{
 				$('.main').removeClass('bounce');
@@ -57,8 +57,11 @@
 	                file = files[i];
 	 
 	                fileName=file.name;
+	              
 	            }
+	            alert("파일명 : "+fileName)
 	            $("[name=memProfile]").val("z01_upload/"+fileName);
+	            
 	           
 	        });
 			function readURL(input) {
