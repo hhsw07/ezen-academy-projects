@@ -28,6 +28,7 @@ public class HT_MSCtrl {
 
 	@Autowired(required=false)
 	private HT_MSService service;
+	private MainService serviceM;
 	
 	
 	@RequestMapping(params="method=makerReg")
@@ -44,6 +45,7 @@ public class HT_MSCtrl {
 		reg.setMem_code(memberinfo.getMem_code());
 		service.regMaker(reg);
 		session.setAttribute("makerinfo", reg);
+		session.setAttribute("user", serviceM.getMemberInfo(memberinfo.getMem_email()));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
 	}
 	
@@ -52,6 +54,7 @@ public class HT_MSCtrl {
 		
 		HttpSession session = request.getSession();
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		
 		
 		if (memberinfo==null) {
 			System.out.println("에러페이지 뜸???");
@@ -65,7 +68,7 @@ public class HT_MSCtrl {
 			} else {
 				System.out.println(memberinfo.getMaker_code());
 				d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
-				return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
+				return "redirect:/MakerStudio.do?myProject";
 
 			}
 		}

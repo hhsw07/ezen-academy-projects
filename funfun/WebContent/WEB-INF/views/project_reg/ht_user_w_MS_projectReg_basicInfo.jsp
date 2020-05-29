@@ -49,7 +49,6 @@
 	$( function() {
 		$( ".widget input[type=submit], .widget a, .widget button" ).button();
 		$( "button, input, a" ).click( function( event ) {
-			event.preventDefault();
 		} );
 	} );	
 	
@@ -65,7 +64,7 @@
  	<jsp:include page="ht_user_w_MS_projectReg_menu.jsp"/>
  
  
-	<form id="basicInfoForm" enctype="multipart/form-data" action="${path}/ProjectReg.do">
+	<form method="post" id="basicInfoForm" enctype="multipart/form-data" action="${path}/ProjectReg.do">
 
 	<input type="hidden" name="method" value="basicInfoReg"/>
 	
@@ -98,9 +97,10 @@
 	
 	<span class="reg_content_title">대표 이미지 *</span><br><br>
 
-	<input type="file" name="projectImg" accept=".gif, .jpg, .png" style="display:none;"/>
-	<button class="btn btn-warning btn_custom" >스토어 이미지 업로드</button>
-	 
+	<div class="btn btn-warning btn_custom"> 
+	    <label for="projectImg">스토어 이미지 업로드</label>
+	    <input type="file" id="projectImg" name="projectImg" accept=".gif, .jpg, .png" style="display:hidden;">
+	</div>	 
 	
 	<br><br>
 	

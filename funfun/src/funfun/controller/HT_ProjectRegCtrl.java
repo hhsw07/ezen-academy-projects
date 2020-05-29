@@ -91,8 +91,7 @@ public class HT_ProjectRegCtrl {
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		int projectCode = (int)session.getAttribute("projectCode");
 		
-		Uploader uploader;
-		uploader = new Uploader();
+		Uploader uploader = new Uploader();
 		String proImageAddress = uploader.upload(projectImg[0]);
 		
 		cre.setPro_code(projectCode);
