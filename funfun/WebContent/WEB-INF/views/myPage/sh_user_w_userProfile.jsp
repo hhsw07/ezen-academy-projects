@@ -34,32 +34,30 @@
 
 		}
 		$(document).ready(function(){
+			
 			var memFavor = "${mlist.memFavor}";
 			var memFavorArray = memFavor.split(',');
 			for(let i=0; i<memFavorArray.length; i++){
-				$("input:checkbox[value="+memFavorArray[i]+"]").prop("checked", true);
+				$('input:checkbox[value=\"'+$(memFavorArray)[i]+'\"]').prop("checked", true);
 			}
-
-
+			
 			$('.main').addClass('bounce');
 			setTimeout(()=>{
 				$('.main').removeClass('bounce');
 			},500);
-			var fileName;
+			
+			var fileName = "${mlist.memProfile}"
+			$("[name=memProfile]").val(fileName);
+			
 			$("input[type=file]").change(function () {
-	            
-	            var fileInput = document.getElementById("myImage");
+            	var fileInput = document.getElementById("myImage");
 	            var files = fileInput.files;
 	            var file;
-
-	            for (var i = 0; i < files.length; i++) {
-	                
+	            for (var i = 0; i < files.length; i++) { 
 	                file = files[i];
-	 
 	                fileName=file.name;
 	            }
 	            $("[name=memProfile]").val("z01_upload/"+fileName);
-	           
 	        });
 			function readURL(input) {
                 if (input.files && input.files[0]) {
@@ -128,7 +126,7 @@
 		    		<div style="width:100%;margin-bottom:30px;">
 		    		<input class="profile__input" value="${mlist.pay_zipcode}" style="width:30%;margin-bottom:15px;padding-left:10px;" name="pay_zipcode" readonly>
 		    		<input class="profile__input" value="${mlist.pay_addr}" style="margin-bottom:15px;padding-left:10px;" name="pay_addr" readonly>
-		    		<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:10px;height:35px;"class="profile__btn">주소검색</button>
+		    		<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:5px;height:40px;"class="profile__btn">주소검색</button>
 		    		</div>
 		    		
 		    		<p class="profile__innertitle">관심사</p>

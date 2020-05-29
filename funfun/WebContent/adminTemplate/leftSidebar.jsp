@@ -26,6 +26,9 @@
                             <a class="nav-link" href="${path }/project-management.do"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 프로젝트 관리</a>
+                                <a class="nav-link" href="${path }/project-report-management.do"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                프로젝트 신고 관리</a>
                             <a class="nav-link" href="${path }/reward-store-management.do"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 리워드 스토어 관리</a>

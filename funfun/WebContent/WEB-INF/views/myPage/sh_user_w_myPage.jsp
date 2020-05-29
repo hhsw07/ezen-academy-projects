@@ -68,8 +68,8 @@
 <c:if test="${!empty flist}">
 <div class="row">
 	<c:forEach var="list" items="${flist}">
-	            <div class="col-xs-12 col-md-3 item" class="favorPjClick">
-	              <div class="thumbnail">
+	            <div class="col-xs-12 col-md-3 item" >
+	              <div class="thumbnail" onclick="favorPjClick()" >
 	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
@@ -98,17 +98,17 @@
 	                </div>
 	              </div>
 	            </div>    
-	            
 	         <script>
+	         
 	         	var proCode;
 				function deleteFavor(proCode){
 					this.proCode = proCode;
 					$("[name=pc]").val(proCode)
 					$("#deleteFavorForm").submit()
 				}
-				$(".favorPjClick").click(function(){
+				function favorPjClick(){
 					location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
-				})
+				});
 	         </script>    
 	</c:forEach>
 	 </div>
