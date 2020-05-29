@@ -12,7 +12,26 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/sh_user_w_account.css">
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
+<link rel="stylesheet" href="css/toastr.css">
+<script src="${path}/js/toastr.js"></script>
 <script>
+toastr.options = {
+	    "closeButton": false,
+	    "debug": false,
+	    "newestOnTop": false,
+	    "progressBar": false,
+	    "positionClass": "toast-top-right",
+	    "preventDuplicates": false,
+	    "onclick": null,
+	    "showDuration": 800,
+	    "hideDuration": 800,
+	    "timeOut": 1500,
+	    "extendedTimeOut": 1500,
+	    "showEasing": "swing",
+	    "hideEasing": "linear",
+	    "showMethod": "fadeIn",
+	    "hideMethod": "fadeOut"
+	  }
 		var rdlist = "${rdlist}";
 		if(rdlist ===''){
 			window.location = "${path}/login.do";
@@ -21,15 +40,15 @@
 		function rdCharge(){
 			var amount = $("[name=chargeQuery]").val()
 			if(amount == null){
-				alert('충전할 금액을 입력해주세요')
+				Command: toastr["warning"]("충전할 금액을 입력해주세요");
 			}else if(amount < 1000){
-				alert('최소 충전 금액은 1000원 입니다')
+				Command: toastr["warning"]("최소 충전 금액은 1000원 입니다");
 			}else{
 				var result = confirm(amount+'원을 충전 신청 하시겠습니까?'); 
 				if(result) { 
 					$("#chargeForm").submit();
-					alert('신청이 완료되었습니다')
-					alert('충전이 완료되었습니다(입금확인 프로세스 미적용)')
+					Command: toastr["warning"]("신청이 완료되었습니다");
+					Command: toastr["warning"]("충전이 완료되었습니다(입금확인 프로세스 미적용)");
 				} else {
 					
 				}
@@ -40,29 +59,27 @@
 			var amount = $("#wiAmount").val();
 			var memAccount = ${clist.memAccount}
 			if(memAccount==null){
-				alert('계좌 정보를 먼저 등록해주세요')
+				Command: toastr["warning"]("계좌정보 등록이 필요합니다");
 			}else{
 				if(amount == null || amount == 0){
-					alert('출금 신청 금액을 정확히 입력해주세요')
+					Command: toastr["warning"]("출금 신청 금액을 정확히 입력해주세요");
 				}else if(memBalance < amount){
-					alert('보유금액이 부족합니다')
+					Command: toastr["warning"]("보유금액이 부족합니다");
 				}else{
-					alert('신청이 완료되었습니다')
-					alert('출금이 완료되었습니다(출금확인 프로세스 미적용)')
+					Command: toastr["warning"]("신청이 완료되었습니다");
+					Command: toastr["warning"]("출금이 완료되었습니다(출금확인 프로세스 미적용)");
 					$("#wiForm").submit()
 				}
 			}
 		}
 		
 		function chgAct(){
-			var memAccount = ("[name=memAccount]").val();
-			alert(memAccount)
-			var bankName = ("[name=bankName]").val();	
-			alert(bankName)
-			if(memAccount==null){
-				alert("계좌번호를 입력해주세요")
+			var bankName = $("[name=\"bankName\"]").val();
+			var memAccount = $("[name=\"memAccount\"]").val();
+			if(memAccount==''||memAccount==null){
+				Command: toastr["warning"]("계좌번호를 입력해주세요");
 			}else if(bankName == '은행선택'){
-				alert("은행명을 입력해주세요")
+				Command: toastr["warning"]("은행을 선택해주세요");
 			}else{
 				var result = confirm('계좌 정보를 수정/등록 하시겠습니까?'); 
 				if(result) { 
@@ -72,22 +89,41 @@
 				}	
 			}
 		}
+		
+		
 		$(document).ready(function(){
 			var memBank = "${clist.memBank}";
-			$("#selectBox").val(memBank).prop("selected", true);			
+			$("#selectBox").val(memBank).prop("selected", true);	
+			function setComma(inputNumber){
+				return inputNumber.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,'); 
+			}
+			var ph = $(".ph").get()
+			for(let i=0;i<ph.length;i++){
+				$(ph[i]).blur(function(){		
+					var chargeInputVal = $(ph[i]).val();
+					$(ph[i]).val(setComma(chargeInputVal));
+				})
+				$(ph[i]).click(function(){
+					var chargeInputVal = $(ph[i]).val()
+					if($(ph[i]).val().match(",")!=null){
+						if(chargeInputVal !='' || chargeInputVal != null){
+							$(ph[i]).val('');
+						}else{
+							
+						}
+					}else{
+
+					}
+					
+				})
+			}
 			
-			$(".numberic").keyup(function(){
-				function numberWithCommas(x) {
-				    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				}
-				numberWithCommas($(".numberic").val());
-			})
 			
 		})
 
 </script>
 </head>
-<body>
+<body style="overflow-y:scroll;">
 	<div class="main">
 	    <div class="container tim-container" style="max-width:900px; margin:auto;padding-top:100px">
 	        <div class="row">
@@ -125,7 +161,10 @@
 			    	</table>
 			    	<hr style="margin-bottom: 20px;">
 			    	<form id="chargeForm" action="/funfun/myaccount.do/chargeQuery.do">
-			    	<input style="margin-top:15px;width:100%;height:40px;" class="numberic ph" name="chargeQuery" placeholder="충전할 금액을 입력해주세요">
+			    	<div style="border-radius:3px;border:1px solid #c0c0c0;margin-top:15px;width:100%;height:40px;">
+			    		<input id="chargeInput" style="padding-left:20px;border:none;background:transparent;postion:realative;top:5px;height:40px;width:90%;" class="numberic ph" name="chargeQuery" placeholder="충전할 금액을 입력해주세요">
+			    		<span style="color:#c0c0c0;font-size:15px;">원</span>
+			    	</div>
 			    	<div style="display:flex;margin-top:45px;">
 						<button onclick="rdCharge()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="button">
 						신청하기
@@ -166,7 +205,10 @@
 			    	</table>
 			    	<hr style="margin-bottom: 20px;">
 			    	<form id="wiForm" action="/funfun/myaccount.do/withdrawlQuery.do">
-			    	<input id="wiAmount" name="minusBal" style="margin-top:15px;width:100%;height:40px;" class="ph" placeholder="출금할 금액을 입력해주세요">
+			    	<div style="border-radius:3px;border:1px solid #c0c0c0;margin-top:15px;width:100%;height:40px;">
+						<input id="wiAmount" name="minusBal" style="padding-left:20px;border:none;background:transparent;postion:realative;top:5px;height:40px;width:90%;" class="ph" placeholder="출금할 금액을 입력해주세요">
+			    		<span style="color:#c0c0c0;font-size:15px;">원</span>
+			    	</div>
 			    	<div style="display:flex;margin-top:45px;">
 						<button onclick="rdWithdrawl()" style="background-color:orange;color:white;margin:0;position:relative;bottom:20px;width:100%" class="profile__submit" type="button">신청하기</button>
 			    	</div>

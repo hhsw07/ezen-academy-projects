@@ -96,3 +96,4 @@ $("#infoM").click(function(){
     $("#withdrawlM_div").css('display','none');
     $("#usingM_div").css('display','none');
 })
+

@@ -10,35 +10,58 @@
 <head>
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+<link rel="stylesheet" href="css/toastr.css">
+<script src="js/sh_user_w_myPage.js"></script>	
+<script src="js/jquery.js"></script>	
+<script src="js/toastr.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+		toastr.options = {
+			    "closeButton": false,
+			    "debug": false,
+			    "newestOnTop": false,
+			    "progressBar": false,
+			    "positionClass": "toast-top-right",
+			    "preventDuplicates": false,
+			    "onclick": null,
+			    "showDuration": 800,
+			    "hideDuration": 800,
+			    "timeOut": 1500,
+			    "extendedTimeOut": 1500,
+			    "showEasing": "swing",
+			    "hideEasing": "linear",
+			    "showMethod": "fadeIn",
+			    "hideMethod": "fadeOut"
+			  }
 		var memEmail = "${memEmail}";
 		if(memEmail ===''){
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
-		
+
 		 function openConfirm(){
 			 if($("input:checkbox[name=favorChk]").is(":checked")){
 				 $(".openConfirm").css('display','block') 
 			 }else{
-				 alert('탈퇴 전 유의사항을 확인해주세요') 
+				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
 		 }
+
 		 function secessionFinal(memEmail){
 			 if($("input:checkbox[name=favorChk]").is(":checked")){
+
 				 var result = confirm('회원 탈퇴시 동일 이메일로 재가입 할수 없습니다. 정말 탈퇴하시겠습니까?'); 
 					if(result) { 
 						$("[name=memEmail]").val(memEmail)
 						 $("form").submit();
-						alert('탈퇴가 완료되었습니다')
+						Command: toastr["warning"]("탈퇴가 완료되었습니다");
 					} else {
 						
 					} 
 			 
 			 }else{
-				 alert('탈퇴 전 유의사항을 확인해주세요') 
+				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
 		 }
 			 

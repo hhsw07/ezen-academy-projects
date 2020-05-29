@@ -103,22 +103,6 @@ label {
   margin-top: 200px;
 }
 
-.ph::-webkit-input-placeholder {
-  padding-left: 10px;
-}
-
-.ph:-ms-input-placeholder {
-  padding-left: 10px;
-}
-
-.ph::-ms-input-placeholder {
-  padding-left: 10px;
-}
-
-.ph::placeholder {
-  padding-left: 10px;
-}
-
 .p-icon {
   margin-bottom: 13px;
 }

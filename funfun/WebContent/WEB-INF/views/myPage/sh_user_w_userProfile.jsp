@@ -10,9 +10,27 @@
 <head>
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+<link rel="stylesheet" href="css/toastr.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
+toastr.options = {
+	    "closeButton": false,
+	    "debug": false,
+	    "newestOnTop": false,
+	    "progressBar": false,
+	    "positionClass": "toast-top-right",
+	    "preventDuplicates": false,
+	    "onclick": null,
+	    "showDuration": 800,
+	    "hideDuration": 800,
+	    "timeOut": 1500,
+	    "extendedTimeOut": 1500,
+	    "showEasing": "swing",
+	    "hideEasing": "linear",
+	    "showMethod": "fadeIn",
+	    "hideMethod": "fadeOut"
+	  }
 		var mlist = "${mlist}";
 		if(mlist ===''){
 			window.location = "${path}/login.do";
@@ -72,6 +90,9 @@
             $("#myImage").change(function() {
                 readURL(this);
             });
+            $("#submitBtn").click(function(){
+            	$("#profileEditForm").submit();
+            })
 		})
 </script>
 </head>
@@ -86,7 +107,7 @@
 		    	<p class="profile__img--title">프로필 사진</p>
 		    	
 		    	<!-- 이미지 -->
-		    	<form style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST" enctype="multipart/form-data">
+		    	<form id="profileEditForm" style="width:80%;margin-left:10%;margin-bottom:30px;" action="/funfun/profileEdit.do/changeProfile.do" method="POST" enctype="multipart/form-data">
 		    	<img src="${path}/${mlist.memProfile}" id="imgId" style="border:1px solid gray;padding:5px;width:130px;height:130px;border-radius:100px;margin-top:20px;margin-left: 157px;margin-bottom:8px" class="profile__img"/>
 		    	<div style="text-align:center;margin-bottom:50px;">
 		    	<span onclick="changeImg()" class="profile__img-edit">바꾸기</span>
@@ -113,7 +134,7 @@
 					    <option>LGU 알뜰폰</option>
 					</select>
 		    		<input class="profile__input" class="" style="padding-left:10px;" name="memPhone" value="${mlist.memPhone}">
-		    		<button class="profile__btn" style="width:145px;">번호받기</button>
+		    		<button type="button" class="profile__btn" style="width:145px;">번호받기</button>
 		    		</div>
 		    		
 		    		<p class="profile__innertitle">인증 번호 확인</p>
@@ -202,9 +223,9 @@
 					</div>
 					
 					<div style="display:flex;margin-top:30px;">
-						<button type="button" class="profile__cancle">취소</button>
+						<button onclick="window.history.back()" type="button" class="profile__cancle">취소</button>
 						<input style="display:none;" type="hidden" name="memProfile">
-						<input class="profile__submit" type="submit" value="수정">
+						<button id="submitBtn" class="profile__submit" type="button">수정</button>
 		    		</div>
 	    		  	
 		    	</form>
@@ -213,7 +234,7 @@
 	    	<div class="col-md-3"></div>
 	    </div>
 	</div>
-	
+	<script src="js/sh_user_w_myPage.js"></script>
 	<!-- end main -->
 </body>
 </html>

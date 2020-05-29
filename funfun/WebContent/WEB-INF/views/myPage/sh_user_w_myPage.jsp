@@ -14,24 +14,45 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/sh_user_w_myPage.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/toastr.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+<script src="${path}/js/toastr.js"></script>
 <script>
+		toastr.options = {
+			    "closeButton": false,
+			    "debug": false,
+			    "newestOnTop": false,
+			    "progressBar": false,
+			    "positionClass": "toast-top-right",
+			    "preventDuplicates": false,
+			    "onclick": null,
+			    "showDuration": 800,
+			    "hideDuration": 800,
+			    "timeOut": 1500,
+			    "extendedTimeOut": 1500,
+			    "showEasing": "swing",
+			    "hideEasing": "linear",
+			    "showMethod": "fadeIn",
+			    "hideMethod": "fadeOut"
+			  }
 		var flist = "${flist}";
 		if(flist ===''){
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
-		
-		
-		
+	
 		$(document).ready(function(){
+			$("[data-dismiss=modal]").click(function(){
+				$(".form-control").val('')
+			})
+			
 			
 		})
 		
 
 </script>
 </head>
-<body>
+<body style="overflow-y:scroll;">
 	<div class="main">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
           <span class="profile__name">${meminfo.memName}</span>
@@ -109,6 +130,9 @@
 				function favorPjClick(){
 					location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
 				});
+				
+				
+				
 	         </script>    
 	</c:forEach>
 	 </div>
@@ -141,7 +165,7 @@
 				<c:when test="${list.proLeftDate>=0}"><span style="color:orange">펀딩중 </span></c:when>
 			  </c:choose>
               </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
-              <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+              <tr><td onclick="movingDetailPageF()" class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
@@ -176,7 +200,7 @@
 				<c:when test="${list.fundState eq '배송완료'}"><span style="color:rgb(9,54,135)">배송완료</span></c:when>
 			  </c:choose>
               </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
-              <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+              <tr><td onclick="movingDetailPageF()" class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
@@ -210,8 +234,7 @@
 			$("[name=newAdr2]").val(newAdr2)
 			$("[name=fc]").val(fundingCode)
 			$("#form2").submit()
-			alert('주소가 변경 되었습니다')
-			
+			Command: toastr["warning"]("주소가 변경 되었습니다");
 		}
 		function cancleFundingModal(fundingCode){
 			this.fundingCode = fundingCode;
@@ -219,7 +242,7 @@
 		function cancleFunding(){
 			$("[name=fcCancle]").val(fundingCode)
 			$("#cancleFunding").submit()
-			alert('펀딩이 취소되었습니다')
+			Command: toastr["warning"]("펀딩이 취소되었습니다");
 		}
 		function movingDetailPageF(){
 			location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
@@ -257,7 +280,7 @@
 				<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
 			  </c:choose>              
               </td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
-              <tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td onclick="movingDetailPageO()" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
@@ -290,7 +313,7 @@
 				<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
 			  </c:choose>              
               </td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
-              <tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td onclick="movingDetailPageO()" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
@@ -323,7 +346,7 @@
 			$("[name=newAdr]").val(newAdr)
 			$("[name=oc]").val(orderCode)
 			$("#form1").submit()
-			alert('주소가 변경되었습니다')
+			Command: toastr["warning"]("주소가 변경되었습니다");
 		}
 		function cancleOrderModal(orderCode){
 			this.orderCode = orderCode;
@@ -331,7 +354,7 @@
 		function cancleOrder(){
 			$("[name=ocCancle]").val(orderCode)
 			$("#cancleOrder").submit()
-			alert('주문이 취소되었습니다')
+			Command: toastr["warning"]("주문이 취소되었습니다");
 		}
 		function movingDetailPageO(){
 			location.href='/funfun/store.do?method=detail&sto_code='+${list.orderCode}
