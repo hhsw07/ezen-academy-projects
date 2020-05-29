@@ -48,11 +48,11 @@
 			resize_enaleb : false,
 			enterMode : CKEDITOR.ENTER_BR,
 			shiftEnterMode : CKEDITOR.ENTER_P,
-			filebrowserUploadUrl : "img"
+			filebrowserUploadUrl : "${path}/Store.do?method=storeStoryImgUpload"
 	};			
 			
 		
-	CKEDITOR.replace("storyDetail", ckeditor_config);
+	CKEDITOR.replace("sto_detai", ckeditor_config);
 	
 	$("#subBtn").click(function(){
 		$("#basicInfoForm").submit();
@@ -96,14 +96,6 @@
 	
 	<br><br>
 
-	<span class="reg_content_title">스토어 상세 설명 *</span><br><br>
-
-	<textarea class="form-control" id="storyDetail" name="sto_detai"></textarea>
-	
-
-	<br><br>
-
-	
 	<span class="reg_content_title">스토어 이미지 *</span><br><br>
 
 	<div class="btn btn-warning btn_custom"> 
@@ -112,6 +104,14 @@
 	</div>	
 		
 	<br><br><br>
+
+	<span class="reg_content_title">스토어 상세 설명 *</span><br><br>
+
+	<textarea class="form-control" id="sto_detai" name="sto_detai"></textarea>
+	
+
+	<br><br>
+
 	
 	<span class="reg_content_title">카테고리 *</span><br><br>
 
