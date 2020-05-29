@@ -68,7 +68,7 @@
 <c:if test="${!empty flist}">
 <div class="row">
 	<c:forEach var="list" items="${flist}">
-	            <div class="col-xs-12 col-md-3 item">
+	            <div class="col-xs-12 col-md-3 item" class="favorPjClick">
 	              <div class="thumbnail">
 	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
@@ -106,6 +106,9 @@
 					$("[name=pc]").val(proCode)
 					$("#deleteFavorForm").submit()
 				}
+				$(".favorPjClick").click(function(){
+					location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
+				})
 	         </script>    
 	</c:forEach>
 	 </div>
@@ -127,15 +130,14 @@
 <c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
-          <div class="col-xs-10 col-md-10" style="margin-top:10px">
+          	<c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
+             	<div class="col-xs-10 col-md-10" class="fundingDiv" style="margin-bottom:-80px;margin-top: 10px;">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">펀딩번호 : ${list.fundingCode}</span>
           <div class="funding" style="margin-top:5px">
             <table class="col-xs-12 col-md-12">
               <tr><td class="funding__state">
               <c:choose>
-             	<c:when test="${list.fundState eq '펀딩취소'}"><span style="color:gray">펀딩취소</span></c:when>
 				<c:when test="${list.proLeftDate<0 and list.percent>=0.8}">펀딩성공 </c:when>	
-				<c:when test="${list.proLeftDate<0 and list.percent<0.8}"><span style="color:red">펀딩실패 </span></c:when>
 				<c:when test="${list.proLeftDate>=0}"><span style="color:orange">펀딩중 </span></c:when>
 			  </c:choose>
               </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
@@ -155,17 +157,47 @@
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
             </table>
-            <c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
              <button onclick="openFundingAdrChangeModal('${list.fundAddress}','${list.fundingCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">주소지 정보 변경하기</button>
             <span style="width:3%"></span>
             <a onclick="cancleFundingModal('${list.fundingCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right;" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal" data-toggle="modal"><span class="CancelText">펀딩 취소 하기</span></a>
-         	</c:if>
-         	<c:if test="${list.fundState eq '펀딩취소' || list.fundState eq '펀딩실패'}">
-         			<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.fundState} 상태에서는 펀딩 취소 및 주소지 수정이 불가능합니다</p>
-             		<button onclick="movingDetailPageF()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
-         	</c:if>
          </div>
         </div>
+	       	</c:if>
+	       	<c:if test="${list.fundState eq '펀딩취소' || list.fundState eq '펀딩실패' || list.fundState eq '배송중' || list.fundState eq '배송완료'}">
+	       		<div class="col-xs-10 col-md-10" class="fundingDiv" style="margin-bottom:50px;margin-top: 10px;">
+          <span style="font-size:14px;color:gray;padding-bottom:10px;">펀딩번호 : ${list.fundingCode}</span>
+          <div class="funding" style="margin-top:5px">
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">
+              <c:choose>
+             	<c:when test="${list.fundState eq '펀딩취소'}"><span style="color:gray">펀딩취소</span></c:when>
+				<c:when test="${list.proLeftDate<0 and list.percent<0.8}"><span style="color:rgb(247,0,0)">펀딩실패 </span></c:when>
+				<c:when test="${list.fundState eq '배송중'}"><span style="color:rgb(9,54,135)">배송중</span></c:when>
+				<c:when test="${list.fundState eq '배송완료'}"><span style="color:rgb(9,54,135)">배송완료</span></c:when>
+			  </c:choose>
+              </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
+              <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+              <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
+              </td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
+              
+              <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+              <fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/>
+              
+              </td></tr>
+              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
+            </table>
+       			<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.fundState} 상태에서는 펀딩 취소 및 주소지 수정이 불가능합니다</p>
+           		<button onclick="movingDetailPageF()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
+         </div>
+        </div>	
+	       	</c:if>
+          
         </div>
         <script>
         var fundingCode;
@@ -209,7 +241,9 @@
 	<c:forEach var="list" items="${tlist}">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
-          <div class="col-xs-10 col-md-10" style="margin-top:10px">
+          <c:choose>
+          <c:when test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
+          	<div class="col-xs-10 col-md-10 orderDiv" style="margin-bottom : 50px;">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
           
           <div class="funding" style="margin-top:5px">
@@ -236,21 +270,47 @@
               </td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
             </table>
-           
-            <c:choose>
-             	<c:when test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
-             		<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.orderCurr} 상태에서는 주문 취소 및 주소지 수정이 불가능합니다</p>
-             		<button onclick="movingDetailPageO()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
-             	</c:when>
-				<c:when test="${list.orderCurr eq '주문완료'}">
-					<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
-            		<span style="width:3%"></span>
-					<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
-				</c:when>
-			  </c:choose> 
-           
+          		<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.orderCurr} 상태에서는 주문 취소 및 주소지 수정이 불가능합니다</p>
+          		<button onclick="movingDetailPageO()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
           </div>
           </div>
+          </c:when>
+          <c:when test="${list.orderCurr eq '주문완료'}">
+				<div class="col-xs-10 col-md-10 orderDiv">
+          <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
+          
+          <div class="funding" style="margin-top:5px">
+          
+            <table class="col-xs-12 col-md-12">
+              <tr><td class="funding__state">
+               <c:choose>
+             	<c:when test="${list.orderCurr eq '주문취소'}"><span style="color:gray">주문취소</span></c:when>
+				<c:when test="${list.orderCurr eq '배송완료'}">배송완료 </c:when>	
+				<c:when test="${list.orderCurr eq '배송중'}"><span style="color:orange">배송중 </span></c:when>
+				<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
+			  </c:choose>              
+              </td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
+              <tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+              <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
+              </td></tr>
+              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
+              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+	           	  <fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정
+              </td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
+            </table>
+			<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
+          		<span style="width:3%"></span>
+			<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
+          </div>
+          </div>
+			</c:when>
+		  </c:choose>
+          
         </div>
         <script>
         var orderCode;
