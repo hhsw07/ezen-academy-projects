@@ -69,8 +69,8 @@
 <div class="row">
 	<c:forEach var="list" items="${flist}">
 	            <div class="col-xs-12 col-md-3 item" >
-	              <div class="thumbnail">
-	                <img onclick="favorPjClick()"  src="${list.image}" style="height:180px; width:320px" alt="...">
+	              <div class="thumbnail" onclick="favorPjClick()" >
+	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
 	                  

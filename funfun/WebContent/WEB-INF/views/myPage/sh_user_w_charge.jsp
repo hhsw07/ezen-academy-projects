@@ -38,22 +38,38 @@
 		function rdWithdrawl(){
 			var memBalance = ${clist.memBalance};
 			var amount = $("#wiAmount").val();
-			if(amount == null || amount == 0){
-				alert('출금 신청 금액을 정확히 입력해주세요')
-			}else if(memBalance < amount){
-				alert('보유금액이 부족합니다')
+			var memAccount = ${clist.memAccount}
+			if(memAccount==null){
+				alert('계좌 정보를 먼저 등록해주세요')
 			}else{
-				alert('신청이 완료되었습니다')
-				alert('출금이 완료되었습니다(출금확인 프로세스 미적용)')
-				$("#wiForm").submit()
+				if(amount == null || amount == 0){
+					alert('출금 신청 금액을 정확히 입력해주세요')
+				}else if(memBalance < amount){
+					alert('보유금액이 부족합니다')
+				}else{
+					alert('신청이 완료되었습니다')
+					alert('출금이 완료되었습니다(출금확인 프로세스 미적용)')
+					$("#wiForm").submit()
+				}
 			}
 		}
+		
 		function chgAct(){
-			var result = confirm('계좌 정보를 수정/등록 하시겠습니까?'); 
-			if(result) { 
-				$("#actForm").submit();
-			} else {
-				
+			var memAccount = ("[name=memAccount]").val();
+			alert(memAccount)
+			var bankName = ("[name=bankName]").val();	
+			alert(bankName)
+			if(memAccount==null){
+				alert("계좌번호를 입력해주세요")
+			}else if(bankName == '은행선택'){
+				alert("은행명을 입력해주세요")
+			}else{
+				var result = confirm('계좌 정보를 수정/등록 하시겠습니까?'); 
+				if(result) { 
+					$("#actForm").submit();
+				} else {
+					
+				}	
 			}
 		}
 		$(document).ready(function(){
