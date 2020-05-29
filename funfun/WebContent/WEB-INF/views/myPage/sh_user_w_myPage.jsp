@@ -58,7 +58,7 @@
           <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  style="border:1px solid gray;padding:5px;" class="profile__img" src="${path}/${meminfo.memProfile}" alt="">
+          <img onclick="location.href='/funfun/profileEdit.do'" style="cursor:pointer;border:1px solid gray;padding:5px;" class="profile__img" src="${path}/${meminfo.memProfile}" alt="">
           <table class="profile__times--table" style="position:relative;right:20px;margin-top:30px;">
             <tr><td class="profile__times--num" style="text-align:center;">${fundCnt}</td><td class="profile__times--num" style="text-align:center">${orderCnt}</td></tr>
             <tr><td class="profile__times--text" style="text-align:right;padding-left:33px;">펀딩</td><td class="profile__times--text" style="text-align:right;padding-left:35px;">주문</td></tr>
@@ -89,8 +89,8 @@
 <c:if test="${!empty flist}">
 <div class="row">
 	<c:forEach var="list" items="${flist}">
-	            <div class="col-xs-12 col-md-3 item" >
-	              <div class="thumbnail" onclick="favorPjClick()" >
+	            <div onclick="movingFavorPage(${list.proCode})" class="col-xs-12 col-md-3 item">
+	              <div class="thumbnail">
 	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
@@ -124,12 +124,19 @@
 	         	var proCode;
 				function deleteFavor(proCode){
 					this.proCode = proCode;
-					$("[name=pc]").val(proCode)
-					$("#deleteFavorForm").submit()
+					var result = confirm('관심프로젝트를 삭제하시겠습니까?'); 
+					if(result) { 
+						$("[name=pc]").val(proCode)
+						$("#deleteFavorForm").submit()
+					} else {
+						
+					}
+					
 				}
-				function favorPjClick(){
-					location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
-				});
+				
+				function movingFavorPage(Code1){
+					location.href='/funfun/funding.do?method=detail&pro_code='+Code1
+				}
 				
 				
 				
