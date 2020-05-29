@@ -37,11 +37,11 @@
 			resize_enaleb : false,
 			enterMode : CKEDITOR.ENTER_BR,
 			shiftEnterMode : CKEDITOR.ENTER_P,
-			filebrowserUploadUrl : "img"
+			filebrowserUploadUrl : "${path}/ProjectReg.do?method=storyImgUpload"
 	};			
 			
 		
-	CKEDITOR.replace("storyDetail", ckeditor_config);
+	CKEDITOR.replace("pro_story", ckeditor_config);
 	
 	
 	})
@@ -78,7 +78,7 @@
 	
 	<span class="reg_content_title">프로젝트 스토리 *</span><br><br>
 
-	<textarea class="form-control" id="storyDetail" name="pro_story"></textarea>
+	<textarea class="form-control" id="pro_story" name="pro_story"></textarea>
 
 	<br><br><br><br>
 	

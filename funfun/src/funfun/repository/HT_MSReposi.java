@@ -26,4 +26,7 @@ public interface HT_MSReposi {
 	public int isStoOpen(int pro_code);
 	public Integer getStoCode(int pro_code);
 	public String getStoRegDate(int pro_code);
+	public MemberInfo getMemberInfo(String email);
+	public int getMakerCode(int mem_code);
+	public int isMaker(int mem_code);
 }

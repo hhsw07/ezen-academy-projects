@@ -28,13 +28,11 @@ public class HT_MSCtrl {
 
 	@Autowired(required=false)
 	private HT_MSService service;
-	private MainService serviceM;
+
 	
 	
 	@RequestMapping(params="method=makerReg")
 	public String regForm(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg.jsp";
 	}
 	
@@ -45,7 +43,10 @@ public class HT_MSCtrl {
 		reg.setMem_code(memberinfo.getMem_code());
 		service.regMaker(reg);
 		session.setAttribute("makerinfo", reg);
-		session.setAttribute("user", serviceM.getMemberInfo(memberinfo.getMem_email()));
+		System.out.println(memberinfo.getMem_email());
+		MemberInfo newmemberinfo = service.getMemberInfo(memberinfo.getMem_email());
+		session.setAttribute("user", newmemberinfo);
+		System.out.println(newmemberinfo.getMaker_code());
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerReg_done.jsp";
 	}
 	
@@ -68,7 +69,7 @@ public class HT_MSCtrl {
 			} else {
 				System.out.println(memberinfo.getMaker_code());
 				d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
-				return "redirect:/MakerStudio.do?myProject";
+				return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 
 			}
 		}

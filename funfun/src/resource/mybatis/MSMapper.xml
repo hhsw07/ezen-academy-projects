@@ -10,7 +10,7 @@
 	<resultMap type="project" id="proResult"/>
 	<resultMap type="storeOrder" id="storeOrderResult"/>
 	<resultMap type="store" id="storeResult"/>
-
+	<resultMap type="funfun.vo.MemberInfo" id="memberInfo"/>
 	
 	<insert id="regMaker" parameterType="makerstudio">
 	INSERT INTO MAKER(MAKER_CODE, MEM_CODE, MAKER_TYPE, MAKER_NAME)
@@ -78,6 +78,19 @@
 	<select id="getStoRegDate" resultType="string" parameterType="int">
 	SELECT STO__REG_DATE FROM STORE
 	WHERE pro_code = #{pro_code}
+	</select>
+	
+	
+	<select id="getMemberInfo" resultMap="memberInfo" parameterType="String">
+		select mem_code, mem_email, mem_name, mem_profile, mem_phoneno, mem_balance from member where mem_email=#{email}
+	</select>
+	
+	<select id="getMakerCode" parameterType="int" resultType="int">
+		select maker_code from maker where mem_code = #{code}
+	</select>
+	
+	<select id="isMaker" parameterType="int" resultType="int">
+		select count(*) from maker where mem_code = #{code}
 	</select>
 	
 </mapper>
