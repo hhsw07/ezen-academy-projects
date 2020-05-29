@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import funfun.service.HT_StoreManageService;
+import funfun.util.Uploader;
 import funfun.vo.Store;
 import funfun.vo.storeQnA;
 import funfun.vo.storeOption;
@@ -42,10 +45,16 @@ public class HT_StoreManageCtrl {
 	}
 	
 	@RequestMapping(params="method=storeBasicInfoReg")
-	public String storeBasicInfoReg(HttpServletRequest request, Store sto) {
+	public String storeBasicInfoReg(HttpServletRequest request, Store sto, @RequestParam("storeImg") MultipartFile[] storeImg) {
 		HttpSession session = request.getSession();
 		int storeCode = (int)session.getAttribute("storeCode");
+		
+		Uploader uploader = new Uploader();
+		String stoImageAddress = uploader.upload(storeImg[0]);
+
+		
 		sto.setSto_code(storeCode);
+		sto.setSto_image(stoImageAddress);
 		service.storeBasicInfoReg(sto);
 		System.out.println("기본정보 등록 프로세스 완료");
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeRegReady.jsp";

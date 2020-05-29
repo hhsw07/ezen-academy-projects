@@ -1,8 +1,11 @@
 package funfun.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.google.gson.JsonObject;
 
 import funfun.service.HT_ProjectRegService;
 import funfun.util.Uploader;
@@ -91,8 +97,7 @@ public class HT_ProjectRegCtrl {
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		int projectCode = (int)session.getAttribute("projectCode");
 		
-		Uploader uploader;
-		uploader = new Uploader();
+		Uploader uploader = new Uploader();
 		String proImageAddress = uploader.upload(projectImg[0]);
 		
 		cre.setPro_code(projectCode);
@@ -110,11 +115,45 @@ public class HT_ProjectRegCtrl {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_story.jsp";
 	}
 	
+	
+	
+	@RequestMapping(params="method=storyImgUpload")
+	public String ImgUploa(HttpServletRequest request, HttpServletResponse response, @RequestParam("upload") MultipartFile[] multiFile) {
+		
+		PrintWriter printWriter = null;
+		JsonObject json = new JsonObject();
+		
+		Uploader uploader = new Uploader();
+		String proImageAddress = uploader.upload(multiFile[0]);
+		
+		try {
+			printWriter = response.getWriter();
+			response.setContentType("text/html");
+			String fileUrl = proImageAddress;
+			
+			json.addProperty("url", fileUrl);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(printWriter != null) {
+				printWriter.close();
+			}
+		}
+		
+		System.out.println("스토리 파일 업로드 프로세스");
+		return null;
+	}
+	
+	
 	@RequestMapping(params="method=storyReg")
 	public String proStoryReg(HttpServletRequest request, Project cre) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		cre.setPro_code(projectCode);
+		
+		
+		
 		service.proStory(cre);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}

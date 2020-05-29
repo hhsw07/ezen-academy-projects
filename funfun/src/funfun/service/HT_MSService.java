@@ -73,4 +73,22 @@ public class HT_MSService {
 		return dao.getStoRegDate(pro_code);
 	}
 	
+	public MemberInfo getMemberInfo(String email) {
+		
+		//이름, 멤버코드, 이메일주소, balance, phoneno 가져옴
+		MemberInfo memberInfo=dao.getMemberInfo(email);
+		System.out.println("멤버밸런스"+memberInfo.getMem_balance());
+		// count로 메이커인지 아닌지 확인 카운트 0-> 메이커아님, 카운트1->메이커
+		boolean isMaker=(dao.isMaker(memberInfo.getMem_code())==1)? true:false;
+		if(isMaker) {
+			//메이커인 경우 메이커 코드 set
+			int makerCode=dao.getMakerCode(memberInfo.getMem_code());
+			memberInfo.setMaker_code(makerCode);
+		} else {
+			//메이커가 아닌 경우 메이커코드에 -1 set
+			memberInfo.setMaker_code(-1);
+		}
+		return memberInfo;
+	}
+	
 }

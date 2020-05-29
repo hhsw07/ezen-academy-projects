@@ -82,10 +82,9 @@
 
   	<br><br><br><br>
 
-	<form id="basicInfoForm" action="${path}/Store.do">
+	<form method="post" enctype="multipart/form-data" id="basicInfoForm" action="${path}/Store.do">
 
 	<input type="hidden" name="method" value="storeBasicInfoReg"/>
-	<input type="hidden" name="sto_image" value="xxx.png"/>
 
 	<div class="form-group">
 	
@@ -107,8 +106,11 @@
 	
 	<span class="reg_content_title">스토어 이미지 *</span><br><br>
 
-	<button class="btn btn-warning">스토어 이미지 업로드</button>
-	
+	<div class="btn btn-warning btn_custom"> 
+	    <label for="storeImg">스토어 이미지 업로드</label>
+	    <input type="file" id="storeImg" name="storeImg" accept=".gif, .jpg, .png" style="display:hidden;">
+	</div>	
+		
 	<br><br><br>
 	
 	<span class="reg_content_title">카테고리 *</span><br><br>
