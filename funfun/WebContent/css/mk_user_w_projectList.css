@@ -6,7 +6,7 @@
 
 /* 카테고리 */
 	.project-category{text-align:center; margin-top:50px;}
-	.categoryList{text-align:center; width:120px; display:inline-block;}
+	.categoryList{text-align:center; width:120px; display:inline-block; cursor:pointer;}
 	.categoryList img{height:100px;}
 
 /* 정렬 */

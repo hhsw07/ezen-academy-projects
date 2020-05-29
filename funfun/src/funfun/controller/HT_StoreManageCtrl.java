@@ -1,6 +1,10 @@
 package funfun.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.JsonObject;
 
 import funfun.service.HT_StoreManageService;
 import funfun.util.Uploader;
@@ -43,6 +49,43 @@ public class HT_StoreManageCtrl {
 	public String storeBasicInfo() {
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeBasicInfoReg.jsp";
 	}
+
+	
+	
+	
+	@RequestMapping(params="method=storeStoryImgUpload")
+	public String storeStoryImgUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam("upload") MultipartFile[] multiFile) {
+		
+		PrintWriter printWriter = null;
+		JsonObject json = new JsonObject();
+		
+		Uploader uploader = new Uploader();
+		String storeImageAddress = uploader.upload(multiFile[0]);
+		
+		try {
+			printWriter = response.getWriter();
+			response.setContentType("text/html");
+			String fileUrl = "${path}/"+storeImageAddress;
+			
+			json.addProperty("uploaded", 1);
+			json.addProperty("fileName", "product01.jpeg");
+			json.addProperty("url", fileUrl);
+			
+			printWriter.println(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(printWriter != null) {
+				printWriter.close();
+			}
+		}
+		
+		System.out.println("스토어 스토리 파일 업로드 프로세스");
+		return null;
+	}	
+	
+	
 	
 	@RequestMapping(params="method=storeBasicInfoReg")
 	public String storeBasicInfoReg(HttpServletRequest request, Store sto, @RequestParam("storeImg") MultipartFile[] storeImg) {

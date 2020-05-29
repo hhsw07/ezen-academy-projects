@@ -50,20 +50,20 @@
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>상품명</th>
-                        <th>메이커명</th>
-                        <th>등록날짜</th>
+                        <th>프로젝트명</th>
+                        <th>신고자</th>
+                        <th>신고날짜</th>
                         <th>상태</th>
                     </tr>
                 </thead>
                 <tbody>
                 	<c:forEach var="project" items="${plist}">
-	                    <tr class="tr_btn" data-target="#myModal" v-on:click="search('${project.pro_code}')">
-	                        <td>${project.pro_code}</td>
-	                        <td>${project.pro_title }</td>
-	                        <td>${project.maker_name }</td>
-	                        <td>${project.pro_reg_date}</td>
-	                        <td>${project.pro_curr}</td>
+	                    <tr class="tr_btn" data-target="#myModal" v-on:click="search('${report.report_code}')">
+	                        <td>${report.report_code}</td>
+	                        <td>${report.pro_title}</td>
+	                        <td>${report.mem_name}</td>
+	                        <td>${report.report_date}</td>
+	                        <td>${report.report_curr}</td>
 	                    </tr>
                  	</c:forEach>
                 </tbody>
@@ -86,7 +86,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                  
-                  <h4 class="modal-title" id="exampleModalLabel">프로젝트 미리보기</h4>
+                  <h4 class="modal-title" id="exampleModalLabel">신고 내역 확인</h4>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">

@@ -118,7 +118,7 @@ public class HT_ProjectRegCtrl {
 	
 	
 	@RequestMapping(params="method=storyImgUpload")
-	public String ImgUploa(HttpServletRequest request, HttpServletResponse response, @RequestParam("upload") MultipartFile[] multiFile) {
+	public String storyImgUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam("upload") MultipartFile[] multiFile) {
 		
 		PrintWriter printWriter = null;
 		JsonObject json = new JsonObject();
@@ -129,9 +129,13 @@ public class HT_ProjectRegCtrl {
 		try {
 			printWriter = response.getWriter();
 			response.setContentType("text/html");
-			String fileUrl = proImageAddress;
+			String fileUrl = "${path}/"+proImageAddress;
 			
+			json.addProperty("uploaded", 1);
+			json.addProperty("fileName", "product01.jpeg");
 			json.addProperty("url", fileUrl);
+			
+			printWriter.println(json);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -151,9 +155,6 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		cre.setPro_code(projectCode);
-		
-		
-		
 		service.proStory(cre);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
