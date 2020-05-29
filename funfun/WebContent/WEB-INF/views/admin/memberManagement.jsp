@@ -176,7 +176,6 @@
 					show += "	<td>"+AdminMember.mem_email+"</td>";
 					var phone = ""+AdminMember.mem_phoneno;
 					if(phone == "null") phone="없음";
-					console.log("phone2:"+phone);
 					show += "	<td>"+phone+"</td>";
 					show += "	<td>"+AdminMember.mem_favor+"</td></tr>";
 				});

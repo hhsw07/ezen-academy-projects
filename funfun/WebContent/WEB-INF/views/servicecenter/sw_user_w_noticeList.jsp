@@ -14,6 +14,8 @@
 <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
+		console.log("notice??")
+		
 		var article = (".noticeList .notishow");  
 	    $(".noticeList .item  td").click(function() {  
 	    	var myArticle =$(this).parents().next("tr");  
@@ -25,6 +27,19 @@
 	            $(myArticle).addClass('hide').removeClass('notishow');  
 	        }  
 	    });
+	    
+	    
+	    $(".noticeList td").click(function(){
+	    	var noti = $(this).parents().next("tr");
+	    	if($(noti).hasClass('hide')){
+	    		$(noti).removeClass('hide').addClass('show');
+	    	}else{
+	    		$(noti).removeClass('show').addClass('hide');
+	    	}
+	    });
+	    
+	    
+	    
 	    
 	    $("#pageSize").change(function(){
 	    	$("#curPage").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
@@ -38,12 +53,10 @@
 	    $("#faq").click(function(){
 	    	$(location).attr("href","${path}/faq.do?method=list");
 	    });
-	    $("#chatting").click(function(){
-	    //	$(location).attr("href","${path}/chatting.do?method=list");
-	    });
 	})
 	
 	function goPage(no){
+		// submit되는 페이지가 왜?? notice.do? ???
 		$("#curPage").val(no);
 		$("form").submit();
 	}
@@ -66,7 +79,7 @@
 	    	<form:hidden path="curPage" />
 	    	<div class="row">
 	        	<div class="col-sm-3 text-left">총건수 : ${paging.count}건</div> 
-	        	<div class="col-sm-9 text-right" >페이지수 : <!-- style="margin-left:930px;" -->
+	        	<div class="col-sm-9 text-right" >페이지수 :
 	        	<form:select path="pageSize">
 	        		<form:option value="5">5건</form:option>
 	        		<form:option value="10">10건</form:option>

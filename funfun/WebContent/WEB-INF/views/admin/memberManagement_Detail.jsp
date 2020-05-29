@@ -32,6 +32,7 @@
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post">
+					    	<input type="hidden" name="mem_curr" />
 					    	<table class="table table-bordered">
 					        	<col style="width:20%">
 					        	<col style="width:30%">
@@ -55,7 +56,7 @@
 					        		<td>${AdminMember.mem_favor}</td></tr>
 					        	<tr><th>회원상태</th>
 					        		<td><c:if test="${not empty AdminMember.mem_curr}">제재 회원<br>(${AdminMember.mem_curr})</c:if>
-					        			<c:if test="${empty AdminMember.mem_curr}" >일반 회원</c:if>
+					        			<c:if test="${empty AdminMember.mem_curr}" >서포터 회원</c:if>
 					        		</td></tr>
 					        	<tr><th>계좌은행</th>
 					        		<td>${not empty AdminMember.mem_bank?AdminMember.mem_bank:"없음"}</td>
@@ -64,24 +65,199 @@
 					        	<tr><th>보유 예치금</th>
 					        		<td><fmt:formatNumber pattern="###,###" value="${AdminMember.mem_balance}"/></td>
 					        		<th>메이커유무</th>
-					        		<td>${AdminMember.maker_code == 0?"일반회원":"메이커회원"}</td></tr>
+					        		<td>${AdminMember.maker_code == 0?"서포터회원":"메이커회원"}</td></tr>
 					        </table>
 				        </form>
 				    </div>
 				    <div class="text-right">
-				    	<button class="btn btn-fill btn-warning restrictionBtn">제재</button>
-				    	<button class="btn btn-fill btn-warning dropBtn">제명</button>
-				    	<button class="btn btn-fill btn-warning clearBtn">제재 해제</button>
+				    	<button class="btn btn-fill btn-warning appr_Btn">회원 관리</button>
 				    	<button class="btn btn-fill btn-warning goList">목록</button>
 				    </div>
 				    <div>
 				    	<h3>펀딩 내역</h3>
-				    	<div>펀딩 내역 - 마이페이지에서 가져올께요.</div>
+				    	
+						<!-- 참여한 펀딩 -->
+						<div class="funding_display">
+							<c:if test="${empty plist}">
+							   <div class="emptyMsg">참여한 펀딩이 존재하지 않습니다</div>
+							</c:if>
+						<c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
+							<div class="row rowposition" >
+						    	<div class="col-xs-1 col-md-1 "></div>
+						        	<c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
+						            	<div class="col-xs-10 col-md-10" class="fundingDiv" style="margin-bottom:50px;margin-top: 10px;">
+								  			<span style="font-size:14px;color:gray;padding-bottom:10px;">펀딩번호 : ${list.fundingCode}</span>
+						          			<div class="funding" style="margin-top:5px">
+						            			<table class="col-xs-12 col-md-12">
+						              				<col width="15%">
+						              				<col width="85%">
+						              				<tr><td class="funding__state">
+											            <c:choose>
+															<c:when test="${list.proLeftDate<0 and list.percent>=0.8}">펀딩성공 </c:when>	
+															<c:when test="${list.proLeftDate>=0}"><span style="color:orange">펀딩중 </span></c:when>
+														</c:choose>
+						              					</td>
+						              					<td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
+									                <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+									                <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+									                <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+									                <tr><td class="funding__detail">펀딩금액</td>
+									                	<td class="funding__detail--text">
+											            <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/></td></tr>
+										            <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
+										                <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
+										            <tr><td class="funding__detail">배송예정일</td>
+										            	<td class="funding__detail--text">
+						              					<fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/></td></tr>
+										            <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
+										            <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
+						            			</table>
+						        		 	</div>
+						        		</div>
+							       	</c:if>
+							       	<c:if test="${list.fundState eq '펀딩취소' || list.fundState eq '펀딩실패' || list.fundState eq '배송중' || list.fundState eq '배송완료'}">
+							       		<div class="col-xs-10 col-md-10" class="fundingDiv" style="margin-bottom:50px;margin-top: 10px;">
+						          			<span style="font-size:14px;color:gray;padding-bottom:10px;">펀딩번호 : ${list.fundingCode}</span>
+						          			<div class="funding" style="margin-top:5px">
+						            			<table class="col-xs-12 col-md-12">
+										              <col width="15%">
+						              				  <col width="85%">
+										              <tr><td class="funding__state">
+										              <c:choose>
+										             	<c:when test="${list.fundState eq '펀딩취소'}"><span style="color:gray">펀딩취소</span></c:when>
+														<c:when test="${list.proLeftDate<0 and list.percent<0.8}"><span style="color:rgb(247,0,0)">펀딩실패 </span></c:when>
+														<c:when test="${list.fundState eq '배송중'}"><span style="color:rgb(9,54,135)">배송중</span></c:when>
+														<c:when test="${list.fundState eq '배송완료'}"><span style="color:rgb(9,54,135)">배송완료</span></c:when>
+													  </c:choose>
+										              </td><td class="funding__fund-date">참여일 : ${list.fundDate}</td></tr>
+										              <tr><td class="funding__name" colspan="2">[ ${list.cateTitle} ] ${list.proTitle}</td></tr>
+										              <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+										              <tr><td colspan="2"><hr class="funding--hr"></td></tr>
+										              <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
+										              <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
+										              </td></tr>
+										              <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
+										              <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
+										              <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+										              <fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/>
+										              </td></tr>
+										              <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
+										              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
+										        </table>
+						         			</div>
+						        		</div>	
+							       	</c:if>
+						        </div>
+							</c:forEach>
+						</div>
+						<!-- 참여한 펀딩 끝 -->
+
 				    	<h3>구매 내역</h3>
-				    	<div>구매 내역 - 마이페이지에서 가져올께요.</div>
+				    	
+						<!-- 주문 및 배송조회 -->
+						<div class="trans_display">
+							<c:if test="${empty tlist}">
+						    	<div class="emptyMsg">주문 및 배송내역이 존재하지 않습니다</div>
+							</c:if>
+							<c:if test="${!empty tlist}">
+								<c:forEach var="list" items="${tlist}">
+							        <div class="row rowposition" >
+							        	<div class="col-xs-1 col-md-1 "></div>
+							        	<c:choose>
+										<c:when test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
+											<div class="col-xs-10 col-md-10 orderDiv" style="margin-bottom:50px;margin-top: 10px;">
+												<span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
+												<div class="funding" style="margin-top:5px">
+													<table class="col-xs-12 col-md-12">
+														<col width="15%">
+						              					<col width="85%">
+														<tr><td class="funding__state">
+															<c:choose>
+															<c:when test="${list.orderCurr eq '주문취소'}"><span style="color:gray">주문취소</span></c:when>
+															<c:when test="${list.orderCurr eq '배송완료'}">배송완료 </c:when>	
+															<c:when test="${list.orderCurr eq '배송중'}"><span style="color:orange">배송중 </span></c:when>
+															<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
+															</c:choose>              
+															</td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
+														<tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+														<tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+														<tr><td colspan="2"><hr class="funding--hr"></td></tr>
+														<tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
+															<fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
+															</td></tr>
+														<tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
+														<tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+															<fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+															<fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정
+															</td></tr>
+														<tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
+													</table>
+												</div>
+											</div>
+										</c:when>
+										<c:when test="${list.orderCurr eq '주문완료'}">
+											<div class="col-xs-10 col-md-10 orderDiv" style="margin-bottom:50px;margin-top: 10px;">
+												<span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
+												<div class="funding" style="margin-top:5px">
+													<table class="col-xs-12 col-md-12">
+														<col width="15%">
+						              					<col width="85%">
+														<tr><td class="funding__state">
+															<c:choose>
+															<c:when test="${list.orderCurr eq '주문취소'}"><span style="color:gray">주문취소</span></c:when>
+															<c:when test="${list.orderCurr eq '배송완료'}">배송완료 </c:when>	
+															<c:when test="${list.orderCurr eq '배송중'}"><span style="color:orange">배송중 </span></c:when>
+															<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
+															</c:choose>              
+															</td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
+														<tr><td class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+														<tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
+														<tr><td colspan="2"><hr class="funding--hr"></td></tr>
+														<tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
+															<fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
+															</td></tr>
+														<tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
+														<tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
+															<fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+															<fmt:formatDate value="${receivDate}" pattern="M월 dd일"/>에 배송 예정
+															</td></tr>
+														<tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
+											        </table>
+												</div>
+											</div>
+										</c:when>
+								  		</c:choose>
+						        	</div>
+								</c:forEach>
+							</c:if>
+						</div>
+					<!-- 주문 및 배송 조회 끝 -->
 				    </div>
 			    </div>
 			</div>
+
+
+			<div class="modal fade" id="appr_modal" tabindex="-1" role="dialog" aria-labelleby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="exampleModalLabel">회원 관리</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body">
+							<button type="button" class="btn btn-fill btn-warning text-left restrictionBtn" style="width:100%;">회원 제재 : 3개월 정지</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning text-left dropBtn" style="width:100%;">회원 제명 : 100년 정지</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning text-left clearBtn" style="width:100%;">회원 복귀</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning" style="width:100%;" data-dismiss="modal">닫기</button>
+							<br><br>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- end main -->
 			</main>
             <%@ include file="/adminTemplate/footer.jsp" %>
@@ -99,35 +275,37 @@
 </body>
 <script>
 	$(document).ready(function(){
+		$(".appr_Btn").click(function(){
+			$("#appr_modal").modal("show");
+		});
+		
 		$(".restrictionBtn").click(function(){
-			alert("제재 조치 (6개월 정지)");
-			/*
-			if(confirm("제재 조치하시겠습니까?\n수정 할 수 없습니다. ")){
-				$("form").attr("action","${path}/notice.do?method=update");
+			var date = new Date();
+			date.setMonth(date.getMonth()+3);
+			if(confirm("제재 조치하시겠습니까?")){
+				$("[name=mem_curr]").val(date);
+				$("form").attr("action","${path}/AdminMember.do?method=update");
 				$("form").submit();
 			}
-			*/
+			
 		});
 		$(".dropBtn").click(function(){
-			alert("제명 조치 (10년 정지)");
-			/*
-			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
-				$("form").attr("action","${path}/notice.do?method=update");
+			var date = new Date();
+			date.setFullYear(date.getFullYear()+10);
+			if(confirm("제명 조치하시겠습니까?")){
+				$("[name=mem_curr]").val(date);
+				$("form").attr("action","${path}/AdminMember.do?method=update");
 				$("form").submit();
 			}
-			*/
 		});
-		$(".cleatBtn").click(function(){
-			alert("제재 해제 조치");
-			/*
-			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
-				$("form").attr("action","${path}/notice.do?method=update");
+		$(".clearBtn").click(function(){
+			if(confirm("회원 복귀 하시겠습니까?")){
+				$("[name=mem_curr]").val("");
+				$("form").attr("action","${path}/AdminMember.do?method=update");
 				$("form").submit();
 			}
-			*/
 		});
 		$(".goList").click(function(){
-			//alert("목록으로 이동");
 			$(location).attr("href","${path}/AdminMember.do?method=list");
 		});
 		

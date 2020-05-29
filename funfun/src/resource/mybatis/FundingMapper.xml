@@ -89,15 +89,34 @@
 	<insert id="insFavor" parameterType="project">
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
+	<!-- 신고 리스트 - 관리자 -->
+	<resultMap type="report" id="reportResult"/>
+	<select id="reportcnt" resultType="int" parameterType="report">
+		SELECT COUNT(*)
+		FROM (SELECT r.*, a.pro_title, b.mem_name 
+			FROM project a, member b, report r
+			WHERE r.pro_code=a.pro_code AND r.mem_code = b.mem_code
+			ORDER BY report_code DESC)
+		WHERE 1=1
+	</select>
+	<select id="reportList" resultMap="reportResult" parameterType="report">
+		SELECT * FROM (select rownum cnt, c.*
+		from (SELECT r.*, a.pro_title, b.mem_name 
+			FROM project a, member b, report r
+			WHERE r.pro_code=a.pro_code AND r.mem_code = b.mem_code
+			ORDER BY report_code DESC) c)
+		WHERE cnt BETWEEN #{start} AND #{end}
+	</select>
 	<!-- 프로젝트 신고 -->
 	<insert id="insReport" parameterType="report">	
-		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date)
+		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date,'접수')
 	</insert>
 	<!-- 프로젝트 문의리스트 -->
 	<resultMap type="inquiry" id="inquiryResult"/>
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="int">
 		SELECT QNA_CODE, PRO_CODE, mem_name, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN, QNA_ANS, QNA_ANS_REG_DATE FROM QNA a, MEMBER b
 		WHERE a.MEM_CODE = b.MEM_CODE AND PRO_CODE = #{pro_code}
+		ORDER BY QNA_CODE DESC
 	</select>
 	<!-- 프로젝트 문의하기 -->
 	<insert id="inquiry" parameterType="inquiry">

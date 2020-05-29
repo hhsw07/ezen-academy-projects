@@ -15,7 +15,6 @@
 <script>
 	$(document).ready(function(){
 		var title = "${paging.title}";
-		console.log("title:"+title);
 		
 		var article = (".faqList .faqshow");  
 	    $(".faqList .item  td").click(function() {  
@@ -39,9 +38,6 @@
 	    });
 	    $("#faq").click(function(){
 	    	$(location).attr("href","${path}/faq.do?method=list");
-	    });
-	    $("#chatting").click(function(){
-	    //	$(location).attr("href","${path}/chatting.do?method=list");
 	    });
 	})
 	
