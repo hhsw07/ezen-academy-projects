@@ -66,6 +66,7 @@
 	        <h1 class="text-center">로그인</h1>
 	        <br><br><br>
 	        <form>
+	        <input type="hidden" name="redirectAddress">
 	        <div class="row">
 		        <div class="col-md-4"></div>
 		        <div class="col-md-4">
@@ -153,6 +154,7 @@
 								vm.isShaking=false;
 							}, 500);
 						} else{
+							$('[name=redirectAddress]').val(document.referrer);
 							window.location="${path}/loginSuccess.do?"+$("form").serialize();
 						}
 					},

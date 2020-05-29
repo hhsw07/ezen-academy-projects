@@ -78,7 +78,7 @@ public class Main {
 	}
 	
 	@RequestMapping("/loginSuccess.do")
-	public String loginSuccess(MemberLogin m, HttpServletRequest req) {
+	public String loginSuccess(MemberLogin m, HttpServletRequest req, @RequestParam("redirectAddress") String redirectAddress) {
 		HttpSession session = req.getSession();
 		if(service.verifyId(m)==1) {
 			//로그인 성공 시 이메일로 멤버(이름, 이메일, 멤버코드, 메이커코드 정보 가져옴)
@@ -88,7 +88,7 @@ public class Main {
 			System.out.println("메이커코드:"+memberInfo.getMaker_code());
 			session.setAttribute("user", memberInfo);
 			System.out.println("로그인성공");
-			return "redirect:/main.do";
+			return "redirect:"+redirectAddress;
 		} else {
 			return "redirect:/login.do";
 		}
