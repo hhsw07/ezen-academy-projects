@@ -10,10 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/sh_user_w_account.css">
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="css/toastr.css">
-<script src="${path}/js/toastr.js"></script>
+<script src="js/toastr.js"></script>
 <script>
 toastr.options = {
 	    "closeButton": false,
@@ -37,8 +36,21 @@ toastr.options = {
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
+		
+		function removeComma(str){
+			n = parseInt(str.replace(/,/g,""));
+
+			return n;
+		}
 		function rdCharge(){
-			var amount = $("[name=chargeQuery]").val()
+			var amount = $("[name=\"chargeQuery\"]").val()
+			amount = removeComma(amount)
+			amount = Number(amount)
+			if(isNaN(amount)){
+				amount=null;
+			}
+			$("[name=\"chargeQuery\"]").val(amount)
+			
 			if(amount == null){
 				Command: toastr["warning"]("충전할 금액을 입력해주세요");
 			}else if(amount < 1000){
@@ -48,16 +60,21 @@ toastr.options = {
 				if(result) { 
 					$("#chargeForm").submit();
 					Command: toastr["warning"]("신청이 완료되었습니다");
-					Command: toastr["warning"]("충전이 완료되었습니다(입금확인 프로세스 미적용)");
 				} else {
 					
 				}
 			}
 		}
 		function rdWithdrawl(){
-			var memBalance = ${clist.memBalance};
+			var memBalance = "${clist.memBalance}";
 			var amount = $("#wiAmount").val();
 			var memAccount = ${clist.memAccount}
+			amount = removeComma(amount)
+			amount = Number(amount)
+			$("#wiAmount").val(amount)
+			if(isNaN(amount)){
+				amount=null;
+			}
 			if(memAccount==null){
 				Command: toastr["warning"]("계좌정보 등록이 필요합니다");
 			}else{
@@ -66,9 +83,16 @@ toastr.options = {
 				}else if(memBalance < amount){
 					Command: toastr["warning"]("보유금액이 부족합니다");
 				}else{
-					Command: toastr["warning"]("신청이 완료되었습니다");
-					Command: toastr["warning"]("출금이 완료되었습니다(출금확인 프로세스 미적용)");
-					$("#wiForm").submit()
+					var result = confirm(amount+'원을 출금 신청 하시겠습니까?'); 
+					if(result) { 
+						$("#chargeForm").submit();
+						Command: toastr["warning"]("신청이 완료되었습니다");
+						Command: toastr["warning"]("출금이 완료되었습니다(출금확인 프로세스 미적용)");
+						$("#wiForm").submit()
+					} else {
+						
+					}
+					
 				}
 			}
 		}

@@ -18,23 +18,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 <script src="${path}/js/toastr.js"></script>
 <script>
-		toastr.options = {
-			    "closeButton": false,
-			    "debug": false,
-			    "newestOnTop": false,
-			    "progressBar": false,
-			    "positionClass": "toast-top-right",
-			    "preventDuplicates": false,
-			    "onclick": null,
-			    "showDuration": 800,
-			    "hideDuration": 800,
-			    "timeOut": 1500,
-			    "extendedTimeOut": 1500,
-			    "showEasing": "swing",
-			    "hideEasing": "linear",
-			    "showMethod": "fadeIn",
-			    "hideMethod": "fadeOut"
-			  }
+	toastr.options = {
+		    "closeButton": false,
+		    "debug": false,
+		    "newestOnTop": false,
+		    "progressBar": false,
+		    "positionClass": "toast-top-right",
+		    "preventDuplicates": false,
+		    "onclick": null,
+		    "showDuration": 800,
+		    "hideDuration": 800,
+		    "timeOut": 1500,
+		    "extendedTimeOut": 1500,
+		    "showEasing": "swing",
+		    "hideEasing": "linear",
+		    "showMethod": "fadeIn",
+		    "hideMethod": "fadeOut"
+		  }
 		var flist = "${flist}";
 		if(flist ===''){
 			window.location = "${path}/login.do";
@@ -58,7 +58,7 @@
           <span class="profile__name">${meminfo.memName}</span>
           <br>
           <span class="profile__level">${memState}</span>
-          <img  style="border:1px solid gray;padding:5px;" class="profile__img" src="${path}/${meminfo.memProfile}" alt="">
+          <img onclick="location.href='/funfun/profileEdit.do'" style="cursor:pointer;border:1px solid gray;padding:5px;" class="profile__img" src="${path}/${meminfo.memProfile}" alt="">
           <table class="profile__times--table" style="position:relative;right:20px;margin-top:30px;">
             <tr><td class="profile__times--num" style="text-align:center;">${fundCnt}</td><td class="profile__times--num" style="text-align:center">${orderCnt}</td></tr>
             <tr><td class="profile__times--text" style="text-align:right;padding-left:33px;">펀딩</td><td class="profile__times--text" style="text-align:right;padding-left:35px;">주문</td></tr>
@@ -89,8 +89,8 @@
 <c:if test="${!empty flist}">
 <div class="row">
 	<c:forEach var="list" items="${flist}">
-	            <div class="col-xs-12 col-md-3 item" >
-	              <div class="thumbnail" onclick="favorPjClick()" >
+	            <div onclick="movingFavorPage(${list.proCode})" class="col-xs-12 col-md-3 item">
+	              <div class="thumbnail">
 	                <img src="${list.image}" style="height:180px; width:320px" alt="...">
 	                <span onclick="deleteFavor('${list.proCode}')" id="deleteFavor">X</span>
 	                <div class="caption">
@@ -124,12 +124,19 @@
 	         	var proCode;
 				function deleteFavor(proCode){
 					this.proCode = proCode;
-					$("[name=pc]").val(proCode)
-					$("#deleteFavorForm").submit()
+					var result = confirm('관심프로젝트를 삭제하시겠습니까?'); 
+					if(result) { 
+						$("[name=pc]").val(proCode)
+						$("#deleteFavorForm").submit()
+					} else {
+						
+					}
+					
 				}
-				function favorPjClick(){
-					location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
-				});
+				
+				function movingFavorPage(Code1){
+					location.href='/funfun/funding.do?method=detail&pro_code='+Code1
+				}
 				
 				
 				
@@ -150,8 +157,8 @@
 
 </c:if>
 <c:if test="${!empty plist}">
-</c:if>
-<c:forEach var="list" items="${plist}" begin="0" end="5" step="1">
+
+<c:forEach var="list" items="${plist}">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
           	<c:if test="${list.fundState eq '펀딩성공' || list.fundState eq '펀딩중'}">
@@ -247,9 +254,11 @@
 		function movingDetailPageF(){
 			location.href='/funfun/funding.do?method=detail&pro_code='+${list.proCode}
 		}
+		
         </script>
       
 </c:forEach>
+</c:if>
 </div>
 
 <!-- 참여한 펀딩 끝 -->
@@ -264,8 +273,8 @@
 	<c:forEach var="list" items="${tlist}">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
-          <c:choose>
-          <c:when test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
+
+          <c:if test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
           	<div class="col-xs-10 col-md-10 orderDiv" style="margin-bottom : 50px;">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
           
@@ -280,7 +289,7 @@
 				<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
 			  </c:choose>              
               </td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
-              <tr><td onclick="movingDetailPageO()" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td onclick="movingDetailPageO(${list.sto_code})" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
@@ -294,11 +303,11 @@
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
             </table>
           		<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.orderCurr} 상태에서는 주문 취소 및 주소지 수정이 불가능합니다</p>
-          		<button onclick="movingDetailPageO()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
+          		<button onclick="movingDetailPageO(${list.sto_code})" class="MovedetailPage">상품 상세페이지로 이동하기</button>
           </div>
           </div>
-          </c:when>
-          <c:when test="${list.orderCurr eq '주문완료'}">
+          </c:if>
+          <c:if test="${list.orderCurr eq '주문완료'}">
 				<div class="col-xs-10 col-md-10 orderDiv">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
           
@@ -313,7 +322,7 @@
 				<c:when test="${list.orderCurr eq '주문완료'}"><span style="color:orange">주문완료 </span></c:when>
 			  </c:choose>              
               </td><td class="funding__fund-date">주문일 : ${list.orderDate}</td></tr>
-              <tr><td onclick="movingDetailPageO()" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
+              <tr><td onclick="movingDetailPageO(${list.sto_code})" class="funding__name" colspan="2">${list.stoTitle}</td></tr>
               <tr><td class="funding__company">by ${list.makerName}</td><td></td></tr>
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
@@ -328,15 +337,20 @@
             </table>
 			<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
           		<span style="width:3%"></span>
-			<a onclick="cancleOrderModal('${list.orderCode}')" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
+			<a onclick="cancleOrderModal(${list.sto_code})" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
           </div>
           </div>
-			</c:when>
-		  </c:choose>
-          
+			</c:if>
+	
+     
         </div>
         <script>
         var orderCode;
+        function movingDetailPageO(Code){
+			var Code = Code
+			location.href='/funfun/store.do?method=detail&sto_code='+Code
+		}
+        
 		function openAdrChangeModal(oldAdr,orderCode){
 			$("#oldAdr").html(oldAdr)
 			this.orderCode = orderCode;
@@ -356,9 +370,7 @@
 			$("#cancleOrder").submit()
 			Command: toastr["warning"]("주문이 취소되었습니다");
 		}
-		function movingDetailPageO(){
-			location.href='/funfun/store.do?method=detail&sto_code='+${list.orderCode}
-		}
+		
         </script>
 	</c:forEach>
 	</c:if>
