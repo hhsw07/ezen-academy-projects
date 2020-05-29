@@ -89,6 +89,24 @@
 	<insert id="insFavor" parameterType="project">
 		INSERT INTO FAVOR VALUES(#{mem_code}, #{pro_code})
 	</insert>
+	<!-- 신고 리스트 - 관리자 -->
+	<resultMap type="report" id="reportResult"/>
+	<select id="reportcnt" resultType="int" parameterType="report">
+		SELECT COUNT(*)
+		FROM (SELECT r.*, a.pro_title, b.mem_name 
+			FROM project a, member b, report r
+			WHERE r.pro_code=a.pro_code AND r.mem_code = b.mem_code
+			ORDER BY report_code DESC)
+		WHERE 1=1
+	</select>
+	<select id="reportList" resultMap="reportResult" parameterType="report">
+		SELECT * FROM (select rownum cnt, c.*
+		from (SELECT r.*, a.pro_title, b.mem_name 
+			FROM project a, member b, report r
+			WHERE r.pro_code=a.pro_code AND r.mem_code = b.mem_code
+			ORDER BY report_code DESC) c)
+		WHERE cnt BETWEEN #{start} AND #{end}
+	</select>
 	<!-- 프로젝트 신고 -->
 	<insert id="insReport" parameterType="report">	
 		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date,'접수')
