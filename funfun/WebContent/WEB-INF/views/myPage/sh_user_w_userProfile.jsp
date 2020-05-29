@@ -59,7 +59,6 @@
 	                fileName=file.name;
 	              
 	            }
-	            alert("파일명 : "+fileName)
 	            $("[name=memProfile]").val("z01_upload/"+fileName);
 	            
 	           
