@@ -59,7 +59,7 @@
 	<resultMap type="trans" id="transResult"/>
  	<select id="tlist" resultMap="transResult" 
  		parameterType="trans">
-		SELECT m.MAKER_NAME makerName, so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage 
+		SELECT m.MAKER_NAME makerName, so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage, s.sto_code sto_code
 		FROM store_order so 
 		LEFT JOIN store_option op ON so.STO_OPT_CODE = op.STO_OPT_CODE 
 		LEFT JOIN store s ON s.STO_CODE = op.STO_CODE 
