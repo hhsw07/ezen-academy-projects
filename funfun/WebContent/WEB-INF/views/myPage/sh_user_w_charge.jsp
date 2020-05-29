@@ -86,7 +86,7 @@
 					</div>
 					
 					<div style="height:110px;margin-top:30px;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;padding:10px;padding-top:20px;padding-bottom:20px;">
-						<table style="margin:auto" class="moneyTable">
+						<table style="margin:auto;margin-top:3px;" class="moneyTable">
 						<tr><td style="text-align:center;text-decoration:underline;font-weight:bold;color:#424242;">${clist.memName}님의 보유금액</td></tr>
 						<tr><td style="height:10px;"></td></tr>
 						<tr><td style="width:120px;font-weight:bold;font-size:14px;text-align:center;color:#424242;">
