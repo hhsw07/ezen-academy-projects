@@ -39,6 +39,12 @@ public class AdminMainCtrl {
 		return "WEB-INF\\views\\admin\\projectManagement.jsp";
 	}
 	
+	@RequestMapping(value="/project-report-management.do")
+	public String enterProjectReportManagement() {
+		
+		return "WEB-INF\\views\\admin\\projectReportManagement.jsp";
+	}
+	
 	@RequestMapping(value="/customer-service-management.do")
 	public String enterCustomerService() {
 		return "redirect:/notice.do?method=admList";
