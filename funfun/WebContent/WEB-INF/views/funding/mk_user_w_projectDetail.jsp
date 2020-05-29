@@ -202,7 +202,7 @@ th{text-align:center;}
 											<th>파일첨부</th>
 											<td class="input-group mb-3">
 												<div class="custom-file">
-													<input type="file" name="report" class="custom-file-input" id="file01"/>
+													<input type="file" name="projectImg" class="custom-file-input" id="file01"/>
 												</div>
 											</td>
 										</tr>

@@ -91,13 +91,14 @@
 	</insert>
 	<!-- 프로젝트 신고 -->
 	<insert id="insReport" parameterType="report">	
-		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date)
+		INSERT INTO REPORT VALUES (REPORT_SEQ.nextval, #{mem_code}, #{pro_code}, #{report_detail}, #{report_img}, current_date,'접수')
 	</insert>
 	<!-- 프로젝트 문의리스트 -->
 	<resultMap type="inquiry" id="inquiryResult"/>
 	<select id="inquiryList" resultMap="inquiryResult" parameterType="int">
 		SELECT QNA_CODE, PRO_CODE, mem_name, QNA_DETAIL, QNA_REG_DATE, QNA_OPEN, QNA_ANS, QNA_ANS_REG_DATE FROM QNA a, MEMBER b
 		WHERE a.MEM_CODE = b.MEM_CODE AND PRO_CODE = #{pro_code}
+		ORDER BY QNA_CODE DESC
 	</select>
 	<!-- 프로젝트 문의하기 -->
 	<insert id="inquiry" parameterType="inquiry">

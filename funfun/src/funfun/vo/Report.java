@@ -12,11 +12,9 @@ public class Report {
 	private String report_img; // 첨부파일
 	private String report_date; // 신고날짜
 	
-	// 파일 등록 처리 객체
-		private MultipartFile[] report;
-		private ArrayList<String> filenames;
-		// 파일 로딩 정보 가지고 오기
-		private String[] fnames;
+	private String pro_title; //  프로젝트 명
+	private String mem_name; // 회원이름
+	
 	
 	public int getReport_code() {
 		return report_code;
@@ -54,25 +52,18 @@ public class Report {
 	public void setReport_date(String report_date) {
 		this.report_date = report_date;
 	}
-	public MultipartFile[] getReport() {
-		return report;
+	public String getPro_title() {
+		return pro_title;
 	}
-	public void setReport(MultipartFile[] report) {
-		this.report = report;
+	public void setPro_title(String pro_title) {
+		this.pro_title = pro_title;
 	}
-	public ArrayList<String> getFilenames() {
-		return filenames;
+	public String getMem_name() {
+		return mem_name;
 	}
-	public void setFilenames(ArrayList<String> filenames) {
-		this.filenames = filenames;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
-	public String[] getFnames() {
-		return fnames;
-	}
-	public void setFnames(String[] fnames) {
-		this.fnames = fnames;
-	}
-	
 	
 
 }

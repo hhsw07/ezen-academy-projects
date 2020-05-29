@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import funfun.service.MK_FundingService;
+import funfun.util.Uploader;
 import funfun.vo.Funding;
 import funfun.vo.Project;
 import funfun.vo.ProjectQna;
@@ -109,12 +111,15 @@ public class MK_FundingCtrl {
 	}
 	// 신고하기
 	@RequestMapping(params="method=report")
-	public String report(Report report) {
+	public String report(@RequestParam("projectImg") MultipartFile[] projectImg, @ModelAttribute("report") Report report) {
 		System.out.println("1 : "+report.getMem_code());
 		System.out.println("2 : "+report.getPro_code());
 		System.out.println("3 : "+report.getReport_detail());
-		System.out.println("4 : "+report.getReport()[0].getOriginalFilename());
-		//service.insReport(report);
+		Uploader uploader = new Uploader();
+		String pro_img = uploader.upload(projectImg[0]);
+		report.setReport_img(pro_img);
+		System.out.println("3 : "+report.getReport_img());
+		service.insReport(report);
 		return "redirect:/funding.do?method=detail&pro_code="+report.getPro_code();
 	}
 	// 문의하기
