@@ -129,10 +129,10 @@ public class HT_ProjectRegCtrl {
 		try {
 			printWriter = response.getWriter();
 			response.setContentType("text/html");
-			String fileUrl = "${path}/"+proImageAddress;
-			
+			String fileUrl = proImageAddress;
+			System.out.println(fileUrl.substring(11,fileUrl.length()));
 			json.addProperty("uploaded", 1);
-			json.addProperty("fileName", "product01.jpeg");
+			json.addProperty("fileName", fileUrl.substring(11,fileUrl.length()));
 			json.addProperty("url", fileUrl);
 			
 			printWriter.println(json);
