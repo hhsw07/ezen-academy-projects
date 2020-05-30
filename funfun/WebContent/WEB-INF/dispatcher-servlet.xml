@@ -44,6 +44,10 @@
 		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
 	</websocket:handlers>
 	
+	<websocket:handlers>
+		<websocket:mapping handler="notificationHandler" path="/notification-ws.do"/>
+	</websocket:handlers>
+	
 	
 	<!-- 공통 정보 파일 로딩 src기준-->
 	<context:property-placeholder location="classpath:/resource/properties/info" />

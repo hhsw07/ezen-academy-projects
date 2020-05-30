@@ -39,6 +39,13 @@ public class FileUploadCtrl {
 		return "WEB-INF\\views\\main\\fileUploadTest.jsp";
 	}
 	
+	@RequestMapping("/test2.do")
+	public String test2() {
+		System.out.println("웹소켓 테스트");
+		
+		return "WEB-INF\\views\\main\\notificationTest.jsp";
+	}
+	
 	//파일업로드처리
 	@RequestMapping("/fileUpload.do")
 	public String fileUpload(@RequestParam("myfile") MultipartFile[] myfiles) {
