@@ -1,9 +1,5 @@
 package funfun.vo;
 
-import java.util.ArrayList;
-
-import org.springframework.web.multipart.MultipartFile;
-
 public class Report {
 	private int report_code; // 신고번호
 	private int mem_code; // 회원번호
@@ -13,7 +9,7 @@ public class Report {
 	private String report_date; // 신고날짜
 	private String pro_title; //  프로젝트 명
 	private String mem_name; // 회원이름
-	
+	private String report_curr; // 상태
 	// 2. 페이지
 	private int count; 		// 총 데이터 건수
 	private int pageSize; 	// 한번에 보여줄 페이지 크기..
@@ -73,6 +69,12 @@ public class Report {
 	}
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
+	}
+	public String getReport_curr() {
+		return report_curr;
+	}
+	public void setReport_curr(String report_curr) {
+		this.report_curr = report_curr;
 	}
 	public int getCount() {
 		return count;

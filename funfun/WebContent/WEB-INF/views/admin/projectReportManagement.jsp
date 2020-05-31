@@ -32,7 +32,7 @@
         })
         
         function goPage(no){
-			$("#curPage").val(no);
+        	$("[name=curPage]").val(no);
 			$("#cntForm").submit();
 		}
     </script>
@@ -44,7 +44,7 @@
         <div id="layoutSidenav_content">
             <main style="width:1000px; margin-left:auto; margin-right:auto" id="store_main">
             <!-- 메인태그 안의 내용을 수정해서 작성하세요 -->
-                <h1 id="list_Title">프로젝트 목록</h1>
+                <h1 id="list_Title">프로젝트 신고목록</h1>
         <div id="list_Div">
             <table class="table table-hover">
                 <thead>
@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<c:forEach var="project" items="${plist}">
+                	<c:forEach var="report" items="${report}">
 	                    <tr class="tr_btn" data-target="#myModal" v-on:click="search('${report.report_code}')">
 	                        <td>${report.report_code}</td>
 	                        <td>${report.pro_title}</td>
@@ -70,76 +70,19 @@
             </table>
         </div>
 		<form id="cntForm" method="post">
-			<input type="hidden" id="curPage" name="curPage" value="${sch.curPage}">
+			<input type="hidden" name="curPage" value="${paging.curPage}"/>
+		</form>
          <div class="text-center" style="width:100%; text-align:center">
-		        <ul class="pagination"> 
+		         <ul class="pagination ct-orange"> 
 					<li><a href="javascript:goPage(${paging.startBlock-1})">&laquo;</a></li>
 					<c:forEach var="cnt" begin="${paging.startBlock}" end="${paging.endBlock}">
-						<li class="${paging.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+						<li class="${paging.curPage==cnt?'active':''}"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
 					</c:forEach>
 					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
-			</form>
-       		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                 
-                  <h4 class="modal-title" id="exampleModalLabel">신고 내역 확인</h4>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                      <label for="message-text" class="control-label">프로젝트 제목 : </label><br>
-                      <label for="message-text" class="control-label">{{detail.pro_title}}</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">상품이미지</label><br>
-                        <img :src="detail.pro_image" style="width:300px; height:120px">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">내용</label><br>
-                        <textarea class="form-control" id="message-text">{{detail.pro_story}}</textarea>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                  <button type="submit" class="btn btn-primary" id="appr_Btn">승인하기</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="appr_modal" tabindex="-1" role="dialog" aria-labelleby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                    	 <h4 class="modal-title" id="exampleModalLabel">프로젝트 승인</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                       
-                      </div>
-                      <form method="post" action="project-update-curr.do">
-                      <div class="modal-body">
-                          
-                          <div class="form-group">
-                                <label for="message-text" class="control-label">해당 프로젝트 을 승인하시겠습니까? </label><br><br>
-                                <div style="text-align: center;">
-                                    <input type="radio" class="form-data" value="정상" name="pro_curr">승인&nbsp;
-                                    <input type="radio" class="form-data" value="정지" name="pro_curr">거절&nbsp;
-                                    <input type="hidden" name="pro_code" :value="detail.pro_code">
-                                </div>
-                          </div>
-                        
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="submit" class="btn btn-primary">승인</button>
-                      </div>
-                    </form>
-                  </div>
-              </div>
-          </div>
+       		
+          
             </main>
              
             <%@ include file="/adminTemplate/footer.jsp" %>
@@ -156,65 +99,6 @@
     <script src="${path }/adminTemplate/assets/demo/datatables-demo.js"></script>
 </body>
 <script>
-	var vm = new Vue({
-		el:"#store_main",
-		data:{msg:"key이벤트로 검색!!",pro_code:"",
-			 detail:""},
-		methods:{
-			search:function(pro_code){
-				// e.keyCode : 입력한 코드값
-
-					if(pro_code != null){
-						// 현재 객체의 메서드명fetchContacts를 호출한다.
-						this.fetchData(pro_code);
-						
-					}
-				},
-			
-			fetchData:function(pro_code){
-				// 모델데이터 초기화.
-				this.contactlist=[];
-				// 비동기로 처리할 url 주소..
-				var url = "http://192.168.4.4:5112/funfun/project-detail.do?pro_code="+pro_code;
-				/*
-				# fetch api를 통한 비동기 통신 처리..
-				1. 기본 형식.
-					fetch(url).then(함수1).then(함수2).catch(함수3);
-					1) url : 요청할 주소
-					2) 함수1: 서버에서 받은 response
-						function(response){   
-							return response.json()
-						}
-					3) 함수2 : 함수1의 return값을 매개값을 받아서 처리.
-						function(json){
-							받은 json데이터 객체로 vue화면 구성처리
-						}
-					3) 함수3 : 위에 내용을 처리했을 때, 예외에 대한 함수
-						처리..
-				*/
-				var vm = this; // 현재 Vue객체를 fetch api
-				// 함수 안에 쓰기위해 이름을 지정..
-				fetch(url).then(function(response){
-					console.log("## 서버에서 온 response 값 ##");
-					console.log(response);
-					return response.json();
-				}).then(function(json){
-					console.log("## 서버에서 온 json데이터 ##");
-					console.log(json);
-					// 서버에서 온 json 데이터 model데이터로 mapping
-					// this: fetch 구분..
-					// 모델데이터에 mapping 처리.
-					// ajax로 온 json데이터를 model데이터에 mapping
-					vm.detail=json.detail;
-
-					
-				}).catch(function(err){
-					console.log("## 에러 발생 ##");
-					console.log(err);
-				})
-                }
-			},
-		});
 	
 </script>
 </html>

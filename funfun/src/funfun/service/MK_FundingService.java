@@ -74,11 +74,37 @@ public class MK_FundingService {
 		System.out.println("관심service");
 		dao.insFavor(proj);
 	}
+	// 프로젝트 신고 리스트
+	public ArrayList<Report> reportList(Report sch){
+		sch.setCount(dao.reportcnt());
+		
+		if(sch.getPageSize()==0) {
+			sch.setPageSize(10);
+		}
+		sch.setPageCount((int)(Math.ceil(sch.getCount()/(double)sch.getPageSize())));
+		if(sch.getCurPage() == 0) {
+			sch.setCurPage(1);
+		}
+		
+		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1); // start => (curPage-1)*pageSize+1
+		sch.setEnd(sch.getCurPage()*sch.getPageSize());			// end 	 => curPage*pageSize
+		
+		sch.setBlocksize(5);
+		int blocknum = (int)Math.ceil(sch.getCurPage()/(double)sch.getBlocksize());
+		sch.setStartBlock((blocknum-1)*sch.getBlocksize()+1);
+		int endblock = blocknum*sch.getBlocksize();
+		sch.setEndBlock(endblock>sch.getPageCount()?sch.getPageCount():endblock);
+		
+		return dao.reportList(sch);
+	}
+	// 신고 상세보기
+	public Report report(int report_code) {
+		return dao.report(report_code);
+	}
 	// 프로젝트 신고
 	public void insReport(Report ins) {
 		dao.insReport(ins);
 	}
-	
 	// 문의 리스트
 	public ArrayList<ProjectQna> inquiryList(int pro_code){
 		return dao.inquiryList(pro_code);

@@ -27,6 +27,11 @@ public interface MK_FundingReposi {
 	public int ckfavor(Project sf);
 	// 관심프로젝트 등록
 	public void insFavor(Project proj);
+	// 프로젝트 신고 리스트 
+	public int reportcnt();
+	public ArrayList<Report> reportList(Report sch);
+	// 신고 상세보기
+	public Report report(int report_code);
 	// 프로젝트 신고
 	public void insReport(Report ins);
 	// 파일정보 등록

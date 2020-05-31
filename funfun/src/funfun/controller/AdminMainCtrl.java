@@ -8,16 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import funfun.service.KB_StoreService;
 import funfun.vo.Paging;
 import funfun.vo.Project;
+import funfun.vo.Report;
 import funfun.vo.RewardStore;
 import funfun.service.*;
 
 @Controller
 public class AdminMainCtrl {
-	
 	@Autowired(required=false)
 	KB_StoreService kb_service;
 	@Autowired(required=false)
 	KB_adminService kb_admin_service;
+	@Autowired(required=false)
+	MK_FundingService mk_service;
+	
 	@RequestMapping(value="/admin-main.do")
 	public String enterMain() {
 		return "WEB-INF\\views\\admin\\adminMain.jsp";
@@ -40,7 +43,8 @@ public class AdminMainCtrl {
 	}
 	
 	@RequestMapping(value="/project-report-management.do")
-	public String enterProjectReportManagement() {
+	public String enterProjectReportManagement(Report sch, Model d) {
+		d.addAttribute("report", mk_service.reportList(sch));
 		
 		return "WEB-INF\\views\\admin\\projectReportManagement.jsp";
 	}
