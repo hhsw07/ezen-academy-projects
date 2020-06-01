@@ -1,20 +1,16 @@
 package funfun.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.service.Sw_AdminMemberService;
 import funfun.service.sh_myPageService;
 import funfun.vo.AdminMember;
-import funfun.vo.MemberInfo;
 import funfun.vo.Paging;
 
 @Controller
@@ -53,14 +49,19 @@ public class Sw_AdminMemberCtrl {
 	}
 
 	@RequestMapping(params="method=update")
-	public String update(@ModelAttribute("AdminMember") AdminMember upt) {
-		//service.update(upt);
-		System.out.println("mem_code:"+upt.getMem_code());
-		System.out.println("mem_curr:"+upt.getMem_curr());
+	public String update(AdminMember upt) {
+		
+		if(upt.getMem_opt() != "") {
+			Date date = Date .valueOf(upt.getMem_opt());
+			upt.setMem_curr(date);
+			service.update(upt);
+		}else {
+			service.update2(upt);
+		}
+		
 		System.out.println("AdminMember 수정완료");
 		
-		return "redirect:main.do";
-//		return "forward:/AdminMember.do?method=detail&mem_code+"+upt.getMem_code();
+		return "redirect:/AdminMember.do?method=detail&mem_code="+upt.getMem_code();
 	}
 	
 	

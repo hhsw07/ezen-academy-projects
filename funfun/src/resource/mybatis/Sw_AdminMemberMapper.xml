@@ -30,20 +30,19 @@
 		and a.MEM_CODE = #{mem_code} 
 	</select>
 	<!-- void update(AdminMember upt) -->
+	
 	<update id="update" parameterType="AdminMember">
-		UPDATE notice
-		SET noti_title = #{noti_title},
-			noti_detail = #{noti_detail},
-			noti_upt_date = CURRENT_DATE,
-			noti_ck = #{noti_ck},
-			admin_code = #{admin_code}
-		WHERE noti_code = #{noti_code}
+		UPDATE MEMBER
+		SET mem_curr = #{mem_curr}
+		WHERE mem_code = #{mem_code}
 	</update>
-	<!-- void delete(int mem_code) -->
-	<delete id="delete" parameterType="int">
-		DELETE FROM NOTICE 
-		WHERE noti_code = #{noti_code}
-	</delete>
+	
+	<update id="update2" parameterType="AdminMember">
+		UPDATE MEMBER
+		SET mem_curr = null
+		WHERE mem_code = #{mem_code}
+	</update>
+	
 </mapper>
 
 

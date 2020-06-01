@@ -31,17 +31,13 @@
 				        <h2>회원 상세보기</h2>
 				    </div>
 			        <div>
-				    	<form class="form-group" method="post">
-					    	<input type="hidden" name="mem_curr" />
+				    	<form class="form-group" method="post" action="${path}/AdminMember.do?method=update">
+					    	<input type="hidden" name="mem_opt" />
 					    	<table class="table table-bordered">
 					        	<col style="width:20%">
 					        	<col style="width:30%">
 					        	<col style="width:20%">
 					        	<col style="width:30%">
-					        	<!-- // 회원번호, 회원이메일, 회원이름, 회원휴대폰번호,
-									// 회원관심카테고리, 회원 프로필 이미지, 회원상태(제제여부),
-									// 회원계좌은행, 회원 계좌번호, 회원 보유 예치금
-									// 메이커유무, 펀딩기록, 구매기록 -->
 					        	<tr><th>회원번호</th>
 					        		<td><input type="hidden" name="mem_code" value="${AdminMember.mem_code}"/>${AdminMember.mem_code}</td>
 					        		<th>이메일</th>
@@ -247,7 +243,7 @@
 						<div class="modal-body">
 							<button type="button" class="btn btn-fill btn-warning text-left restrictionBtn" style="width:100%;">회원 제재 : 3개월 정지</button>
 							<br><br>
-							<button type="button" class="btn btn-fill btn-warning text-left dropBtn" style="width:100%;">회원 제명 : 100년 정지</button>
+							<button type="button" class="btn btn-fill btn-warning text-left dropBtn" style="width:100%;">회원 제명 : 10년 정지</button>
 							<br><br>
 							<button type="button" class="btn btn-fill btn-warning text-left clearBtn" style="width:100%;">회원 복귀</button>
 							<br><br>
@@ -279,12 +275,13 @@
 			$("#appr_modal").modal("show");
 		});
 		
+		
+		var date = new Date();
 		$(".restrictionBtn").click(function(){
-			var date = new Date();
-			date.setMonth(date.getMonth()+3);
 			if(confirm("제재 조치하시겠습니까?")){
-				$("[name=mem_curr]").val(date);
-				$("form").attr("action","${path}/AdminMember.do?method=update");
+				date.setMonth(date.getMonth()+3);
+				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
+				$("[name=mem_opt]").val(dateStr);
 				$("form").submit();
 			}
 			
@@ -293,15 +290,15 @@
 			var date = new Date();
 			date.setFullYear(date.getFullYear()+10);
 			if(confirm("제명 조치하시겠습니까?")){
-				$("[name=mem_curr]").val(date);
-				$("form").attr("action","${path}/AdminMember.do?method=update");
+				date.setFullYear(date.getFullYear()+10);
+				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
+				$("[name=mem_opt]").val(dateStr);
 				$("form").submit();
 			}
 		});
 		$(".clearBtn").click(function(){
 			if(confirm("회원 복귀 하시겠습니까?")){
-				$("[name=mem_curr]").val("");
-				$("form").attr("action","${path}/AdminMember.do?method=update");
+				$("[name=mem_opt]").val("");
 				$("form").submit();
 			}
 		});
@@ -310,5 +307,6 @@
 		});
 		
 	})
+	
 </script>
 </html>

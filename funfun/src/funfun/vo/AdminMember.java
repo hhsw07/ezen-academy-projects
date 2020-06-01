@@ -23,7 +23,7 @@ public class AdminMember {
 	
 	
 	private int maker_code;
-	
+	private String mem_opt;
 	
 
 	public int getCnt() {
@@ -153,6 +153,16 @@ public class AdminMember {
 
 	public void setMaker_code(int maker_code) {
 		this.maker_code = maker_code;
+	}
+
+
+	public String getMem_opt() {
+		return mem_opt;
+	}
+
+
+	public void setMem_opt(String mem_opt) {
+		this.mem_opt = mem_opt;
 	}
 	
 	
