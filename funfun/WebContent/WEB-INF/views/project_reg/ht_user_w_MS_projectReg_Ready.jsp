@@ -55,26 +55,71 @@
   	<span class="sub_gray_font">프로젝트를 오픈하기 위한 6가지 항목을 작성해 주세요</span>
   	
   	<br><br><br>
+ 
+
+	<c:set var="projectOption" value="${projectOption }"/>
+	<c:set var="projectRisk" value="${projectRisk }"/>
+
+
   	
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">기본 요건 동의</span>
+		<span class="afterReg">작성완료</span>
 	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicReqBtn">작성하기</button></span>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">기본 정보</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">작성하기</button></span>
+		<c:choose>
+			<c:when test="${projectInfo.pro_title==null or projectInfo.pro_title==''}">
+			<span class="beforeReg">작성전</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">작성하기</button></span>
+			</c:when>
+			<c:otherwise>
+			<span class="afterReg">작성완료</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom basicInfoBtn">수정하기</button></span>
+			</c:otherwise>
+		</c:choose>
   	</div>
   	<div class="reg_item_container">
-	  	<span class="reg_content_title">스토리 작성</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storyBtn">작성하기</button></span>
+	  	<span class="reg_content_title">스토리 작성 </span>
+		<c:choose>
+			<c:when test="${projectInfo.pro_story==null or projectInfo.pro_story==''}">
+			<span class="beforeReg">작성전</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storyBtn">작성하기</button></span>
+			</c:when>
+			<c:otherwise>
+			<span class="afterReg">작성완료</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom storyBtn">수정하기</button></span>
+			</c:otherwise>
+		</c:choose>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">리워드 설계</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
+		<c:choose>
+			<c:when test="${projectOption==null or projectOption==''}">
+			<span class="beforeReg">작성전</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
+			</c:when>
+			<c:otherwise>
+			<span class="afterReg">작성완료</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">수정하기</button></span>
+			</c:otherwise>
+		</c:choose>
   	</div>
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">위험 요인 및 정책</span>
-	  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom riskBtn">작성하기</button></span>
+
+		<c:choose>
+			<c:when test="${projectRisk==null or projectRisk==''}">
+			<span class="beforeReg">작성전</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom riskBtn">작성하기</button></span>
+			</c:when>
+			<c:otherwise>
+			<span class="afterReg">작성완료</span>
+		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom riskBtn">수정하기</button></span>
+			</c:otherwise>
+		</c:choose>
+
   	</div>
 
   	<br><br>

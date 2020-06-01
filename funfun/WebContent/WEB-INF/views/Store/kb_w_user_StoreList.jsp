@@ -74,6 +74,11 @@
 			$(location).attr("href", "store.do?method=detail&sto_code="+code);
 		}
 		
+		function goPage(no){
+			$("#curPage").val(no);
+			$("#cntForm").submit();
+		}
+		
 	
 </script>
 <link rel="stylesheet" href="css/kb_w_user_StoreList.css"/>
@@ -155,9 +160,8 @@
     
 	    <div style="background-color: rgb(245, 247, 250); margin:30px auto 0;">
 	    <div class="row" style="padding-bottom:100px;">
-	    	<form id="cntForm" method="get">
+	    	<form id="cntForm" method="post">
 			<input type="hidden" id="curPage" name="curPage" value="${sch.curPage}">
-			<input type="hidden" name="method" value="detail">
 	          <c:forEach items="${slist}" var="store">
 	        	<div class="col-xs-12 col-md-3 item" onclick="go(${store.sto_code})">
 	            <div class="thumbnail storeList-item">

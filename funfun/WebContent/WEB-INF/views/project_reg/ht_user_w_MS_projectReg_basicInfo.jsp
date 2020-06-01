@@ -139,8 +139,9 @@
 	
 	<span class="reg_content_title">프로젝트 종료일 *</span><br><br>
 
+	
 	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" value="${projectInfo.pro_finish_date}" id="finishDate" class="form-control" style="width:60%;" required >
-
+	
     	
 	<br><br>
 	

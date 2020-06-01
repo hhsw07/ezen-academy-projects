@@ -14,6 +14,17 @@
 			WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
+			</if>
+			<if test="proday=='ing' or proday==null or proday==''">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[>]]> 0
+				AND PRO_START_DATE <![CDATA[<]]>  CURRENT_DATE
+			</if>
+			<if test="proday=='come'">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[>]]> 0
+				AND PRO_START_DATE <![CDATA[>]]>  CURRENT_DATE
+			</if>
+			<if test="proday=='end'">
+				AND CEIL(a.pro_finish_date - current_date) <![CDATA[<]]>  0
 			</if>)
 		WHERE 1=1
 		<if test="projectsch!=null and projectsch!=''">
@@ -156,7 +167,7 @@
 	</update>
 	<!-- 펀딩하기 - 예치금사용내역 -->
 	<insert id="useBalance" parameterType="funding">
-		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '펀딩투자', FUNDING_SEQ.currval||'사용', #{fund_tot}, current_date)
+		INSERT INTO balance values(balance_seq.nextval, #{mem_code}, '펀딩투자', FUNDING_SEQ.currval, #{fund_tot}, current_date)
 	</insert>
 	<!-- 펀딩하기 - 회원 예치금 잔액 변경 -->
 	<update id="uptBalance" parameterType="funding">

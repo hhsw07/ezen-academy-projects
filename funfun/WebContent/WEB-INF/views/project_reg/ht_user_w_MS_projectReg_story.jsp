@@ -72,13 +72,15 @@
 
 	<div class="form-group">
 
+	<c:set var="projectInfo" value="${projectInfo }"/>
+
 	<form id="StorySubmitForm" method="post" action="${path}/ProjectReg.do">
 	<input type="hidden" name="method" value="storyReg"/>
-	
+	<input type="hidden" name="pro_code" value="${projectInfo.pro_code}"/>
 	
 	<span class="reg_content_title">프로젝트 스토리 *</span><br><br>
 
-	<textarea class="form-control" id="pro_story" name="pro_story"></textarea>
+	<textarea class="form-control" id="pro_story" name="pro_story">${projectInfo.pro_story }</textarea>
 
 	<br><br><br><br>
 	
