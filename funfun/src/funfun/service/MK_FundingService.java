@@ -101,6 +101,10 @@ public class MK_FundingService {
 	public Report report(int report_code) {
 		return dao.report(report_code);
 	}
+	// 프로젝트 신고 내역 확인
+	public void uptReport(Report upt) {
+		dao.uptReport(upt);
+	}
 	// 프로젝트 신고
 	public void insReport(Report ins) {
 		dao.insReport(ins);

@@ -45,8 +45,17 @@ public class AdminMainCtrl {
 	@RequestMapping(value="/project-report-management.do")
 	public String enterProjectReportManagement(Paging sch, Model d) {
 		d.addAttribute("report", mk_service.reportList(sch));
-		
 		return "WEB-INF\\views\\admin\\projectReportManagement.jsp";
+	}
+	@RequestMapping(value="/project-report.do")
+	public String enterProjectReportManagement(int report_code, Model d) {
+		d.addAttribute("detail", mk_service.report(report_code));
+		return "pageJsonReport";
+	}
+	@RequestMapping(value="/project-report-update.do")
+	public String updateProjectReport(Report upt) {
+		mk_service.uptReport(upt);
+		return "redirect:/project-report-management.do";
 	}
 	
 	@RequestMapping(value="/customer-service-management.do")

@@ -32,6 +32,8 @@ public interface MK_FundingReposi {
 	public ArrayList<Report> reportList(Paging sch);
 	// 신고 상세보기
 	public Report report(int report_code);
+	// 신고 내역 확인
+	public void uptReport(Report upt);
 	// 프로젝트 신고
 	public void insReport(Report ins);
 	// 파일정보 등록

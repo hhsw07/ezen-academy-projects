@@ -19,12 +19,12 @@ a{cursor:pointer;}
 		var proDay="${style}";
 		console.log(proDay);
 		var lists=document.querySelectorAll('.pro');
-		if(proDay===''||proDay==='ing'){
-			lists[0].classList.add('active');
+		if(proDay==='end'){
+			lists[2].classList.add('active');
 		} else  if(proDay==='come'){
 			lists[1].classList.add('active');
 		} else {
-			lists[2].classList.add('active');
+			lists[0].classList.add('active');
 		}
 		console.log("카테고리:"+$("[name=cate_title]").val());
 		// 카테고리
@@ -89,6 +89,10 @@ a{cursor:pointer;}
 			$("[name=proday]").val("ing");
 			$("form").submit();
 		});
+		
+		var sort = "${param.prosort}";
+		$("[name=prosort]").val(sort);
+		
 	});
 	function go_detail(no){
 		$(location).attr("href", "funding.do?method=detail&pro_code="+no);
@@ -161,14 +165,14 @@ a{cursor:pointer;}
 							<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
 							<input type="hidden" name="curPage" value="${projSch.curPage}"/>
 							<input type="hidden" name="sort" value="${projSch.sort}"/>
-							<input type="hidden" name="proday" value="ing"/>
+							<input type="hidden" name="proday" value="${projSch.proday}"/>
 							<label for="search-keyword">
 								<input class="form-control" id="search-keyword" type="text" placeholder="검색어를 입력하세요" name="projectsch" value="${param.projectsch}">
 								<button type="submit" style="border:none; background-color: transparent; color:black;" class="fa fa-search" aria-label="검색"></button>
 							</label>
 							<div class="select-sort ProjectListHead_sort">
 								<select name="prosort" class="">
-									<option value="recommend">추천순</option>
+									<option value="recommend" selected>추천순</option>
 									<option value="popluar">인기순</option>
 									<option value="recent">최신순</option>
 									<option value="amount">펀딩액순</option>

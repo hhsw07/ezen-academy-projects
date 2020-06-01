@@ -74,9 +74,13 @@ th{text-align:center;}
 	  		}
 		});
 		$("#report").click(function(){
-			alert("신고가 접수되었습니다");
-			$("#report-content").attr("action","${path}/funding.do?method=report");
-			$("#report-content").submit(); 
+			if("${param.report_detail}"!=null&&"${param.report_detail}"!="" 
+					&&"${param.projectImg}"!=null&&"${param.projectImg}"!=""){
+
+				alert("신고가 접수되었습니다");
+				$("#report-content").attr("action","${path}/funding.do?method=report");
+				$("#report-content").submit(); 
+			}
 		});
 
 		// 문의하기
@@ -328,7 +332,8 @@ th{text-align:center;}
 							<input type="hidden" name="pro_code" value="${project.pro_code}" />
 							<div class="form-group">
 								<label for="message-text" class="control-label">비밀글 유무</label>
-                      			<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="N" name="qna_open"> 비밀글로 안하기
+                      			<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 
+                      			<input type="radio" value="N" name="qna_open" checked> 비밀글로 안하기
 							</div>
 							<div class="form-group">
 								<label for="message-text" class="control-label">문의내용:</label>
