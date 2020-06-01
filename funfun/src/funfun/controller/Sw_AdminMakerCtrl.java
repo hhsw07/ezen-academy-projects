@@ -36,13 +36,8 @@ public class Sw_AdminMakerCtrl {
 	public String update(AdminMaker upt) {
 		//service.update(upt);
 		System.out.println("AdminMaker 수정완료");
-		return "forward:/AdminMaker.do?method=detail&maker_code+"+upt.getMaker_code();
+		return "redirect:/AdminMaker.do?method=detail&maker_code+"+upt.getMaker_code();
 	}
-	@RequestMapping(params="method=delete")
-	public String delete(@RequestParam("maker_code") int maker_code) {
-		//service.delete(noti_code);
-		System.out.println("AdminMaker 삭제완료");
-		return "redirect:/AdminMaker.do?method=list";
-	}
+	
 	
 }

@@ -1,9 +1,18 @@
+INSERT INTO admin values(1001,'admin1001','adm김현태','마스터');
+INSERT INTO admin values(1002,'admin1002','adm한송우','서브');
+INSERT INTO admin values(1003,'zzzz1234','admin최민기','서브');
+INSERT INTO admin values(1004,'zzzz1234','admin권기범','서브');
+INSERT INTO admin values(1005,'zzzz1234','admin이형준','서브');
+INSERT INTO admin values(1006,'zzzz1234','admin유서희','서브');
+
+
+
+
 INSERT INTO rtqna values(rtqna_seq.nextval,11000000,'확인');
 INSERT INTO rtqna values(rtqna_seq.nextval,11000001,'미확인');
 INSERT INTO rtqna values(rtqna_seq.nextval,11000002,'문의중');
 
 SELECT * FROM RTQNA ORDER BY qna_state; --'문의중', '미확인', '확인' 순서로 배열
-
 
 
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000000,to_date('2020-05-11 09:00:00','yyyy-mm-dd hh:mi:ss'),11000000,'안녕하세요');
@@ -16,6 +25,8 @@ INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:04:00','yyyy-mm-dd hh24:mi:ss'),11000002,'그래도 안돼요');
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000001,to_date('2020-05-12 13:05:00','yyyy-mm-dd hh24:mi:ss'),1001,'환불해드릴께요.');
 INSERT INTO RTQNA_DETAIL VALUES (rtqna_detail_seq.nextval,42000002,to_date('2020-05-13 14:02:00','yyyy-mm-dd hh24:mi:ss'),11000003,'메이커가 되고 싶어요.');
+
+
 
 
 

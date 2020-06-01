@@ -41,7 +41,7 @@
 					        	<!-- 메이커프로필, 메이커구분, 메이커 통장사본이미지, 회원명 -->
 					        	
 					        	<tr><th>메이커 번호</th>
-					        		<td>${AdminMaker.maker_code}</td>
+					        		<td><input type="hidden" name="maker_code" value="${AdminMaker.maker_code}"/>${AdminMaker.maker_code}</td>
 					        		<th>메이커 상태</th>
 					        		<td>${not empty AdminMaker.maker_curr?'제재 대상':'일반 메이커' }</td></tr>
 					        	<tr><th>메이커명</th>
@@ -61,15 +61,13 @@
 				        </form>
 				    </div>
 				    <div class="text-right">
-				    	<button class="btn btn-fill btn-warning restrictionBtn">제재</button>
-				    	<button class="btn btn-fill btn-warning dropBtn">제명</button>
-				    	<button class="btn btn-fill btn-warning clearBtn">제재 해제</button>
+				    	<button class="btn btn-fill btn-warning appr_Btn">메이커 관리</button>
 				    	<button class="btn btn-fill btn-warning goList">목록</button>
 				    </div>
 				    <div>
 				    	<h3>프로젝트 내역</h3>
 				    	
-				    	
+				    	<h2>내역</h2>
 				    	
 				    	
 				    	
@@ -80,7 +78,7 @@
 				    	<h3>스토어 내역</h3>
 				    	
 				    	
-				    	
+				    	<h2>내역</h2>
 				    	
 				    	
 				    	
@@ -89,6 +87,29 @@
 					</div>
 			    </div>
 			</div>
+			
+			
+			<div class="modal fade" id="appr_modal" tabindex="-1" role="dialog" aria-labelleby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="exampleModalLabel">메이커 관리</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body">
+							<button type="button" class="btn btn-fill btn-warning text-left restrictionBtn" style="width:100%;">메이커 제재 : 3개월 정지</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning text-left dropBtn" style="width:100%;">메이커 제명 : 10년 정지</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning text-left clearBtn" style="width:100%;">메이커 복귀</button>
+							<br><br>
+							<button type="button" class="btn btn-fill btn-warning" style="width:100%;" data-dismiss="modal">닫기</button>
+							<br><br>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<!-- end main -->
 			</main>
             <%@ include file="/adminTemplate/footer.jsp" %>
@@ -106,35 +127,38 @@
 </body>
 <script>
 	$(document).ready(function(){
-		console.log("maker_code:"+"${AdminMaker.maker_code}");
-		console.log("maker_name:"+"${AdminMaker.maker_name}");
+		$(".appr_Btn").click(function(){
+			$("#appr_modal").modal("show");
+		});
 		
+		
+		
+		
+		var date = new Date();
 		$(".restrictionBtn").click(function(){
-			alert("제재 조치 (6개월 정지)");
-			/*
-			if(confirm("제재 조치하시겠습니까?\n수정 할 수 없습니다. ")){
-				$("form").attr("action","${path}/notice.do?method=update");
+			if(confirm("제재 조치하시겠습니까?")){
+				date.setMonth(date.getMonth()+3);
+				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
+				$("[name=mem_opt]").val(dateStr);
 				$("form").submit();
 			}
-			*/
+			
 		});
 		$(".dropBtn").click(function(){
-			alert("제명 조치 (10년 정지)");
-			/*
-			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
-				$("form").attr("action","${path}/notice.do?method=update");
+			var date = new Date();
+			date.setFullYear(date.getFullYear()+10);
+			if(confirm("제명 조치하시겠습니까?")){
+				date.setFullYear(date.getFullYear()+10);
+				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
+				$("[name=mem_opt]").val(dateStr);
 				$("form").submit();
 			}
-			*/
 		});
-		$(".cleatBtn").click(function(){
-			alert("제재 해제 조치");
-			/*
-			if(confirm("제명 조치하시겠습니까?\n수정 할 수 없습니다.")){
-				$("form").attr("action","${path}/notice.do?method=update");
+		$(".clearBtn").click(function(){
+			if(confirm("회원 복귀 하시겠습니까?")){
+				$("[name=mem_opt]").val("");
 				$("form").submit();
 			}
-			*/
 		});
 		$(".goList").click(function(){
 			//alert("목록으로 이동");

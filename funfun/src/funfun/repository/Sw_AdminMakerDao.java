@@ -19,6 +19,5 @@ public interface Sw_AdminMakerDao {
 	// 데이터 상세보기
 	public AdminMaker detail(int maker_code);
 	public void update(AdminMaker upt);
-	public void delete(int maker_code);
 	
 }

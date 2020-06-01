@@ -53,17 +53,11 @@ public class Sw_AdminMakerService {
 
 	
 	public AdminMaker detail(int maker_code) {
-		System.out.println("AdminMaker 상세화면 호출");
-		System.out.println("service단 maker_code:"+maker_code);
 		return dao.detail(maker_code);
 	};
 	public void update(AdminMaker upt) {
 		dao.update(upt);
-		System.out.println("AdminMaker 수정 완료");
 	};
-	public void delete(int maker_code) {
-		dao.delete(maker_code);
-		System.out.println("AdminMaker 삭제 완료");
-	};
+	
 	
 }
