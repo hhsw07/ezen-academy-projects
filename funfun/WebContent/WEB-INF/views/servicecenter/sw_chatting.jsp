@@ -46,8 +46,7 @@
 		var mem_code = "${rtqna.mem_code}";
 		var rtqna_writer = "${user.mem_code}";
 		var mem_name = "${rtqna.mem_name}";
-//		if(rtqna_writer == "") rtqna_writer = "${admin.admin_code}"; 
-		if(rtqna_writer == "") rtqna_writer = "1001"; 
+		if(rtqna_writer == "") rtqna_writer = "${manager.admin_code}"; 
 		var rtqna_time = "";
 		
 		$.ajax({
