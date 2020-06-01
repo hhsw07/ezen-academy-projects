@@ -203,7 +203,7 @@
                         </td>
                     </tr>
                     <tr class="hide">
-                    	<c:if test="${qna.qna_open=='Y' && qna.mem_name==user.mem_name}">
+                    	<c:if test="${(qna.qna_open=='Y'||qna.qna_open=='y') && qna.mem_name==user.mem_name}">
                     		<td colspan="5"><pre>${qna.qna_detail}</pre>
                     		<c:if test="${qna.qna_ans!=null }">
                     		 <pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre></td>
@@ -212,10 +212,10 @@
                     		</td>
                     		</c:if>
                     	</c:if>
-                    	<c:if test="${qna.qna_open=='Y' && qna.mem_name!=user.mem_name}">
+                    	<c:if test="${(qna.qna_open=='Y' || qna.qna_open=='y') && qna.mem_name!=user.mem_name}">
                     		<td colspan="5"><pre>[비밀글 입니다]</pre></td>
                     	</c:if>
-                    	<c:if test="${qna.qna_open=='N'}">
+                    	<c:if test="${qna.qna_open=='N' || qna.qna_open=='n'}">
                     		<td colspan="5"><pre>${qna.qna_detail}</pre>
                     		<c:if test="${qna.qna_ans!=null }">
                     		 <pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------${qna.qna_ans_reg_date }--------------------<br>${qna.qna_ans}</pre></td>

@@ -26,15 +26,28 @@ function jusoCallBack(roadFullAddr,zipNo){
 $(document).ready(function(){
 	var mem_price = '${mem_balance}';
 	var pay_price = '${param.sto_price}';
-	console.log(mem_price);
-	console.log(pay_price);
+	var pay_name;
+	var pay_addr;
+	var pay_phone;
+	var pay_ship_req;
 	
 	$("#pay_btn").click(function(){
-		if(parseInt(mem_price) >= parseInt(pay_price)){
-			$("form").submit();
+		pay_name = $("[name=pay_name]").val();
+		pay_addr = $("[name=pay_addr]").val();
+		pay_phone = $("[name=pay_phone]").val();
+		pay_ship_req = $("[name=pay_ship_req]").val();
+		
+		if(pay_name != null && pay_name!='' && pay_addr != null && pay_addr != '' && 
+				pay_phone != null && pay_phone != '' && pay_ship_req != null && pay_ship_req != ''){
+			if(parseInt(mem_price) >= parseInt(pay_price)){
+				$("form").submit();
+			} else {
+				alert("예치금이 부족합니다.");
+			}
 		} else {
-			alert("예치금이 부족합니다.");
+			alert("배송지 정보를 입력해주세요");
 		}
+	
 	});
 	
 	
@@ -77,7 +90,7 @@ $(document).ready(function(){
                 </tr>
                 <tr class="store_tr">
                     <th class="store_th">연락처</th>
-                    <td class="store_td"><input type="text" name="pay_phone" placeholder="xxx-xxxx-xxxx"></td>
+                    <td class="store_td"><input type="text" name="pay_phone" placeholder="-없이 입력하세요"></td>
                 </tr>
                 <tr class="store_tr">
                 	<th class="store_th">배송 요청사항</th>
