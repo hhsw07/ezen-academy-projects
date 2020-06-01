@@ -87,6 +87,7 @@ public class Main {
 			System.out.println("프로필:"+memberInfo.getMem_profile());
 			System.out.println("메이커코드:"+memberInfo.getMaker_code());
 			session.setAttribute("user", memberInfo);
+			session.removeAttribute("manager");
 			System.out.println("로그인성공");
 			return "redirect:"+redirectAddress;
 		} else {
@@ -100,7 +101,6 @@ public class Main {
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.removeAttribute("user");
-		session.invalidate();
 		
 		return "redirect:/main.do";
 	}
