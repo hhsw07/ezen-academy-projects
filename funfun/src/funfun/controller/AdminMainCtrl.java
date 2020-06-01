@@ -43,7 +43,7 @@ public class AdminMainCtrl {
 	}
 	
 	@RequestMapping(value="/project-report-management.do")
-	public String enterProjectReportManagement(Report sch, Model d) {
+	public String enterProjectReportManagement(Paging sch, Model d) {
 		d.addAttribute("report", mk_service.reportList(sch));
 		
 		return "WEB-INF\\views\\admin\\projectReportManagement.jsp";

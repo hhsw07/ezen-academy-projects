@@ -10,6 +10,7 @@ public class Paging {
 	private String sto_title;
 	private String cate_title;
 	private String store_sort;
+	private int report_code;
 	public String getStore_sort() {
 		return store_sort;
 	}
@@ -33,6 +34,12 @@ public class Paging {
 	}
 	public void setSto_code(int sto_code) {
 		this.sto_code = sto_code;
+	}
+	public int getReport_code() {
+		return report_code;
+	}
+	public void setReport_code(int report_code) {
+		this.report_code = report_code;
 	}
 	// 2. 페이징 처리
 	private int count; 		// 총 데이터 건수
