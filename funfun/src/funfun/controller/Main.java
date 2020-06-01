@@ -88,8 +88,14 @@ public class Main {
 			System.out.println("메이커코드:"+memberInfo.getMaker_code());
 			session.setAttribute("user", memberInfo);
 			System.out.println("로그인성공");
-			return "redirect:"+redirectAddress;
+			//회원가입하자마자 로그인하는 경우
+			if(redirectAddress.contains("signup.do")) {
+				return "redirect:/main.do";
+			} else {
+				return "redirect:"+redirectAddress;
+			}
 		} else {
+			//로그인 실패시
 			return "redirect:/login.do";
 		}
 		
