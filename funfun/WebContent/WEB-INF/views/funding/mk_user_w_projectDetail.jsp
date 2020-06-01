@@ -93,8 +93,17 @@ th{text-align:center;}
 				$(myArticle).addClass('hide').removeClass('qnaShow');
 			}
 		});
+		$("#writeinq").click(function(){
+			if(mem_code == ""){
+	  			if(confirm("로그인이 필요합니다.")){
+	  				$(location).attr("href","${path}/login.do");
+	  			} else{
+	  				var no = $("[name=pro_code]").val();
+	  				$(location).attr("href","${path}/funding.do?method=detail&pro_code="+no);
+	  			}
+			}
+		});
 		var qna = $("[name=qna_detail]").val();
-	
         $("#inqBtn").click(function(){
         	if(mem_code != ""){
         		if(qna!=null&&qna!=""){
@@ -104,11 +113,7 @@ th{text-align:center;}
         		} else {
         			alert("내용을 입력하세요");
         		}
-        	} else {
-        		if(confirm("로그인이 필요합니다.")){
-	  				$(location).attr("href","${path}/login.do");
-	  			}
-        	}
+        	} 
         });
 	});
 	
@@ -277,7 +282,7 @@ th{text-align:center;}
 	    	<!-- 문의 리스트 -->
 	    	<div class="project-inquiry">
 	    		<div class="inquiry-title">프로젝트 문의
-	    			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="float:right;margin-bottom: 40px;" >문의하기</button>
+	    			<button type="button" id="writeinq" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="float:right;margin-bottom: 40px;" >문의하기</button>
 	    		</div>
            		<table class="table table-hover" style="margin-top:2%;border-top: 1px solid #EaEaEa;" id="goinq">
 					<thead>
