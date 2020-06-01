@@ -72,8 +72,8 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
 		session.setAttribute("projectInfo", service.projectInfo(pro_code));
-		session.setAttribute("projectOption", service.getProOptionList(pro_code));
-		session.setAttribute("projectRisk", service.getProRiskList(pro_code));
+		d.addAttribute("projectOption", service.getProOptionList(pro_code));
+		d.addAttribute("projectRisk", service.getProRiskList(pro_code));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
@@ -221,7 +221,7 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		service.projectRegister(projectCode);
-		return "redirect:/ProjectReg.do?method=myProject";
+		return "redirect:/MakerStudio.do?method=myProject";
 	}
 
 }

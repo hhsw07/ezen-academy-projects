@@ -22,6 +22,7 @@ public interface HT_StoreManageReposi {
 	public void storeBasicInfoReg(Store sto);
 	public ArrayList<ProOption> getProOptList(int pro_code);
 	public void stoOptUnitReg(storeOption sto);
+	public void stoOptUnitUpt(storeOption sto);
 	public void storeOpenRegConfirm(int sto_code);
 	public ArrayList<ProStoOptionJoin> getProStoOptionJoinList(int pro_code);
 }

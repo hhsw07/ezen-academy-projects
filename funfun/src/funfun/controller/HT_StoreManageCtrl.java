@@ -130,6 +130,15 @@ public class HT_StoreManageCtrl {
 		return "redirect:/Store.do?method=storeOption";
 	}
 	
+	@RequestMapping(params="method=storeOptionUpt")
+	public String storeOptionUpt(HttpServletRequest request, storeOption sto, int sto_opt_code) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		sto.setSto_opt_code(sto_opt_code);
+		service.stoOptUnitUpt(sto);
+		return "redirect:/Store.do?method=storeOption";
+	}
+	
 	
 	
 	@RequestMapping(params="method=storeOpenRegSubmit")

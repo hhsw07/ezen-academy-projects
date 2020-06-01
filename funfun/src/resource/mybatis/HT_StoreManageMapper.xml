@@ -72,6 +72,13 @@
 	INSERT INTO STORE_OPTION VALUES (store_option_seq.nextval, #{sto_code}, #{opt_code}, #{sto_opt_price}, #{sto_opt_detail}, '정상')
 	</insert>
 	
+	<update id="stoOptUnitUpt" parameterType="storeOption">
+	UPDATE STORE_OPTION
+	SET STO_OPT_PRICE = #{sto_opt_price},
+		STO_OPT_DETAIL = #{sto_opt_detail}
+	WHERE STO_OPT_CODE = #{sto_opt_code}
+	</update>
+	
 	<update id="storeOpenRegConfirm" parameterType="int">
 	UPDATE STORE
 	SET STO__REG_DATE = sysdate

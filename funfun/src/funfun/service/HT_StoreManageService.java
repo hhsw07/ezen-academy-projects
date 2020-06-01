@@ -52,6 +52,10 @@ public class HT_StoreManageService {
 		dao.stoOptUnitReg(sto);
 	}
 	
+	public void stoOptUnitUpt(storeOption sto) {
+		dao.stoOptUnitUpt(sto);
+	}
+	
 	public void storeOpenRegConfirm(int sto_code) {
 		dao.storeOpenRegConfirm(sto_code);
 	}
