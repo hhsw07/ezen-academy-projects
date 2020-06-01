@@ -14,7 +14,6 @@
 <link href="${path }/css/sw_user_w_notice.css" rel="stylesheet" />
 <script>
 	$(document).ready(function(){
-		console.log("notice??")
 		
 		var article = (".noticeList .notishow");  
 	    $(".noticeList .item  td").click(function() {  
@@ -26,16 +25,6 @@
 	        else {  
 	            $(myArticle).addClass('hide').removeClass('notishow');  
 	        }  
-	    });
-	    
-	    
-	    $(".noticeList td").click(function(){
-	    	var noti = $(this).parents().next("tr");
-	    	if($(noti).hasClass('hide')){
-	    		$(noti).removeClass('hide').addClass('show');
-	    	}else{
-	    		$(noti).removeClass('show').addClass('hide');
-	    	}
 	    });
 	    
 	    
@@ -88,7 +77,6 @@
 			</div>
 			</form:form>
 			<div>
-		        <form>
 		        <table class="table table-hover sctable">
 		        	<col width="10%">
 		        	<col width="50%">
@@ -115,7 +103,6 @@
 		        	</c:forEach>
 		        	<tr><td colspan="4"></td></tr>
 		        </table>
-		        </form>
 			</div>
 	        <div class="text-center">
 		        <ul class="pagination ct-orange"> 

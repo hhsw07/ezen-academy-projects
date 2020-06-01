@@ -26,10 +26,10 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">관리자 로그인</h3></div>
                                     <div class="card-body">
                                         <form>
-                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">관리자코드</label><input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="관리자 코드를 입력해주세요" /></div>
+                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">관리자코드</label><input class="form-control py-4" id="inputAdminCode" type="text" placeholder="관리자 코드를 입력해주세요" /></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">비밀번호</label><input class="form-control py-4" id="inputPassword" type="password" placeholder="비밀번호를 입력해주세요" /></div>
                                             <div class="form-group">
-                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">비밀번호 기억하기</label></div>
+                                            	<!-- <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">비밀번호 기억하기</label></div> -->
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="btn btn-primary" style="width:100%;" href="${path }/admin-main.do">로그인</a></div>
                                         </form>
