@@ -60,24 +60,40 @@
 	            });
 			
 	            $("#qnaSubmit").click(function(){
-	            	
-	            	if(user != ''){
+	            	var qnaDetail = $("#message-text").val();
+	            	if(qnaDetail != null && qnaDetail !=''){
 	                $("#qnaForm").submit();
-	                $(".btn btn-primary").modal("hide");
+	                $(".btn btn-warning").modal("hide");
 	                $("#sto_QnA_Div").focus();
 	            	} else {
-	            		alert("로그인이 필요합니다");
+	            		alert("문의 내용을 입력하세요");
+	            		$("#message-text").focus();
 	            	}
 	            });
 	            
-	            $("#Pay_Btn").click(function(){
+	            $("#qnaModalBtn").click(function(){
 	            	if(user != ''){
-	            		$("#pay_form").submit();
+	            		$(".btn btn-warning").modal();
 	            	} else {
-	            		alert("로그인이 필요합니다");
+	            		if(confirm("로그인이 필요합니다")){
+	            			$(location).attr("href","login.do");
+	            		}
 	            	}
 	            })
-			
+	            
+	            $("#Pay_Btn").click(function(){
+	            	if(user != ''){
+	            		if(opt_code != null && opt_code != ''){
+	            			$("#pay_form").submit();
+	            		} else {
+	            			alert("옵션 선택 및 수량 설정하세요");
+	            		}
+	            	} else {
+	            		if(confirm("로그인이 필요합니다")){
+	            			$(location).attr("href","login.do");
+	            		}
+	            	}
+	            })
 			})
 		
 		
@@ -93,7 +109,7 @@
 </script>
 </head>
 <body>
-	<div class="main">
+	<div class="main" id="main_Div">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 	  		<div class="store-title" style="text-align: center; margin-top:0;" >
 	    		<div class="label label-warning">${store.cate_title}</div>
@@ -101,7 +117,7 @@
         	</div>
         <div id="sto_menu_Div">
             <ul class="sto_menu_ul">
-                <li class="sto_menu_li"><a href="#sto_Title_Div" class="sto_menu_a">상단</a></li>
+                <li class="sto_menu_li"><a href="#main_Div" class="sto_menu_a">상단</a></li>
                 <li class="sto_menu_li"><a href="#sto_Story_Div" class="sto_menu_a">스토리</a></li>
                 <li class="sto_menu_li"><a href="#sto_QnA_Div" class="sto_menu_a">문의</a></li>
             </ul>
@@ -119,9 +135,9 @@
 	                <div id="option_Div">
 	                    <span id="option_title">옵션 : </span>
 	                    <select class="form-data" id="option_select" name="sto_option">
-	                    	<option></option>
+	                    	<option selected></option>
 	                    	<c:forEach var="opt" items="${option}">
-	                    		  <option data-price="${opt.sto_opt_price}" value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} </option>
+	                    		  <option data-price="${opt.sto_opt_price}" value="${opt.sto_opt_code}"> ${opt.sto_opt_detail} (가격 : ${opt.sto_opt_price}) </option>
 	                    	</c:forEach>
 	                    </select>
 	                    <input type="hidden" name="sto_opt_code"> 
@@ -155,7 +171,7 @@
 			<input type="hidden" name="sto_code" value="${stocode}">
 		
         <div id="sto_QnA_Div">
-            <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right;" >문의하기</button></div>
+            <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-warning" id="qnaModalBtn" data-toggle="modal" data-target="#exampleModal" style="float:right;" >문의하기</button></div>
             <table class="table table-hover" style="margin-top:2%;">
                 <thead>
                     <tr style="text-align:center">
@@ -240,7 +256,7 @@
                       <form method="post" id="qnaForm" action="store.do?method=insert">
                       	<div class="form-group">
                       		<label for="message-text" class="control-label">비밀글 유무</label>
-                      		<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open"> 비밀글로 안하기
+                      		<input type="radio" value="Y" name="qna_open"> 비밀글로 하기 <input type="radio" value="n" name="qna_open" checked="checked"> 비밀글로 안하기
                       	</div>
                         <div class="form-group">
                           <label for="message-text" class="control-label">문의내용:</label>

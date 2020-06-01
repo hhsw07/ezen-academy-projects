@@ -195,6 +195,7 @@ option{
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left:20px;
+    text-align:left;
 }
 
 th{
