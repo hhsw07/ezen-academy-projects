@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/bootstrap-datepicker.js"></script>
+<!-- <script src="js/datepicker-ko.js"></script>  -->
 <link rel="stylesheet" href="css/ht_user_w_MS_projectReg.css">
 <script>
 	$(document).ready(function(){
@@ -36,16 +38,14 @@
 		
 		$("#subBtn").click(function(){
 			$("#basicInfoForm").submit();
-		})
+		});
 		
+		$( "#startDate" ).datepicker({format:'yyyy/mm/dd'});
+		$( "#finishDate" ).datepicker({format:'yyyy/mm/dd'});
+
 	})
 	
-	$( function() {
-		$( "#startDate" ).datepicker({dateFormat:'yy-mm-dd'});		
-	} );	
-	$( function() {
-		$( "#finishDate" ).datepicker({dateFormat:'yy-mm-dd'});
-	} );	
+		
 	$( function() {
 		$( ".widget input[type=submit], .widget a, .widget button" ).button();
 		$( "button, input, a" ).click( function( event ) {
@@ -78,9 +78,85 @@
 
   	<br><br><br><br>
 
+
+
 	<div class="form-group">
 	
+	<c:set var="projectInfo" value="${projectInfo }"/>
+
+	<c:choose>
+
+	<c:when test="${projectInfo!=null }"> 
 	
+	<span class="reg_content_title">프로젝트 제목 *</span><br><br>
+
+    <input type="text" name="pro_title" value="${projectInfo.pro_title}" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" required/>
+	
+	
+	<br><br>
+
+	<span class="reg_content_title">목표 금액 *</span><br><br>
+
+ 
+    <input type="text" name="pro_target" value="${projectInfo.pro_target}" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" required/>
+
+	<br><br>	
+	
+	<span class="reg_content_title">대표 이미지 *</span><br><br>
+	
+	<img src="${path}/${projectInfo.pro_image}"/>
+	
+	<div class="btn btn-warning btn_custom"> 
+	    <label for="projectImg">스토어 이미지 수정</label>
+	    <input type="file" id="projectImg" name="projectImg" accept=".gif, .jpg, .png" style="display:hidden;">
+	</div>	 
+	
+	<br><br>
+	
+	<span class="sub_gray_font">&nbsp&nbsp&nbsp&nbsp&nbsp GIF, JPG, PNG 파일만 등록 가능합니다.</span>
+	
+	<br><br><br>
+	
+	<span class="reg_content_title">카테고리 *</span><br><br>
+
+	<select class="form-control" id="sel1" style="width:60%;" name="cate_title">
+		<option>교육·키즈</option>
+		<option>패션·잡화·뷰티</option>
+		<option>홈리빙·디자인소품</option>
+		<option>공연·컬쳐</option>
+		<option>스포츠·모빌리티</option>
+		<option>출판</option>
+		<option>반려동물</option>
+		<option>테크·가전</option>
+	</select>
+	<br><br>
+	
+	<span class="reg_content_title">프로젝트 시작 예정일 *</span><br><br>
+
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" value="${projectInfo.pro_start_date}" id="startDate" class="form-control" style="width:60%;" required >
+	
+	<br><br>
+	
+	<span class="reg_content_title">프로젝트 종료일 *</span><br><br>
+
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" value="${projectInfo.pro_finish_date}" id="finishDate" class="form-control" style="width:60%;" required >
+
+    	
+	<br><br>
+	
+	<span class="reg_content_title">검색용 태그 *</span><br><br>
+
+    <input type="text" name="pro_keyword" value="${projectInfo.pro_keyword}" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" required />
+	
+
+	</c:when>
+
+
+
+
+	<c:otherwise>
+
+
 	<span class="reg_content_title">프로젝트 제목 *</span><br><br>
 
     <input type="text" name="pro_title" value="" placeholder="프로젝트 제목을 입력하세요" class="form-control" style="width:60%;" required/>
@@ -139,6 +215,14 @@
 
     <input type="text" name="pro_keyword" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" required />
 	
+
+
+	</c:otherwise>
+
+
+	</c:choose>
+
+
 
 	<br><br><br><br>
 	

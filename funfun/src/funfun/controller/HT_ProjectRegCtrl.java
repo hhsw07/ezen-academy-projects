@@ -71,6 +71,7 @@ public class HT_ProjectRegCtrl {
 	public String projectManage(HttpServletRequest request, Model d, Project proInfo,int pro_code) {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
+		session.setAttribute("projectInfo", service.projectInfo(pro_code));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
@@ -87,7 +88,10 @@ public class HT_ProjectRegCtrl {
 	
 	
 	@RequestMapping(params="method=basicInfo")
-	public String proBasicInfo() {
+	public String proBasicInfo(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		Project projectInfo = (Project)session.getAttribute("projectInfo");
+		d.addAttribute("projectInfo", projectInfo);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_basicInfo.jsp";
 	}
 
@@ -112,6 +116,9 @@ public class HT_ProjectRegCtrl {
 
 	@RequestMapping(params="method=story")
 	public String proRegStory(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		Project projectInfo = (Project)session.getAttribute("projectInfo");
+		d.addAttribute("projectInfo", projectInfo);
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_story.jsp";
 	}
 	

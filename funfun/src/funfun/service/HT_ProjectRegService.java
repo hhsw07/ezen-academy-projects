@@ -60,8 +60,8 @@ public class HT_ProjectRegService {
 		dao.regProRisk(cre);
 	}
 	
-	public void projectInfo(int pro_code) {
-		dao.projectInfo(pro_code);
+	public Project projectInfo(int pro_code) {
+		return dao.projectInfo(pro_code);
 	}
 	
 	public void projectRegister(int pro_code) {

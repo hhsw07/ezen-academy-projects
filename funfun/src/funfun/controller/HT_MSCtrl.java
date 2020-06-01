@@ -72,7 +72,7 @@ public class HT_MSCtrl {
 				
 			} else {
 				System.out.println(memberinfo.getMaker_code());
-				session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMaker_code()));
+				session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 				d.addAttribute("list", service.myProjectList(memberinfo.getMem_code()));
 				return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_myProject.jsp";
 
@@ -101,6 +101,10 @@ public class HT_MSCtrl {
 	@RequestMapping(params="method=proCurrnet")
 	public String proCurrnet(HttpServletRequest request, int pro_code, Model d) {
 		HttpSession session = request.getSession();
+
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		
 		session.setAttribute("projectCode", pro_code);
 		int storeCode = service.getStoCode(pro_code);
 		session.setAttribute("storeCode", storeCode);

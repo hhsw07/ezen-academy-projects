@@ -65,5 +65,10 @@
 	SET PRO_REG_DATE = SYSDATE
 	WHERE PRO_CODE = #{pro_code}
 	</update>
+	
+	<select id="projectInfo" resultType="project" parameterType="int">
+	SELECT * FROM PROJECT
+	WHERE PRO_CODE = #{pro_code}
+	</select>
 
 </mapper>
