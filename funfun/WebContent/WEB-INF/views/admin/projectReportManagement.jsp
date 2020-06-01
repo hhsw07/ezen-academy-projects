@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                 	<c:forEach var="report" items="${report}">
-	                    <tr class="tr_btn" data-target="#myModal" v-on:click="search('${report.report_code}')">
+	                    <tr class="tr_btn" data-target="#myModal" ">
 	                        <td>${report.report_code}</td>
 	                        <td>${report.pro_title}</td>
 	                        <td>${report.mem_name}</td>

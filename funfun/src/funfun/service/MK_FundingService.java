@@ -75,21 +75,21 @@ public class MK_FundingService {
 		dao.insFavor(proj);
 	}
 	// 프로젝트 신고 리스트
-	public ArrayList<Report> reportList(Report sch){
+	public ArrayList<Report> reportList(Paging sch){
 		sch.setCount(dao.reportcnt());
 		
-		if(sch.getPageSize()==0) {
+		if(sch.getPageSize() == 0) {
 			sch.setPageSize(10);
 		}
-		sch.setPageCount((int)(Math.ceil(sch.getCount()/(double)sch.getPageSize())));
+		sch.setPageCount((int)Math.ceil(sch.getCount()/(double)sch.getPageSize()));
 		if(sch.getCurPage() == 0) {
 			sch.setCurPage(1);
 		}
-		
 		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1); // start => (curPage-1)*pageSize+1
-		sch.setEnd(sch.getCurPage()*sch.getPageSize());			// end 	 => curPage*pageSize
+		sch.setEnd(sch.getCurPage()*sch.getPageSize());		// end 	 => curPage*pageSize
 		
 		sch.setBlocksize(5);
+		// int blocknum 현재 위치한 블럭의 단계 1~5 = 1, 6~10=2..
 		int blocknum = (int)Math.ceil(sch.getCurPage()/(double)sch.getBlocksize());
 		sch.setStartBlock((blocknum-1)*sch.getBlocksize()+1);
 		int endblock = blocknum*sch.getBlocksize();

@@ -29,7 +29,7 @@ public interface MK_FundingReposi {
 	public void insFavor(Project proj);
 	// 프로젝트 신고 리스트 
 	public int reportcnt();
-	public ArrayList<Report> reportList(Report sch);
+	public ArrayList<Report> reportList(Paging sch);
 	// 신고 상세보기
 	public Report report(int report_code);
 	// 프로젝트 신고

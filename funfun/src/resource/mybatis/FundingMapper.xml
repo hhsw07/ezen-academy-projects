@@ -99,7 +99,7 @@
 			ORDER BY report_code DESC)
 		WHERE 1=1
 	</select>
-	<select id="reportList" resultMap="reportResult" parameterType="report">
+	<select id="reportList" resultMap="reportResult" parameterType="paging">
 		SELECT * FROM (select rownum cnt, c.*
 		from (SELECT r.*, a.pro_title, b.mem_name 
 			FROM project a, member b, report r
