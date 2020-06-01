@@ -134,7 +134,11 @@ th{text-align:center;}
 	    	
 	    	<div class="project-state col-md-4 col-sm-6">
 				<div class="state-box">
+					<jsp:useBean id="today" class="java.util.Date" />
 					<c:choose>
+						<c:when test="${pro_start>today}">
+							<p class="remainday">오픈예정</p>
+						</c:when>
 						<c:when test="${project.dday>0}">
 							<p class="remainday">${project.dday}일 남음</p>
 						</c:when>
@@ -155,6 +159,9 @@ th{text-align:center;}
 				</div>
 				<div class="btn-funding">
 					<c:choose>
+						<c:when test="${pro_start>today}">
+							<button class="btn btn-block btn-lg btn-fill btn-warning">오픈예정</button>
+						</c:when>
 						<c:when test="${project.dday>0}">
 							<button id="gofun" class="btn btn-block btn-lg btn-fill btn-warning">펀딩하기</button>
 						</c:when>

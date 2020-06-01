@@ -11,17 +11,37 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
+#balance-warning{color:#FF9500; text-align: right; margin-right: 15px;}
 
 </style>
 <script>
 	$(document).ready(function(){
 		console.log("프로젝트 번호:"+$("[name=pro_code]").val());
-		$("#funding").click(function(){
-			alert("펀딩완료되었습니다");
-			$("form").submit();
-		});
 
+		var balance = Number($("[name=mem_balance]").val());
+		var price = Number($("[name=fund_tot]").val());
+		console.log("예치금"+balance+" 결제금액"+price);
+		if(balance<price){
+			$("#balance-warning").text("예치금이 부족합니다!");
+		}
+		var name = $("[name=fund_receiver]").val();
+		var tel = $("[name=fund_rec_tel]").val();
+		var post = $("[name=fund_post]").val();
+		var addr = $("[name=fund_address]").val();
+		$("#funding").click(function(){
+			if(balance<price){
+				alert("예치금이 부족합니다!");
+			} else{
+				if(name!=null&&name!=""&&tel!=null&&tel!=""&&post!=null&&post!=""&&addr!=null&&addr!=""){
+					alert("펀딩완료되었습니다");
+					$("form").submit();
+				} else {
+					alert("배송지 입력 정보를 확인해 주세요");
+				}
+			}
+		});
 	});
+	
 	// 우편번호 찾기
 	function goPopup(){
 		var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
@@ -66,7 +86,9 @@
 						</div>
 						<div class="balance order-info">
 							<p class="order-infodt">보유 예치금 <p>
+							<input type="hidden" name="mem_balance" value="${user.mem_balance}"/>
 							<span class="order-infodd"><span id="usablePoint"><fmt:formatNumber type="number" maxFractionDigits="3" value="${user.mem_balance}"/></span>원</span>
+							<p id="balance-warning"></p>
 						</div>
 						<div class="order-info conf-info">
 							<div>
