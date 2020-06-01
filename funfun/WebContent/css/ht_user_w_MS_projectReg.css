@@ -163,3 +163,15 @@ details > summary::-webkit-details-marker {
 	font-weight:900;
 }
 
+.beforeReg{
+	margin-left:10px;
+	color:#ffa94a;
+	font-weight:bold;
+	}
+
+.afterReg{
+	margin-left:10px;
+	color:#787878;
+	font-weight:bold;
+	font-sixe:7px
+	}

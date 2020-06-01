@@ -41,7 +41,7 @@ public class HT_ProjectRegCtrl {
 	public String initPage(HttpServletRequest request, Model d) {
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
-	
+
 	
 	@RequestMapping(params="method=ready")
 	public String proReady(HttpServletRequest request, Model d) {
@@ -72,6 +72,8 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
 		session.setAttribute("projectInfo", service.projectInfo(pro_code));
+		session.setAttribute("projectOption", service.getProOptionList(pro_code));
+		session.setAttribute("projectRisk", service.getProRiskList(pro_code));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
@@ -219,7 +221,7 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		service.projectRegister(projectCode);
-		return "redirect:/MakerStudio.do?method=myProject";
+		return "redirect:/ProjectReg.do?method=myProject";
 	}
 
 }
