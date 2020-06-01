@@ -70,17 +70,16 @@ th{text-align:center;}
 			if(mem_code == ""){
 	  			if(confirm("로그인이 필요합니다.")){
 	  				$(location).attr("href","${path}/login.do");
+	  			} else{
+	  				var no = $("[name=pro_code]").val();
+	  				$(location).attr("href","${path}/funding.do?method=detail&pro_code="+no);
 	  			}
 	  		}
 		});
 		$("#report").click(function(){
-			if("${param.report_detail}"!=null&&"${param.report_detail}"!="" 
-					&&"${param.projectImg}"!=null&&"${param.projectImg}"!=""){
-
-				alert("신고가 접수되었습니다");
-				$("#report-content").attr("action","${path}/funding.do?method=report");
-				$("#report-content").submit(); 
-			}
+			alert("신고가 접수되었습니다");
+			$("#report-content").attr("action","${path}/funding.do?method=report");
+			$("#report-content").submit(); 
 		});
 
 		// 문의하기
@@ -95,6 +94,9 @@ th{text-align:center;}
 			}
 		});
         $("#inqBtn").click(function(){
+        	if(mem_code==null || mem_code==""){
+        		
+        	}
         	if(mem_code != ""){
         		$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
 	            $("#inqForm").submit();
