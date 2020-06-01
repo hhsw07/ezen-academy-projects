@@ -93,14 +93,17 @@ th{text-align:center;}
 				$(myArticle).addClass('hide').removeClass('qnaShow');
 			}
 		});
+		var qna = $("[name=qna_detail]").val();
+	
         $("#inqBtn").click(function(){
-        	if(mem_code==null || mem_code==""){
-        		
-        	}
         	if(mem_code != ""){
-        		$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
-	            $("#inqForm").submit();
-	            $(".project-inquiry").focus();
+        		if(qna!=null&&qna!=""){
+        			$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
+    	            $("#inqForm").submit();
+    	            $(".project-inquiry").focus();
+        		} else {
+        			alert("내용을 입력하세요");
+        		}
         	} else {
         		if(confirm("로그인이 필요합니다.")){
 	  				$(location).attr("href","${path}/login.do");
