@@ -20,6 +20,6 @@ public interface Sw_AdminMemberDao {
 	// 데이터 상세보기
 	public AdminMember detail(int mem_code);
 	public void update(AdminMember upt);
-	public void delete(int mem_code);
+	public void update2(AdminMember upt);
 	
 }

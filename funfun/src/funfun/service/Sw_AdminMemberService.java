@@ -58,16 +58,14 @@ public class Sw_AdminMemberService {
 
 	
 	public AdminMember detail(int mem_code) {
-		System.out.println("AdminMember 상세화면 호출");
 		return dao.detail(mem_code);
 	};
 	public void update(AdminMember upt) {
 		dao.update(upt);
-		System.out.println("AdminMember 수정 완료");
 	};
-	public void delete(int mem_code) {
-		dao.delete(mem_code);
-		System.out.println("AdminMember 삭제 완료");
+	public void update2(AdminMember upt) {
+		dao.update2(upt);
 	};
+	
 	
 }
