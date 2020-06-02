@@ -32,7 +32,7 @@
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post">
-					    	<input type="hidden" name="admin_code" value="1001" />
+					    	<input type="hidden" name="admin_code" value="${manager.admin_code}" />
 					    	<table class="table table-bordered">
 					        	<col style="width:15%">
 					        	<col style="width:85%">
@@ -76,8 +76,11 @@
 		
 		
 		$(".insertFaq").click(function(){
+			var title = ""+$("[name=faq_title]").val();
+			var detail = ""+$("[name=faq_detail]").val();
+			
 			if(confirm("등록하시겠습니까?")){
-				if($("[name=faq_title]").val() != "" && $("[name=faq_detail]").val() != ""){
+				if(title != "" && detail != ""){
 					$("form").attr("action","${path}/faq.do?method=insert");
 					$("form").submit();
 				}else{

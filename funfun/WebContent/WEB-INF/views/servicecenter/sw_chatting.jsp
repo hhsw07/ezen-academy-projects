@@ -64,10 +64,22 @@
 						show += "<p style='margin-left:60px'>------- "+rtqna_time+" -------</p></div>"
 					}
 					show += "<div class='sc-message'>";
-					if(rtqna.rtqna_writer == rtqna_writer){
-						show += "	<div class='sc-message--content sent'>";
+					
+					// 작성자가 회원인지? 관리자인지?
+					if(rtqna_writer == mem_code){
+						// 회원이면 회원이 sent, 관리자가 received
+						if(mem_code == rtqna.rtqna_writer){
+							show += "	<div class='sc-message--content sent'>";
+						}else{
+							show += "	<div class='sc-message--content received'>";
+						}
 					}else{
-						show += "	<div class='sc-message--content received'>";
+						// 관리자이면 회원이 received, 관리자가 sent
+						if(mem_code  == rtqna.rtqna_writer){
+							show += "	<div class='sc-message--content received'>";
+						}else{
+							show += "	<div class='sc-message--content sent'>";
+						}
 					}
 					show += "		<div class='sc-message--avatar' ></div>";
 					show += "		<div class='sc-message--text'>";
@@ -135,13 +147,17 @@
 			}
 		});
 		function sendMsg(){
-			$("[name=rtqna_writer]").val(rtqna_writer);
-			$("[name=rtqna_detail]").val($("#msg").text());
-			
-			$("form").attr("action","${path}/rtqna.do?method=insert");
-			$("form").submit();
-			
-			wsocket.send(mem_code+":"+rtqna_writer+":"+$("#msg").text());
+			var text = ""+$("#msg").text();
+			console.log("text 크기:"+text.length);
+			if(text != ""){
+				$("[name=rtqna_writer]").val(rtqna_writer);
+				$("[name=rtqna_detail]").val(text);
+				
+				$("form").attr("action","${path}/rtqna.do?method=insert");
+				//$("form").submit();
+				
+				//wsocket.send(mem_code+":"+rtqna_writer+":"+text);
+			}
 		}
 		
 		$(".exitBtn").click(function(){
