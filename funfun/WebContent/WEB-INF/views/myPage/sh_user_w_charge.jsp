@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <%@ include file="/template/header.jsp" %>
 <fmt:requestEncoding value="utf-8" />
@@ -116,6 +118,7 @@ toastr.options = {
 		
 		
 		$(document).ready(function(){
+			
 			var memBank = "${clist.memBank}";
 			$("#selectBox").val(memBank).prop("selected", true);	
 			function setComma(inputNumber){
@@ -142,8 +145,55 @@ toastr.options = {
 				})
 			}
 			
+			$("[name=pageSize]").val("${psh.pageSize}");
 			
+			$("[name=pageSize]").change(function(){
+		    	$("[name=curPage]").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
+				$("#wiListForm").submit();
+			});
+		
+		
+			function goPage(no){
+			// ajax
+			$.ajax({
+				type:"post",
+				url:"${path}/myaccount.do?method=ajaxlist&curPage=${psh.curPage}",
+				dataType:"json",
+				success:function(data){
+					var list = data.list;
+					var show = $("#withDrawlTb").html();
+					$.each(list,function(idx,Withdrawl){
+						
+						show += "<table style=\"width:100%;margin:auto;\">";
+						show += "<tr><td colspan=\"3\"><hr></td></tr>";
+						show += "<tr><td>"+Withdrawl.wiDate+"</td><td>";
+					
+						show += "</td><td>"+Withdrawl.wiCurr+"</td></tr>";
+						show += "<tr><td colspan='3'><hr></td></tr>";
+
+						show += "</table>";
+						show +=  'ajax 출력 여부 테스트'
+						
+					});
+					
+					$("#withDrawlTb").html(show);
+				},
+				error:function(err){
+					console.log("에러:"+err);
+				}
+				
+				
+				
 		})
+		}
+		});
+	
+		function goPage(no){
+				console.log("goPage 실행")
+		
+				$("[name='curPage']").val(no);
+				$("#wiListForm").submit();
+		}
 
 </script>
 </head>
@@ -171,7 +221,52 @@ toastr.options = {
 						</table>
 					</div>
 				</div>
-				
+				<!-- 이용내역 -->	
+				<div id="usingM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
+			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">이용내역</p>
+			    	
+			    	<table style="width:100%;margin:auto;text-align:center">
+			    		<tr><td colspan="4"><hr></td></tr>
+			    		<c:forEach var="list" items="${blist}">
+			    		<tr><td>${list.balDate}</td><td>
+			    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
+			    		</td><td>${list.balHis}</td>
+			    		<td>
+			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:rgb(247,0,0);">입금</p></c:if>
+			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:rgb(9,54,135)">출금</p></c:if>
+			    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 구매</p></c:if>
+			    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:rgb(255,151,5);">펀딩 투자</p></c:if>
+			    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:rgb(255,151,5)">펀딩 수입</p></c:if>
+			    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 수입</p></c:if>
+			    		<c:if test="${list.balType == '펀딩취소'}"><p class="ifText" style="color:gray;">펀딩취소</p></c:if>
+			    		<c:if test="${list.balType == '주문취소'}"><p class="ifText" style="color:gray;">주문취소</p></c:if>
+			    		</td></tr>
+			    		<tr><td colspan="4"><hr></td></tr>
+			    		</c:forEach>
+			    	</table>
+			    </div>
+				<!-- 계좌 정보 -->	
+				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
+			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">계좌 정보 등록 및 수정</p>
+
+			    	<form id="actForm" action="/funfun/myaccount.do/chgAccountInfo.do">
+			    	<p style="margin-top:40px;font-weight:bold;"class="profile__img--title">은행 선택</p>
+			    	<select id="selectBox" name="bankName" style="margin-top:5px;width:100%;height:40px;">
+						    <option selected>은행선택</option>
+						    <option value="신한은행">신한은행</option>
+						    <option value="우리은행">우리은행</option>
+						    <option value="농협은행">농협은행</option>
+						    <option value="기업은행">기업은행</option>
+						    <option value="산업은행">산업은행</option>
+					</select>
+					<p style="margin-top:30px;font-weight:bold;"class="profile__img--title">계좌 번호</p>
+			    	<input name="memAccount" value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
+			    	<div style="display:flex;margin-top:40px;">
+							<button onclick="chgAct()" style="background-color:orange;color:white;width:100%;" class="profile__submit" type="button">제출</button>
+			    	</div>
+			    	</form>
+							
+				</div>
 				<!-- 예치금 충전 -->			
 				<div id="chargeM_div" style="width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">예치금 충전</p>
@@ -238,7 +333,10 @@ toastr.options = {
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
-			    	<table style="width:100%;margin:auto;">
+			    	
+			    	<div id="withDrawlTb"></div>
+			    	
+			    	<%-- <table style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		<c:forEach var="list" items="${wilist}">
 			    		<tr><td>${list.wiDate}</td><td>
@@ -246,57 +344,28 @@ toastr.options = {
 			    		</td><td>${list.wiCurr}</td></tr>
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		</c:forEach>
-			    	</table>
+			    	</table> --%>
 			    	
-				</div>	
-				
-				<!-- 이용내역 -->	
-				<div id="usingM_div"style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
-			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">이용내역</p>
-			    	
-			    	<table style="width:100%;margin:auto;text-align:center">
-			    		<tr><td colspan="4"><hr></td></tr>
-			    		<c:forEach var="list" items="${blist}">
-			    		<tr><td>${list.balDate}</td><td>
-			    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
-			    		</td><td>${list.balHis}</td>
-			    		<td>
-			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:rgb(247,0,0);">입금</p></c:if>
-			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:rgb(9,54,135)">출금</p></c:if>
-			    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 구매</p></c:if>
-			    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:rgb(255,151,5);">펀딩 투자</p></c:if>
-			    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:gray;">펀딩 수입</p></c:if>
-			    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:gray;">스토어 수입</p></c:if>
-			    		</td></tr>
-			    		<tr><td colspan="4"><hr></td></tr>
-			    		</c:forEach>
-			    	</table>
-			    </div>
-				<!-- 계좌 정보 -->	
-				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
-			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">계좌 정보 등록 및 수정</p>
+			    <!-- 페이징(출금신청 목록) -->
+			    <form id="wiListForm" method="post" action="/funfun/myaccount.do">
+				    	<input type="hidden" name="curPage" value="${psh.curPage}"/>
+				</form>	
 
-			    	<form id="actForm" action="/funfun/myaccount.do/chgAccountInfo.do">
-			    	<p style="margin-top:40px;font-weight:bold;"class="profile__img--title">은행 선택</p>
-			    	<select id="selectBox" name="bankName" style="margin-top:5px;width:100%;height:40px;">
-						    <option selected>은행선택</option>
-						    <option value="신한은행">신한은행</option>
-						    <option value="우리은행">우리은행</option>
-						    <option value="농협은행">농협은행</option>
-						    <option value="기업은행">기업은행</option>
-						    <option value="산업은행">산업은행</option>
-					</select>
-					<p style="margin-top:30px;font-weight:bold;"class="profile__img--title">계좌 번호</p>
-			    	<input name="memAccount" value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
-			    	<div style="display:flex;margin-top:40px;">
-							<button onclick="chgAct()" style="background-color:orange;color:white;width:100%;" class="profile__submit" type="button">제출</button>
-			    	</div>
-			    	</form>
-							
-				</div>
+				<div class="text-center">
+				        <ul class="pagination ct-orange"> 
+							<li><a href="javascript:goPage(${psh.startBlock-1})">&laquo;</a></li>
+							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
+								<li class="${psh.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+							</c:forEach>
+							<li><a href="javascript:goPage(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+						</ul>
+		        </div>
+				
+				
 	        </div>
 		    </div>
 	    </div>
+	</div>
 	</div>
 	<script src="js/sh_user_w_myPage.js"></script>
 	<!-- end main -->

@@ -16,7 +16,7 @@
 	<resultMap type="parti" id="partiResult"/>
  	<select id="plist" resultMap="partiResult" 
  		parameterType="parti">
-		SELECT d.FUND_CODE fundingCode, d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-current_date,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
+		SELECT d.FUND_CODE fundingCode, d.fund_state fundState, round(p.PRO_MONEY/p.PRO_TARGET,2) percent, b.MEM_Email memEmail, d.FUND_DATE fundDate, d.FUND_PRICE fundPrice, d.FUND_CNT fundCnt, d.FUND_POST fundPost,d.FUND_ADDRESS fundAddress, d.FUND_RECEIVER fundReceiver, o.OPT_TITLE optTitle, o.OPT_DETAIL optDetail, o.OPT_CONDITION optCondition, o.OPT_DELIVER_DATE optDeliverDate,p.PRO_CODE proCode, p.PRO_TITLE proTitle, p.CATE_TITLE cateTitle, round(p.PRO_FINISH_DATE-current_date,2) proLeftDate, p.PRO_IMAGE proImage, m.MAKER_NAME makerName 
 		FROM funding d 
 		LEFT JOIN pro_option o ON d.OPT_CODE = o.OPT_CODE 
 		LEFT JOIN project p ON o.PRO_CODE = p.PRO_CODE 
@@ -28,13 +28,15 @@
 
 	<update id="changeAdr" parameterType="java.util.HashMap">
  		UPDATE STORE_ORDER
-		SET STO_ORDER_ADDRESS = #{newAdr}
+		SET STO_ORDER_ADDRESS = #{newAdr},
+		STO_ORDER_POST = #{newPostNum}
 	    WHERE STO_ORDER_CODE = #{oc}
  	</update>
  	
  	<update id="changeFundingAdr" parameterType="java.util.HashMap">
 	    UPDATE funding
-		SET FUND_ADDRESS = #{newAdr2}
+		SET FUND_ADDRESS = #{newAdr2},
+		FUND_POST = #{newPostNum2}
 		WHERE FUND_CODE = #{fc}
  	</update>
  	
@@ -50,6 +52,30 @@
 		WHERE FUND_CODE = #{fc}
  	</update>
  	
+ 	<!-- member 테이블 업데이트 -->
+ 	<update id="cancleOrderBal" parameterType="java.util.HashMap">
+	    UPDATE MEMBER 
+		SET MEM_BALANCE = MEM_BALANCE + #{orderPrice,jdbcType=NUMERIC}
+		WHERE MEM_EMAIL = #{memEmail,jdbcType=VARCHAR}
+ 	</update>
+ 	
+ 	<update id="cancleFundingBal" parameterType="java.util.HashMap">
+	    UPDATE MEMBER 
+		SET MEM_BALANCE = MEM_BALANCE + #{fundPrice,jdbcType=NUMERIC}
+		WHERE MEM_EMAIL = #{memEmail,jdbcType=VARCHAR}
+ 	</update>
+ 	
+ 	<!-- balance 테이블 insert -->
+ 	
+ 	<insert id="cancleOrderBalTb" parameterType="java.util.HashMap">
+ 	INSERT INTO balance values(balance_seq.nextval,(SELECT MEM_CODE FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),'주문취소',#{orderCode},#{orderPrice},current_date)
+ 	</insert>
+ 	
+ 	
+ 	<insert id="cancleFundingBalTb" parameterType="java.util.HashMap">
+ 	INSERT INTO balance values(balance_seq.nextval,(SELECT MEM_CODE FROM MEMBER WHERE MEM_EMAIL = #{memEmail}),'펀딩취소',#{fundingCode},#{fundPrice},current_date)
+ 	</insert>
+ 	
  	<delete id="deleteFavor" parameterType="java.util.HashMap">
 		DELETE FROM (SELECT * FROM favor f LEFT JOIN MEMBER m ON f.MEM_CODE = m.MEM_CODE )
 		WHERE
@@ -59,7 +85,7 @@
 	<resultMap type="trans" id="transResult"/>
  	<select id="tlist" resultMap="transResult" 
  		parameterType="trans">
-		SELECT m.MAKER_NAME makerName, so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage, s.sto_code sto_code
+		SELECT m.MAKER_NAME makerName, so.STO_ORDER_DATE orderDate, so.Sto_receive_date receivDate,so.b.MEM_Email memEmail, so.sto_order_code orderCode,so.STO_ORDER_CNT orderCnt, so.STO_ORDER_PRICE orderPrice, so.STO_ORDER_CURR orderCurr, so.STO_ORDER_POST orderPost, so.STO_ORDER_ADDRESS orderAddress, so.STO_ORDER_RECEIVER orderReceiver, so.STO_ORDER_PHONENO orderPhoneNo, so.STO_ORDER_ASK orderAsk, op.STO_OPT_DETAIL optDetail, s.STO_TITLE stoTitle, s.STO_IMAGE stoImage, s.sto_code sto_code
 		FROM store_order so 
 		LEFT JOIN store_option op ON so.STO_OPT_CODE = op.STO_OPT_CODE 
 		LEFT JOIN store s ON s.STO_CODE = op.STO_CODE 

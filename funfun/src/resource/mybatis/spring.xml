@@ -34,6 +34,7 @@
 		<typeAlias alias="deposit" type="funfun.vo.Deposit"/>
 		<typeAlias alias="proStoOptionJoin" type="funfun.vo.ProStoOptionJoin"/>
 		<typeAlias alias="wi" type="funfun.vo.Withdrawl"/>
+		<typeAlias alias="psh" type="funfun.vo.Paging_sh"/>
 		
 	</typeAliases>
 	<mappers>

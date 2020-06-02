@@ -47,35 +47,74 @@ public class sh_myPageCtrl {
 	}
 	
 		@RequestMapping("/changeAdr.do")
-		public String changeAdr(@RequestParam("oc") String oc,@RequestParam("newAdr") String newAdr) {
+		public String changeAdr(@RequestParam("oc") String oc,@RequestParam("newAdr") String newAdr, @RequestParam("newPostNum") String newPostNum) {
 			HashMap<String,String> hm = new HashMap<>();
 			hm.put("oc", oc);
 			hm.put("newAdr", newAdr);
+			hm.put("newPostNum", newPostNum);
 			service.changeAdr(hm);
 			return "forward:/mypage.do";
 		}
 		
 		@RequestMapping("/changeFundingAdr.do")
-		public String changeFundingAdr(@RequestParam("fc") String fc,@RequestParam("newAdr2") String newAdr2) {
+		public String changeFundingAdr(@RequestParam("fc") String fc,@RequestParam("newAdr2") String newAdr2, @RequestParam("newPostNum2") String newPostNum2) {
 			System.out.println("컨트롤러 접근");
 			System.out.println(fc);
 			System.out.println(newAdr2);
 			HashMap<String,String> hm2 = new HashMap<>();
 			hm2.put("fc", fc);
 			hm2.put("newAdr2", newAdr2);
+			hm2.put("newPostNum2", newPostNum2);
 			service.changeFundingAdr(hm2);
 			return "redirect:/mypage.do";
 		}
 		
 		@RequestMapping("/cancleOrder.do")
-		public String cancelOrder(@RequestParam("ocCancle") String oc) {
-			service.cancelOrder(oc);
+		public String cancelOrder(HttpServletRequest request,@RequestParam("ocCancle") String oc,@RequestParam("orderPrice") String orderPrice) {
+			System.out.println("orderCode : "+oc);
+			HttpSession session = request.getSession();
+			  
+			 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+			 if(memberinfo==null) {
+				 
+			 }else {
+				 	HashMap<String,String> hmBalO = new HashMap<>();
+					hmBalO.put("orderPrice",orderPrice);
+					hmBalO.put("memEmail",memberinfo.getMem_email());
+					service.cancleOrderBal(hmBalO);
+					
+					HashMap<String,String> hmBalTbO = new HashMap<>();
+					hmBalTbO.put("orderPrice",orderPrice);
+					hmBalTbO.put("memEmail",memberinfo.getMem_email());
+					hmBalTbO.put("orderCode",oc);
+					service.cancleOrderBalTb(hmBalTbO);
+					
+					service.cancleOrder(oc);
+			 }
 			return "redirect:/mypage.do";
 		}
 		
 		@RequestMapping("/cancleFunding.do")
-		public String cancelFunding(@RequestParam("fcCancle") String fc) {
-			service.cancelFunding(fc);
+		public String cancelFunding(HttpServletRequest request,@RequestParam("fcCancle") String fc,@RequestParam("fundPrice") String fundPrice) {
+			service.cancleFunding(fc);
+			 HttpSession session = request.getSession();
+			  
+			 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+			 if(memberinfo==null) {
+				 
+			 }else {
+				HashMap<String,String> hmBal = new HashMap<>();
+				hmBal.put("fundPrice",fundPrice);
+				hmBal.put("memEmail",memberinfo.getMem_email());
+				service.cancleFundingBal(hmBal);
+				
+				HashMap<String,String> hmBalTb = new HashMap<>();
+				hmBalTb.put("fundPrice",fundPrice);
+				hmBalTb.put("memEmail",memberinfo.getMem_email());
+				hmBalTb.put("fundingCode",fc);
+				service.cancleFundingBalTb(hmBalTb);
+			 }
+
 			return "redirect:/mypage.do";
 		}
 		
