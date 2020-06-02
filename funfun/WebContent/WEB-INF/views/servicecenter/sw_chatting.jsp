@@ -142,13 +142,13 @@
 			sendMsg();
 		});
 		$("#msg").keydown(function(e){
+			console.log("msg lengthCk: "+maxLengthCheck("msg",10));
 			if(e.keyCode==13){
 				sendMsg();
 			}
 		});
 		function sendMsg(){
 			var text = ""+$("#msg").text();
-			console.log("text 크기:"+text.length);
 			if(text != ""){
 				$("[name=rtqna_writer]").val(rtqna_writer);
 				$("[name=rtqna_detail]").val(text);
@@ -166,6 +166,38 @@
 		});
 		
 	});
+	
+	
+	function maxLengthCheck(id,maxLength){
+		var obj = $("#"+id);
+	    console.log("id:"+id+" obj:"+obj+" Number:"+maxLength);
+	    console.log("val:"+obj.val());
+		
+	    if(Number(byteCheck(obj)) > Number(maxLength)) {
+	    	console.log("false: "+Number(byteCheck(obj)));
+	    	alert("입력가능문자수를 초과하였습니다.\n(영문, 숫자, 일반 특수문자 : " + maxLength + " / 한글, 한자, 기타 특수문자 : " + parseInt(maxLength/2, 10) + ").");
+	    	obj.focus();
+	    	return false;
+	    }else {
+	    	console.log("true: "+Number(byteCheck(obj)));
+	    	return true;
+	    }
+	}
+	function byteCheck(el){
+	    var codeByte = 0;
+	    for (var idx = 0; idx < el.val().length; idx++) {
+	    	var oneChar = escape(el.val().charAt(idx));
+	        if ( oneChar.length == 1 ) {
+	            codeByte ++;
+	        } else if (oneChar.indexOf("%u") != -1) {
+	            codeByte += 2;
+	        } else if (oneChar.indexOf("%") != -1) {
+	            codeByte ++;
+	        }
+	    }
+	    return codeByte;
+	}
+	
 	
 </script>
 </head>
