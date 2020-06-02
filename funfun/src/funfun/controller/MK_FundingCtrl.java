@@ -153,6 +153,8 @@ public class MK_FundingCtrl {
 	public String funding(@ModelAttribute("funding") Funding fund) {
 		System.out.println("선택옵션:"+fund.getOpt_code());
 		service.funding(fund);
+		System.out.println("펀딩금액"+fund.getFund_price());
+		System.out.println("프로젝트 코드:"+fund.getPro_code());
 		service.uptMoney(fund);
 		service.useBalance(fund);
 		service.uptBalance(fund);

@@ -66,6 +66,7 @@
 	    			<input type="hidden" name="mem_code" value="${user.mem_code}"/>
 	    			<input type="hidden" name="pro_code" value="${option.pro_code}"/>
 	    			<input type="hidden" name="opt_code" value="${option.opt_code}"/>
+	    			<input type="hidden" name="fund_price" value="${option.opt_price}">
 	    			<input type="hidden" name="fund_cnt" value="1"/>
 	    			<input type="hidden" name="fund_opt_detail" value=""/>
 	    			
@@ -80,7 +81,6 @@
 										<span>${option.opt_condition}</span>
 									</div>
 									<p class="sum"><em>수량 : 1개</em>
-									<input type="hidden" name="fund_price" value="${option.opt_price}">
 									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원</p>
 								</div>
 							</div>
