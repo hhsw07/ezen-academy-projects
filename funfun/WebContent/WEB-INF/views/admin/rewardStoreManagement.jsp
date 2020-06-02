@@ -79,6 +79,17 @@
 					</c:forEach>
 					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
+				
+				 <ul class="nav navbar-nav" style="float:left;">
+                  <li class="active">
+                    <div class="form-group">
+                      <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:black;
+                      margin:15px 3px; border:none; margin-top:-4px; margin-left:0px; width:200px;" name="sto_title"/>
+                    </div>
+                  </li>
+                  <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
+                    margin: 26px 3px; margin-top:12px; margin-right:30px"></button></li>
+                   </ul>
 	        </div>
 			</form>
        		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -122,7 +133,7 @@
                       <form method="post" action="store-update-curr.do">
                       <div class="modal-body">
                           
-                          <div class="form-group">
+                          <div class="form-group" v-if="detail.sto_curr=='정지' || sto_cur==''">
                                 <label for="message-text" class="control-label">해당 상품을 승인하시겠습니까? </label><br><br>
                                 <div style="text-align: center;">
                                     <input type="radio" class="form-data" value="정상" name="sto_curr">승인&nbsp;
@@ -130,11 +141,14 @@
                                     <input type="hidden" name="sto_code" :value="detail.sto_code">
                                 </div>
                           </div>
+                          <div class="form-group" v-else>
+                          	<label for="message-text" calss="control-label">해당 상품은 이미 승인 처리 되었습니다</label>
+                          </div>
                         
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="submit" class="btn btn-primary" id="appr_Btn">승인</button>
+                        <span v-if="detail.sto_curr=='정지' || sto_cur==''"><button type="submit" class="btn btn-primary" id="appr_Btn">승인</button></span>
                       </div>
                     </form>
                   </div>
@@ -176,7 +190,7 @@
 				this.contactlist=[];
                 console.log("페치 코드 : " + sto_code);
 				// 비동기로 처리할 url 주소..
-				var url = "http://192.168.4.174:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				var url = "http://localhost:6080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
 				/*
 				# fetch api를 통한 비동기 통신 처리..
 				1. 기본 형식.
