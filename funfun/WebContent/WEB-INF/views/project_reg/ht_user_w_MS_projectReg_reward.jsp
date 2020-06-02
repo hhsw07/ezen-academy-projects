@@ -36,13 +36,10 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
 		})		
 		
+		$( "#deliveryDate" ).datepicker({format:'yyyy/mm/dd'});
 		
 	})
 
-	$( function() {
-		$( "#deliveryDate" ).datepicker();
-	});
-	
 	
 </script>
 </head>
@@ -132,10 +129,11 @@
 						<div class="reward_reg_content_container1">배송비</div>
 						<div class="reward_reg_content_container2">
 							<div style="padding-left:30px;line-height:1.5em">
+								<input type="text" name="opt_delivery" class="form-control" style="width:80%;display:inline-block;height:30px;"/>&nbsp&nbsp&nbsp원
 								<div class="reward_reg_content_container2">
-									<input type="text" name="opt_delivery" class="form-control" style="width:80%;display:inline-block;height:30px;"/>&nbsp&nbsp&nbsp원
-								</div>
 								<span class="sub_gray_font">배송금액이 필요 없는 경우 0을 입력하세요</span>
+								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -150,7 +148,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">발송시작 예정일</div>
 						<div class="reward_reg_content_container2">
-							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDat" class="form-control" style="width:60%;" >
+							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDate" class="form-control" style="width:60%;" >
 						</div>
 					</div>
 				

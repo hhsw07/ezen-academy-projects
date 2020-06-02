@@ -75,8 +75,23 @@ public class HT_ProjectRegCtrl {
 		project.setPro_start_date(project.getPro_start_date().substring(0, 10));
 		project.setPro_finish_date(project.getPro_finish_date().substring(0, 10));
 		session.setAttribute("projectInfo", project);
-		d.addAttribute("projectOption", service.getProOptionList(pro_code));
-		d.addAttribute("projectRisk", service.getProRiskList(pro_code));
+
+		if(service.getProOptionListCount(pro_code)==0) {
+			System.out.println("옵션 리스트 없을 때 getProOptionList pro_code : " + pro_code);
+			session.setAttribute("projectOption", -1);
+		} else {
+			System.out.println("옵션 리스트 있을 때 getProOptionList pro_code : " + pro_code);
+			session.setAttribute("projectOption", 1);
+		}
+		
+		if(service.getProRiskListCount(pro_code)==0) {
+			System.out.println("리스크 리스트 없을 때 getProRiskList pro_code : " + pro_code);
+			session.setAttribute("projectRisk", -1);
+		} else {
+			System.out.println("리스크 리스트 있을 때 getProRiskList pro_code : " + pro_code);
+			session.setAttribute("projectRisk", 1);
+		}
+		
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
 	}
 	
