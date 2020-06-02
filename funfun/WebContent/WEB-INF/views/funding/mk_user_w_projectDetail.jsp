@@ -76,10 +76,18 @@ th{text-align:center;}
 	  			}
 	  		}
 		});
+		
 		$("#report").click(function(){
-			alert("신고가 접수되었습니다");
-			$("#report-content").attr("action","${path}/funding.do?method=report");
-			$("#report-content").submit(); 
+			var report = $("[name=report_detail]").val();
+			var file = $("[name=projectImg]").val();
+			if(report!=null&&report!=""&&file!=null&&file!=""){
+				alert("신고가 접수되었습니다");
+				$("#report-content").attr("action","${path}/funding.do?method=report");
+				$("#report-content").submit();
+			} else{
+				alert("입력 내용을 확인해주세요");
+			}
+			 
 		});
 
 		// 문의하기
