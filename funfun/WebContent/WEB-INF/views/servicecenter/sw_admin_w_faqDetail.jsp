@@ -44,7 +44,7 @@
 					        		<th>등록일</th>
 					        		<td>${faq.faq_reg_date}</td></tr>
 					        	<tr><th>작성자</th>
-					        		<td><input type="hidden" name="admin_code" value="${faq.admin_code}"/>${faq.admin_name}</td>
+					        		<td><input type="hidden" name="admin_code" value="${manager.admin_code}"/>${faq.admin_name}</td>
 					        		<th>수정일</th>
 					        		<td>${not empty faq.faq_upt_date?faq.faq_upt_date:"없음"}</td></tr>
 					        	<tr></tr>

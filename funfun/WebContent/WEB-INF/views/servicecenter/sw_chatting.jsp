@@ -64,10 +64,22 @@
 						show += "<p style='margin-left:60px'>------- "+rtqna_time+" -------</p></div>"
 					}
 					show += "<div class='sc-message'>";
-					if(rtqna.rtqna_writer == rtqna_writer){
-						show += "	<div class='sc-message--content sent'>";
+					
+					// 작성자가 회원인지? 관리자인지?
+					if(rtqna_writer == mem_code){
+						// 회원이면 회원이 sent, 관리자가 received
+						if(mem_code == rtqna.rtqna_writer){
+							show += "	<div class='sc-message--content sent'>";
+						}else{
+							show += "	<div class='sc-message--content received'>";
+						}
 					}else{
-						show += "	<div class='sc-message--content received'>";
+						// 관리자이면 회원이 received, 관리자가 sent
+						if(mem_code  == rtqna.rtqna_writer){
+							show += "	<div class='sc-message--content received'>";
+						}else{
+							show += "	<div class='sc-message--content sent'>";
+						}
 					}
 					show += "		<div class='sc-message--avatar' ></div>";
 					show += "		<div class='sc-message--text'>";
@@ -130,18 +142,22 @@
 			sendMsg();
 		});
 		$("#msg").keydown(function(e){
+			console.log("msg lengthCk: "+maxLengthCheck("msg",10));
 			if(e.keyCode==13){
 				sendMsg();
 			}
 		});
 		function sendMsg(){
-			$("[name=rtqna_writer]").val(rtqna_writer);
-			$("[name=rtqna_detail]").val($("#msg").text());
-			
-			$("form").attr("action","${path}/rtqna.do?method=insert");
-			$("form").submit();
-			
-			wsocket.send(mem_code+":"+rtqna_writer+":"+$("#msg").text());
+			var text = ""+$("#msg").text();
+			if(text != ""){
+				$("[name=rtqna_writer]").val(rtqna_writer);
+				$("[name=rtqna_detail]").val(text);
+				
+				$("form").attr("action","${path}/rtqna.do?method=insert");
+				$("form").submit();
+				
+				wsocket.send(mem_code+":"+rtqna_writer+":"+text);
+			}
 		}
 		
 		$(".exitBtn").click(function(){
@@ -150,6 +166,38 @@
 		});
 		
 	});
+	
+	
+	function maxLengthCheck(id,maxLength){
+		var obj = $("#"+id);
+	    console.log("id:"+id+" obj:"+obj+" Number:"+maxLength);
+	    console.log("val:"+obj.val());
+		
+	    if(Number(byteCheck(obj)) > Number(maxLength)) {
+	    	console.log("false: "+Number(byteCheck(obj)));
+	    	alert("입력가능문자수를 초과하였습니다.\n(영문, 숫자, 일반 특수문자 : " + maxLength + " / 한글, 한자, 기타 특수문자 : " + parseInt(maxLength/2, 10) + ").");
+	    	obj.focus();
+	    	return false;
+	    }else {
+	    	console.log("true: "+Number(byteCheck(obj)));
+	    	return true;
+	    }
+	}
+	function byteCheck(el){
+	    var codeByte = 0;
+	    for (var idx = 0; idx < el.val().length; idx++) {
+	    	var oneChar = escape(el.val().charAt(idx));
+	        if ( oneChar.length == 1 ) {
+	            codeByte ++;
+	        } else if (oneChar.indexOf("%u") != -1) {
+	            codeByte += 2;
+	        } else if (oneChar.indexOf("%") != -1) {
+	            codeByte ++;
+	        }
+	    }
+	    return codeByte;
+	}
+	
 	
 </script>
 </head>

@@ -13,11 +13,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/sh_user_w_myPage.css">
+<link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/toastr.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 <script src="${path}/js/toastr.js"></script>
 <script>
+	function goPopup(){
+		var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
+	}
+	
+	function jusoCallBack(roadFullAddr,zipNo){
+		$("[name=pay_zipcode]").val(zipNo);
+		$("[name=pay_addr]").val(roadFullAddr);
+		
+		
+	}
 	toastr.options = {
 		    "closeButton": false,
 		    "debug": false,
@@ -218,30 +229,58 @@
               <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
               <fmt:formatDate value="${optDeliverDate}" pattern="yyyy-MM-dd"/>
-              
               </td></tr>
               <tr><td class="funding__detail">배송상태</td><td class="funding__detail--text">${list.fundState}</td></tr>
-              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.fundAddress}</td></tr>
+              <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">
+              ${list.fundAddress}
+              </td></tr>
             </table>
        			<p style="color:red; font-size:13px;position:relative;top:15px">* ${list.fundState} 상태에서는 펀딩 취소 및 주소지 수정이 불가능합니다</p>
            		<button onclick="movingDetailPageF()" class="MovedetailPage">상품 상세페이지로 이동하기</button>
          </div>
         </div>	
-	       	</c:if>
-          
+	       	</c:if>     
         </div>
-        <script>
+     
+       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	          <div class="form-group">
+	          <label for="recipient-name" class="col-form-label">주소 변경</label><br>
+	          <div style="width:100%;margin-bottom:30px;">
+	            <input class="profile__input" id="pay_zipcode2" value="${list.fundPost}" style="width:30%;margin-bottom:15px;padding-left:10px;" name="pay_zipcode" readonly>
+		    	<input class="profile__input" id="pay_addr2" value="${list.fundAddress}" style="margin-bottom:15px;padding-left:10px;" name="pay_addr" readonly>
+		    	<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:5px;height:40px;"class="profile__btn">주소검색</button> 		
+	          </div>
+	          </div>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
+	        <button onclick="changeFundingAdr(${list.fundingCode})" type="button" class="btn btn-primary">변경하기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
+	
+	   <script>
         var fundingCode;
-		function openFundingAdrChangeModal(oldAdr,fundingCode){
-			$("#oldAdr2").html(oldAdr)
-			this.fundingCode = fundingCode;
-		}
-		function changeFundingAdr(){
-			var newAdr2 = $("#message-text2").val()
+		function changeFundingAdr(fund){
+
+			this.fundingCode = fund;
+			var newAdr2 = $("#pay_addr2").val()
+			var newPostNum2 = $("#pay_zipcode2").val()
 			$("[name=newAdr2]").val(newAdr2)
-			$("[name=fc]").val(fundingCode)
+			$("[name=newPostNum2]").val(newPostNum2)
+			$("[name=fc]").val(fund)
 			$("#form2").submit()
-			Command: toastr["warning"]("주소가 변경 되었습니다");
+			Command: toastr["warning"]("주소가 변경되었습니다");
 		}
 		function cancleFundingModal(fundingCode){
 			this.fundingCode = fundingCode;
@@ -256,7 +295,6 @@
 		}
 		
         </script>
-      
 </c:forEach>
 </c:if>
 </div>
@@ -342,7 +380,7 @@
           </div>
 			</c:if>
 	
-     
+
         </div>
         <script>
         var orderCode;
@@ -356,8 +394,10 @@
 			this.orderCode = orderCode;
 		}
 		function changeAdr(){
-			var newAdr = $("#message-text").val()
+			var newAdr = $("#pay_addr").val()
+			var newPostNum = $("#pay_zipcode").val()
 			$("[name=newAdr]").val(newAdr)
+			$("[name=newPostNum]").val(newPostNum)
 			$("[name=oc]").val(orderCode)
 			$("#form1").submit()
 			Command: toastr["warning"]("주소가 변경되었습니다");
@@ -372,6 +412,34 @@
 		}
 		
         </script>
+
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+
+	          <div class="form-group">
+	          <label for="recipient-name" class="col-form-label">주소 변경</label><br>
+	          <div style="width:100%;margin-bottom:30px;">
+	            <input class="profile__input" id="pay_zipcode" value="${list.orderPost}" style="width:30%;margin-bottom:15px;padding-left:10px;" name="pay_zipcode" readonly>
+		    	<input class="profile__input" id="pay_addr" value="${list.orderAddress}" style="margin-bottom:15px;padding-left:10px;" name="pay_addr" readonly>
+		    	<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:5px;height:40px;"class="profile__btn">주소검색</button> 		
+	          </div>
+	          </div>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
+	        <button onclick="changeAdr()" type="button" class="btn btn-primary">변경하기</button>
+	      </div>
+	    </div>
+	  </div>
+	  </div>
 	</c:forEach>
 	</c:if>
 
@@ -379,12 +447,14 @@
 
 <form id="form1" style="display:none" action="/funfun/changeAdr.do">
 	<input type="hidden" name="newAdr">
+	<input type="hidden" name="newPostNum">
 	<input type="hidden" name="oc">
 	<input type="submit">
 </form>
 
 <form id="form2" style="display:none" action="/funfun/changeFundingAdr.do">
 	<input type="hidden" name="newAdr2">
+	<input type="hidden" name="newPostNum2">
 	<input type="hidden" name="fc">	
 	<input type="submit">
 </form>
@@ -411,63 +481,7 @@
 
 <!-- 주문 및 배송 조회 끝 -->
 
-<!-- 주소 변경 모달 -->
-       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-
-	          <div class="form-group">
-	            <label for="recipient-name" class="col-form-label">기존 주소</label><br>
-	            <span id="oldAdr"></span> 
-	          </div>
-	          <div class="form-group">
-	            <label for="message-text" class="col-form-label">새로운 주소를 입력해주세요</label>
-	            <input class="form-control" id="message-text"/>
-	          </div>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
-	        <button onclick="changeAdr()" type="button" class="btn btn-primary">변경하기</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-<!-- 주소 변경 모달2 -->
-       <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-
-	          <div class="form-group">
-	            <label for="recipient-name" class="col-form-label">기존 주소</label><br>
-	            <span id="oldAdr2"></span> 
-	          </div>
-	          <div class="form-group">
-	            <label for="message-text" class="col-form-label">새로운 주소를 입력해주세요</label>
-	            <input class="form-control" id="message-text2"/>
-	          </div>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">이전으로 돌아가기</button>
-	        <button onclick="changeFundingAdr()" type="button" class="btn btn-primary">변경하기</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>	
+      
 
 
 <!-- 모달 -->

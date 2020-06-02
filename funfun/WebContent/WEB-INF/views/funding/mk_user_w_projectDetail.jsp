@@ -15,7 +15,7 @@
 input[type=file]{display:inline;}
 .project-inquiry{width:100%; padding: 15px;}
 .inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
-.title_td {display: inline-block; width: 300px; padding-left: 25%; padding-right: 25%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 20px;}
+.title_td {display: inline-block; width: 300px; padding-left: 25%; padding-right: 25%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; padding-left: 40px;}
 th{text-align:center;}
 .hide{display: none;}
 .qnaShow{display: show;}
@@ -76,7 +76,6 @@ th{text-align:center;}
 	  			}
 	  		}
 		});
-		
 		$("#report").click(function(){
 			var report = $("[name=report_detail]").val();
 			var file = $("[name=projectImg]").val();
@@ -89,7 +88,6 @@ th{text-align:center;}
 			}
 			 
 		});
-
 		// 문의하기
 		var article = $(".qnaShow");
 		$(".question td").click(function(){
@@ -111,17 +109,15 @@ th{text-align:center;}
 	  			}
 			}
 		});
-		var qna = $("[name=qna_detail]").val();
         $("#inqBtn").click(function(){
-        	if(mem_code != ""){
-        		if(qna!=null&&qna!=""){
-        			$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
-    	            $("#inqForm").submit();
-    	            $(".project-inquiry").focus();
-        		} else {
-        			alert("내용을 입력하세요");
-        		}
-        	} 
+    		var qna = $("[name=qna_detail]").val();
+        	if(qna!=null&&qna!=""){
+        		$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
+    	           $("#inqForm").submit();
+    	           $(".project-inquiry").focus();
+        	} else {
+        		alert("내용을 입력하세요");
+        	}
         });
 	});
 	
@@ -303,7 +299,9 @@ th{text-align:center;}
 						<tr class="question" style="text-align:center">
 							<td>${qna.qna_code}</td>
 							<td>
-								<span class="title_td"><c:if test="${qna.qna_open=='Y'}">[비밀글]</c:if>${qna.qna_detail}</span>
+								<span class="title_td">
+								<c:if test="${qna.qna_open=='Y'}">[비밀글]</c:if>
+								<c:if test="${qna.qna_open=='N'}">${qna.qna_detail}</c:if></span>
 							</td>
 							<td>${qna.mem_name} </td>
 							<td>${qna.qna_reg_date} </td>

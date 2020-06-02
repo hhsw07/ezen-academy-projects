@@ -48,7 +48,7 @@
 					        		<th>수정일</th>
 					        		<td>${not empty notice.noti_upt_date?notice.noti_upt_date:"없음"}</td></tr>
 					        	<tr><th>작성자</th>
-					        		<td><input type="hidden" name="admin_code" value="${notice.admin_code}"/>${notice.admin_name}</td></tr>
+					        		<td><input type="hidden" name="admin_code" value="${manager.admin_code}"/>${notice.admin_name}</td></tr>
 					        	<tr><th>제목</th>
 					        		<td colspan="3"><input type="text" class="form-control" name="noti_title" placeholder="공지제목" value="${notice.noti_title}"/></td></tr>
 					        	<tr><th>내용</th>

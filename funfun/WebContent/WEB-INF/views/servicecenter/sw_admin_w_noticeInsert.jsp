@@ -32,7 +32,7 @@
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post">
-					    	<input type="hidden" name="admin_code" value="1001" />
+					    	<input type="hidden" name="admin_code" value="${manager.admin_code}" />
 					    	<table class="table table-bordered">
 					        	<col style="width:15%">
 					        	<col style="width:85%">
@@ -80,9 +80,16 @@
 		
 		
 		$(".insertNoti").click(function(){
+			var title = ""+$("[name=noti_title]").val();
+			var detail = ""+$("[name=noti_detail]").val();
+			
 			if(confirm("등록하시겠습니까?")){
-				$("form").attr("action","${path}/notice.do?method=insert");
-				$("form").submit();
+				if(title != "" && detail != ""){
+					$("form").attr("action","${path}/notice.do?method=insert");
+					$("form").submit();
+				}else{
+					alert("제목 및 내용을 입력하세요.");
+				}
 			}
 		});
 		

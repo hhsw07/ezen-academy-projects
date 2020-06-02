@@ -71,7 +71,10 @@ public class HT_ProjectRegCtrl {
 	public String projectManage(HttpServletRequest request, Model d, Project proInfo,int pro_code) {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
-		session.setAttribute("projectInfo", service.projectInfo(pro_code));
+		Project project = service.projectInfo(pro_code);
+		project.setPro_start_date(project.getPro_start_date().substring(0, 10));
+		project.setPro_finish_date(project.getPro_finish_date().substring(0, 10));
+		session.setAttribute("projectInfo", project);
 		d.addAttribute("projectOption", service.getProOptionList(pro_code));
 		d.addAttribute("projectRisk", service.getProRiskList(pro_code));
 		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
