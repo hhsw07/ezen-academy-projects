@@ -96,7 +96,7 @@
   	<div class="reg_item_container">
 	  	<span class="reg_content_title">리워드 설계</span>
 		<c:choose>
-			<c:when test="${projectOption==null or projectOption==''}">
+			<c:when test="${projectOption==-1}">
 			<span class="beforeReg">작성전</span>
 		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom rewardBtn">작성하기</button></span>
 			</c:when>
@@ -110,7 +110,7 @@
 	  	<span class="reg_content_title">위험 요인 및 정책</span>
 
 		<c:choose>
-			<c:when test="${projectRisk==null or projectRisk==''}">
+			<c:when test="${projectRisk==-1}">
 			<span class="beforeReg">작성전</span>
 		  	<span class="navbar-right" style="display:inline-block"><button class="btn btn-warning btn_custom riskBtn">작성하기</button></span>
 			</c:when>
