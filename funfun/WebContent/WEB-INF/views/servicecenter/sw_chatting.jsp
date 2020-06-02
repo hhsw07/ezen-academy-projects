@@ -154,9 +154,9 @@
 				$("[name=rtqna_detail]").val(text);
 				
 				$("form").attr("action","${path}/rtqna.do?method=insert");
-				//$("form").submit();
+				$("form").submit();
 				
-				//wsocket.send(mem_code+":"+rtqna_writer+":"+text);
+				wsocket.send(mem_code+":"+rtqna_writer+":"+text);
 			}
 		}
 		
