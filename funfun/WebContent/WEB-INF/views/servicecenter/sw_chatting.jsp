@@ -139,14 +139,15 @@
 		
 		
 		$("#sendBtn").click(function(){
-			if(maxLengthCheck("msg",10)){
+			var textLength = $("#msg").text().length;
+			if(maxLengthCheck(textLength,300)){
 				sendMsg();
 			}
 		});
 		$("#msg").keyup(function(e){
-			var obj = $("#msg");
-			$(".byteCheck").text(Number(byteCheck(obj)));
-			if(maxLengthCheck("msg",1000)){
+			var textLength = $("#msg").text().length;
+			$(".textLengthCk").text(textLength);
+			if(maxLengthCheck(textLength,300)){
 				if(e.keyCode==13){
 					sendMsg();
 				}
@@ -154,7 +155,6 @@
 		});
 		function sendMsg(){
 			var text = ""+$("#msg").text();
-			console.log("text:"+text);
 			if(text != ""){
 				$("[name=rtqna_writer]").val(rtqna_writer);
 				$("[name=rtqna_detail]").val(text);
@@ -166,31 +166,16 @@
 			}
 		}
 		
-		// 입력 글자의 byte 체크
-		function maxLengthCheck(id,maxLength){
-			var obj = $("#"+id);
-		    if(Number(byteCheck(obj)) > Number(maxLength)) {
-		    	alert("입력가능문자수를 초과하였습니다.\n(영문, 숫자, 일반 특수문자 : " + maxLength + " / 한글, 한자, 기타 특수문자 : " + parseInt(maxLength/2, 10) + ").");
-		    	obj.focus();
+		// 입력 글자수 체크
+		function maxLengthCheck(textLength, maxLength){
+			if(textLength > Number(maxLength)) {
+		    	alert("입력가능문자수를 초과하였습니다.");
 		    	return false;
 		    }else {
 		    	return true;
 		    }
 		}
-		function byteCheck(el){
-		    var codeByte = 0;
-		    for (var idx = 0; idx < el.text().length; idx++) {
-		    	var oneChar = escape(el.text().charAt(idx));
-		        if ( oneChar.length == 1 ) {
-		            codeByte ++;
-		        } else if (oneChar.indexOf("%u") != -1) {
-		            codeByte += 2;
-		        } else if (oneChar.indexOf("%") != -1) {
-		            codeByte ++;
-		        }
-		    }
-		    return codeByte;
-		}
+		
 		
 		$(".exitBtn").click(function(){
 			self.opener = self;
@@ -236,7 +221,7 @@
 		</div>
 		<div>
 			<p style="font-size: 12px;margin-top: 20px;margin-left: 13px;">
-				<span class="byteCheck">0</span> / 1000</p>
+				<span class="textLengthCk">0</span> / 300</p>
 		</div>
 	</div>
 </div>
