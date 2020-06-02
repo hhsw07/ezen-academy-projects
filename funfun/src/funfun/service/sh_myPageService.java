@@ -46,13 +46,25 @@ public class sh_myPageService {
 	public void changeFundingAdr(HashMap<String,String> hm2) {
 		dao.changeFundingAdr(hm2);
 	}
-	public void cancelOrder(String oc) {
+	public void cancleOrder(String oc) {
 		dao.cancleOrder(oc);
 	}
-	public void cancelFunding(String fc) {
+	public void cancleFunding(String fc) {
 		dao.cancleFunding(fc);
 	}
 	public void deleteFavor(HashMap<String,String> hmDF) {
 		dao.deleteFavor(hmDF);
+	}
+	public void cancleFundingBal(HashMap<String,String> hmBal) {
+		dao.cancleFundingBal(hmBal);
+	}
+	public void cancleFundingBalTb(HashMap<String,String> hmBalTb) {
+		dao.cancleFundingBalTb(hmBalTb);
+	}
+	public void cancleOrderBal(HashMap<String,String> hmBalO) {
+		dao.cancleOrderBal(hmBalO);
+	}
+	public void cancleOrderBalTb(HashMap<String,String> hmBalTbO) {
+		dao.cancleOrderBalTb(hmBalTbO);
 	}
 }

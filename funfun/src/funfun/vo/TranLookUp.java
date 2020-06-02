@@ -6,6 +6,7 @@ public class TranLookUp {
 	private int orderPrice; // 지불한 비용
 	private String orderCurr; // 주문 상태
 	private String orderAddress; // 수령 주소
+	private String orderPost; // 수령 주소	
 	private String orderReceiver; // 수령인
 	private String orderPhoneNo; // 수령인 휴대폰 번호
 	private String orderAsk; // 주문 요청 사항
@@ -17,7 +18,6 @@ public class TranLookUp {
 	private String orderDate; //주문날짜
 	private String makerName; // 상품 제작 메이커 이름
 	private String sto_code; // 스토어 코드
-	private String orderPost; // 스토어 코드
 	public String getOrderPost() {
 		return orderPost;
 	}

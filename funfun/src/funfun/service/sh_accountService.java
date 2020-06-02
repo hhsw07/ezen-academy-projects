@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import funfun.repository.sh_accountReposi;
 import funfun.vo.Balance;
 import funfun.vo.Deposit;
+import funfun.vo.Paging_sh;
 import funfun.vo.UserProfile;
 import funfun.vo.Withdrawl;
 
@@ -31,8 +32,28 @@ public class sh_accountService {
 	public int insDeposit(Deposit ds){
 		return dao.insDeposit(ds);
 	}
-	public ArrayList<Withdrawl> wilist(String memEmail){
-		return dao.wilist(memEmail);
+	public ArrayList<Withdrawl> wilist(Paging_sh psh){
+		psh.setCount(dao.totCnt(psh));
+
+		if(psh.getPageSize() == 0) {
+			psh.setPageSize(5);
+		}
+		psh.setPageCount((int)Math.ceil(psh.getCount()/(double)psh.getPageSize()));
+		if(psh.getCurPage() == 0) {
+			psh.setCurPage(1);
+		}
+		psh.setStart((psh.getCurPage()-1)*psh.getPageSize()+1);
+		psh.setEnd(psh.getCurPage()*psh.getPageSize());
+		
+		psh.setBlocksize(5);
+
+		int blocknum = (int)Math.ceil(psh.getCurPage()/(double)psh.getBlocksize());
+		psh.setStartBlock((blocknum-1)*psh.getBlocksize()+1);
+		int endblock = blocknum*psh.getBlocksize();
+		psh.setEndBlock(endblock>psh.getPageCount()?psh.getPageCount():endblock);
+		
+		
+		return dao.wilist(psh);
 	}
 	public int minusBal(UserProfile uf){
 		return dao.minusBal(uf);
