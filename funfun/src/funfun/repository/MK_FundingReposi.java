@@ -44,6 +44,8 @@ public interface MK_FundingReposi {
 	public void inquiry(ProjectQna qna);
 	// 문의 답변
 	public void answer(ProjectQna upt);
+	// 예치금 잔액 조회
+	public int balance(int mem_code);
 	// 펀딩하기
 	public void funding(Funding ins);
 	public void uptMoney(Funding upt);

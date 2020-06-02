@@ -154,6 +154,11 @@
 		SET QNA_ANS = #{qna_ans}, QNA_ANS_REG_DATE = current_date, QNA_CHK = 'N'
 		WHERE QNA_CODE = #{qna_code}
 	</update>
+	<!-- 예치금 잔액 조회 -->
+	<select id="balance" resultType="int" parameterType="int">
+		SELECT mem_balance FROM member 
+		WHERE mem_code = #{mem_code}
+	</select>
 	<!-- 펀딩하기 -->
 	<insert id="funding" parameterType="funding">
 		INSERT INTO FUNDING VALUES(FUNDING_SEQ.nextval, #{mem_code}, current_date, #{opt_code}, #{fund_price}, 
