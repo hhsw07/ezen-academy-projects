@@ -141,6 +141,7 @@ ul {list-style: none;padding:0;}
 				</div>
 				<form method="post">
 				<input type="hidden" name="opt_code"/>
+				<input type="hidden" name="mem_code" value="${user.mem_code}"/>
 				<div>
 					<ul>
 					<c:forEach var="opt" items="${opt}" >

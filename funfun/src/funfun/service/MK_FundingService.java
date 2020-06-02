@@ -121,12 +121,17 @@ public class MK_FundingService {
 	public void answer(ProjectQna upt) {
 		dao.answer(upt);
 	}
+	// 예치금 잔액조회
+	public int balance(int mem_code) {
+		return dao.balance(mem_code);
+	}
 	// 펀딩하기
 	public void funding(Funding ins) {
 		dao.funding(ins); // 펀딩
 	}
 	// 프로젝트 현재 펀딩금액 변경
 	public void uptMoney(Funding upt) {
+		System.out.println("펀딩금액 변경");
 		dao.uptMoney(upt);
 	}
 	// 예치금 사용
