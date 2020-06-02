@@ -152,7 +152,7 @@
 			// 모델데이터 초기화.
 			this.contactlist=[];
 			// 비동기로 처리할 url 주소..
-			var url = "http://localhost:5080/funfun/project-report.do?report_code="+report_code;
+			var url = "http://192.168.4.174:5080/funfun/project-report.do?report_code="+report_code;
 			/*
 			# fetch api를 통한 비동기 통신 처리..
 			1. 기본 형식.

@@ -17,6 +17,13 @@ public class TranLookUp {
 	private String orderDate; //주문날짜
 	private String makerName; // 상품 제작 메이커 이름
 	private String sto_code; // 스토어 코드
+	private String orderPost; // 스토어 코드
+	public String getOrderPost() {
+		return orderPost;
+	}
+	public void setOrderPost(String orderPost) {
+		this.orderPost = orderPost;
+	}
 	public String getSto_code() {
 		return sto_code;
 	}

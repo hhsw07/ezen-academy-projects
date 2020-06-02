@@ -6,6 +6,13 @@ public class PartiFunding {
 	private int fundPrice; // 펀딩한 금액
 	private int fundCnt; // 펀딩한 갯수
 	private String fundAddress; // 펀딩 상품을 받을 주소
+	private String fundPost; // 펀딩 상품을 받을 주소
+	public String getFundPost() {
+		return fundPost;
+	}
+	public void setFundPost(String fundPost) {
+		this.fundPost = fundPost;
+	}
 	private int newAdr;// 새로운 주소 
 	
 	public int getNewAdr() {
