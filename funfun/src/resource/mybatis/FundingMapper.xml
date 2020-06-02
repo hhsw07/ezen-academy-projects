@@ -61,7 +61,7 @@
 				ORDER BY percent DESC
 			</if>
 			<if test="sort=='amount'">
-				ORDER BY pro_target ASC
+				ORDER BY pro_target DESC
 			</if>
 			<if test="sort=='closing'">
 				ORDER BY dday ASC
