@@ -81,7 +81,9 @@ public class AndroidLoginCtrl {
 	    // 가져온 ArrayList로 실제 데이터로 쓸 JSON 만들기
 	    ArrayList<Favor> favorList=new ArrayList<Favor>();
 	    for(Integer i:favorCodeList.getList()) {
-	    	favorList.add(service.getFavorByCode(i));
+	    	Favor tmp=service.getFavorByCode(i);
+	    	tmp.setProCode(i+"");
+	    	favorList.add(tmp);
 	    }
 		
 	    Gson gson= new Gson();
