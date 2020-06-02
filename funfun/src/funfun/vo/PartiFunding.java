@@ -42,6 +42,13 @@ public class PartiFunding {
 	private int percent; // 모금률
 	private String fundState;// 배송상태
 	private String fundingCode; // 펀딩 코드
+	private String fundPost; // 펀딩 코드
+	public String getFundPost() {
+		return fundPost;
+	}
+	public void setFundPost(String fundPost) {
+		this.fundPost = fundPost;
+	}
 	public String getFundingCode() {
 		return fundingCode;
 	}
