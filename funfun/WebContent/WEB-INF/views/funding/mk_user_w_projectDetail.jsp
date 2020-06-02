@@ -111,17 +111,15 @@ th{text-align:center;}
 	  			}
 			}
 		});
-		var qna = $("[name=qna_detail]").val();
         $("#inqBtn").click(function(){
-        	if(mem_code != ""){
-        		if(qna!=null&&qna!=""){
-        			$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
-    	            $("#inqForm").submit();
-    	            $(".project-inquiry").focus();
-        		} else {
-        			alert("내용을 입력하세요");
-        		}
-        	} 
+    		var qna = $("[name=qna_detail]").val();
+        	if(qna!=null&&qna!=""){
+        		$("#inqForm").attr("action","${path}/funding.do?method=inquiry");
+    	           $("#inqForm").submit();
+    	           $(".project-inquiry").focus();
+        	} else {
+        		alert("내용을 입력하세요");
+        	}
         });
 	});
 	

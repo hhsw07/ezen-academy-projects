@@ -24,14 +24,15 @@
 		if(balance<price){
 			$("#balance-warning").text("예치금이 부족합니다!");
 		}
-		var name = $("[name=fund_receiver]").val();
-		var tel = $("[name=fund_rec_tel]").val();
-		var post = $("[name=fund_post]").val();
-		var addr = $("[name=fund_address]").val();
+		
 		$("#funding").click(function(){
 			if(balance<price){
 				alert("예치금이 부족합니다!");
 			} else{
+				var name = $("[name=fund_receiver]").val();
+				var tel = $("[name=fund_rec_tel]").val();
+				var post = $("[name=fund_post]").val();
+				var addr = $("[name=fund_address]").val();
 				if(name!=null&&name!=""&&tel!=null&&tel!=""&&post!=null&&post!=""&&addr!=null&&addr!=""){
 					alert("펀딩완료되었습니다");
 					$("form").submit();
