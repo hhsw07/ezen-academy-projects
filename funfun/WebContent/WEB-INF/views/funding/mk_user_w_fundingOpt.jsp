@@ -35,7 +35,6 @@ ul {list-style: none;padding:0;}
 			}
 		});
 		
-		
 	});
 
 </script>
@@ -160,8 +159,15 @@ ul {list-style: none;padding:0;}
 								<p class="">${opt.opt_condition}</p>
 								<p class="">배송비 <fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원 | 리워드 제공 예상일 : 
 								<em><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</em></p>
-								<div>
-									
+								<div id="writeopt" style="display:none;">
+									<div style="display: inline-block;width: 120px;">
+										<input type="button" class="btn btn-block btn-warning" onclick="minus" value="-" style="padding: 0; width: 25px;height: 25px;display: inline-block;">
+										<span id="cnt" style="padding: 0 5px;"><input type="hidden" name="fund_cnt">1</span>
+										<input type="button" class="btn btn-block btn-warning" onclick="plus" value="+" style="padding: 0;width: 25px;height: 25px;display: inline-block;">
+									</div>
+									<div style="display: inline;">
+										옵션상세 <input type="text" class="" name="fund_opt_detail">
+									</div>
 								</div>
 							</div>
 						</li>
