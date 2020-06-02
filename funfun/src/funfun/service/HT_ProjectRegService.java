@@ -54,6 +54,14 @@ public class HT_ProjectRegService {
 		dao.regProOption(cre);
 	}
 	
+	public void uptProOption(ProOption cre) {
+		dao.uptProOption(cre);
+	}
+	
+	public void deleteProOption(int opt_code) {
+		dao.deleteProOption(opt_code);
+	}
+	
 	public ArrayList<ProRisk> getProRiskList(int pro_code){
 		return dao.getProRiskList(pro_code);
 	}
@@ -63,8 +71,15 @@ public class HT_ProjectRegService {
 	}
 	
 	public void regProRisk(ProRisk cre) {
-		System.out.println("리스크 등록 서비스");
 		dao.regProRisk(cre);
+	}
+	
+	public void updateProRisk(ProRisk cre) {
+		dao.updateProRisk(cre);
+	}
+	
+	public void deleteProRisk(int risk_code) {
+		dao.deleteProRisk(risk_code);
 	}
 	
 	public Project projectInfo(int pro_code) {

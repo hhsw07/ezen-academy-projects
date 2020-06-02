@@ -59,16 +59,17 @@ public class HT_ProjectRegCtrl {
 		cre.setMaker_code(memberinfo.getMaker_code());
 		service.proCreate(cre);
 		d.addAttribute("projectCode", service.getProjectCode());
+		int pro_code = service.getProjectCode();
 		session.setAttribute("projectCode", service.getProjectCode());
 		System.out.println("새로 만든 프로젝트 코드 : " + service.getProjectCode());
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+		return "redirect:/ProjectReg.do?method=projectManage&pro_code="+pro_code;
 	}
 	
 	
 	
 	
 	@RequestMapping(params="method=projectManage")
-	public String projectManage(HttpServletRequest request, Model d, Project proInfo,int pro_code) {
+	public String projectManage(HttpServletRequest request, Model d, Project proInfo, int pro_code) {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectCode", pro_code);
 		Project project = service.projectInfo(pro_code);
@@ -137,7 +138,7 @@ public class HT_ProjectRegCtrl {
 		
 		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+		return "redirect:/ProjectReg.do?method=projectManage&pro_code="+projectCode;
 	}
 	
 
@@ -190,7 +191,7 @@ public class HT_ProjectRegCtrl {
 		int projectCode = (int)session.getAttribute("projectCode");
 		cre.setPro_code(projectCode);
 		service.proStory(cre);
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+		return "redirect:/ProjectReg.do?method=projectManage&pro_code="+projectCode;
 	}
 	
 	
@@ -208,8 +209,21 @@ public class HT_ProjectRegCtrl {
 	public String proRegRewardUnitReg(HttpServletRequest request, Model d, ProOption cre) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
+		session.setAttribute("projectCode", projectCode);
 		cre.setPro_code(projectCode);
 		service.regProOption(cre);
+		return "redirect:/ProjectReg.do?method=reward";
+	}
+		
+	@RequestMapping(params="method=uptProOption")
+	public String uptProOption(HttpServletRequest request, Model d, ProOption cre) {
+		service.uptProOption(cre);
+		return "redirect:/ProjectReg.do?method=reward";
+	}
+	
+	@RequestMapping(params="method=deleteProOption")
+	public String deleteProOption(HttpServletRequest request, Model d, int opt_code) {
+		service.deleteProOption(opt_code);
 		return "redirect:/ProjectReg.do?method=reward";
 	}
 	
@@ -219,7 +233,7 @@ public class HT_ProjectRegCtrl {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
 		cre.setPro_code(projectCode);
-		return "WEB-INF\\views\\project_reg\\ht_user_w_MS_projectReg_Ready.jsp";
+		return "redirect:/ProjectReg.do?method=projectManage&pro_code="+projectCode;
 	}
 	
 	
@@ -240,6 +254,20 @@ public class HT_ProjectRegCtrl {
 		service.regProRisk(cre);
 		return "redirect:/ProjectReg.do?method=risk";
 	}
+	
+	@RequestMapping(params="method=riskUnitUpt")
+	public String updateProRisk(HttpServletRequest request, Model d, ProRisk cre) {
+		service.updateProRisk(cre);
+		return "redirect:/ProjectReg.do?method=risk";
+	}
+	
+	@RequestMapping(params="method=deleteProRisk")
+	public String deleteProRisk(HttpServletRequest request, Model d, ProRisk cre, int risk_code) {
+		service.deleteProRisk(risk_code);
+		return "redirect:/ProjectReg.do?method=risk";
+	}
+	
+	
 	
 	@RequestMapping(params="method=projectRegister")
 	public String projectRegister(HttpServletRequest request) {

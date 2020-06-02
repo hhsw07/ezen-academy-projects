@@ -56,6 +56,23 @@
 	INSERT INTO PRO_OPTION VALUES (option_seq.nextval, #{pro_code}, #{opt_price}, #{opt_title}, #{opt_detail}, #{opt_condition}, #{opt_delivery}, #{opt_max}, #{opt_deliver_date})
 	</insert>
 	
+	<update id="uptProOption" parameterType="projectOpt">
+	UPDATE PRO_OPTION
+	SET OPT_PRICE = #{opt_price},
+	 	OPT_TITLE = #{opt_title},
+	 	OPT_DETAIL = #{opt_detail},
+	 	OPT_CONDITION = #{opt_condition},
+	 	OPT_DELIVERY = #{opt_delivery},
+	 	OPT_MAX = #{opt_max},
+	 	OPT_DELIVER_DATE = #{opt_deliver_date}
+	 WHERE OPT_CODE = #{opt_code}
+	</update>
+	
+	<delete id="deleteProOption" parameterType="int">
+	DELETE PRO_OPTION
+	WHERE OPT_CODE = #{opt_code}
+	</delete>
+	
 	<select id="getProRiskList" resultType="projectRisk" parameterType="int">
 	SELECT * FROM RISK
 	WHERE pro_code = #{pro_code}
@@ -69,6 +86,19 @@
 	<insert id="regProRisk" parameterType="projectRisk">
 	INSERT INTO RISK VALUES (risk_seq.nextval, #{pro_code}, #{risk_detail}, #{risk_title})
 	</insert>
+	
+	<update id="updateProRisk" parameterType="projectRisk">
+	UPDATE RISK
+	SET RISK_TITLE = #{risk_title}, 
+		RISK_DETAIL = #{risk_detail}
+	WHERE RISK_CODE = #{risk_code} 
+	</update>
+
+	<delete id="deleteProRisk" parameterType="int">
+	DELETE RISK
+	WHERE RISK_CODE = #{risk_code}
+	</delete>
+	
 	
 	<update id="projectRegister" parameterType="int">
 	UPDATE project

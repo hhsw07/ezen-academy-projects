@@ -31,6 +31,9 @@
 		$(".proQnaBtn").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
 		})		
+		
+		$(".deleteX").css('cursor','pointer');
+		
 			
 	})
 	
@@ -60,10 +63,21 @@
   	<br><br><br><br>
 
 	<c:forEach var="risk" items="${riskList}">
-			<div class="riskUnitContainer">
-			<div class="riskUnitTitle">${risk.risk_title}</div>
-			<div class="riskUnitDetail">${risk.risk_detail}</div>
+		<div class="riskUnitContainer">
+			<div class="riskUnitTitle">
+				${risk.risk_title}
+				<span class="navbar-right deleteX sub_gray_font" style="display:inline-block"  onclick="javascript:deleteProRisk('${risk.risk_code}')">x</span>
 			</div>
+			<div class="riskUnitDetail">${risk.risk_detail}</div>
+			<button class="btn btn-warning btn_custom riskUpt navbar-right" 
+			 		style="display:inline-block;width:40%;height:30px;margin-top:10px;padding:0;text-align:center;"
+					data-toggle="modal"
+					data-target="#myModalUpt"
+					data-risk_code="${risk.risk_code}"
+					data-risk_title="${risk.risk_title}"
+					data-risk_detail="${risk.risk_detail}"
+					> 리스크 수정</button>
+		</div>
 	</c:forEach>	
 
 
@@ -113,9 +127,55 @@
 
 	</form>
 
+
+
+
+	<form method="post" action="${path}/ProjectReg.do" id="RiskUnitUptForm">
+	<input type="hidden" name="method" value="riskUnitUpt"/>
+	<input type="hidden" name="risk_code" id="risk_code"/>
+
+	<div class="modal fade" id="myModalUpt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:30px 20px 20px 30px;">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				  	<h3 class="modal-title" id="myModalLabel" style="font-weight:bolder">위험요인 수정</h3>
+				</div>
+				<div class="modal-body" style="padding-left:70px;padding-right:70px;">
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">위험내용 제목</div>
+						<div class="reward_reg_content_container2">
+							<input type="text" name="risk_title" id="risk_title" class="form-control"/>
+							<span class="sub_gray_font">xx자 남음</span>
+						</div>
+					</div>
+				
+					<div class="reward_reg_subTitle">
+						<div class="reward_reg_content_container1">상세설명</div>
+						<div class="reward_reg_content_container2">
+							<textarea class="form-control" name="risk_detail" id="risk_detail"></textarea>
+							<span class="sub_gray_font">xx자 남음</span>
+						</div>
+					</div>
+				
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">취소</button>
+						<div class="divider"></div>
+					<button type="button" class="btn btn-info btn-simple" id="uptBtn">수정</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</form>
+
 	<br><br><br><br>
 
-  	<button class="btn btn-warning btn_custom" style="width:40%" id="saveBtn">저장하기</button>
+	  	<c:set var="projectCode" value="${projectCode}"/>
+  	<button class="btn btn-warning btn_custom" style="width:40%"  onclick="javascript:go_ready('${projectCode}')">저장하기</button>
 
 	<br><br><br><br>
 
@@ -138,11 +198,28 @@
 	$("#subBtn").click(function(){
 		$("#RiskUnitSubmitForm").submit();
 	})
-	$("#saveBtn").click(function(){
-		if(confirm("저장 하시겠습니까?")){
-			$(location).attr("href", "${path}/ProjectReg.do?method=initPage")
-		}
+
+	$("#uptBtn").click(function(){
+		$("#RiskUnitUptForm").submit();
 	})
+
+	function go_ready(pro_code){
+		if (confirm("저장 하시겠습니까?")){
+			$(location).attr("href", "${path}/ProjectReg.do?method=projectManage&pro_code="+pro_code);	
+		}
+	}
+		
+ 	$(".riskUpt").on('click', function(event){
+		$("#risk_code").val(event.target.dataset.risk_code);
+		$("#risk_title").val(event.target.dataset.risk_title);
+		$("#risk_detail").val(event.target.dataset.risk_detail);
+	});
+
+	function deleteProRisk(risk_code){
+		if (confirm("삭제 하시겠습니까?")){
+			$(location).attr("href", "${path}/ProjectReg.do?method=deleteProRisk&risk_code="+risk_code);	
+		}		
+	}
 
 </script>
 
