@@ -75,7 +75,7 @@
 	  border: 0;
 	  color: #FFFFFF;
 	  padding: 7px 13px; }
-	.dropcolor {background-color:lightcoral;}
+	.dropColor {background-color:lightcoral;}
 </style>
 </head>
 <body class="sb-nav-fixed">
@@ -93,7 +93,9 @@
 				    	<input type="hidden" name="maker_code"/>
 				    	<div class="row">
 				        	<div class="text-left col-sm-3 ">총건수 : ${paging.count}건</div> 
-				        	<div class="text-right col-sm-9">페이지수 : 
+				        	<div class="text-right col-sm-9">
+				        		제재회원:<span class="dropColor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				        		페이지수 : 
 					        	<select name="pageSize">
 					        		<option value="5">5건</option>
 					        		<option value="10">10건</option>
@@ -115,7 +117,7 @@
 				        		<th>회원명</th></tr>
 				        	<c:forEach var="maker" items="${list}">
 				        		<tr onclick='javascript:go(${maker.maker_code})' 
-				        			${not empty maker.maker_curr?"class='dropcolor'":"" }>
+				        			${not empty maker.maker_curr?"class='dropColor'":"" }>
 									<td class='text-center'>${maker.cnt}</td>
 									<td>${maker.maker_code }</td>
 									<td>${maker.maker_name }</td>
