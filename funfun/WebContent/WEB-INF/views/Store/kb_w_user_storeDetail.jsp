@@ -38,14 +38,18 @@
 				price = Select.options[Select.selectedIndex].dataset.price;
 				var tot = 0;
 				var cnt = $("#cnt_input").val();
-				if(cnt < 0){
-					$("#cnt_input").val("0");
-				}
+				if(cnt < 1){
+					alert("수량은 1개 이상 이여야 합니다.");
+					$("#price_Span").html(numberWithCommas(price));
+					$("[name=sto_price]").val(price);
+					$("#cnt_input").val("1");
+				} else {
 				tot = price * cnt;
 				
 				$("#price_Span").html(numberWithCommas(tot));
 				$("[name=sto_price]").val(tot);
-
+				}
+			
 			});
 			
 			 var article = ("#sto_QnA_Div .qnaShow");
@@ -75,9 +79,8 @@
 	            	if(user != ''){
 	            		$(".btn btn-warning").modal();
 	            	} else {
-	            		if(confirm("로그인이 필요합니다")){
-	            			$(location).attr("href","login.do");
-	            		}
+	            		alert("로그인이 필요합니다");
+	            		$(location).attr("href","login.do");
 	            	}
 	            })
 	            
@@ -89,9 +92,8 @@
 	            			alert("옵션 선택 및 수량 설정하세요");
 	            		}
 	            	} else {
-	            		if(confirm("로그인이 필요합니다")){
-	            			$(location).attr("href","login.do");
-	            		}
+	            		alert("로그인이 필요합니다");
+	            		$(location).attr("href","login.do");
 	            	}
 	            })
 			})

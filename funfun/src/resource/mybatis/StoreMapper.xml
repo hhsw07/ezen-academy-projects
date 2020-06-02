@@ -8,7 +8,7 @@
 		
 		<select id="storeCnt" resultType="int" parameterType="Paging">
 			select count(*) from store a, project b where
-			a.pro_code = b.pro_code
+			a.pro_code = b.pro_code and sto_curr = '정상'
 			<if test="sto_title != null and sto_title != ''">
 				and a.sto_title like '%'||#{sto_title} || '%'
 			</if>
@@ -52,7 +52,7 @@
 			)c)where cnt between #{start} and #{end}
 		</select>
 		<select id="adminDetail" resultType="RewardStore" parameterType="int">
-			select sto_code, sto_title, sto_image, sto_detai from store 
+			select sto_code, sto_title, sto_image, sto_detai, sto_curr from store 
 			where sto_code = #{sto_code}
 		</select>
 		<update id="UptCurr" parameterType="RewardStore">

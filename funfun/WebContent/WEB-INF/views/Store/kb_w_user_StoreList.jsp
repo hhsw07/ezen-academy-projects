@@ -165,7 +165,7 @@
 	          <c:forEach items="${slist}" var="store">
 	        	<div class="col-xs-12 col-md-3 item" onclick="go(${store.sto_code})">
 	            <div class="thumbnail storeList-item">
-	              <img src="img/${store.sto_image}" alt="..." style="height:180px; width:320px">
+	              <img src="${store.sto_image}" alt="..." style="height:180px; width:320px">
 	              <div class="caption store-info">
 	                
 	                <p class="item__title">${store.sto_title }</p>
