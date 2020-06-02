@@ -31,21 +31,21 @@
 		 WHERE a.MEM_CODE = b.mem_code
 		and a.maker_code = #{mem_code} 
 	</select>
+	
 	<!-- void update(AdminMaker upt) -->
 	<update id="update" parameterType="AdminMaker">
-		UPDATE notice
-		SET noti_title = #{noti_title},
-			noti_detail = #{noti_detail},
-			noti_upt_date = CURRENT_DATE,
-			noti_ck = #{noti_ck},
-			admin_code = #{admin_code}
-		WHERE noti_code = #{noti_code}
+		UPDATE MAKER
+		SET maker_curr = #{maker_curr}
+		WHERE maker_code = #{maker_code}
 	</update>
-	<!-- void delete(int mem_code) -->
-	<delete id="delete" parameterType="int">
-		DELETE FROM NOTICE 
-		WHERE noti_code = #{noti_code}
-	</delete>
+	<!-- void update2(AdminMaker upt) -->
+	<update id="update2" parameterType="AdminMaker">
+		UPDATE MAKER
+		SET maker_curr = null
+		WHERE maker_code = #{maker_code}
+	</update>
+	
+
 </mapper>
 
 

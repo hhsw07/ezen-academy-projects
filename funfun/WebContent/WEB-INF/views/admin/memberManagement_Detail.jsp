@@ -47,13 +47,13 @@
 					        		<th>휴대폰번호</th>
 					        		<td>${not empty AdminMember.mem_phoneno?AdminMember.mem_phoneno:"없음"}</td></tr>
 					        	<tr><th rowspan="2">프로필</th>
-					        		<td rowspan="2"><img src="${AdminMember.mem_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'" style="width:90px; height:90px;"/></td>
+					        		<td rowspan="2"><img src="${AdminMember.mem_profile}" style="width:90px; height:90px;"
+					        				onerror="this.src='https://stickershop.line-scdn.net/stickershop/v1/product/1629282/LINEStorePC/main.png;compress=true'" /></td>
 					        		<th>관심 카테고리</th>
 					        		<td>${AdminMember.mem_favor}</td></tr>
 					        	<tr><th>회원상태</th>
 					        		<td><c:if test="${not empty AdminMember.mem_curr}">제재 회원<br>(${AdminMember.mem_curr})</c:if>
-					        			<c:if test="${empty AdminMember.mem_curr}" >서포터 회원</c:if>
-					        		</td></tr>
+					        			<c:if test="${empty AdminMember.mem_curr}" >서포터 회원</c:if></td></tr>
 					        	<tr><th>계좌은행</th>
 					        		<td>${not empty AdminMember.mem_bank?AdminMember.mem_bank:"없음"}</td>
 					        		<th>계좌번호</th>
@@ -287,8 +287,6 @@
 			
 		});
 		$(".dropBtn").click(function(){
-			var date = new Date();
-			date.setFullYear(date.getFullYear()+10);
 			if(confirm("제명 조치하시겠습니까?")){
 				date.setFullYear(date.getFullYear()+10);
 				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();

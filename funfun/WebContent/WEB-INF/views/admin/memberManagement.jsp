@@ -18,7 +18,7 @@
 
 <style type="text/css">
 	div {cursor:default;}
-	.sctable td {cursor:pointer;}
+	.table td {cursor:pointer;}
 	.text-right{text-align:right;}
 	.text-left{text-align:left;}
 	.text-center{text-align:center;}
