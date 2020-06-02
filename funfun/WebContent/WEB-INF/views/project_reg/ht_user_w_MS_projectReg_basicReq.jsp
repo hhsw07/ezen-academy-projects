@@ -35,8 +35,19 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
 		})
 		
+
 		$("#proCreateBtn").click(function(){
-			$(location).attr("href", "${path}/ProjectReg.do?method=proCreate")
+			if($('input[name=Q1]:checked').val()===undefined){
+				alert("체크해주세요");
+			} else {
+				if($('input[name=Q1]:checked').val()==='option1'&&
+						$('input[name=Q2]:checked').val()==='option1'&&
+						$('input[name=Q3]:checked').val()==='option1'){	
+						$(location).attr("href", "${path}/ProjectReg.do?method=proCreate")
+				} else {
+					alert("올바른곳에체크해주세요");
+				}
+			}
 		})
 			
 				
@@ -89,13 +100,14 @@
 	</span>
 
 	<label class="radio">
-	<input type="radio" name="Q1" data-toggle="radio" id="QRadios1" value="option1">
+	<input type="radio" name="Q1" data-toggle="radio"  value="option1">
 	<i></i>아니요, 다른 곳에서 유통한 적이 없으며 펀펀을 통해 처음 선보이는 제품입니다.
 	</label>
 	<label class="radio">
-	<input type="radio" name="Q1" data-toggle="radio" id="QRadios1" value="option1">
+	<input type="radio" name="Q1" data-toggle="radio"  value="option2">
 	<i></i>예, 다른 곳에서 유통한 적이 있습니다. 또는 현재 유통 중입니다.
 	</label>
+
 	
 	
 	<br><br>
@@ -105,11 +117,11 @@
 	<span class="sub_gray_font">리워드 관련 문제 발생 시 펀펀과는 무관한 내용에 대한 공지를 숙지하셨습니까?</span>
 
 	<label class="radio">
-	<input type="radio" name="Q2" data-toggle="radio" id="QRadios2" value="option1">
+	<input type="radio" name="Q2" data-toggle="radio"  value="option1">
 	<i></i>예, 숙지 했습니다.
 	</label>
 	<label class="radio">
-	<input type="radio" name="Q2" data-toggle="radio" id="QRadios2" value="option1">
+	<input type="radio" name="Q2" data-toggle="radio"  value="option2">
 	<i></i>아니요, 숙지하지 않았습니다.
 	</label>
 	
@@ -121,11 +133,11 @@
 	<span class="sub_gray_font">펀펀의 수수료 정책에 동의하십니까?</span>
 
 	<label class="radio">
-	<input type="radio" name="Q3" data-toggle="radio" id="QRadios3" value="option1">
+	<input type="radio" name="Q3" data-toggle="radio"  value="option1">
 	<i></i>예, 동의합니다.
 	</label>
 	<label class="radio">
-	<input type="radio" name="Q3" data-toggle="radio" id="QRadios3" value="option1">
+	<input type="radio" name="Q3" data-toggle="radio"  value="option2">
 	<i></i>아니요, 동의하지 않습니다.
 	</label>
 	
