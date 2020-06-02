@@ -5,6 +5,21 @@ public class Withdrawl {
 	private int minusBal;
 	private String wiCurr;
 	private String memEmail;
+	private int cnt; // 페이징 처리 글번호
+	private int no;	// 글번호
+
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getWiDate() {
 		return wiDate;
 	}
@@ -30,4 +45,6 @@ public class Withdrawl {
 	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
+	
+
 }

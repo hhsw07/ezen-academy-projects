@@ -127,7 +127,7 @@
         <div id="sto_Main_Info_Div">
             
 	            <div id="sto_Image_Div">
-	                <img src="img/${store.sto_image}" class="img-responsive" alt="Responsive image" 
+	                <img src="${store.sto_image}" class="img-responsive" alt="Responsive image" 
 	                style="width:80%;
 	                height:100%; margin-left:auto; margin-right:auto;">
 	            </div>

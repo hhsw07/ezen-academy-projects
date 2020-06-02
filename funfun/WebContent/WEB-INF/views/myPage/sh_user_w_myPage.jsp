@@ -286,7 +286,9 @@
 			this.fundingCode = fundingCode;
 		}
 		function cancleFunding(){
+			var fundPrice = "${list.fundPrice}"
 			$("[name=fcCancle]").val(fundingCode)
+			$("[name=fundPrice]").val(fundPrice)
 			$("#cancleFunding").submit()
 			Command: toastr["warning"]("펀딩이 취소되었습니다");
 		}
@@ -405,8 +407,12 @@
 		function cancleOrderModal(orderCode){
 			this.orderCode = orderCode;
 		}
-		function cancleOrder(){
+		function cancleOrder(Code01){
+			var orderPrice = "${list.orderPrice}"
+			orderCode = Code01
+			console.log("orderCode : "+orderCode)
 			$("[name=ocCancle]").val(orderCode)
+			$("[name=orderPrice]").val(orderPrice)
 			$("#cancleOrder").submit()
 			Command: toastr["warning"]("주문이 취소되었습니다");
 		}
@@ -440,6 +446,32 @@
 	    </div>
 	  </div>
 	  </div>
+	  
+	  <!-- 취소 모달 -->
+		  <div class="text-center">
+	<!-- Modal HTML -->
+	<div id="myModal2" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="icon-box">
+						<i class="material-icons">&#xE5CD;</i>
+					</div>				
+					<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>주문 취소시 사용 금액은 즉시 반환됩니다</p>
+				</div>
+				<div class="modal-footer">`
+					<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
+					<button onclick="cancleOrder(${list.orderCode})" type="button" class="btn btn-danger">주문취소하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	      </div>
 	</c:forEach>
 	</c:if>
 
@@ -459,15 +491,15 @@
 	<input type="submit">
 </form>
 
-
-
 <form id="cancleOrder" style="display:none" action="/funfun/cancleOrder.do">
 	<input type="hidden" name="ocCancle">
+	<input type="hidden" name="orderPrice">
 	<input type="submit">
 </form>
 
 <form id="cancleFunding" style="display:none" action="/funfun/cancleFunding.do">
 	<input type="hidden" name="fcCancle">
+	<input type="hidden" name="fundPrice">
 	<input type="submit">
 </form>
 
@@ -509,30 +541,7 @@
 </div>     
 
 <!-- 모달 -->
-<div class="text-center">
-<!-- Modal HTML -->
-<div id="myModal2" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<div class="icon-box">
-					<i class="material-icons">&#xE5CD;</i>
-				</div>				
-				<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p>주문 취소시 사용 금액은 즉시 반환됩니다</p>
-			</div>
-			<div class="modal-footer">`
-				<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
-				<button onclick="cancleOrder()" type="button" class="btn btn-danger">주문취소하기</button>
-			</div>
-		</div>
-	</div>
-</div>
 
-      </div>
     </div>
     </div>
   

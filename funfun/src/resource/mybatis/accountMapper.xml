@@ -47,10 +47,29 @@
 		SELECT m.MEM_EMAIL memEmail, d.rd_amount chargeQueryAmount, d.RD_DATE rddate, d.RD_CURR curr FROM DEPOSIT d LEFT JOIN MEMBER m ON m.MEM_CODE = d.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail} order by d.RD_DATE desc
  	</select>
  	
+ 	<select id="totCnt" resultType="int" parameterType="psh">
+ 		select count(*) from WITHDRAWL		
+ 	</select> 
+ 	
  	<resultMap type="wi" id="wiResult"/>
- 	<select id="wilist" resultMap="wiResult" parameterType="wi">
-		SELECT w.WI_CURR wiCurr,w.wi_date wiDate, w.wi_amount minusBal, m.MEM_EMAIL memEmail FROM withdrawl w LEFT JOIN MEMBER m ON w.mem_code = m.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail} order by w.wi_date desc
- 	</select>
+ 	<select id="wilist" resultMap="wiResult" parameterType="psh">
+		<![CDATA[ 
+		SELECT * 
+		from(
+				select ROW_NUMBER() OVER(ORDER BY w.WI_DATE DESC) cnt,
+				w.WI_CURR wiCurr,
+				w.wi_date wiDate, 
+				w.wi_amount minusBal, 
+				m.MEM_EMAIL memEmail
+				from WITHDRAWL w
+				LEFT JOIN MEMBER m 
+				ON w.MEM_CODE = m.MEM_CODE 
+				WHERE m.MEM_EMAIL = #{memEmail} 
+				ORDER BY w.WI_DATE DESC
+			)
+				WHERE cnt BETWEEN #{start} AND #{end}
+		]]>	
+	</select>
  	
  	<update id="chargeQuery" parameterType="userprofile">
 	    UPDATE MEMBER
