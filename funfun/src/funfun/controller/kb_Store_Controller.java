@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.gson.Gson;
 
 import funfun.service.KB_StoreService;
+import funfun.vo.MemberLogin;
 import funfun.vo.Paging;
 import funfun.vo.RewardStore;
 import funfun.vo.storeOption;
@@ -29,7 +30,6 @@ public class kb_Store_Controller {
 	public String storeList(@ModelAttribute("paging") Paging sch,Model d) {
 		d.addAttribute("slist", service.slist(sch));
 		String cate = sch.getCate_title();
-		System.out.println("테스트2 : " + sch.getStore_sort());
 		if(cate == null) cate =  "";
 		
 		switch(cate) {
