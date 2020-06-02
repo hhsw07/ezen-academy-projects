@@ -43,8 +43,11 @@ public class HT_ProjectRegService {
 	}
 	
 	public ArrayList<ProOption> getProOptionList(int pro_code){
-		System.out.println("프로옵션리스트 프로세스입니다");
 		return dao.getProOptionList(pro_code);
+	}
+	
+	public int getProOptionListCount(int pro_code) {
+		return dao.getProOptionListCount(pro_code);
 	}
 	
 	public void regProOption(ProOption cre) {
@@ -53,6 +56,10 @@ public class HT_ProjectRegService {
 	
 	public ArrayList<ProRisk> getProRiskList(int pro_code){
 		return dao.getProRiskList(pro_code);
+	}
+	
+	public int getProRiskListCount(int pro_code) {
+		return dao.getProRiskListCount(pro_code);
 	}
 	
 	public void regProRisk(ProRisk cre) {
