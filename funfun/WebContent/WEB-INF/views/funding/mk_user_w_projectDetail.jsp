@@ -152,7 +152,7 @@ th{text-align:center;}
 					<jsp:useBean id="today" class="java.util.Date" />
 					<c:choose>
 						<c:when test="${pro_start>today}">
-							<p class="remainday">오픈예정</p>
+							<p class="remainday"><fmt:formatDate value="${pro_start}" pattern="MM월dd일"/> 오픈 예정</p>
 						</c:when>
 						<c:when test="${project.dday>0}">
 							<p class="remainday">${project.dday}일 남음</p>
