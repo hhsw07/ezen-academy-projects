@@ -115,8 +115,7 @@ public class HT_MSCtrl {
 		Project projectInfo = service.getProjectInfo(pro_code);
 		d.addAttribute("projectInfo", projectInfo);
 		
-		System.out.println(projectInfo.getPro_finish_date());
-		System.out.println(projectInfo.getPro_start_date()); 
+		// 날짜 비교를 위한 데이터 세팅 ~138라인
 		LocalDateTime ldt = LocalDateTime.now();
 		String currentDate=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(ldt);
 		System.out.println();
@@ -138,35 +137,29 @@ public class HT_MSCtrl {
 		d.addAttribute("startDate", startDate);
 		d.addAttribute("finishDate", finishDate);
 		
-		int compare1 = today.compareTo(today);
-		int compare2 = today.compareTo(finishDate);
-		int compare3 = startDate.compareTo(finishDate);
-		
-		System.out.println("compare1 : " + compare1);
-		
-		if(compare1>0) {
-			System.out.println("현재날짜가 시작날짜보다 크다");
-		} else {
-			System.out.println("현재날짜가 시작날짜보다 작다");
-		}
-		
-		if(compare2>0) {
-			System.out.println("현재날짜가 조욜날짜보다 크다");
-		} else {
-			System.out.println("현재날짜가 종료날짜보다 작다.");
-		}
-		
-		
-		
-		
+
+		/* 테스트코드
+		 * int compare1 = today.compareTo(today); int compare2 =
+		 * today.compareTo(finishDate); int compare3 = startDate.compareTo(finishDate);
+		 * 
+		 * System.out.println("compare1 : " + compare1);
+		 * 
+		 * if(compare1>0) { System.out.println("현재날짜가 시작날짜보다 크다"); } else {
+		 * System.out.println("현재날짜가 시작날짜보다 작다"); }
+		 * 
+		 * if(compare2>0) { System.out.println("현재날짜가 조욜날짜보다 크다"); } else {
+		 * System.out.println("현재날짜가 종료날짜보다 작다."); }
+		 */
 		session.setAttribute("projectCode", pro_code);
 		int storeCode = service.getStoCode(pro_code);
 		session.setAttribute("storeCode", storeCode);
 		if (storeCode!=-1) {
 			String stoRegDate = service.getStoRegDate(pro_code);
 			session.setAttribute("stoRegDate", stoRegDate);
+			System.out.println("stoRegDate : " + stoRegDate);
 		} else {
 			session.setAttribute("stoRegDate", null);
+			System.out.println("stoRegDate : NULL");
 		}
 		System.out.println(session.getAttribute("storeCode"));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";

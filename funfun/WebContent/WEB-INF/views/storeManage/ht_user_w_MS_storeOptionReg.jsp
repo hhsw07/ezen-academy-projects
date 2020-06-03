@@ -29,6 +29,10 @@
 		$(".storeOpenReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
 		})
+		$(".storeRegReady").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeRegReady")
+		})
+
 		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
 		})
@@ -41,6 +45,9 @@
 		$(".storeQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeQnAManage")
 		})
+
+		$(".deleteX").css('cursor','pointer');
+
 		
 	})
 		
@@ -71,6 +78,7 @@
 	<c:forEach var="opt" items="${proStoOptList}">
 		<div class="optUnitContainer">
 		<div class="optUnitIntro">프로젝트 리워드</div>
+		<div class="optUnitPrice">${opt.opt_price}원</div>
 		<div class="optUnitPrice">${opt.opt_title}</div>
 		<div class="optUnitTitle">${opt.opt_detail}</div>
 		<hr>
@@ -84,21 +92,23 @@
 					data-opt_code="${opt.opt_code}"
 					data-opt_title="${opt.opt_title}"
 					data-opt_detail="${opt.opt_detail}"
-					>+ 스토어 옵션 추가</button>
+					>스토어 옵션 추가</button>
 		</c:when>
 		<c:otherwise>
-				<div class="optUnitIntro">스토어 옵션</div>
+		<div class="optUnitIntro">스토어 옵션</div>
+		<span class="navbar-right deleteX sub_gray_font" style="display:inline-block"  onclick="javascript:deleteStoOpt('${opt.sto_opt_code}')">x</span>
 		<div class="optUnitPrice">${opt.sto_opt_price}원</div>
 		<div class="optUnitTitle">${opt.sto_opt_detail}</div>
 
-			<button class="btn btn-warning btn_custom stoOptUpt" 
+			<button class="btn btn-warning btn_custom stoOptUpt navbar-right" 
+					style="display:inline-block;width:55%;height:30px;margin-top:10px;padding:0;text-align:center;"
 					data-toggle="modal"
 					data-target="#myModalUpt"
 					data-sto_opt_code="${opt.sto_opt_code}"
 					data-opt_code="${opt.opt_code}"
 					data-opt_title="${opt.opt_title}"
 					data-opt_detail="${opt.opt_detail}"
-					>+ 스토어 옵션 수정</button>
+					>스토어 옵션 수정</button>
 		</c:otherwise>
 		</c:choose>
 		</div>
@@ -255,6 +265,12 @@
 				$(location).attr("href", "${path}/Store.do?method=storeRegReady");
 			}
 		})
+		
+		function deleteStoOpt(sto_opt_code){
+			if (confirm("삭제 하시겠습니까?")){
+				$(location).attr("href", "${path}/Store.do?method=stoOptUnitDelete&sto_opt_code="+sto_opt_code);	
+			}		
+		}
 	</script>
 
 

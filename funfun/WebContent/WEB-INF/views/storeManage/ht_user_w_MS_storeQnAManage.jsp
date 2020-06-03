@@ -29,6 +29,10 @@
 		$(".storeOpenReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
 		})
+		$(".storeRegReady").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeRegReady")
+		})
+
 		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
 		})
