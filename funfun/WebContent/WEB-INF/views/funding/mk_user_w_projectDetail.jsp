@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
 .project-story img{width:100%;}
+.reward-qty {margin-bottom: 5px; font-size: 12px; line-height: 21px; color: #ff9500;}
+.soldout {color: #f89ba6;}
 input[type=file]{display:inline;}
 .project-inquiry{width:100%; padding: 15px;}
 .inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
@@ -279,6 +281,14 @@ th{text-align:center;}
 							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 							<p class="text-muted">리워드 발송 시작일</p>
 							<p><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</p>
+							<c:choose>
+								<c:when test="${opt.opt_max!=0}">
+									<p class="reward-qty">남은 수량 <strong>${opt.opt_max}</strong>개 &nbsp; </p>
+								</c:when>
+								<c:when test="${opt.opt_max==0}">
+									<p class="reward-qty soldout"><em>제한수량이 모두 펀딩되었습니다.</em></p>
+								</c:when>
+							</c:choose>
 						</button>
 					</div>
 				</c:forEach>
