@@ -9,6 +9,7 @@ import funfun.repository.MainRepo;
 import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
+import funfun.vo.MainViewProject;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
@@ -176,6 +177,12 @@ public class MainService {
 		}
 		
 		return list0;
+	}
+	
+	public ArrayList<MainViewProject> getMainViewProject(int page){
+		ArrayList<MainViewProject> list=repo.getMainViewProjectList(page);
+		
+		return list;
 	}
 	
 	

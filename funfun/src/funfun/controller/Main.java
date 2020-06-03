@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.google.gson.Gson;
 
 import funfun.service.MainService;
+import funfun.vo.MainViewProject;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.NotificationInfo;
@@ -143,6 +144,18 @@ public class Main {
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		
 		ArrayList<NotificationInfo> list = service.getFavorProjectListLeft7DaysOrLess(memCode);
+		Gson gson = new Gson();
+		String result =gson.toJson(list);
+		result="{\"list\":"+result+"}";
+		
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping("/getMainViewProject.do")
+	public ResponseEntity getMainViewProject(@RequestParam("page") int page) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		ArrayList<MainViewProject> list = service.getMainViewProject(page);
 		Gson gson = new Gson();
 		String result =gson.toJson(list);
 		result="{\"list\":"+result+"}";

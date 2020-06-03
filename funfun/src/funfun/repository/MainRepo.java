@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
+import funfun.vo.MainViewProject;
 import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
@@ -59,5 +60,6 @@ public interface MainRepo {
 	public ArrayList<OptCodeAndCnt> getStoreOptNoAndCnt(int memCode);
 	
 	public StoreTitleImageDetailPrice getStoreInfo(int optCode);
-
+	
+	public ArrayList<MainViewProject> getMainViewProjectList(int page); 
 }
