@@ -84,7 +84,7 @@
 
 	<br><br><br><br>
 	
-  	<button class="btn btn-warning" id="subBtn">저장하기</button>
+  	<button class="btn btn-warning btn_custom" style="width:40%" id="subBtn">저장하기</button>
 
 	</form>
 

@@ -42,7 +42,6 @@ public class Sw_AdminMemberCtrl {
 	public String detail(@ModelAttribute("AdminMember") AdminMember AdminMember, Model d) {
 		d.addAttribute("AdminMember", service.detail(AdminMember.getMem_code()));
 		
-		
 		d.addAttribute("plist", service2.plist(service.detail(AdminMember.getMem_code()).getMem_email()));
 		d.addAttribute("tlist", service2.tlist(service.detail(AdminMember.getMem_code()).getMem_email()));
 		return "WEB-INF\\views\\admin\\memberManagement_Detail.jsp";
@@ -60,8 +59,7 @@ public class Sw_AdminMemberCtrl {
 		}
 		
 		System.out.println("AdminMember 수정완료");
-		
-		return "redirect:/AdminMember.do?method=detail&mem_code="+upt.getMem_code();
+		return "redirect:/AdminMember.do?method=list";
 	}
 	
 	

@@ -31,7 +31,8 @@
 				        <h2>메이커 상세보기</h2>
 				    </div>
 			        <div>
-				    	<form class="form-group" method="post">
+				    	<form class="form-group" method="post" action="${path}/AdminMaker.do?method=update">
+					    	<input type="hidden" name="maker_opt" />
 					    	<table class="table table-bordered">
 					        	<col style="width:20%">
 					        	<col style="width:30%">
@@ -43,7 +44,8 @@
 					        	<tr><th>메이커 번호</th>
 					        		<td><input type="hidden" name="maker_code" value="${AdminMaker.maker_code}"/>${AdminMaker.maker_code}</td>
 					        		<th>메이커 상태</th>
-					        		<td>${not empty AdminMaker.maker_curr?'제재 대상':'일반 메이커' }</td></tr>
+					        		<td><c:if test="${not empty AdminMaker.maker_curr}">제재 메이커<br>(${AdminMaker.maker_curr})</c:if>
+					        			<c:if test="${empty AdminMaker.maker_curr}" >일반 메이커</c:if></td></tr>
 					        	<tr><th>메이커명</th>
 					        		<td>${AdminMaker.maker_name }</td>
 					        		<th>메이커 구분</th>
@@ -53,10 +55,11 @@
 					        		<th></th>
 					        		<td></td></tr>
 					        	<tr><th>메이커프로필</th>
-					        		<td><img src="${AdminMaker.maker_profile}" 
-					        			onerror="this.src='${path }/template/assets/img/new_logo.png'"/></td>
+					        		<td><img src="${AdminMaker.maker_profile}" style="width:90px; height:90px;"
+					        			onerror="this.src='https://stickershop.line-scdn.net/stickershop/v1/product/1629282/LINEStorePC/main.png;compress=true'"/></td>
 					        		<th>통장사본</th>
-					        		<td><img src="${AdminMaker.maker_bankbook}" onerror="this.src='${path }/template/assets/img/new_logo.png'"/></td></tr>
+					        		<td><img src="${AdminMaker.maker_bankbook}" style="width:90px; height:90px;"
+					        			onerror="this.src='https://stickershop.line-scdn.net/stickershop/v1/product/1629282/LINEStorePC/main.png;compress=true'"/></td></tr>
 					        </table>
 				        </form>
 				    </div>
@@ -64,27 +67,6 @@
 				    	<button class="btn btn-fill btn-warning appr_Btn">메이커 관리</button>
 				    	<button class="btn btn-fill btn-warning goList">목록</button>
 				    </div>
-				    <div>
-				    	<h3>프로젝트 내역</h3>
-				    	
-				    	<h2>내역</h2>
-				    	
-				    	
-				    	
-				    	
-				    	
-				    	
-				    	
-				    	<h3>스토어 내역</h3>
-				    	
-				    	
-				    	<h2>내역</h2>
-				    	
-				    	
-				    	
-				    	
-				    	
-					</div>
 			    </div>
 			</div>
 			
@@ -139,24 +121,23 @@
 			if(confirm("제재 조치하시겠습니까?")){
 				date.setMonth(date.getMonth()+3);
 				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
-				$("[name=mem_opt]").val(dateStr);
+				$("[name=maker_opt]").val(dateStr);
 				$("form").submit();
 			}
 			
 		});
 		$(".dropBtn").click(function(){
-			var date = new Date();
-			date.setFullYear(date.getFullYear()+10);
 			if(confirm("제명 조치하시겠습니까?")){
 				date.setFullYear(date.getFullYear()+10);
 				var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDay();
-				$("[name=mem_opt]").val(dateStr);
+				$("[name=maker_opt]").val(dateStr);
+				console.log("dateStr : "+dateStr);
 				$("form").submit();
 			}
 		});
 		$(".clearBtn").click(function(){
-			if(confirm("회원 복귀 하시겠습니까?")){
-				$("[name=mem_opt]").val("");
+			if(confirm("메이커 복귀 하시겠습니까?")){
+				$("[name=maker_opt]").val("");
 				$("form").submit();
 			}
 		});

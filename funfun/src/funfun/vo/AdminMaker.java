@@ -19,6 +19,7 @@ public class AdminMaker {
 	private String maker_email;
 	private Date maker_curr;
 	private String maker_bankbook;
+	private String maker_opt;
 	
 	private String pro_title;
 	private String mem_name;
@@ -109,6 +110,14 @@ public class AdminMaker {
 
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
+	}
+
+	public String getMaker_opt() {
+		return maker_opt;
+	}
+
+	public void setMaker_opt(String maker_opt) {
+		this.maker_opt = maker_opt;
 	}
 	
 	

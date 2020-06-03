@@ -58,6 +58,9 @@ public class Sw_AdminMakerService {
 	public void update(AdminMaker upt) {
 		dao.update(upt);
 	};
+	public void update2(AdminMaker upt) {
+		dao.update2(upt);
+	};
 	
 	
 }

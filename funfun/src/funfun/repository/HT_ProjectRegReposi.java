@@ -20,9 +20,13 @@ public interface HT_ProjectRegReposi {
 	public ArrayList<ProOption> getProOptionList(int pro_code);
 	public int getProOptionListCount(int pro_code);
 	public void regProOption(ProOption cre);
+	public void uptProOption(ProOption cre);
+	public void deleteProOption(int opt_code);
 	public ArrayList<ProRisk> getProRiskList(int pro_code);
 	public int getProRiskListCount(int pro_code);
 	public void regProRisk(ProRisk cre);
+	public void updateProRisk(ProRisk cre);
+	public void deleteProRisk(int risk_code);
 	public Project projectInfo(int pro_code);
 	public void projectRegister(int pro_code);
 }

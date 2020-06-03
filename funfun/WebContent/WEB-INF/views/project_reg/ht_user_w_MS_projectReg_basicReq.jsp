@@ -45,7 +45,7 @@
 						$('input[name=Q3]:checked').val()==='option1'){	
 						$(location).attr("href", "${path}/ProjectReg.do?method=proCreate")
 				} else {
-					alert("올바른곳에체크해주세요");
+					alert("필수 동의 사항(*)에 동의해야 합니다");
 				}
 			}
 		})
@@ -101,7 +101,7 @@
 
 	<label class="radio">
 	<input type="radio" name="Q1" data-toggle="radio"  value="option1">
-	<i></i>아니요, 다른 곳에서 유통한 적이 없으며 펀펀을 통해 처음 선보이는 제품입니다.
+	<i></i>아니요, 다른 곳에서 유통한 적이 없으며 펀펀을 통해 처음 선보이는 제품입니다(*).
 	</label>
 	<label class="radio">
 	<input type="radio" name="Q1" data-toggle="radio"  value="option2">
@@ -118,7 +118,7 @@
 
 	<label class="radio">
 	<input type="radio" name="Q2" data-toggle="radio"  value="option1">
-	<i></i>예, 숙지 했습니다.
+	<i></i>예, 숙지 했습니다(*).
 	</label>
 	<label class="radio">
 	<input type="radio" name="Q2" data-toggle="radio"  value="option2">
@@ -134,7 +134,7 @@
 
 	<label class="radio">
 	<input type="radio" name="Q3" data-toggle="radio"  value="option1">
-	<i></i>예, 동의합니다.
+	<i></i>예, 동의합니다(*).
 	</label>
 	<label class="radio">
 	<input type="radio" name="Q3" data-toggle="radio"  value="option2">

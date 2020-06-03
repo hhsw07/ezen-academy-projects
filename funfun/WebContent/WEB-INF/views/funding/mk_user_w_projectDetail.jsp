@@ -250,38 +250,39 @@ th{text-align:center;}
 			<div class="project-maker">
 				<div class="img-thumbnail" style="width:100%; padding:10px;">
 					<div  class="col-md-10">
-                 	   <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
+                 	   <img src="${project.maker}" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
                  	   <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
                     </div>
                     <span class="col-md-2"><a href="#goinq"><button class="btn btn-block btn-lg btn-warning">문의하기</button></a></span>
                 </div>
 			</div>
 			
-			<!-- 프로젝트 소개 -->
-			<div class="col-md-8 col-sm-6" style="min-height:500px;margin-bottom: 100px;">
-				<h3>프로젝트 스토리</h3>
-				<div>
-					${project.pro_story}
+			<div style="width: 100;display: -webkit-box;">
+				<!-- 프로젝트 소개 -->
+				<div class="col-md-8 col-sm-6" style="margin-bottom: 100px;">
+					<h3>프로젝트 스토리</h3>
+					<div>
+						${project.pro_story}
+					</div>
 				</div>
-			</div>
-			
-			<!-- 프로젝트 옵션 -->
-			<div class="project-opt col-md-4 col-sm-6" style="min-height:500px;">
-			<c:forEach var="opt" items="${opt}">
-				<div class="project-opt-info">
-				<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-					<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-						<h6>${opt.opt_title}</h6>
-						<p>${opt.opt_detail}</p><br>
-						<p class="text-muted">${opt.opt_condition}</p><br>
-						<p class="text-muted">배송비</p>
-						<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
-						<p class="text-muted">리워드 발송 시작일</p>
-						<p><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</p>
-					</button>
+				<!-- 프로젝트 옵션 -->
+				<div class="project-opt col-md-4 col-sm-6" >
+				<c:forEach var="opt" items="${opt}">
+					<div class="project-opt-info">
+					<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+						<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
+							<h6>${opt.opt_title}</h6>
+							<p>${opt.opt_detail}</p><br>
+							<p class="text-muted">${opt.opt_condition}</p><br>
+							<p class="text-muted">배송비</p>
+							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
+							<p class="text-muted">리워드 발송 시작일</p>
+							<p><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</p>
+						</button>
+					</div>
+				</c:forEach>
 				</div>
-			</c:forEach>
-			</div>
+			</div>	
 			
 	    	<!-- 문의 리스트 -->
 	    	<div class="project-inquiry">

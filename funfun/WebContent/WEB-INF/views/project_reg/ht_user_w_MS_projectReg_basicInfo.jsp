@@ -40,7 +40,8 @@
 			$("#basicInfoForm").submit();
 		});
 		
-		$( "#startDate" ).datepicker({format:'yyyy/mm/dd'});
+		
+		$( "#startDate" ).datepicker({format:'yyyy/mm/dd',minDate:'+7'});
 		$( "#finishDate" ).datepicker({format:'yyyy/mm/dd'});
 
 	})
@@ -232,7 +233,7 @@
 	</div>
 
 	
-
+	<br><br><br><br>
 
   	
   	</div>
