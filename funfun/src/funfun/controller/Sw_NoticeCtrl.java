@@ -65,7 +65,7 @@ public class Sw_NoticeCtrl {
 		service.insert(ins);
 		System.out.println("noti 등록완료");
 		
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
+		return "redirect:/notice.do?method=admList";
 	}
 
 	

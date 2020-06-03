@@ -57,7 +57,7 @@ public class Sw_FaqCtrl {
 		service.insert(ins);
 		System.out.println("faq 등록완료");
 		
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_faqInsert.jsp";
+		return "redirect:/faq.do?method=admList";
 	}
 
 	
@@ -72,7 +72,7 @@ public class Sw_FaqCtrl {
 	public String update(Faq upt) {
 		service.update(upt);
 		System.out.println("faq 수정완료");
-		return "forward:/faq.do?method=admList";
+		return "redirect:/faq.do?method=admList";
 	}
 	// http://localhost:5080/funfun/faq.do?method=delete
 	@RequestMapping(params="method=delete")
