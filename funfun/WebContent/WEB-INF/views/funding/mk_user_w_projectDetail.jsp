@@ -272,9 +272,9 @@ th{text-align:center;}
 					<div class="project-opt-info">
 					<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 						<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-							<h6>${opt.opt_title}</h6>
-							<p>${opt.opt_detail}</p><br>
-							<p class="text-muted">${opt.opt_condition}</p><br>
+							<h6><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩</h6>
+							<p>${opt.opt_title}</p><br>
+							<p class="text-muted">${opt.opt_detail}</p><br>
 							<p class="text-muted">배송비</p>
 							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 							<p class="text-muted">리워드 발송 시작일</p>
