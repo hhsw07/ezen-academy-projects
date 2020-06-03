@@ -112,7 +112,6 @@
 	                            <img src="${user.mem_profile }">
 	                            </c:if>
 	                            <c:if test="${not empty new_profile}">
-	                            <h1>${new_profile }</h1>
 	                            <img src="${new_profile }">
 	                            </c:if>
 	                        </div>

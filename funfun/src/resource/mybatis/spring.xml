@@ -60,6 +60,7 @@
 		<mapper resource="resource/mybatis/secessionMapper.xml" />
 		<mapper resource="resource/mybatis/accountMapper.xml" />
 		<mapper resource="resource/mybatis/adminProjectMapper.xml"/>
+		<mapper resource="resource/mybatis/maincontentsMapper.xml" />
 	</mappers>
  
 </configuration>
