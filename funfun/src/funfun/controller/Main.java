@@ -90,7 +90,8 @@ public class Main {
 			session.removeAttribute("manager");
 			System.out.println("로그인성공");
 			//회원가입하자마자 로그인하는 경우 로그인 페이지가 반복되는 경우
-			if(redirectAddress.contains("signup.do")||redirectAddress.contains("login.do")) {
+			if(redirectAddress.contains("signup.do")||redirectAddress.contains("login.do")||
+					redirectAddress.contains("findaccount.do")) {
 				return "redirect:/main.do";
 			} else {
 				return "redirect:"+redirectAddress;

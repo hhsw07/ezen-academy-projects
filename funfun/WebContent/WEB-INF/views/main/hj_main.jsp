@@ -106,7 +106,8 @@
         
       ],
       isShadowOn:true,
-      isShadowOff:false
+      isShadowOff:false,
+      page:0
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
@@ -118,8 +119,11 @@
          	  this.isShadowOn=true;
          	  this.isShadowOff=false;
       	}
-        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) { 
-          this.loadMore();
+        if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) {
+          if(this.page<3){
+        	  this.loadMore();
+        	  this.page=this.page+1;
+          }
         }
       })
     },
