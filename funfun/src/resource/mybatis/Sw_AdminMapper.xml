@@ -51,7 +51,9 @@
 	<update id="update" parameterType="Admin">
 		UPDATE admin
 		SET admin_name = #{admin_name},
+			<if test="admin_pw != null">
 			admin_pw = #{admin_pw},
+			</if>
 			admin_auth = #{admin_auth}
 		WHERE admin_code = #{admin_code}
 	</update>
