@@ -114,6 +114,7 @@ public class HT_MSCtrl {
 		
 		Project projectInfo = service.getProjectInfo(pro_code);
 		d.addAttribute("projectInfo", projectInfo);
+		session.setAttribute("projectInfo", projectInfo);
 		
 		// 날짜 비교를 위한 데이터 세팅 ~138라인
 		LocalDateTime ldt = LocalDateTime.now();

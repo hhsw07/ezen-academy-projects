@@ -23,8 +23,10 @@
 	</select>
 	
 	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
-	SELECT * FROM QNA
-	WHERE STO_CODE = #{sto_code}
+	SELECT a.*, b.mem_name
+	FROM QNA a, "MEMBER" b
+	WHERE a.STO_CODE = #{sto_code}
+	AND b.MEM_CODE = a.MEM_CODE
 	</select>
 
 	<update id="storeQnAAnsReg" parameterType="storeQnA">

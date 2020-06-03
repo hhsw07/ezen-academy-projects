@@ -31,9 +31,11 @@
 	</select>
 	
 	
-	<select id="myProjectQnaList" resultMap="qnaResult" parameterType="storeQnA">
-	SELECT * FROM QNA
-	WHERE PRO_CODE = #{PRO_CODE}
+	<select id="myProjectQnaList" resultMap="qnaResult" parameterType="int">
+	SELECT a.*, b.mem_name
+	FROM QNA a, "MEMBER" b
+	WHERE a.PRO_CODE = #{pro_code}
+	AND b.MEM_CODE = a.MEM_CODE
 	</select>
 	
 

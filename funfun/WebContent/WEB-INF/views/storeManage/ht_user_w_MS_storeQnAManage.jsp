@@ -20,7 +20,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet&pro_code=${projectCode}")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -85,7 +85,7 @@
 			<c:choose>
 			<c:when test="${qnaList.qna_ans==null }">
 			<tr>
-			<td>${qnaList.mem_code }</td>
+			<td>${qnaList.mem_name }</td>
 			<td>${qnaList.qna_reg_date }</td>
 			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
 			<td style="text-align:center;">

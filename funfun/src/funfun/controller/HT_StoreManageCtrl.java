@@ -59,7 +59,10 @@ public class HT_StoreManageCtrl {
 	
 	
 	@RequestMapping(params="method=storeBasicInfo")
-	public String storeBasicInfo() {
+	public String storeBasicInfo(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		d.addAttribute("storeInfo", service.getStoreInfo(storeCode));
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeBasicInfoReg.jsp";
 	}
 
