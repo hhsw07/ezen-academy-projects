@@ -198,7 +198,7 @@
 	function go(mem_code){
 		// alert("mem_code:"+mem_code);
 		//$(location).attr("href","${path}/chatting.do?mem_code="+mem_code);
-		window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=450, height=680, left=100, top=200");
+		window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=400, height=680, left=100, top=200");
 	}
 	function goPage(no){
 		$("#curPage").val(no);
