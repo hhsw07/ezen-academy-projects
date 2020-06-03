@@ -384,41 +384,8 @@
 	
 
         </div>
-        <script>
-        var orderCode;
-        function movingDetailPageO(Code){
-			var Code = Code
-			location.href='/funfun/store.do?method=detail&sto_code='+Code
-		}
-        
-		function openAdrChangeModal(oldAdr,orderCode){
-			$("#oldAdr").html(oldAdr)
-			this.orderCode = orderCode;
-		}
-		function changeAdr(){
-			var newAdr = $("#pay_addr").val()
-			var newPostNum = $("#pay_zipcode").val()
-			$("[name=newAdr]").val(newAdr)
-			$("[name=newPostNum]").val(newPostNum)
-			$("[name=oc]").val(orderCode)
-			$("#form1").submit()
-			Command: toastr["warning"]("주소가 변경되었습니다");
-		}
-		function cancleOrderModal(orderCode){
-			this.orderCode = orderCode;
-		}
-		function cancleOrder(Code01){
-			var orderPrice = "${list.orderPrice}"
-			orderCode = Code01
-			console.log("orderCode : "+orderCode)
-			$("[name=ocCancle]").val(orderCode)
-			$("[name=orderPrice]").val(orderPrice)
-			$("#cancleOrder").submit()
-			Command: toastr["warning"]("주문이 취소되었습니다");
-		}
-		
-        </script>
-
+     
+  
          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -446,9 +413,8 @@
 	    </div>
 	  </div>
 	  </div>
-	  
 	  <!-- 취소 모달 -->
-		  <div class="text-center">
+<div class="text-center">
 	<!-- Modal HTML -->
 	<div id="myModal2" class="modal fade">
 		<div class="modal-dialog modal-confirm">
@@ -465,13 +431,51 @@
 				</div>
 				<div class="modal-footer">`
 					<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
-					<button onclick="cancleOrder(${list.orderCode})" type="button" class="btn btn-danger">주문취소하기</button>
+					<button onclick="cancleOrder()" type="button" class="btn btn-danger">주문취소하기</button>
+					<script>
+        var orderCode;
+        var orderPrice;
+        function movingDetailPageO(Code){
+			var Code = Code
+			location.href='/funfun/store.do?method=detail&sto_code='+Code
+		}
+        
+		function openAdrChangeModal(oldAdr,orderCode){
+			$("#oldAdr").html(oldAdr)
+			this.orderCode = orderCode;
+		}
+		function changeAdr(){
+			var newAdr = $("#pay_addr").val()
+			var newPostNum = $("#pay_zipcode").val()
+			$("[name=newAdr]").val(newAdr)
+			$("[name=newPostNum]").val(newPostNum)
+			$("[name=oc]").val(orderCode)
+			$("#form1").submit()
+			Command: toastr["warning"]("주소가 변경되었습니다");
+		}
+		function cancleOrderModal(orderCode){
+			this.orderCode = orderCode;
+		}
+		function cancleOrder(){
+			orderPrice = "${list.orderPrice}"
+			orderCode = "${list.orderCode}"
+			console.log("orderCode : "+orderCode)
+			$("[name=ocCancle]").val(orderCode)
+			$("[name=orderPrice]").val(orderPrice)
+			
+			$("#cancleOrder").submit()
+			Command: toastr["warning"]("주문이 취소되었습니다");
+		}
+		
+        </script>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	      </div>
+</div>
+	  
+	   
+            
 	</c:forEach>
 	</c:if>
 
@@ -546,9 +550,7 @@
     </div>
   
   <!-- end main -->
-  <script>
-
-</script>
+  
 <script src="js/sh_user_w_myPage.js"></script>
 </body>
 </html>

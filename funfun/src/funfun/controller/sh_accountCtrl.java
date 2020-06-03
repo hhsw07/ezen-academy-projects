@@ -37,7 +37,6 @@ public class sh_accountCtrl {
 				 d.addAttribute("rdlist",service.rdlist(memberinfo.getMem_email()));
 				 
 				 psh.setMemEmail(memberinfo.getMem_email());
-				 //psh.setCurPage(curPage);
 				 d.addAttribute("wilist",service.wilist(psh));
 			 }
 		 }
