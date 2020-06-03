@@ -72,7 +72,7 @@ public class Sw_FaqCtrl {
 	public String update(Faq upt) {
 		service.update(upt);
 		System.out.println("faq 수정완료");
-		return "forward:/faq.do?method=detail&faq_code+"+upt.getFaq_code();
+		return "forward:/faq.do?method=admList";
 	}
 	// http://localhost:5080/funfun/faq.do?method=delete
 	@RequestMapping(params="method=delete")

@@ -36,11 +36,11 @@
 					    	<table class="table table-bordered">
 					        	<col style="width:15%">
 					        	<col style="width:85%">
-					        	<tr><th>제목</th>
-					        		<td colspan="3"><input type="text" class="form-control" name="faq_title" placeholder="FAQ 제목" /></td></tr>
-					        	<tr><th>내용</th>
+					        	<tr><th>제목<p style="font-size:1px;"><span class="titleLengthCk">0</span> / 30</p></th>
+					        		<td colspan="3"><input type="text" class="form-control faq_title" name="faq_title" placeholder="FAQ 제목" /></td></tr>
+					        	<tr><th>내용<p style="font-size:1px;"><span class="detailLengthCk">0</span> / 600</p></th>
 					        		<td colspan="3">
-					        			<textarea class="form-control" name="faq_detail" placeholder="FAQ 내용" style="resize: none;" rows="20"></textarea></td></tr>
+					        			<textarea class="form-control faq_detail" name="faq_detail" placeholder="FAQ 내용" style="resize: none;" rows="20"></textarea></td></tr>
 					        </table>
 				        </form>
 				    </div>
@@ -73,6 +73,38 @@
 				$(location).attr("href","${path}/faq.do?method=admList");
 			}
 		}
+		
+		
+		$(".faq_title").keyup(function(e){
+			var textLength = $(".faq_title").val().length;
+			$(".titleLengthCk").text(textLength);
+			if(!maxLengthCheck($(".faq_title"),30)){
+				textLength = $(".faq_title").val().length;
+				$(".titleLengthCk").text(textLength);
+			}
+		});
+		
+		$(".faq_detail").keyup(function(e){
+			var textLength = $(".faq_detail").val().length;
+			$(".detailLengthCk").text(textLength);
+			if(!maxLengthCheck($(".faq_detail"),600)){
+				textLength = $(".faq_detail").val().length;
+				$(".detailLengthCk").text(textLength);
+			}
+		});
+		// 입력 글자수 체크
+		function maxLengthCheck(obj, maxLength){
+			var textLength = obj.val().length;
+			if(textLength > Number(maxLength)) {
+		    	alert("입력가능문자수를 초과하였습니다.");
+		    	obj.val(obj.val().substring(0,maxLength));
+		    	return false;
+		    }else {
+		    	return true;
+		    }
+		}
+		
+		
 		
 		
 		$(".insertFaq").click(function(){
