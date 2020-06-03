@@ -210,7 +210,6 @@ a{cursor:pointer;}
 											<span class="ProjectList-rate">펀딩률 : ${proj.percent}%</span>
 										</c:otherwise>
 									</c:choose>
-										
 									<c:choose>
 										<c:when test="${pro_start>today}">
 											<span class="ProjectList-date" style="color: #ff9500;font-size: 15px;"><fmt:formatDate value="${pro_start}" pattern="MM월dd일"/> 오픈예정</span>

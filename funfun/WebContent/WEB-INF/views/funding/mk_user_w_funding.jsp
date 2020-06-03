@@ -73,22 +73,24 @@
 	    			<div class="funding-wrap">
 						<div class="order-list" data-choiced-legnth="1">
 							<div class="order-cont">
-								<p class="fund-tit">${option.opt_title}</p>
-								<p class="text">${option.opt_detail}</p>
+								<p class="fund-tit"><fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원 펀딩</p>
+								<p class="text">${option.opt_title}</p>
 								<div>
 									<div class="option">
 										<span class="option-cont">옵션-</span>
-										<span>${option.opt_condition}</span>
+										<span>${option.opt_detail}</span>
 									</div>
+								<%-- 
 									<p class="sum"><em>수량 : 1개</em>
 									<fmt:formatNumber type="number" maxFractionDigits="3" value="${option.opt_price}"/>원</p>
+								--%>
 								</div>
 							</div>
 						</div>
 						<div class="balance order-info">
 							<p class="order-infodt">보유 예치금 <p>
-							<input type="hidden" name="mem_balance" value="${user.mem_balance}"/>
-							<span class="order-infodd"><span id="usablePoint"><fmt:formatNumber type="number" maxFractionDigits="3" value="${user.mem_balance}"/></span>원</span>
+							<input type="hidden" name="mem_balance" value="${balance}"/>
+							<span class="order-infodd"><span id="usablePoint"><fmt:formatNumber type="number" maxFractionDigits="3" value="${balance}"/></span>원</span>
 							<p id="balance-warning"></p>
 						</div>
 						<div class="order-info conf-info">
@@ -112,8 +114,7 @@
 					<!-- 결제 예약시 유의사항 -->
 						<p class="fund-tit">결제 예약시 유의사항</p>
 						<ul>
-							<li>- 결제실행일에 결제자 귀책사유(예치금 잔액 부족, 이용정지 등)로 인하여 결제가 실패할 수 있으니, 결제수단이 유효한지 한번 확인하세요.</li>
-							<li>- 1차 결제 실패 시 실패일로부터 3 영업일 동안 재 결제를 실행합니다.</li>
+							<li>- 결제자 귀책사유(예치금 잔액 부족, 이용정지 등)로 인하여 결제가 실패할 수 있으니, 결제수단이 유효한지 한번 확인하세요.</li>
 						</ul>
 					</div>
 					<div class="funding-wrap" style="height:400px;">

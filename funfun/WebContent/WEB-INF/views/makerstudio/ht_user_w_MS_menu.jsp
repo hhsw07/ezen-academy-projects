@@ -26,10 +26,20 @@ $(document).ready(function(){
 
 <body>
  <div class="col-sm-2" style="padding-top:30px;height:100%">
+
+	<c:set var="pro" value="${projectInfo}"/>
+	<c:set var="rate" value="${pro.pro_money/pro.pro_target*100 }"/>
+	<c:set var="today" value="<%=new java.util.Date()%>" />
+	<fmt:parseDate var="pro_start_date" value="${pro.pro_start_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+	<fmt:parseDate var="pro_finish_date" value="${pro.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+
+
+
+
+
 	<div class="panel-group">
 		<div class="panel panel-default">
 		<div class="panel-body">
-		
 		<span class="sub_gray_font">
 		${makerInfo.maker_name }님의<br> 
 		프로젝트
@@ -37,20 +47,41 @@ $(document).ready(function(){
 		
 		</div>
 	</div>
+	
 	<div class="panel-group">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<div class="panel-body sub_gray_font proCancel" style="font-size:1.1em;">
-				프로젝트 신청 취소
-				</div>
-				<div class="panel-body sub_gray_font proCurrnet" style="font-size:1.1em;">
-				프로젝트 현황
-				</div>
-				<div class="panel-body sub_gray_font proQnAManage" style="font-size:1.1em;">
-				프로젝트 문의 관리
+
+	<c:choose>
+		<c:when test="${pro.pro_sub_date==null }">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="panel-body sub_gray_font proCancel" style="font-size:1.1em;">
+					프로젝트 신청 취소
+					</div>
+					<div class="panel-body sub_gray_font proCurrnet" style="font-size:1.1em;">
+					프로젝트 현황
+					</div>
+					<div class="panel-body sub_gray_font_inact" style="font-size:1.1em;">
+					프로젝트 문의 관리
+					</div>
 				</div>
 			</div>
-		</div>
+		</c:when>
+		<c:otherwise>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="panel-body sub_gray_font_inact" style="font-size:1.1em;">
+					프로젝트 신청 취소
+					</div>
+					<div class="panel-body sub_gray_font proCurrnet" style="font-size:1.1em;">
+					프로젝트 현황
+					</div>
+					<div class="panel-body sub_gray_font proQnAManage" style="font-size:1.1em;">
+					프로젝트 문의 관리
+					</div>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	</div>
 	<div class="panel-group">
 		<div class="panel panel-default">
@@ -59,9 +90,19 @@ $(document).ready(function(){
 			
 			<c:when test="${storeCode==-1 }">
 
-			<div class="panel-body sub_gray_font storeOpenReg" style="font-size:1.1em;">
-			스토어 등록 신청
-			</div>
+			<c:choose>
+				<c:when test="${pro.pro_finish_date>today and rate>=100 }">
+					<div class="panel-body sub_gray_font storeOpenReg" style="font-size:1.1em;">
+					스토어 등록 신청
+					</div>
+				</c:when>	
+				<c:otherwise>		
+					<div class="panel-body sub_gray_font_inact" style="font-size:1.1em;">
+					스토어 등록 신청
+					</div>
+				</c:otherwise>
+			</c:choose>
+			
 			
 			<div class="panel-body">
 			 	<details open>

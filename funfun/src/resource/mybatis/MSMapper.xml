@@ -38,14 +38,18 @@
 	
 
 	<select id="myStoreManage" resultMap="storeOrderResult" parameterType="storeOrder">
-	
 	SELECT *
 	FROM STORE_ORDER
 	WHERE STO_OPT_CODE IN (
 	SELECT STO_OPT_CODE
 	FROM STORE_OPTION
 	WHERE STO_CODE = #{STO_CODE})
+	</select>
 	
+	<select id="getProjectInfo" resultMap="proResult" parameterType="int">
+	SELECT *
+	FROM PROJECT
+	WHERE PRO_CODE = #{pro_code}
 	</select>
 	
 	<select id="proQnAList" resultMap="qnaResult" parameterType="int">

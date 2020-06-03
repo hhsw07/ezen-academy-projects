@@ -52,6 +52,19 @@
 	.report-modal{width:100%;}
 	.report-modal tr th, td {padding: 10px 5px;}
 	.report-cont{resize: none;}
+	.project-story img{width:100%;}
+	.reward-qty {margin-bottom: 5px; font-size: 12px; line-height: 21px; color: #ff9500;}
+	.soldout {color: #f89ba6;}
+	input[type=file]{display:inline;}
+	.project-inquiry{width:100%; padding: 15px;}
+	.inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
+	.title_td {display: inline-block; width: 300px; padding-left: 25%; padding-right: 25%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; padding-left: 40px;}
+	th{text-align:center;}
+	.hide{display: none;}
+	.qnaShow{display: show;}
+	.qna_answer{color:#0B7903;}
+	.qna_answer_pre{width:90%; margin-left:10%; font-family: 'Nanum Gothic', sans-serif; font-weight: 800;  font-size: 12pt;}
+		
 
 /* 옵션선택 */
 	.funding-noti{margin-bottom: 24px;line-height: 1.29;font-size: 28px;font-weight: 400;}
@@ -68,6 +81,12 @@
 	.funding-opt h3 {margin-bottom: 28px;}
 	.top-area {margin-bottom: 20px; margin-top: 80px;}
 	.sub-text {margin-bottom: 5px;padding: 0 5px; font-size: 14px; font-weight: 500; line-height: 18px;}
+	.check-noti{margin: 12px auto 0; width:1000px; color:#888888;font-size: 13px; font-weight: 600;}
+	ul {list-style: none;padding:0;}
+	.opt-list{width: 100%; margin-bottom: 5px;padding:0 10px;}
+	.opt-box {padding: 15px; background: #f9f9f9; border: 1px solid #fff; border-radius: 5px;}
+	.next-step{width:250px; margin:20px auto;}
+	
 	
 /* 펀딩하기 */
 	.funding-wrap{margin:20px auto;width: 900px;}

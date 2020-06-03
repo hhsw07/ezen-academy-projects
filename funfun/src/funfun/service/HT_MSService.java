@@ -43,8 +43,8 @@ public class HT_MSService {
 		return dao.myStoreManage(sto_code);
 	}
 	
-	public Project projectInfo(int pro_code) {
-		return dao.projectInfo(pro_code);
+	public Project getProjectInfo(int pro_code) {
+		return dao.getProjectInfo(pro_code);
 	}
 	
 	public ArrayList<ProjectQna> proQnAList(int pro_code){
