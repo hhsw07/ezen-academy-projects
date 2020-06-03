@@ -162,7 +162,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">발송시작 예정일</div>
 						<div class="reward_reg_content_container2">
-							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDate" class="form-control" style="width:60%;" >
+							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDate" class="form-control" style="width:60%;" autocomplete="off">
 						</div>
 					</div>
 				
@@ -246,7 +246,7 @@
 					<div class="reward_reg_subTitle">
 						<div class="reward_reg_content_container1">발송시작 예정일</div>
 						<div class="reward_reg_content_container2">
-							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDate" class="form-control" style="width:60%;" >
+							<input type="text" placeholder="날짜를 선택하세요" name="opt_deliver_date" id="deliveryDate" class="form-control" style="width:60%;" autocomplete="off">
 						</div>
 					</div>
 				

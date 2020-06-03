@@ -61,7 +61,6 @@ public class HT_ProjectRegCtrl {
 		d.addAttribute("projectCode", service.getProjectCode());
 		int pro_code = service.getProjectCode();
 		session.setAttribute("projectCode", service.getProjectCode());
-		System.out.println("새로 만든 프로젝트 코드 : " + service.getProjectCode());
 		return "redirect:/ProjectReg.do?method=projectManage&pro_code="+pro_code;
 	}
 	
@@ -85,18 +84,14 @@ public class HT_ProjectRegCtrl {
 		session.setAttribute("projectInfo", project);
 
 		if(service.getProOptionListCount(pro_code)==0) {
-			System.out.println("옵션 리스트 없을 때 getProOptionList pro_code : " + pro_code);
 			d.addAttribute("projectOption", -1);
 		} else {
-			System.out.println("옵션 리스트 있을 때 getProOptionList pro_code : " + pro_code);
 			d.addAttribute("projectOption", 1);
 		}
 		
 		if(service.getProRiskListCount(pro_code)==0) {
-			System.out.println("리스크 리스트 없을 때 getProRiskList pro_code : " + pro_code);
 			d.addAttribute("projectRisk", -1);
 		} else {
-			System.out.println("리스크 리스트 있을 때 getProRiskList pro_code : " + pro_code);
 			d.addAttribute("projectRisk", 1);
 		}
 		
@@ -179,8 +174,6 @@ public class HT_ProjectRegCtrl {
 				printWriter.close();
 			}
 		}
-		
-		System.out.println("스토리 파일 업로드 프로세스");
 		return null;
 	}
 	
@@ -249,7 +242,6 @@ public class HT_ProjectRegCtrl {
 	public String proRiskUnitReg(HttpServletRequest request, Model d, ProRisk cre) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
-		System.out.println("리스크등록 프로젝트 코드:" + projectCode);
 		cre.setPro_code(projectCode);
 		service.regProRisk(cre);
 		return "redirect:/ProjectReg.do?method=risk";
@@ -266,7 +258,6 @@ public class HT_ProjectRegCtrl {
 		service.deleteProRisk(risk_code);
 		return "redirect:/ProjectReg.do?method=risk";
 	}
-	
 	
 	
 	@RequestMapping(params="method=projectRegister")
