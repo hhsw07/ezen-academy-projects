@@ -161,7 +161,7 @@ $(document).ready(function(){
 		//비밀번호 8자이상 영문숫자조합 정규표현식
 		function isPassword(asValue) {
 
-			var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/; //  8 ~ 20자 영문, 숫자 조합
+			var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$/; //  8 ~ 20자 영문, 숫자, 특수문자 조합
 
 			return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
 
@@ -235,7 +235,7 @@ $(document).ready(function(){
 		//패스워드 정규표현식 검증
 		$('input[name=mem_pw]').on('focusout', (event)=>{
 			if(!isPassword(event.target.value)){
-				vm2.msg="비밀번호는 8~20자 영문과 숫자가 조합되어야 합니다.";
+				vm2.msg="비밀번호는 8~20자 영문과 숫자, 특수문자가 조합되어야 합니다.";
 				event.target.value="";
 				vm2.fontColor="red";
 				vm2.isShaking=true;
