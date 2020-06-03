@@ -14,7 +14,7 @@
 	
 	<resultMap type="funfun.vo.MemberInfo" id="memberInfo"></resultMap>
 	<select id="getMemberInfo" resultMap="memberInfo" parameterType="String">
-		select mem_code, mem_email, mem_name, mem_profile, mem_phoneno, mem_balance from member where mem_email=#{email}
+		select mem_code, mem_email, mem_name, mem_profile, mem_phoneno, mem_balance, mem_favor from member where mem_email=#{email}
 	</select>
 	
 	
@@ -101,5 +101,6 @@
 	 	SELECT nvl(b.sto_title, ' ') title, nvl(b.sto_image, ' ') image, nvl(a.sto_opt_detail, ' ') detail, nvl(a.sto_opt_price, 0) price FROM STORE_OPTION a, store b
 	 	WHERE a.STO_CODE =b.sto_code AND STO_OPT_CODE=#{optcode}
 	 </select>
+	 
 	
 </mapper>

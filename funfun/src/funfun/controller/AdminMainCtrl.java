@@ -1,7 +1,6 @@
 package funfun.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,15 +67,33 @@ public class AdminMainCtrl {
 	
 	
 	
-	
-	
-	
-	
-	
 	@RequestMapping(value="/admin-management.do")
-	public String enterAdminManagement() {
+	public String enterAdminManagement(Paging sch, Model d) {
+		d.addAttribute("list", sw_service.list(sch));
 		return "WEB-INF\\views\\admin\\adminManagement.jsp";
 	}
+	
+	@RequestMapping(value="/admin-management-insert.do")
+	public String insertAdminManagement(Admin ins) {
+		ins.setAdmin_pw("zzzz"+ins.getAdmin_code());
+		sw_service.insert(ins);
+		return "redirect:/admin-management.do";
+	}
+	@RequestMapping(value="/admin-management-update.do")
+	public String updateAdminManagement(Admin upt) {
+		sw_service.update(upt);
+		return "redirect:/admin-management.do";
+	}
+	@RequestMapping(value="/admin-management-delete.do")
+	public String deleteAdminManagement(Admin del) {
+		sw_service.delete(del.getAdmin_code());
+		return "redirect:/admin-management.do";
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/project-management.do")
 	public String enterProjectManagement(Paging sch, Model d) {

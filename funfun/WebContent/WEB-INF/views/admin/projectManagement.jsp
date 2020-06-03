@@ -122,7 +122,7 @@
                       <form method="post" action="project-update-curr.do">
                       <div class="modal-body">
                           
-                          <div class="form-group">
+                          <div class="form-group" v-if="detail.pro_curr=='정지' || detail.pro_curr==''">
                                 <label for="message-text" class="control-label">해당 프로젝트 을 승인하시겠습니까? </label><br><br>
                                 <div style="text-align: center;">
                                     <input type="radio" class="form-data" value="정상" name="pro_curr">승인&nbsp;
@@ -130,11 +130,14 @@
                                     <input type="hidden" name="pro_code" :value="detail.pro_code">
                                 </div>
                           </div>
+                           <div class="form-group" v-else>
+                          		<label for="message-text" calss="control-label">해당 상품은 이미 승인 처리 되었습니다</label>
+                          </div>
                         
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="submit" class="btn btn-primary">승인</button>
+                        <span v-if="detail.sto_curr=='정지' || sto_cur==''"><button type="submit" class="btn btn-primary" id="appr_Btn">승인</button></span>
                       </div>
                     </form>
                   </div>

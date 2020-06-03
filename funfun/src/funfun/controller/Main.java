@@ -82,7 +82,7 @@ public class Main {
 	public String loginSuccess(MemberLogin m, HttpServletRequest req, @RequestParam("redirectAddress") String redirectAddress) {
 		HttpSession session = req.getSession();
 		if(service.verifyId(m)==1) {
-			//로그인 성공 시 이메일로 멤버(이름, 이메일, 멤버코드, 메이커코드 정보 가져옴)
+			//로그인 성공 시 이메일로 멤버(이름, 이메일, 멤버코드, 메이커코드, 관심카테고리 정보 가져옴)
 			//메이커가 아닌 경우 메이커코드에 -1 set
 			MemberInfo memberInfo = service.getMemberInfo(m.getMem_email());
 			System.out.println("프로필:"+memberInfo.getMem_profile());
@@ -152,10 +152,17 @@ public class Main {
 	}
 	
 	@RequestMapping("/getMainViewProject.do")
-	public ResponseEntity getMainViewProject(@RequestParam("page") int page) {
+	public ResponseEntity getMainViewProject(@RequestParam("page") int page, @RequestParam("category") String category) {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-		ArrayList<MainViewProject> list = service.getMainViewProject(page);
+		String cate;
+		if("".equals(category)) {
+			cate=null;
+		} else {
+			cate=category;
+		}
+		
+		ArrayList<MainViewProject> list = service.getMainViewProject(page, cate);
 		Gson gson = new Gson();
 		String result =gson.toJson(list);
 		result="{\"list\":"+result+"}";

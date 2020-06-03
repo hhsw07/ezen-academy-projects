@@ -142,10 +142,11 @@ public class MK_FundingCtrl {
 	}
 	// 펀딩 페이지
 	@RequestMapping(params="method=fund")
-	public String fund(@ModelAttribute("funding") Funding fund, Model d) {
+	public String fund(@ModelAttribute("funding") Funding fund, @RequestParam("mem_code") int mem_code, Model d) {
 		System.out.println("펀딩하기");
 		System.out.println(fund.getOpt_code());
 		d.addAttribute("option", service.option(fund.getOpt_code()));
+		d.addAttribute("balance", service.balance(mem_code));
 		return "WEB-INF\\views\\funding\\mk_user_w_funding.jsp";
 	}
 	// 펀딩하기 - 정보입력

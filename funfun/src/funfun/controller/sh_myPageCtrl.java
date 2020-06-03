@@ -79,6 +79,7 @@ public class sh_myPageCtrl {
 				 
 			 }else {
 				 	HashMap<String,String> hmBalO = new HashMap<>();
+				 	System.out.println("orderPrice"+orderPrice);
 					hmBalO.put("orderPrice",orderPrice);
 					hmBalO.put("memEmail",memberinfo.getMem_email());
 					service.cancleOrderBal(hmBalO);

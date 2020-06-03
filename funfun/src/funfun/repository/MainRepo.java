@@ -13,6 +13,7 @@ import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
 import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
+import funfun.vo.PagingStartEnd;
 import funfun.vo.StoreTitleImageDetailPrice;
 
 
@@ -61,5 +62,5 @@ public interface MainRepo {
 	
 	public StoreTitleImageDetailPrice getStoreInfo(int optCode);
 	
-	public ArrayList<MainViewProject> getMainViewProjectList(int page); 
+	public ArrayList<MainViewProject> getMainViewProjectList(PagingStartEnd paging); 
 }

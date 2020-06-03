@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="proDetail" resultType="Project" parameterType="int">
-		SELECT pro_code, pro_title, pro_image, pro_story FROM project WHERE pro_code = #{pro_code}
+		SELECT pro_code, pro_title, pro_image, pro_story, pro_curr FROM project WHERE pro_code = #{pro_code}
 	</select>
 	
 	<update id="UptCurr" parameterType="Project">

@@ -11,25 +11,26 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.check-noti{margin: 12px auto 0; width:1000px; color:#888888;font-size: 13px; font-weight: 600;}
-ul {list-style: none;padding:0;}
-.opt-list{width: 100%; margin-bottom: 5px;padding:0 10px;}
-.opt-box {padding: 15px; background: #f9f9f9; border: 1px solid #fff; border-radius: 5px;}
-.next-step{width:250px; margin:20px auto;}
+.noti-check input[type="checkbox"] {display: none;}
+.noti-check input[type="checkbox"] + label {width: 15px;height: 15px;background: #ff9500; cursor: pointer; border-radius: 5px; margin: 15px 15px 8px 10px;}
+.noti-check input[type="checkbox"]:checked + label {background:url(img/ck01.png) #ff9500 no-repeat center/20px 20px;margin: 15px 0 8px 10px;}
+.noti-check input[type="checkbox"] + label span {display: block;position: absolute;left: 328px;}
+
+
 
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		console.log("옵션선택");
+		var mem_code = $("[name=mem_code]").val();
+		console.log("멤버 코드 " + mem_code);
+		
+		
 		$("#funding").click(function(){
-			console.log("버튼클릭");
 			var opt_no = $("[name=optcode]:checked").val();
-			//$("[name=opt_code]").val(opt_no);
-			console.log("옵션번호"+opt_no);
-			//$("form").attr("action", "${path}/funding.do?method=fund&opt_code="+opt_no);
-			//$("form").submit();
+			$("[name=opt_code]").val(opt_no);
 			if(opt_no!=null){
-				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no);
+				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
 			} else{
 				alert("옵션을 선택하세요");
 			}
@@ -46,42 +47,24 @@ ul {list-style: none;padding:0;}
 				<div>
 					<p class="funding-noti"><strong>잠깐!</strong> 결제하기가 아닌 펀딩하기인 이유를 확인하고, 펀딩하세요.</p>
 					<div class="noti-check">
-						<label class="checkbox" for="checkbox1">
-                       		<span class="icons">
-                       			<span class="first-icon fa fa-square-o"></span>
-                        		<span class="second-icon fa fa-check-square-o"></span>
-                        	</span>
-                        	<input type="checkbox" value="" id="checkbox1" data-toggle="checkbox">
-                        	<p class="noti-ck">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</p>
-						</label>
+						<input type="checkbox" id="checkbox1" >
+						<label for="checkbox1"><span style="top: 178px;">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</span></label>
 					</div>
 					<div class="noti-detail">
 						<p>펀딩 후, 리워드를 제작・준비하는 크라우드펀딩 특성상, 품질 이슈가 발생할 수 있습니다.</p>
 						<p>리워드 품질 이슈 발생 시 펀딩 안내 - <strong>상세 정책</strong>을 꼭 확인해주세요. </p>
 					</div>
 					<div class="noti-check">
-						<label class="checkbox" for="checkbox2">
-                       		<span class="icons">
-                       			<span class="first-icon fa fa-square-o"></span>
-                        		<span class="second-icon fa fa-check-square-o"></span>
-                        	</span>
-                        	<input type="checkbox" value="" id="checkbox2" data-toggle="checkbox">
-                        	<p class="noti-ck">펀딩 종료 후에는 결제를 취소할 수 없습니다.</p>
-						</label>
+						<input type="checkbox"  id="checkbox2">
+						<label for="checkbox2"><span style="top: 343px;">펀딩 종료 후에는 결제를 취소할 수 없습니다.</span></label>
 					</div>
 					<div class="noti-detail">
 						<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 						<p>펀딩 종료일 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
 					</div>
 					<div class="noti-check">
-						<label class="checkbox" for="checkbox3">
-                       		<span class="icons">
-                       			<span class="first-icon fa fa-square-o"></span>
-                        		<span class="second-icon fa fa-check-square-o"></span>
-                        	</span>
-                        	<input type="checkbox" value="" id="checkbox3" data-toggle="checkbox">
-                        	<p class="noti-ck">펀딩한 리워드는 즉시 배송되지 않습니다.</p>
-						</label>
+						<input type="checkbox"  id="checkbox3">
+						<label for="checkbox3"><span style="top: 477px;">펀딩한 리워드는 즉시 배송되지 않습니다.</span></label>
 					</div>
 					<div class="noti-detail">
 						<p>메이커가 약속한 리워드 발송 시작일을 확인했나요? 메이커는 펀딩이 성공해야 리워드 제작・준비를 진행합니다.</p>
@@ -130,18 +113,17 @@ ul {list-style: none;padding:0;}
 						</div>
 					</div>
                 </div>
-				
 			</div>
-			
 			
 			<div class="funding-opt" >
 				<div class="top-area">
 					<h3><em>리워드 선택</em></h3>
 					<p class="sub-text">펀딩해주시는 금액에 따라 감사의 의미로 리워드를 제공해 드립니다.</p>
 				</div>
-				<form method="post">
-				<input type="hidden" name="opt_code"/>
-				<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+				<form method="post" >
+					<input type="hidden" name="opt_code"/>
+					<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+				</form>
 				<div>
 					<ul>
 					<c:forEach var="opt" items="${opt}" >
@@ -156,9 +138,10 @@ ul {list-style: none;padding:0;}
 		                        	</span>
 		                        	<input type="radio" value="${opt.opt_code}" id="checkbox1" data-toggle="radio" name="optcode">
 								</label>
+								<p class="reward-qty">남은 수량 <strong>${opt.opt_max}</strong>개 &nbsp; </p>
 								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩합니다.</p>
+								<p class="">${opt.opt_title}</p>
 								<p class="">${opt.opt_detail}</p>
-								<p class="">${opt.opt_condition}</p>
 								<p class="">배송비 <fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원 | 리워드 제공 예상일 : 
 								<em><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</em></p>
 								<div id="writeopt" style="display:none;">
@@ -177,7 +160,6 @@ ul {list-style: none;padding:0;}
 					</c:forEach>
 					</ul>
 				</div>
-				</form>
 			</div>
 			
 			<div class="next-step">

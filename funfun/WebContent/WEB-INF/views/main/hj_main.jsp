@@ -53,10 +53,11 @@
     	</div>
     	
 	<br><br><br><br>
-	<h1 style="padding-left:10px; ">당신을 위한 프로젝트</h1>
+	<h2 style="padding-left:10px; ">당신을 위한 프로젝트({{msg}})</h2>
 	<div class="row" id="project-list">
-    <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:img-src="item.imgSrc"
-    v-bind:category="item.category" v-bind:percent="item.percent" ></project-component>
+    <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:image="item.image"
+    v-bind:category="item.category" v-bind:percent="item.percent" v-bind:target-funding="item.targetFunding" v-bind:rest-day="item.restDay" 
+    v-bind:code="item.code"></project-component>
 	</div>
            
            
@@ -92,12 +93,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="${path }/js/projectComponent.js"></script>
 <script>
-  const sampleData ={
-        "title":`STOLI 립파우치 - 매일 쓰는 당신의 립스틱을 아름답게 품어줄게요`,
-        "imgSrc":`https://picsum.photos/400/400`,
-        "category":"패션.잡화",
-        "percent":"90%"
-        };
 
   var vm=new Vue({
     el:'#vue-container',
@@ -107,7 +102,9 @@
       ],
       isShadowOn:true,
       isShadowOff:false,
-      page:0
+      page:1,
+      favors:[],
+      msg:"전체 카테고리"
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
@@ -120,9 +117,15 @@
          	  this.isShadowOff=false;
       	}
         if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) {
-          if(this.page<3){
-        	  this.loadMore();
-        	  this.page=this.page+1;
+          if(this.page<=3){
+        	  if(this.favors.length===0){
+        		  this.loadMore(this.page, "");
+            	  this.page=this.page+1;
+        	  } else {
+        		  this.loadMore(this.page, this.favors[0]);
+        		  this.page=this.page+1;
+        	  }
+        	  
           }
         }
       })
@@ -131,20 +134,46 @@
       'project-component':projectComponent,
     },
     methods:{
-      loadMore:function(){
-    	  for (var i = 0; i < 15; i++) {
-          	let ranNumber=Math.round(Math.random()*100);
-          	let ranPercent=Math.round(Math.random()*101);
-          	let sample= new Object();
-          	sample.title=sampleData.title;
-          	sample.category=sampleData.category;
-          	sample.percent=ranPercent+'%';
-          	sample.imgSrc=`https://picsum.photos/300/200/?random?`+ranNumber;
-            this.projectList.push(sample);
-    	  }
-      }
+      loadMore:function(page, category){
+    	  var addf = this.addFunction;
+    	  $.ajax({
+				type:"get",
+				url:"${path}/getMainViewProject.do?page="+page+"&category="+category,
+				dataType:"json",
+				success:(data)=>{
+					data.list.forEach(el=>{
+						addf(el);
+					})
+					
+				},
+				error:function(err){
+					console.log("ajax처리 에러");
+					console.log(err);
+				}
+			});
+      },
+      addFunction:function (data){
+    	  data.image="http://localhost:5080${path}/"+data.image;
+    	  data.targetFunding=numberWithCommas(data.targetFunding)+"원";
+    	  data.restDay=data.restDay+"일 남음";
+    	  this.projectList.push(data);
+      },
     }
   });
+  
+  function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+</script>
+<script>
+	$(document).ready(function(){
+		var favor="${user.mem_favor}";
+		var favors=favor.split(',');
+		if(favor!==''){
+			vm.favors=favors;
+			vm.msg=favors[0]; 
+		}
+	})
 </script>
 </body>
 

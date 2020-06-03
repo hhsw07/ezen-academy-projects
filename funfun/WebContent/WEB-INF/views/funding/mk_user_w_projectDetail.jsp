@@ -12,18 +12,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.project-story img{width:100%;}
-.reward-qty {margin-bottom: 5px; font-size: 12px; line-height: 21px; color: #ff9500;}
-.soldout {color: #f89ba6;}
-input[type=file]{display:inline;}
-.project-inquiry{width:100%; padding: 15px;}
-.inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
-.title_td {display: inline-block; width: 300px; padding-left: 25%; padding-right: 25%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; padding-left: 40px;}
-th{text-align:center;}
-.hide{display: none;}
-.qnaShow{display: show;}
-.qna_answer{color:#0B7903;}
-.qna_answer_pre{width:90%; margin-left:10%; font-family: 'Nanum Gothic', sans-serif; font-weight: 800;  font-size: 12pt;}
 
 </style>
 <script>
@@ -129,7 +117,7 @@ th{text-align:center;}
 <body>
 	<div class="main" style="overflow:hidden;">
 	    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
-	    	<div class="project-title" >
+	    	<div class="project-title" id="top">
 	    		<div class="label label-warning">${project.cate_title}</div>
 	    		<h3 style="font-weight:800;">${project.pro_title}</h3>
 	    	</div>
@@ -275,7 +263,7 @@ th{text-align:center;}
 					<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 						<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
 							<h6><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩</h6>
-							<p>${opt.opt_title}</p><br>
+							<p>${opt.opt_title}</p>
 							<p class="text-muted">${opt.opt_detail}</p><br>
 							<p class="text-muted">배송비</p>
 							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
@@ -385,6 +373,8 @@ th{text-align:center;}
 				</div>
 			</div>
 	    
+		<!-- Top Button -->	  
+		<div style="position:fixed;width: 46px;height:45px;right: 130px;bottom:50px;"><a href="#top"><img src="img/up.png" border="0" style="width: 45px;"></a></div>
 	    
 		</div>
 	</div>

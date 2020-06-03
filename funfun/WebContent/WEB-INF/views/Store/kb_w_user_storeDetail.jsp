@@ -52,6 +52,27 @@
 			
 			});
 			
+			$("#cnt_input").keypress(function(event){
+				var Select=document.querySelector("#option_select");
+				price = Select.options[Select.selectedIndex].dataset.price;
+				var tot = 0;
+				var cnt = $("#cnt_input").val();
+				
+				if(event.keyCode==13){
+					if(cnt < 1){
+						alert("수량은 1개 이상 이여야 합니다.");
+						$(this).val("1");
+						
+					} else {
+						tot = price * cnt;
+						
+						$("#price_Span").html(numberWithCommas(tot));
+						$("[name=sto_price]").val(tot);
+					}
+				}
+			})
+			
+			
 			 var article = ("#sto_QnA_Div .qnaShow");
 	            $("#sto_QnA_Div .item td").click(function(){
 	                var myArticle = $(this).parent().next("tr");
@@ -87,6 +108,7 @@
 	            $("#Pay_Btn").click(function(){
 	            	if(user != ''){
 	            		if(opt_code != null && opt_code != ''){
+	            			$("select").prop('selectedIndex',0);
 	            			$("#pay_form").submit();
 	            		} else {
 	            			alert("옵션 선택 및 수량 설정하세요");
@@ -148,6 +170,7 @@
 	                </div>
 	                <div id="option_cnt_div">
 	                    <span id="option_cnt_title">수량 : </span>
+	                    <input hidden="hidden" />
 	                    <input type="number" class="form-data" id="cnt_input" name="opt_cnt" value="1" style="text-align:center">
 	                </div>
 	                <div id="option_price_Div">

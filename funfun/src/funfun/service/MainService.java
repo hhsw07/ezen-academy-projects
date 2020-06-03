@@ -16,6 +16,7 @@ import funfun.vo.MyFundingInfo;
 import funfun.vo.MyOrderInfo;
 import funfun.vo.NotificationInfo;
 import funfun.vo.OptCodeAndCnt;
+import funfun.vo.PagingStartEnd;
 import funfun.vo.StoreTitleImageDetailPrice;
 
 @Service
@@ -179,9 +180,19 @@ public class MainService {
 		return list0;
 	}
 	
-	public ArrayList<MainViewProject> getMainViewProject(int page){
-		ArrayList<MainViewProject> list=repo.getMainViewProjectList(page);
+	public ArrayList<MainViewProject> getMainViewProject(int page, String cate){
+		PagingStartEnd paging = new PagingStartEnd();
+		paging.setCategory(cate);
+		paging.setStart((page-1)*9);
+		paging.setEnd(page*9);
+		ArrayList<MainViewProject> list=repo.getMainViewProjectList(paging);
 		
+		for(MainViewProject m:list) {
+		
+			int a=(int)Math.round(((double)100*m.getCurrentFunding()/m.getTargetFunding()));
+			m.setPercent(a);
+			m.setRestDay(Math.floor(m.getRestDay()));
+		}
 		return list;
 	}
 	
