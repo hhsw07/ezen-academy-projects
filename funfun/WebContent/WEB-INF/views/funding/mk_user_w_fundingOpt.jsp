@@ -24,18 +24,20 @@
 		console.log("옵션선택");
 		var mem_code = $("[name=mem_code]").val();
 		console.log("멤버 코드 " + mem_code);
-		
-		
 		$("#funding").click(function(){
-			var opt_no = $("[name=optcode]:checked").val();
-			$("[name=opt_code]").val(opt_no);
-			if(opt_no!=null){
-				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
+			var checks = document.querySelectorAll("[name=reason]");
+			if(checks[0].checked==false && checks[1].checked==false && checks[2].checked==false) {
+				alert("펀딩하기인 이유를 확인하고 체크해주세요");
 			} else{
-				alert("옵션을 선택하세요");
+				var opt_no = $("[name=optcode]:checked").val();
+				$("[name=opt_code]").val(opt_no);
+				if(opt_no!=null){
+					$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
+				} else{
+					alert("옵션을 선택하세요");
+				}
 			}
 		});
-		
 	});
 
 </script>
@@ -47,7 +49,7 @@
 				<div>
 					<p class="funding-noti"><strong>잠깐!</strong> 결제하기가 아닌 펀딩하기인 이유를 확인하고, 펀딩하세요.</p>
 					<div class="noti-check">
-						<input type="checkbox" id="checkbox1" >
+						<input type="checkbox" name="reason" id="checkbox1" >
 						<label for="checkbox1"><span style="top: 178px;">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</span></label>
 					</div>
 					<div class="noti-detail">
@@ -55,7 +57,7 @@
 						<p>리워드 품질 이슈 발생 시 펀딩 안내 - <strong>상세 정책</strong>을 꼭 확인해주세요. </p>
 					</div>
 					<div class="noti-check">
-						<input type="checkbox"  id="checkbox2">
+						<input type="checkbox"  name="reason" id="checkbox2">
 						<label for="checkbox2"><span style="top: 343px;">펀딩 종료 후에는 결제를 취소할 수 없습니다.</span></label>
 					</div>
 					<div class="noti-detail">
@@ -63,7 +65,7 @@
 						<p>펀딩 종료일 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
 					</div>
 					<div class="noti-check">
-						<input type="checkbox"  id="checkbox3">
+						<input type="checkbox"  name="reason" id="checkbox3">
 						<label for="checkbox3"><span style="top: 477px;">펀딩한 리워드는 즉시 배송되지 않습니다.</span></label>
 					</div>
 					<div class="noti-detail">
