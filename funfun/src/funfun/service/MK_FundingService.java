@@ -142,5 +142,9 @@ public class MK_FundingService {
 	public void uptBalance(Funding upt) {
 		dao.uptBalance(upt);
 	}
+	// 옵션 제한수량 변경
+	public void uptCnt(Funding upt) {
+		dao.uptCnt(upt);
+	}
 
 }
