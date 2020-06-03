@@ -108,7 +108,7 @@
 	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
 	                     <div class="logo-container dropdown-toggle" data-toggle="dropdown">
 	                        <div class="logo">
-	                            <img src="${user.mem_profile }">
+	                            <img src="${user.mem_profile }" onerror="this.src='https://stickershop.line-scdn.net/stickershop/v1/product/1629282/LINEStorePC/main.png;compress=true'" />
 	                        </div>
 	                        <div class="brand">
 	                            ${user.mem_name }
@@ -173,7 +173,7 @@
 			$(location).attr("href","${path}/login.do");
   		}else{
   			//alert("채팅페이지로 이동");
-  			chatting_window = window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
+  			chatting_window = window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=400, height=680, left=100, top=200"); 
   		}
   	}
   </script>
