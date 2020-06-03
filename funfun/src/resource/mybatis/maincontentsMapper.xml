@@ -13,7 +13,12 @@ SELECT pro_code code, nvl(pro_title, ' ') title,
 nvl(CATE_TITLE, ' ') category, nvl(pro_target, 0) targetFunding,
 nvl(PRO_FINISH_DATE, current_date)-current_date restDay,
 nvl(PRO_IMAGE, ' ') image, nvl(pro_curr, '정지') pro_curr,
-nvl(PRO_MONEY, 0) currentFunding FROM project WHERE PRO_FINISH_DATE>current_date and pro_curr='정상' AND PRO_SUB_DATE IS NOT NULL ORDER BY PRO_FINISH_DATE ASC) a WHERE rownum<=#{end}) WHERE rn>${start}
+nvl(PRO_MONEY, 0) currentFunding FROM project WHERE PRO_FINISH_DATE>current_date and pro_curr='정상' AND PRO_SUB_DATE IS NOT NULL ]]>
+<if test="category != null">
+    AND cate_title like #{category}
+</if>
+<![CDATA[
+ORDER BY PRO_FINISH_DATE ASC) a WHERE rownum<=#{end}) WHERE rn>${start}
 		]]>
 	 </select>
 	

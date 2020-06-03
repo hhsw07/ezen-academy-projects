@@ -53,7 +53,7 @@
     	</div>
     	
 	<br><br><br><br>
-	<h1 style="padding-left:10px; ">당신을 위한 프로젝트</h1>
+	<h2 style="padding-left:10px; ">당신을 위한 프로젝트({{msg}})</h2>
 	<div class="row" id="project-list">
     <project-component style="cursor:pointer;" v-for="item in projectList" v-bind:title="item.title" v-bind:image="item.image"
     v-bind:category="item.category" v-bind:percent="item.percent" v-bind:target-funding="item.targetFunding" v-bind:rest-day="item.restDay" 
@@ -102,7 +102,9 @@
       ],
       isShadowOn:true,
       isShadowOff:false,
-      page:1
+      page:1,
+      favors:[],
+      msg:"전체 카테고리"
     },
     mounted(){
       window.addEventListener('scroll', (e)=>{
@@ -116,8 +118,14 @@
       	}
         if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) {
           if(this.page<=3){
-        	  this.loadMore(this.page);
-        	  this.page=this.page+1;
+        	  if(this.favors.length===0){
+        		  this.loadMore(this.page, "");
+            	  this.page=this.page+1;
+        	  } else {
+        		  this.loadMore(this.page, this.favors[0]);
+        		  this.page=this.page+1;
+        	  }
+        	  
           }
         }
       })
@@ -126,11 +134,11 @@
       'project-component':projectComponent,
     },
     methods:{
-      loadMore:function(page){
+      loadMore:function(page, category){
     	  var addf = this.addFunction;
     	  $.ajax({
 				type:"get",
-				url:"${path}/getMainViewProject.do?page="+page,
+				url:"${path}/getMainViewProject.do?page="+page+"&category="+category,
 				dataType:"json",
 				success:(data)=>{
 					data.list.forEach(el=>{
@@ -156,6 +164,16 @@
   function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
+</script>
+<script>
+	$(document).ready(function(){
+		var favor="${user.mem_favor}";
+		var favors=favor.split(',');
+		if(favor!==''){
+			vm.favors=favors;
+			vm.msg=favors[0]; 
+		}
+	})
 </script>
 </body>
 
