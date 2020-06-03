@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
+.project-story img{width:100%;}
 input[type=file]{display:inline;}
 .project-inquiry{width:100%; padding: 15px;}
 .inquiry-title{width: 100%; height: 60px; font-family: 'Nanum Gothic', sans-serif; font-weight: 800; font-size: 16pt; }
@@ -250,7 +251,7 @@ th{text-align:center;}
 			<div class="project-maker">
 				<div class="img-thumbnail" style="width:100%; padding:10px;">
 					<div  class="col-md-10">
-                 	   <img src="${project.maker}" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
+                 	   <img src="${path}/template/assets/img/mockup.png" alt="Circle Image" class="img-circle"  style="width: 50px; height: 50px;">
                  	   <span style="font-size:20px; vertical-align:middle;">${project.maker_name}</span>
                     </div>
                     <span class="col-md-2"><a href="#goinq"><button class="btn btn-block btn-lg btn-warning">문의하기</button></a></span>
@@ -261,7 +262,7 @@ th{text-align:center;}
 				<!-- 프로젝트 소개 -->
 				<div class="col-md-8 col-sm-6" style="margin-bottom: 100px;">
 					<h3>프로젝트 스토리</h3>
-					<div>
+					<div class="project-story">
 						${project.pro_story}
 					</div>
 				</div>
@@ -271,9 +272,9 @@ th{text-align:center;}
 					<div class="project-opt-info">
 					<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 						<button href="#fakelink" class="img-thumbnail opt-cont" style="width:300px;">
-							<h6>${opt.opt_title}</h6>
-							<p>${opt.opt_detail}</p><br>
-							<p class="text-muted">${opt.opt_condition}</p><br>
+							<h6><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩</h6>
+							<p>${opt.opt_title}</p><br>
+							<p class="text-muted">${opt.opt_detail}</p><br>
 							<p class="text-muted">배송비</p>
 							<p><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원</p>
 							<p class="text-muted">리워드 발송 시작일</p>

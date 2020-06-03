@@ -252,9 +252,9 @@
         			this.isButtonOn=false;
         		},
         		pass1Chk:function(){
-        			var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,20}$/; //  8 ~ 20자 영문, 숫자 조합
+        			var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,20}$/; //  8 ~ 20자 영문, 숫자 조합
         			if(!regExp.test(this.pass1)){
-        				this.alertMsg="비밀번호는 8~20자 영문과 숫자를 조합해야합니다.";
+        				this.alertMsg="비밀번호는 8~20자 영문과 숫자, 특수문자를 조합해야합니다.";
         				this.fontColor="red";
         				this.isShake=true;
         				setTimeout(()=>{

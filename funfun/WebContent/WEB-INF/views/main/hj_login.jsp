@@ -171,7 +171,7 @@
 				loginTry();
 			}
 		});
-		$('input[name=mem_pw]').on('keyup', event=>{
+		$('#pwd').on('keyup', event=>{
 			if(event.keyCode===13){
 				loginTry();
 			}
