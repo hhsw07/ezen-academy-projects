@@ -61,10 +61,7 @@ toastr.options = {
 				$('input:checkbox[value=\"'+$(memFavorArray)[i]+'\"]').prop("checked", true);
 			}
 			
-			$('.main').addClass('bounce');
-			setTimeout(()=>{
-				$('.main').removeClass('bounce');
-			},500);
+			
 			
 			var fileName = "${mlist.memProfile}"
 			$("[name=memProfile]").val(fileName);
@@ -95,6 +92,10 @@ toastr.options = {
             $("#submitBtn").click(function(){
             	$("#profileEditForm").submit();
             })
+            
+            $("#deleteProfile").click(function(){
+            	$('#imgId').attr('src', '${path}/z01_upload/basicimage.png')
+            })
 		})
 </script>
 </head>
@@ -116,7 +117,7 @@ toastr.options = {
 		    	
 		    	<input style="display:none" type="file" id="myImage" class="custom-file-input" name="profileImg"/>
 		    	
-		    	<span class="profile__img-edit">삭제</span>
+		    	<span id="deleteProfile" class="profile__img-edit">삭제</span>
 		    	</div>
 		    	
 		    	<!-- 정보 입력 -->
