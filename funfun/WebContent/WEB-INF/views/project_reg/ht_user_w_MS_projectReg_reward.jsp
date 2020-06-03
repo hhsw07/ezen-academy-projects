@@ -66,7 +66,7 @@
 	<c:forEach var="opt" items="${optList}">
 			<div class="optUnitContainer">
 			<div class="optUnitPrice">
-				${opt.opt_price}
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원
 				<span class="navbar-right deleteX sub_gray_font" style="display:inline-block"  onclick="javascript:deleteProOpt('${opt.opt_code}')">x</span>
 			</div>
 			<div class="optUnitTitle">${opt.opt_title}</div>

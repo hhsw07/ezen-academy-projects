@@ -19,7 +19,7 @@ public interface HT_MSReposi {
 	public ArrayList<Project> myProjectList(int mem_code);
 	public ArrayList<storeQnA> storeQnaList(int pro_code);
 	public ArrayList<storeOrder> myStoreManage(int sto_code);
-	public Project projectInfo(int pro_code);
+	public Project getProjectInfo(int pro_code);
 	public ArrayList<ProjectQna> proQnAList(int pro_code);
 	public void proQnAAnsReg(storeQnA qna);
 	public void projectCancel(int pro_code);

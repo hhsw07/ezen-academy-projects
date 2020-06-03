@@ -1,5 +1,11 @@
 package funfun.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -106,6 +112,53 @@ public class HT_MSCtrl {
 		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		session.setAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
 		
+		Project projectInfo = service.getProjectInfo(pro_code);
+		d.addAttribute("projectInfo", projectInfo);
+		
+		System.out.println(projectInfo.getPro_finish_date());
+		System.out.println(projectInfo.getPro_start_date()); 
+		LocalDateTime ldt = LocalDateTime.now();
+		String currentDate=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(ldt);
+		System.out.println();
+		Date today = null;
+        Date startDate = null;
+        Date finishDate = null;
+		
+		SimpleDateFormat dateFormat= new SimpleDateFormat( "yyyy-MM-dd" );
+		
+		try {
+			today = dateFormat.parse(currentDate);
+			startDate = dateFormat.parse(projectInfo.getPro_start_date());
+			finishDate = dateFormat.parse(projectInfo.getPro_finish_date());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		d.addAttribute("today", today);
+		d.addAttribute("startDate", startDate);
+		d.addAttribute("finishDate", finishDate);
+		
+		int compare1 = today.compareTo(today);
+		int compare2 = today.compareTo(finishDate);
+		int compare3 = startDate.compareTo(finishDate);
+		
+		System.out.println("compare1 : " + compare1);
+		
+		if(compare1>0) {
+			System.out.println("현재날짜가 시작날짜보다 크다");
+		} else {
+			System.out.println("현재날짜가 시작날짜보다 작다");
+		}
+		
+		if(compare2>0) {
+			System.out.println("현재날짜가 조욜날짜보다 크다");
+		} else {
+			System.out.println("현재날짜가 종료날짜보다 작다.");
+		}
+		
+		
+		
+		
 		session.setAttribute("projectCode", pro_code);
 		int storeCode = service.getStoCode(pro_code);
 		session.setAttribute("storeCode", storeCode);
@@ -133,5 +186,7 @@ public class HT_MSCtrl {
 		service.proQnAAnsReg(qna);
 		return "redirect:/MakerStudio.do?method=proQnAManage";
 	}
+	
+	
 }
 	
