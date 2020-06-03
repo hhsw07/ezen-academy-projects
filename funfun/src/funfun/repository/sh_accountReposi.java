@@ -22,10 +22,9 @@ public interface sh_accountReposi {
 	public int insDeposit(Deposit rs);
 	public int insWithdrawl(Withdrawl wd);
 	public int chgAccountInfo(UserProfile uf);
-//	public ArrayList<Withdrawl> wilist(String memEmail);
-	
-//	Withdrawl 페이징
+
 	public int totCnt(Paging_sh psh);
 	public ArrayList<Withdrawl> wilist(Paging_sh psh);
+	public ArrayList<Deposit> rdlist(Paging_sh psh);
 	
 }

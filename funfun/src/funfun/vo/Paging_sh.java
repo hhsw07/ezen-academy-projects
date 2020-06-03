@@ -14,6 +14,13 @@ public class Paging_sh {
 		private int blocksize; // 한번에 보여줄 block의 크기.
 		private int startBlock; // block의 시작번호
 		private int endBlock; // block의 마지막번호
+		private String pagingtype;
+		public String getPagingtype() {
+			return pagingtype;
+		}
+		public void setPagingtype(String pagingtype) {
+			this.pagingtype = pagingtype;
+		}
 		public int getCount() {
 			return count;
 		}

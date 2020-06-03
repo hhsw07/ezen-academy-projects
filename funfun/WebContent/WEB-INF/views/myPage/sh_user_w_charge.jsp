@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="css/toastr.css">
 <script src="js/toastr.js"></script>
 <script>
+	
+	
 toastr.options = {
 	    "closeButton": false,
 	    "debug": false,
@@ -121,6 +123,8 @@ toastr.options = {
 		
 		$(document).ready(function(){
 			
+			
+			
 			var memBank = "${clist.memBank}";
 			$("#selectBox").val(memBank).prop("selected", true);	
 			function setComma(inputNumber){
@@ -147,41 +151,9 @@ toastr.options = {
 				})
 			}
 			
+			
 		
 		
-			/* function goPage(no){
-			// ajax
-			$.ajax({
-				type:"post",
-				url:"${path}/myaccount.do?method=ajaxlist&curPage=${psh.curPage}",
-				dataType:"json",
-				success:function(data){
-					var list = data.list;
-					var show = $("#withDrawlTb").html();
-					$.each(list,function(idx,Withdrawl){
-						
-						show += "<table style=\"width:100%;margin:auto;\">";
-						show += "<tr><td colspan=\"3\"><hr></td></tr>";
-						show += "<tr><td>"+Withdrawl.wiDate+"</td><td>";
-					
-						show += "</td><td>"+Withdrawl.wiCurr+"</td></tr>";
-						show += "<tr><td colspan='3'><hr></td></tr>";
-
-						show += "</table>";
-						show +=  'ajax 출력 여부 테스트'
-						
-					});
-					
-					$("#withDrawlTb").html(show);
-				},
-				error:function(err){
-					console.log("에러:"+err);
-				}
-				
-				
-				
-		})
-		} */
 			 $('#chargeInput').keypress(function() {
 				 if (event.which && (event.which  > 47 && event.which  < 58 || event.which == 8)) {
 					 if($('#chargeInput').val() > 1000000000) {
@@ -214,13 +186,66 @@ toastr.options = {
 			
 		})
 		
-		function goPage(no){
-				console.log("goPage 실행")
-		
-				$("[name='curPage']").val(no);
-				$("#wiListForm").submit();
-		}
+		// ajax
+		function goPageWi(no){
+			
 
+			$("[name='curPage']").val(no);
+			var curPage = $("[name='curPage']").val();
+			$.ajax({
+				type:"post",
+				url:"${path}/withdrawlList.do?curPage="+curPage,
+				dataType:"json",
+				success:function(data){
+					
+					var wilist = data.wilist;
+					$("#wiTable").empty();
+					var show = $("#wiTable").html();
+					show += "<tr><td colspan='3'><hr></td></tr>";
+					$.each(wilist,function(idx,Withdrawl){
+						show += "<tr><td>"+Withdrawl.wiDate+"</td>";
+						show += "<td>"+Withdrawl.minusBal+"</td>";
+						show += "<td>"+Withdrawl.wiCurr+"</td></tr>";
+						show += "<tr><td colspan='3'><hr></td></tr>";
+					});
+					$("#wiTable").html(show);
+				},
+				error:function(err){
+					console.log("에러:"+err);
+				}
+			});
+		}
+		
+		function goPageCh(no){
+					$("[name='curPage']").val(no);
+					var curPage = $("[name='curPage']").val();
+					$.ajax({
+
+						type:"post",
+						url:"${path}/depositList.do?curPage="+curPage,
+						dataType:"json",
+						success:function(data){
+							var rdlist = data.rdlist;
+							$("#chTable").empty();
+							var show = $("#chTable").html();
+							show += "<tr><td colspan='3'><hr></td></tr>";
+							$.each(rdlist,function(idx,Deposit){
+								show += "<tr><td>"+Deposit.rddate+"</td>";
+								show += "<td>"+Deposit.chargeQueryAmount+"</td>";
+								show += "<td>"+Deposit.curr+"</td></tr>";
+								show += "<tr><td colspan='3'><hr></td></tr>";
+							});
+							$("#chTable").html(show);
+
+						},
+						error:function(err){
+							console.log("에러:"+err);
+							
+						}
+					});
+				}
+		
+		
 </script>
 </head>
 <body style="overflow-y:scroll;">
@@ -317,7 +342,7 @@ toastr.options = {
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
-			    	<table style="width:100%;margin:auto;">
+			    	<table id="chTable" style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		<c:forEach var="list" items="${rdlist}">
 			    		<tr><td>${list.rddate}</td><td>
@@ -326,6 +351,19 @@ toastr.options = {
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		</c:forEach>
 			    	</table>
+			    	
+		    	 <!-- 페이징(입금신청 목록) -->
+			    
+
+				<div class="text-center">
+				        <ul class="pagination ct-orange"> 
+							<li><a href="javascript:goPageCh(${psh.startBlock-1})">&laquo;</a></li>
+							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
+								<li class="${psh.curPage==cnt?'active':'' }"><a href="javascript:goPageCh(${cnt})">${cnt}</a></li>
+							</c:forEach>
+							<li><a href="javascript:goPageCh(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+						</ul>
+		        </div>
 			    	
 				</div>
 				
@@ -362,7 +400,7 @@ toastr.options = {
 			    	
 			    	<div id="withDrawlTb"></div>
 			    	
-			    	<table style="width:100%;margin:auto;">
+			    	<table id="wiTable" style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		<c:forEach var="list" items="${wilist}">
 			    		<tr><td>${list.wiDate}</td><td>
@@ -375,15 +413,16 @@ toastr.options = {
 			    <!-- 페이징(출금신청 목록) -->
 			    <form id="wiListForm" method="post" action="/funfun/myaccount.do">
 				    	<input type="hidden" name="curPage" value="${psh.curPage}"/>
+
 				</form>	
 
 				<div class="text-center">
 				        <ul class="pagination ct-orange"> 
-							<li><a href="javascript:goPage(${psh.startBlock-1})">&laquo;</a></li>
+							<li><a href="javascript:goPageWi(${psh.startBlock-1})">&laquo;</a></li>
 							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
-								<li class="${psh.curPage==cnt?'active':'' }"><a href="javascript:goPage(${cnt})">${cnt}</a></li>
+								<li id="wiLi" class="${psh.curPage==cnt?'active':'' }"><a class="wiCnt" href="javascript:goPageWi(${cnt})">${cnt}</a></li>
 							</c:forEach>
-							<li><a href="javascript:goPage(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+							<li><a href="javascript:goPageWi(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
 						</ul>
 		        </div>
 				
