@@ -52,10 +52,10 @@ public class sh_accountCtrl {
 		 if(memberinfo==null) {
 			 
 		 }else {
+			 System.out.println(psh.getCurPage());
 			psh.setMemEmail(memberinfo.getMem_email());
 			d.addAttribute("rdlist",service.rdlist(psh));
-		 }
-		 
+		 }	 
 		return "pageJsonReport";
 	}
 	

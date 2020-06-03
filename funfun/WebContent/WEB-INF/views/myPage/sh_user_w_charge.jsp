@@ -185,17 +185,14 @@ toastr.options = {
 			});
 			
 		})
-		
+		var curPage;
 		// ajax
 		function goPageWi(no){
-			
-
-			$("[name='curPage']").val(no);
-			var curPage = $("[name='curPage']").val();
 			$.ajax({
 				type:"post",
-				url:"${path}/withdrawlList.do?curPage="+curPage,
+				url:"${path}/withdrawlList.do?curPage="+no,
 				dataType:"json",
+				async : false,
 				success:function(data){
 					
 					var wilist = data.wilist;
@@ -216,14 +213,12 @@ toastr.options = {
 			});
 		}
 		
-		function goPageCh(no){
-					$("[name='curPage']").val(no);
-					var curPage = $("[name='curPage']").val();
+		function goPageCh(no){	
 					$.ajax({
-
 						type:"post",
-						url:"${path}/depositList.do?curPage="+curPage,
+						url:"${path}/depositList.do?curPage="+no,
 						dataType:"json",
+						async : false,
 						success:function(data){
 							var rdlist = data.rdlist;
 							$("#chTable").empty();
@@ -353,7 +348,6 @@ toastr.options = {
 			    	</table>
 			    	
 		    	 <!-- 페이징(입금신청 목록) -->
-			    
 
 				<div class="text-center">
 				        <ul class="pagination ct-orange"> 
@@ -411,10 +405,6 @@ toastr.options = {
 			    	</table>
 			    	
 			    <!-- 페이징(출금신청 목록) -->
-			    <form id="wiListForm" method="post" action="/funfun/myaccount.do">
-				    	<input type="hidden" name="curPage" value="${psh.curPage}"/>
-
-				</form>	
 
 				<div class="text-center">
 				        <ul class="pagination ct-orange"> 
