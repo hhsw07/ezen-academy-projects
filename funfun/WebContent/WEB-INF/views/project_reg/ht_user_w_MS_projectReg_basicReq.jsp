@@ -45,7 +45,7 @@
 						$('input[name=Q3]:checked').val()==='option1'){	
 						$(location).attr("href", "${path}/ProjectReg.do?method=proCreate")
 				} else {
-					alert("필수 동의 사항(*)에 동의해야 합니다");
+					alert("필수 동의 사항(*)에 모두 동의해야 합니다");
 				}
 			}
 		})

@@ -83,17 +83,23 @@
 		$(".noti_title").keyup(function(e){
 			var textLength = $(".noti_title").val().length;
 			$(".titleLengthCk").text(textLength);
-			maxLengthCheck($(".noti_title"),30);
+			if(!maxLengthCheck($(".noti_title"),30)){
+				console.log("글자수 초과");
+				$(".titleLengthCk").text(textLength);
+			}
 		});
+		
 		$(".noti_detail").keyup(function(e){
 			var textLength = $(".noti_detail").val().length;
 			$(".detailLengthCk").text(textLength);
-			maxLengthCheck($(".noti_detail"),600);
+			if(!maxLengthCheck($(".noti_detail"),600)){
+				console.log("글자수 초과");
+				$(".detailLengthCk").text(textLength);
+			}
 		});
 		// 입력 글자수 체크
 		function maxLengthCheck(obj, maxLength){
 			var textLength = obj.val().length;
-			console.log("obj.val.length : "+textLength);
 			if(textLength > Number(maxLength)) {
 		    	alert("입력가능문자수를 초과하였습니다.");
 		    	obj.val(obj.val().substring(0,maxLength));
@@ -105,12 +111,12 @@
 		
 		
 		$(".insertNoti").click(function(){
-			var title = $("[name=noti_title]").val().length;
-			var detail = $("[name=noti_detail]").val().length;
+			var title = $(".noti_title");
+			var detail = $(".noti_detail");
 			
 			if(maxLengthCheck(title,30) && maxLengthCheck(detail,600)){
 				if(confirm("등록하시겠습니까?")){
-					if(title != 0 && detail != 0){
+					if(title.val().length != 0 && detail.val().length != 0){
 						$("form").attr("action","${path}/notice.do?method=insert");
 						$("form").submit();
 					}else{

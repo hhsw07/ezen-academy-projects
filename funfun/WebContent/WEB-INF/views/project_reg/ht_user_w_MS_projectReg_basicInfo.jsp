@@ -202,13 +202,13 @@
 	
 	<span class="reg_content_title">프로젝트 시작 예정일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" id="startDate" class="form-control" style="width:60%;" required >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_start_date" id="startDate" class="form-control" style="width:60%;" autocomplete="off" required >
 	
 	<br><br>
 	
 	<span class="reg_content_title">프로젝트 종료일 *</span><br><br>
 
-	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" id="finishDate" class="form-control" style="width:60%;" required >
+	<input type="text" placeholder="날짜를 선택하세요" name="pro_finish_date" id="finishDate" class="form-control" style="width:60%;" autocomplete="off" required >
 
     	
 	<br><br>

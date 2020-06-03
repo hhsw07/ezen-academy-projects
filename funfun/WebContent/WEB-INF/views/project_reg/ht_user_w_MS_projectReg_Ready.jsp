@@ -32,7 +32,6 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQna")
 		})	
 
-		
 	})
 	
 
@@ -124,13 +123,32 @@
 
   	<br><br>
   	
-  	<button class="btn btn-warning btn_custom" id="proRegBtn">프로젝트 등록 신청</button>
+  	<c:choose>
+  	
+  	<c:when test="${projectInfo.pro_title!=null and projectInfo.pro_title!='' and
+  					projectInfo.pro_story!=null and projectInfo.pro_story!='' and
+  					projectOption!=-1 and
+  					projectRisk!=-1}">
+	  	<span>
+	  	<button class="btn btn-warning btn_custom" style="display:inline-block" id="proRegBtn">프로젝트 등록 신청</button>
+		</span>
+ 	</c:when>
+	
+	<c:otherwise>
+	 	<span class="sub_gray_font">
+		프로젝트 등록에 필요한 모든 항목의 작성이 완료 되면 프로젝트 등록 신청을 진행할 수 있습니다.	
+		</span>
+	</c:otherwise>
+	
+	</c:choose>
+	
+	 	<span class="sub_gray_font">
+		모든 항목 작성이 완료되었습니다. 작성하신 내용을 다시 한 번 확인해 주시고, 신청을 진행 하세요 :)	
+		</span>
 
-	<br><br>
-
-	<div style="text-align:right;margin-right:40%">
-  	<button class="btn btn-warning btn_custom" id="proCancelBtn">프로젝트 취소</button>
-  	</div>
+		<span class="navbar-right" style="display:inline-block">
+  		<button class="btn btn-warning btn_custom navbar-right" id="proCancelBtn"  style="display:inline-block">프로젝트 취소</button>
+  	</span>
   	
   	<br><br><br><br><br><br>
   	

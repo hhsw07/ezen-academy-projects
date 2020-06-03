@@ -80,7 +80,7 @@ public class Sw_NoticeCtrl {
 	public String update(Notice upt) {
 		service.update(upt);
 		System.out.println("noti 수정완료");
-		return "forward:/notice.do?method=detail&noti_code+"+upt.getNoti_code();
+		return "forward:/notice.do?method=admList";
 	}
 	// http://localhost:5080/funfun/notice.do?method=delete
 	@RequestMapping(params="method=delete")
