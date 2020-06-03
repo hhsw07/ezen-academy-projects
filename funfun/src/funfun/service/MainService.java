@@ -187,7 +187,7 @@ public class MainService {
 		ArrayList<MainViewProject> list=repo.getMainViewProjectList(paging);
 		
 		for(MainViewProject m:list) {
-			m.setPercent((m.getCurrentFunding()/m.getTargetFunding()));
+			m.setPercent((100*m.getCurrentFunding()/m.getTargetFunding()));
 			m.setRestDay(Math.floor(m.getRestDay()));
 		}
 		return list;

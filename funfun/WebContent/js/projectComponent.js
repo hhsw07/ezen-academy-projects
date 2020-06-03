@@ -53,7 +53,7 @@ let projectComponent = Vue.extend({
         <div class="row" style="position: relative; padding:0px 12px 0px 12px; box-sizing: border-box; width:100%; height:6px;">
             <div style="background-color: #eee; width:100%; height:6px; position:absolute; box-sizing: border-box; border-radius: 4px;"></div>
             <div style="background-color: rgb(255,160,0); height:6px; position:absolute; border-radius: 4px;"
-            v-bind:style="{width:percentBar}"></div>
+            v-bind:style="{width:percent+'%'}"></div>
         </div>
         <div class="row" style="padding:8px 12px;">
             <div class="col-md-6" style="padding:0">
@@ -78,19 +78,17 @@ let projectComponent = Vue.extend({
         }
     },
     props:['image', 'title', 'category', 'percent', 'bgurl', 'targetFunding', 'restDay', 'code'],
-    watch:{
-    	percent:function(val){
-    		this.percentStr=val+"% 달성";
-    		if(val>=100){
-    			percentBar='100%';
-    		} else{
-    			percentBar=val+'%';
-    		}
+    mounted:function(){
+    	this.percentStr=this.percent+"% 달성";
     		
-    	}
-    }
-    
-    	
+		if(this.percent>=100){
+			percentBar='100';
+		} else{
+			percentBar=this.percent;
+		}
+    		
+	},
+
 });
 
 
