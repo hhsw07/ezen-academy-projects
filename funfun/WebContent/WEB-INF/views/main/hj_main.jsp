@@ -148,12 +148,8 @@
     	  data.image="http://localhost:5080${path}/"+data.image;
     	  data.targetFunding=numberWithCommas(data.targetFunding)+"원";
     	  data.restDay=data.restDay+"일 남음";
-    	  data.percent=data.percent+"% 달성";
     	  this.projectList.push(data);
       },
-      goFunding:function(){
-    	  console.log("헬로?");
-      }
     }
   });
   
