@@ -108,7 +108,12 @@
 	              <div class="nav navbar-nav dropdown" style="cursor:pointer;">
 	                     <div class="logo-container dropdown-toggle" data-toggle="dropdown">
 	                        <div class="logo">
+	                        	<c:if test="${empty new_profile}">
 	                            <img src="${user.mem_profile }">
+	                            </c:if>
+	                            <c:if test="${not empty new_profile}">
+	                            <img src="${new_profile }">
+	                            </c:if>
 	                        </div>
 	                        <div class="brand">
 	                            ${user.mem_name }

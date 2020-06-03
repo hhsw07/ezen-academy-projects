@@ -65,7 +65,7 @@ public class Sw_NoticeCtrl {
 		service.insert(ins);
 		System.out.println("noti 등록완료");
 		
-		return "WEB-INF\\views\\servicecenter\\sw_admin_w_noticeInsert.jsp";
+		return "redirect:/notice.do?method=admList";
 	}
 
 	
@@ -80,7 +80,7 @@ public class Sw_NoticeCtrl {
 	public String update(Notice upt) {
 		service.update(upt);
 		System.out.println("noti 수정완료");
-		return "forward:/notice.do?method=detail&noti_code+"+upt.getNoti_code();
+		return "forward:/notice.do?method=admList";
 	}
 	// http://localhost:5080/funfun/notice.do?method=delete
 	@RequestMapping(params="method=delete")

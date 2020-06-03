@@ -84,7 +84,7 @@
 		
 			    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
 					<div class="modal-dialog">
-						<div class="modal-content" style="width: 800px;">
+						<div class="modal-content" style="width:1000px;">
 							<div class="modal-header">
 								<h4 class="modal-title" id="exampleModalLabel">신고 내역 상세보기</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -100,7 +100,7 @@
 								</div>
 								<div class="form-group">
 									<label for="message-text" class="control-label">첨부 자료</label><br>
-									<img :src="detail.report_img" style="width: 400px;height: 300px;">
+									<img :src="detail.report_img" style="width: 500px;height: 400px;">
 								</div>
 							<form method="post" id="uptReport">
 								<div class="form-group">
@@ -152,7 +152,7 @@
 			// 모델데이터 초기화.
 			this.contactlist=[];
 			// 비동기로 처리할 url 주소..
-			var url = "http://192.168.4.174:5080/funfun/project-report.do?report_code="+report_code;
+			var url = "http://localhost:5080/funfun/project-report.do?report_code="+report_code;
 			/*
 			# fetch api를 통한 비동기 통신 처리..
 			1. 기본 형식.

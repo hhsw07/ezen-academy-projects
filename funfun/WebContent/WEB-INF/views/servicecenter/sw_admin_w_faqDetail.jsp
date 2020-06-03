@@ -48,11 +48,11 @@
 					        		<th>수정일</th>
 					        		<td>${not empty faq.faq_upt_date?faq.faq_upt_date:"없음"}</td></tr>
 					        	<tr></tr>
-					        	<tr><th>제목</th>
-					        		<td colspan="3"><input type="text" class="form-control" name="faq_title" placeholder="공지제목" value="${faq.faq_title}"/></td></tr>
-					        	<tr><th>내용</th>
+					        	<tr><th>제목<p style="font-size:1px;"><span class="titleLengthCk">0</span> / 30</p></th>
+					        		<td colspan="3"><input type="text" class="form-control faq_title" name="faq_title" placeholder="공지제목" value="${faq.faq_title}"/></td></tr>
+					        	<tr><th>내용<p style="font-size:1px;"><span class="detailLengthCk">0</span> / 600</p></th>
 					        		<td colspan="3">
-					        			<textarea class="form-control" rows="20" name="faq_detail" placeholder="공지내용" style="resize:none;" >${faq.faq_detail}</textarea></td></tr>
+					        			<textarea class="form-control faq_detail" rows="20" name="faq_detail" placeholder="공지내용" style="resize:none;" >${faq.faq_detail}</textarea></td></tr>
 					        </table>
 				        </form>
 				    </div>
@@ -80,11 +80,52 @@
 </body>
 <script>
 	$(document).ready(function(){
+		var titleLength = $(".faq_title").val().length;
+		$(".titleLengthCk").text(titleLength);
+		var detailLength = $(".faq_detail").val().length;
+		$(".detailLengthCk").text(detailLength);
+		
+		
+		$(".faq_title").keyup(function(e){
+			var textLength = $(".faq_title").val().length;
+			$(".titleLengthCk").text(textLength);
+			if(!maxLengthCheck($(".faq_title"),30)){
+				textLength = $(".faq_title").val().length;
+				console.log("글자수 초과 : "+textLength);
+				$(".titleLengthCk").text(textLength);
+			}
+		});
+		$(".faq_detail").keyup(function(e){
+			var textLength = $(".faq_detail").val().length;
+			$(".detailLengthCk").text(textLength);
+			if(!maxLengthCheck($(".faq_detail"),600)){
+				textLength = $(".faq_detail").val().length;
+				$(".detailLengthCk").text(textLength);
+			}
+		});
+		// 입력 글자수 체크
+		function maxLengthCheck(obj, maxLength){
+			var textLength = obj.val().length;
+			if(textLength > Number(maxLength)) {
+		    	alert("입력가능문자수를 초과하였습니다.");
+		    	obj.val(obj.val().substring(0,maxLength));
+		    	return false;
+		    }else {
+		    	return true;
+		    }
+		}
 		
 		$(".updateFaq").click(function(){
+			var title = ""+$("[name=faq_title]").val();
+			var detail = ""+$("[name=faq_detail]").val();
+			
 			if(confirm("수정하시겠습니까?")){
-				$("form").attr("action","${path}/faq.do?method=update");
-				$("form").submit();
+				if(title != "" && detail != ""){
+					$("form").attr("action","${path}/faq.do?method=update");
+					$("form").submit();
+				}else{
+					alert("제목 및 내용을 입력하세요.");
+				}
 			}
 		});
 		$(".deleteFaq").click(function(){

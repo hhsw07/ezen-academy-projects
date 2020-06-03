@@ -37,7 +37,7 @@
 		
 		// 화면 크기 고정
 		$(window).resize(function(){
-			window.resizeTo(460,680);
+			window.resizeTo(400,680);
 		});
 		
 		
@@ -193,7 +193,8 @@
 <body>
 <div class="sc-chat-window" style="z-index:10;">
 	<div class="sc-header">
-		<img class="sc-header--img" src="${user.mem_profile}" onerror="this.src='${path }/template/assets/img/new_logo.png'">
+		<img class="sc-header--img" src="${user.mem_profile}" 
+			onerror="this.src='https://stickershop.line-scdn.net/stickershop/v1/product/1629282/LINEStorePC/main.png;compress=true'"/>
 		<div class="sc-header--team-name">${rtqna.mem_name}
 		</div>
 		<div class="sc-header--close-button exitBtn">

@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 <link rel="stylesheet" href="css/toastr.css">
+<script src="js/jquery.js"></script>	
+<script src="js/toastr.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -59,10 +61,7 @@ toastr.options = {
 				$('input:checkbox[value=\"'+$(memFavorArray)[i]+'\"]').prop("checked", true);
 			}
 			
-			$('.main').addClass('bounce');
-			setTimeout(()=>{
-				$('.main').removeClass('bounce');
-			},500);
+			
 			
 			var fileName = "${mlist.memProfile}"
 			$("[name=memProfile]").val(fileName);
@@ -93,6 +92,10 @@ toastr.options = {
             $("#submitBtn").click(function(){
             	$("#profileEditForm").submit();
             })
+            
+            $("#deleteProfile").click(function(){
+            	$('#imgId').attr('src', '${path}/z01_upload/basicimage.png')
+            })
 		})
 </script>
 </head>
@@ -114,7 +117,7 @@ toastr.options = {
 		    	
 		    	<input style="display:none" type="file" id="myImage" class="custom-file-input" name="profileImg"/>
 		    	
-		    	<span class="profile__img-edit">삭제</span>
+		    	<span id="deleteProfile" class="profile__img-edit">삭제</span>
 		    	</div>
 		    	
 		    	<!-- 정보 입력 -->

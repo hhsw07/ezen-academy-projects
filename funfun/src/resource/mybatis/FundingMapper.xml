@@ -180,5 +180,11 @@
 		SET MEM_BALANCE = MEM_BALANCE - #{fund_tot}
 		WHERE MEM_CODE = #{mem_code}
 	</update>
+	<!-- 제한수량 변경 -->
+	<update id="uptCnt" parameterType="funding">
+		UPDATE PRO_OPTION
+		SET OPT_MAX = OPT_MAX - 1
+		WHERE OPT_CODE = #{opt_code}
+	</update>
 	
 </mapper>

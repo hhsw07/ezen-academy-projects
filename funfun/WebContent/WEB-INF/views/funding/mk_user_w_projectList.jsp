@@ -172,7 +172,7 @@ a{cursor:pointer;}
 							</label>
 							<div class="select-sort ProjectListHead_sort">
 								<select name="prosort" class="">
-									<option value="recommend" selected>추천순</option>
+									<option value="recommend">추천순</option>
 									<option value="popluar">인기순</option>
 									<option value="recent">최신순</option>
 									<option value="amount">펀딩액순</option>
@@ -200,8 +200,21 @@ a{cursor:pointer;}
 										<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
 									</div>
 									<div>
-										<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
+									<fmt:parseDate var="pro_start" value="${proj.pro_start_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+									<jsp:useBean id="today" class="java.util.Date" />
 									<c:choose>
+										<c:when test="${pro_start>today}">
+											
+										</c:when>
+										<c:otherwise>
+											<span class="ProjectList-rate">펀딩률 : ${proj.percent}%</span>
+										</c:otherwise>
+									</c:choose>
+										
+									<c:choose>
+										<c:when test="${pro_start>today}">
+											<span class="ProjectList-date" style="color: #ff9500;font-size: 15px;"><fmt:formatDate value="${pro_start}" pattern="MM월dd일"/> 오픈예정</span>
+										</c:when>
 										<c:when test="${proj.dday>0}">
 											<span class="ProjectList-date">${proj.dday}일 남음</span>
 										</c:when>

@@ -49,11 +49,11 @@
 					        		<td>${not empty notice.noti_upt_date?notice.noti_upt_date:"없음"}</td></tr>
 					        	<tr><th>작성자</th>
 					        		<td><input type="hidden" name="admin_code" value="${manager.admin_code}"/>${notice.admin_name}</td></tr>
-					        	<tr><th>제목</th>
-					        		<td colspan="3"><input type="text" class="form-control" name="noti_title" placeholder="공지제목" value="${notice.noti_title}"/></td></tr>
-					        	<tr><th>내용</th>
+					        	<tr><th>제목<p style="font-size:1px;"><span class="titleLengthCk">0</span> / 30</p></th>
+					        		<td colspan="3"><input type="text" class="form-control noti_title" name="noti_title" placeholder="공지제목" value="${notice.noti_title}"/></td></tr>
+					        	<tr><th>내용<p style="font-size:1px;"><span class="detailLengthCk">0</span> / 600</p></th>
 					        		<td colspan="3">
-					        			<textarea class="form-control" rows="20" name="noti_detail" placeholder="공지내용" style="resize:none;" >${notice.noti_detail}</textarea></td></tr>
+					        			<textarea class="form-control noti_detail" rows="20" name="noti_detail" placeholder="공지내용" style="resize:none;" >${notice.noti_detail}</textarea></td></tr>
 					        </table>
 				        </form>
 				    </div>
@@ -81,11 +81,54 @@
 </body>
 <script>
 	$(document).ready(function(){
+		var titleLength = $(".noti_title").val().length;
+		$(".titleLengthCk").text(titleLength);
+		var detailLength = $(".noti_detail").val().length;
+		$(".detailLengthCk").text(detailLength);
+		
+		$(".noti_title").keyup(function(e){
+			var textLength = $(".noti_title").val().length;
+			$(".titleLengthCk").text(textLength);
+			if(!maxLengthCheck($(".noti_title"),30)){
+				console.log("글자수 초과");
+				$(".titleLengthCk").text(textLength);
+			}
+		});
+		
+		$(".noti_detail").keyup(function(e){
+			var textLength = $(".noti_detail").val().length;
+			$(".detailLengthCk").text(textLength);
+			if(!maxLengthCheck($(".noti_detail"),600)){
+				console.log("글자수 초과");
+				$(".detailLengthCk").text(textLength);
+			}
+		});
+		// 입력 글자수 체크
+		function maxLengthCheck(obj, maxLength){
+			var textLength = obj.val().length;
+			if(textLength > Number(maxLength)) {
+		    	alert("입력가능문자수를 초과하였습니다.");
+		    	obj.val(obj.val().substring(0,maxLength));
+		    	return false;
+		    }else {
+		    	return true;
+		    }
+		}
+		
 		
 		$(".updateNoti").click(function(){
-			if(confirm("수정하시겠습니까?")){
-				$("form").attr("action","${path}/notice.do?method=update");
-				$("form").submit();
+			var title = $(".noti_title");
+			var detail = $(".noti_detail");
+			
+			if(maxLengthCheck(title,30) && maxLengthCheck(detail,600)){
+				if(confirm("수정하시겠습니까?")){
+					if(title.val().length != 0 && detail.val().length != 0){
+						$("form").attr("action","${path}/notice.do?method=update");
+						$("form").submit();
+					}else{
+						alert("제목 및 내용을 입력하세요.");
+					}
+				}
 			}
 		});
 		$(".deleteNoti").click(function(){
