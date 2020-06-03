@@ -145,15 +145,9 @@ toastr.options = {
 				})
 			}
 			
-			$("[name=pageSize]").val("${psh.pageSize}");
-			
-			$("[name=pageSize]").change(function(){
-		    	$("[name=curPage]").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
-				$("#wiListForm").submit();
-			});
 		
 		
-			function goPage(no){
+			/* function goPage(no){
 			// ajax
 			$.ajax({
 				type:"post",
@@ -185,7 +179,7 @@ toastr.options = {
 				
 				
 		})
-		}
+		} */
 		});
 	
 		function goPage(no){
@@ -336,7 +330,7 @@ toastr.options = {
 			    	
 			    	<div id="withDrawlTb"></div>
 			    	
-			    	<%-- <table style="width:100%;margin:auto;">
+			    	<table style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		<c:forEach var="list" items="${wilist}">
 			    		<tr><td>${list.wiDate}</td><td>
@@ -344,7 +338,7 @@ toastr.options = {
 			    		</td><td>${list.wiCurr}</td></tr>
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		</c:forEach>
-			    	</table> --%>
+			    	</table>
 			    	
 			    <!-- 페이징(출금신청 목록) -->
 			    <form id="wiListForm" method="post" action="/funfun/myaccount.do">
