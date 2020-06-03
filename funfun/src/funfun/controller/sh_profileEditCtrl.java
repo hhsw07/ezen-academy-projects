@@ -56,15 +56,25 @@ public class sh_profileEditCtrl {
 				}
 				
 			}
-			uf.setMemEmail(memberinfo.getMem_email());
-			uf.setMemFavor(memFavor);
-			service.changeProfile(uf);
 			uploader=new Uploader();
 			System.out.println("파일업로드처리");
 			String result = uploader.upload(profileImg[0]);
-			System.out.println(result);
+			
+			System.out.println("result : "+result);
+			session.setAttribute("new_profile", result);
+			
+			uf.setMemEmail(memberinfo.getMem_email());
+			uf.setMemFavor(memFavor);
+			uf.setMemProfile(result);
+			service.changeProfile(uf);
+			
 		}
-		 
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/mypage.do";
 	}
 	

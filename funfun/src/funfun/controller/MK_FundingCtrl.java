@@ -158,6 +158,7 @@ public class MK_FundingCtrl {
 		service.uptMoney(fund);
 		service.useBalance(fund);
 		service.uptBalance(fund);
+		service.uptCnt(fund);
 		return "forward:/funding.do?method=list";
 	}
 

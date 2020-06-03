@@ -145,6 +145,7 @@ ul {list-style: none;padding:0;}
 				<div>
 					<ul>
 					<c:forEach var="opt" items="${opt}" >
+					<c:if test="${opt.opt_max != 0}">
 						<li class="opt-list">
 						<fmt:parseDate var="opt_deliver_date" value="${opt.opt_deliver_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 							<div class="opt-box">
@@ -172,6 +173,7 @@ ul {list-style: none;padding:0;}
 								</div>
 							</div>
 						</li>
+						</c:if>
 					</c:forEach>
 					</ul>
 				</div>

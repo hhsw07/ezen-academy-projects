@@ -51,5 +51,6 @@ public interface MK_FundingReposi {
 	public void uptMoney(Funding upt);
 	public void useBalance(Funding use);
 	public void uptBalance(Funding upt);
+	public void uptCnt(Funding upt);
 	
 }

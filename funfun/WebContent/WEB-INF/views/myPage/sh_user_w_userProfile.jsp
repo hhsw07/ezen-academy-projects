@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="css/sh_user_w_userProfile.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 <link rel="stylesheet" href="css/toastr.css">
+<script src="js/jquery.js"></script>	
+<script src="js/toastr.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
