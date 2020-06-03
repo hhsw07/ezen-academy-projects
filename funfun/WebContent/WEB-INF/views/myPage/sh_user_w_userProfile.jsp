@@ -123,31 +123,13 @@ toastr.options = {
 		    	<!-- 정보 입력 -->
 		    		<p class="profile__innertitle">이메일 주소</p>
 		    		
-		    		<div style="display:flex;margin-bottom:30px;" class="profile__input">
-		    		<input style="width:100%;padding-left:10px;" name="email" value="${mlist.memEmail}" disabled>
+		    		<div style="display:flex;margin-bottom:60px;" class="profile__input">
+		    		<input style="width:100%;height:40px;padding-left:10px;" name="email" value="${mlist.memEmail}" disabled>
 					</div>
-		    		<p class="profile__innertitle">휴대폰 번호</p>
-		    		<div style="display:flex; height:35px;margin-bottom:30px;">
-		    		<select style="margin-right:15px;">
-					    <option selected>SKT</option>
-					    <option>KT</option>
-					    <option>LGU</option>
-					    <option>SKT 알뜰폰</option>
-					    <option>KT 알뜰폰</option>
-					    <option>LGU 알뜰폰</option>
-					</select>
-		    		<input class="profile__input" class="" style="padding-left:10px;" name="memPhone" value="${mlist.memPhone}">
-		    		<button type="button" class="profile__btn" style="width:145px;">번호받기</button>
-		    		</div>
 		    		
-		    		<p class="profile__innertitle">인증 번호 확인</p>
-		    		<div style="display:flex;margin-bottom:30px;">
-		    		<input class="profile__input" name="checkNum">
-		    		<button type="button" class="profile__btn">인증하기</button>
-		    		</div>
 		    		
 		    		<p class="profile__innertitle">주소</p>
-		    		<div style="width:100%;margin-bottom:30px;">
+		    		<div style="width:100%;margin-bottom:60px;">
 		    		<input class="profile__input" value="${mlist.pay_zipcode}" style="width:30%;margin-bottom:15px;padding-left:10px;" name="pay_zipcode" readonly>
 		    		<input class="profile__input" value="${mlist.pay_addr}" style="margin-bottom:15px;padding-left:10px;" name="pay_addr" readonly>
 		    		<button type="button" onclick="goPopup()" style="margin-top:15px;width:100%;margin:0;border-radius:5px;height:40px;"class="profile__btn">주소검색</button>
@@ -225,7 +207,7 @@ toastr.options = {
 					</div>
 					</div>
 					
-					<div style="display:flex;margin-top:30px;">
+					<div style="display:flex;margin-top:60px;margin-bottom:80px;">
 						<button onclick="window.history.back()" type="button" class="profile__cancle">취소</button>
 						<input style="display:none;" type="hidden" name="memProfile">
 						<button id="submitBtn" class="profile__submit" type="button">수정</button>
