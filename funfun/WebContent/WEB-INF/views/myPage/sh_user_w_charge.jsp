@@ -50,13 +50,14 @@ toastr.options = {
 			amount = Number(amount)
 			if(isNaN(amount)){
 				amount=null;
+				$("#chargeInput").val('')
 			}
 			$("[name=\"chargeQuery\"]").val(amount)
 			
-			if(amount == null){
-				Command: toastr["warning"]("충전할 금액을 입력해주세요");
+			if(amount == null || amount == 0){
+				Command: toastr["warning"]("충전신청 금액을 정확히 입력해주세요");
 			}else if(amount < 1000){
-				Command: toastr["warning"]("최소 충전 금액은 1000원 입니다");
+				Command: toastr["warning"]("최소 충전 금액은 1000원 입니다");	
 			}else{
 				var result = confirm(amount+'원을 충전 신청 하시겠습니까?'); 
 				if(result) { 
@@ -76,6 +77,7 @@ toastr.options = {
 			$("#wiAmount").val(amount)
 			if(isNaN(amount)){
 				amount=null;
+				$("#wiAmount").val('')
 			}
 			if(memAccount==null){
 				Command: toastr["warning"]("계좌정보 등록이 필요합니다");
@@ -180,8 +182,38 @@ toastr.options = {
 				
 		})
 		} */
-		});
-	
+			 $('#chargeInput').keypress(function() {
+				 if (event.which && (event.which  > 47 && event.which  < 58 || event.which == 8)) {
+					 if($('#chargeInput').val() > 1000000000) {
+						 $('#chargeInput').val('')
+						 $('#chargeInput').blur()		 
+						 $('#chargeInput').val(1000000000);
+						 $('#chargeInput').blur()
+						 Command: toastr["warning"]("1회 입금 가능한 최대 금액은 10억원을 초과 할 수 없습니다");
+					 }
+				 } else {
+				    alert('숫자만 입력 가능합니다!');
+				 }
+				
+			});
+		
+			 $('#wiAmount').keypress(function() {
+				 if (event.which && (event.which  > 47 && event.which  < 58 || event.which == 8)) {
+					 if($('#wiAmount').val() > 1000000000) {
+						 $('#wiAmount').val('')
+						 $('#wiAmount').blur()		 
+						 $('#wiAmount').val(1000000000);
+						 $('#wiAmount').blur()
+						 Command: toastr["warning"]("1회 출금 가능한 최대 금액은 10억원을 초과 할 수 없습니다");
+					 }
+				 } else {
+				    alert('숫자만 입력 가능합니다!');
+				 }
+				
+			});
+			
+		})
+		
 		function goPage(no){
 				console.log("goPage 실행")
 		
