@@ -170,7 +170,7 @@ public class HT_MSCtrl {
 	public String proQnAManage(HttpServletRequest request, Model d) {
 		HttpSession session = request.getSession();
 		int projectCode = (int)session.getAttribute("projectCode");
-		d.addAttribute("qnaList", service.proQnAList(projectCode));
+		d.addAttribute("qnaList", service.myProjectQnaList(projectCode));
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proQna.jsp";
 	}
 

@@ -15,6 +15,12 @@ details > summary::-webkit-details-marker {
 	font-weight:bold;
 }
 
+.sub_gray_font_big{
+	color:#787878;
+	font-weight:bold;
+	font-size:25px;
+}
+
 .display_item {
   display: block;
 }
