@@ -32,22 +32,36 @@ public class sh_accountCtrl {
 			 if(service.blist(memberinfo.getMem_email())==null) {
 				 
 			 }else {
+				 psh.setMemEmail(memberinfo.getMem_email());
 				 d.addAttribute("blist",service.blist(memberinfo.getMem_email()));
 				 d.addAttribute("clist",service.clist(memberinfo.getMem_email()));
-				 d.addAttribute("rdlist",service.rdlist(memberinfo.getMem_email()));
-				 
-				 psh.setMemEmail(memberinfo.getMem_email());
+				 d.addAttribute("rdlist",service.rdlist(psh));
 				 d.addAttribute("wilist",service.wilist(psh));
+				
 			 }
 		 }
 		 
 		return "WEB-INF\\views\\myPage\\sh_user_w_charge.jsp";
 	}
 	
+	@RequestMapping("/depositList.do")
+	public String ajaxlistDeposit(@ModelAttribute("psh") Paging_sh psh, HttpServletRequest request, Model d) {
+
+		HttpSession session = request.getSession(); 
+		 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		 if(memberinfo==null) {
+			 
+		 }else {
+			psh.setMemEmail(memberinfo.getMem_email());
+			d.addAttribute("rdlist",service.rdlist(psh));
+		 }
+		 
+		return "pageJsonReport";
+	}
+	
 	@RequestMapping("/withdrawlList.do")
 	public String ajaxlist(@ModelAttribute("psh") Paging_sh psh, HttpServletRequest request, Model d) {
-		System.out.println("ajaxlist진입"); 
-		System.out.println("psh.getStart()"+psh.getStart());
+
 		HttpSession session = request.getSession(); 
 		 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
 		 if(memberinfo==null) {
@@ -55,7 +69,6 @@ public class sh_accountCtrl {
 		 }else {
 			psh.setMemEmail(memberinfo.getMem_email());
 			d.addAttribute("wilist",service.wilist(psh));
-			System.out.println("service.wilist(psh) : "+ service.wilist(psh));
 		 }
 		return "pageJsonReport";
 	}
