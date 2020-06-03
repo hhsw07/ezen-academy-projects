@@ -133,7 +133,7 @@
                       <form method="post" action="store-update-curr.do">
                       <div class="modal-body">
                           
-                          <div class="form-group" v-if="detail.sto_curr=='정지' || sto_cur==''">
+                          <div class="form-group" v-if="detail.sto_curr=='정지' || detail.sto_cur==''">
                                 <label for="message-text" class="control-label">해당 상품을 승인하시겠습니까? </label><br><br>
                                 <div style="text-align: center;">
                                     <input type="radio" class="form-data" value="정상" name="sto_curr">승인&nbsp;
