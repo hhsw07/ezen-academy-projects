@@ -11,16 +11,13 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.check-noti{margin: 12px auto 0; width:1000px; color:#888888;font-size: 13px; font-weight: 600;}
-ul {list-style: none;padding:0;}
-.opt-list{width: 100%; margin-bottom: 5px;padding:0 10px;}
-.opt-box {padding: 15px; background: #f9f9f9; border: 1px solid #fff; border-radius: 5px;}
-.next-step{width:250px; margin:20px auto;}
 
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		console.log("옵션선택");
+		var mem_code = $("[name=mem_code]").val();
+		console.log("멤버 코드 " + mem_code);
 		$("#funding").click(function(){
 			console.log("버튼클릭");
 			var opt_no = $("[name=optcode]:checked").val();
@@ -28,8 +25,11 @@ ul {list-style: none;padding:0;}
 			console.log("옵션번호"+opt_no);
 			//$("form").attr("action", "${path}/funding.do?method=fund&opt_code="+opt_no);
 			//$("form").submit();
+			var opt_no = $("[name=optcode]:checked").val();
+			$("[name=opt_code]").val(opt_no);
+			
 			if(opt_no!=null){
-				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no);
+				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
 			} else{
 				alert("옵션을 선택하세요");
 			}
@@ -130,18 +130,17 @@ ul {list-style: none;padding:0;}
 						</div>
 					</div>
                 </div>
-				
 			</div>
-			
 			
 			<div class="funding-opt" >
 				<div class="top-area">
 					<h3><em>리워드 선택</em></h3>
 					<p class="sub-text">펀딩해주시는 금액에 따라 감사의 의미로 리워드를 제공해 드립니다.</p>
 				</div>
-				<form method="post">
-				<input type="hidden" name="opt_code"/>
-				<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+				<form method="post" >
+					<input type="hidden" name="opt_code"/>
+					<input type="hidden" name="mem_code" value="${user.mem_code}"/>
+				</form>
 				<div>
 					<ul>
 					<c:forEach var="opt" items="${opt}" >
@@ -156,9 +155,10 @@ ul {list-style: none;padding:0;}
 		                        	</span>
 		                        	<input type="radio" value="${opt.opt_code}" id="checkbox1" data-toggle="radio" name="optcode">
 								</label>
+								<p class="reward-qty">남은 수량 <strong>${opt.opt_max}</strong>개 &nbsp; </p>
 								<p class=""><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원 펀딩합니다.</p>
+								<p class="">${opt.opt_title}</p>
 								<p class="">${opt.opt_detail}</p>
-								<p class="">${opt.opt_condition}</p>
 								<p class="">배송비 <fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_delivery}"/>원 | 리워드 제공 예상일 : 
 								<em><fmt:formatDate value="${opt_deliver_date}" pattern="yyyy년 MM월 dd일"/> 예정</em></p>
 								<div id="writeopt" style="display:none;">
@@ -177,7 +177,6 @@ ul {list-style: none;padding:0;}
 					</c:forEach>
 					</ul>
 				</div>
-				</form>
 			</div>
 			
 			<div class="next-step">
