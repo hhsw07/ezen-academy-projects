@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+import funfun.service.MK_FundingService;
 import funfun.service.MainService;
 import funfun.service.sh_myPageService;
 import funfun.vo.AccountInfo;
@@ -28,6 +30,7 @@ import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
 import funfun.vo.MyOrderInfo;
+import funfun.vo.Project;
 
 @Controller
 public class AndroidLoginCtrl {
@@ -37,6 +40,9 @@ public class AndroidLoginCtrl {
 	
 	@Autowired
 	sh_myPageService myPageService;
+	
+	@Autowired
+	MK_FundingService fundingService;
 	
 	//로그인에 사용
 	@RequestMapping("/androidlogin.do")
@@ -148,6 +154,21 @@ public class AndroidLoginCtrl {
 		
 		String result="{\"result\":"+true+"}";
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="/favorChk.do")
+	public String ckfavor(@ModelAttribute("project") Project proj, Model d, @RequestParam String user) {
+		System.out.println("관심프로젝트등록확인");
+		int mem_code=service.getMemberInfo(user).getMem_code();
+		System.out.println(mem_code);
+		proj.setMem_code(mem_code);
+		d.addAttribute("ckfavor", fundingService.ckfavor(proj));
+		//등록
+		if(fundingService.ckfavor(proj)) {
+			System.out.println("관심등록!");
+			fundingService.insFavor(proj);
+		}
+		return "pageJsonReport";
 	}
 	
 }
