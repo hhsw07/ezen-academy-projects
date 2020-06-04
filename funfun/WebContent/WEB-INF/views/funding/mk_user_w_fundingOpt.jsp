@@ -11,21 +11,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
-.noti-label{display: inline-block;
-    width: 40px;
-    vertical-align: middle;}
-.label-span{vertical-align: middle;
-    padding: 15px 0 13px;
-    display: inline-block;
-    font-size: 17px;
-    font-weight: 800;
-    color: #babdc0;}
+.noti-label{display: inline-block; width: 40px; vertical-align: middle;}
+.label-span{vertical-align: middle; padding: 15px 0 13px; display: inline-block; font-size: 17px; font-weight: 800; color: #babdc0;}
 .noti-check input[type="checkbox"] {display: none;}
 .noti-check input[type="checkbox"] + label {width: 15px;height: 15px;background: #ff9500; cursor: pointer; border-radius: 5px; margin: 15px 15px 8px 10px;}
 .noti-check input[type="checkbox"]:checked + label {background:url(img/ck01.png) #ff9500 no-repeat center/20px 20px;margin: 15px 0 8px 10px;}
-.noti-check input[type="checkbox"] + label span {display: block;position: absolute;left: 328px;}
-
-
 
 </style>
 <script type="text/javascript">
