@@ -29,6 +29,10 @@
             $("#appr_Btn").click(function(){
                 $("#appr_modal").modal("show");
             })
+            
+            $("#Seach_Btn").click(function(){
+            	$("#SearchForm").submit();
+            })
         })
         
         function goPage(no){
@@ -80,6 +84,16 @@
 					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
 	        </div>
+			</form>
+			
+				<form method="post" id="SearchForm">
+				     
+	        		<div id="Serach_Div" style="width:100%; text-align:center">
+                      <input type="text" value="" placeholder="프로젝트를 검색해주세요!" class="form-control" style="background-color: transparent; color:black;
+                      margin:15px 3px; border:none; margin-top:-4px; margin-left:0px; width:200px; float:left;" name="pro_title"/>
+                      <button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
+                      margin-top:5px; margin-right:30px;float:left" id="Seach_Btn"></button>
+            		</div>
 			</form>
        		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">

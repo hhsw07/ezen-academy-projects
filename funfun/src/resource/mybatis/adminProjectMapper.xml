@@ -11,7 +11,11 @@
 	<select id="projectList" resultMap="ProjectList" parameterType="Paging">
 		select * from (select rownum cnt, c.* from (
 				SELECT a.pro_code, to_char(pro_reg_date, 'YYYY-MM-DD') pro_reg_date, a.pro_title,a.pro_curr,b.maker_name FROM 
-				project a, maker b WHERE a.MAKER_CODE = b.MAKER_CODE order by a.pro_code desc
+				project a, maker b WHERE a.MAKER_CODE = b.MAKER_CODE 
+				<if test="pro_title!=null and pro_title != ''">
+					and a.pro_title like '%'||#{pro_title}||'%'
+				</if>
+				order by a.pro_code desc
 			)c)where cnt between #{start} and #{end}
 	</select>
 	
