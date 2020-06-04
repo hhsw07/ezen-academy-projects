@@ -46,9 +46,10 @@
 	    WHERE STO_ORDER_CODE = #{oc}
  	</update>
  	
- 	<update id="cancleFunding" parameterType="String">
+ 	<update id="cancleFunding" parameterType="java.util.HashMap">
 	    UPDATE funding
-		SET FUND_STATE = '펀딩취소'
+		SET FUND_STATE = '펀딩취소',
+		Fund_cnt = Fund_cnt-#{fundCnt,jdbcType=NUMERIC}
 		WHERE FUND_CODE = #{fc}
  	</update>
  	
@@ -96,6 +97,7 @@
 		WHERE b.MEM_Email = #{memEmail} AND s.STO_CURR ='정상'
 		order by so.sto_order_code desc
 	</select>
+	
 	
 	<select id="memState" resultType="String" parameterType="mypageinfo">
  		SELECT MAKER_CODE makerCode FROM maker m LEFT JOIN MEMBER b ON m.MEM_CODE = b.MEM_CODE WHERE MEM_EMAIL = #{memEamil}

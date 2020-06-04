@@ -32,7 +32,7 @@ public class NotificationHandler extends TextWebSocketHandler{
 		
 		log(session.getId()+"가 답변사항을 변경하였습니다.");
 		
-		// 나와 관리자에게만 전달 되도록 조건문 설정.
+		// 전달 되도록 조건문 설정.
 		for(WebSocketSession ws : users.values()) {
 			//모든 웹소켓 접속자에게 메세지 전달..
 			ws.sendMessage(message);

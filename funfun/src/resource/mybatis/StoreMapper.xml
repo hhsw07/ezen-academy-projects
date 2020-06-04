@@ -49,6 +49,9 @@
 			select * from (select rownum cnt, c.* from (
 				SELECT a.sto_code, a.STO_TITLE, c.MAKER_NAME , to_char(STO__REG_DATE, 'YYYY-MM-DD') STO__REG_DATE, STO_CURR FROM store a, project b, maker c
 				WHERE a.PRO_CODE = b.PRO_CODE  AND b.MAKER_CODE = c.MAKER_CODE 
+				<if test="sto_title != null and sto_title != '' ">
+					and a.sto_title like '%' || #{sto_title} || '%'
+				</if>
 			)c)where cnt between #{start} and #{end}
 		</select>
 		<select id="adminDetail" resultType="RewardStore" parameterType="int">

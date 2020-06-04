@@ -70,7 +70,7 @@ public class sh_myPageCtrl {
 		}
 		
 		@RequestMapping("/cancleOrder.do")
-		public String cancelOrder(HttpServletRequest request,@RequestParam("ocCancle") String oc,@RequestParam("orderPrice") String orderPrice) {
+		public String cancelOrder(HttpServletRequest request,@RequestParam("ocCancle") String oc,@RequestParam("orderPrice") String orderPrice,@RequestParam("orderCnt") String orderCnt) {
 			System.out.println("orderCode : "+oc);
 			HttpSession session = request.getSession();
 			  
@@ -96,8 +96,8 @@ public class sh_myPageCtrl {
 		}
 		
 		@RequestMapping("/cancleFunding.do")
-		public String cancelFunding(HttpServletRequest request,@RequestParam("fcCancle") String fc,@RequestParam("fundPrice") String fundPrice) {
-			service.cancleFunding(fc);
+		public String cancelFunding(HttpServletRequest request,@RequestParam("fcCancle") String fc,@RequestParam("fundPrice") String fundPrice,@RequestParam("fundCnt") String fundCnt) {
+			
 			 HttpSession session = request.getSession();
 			  
 			 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
@@ -114,6 +114,11 @@ public class sh_myPageCtrl {
 				hmBalTb.put("memEmail",memberinfo.getMem_email());
 				hmBalTb.put("fundingCode",fc);
 				service.cancleFundingBalTb(hmBalTb);
+				
+				HashMap<String,String> hm3 = new HashMap<>();
+				hm3.put("fc",fc);
+				hm3.put("fundCnt",fundCnt);				
+				service.cancleFunding(hm3);
 			 }
 
 			return "redirect:/mypage.do";

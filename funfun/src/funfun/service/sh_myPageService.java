@@ -49,8 +49,8 @@ public class sh_myPageService {
 	public void cancleOrder(String oc) {
 		dao.cancleOrder(oc);
 	}
-	public void cancleFunding(String fc) {
-		dao.cancleFunding(fc);
+	public void cancleFunding(HashMap<String,String> hm3) {
+		dao.cancleFunding(hm3);
 	}
 	public void deleteFavor(HashMap<String,String> hmDF) {
 		dao.deleteFavor(hmDF);
