@@ -1,5 +1,8 @@
 package funfun.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,21 +53,30 @@ public class sh_secessionCtrl {
 	@RequestMapping("/sendEmail.do")
 	public String send(HttpServletRequest request,Model d) throws MessagingException {
 		HttpSession session = request.getSession(); 
-		 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
-		 if(memberinfo==null) {
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		if(memberinfo==null) {
 			 
-		 }else {
+		}else {
 			 sesessionMail send = new sesessionMail();
 			 send.setSubject("회원 탈퇴 인증 메일");
 			 send.setReceiver(memberinfo.getMem_email());
-			 send.setNo("1234");
-			 String no = send.getNo();
-			 send.setRegdate("2020-06-04");
-			 send.setContent("<p>아래의 인증 번호를 입력한후 회원 탈퇴 버튼 클릭시 탈퇴가 완료 됩니다</p>\r\n" + 
-			 		"	<p>인증 번호 "+no+" </p>");
+			 
+			 int no = (int)(Math.random()*10000+1000);
+			 String ranNum = Integer.toString(no);
+			 
+			 send.setNo("ranNum");
+			 
+			 long time = System.currentTimeMillis(); 
+			 SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			 String str = dayTime.format(new Date(time));
+			 send.setRegdate(str);
+			 
+			 send.setContent("아래의 인증 번호를 입력한후 회원 탈퇴 버튼 클릭시 탈퇴가 완료 됩니다\r\n" + 
+			 		"	인증 번호 : "+ranNum);
+
 			 service.sendMail(send);
-			 d.addAttribute("no",no);
-		 }
+			 d.addAttribute("no",ranNum);
+		}
 		
 		return "pageJsonReport";
 	}

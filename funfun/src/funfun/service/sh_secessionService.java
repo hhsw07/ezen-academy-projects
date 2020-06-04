@@ -15,6 +15,8 @@ import funfun.vo.sesessionMail;
 public class sh_secessionService {
 	@Autowired(required=false)
 	private sh_secessionReposi dao;
+	
+	@Autowired(required=false)
 	private JavaMailSender sender;
 	
 	
