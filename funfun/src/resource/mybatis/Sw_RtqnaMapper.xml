@@ -90,6 +90,7 @@
 		update rtqna
 		set rtqna_state = '확인'
 		where mem_code = #{mem_code}
+		and rtqna_state = '미확인'
 	</update>
 	
 </mapper>
