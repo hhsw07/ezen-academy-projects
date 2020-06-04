@@ -122,9 +122,6 @@ toastr.options = {
 		
 		
 		$(document).ready(function(){
-			
-			
-			
 			var memBank = "${clist.memBank}";
 			$("#selectBox").val(memBank).prop("selected", true);	
 			function setComma(inputNumber){
@@ -184,7 +181,12 @@ toastr.options = {
 				
 			});
 			
+			
 		})
+		function makeComma(inputNumber){
+				return inputNumber.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,'); 
+			}
+		
 		var curPage;
 		// ajax
 		function goPageWi(no){
@@ -201,7 +203,7 @@ toastr.options = {
 					show += "<tr><td colspan='3'><hr></td></tr>";
 					$.each(wilist,function(idx,Withdrawl){
 						show += "<tr><td>"+Withdrawl.wiDate+"</td>";
-						show += "<td>"+Withdrawl.minusBal+"</td>";
+						show += "<td>"+Number(Withdrawl.minusBal).toLocaleString()+"원 </td>";
 						show += "<td>"+Withdrawl.wiCurr+"</td></tr>";
 						show += "<tr><td colspan='3'><hr></td></tr>";
 					});
@@ -213,7 +215,7 @@ toastr.options = {
 			});
 		}
 		
-		function goPageCh(no){	
+		function goPageCh(no){
 					$.ajax({
 						type:"post",
 						url:"${path}/depositList.do?curPage="+no,
@@ -226,7 +228,7 @@ toastr.options = {
 							show += "<tr><td colspan='3'><hr></td></tr>";
 							$.each(rdlist,function(idx,Deposit){
 								show += "<tr><td>"+Deposit.rddate+"</td>";
-								show += "<td>"+Deposit.chargeQueryAmount+"</td>";
+								show += "<td>"+Number(Deposit.chargeQueryAmount).toLocaleString()+"원 </td>";
 								show += "<td>"+Deposit.curr+"</td></tr>";
 								show += "<tr><td colspan='3'><hr></td></tr>";
 							});
@@ -239,6 +241,43 @@ toastr.options = {
 						}
 					});
 				}
+		
+		function goPageUs(no){	
+			
+			$.ajax({
+				type:"post",
+				url:"${path}/usingList.do?curPage="+no,
+				dataType:"json",
+				async : false,
+				success:function(data){
+					var blist = data.blist;
+					$("#usTable").empty();
+					var show = $("#usTable").html();	
+					show += "<tr><td colspan='4'><hr></td></tr>";
+					$.each(blist,function(idx,Balance){
+						show += "<tr><td>"+Balance.balDate+"</td>";
+						show += "<td>"+Number(Balance.balAmount).toLocaleString()+"원 </td>"
+						show += "<td>"+Balance.balHis+"</td><td>";
+						if(Balance.balType == '입금') show +="<p class='ifText' style='color:rgb(247,0,0);'>입금</p>";
+						if(Balance.balType == '출금') show +="<p class='ifText' style='color:rgb(9,54,135);'>출금</p>";
+						if(Balance.balType == '스토어구매') show +="<p class='ifText' style='color:rgb(1,200,201);'>스토어 구매</p>";
+						if(Balance.balType == '펀딩투자') show +="<p class='ifText' style='color:rgb(255,151,5);'>펀딩 투자</p>";
+						if(Balance.balType == '펀딩수입') show +="<p class='ifText' style='color:rgb(255,151,5)'>펀딩 수입</p>";
+						if(Balance.balType == '스토어수입') show +="<p class='ifText' style='color:rgb(1,200,201);'>스토어 수입</p>";
+						if(Balance.balType == '펀딩취소') show +="<p class='ifText' style='color:gray;'>펀딩취소</p>";
+						if(Balance.balType == '주문취소') show +="<p class='ifText' style='color:gray;'>주문취소</p>";
+						show +="</td></tr>";
+						show +="<tr><td colspan='4'><hr></td></tr>";
+					});
+					$("#usTable").html(show);
+
+				},
+				error:function(err){
+					console.log("에러:"+err);
+					
+				}
+			});
+		}
 		
 		
 </script>
@@ -271,7 +310,7 @@ toastr.options = {
 				<div id="usingM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">이용내역</p>
 			    	
-			    	<table style="width:100%;margin:auto;text-align:center">
+			    	<table id="usTable" style="width:100%;margin:auto;text-align:center">
 			    		<tr><td colspan="4"><hr></td></tr>
 			    		<c:forEach var="list" items="${blist}">
 			    		<tr><td>${list.balDate}</td><td>
@@ -290,6 +329,15 @@ toastr.options = {
 			    		<tr><td colspan="4"><hr></td></tr>
 			    		</c:forEach>
 			    	</table>
+			    	<div class="text-center">
+				        <ul class="pagination ct-orange"> 
+							<li><a href="javascript:goPageUs(${psh.startBlock-1})">&laquo;</a></li>
+							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
+								<li id="wiLi" class="${psh.curPage==cnt?'active':'' }"><a class="wiCnt" href="javascript:goPageUs(${cnt})">${cnt}</a></li>
+							</c:forEach>
+							<li><a href="javascript:goPageUs(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+						</ul>
+		       		</div>
 			    </div>
 				<!-- 계좌 정보 -->	
 				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
@@ -407,13 +455,13 @@ toastr.options = {
 			    <!-- 페이징(출금신청 목록) -->
 
 				<div class="text-center">
-				        <ul class="pagination ct-orange"> 
-							<li><a href="javascript:goPageWi(${psh.startBlock-1})">&laquo;</a></li>
-							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
-								<li id="wiLi" class="${psh.curPage==cnt?'active':'' }"><a class="wiCnt" href="javascript:goPageWi(${cnt})">${cnt}</a></li>
-							</c:forEach>
-							<li><a href="javascript:goPageWi(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
-						</ul>
+			        <ul class="pagination ct-orange"> 
+						<li><a href="javascript:goPageWi(${psh.startBlock-1})">&laquo;</a></li>
+						<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
+							<li id="wiLi" class="${psh.curPage==cnt?'active':''}"><a class="wiCnt" href="javascript:goPageWi(${cnt})">${cnt}</a></li>
+						</c:forEach>
+						<li><a href="javascript:goPageWi(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+					</ul>
 		        </div>
 				
 				
