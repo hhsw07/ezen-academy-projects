@@ -86,7 +86,7 @@
             <div class="main">
 			    <div class="container tim-container AdminProjectList" style="max-width:1200px;">
 			        <div class="protitle" style="margin:150px 0 30px;">
-				        <h2>프로젝트 목록</h2>
+				        <h2>메이커 목록</h2>
 				    </div>
 			    	<form method="post">
 				    	<input type="hidden" name="curPage" value="${paging.curPage}"/>
