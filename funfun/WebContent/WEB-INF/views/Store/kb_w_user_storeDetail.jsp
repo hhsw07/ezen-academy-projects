@@ -213,9 +213,9 @@
                         <td>${qna.qna_code}</td>
                         <td><span class="title_td">
                         <c:if test="${qna.qna_open=='Y'}">
-                        	[비밀글]
+                        	[비밀글입니다]
                         </c:if>
-                        ${qna.qna_detail}</span></td>
+                        </span></td>
                         <td>${qna.mem_name} </td>
                         <td>${qna.qna_reg_date} </td>
                         <td>
