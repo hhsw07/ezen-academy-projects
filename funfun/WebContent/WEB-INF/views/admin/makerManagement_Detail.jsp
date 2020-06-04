@@ -28,7 +28,7 @@
 			<div class="main">
 			    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 			        <div class="protitle" style="margin:150px 0 30px;">
-				        <h2>메이커 상세보기</h2>
+				        <h2>메이커 상세정보</h2>
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post" action="${path}/AdminMaker.do?method=update">
