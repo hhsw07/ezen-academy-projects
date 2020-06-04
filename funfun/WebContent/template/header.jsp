@@ -178,7 +178,7 @@
 			$(location).attr("href","${path}/login.do");
   		}else{
   			//alert("채팅페이지로 이동");
-  			chatting_window = window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=444, height=612, left=100, top=200"); 
+  			chatting_window = window.open("${path}/rtqna.do?method=chatting&mem_code="+mem_code, "실시간 상담 채팅", "width=400, height=680, left=100, top=200"); 
   		}
   	}
   </script>
