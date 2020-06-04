@@ -35,15 +35,17 @@
 			    "hideMethod": "fadeOut"
 			  }
 		var memEmail = "${memEmail}";
+		var isNumCheck = 0;
 		if(memEmail ===''){
 			window.location = "${path}/login.do";
 			alert("로그인해주세요");
 		}
 
 		 function openConfirm(){
-			 if($("input:checkbox[name=favorChk]").is(":checked")){
-				 sendMail();
+			 if($("input:checkbox[name=favorChk]").is(":checked")){	 
 				 $(".openConfirm").css('display','block')
+				 Command: toastr["warning"]("인증번호가 메일로 발송되었습니다. 메일함을 확인해주세요");
+				 setTimeout(sendMail, 1000);
 			 }else{
 				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
@@ -51,15 +53,19 @@
 
 		 function secessionFinal(memEmail){
 			 if($("input:checkbox[name=favorChk]").is(":checked")){
-
-				 var result = confirm('회원 탈퇴시 동일 이메일로 재가입 할수 없습니다. 정말 탈퇴하시겠습니까?'); 
+				if(isNumCheck==1){
+					var result = confirm('회원 탈퇴시 동일 이메일로 재가입 할수 없습니다. 정말 탈퇴하시겠습니까?'); 
 					if(result) { 
 						$("[name=memEmail]").val(memEmail)
 						 $("form").submit();
 						Command: toastr["warning"]("탈퇴가 완료되었습니다");
 					} else {
-						
-					} 
+						Command: toastr["warning"]("인증번호가 일치하지 않습니다");
+					}
+				}else{
+					
+				}
+				  
 			 
 			 }else{
 				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
@@ -75,7 +81,13 @@
 					dataType:"json",
 					async : false,
 					success:function(data){
-						
+						$("#checkNum").click(function(){
+							var num = $("#numInput").val()
+							if(num==data.no){
+								isNumCheck = 1;
+								Command: toastr["warning"]("인증번호가 확인 되었습니다");
+							}
+						})
 
 					},
 					error:function(error){
@@ -136,10 +148,10 @@
 	    	<div class="openConfirm" style="display:none;">
 		    	<div class="confirmInputDiv" style="display:flex;background-color:#f2f2f2;margin-top:20px;margin-bottom:10px;">
 		    		<p class="mailInput" style="border:none;position:relative;top:14px;left:8px;padding-bottom:-5px;">${memEmail}</p>
-		    		<button type="button" style="height:35px;position:relative;top:7px;margin-left:84px;background-color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;color:gray;">재전송</button>
+		    		<button onclick="openConfirm()" type="button" style="height:35px;position:relative;top:7px;margin-left:84px;background-color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;color:gray;">재전송</button>
 		    	</div>
 		    	<div class="confirmInputDiv" style="display:flex;">
-		    		<input style="height:35px;position:relative;top:7px;" class="confirmInput" placeholder="인증번호입력">
+		    		<input id="numInput" style="height:35px;position:relative;top:7px;" class="confirmInput" placeholder="인증번호입력">
 		    		<button id="checkNum" style="height:35px;position:relative;top:7px;margin-left:72px;background-color:gray;color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;" type="button">인증확인</button>
 		    	</div>
 	    	</div>

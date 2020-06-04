@@ -29,7 +29,6 @@ public class sh_secessionService {
 		msg.setSubject(email.getSubject());
 		msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
 		msg.setText(email.getContent());
-		System.out.println(msg);
 		sender.send(msg);		
 	}
 }
