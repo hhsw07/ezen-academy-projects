@@ -15,7 +15,7 @@ import funfun.vo.Report;
 @Repository
 public interface MK_FundingReposi {
 	// 프로젝트 목록
-	public int projcnt();
+	public int projcnt(ProjectSch sch);
 	public ArrayList<Project> projectList(ProjectSch sch);
 	// 프로젝트 상세보기
 	public Project detail(int pro_code);

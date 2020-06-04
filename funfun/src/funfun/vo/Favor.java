@@ -9,7 +9,27 @@ public class Favor {
 	private String memEmail; // 회원 이메일
 	private String percent; // 현재모금률
 	private String proCode; // 프로젝트 코드
+	private int pro_target;
+	private int pro_money;
 	
+	
+	
+	public int getPro_target() {
+		return pro_target;
+	}
+
+	public void setPro_target(int pro_target) {
+		this.pro_target = pro_target;
+	}
+
+	public int getPro_money() {
+		return pro_money;
+	}
+
+	public void setPro_money(int pro_money) {
+		this.pro_money = pro_money;
+	}
+
 	public String getPercent() {
 		return percent;
 	}

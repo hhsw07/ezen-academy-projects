@@ -1,6 +1,7 @@
 package funfun.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import funfun.service.MainService;
+import funfun.service.sh_myPageService;
 import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
@@ -32,6 +34,9 @@ public class AndroidLoginCtrl {
 	
 	@Autowired
 	MainService service;
+	
+	@Autowired
+	sh_myPageService myPageService;
 	
 	//로그인에 사용
 	@RequestMapping("/androidlogin.do")
@@ -131,4 +136,18 @@ public class AndroidLoginCtrl {
 		result="{\"list\":"+result+"}";
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
+	
+	@RequestMapping(value="/deleteMyFavor.do")
+	public ResponseEntity deleteMyFavor(@RequestParam String email, @RequestParam String code) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		HashMap<String,String> hash = new HashMap<>();
+		hash.put("pc", code);
+		hash.put("memEmail", email);
+		myPageService.deleteFavor(hash);
+		
+		String result="{\"result\":"+true+"}";
+		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
+	}
+	
 }

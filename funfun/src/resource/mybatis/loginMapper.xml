@@ -50,7 +50,7 @@
 	
 	<select id="getFavorByCode" parameterType="java.lang.Integer" resultType="funfun.vo.Favor">
 		SELECT pro_title proTitle, cate_title cateTitle,
-		pro_finish_date-current_date dDay, PRO_IMAGE image FROM project WHERE pro_code=#{code}
+		pro_finish_date-current_date dDay, PRO_IMAGE image, pro_target, pro_money  FROM project WHERE pro_code=#{code}
 	</select>
 	
 	<select id="getBalanceByEmail" parameterType="String" resultType="int">
