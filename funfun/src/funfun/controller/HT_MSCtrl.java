@@ -152,6 +152,7 @@ public class HT_MSCtrl {
 		 * System.out.println("현재날짜가 종료날짜보다 작다."); }
 		 */
 		session.setAttribute("projectCode", pro_code);
+		System.out.println("지금 테스트 하는거 pro_code : " + pro_code);
 		int storeCode = service.getStoCode(pro_code);
 		session.setAttribute("storeCode", storeCode);
 		if (storeCode!=-1) {

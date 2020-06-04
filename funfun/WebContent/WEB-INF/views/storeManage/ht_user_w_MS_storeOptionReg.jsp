@@ -78,7 +78,7 @@
 	<c:forEach var="opt" items="${proStoOptList}">
 		<div class="optUnitContainer">
 		<div class="optUnitIntro">프로젝트 리워드</div>
-		<div class="optUnitPrice">${opt.opt_price}원</div>
+		<div class="optUnitPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${opt.opt_price}"/>원</div>
 		<div class="optUnitPrice">${opt.opt_title}</div>
 		<div class="optUnitTitle">${opt.opt_detail}</div>
 		<hr>
@@ -132,13 +132,12 @@
 				<div class="modal-body" style="padding-left:70px;padding-right:70px;">
 				
 					<div class="reward_reg_subTitle">
-						<div class="reward_reg_content_container1">프로젝트 옵션 제목</div>
+						<div class="reward_reg_content_container1">프로젝트 리워드명</div>
 						<div class="reward_reg_content_container2 pro_option_title">
 						</div>
 					</div>
-
 					<div class="reward_reg_subTitle">
-						<div class="reward_reg_content_container1">프로젝트 옵션 내용</div>
+						<div class="reward_reg_content_container1">프로젝트 리워드 내용</div>
 						<div class="reward_reg_content_container2 pro_option_detail">
 						</div>
 					</div>
