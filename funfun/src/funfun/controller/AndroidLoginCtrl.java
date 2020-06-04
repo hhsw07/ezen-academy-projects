@@ -22,6 +22,7 @@ import funfun.service.MainService;
 import funfun.vo.AccountInfo;
 import funfun.vo.Favor;
 import funfun.vo.FavorCodeList;
+import funfun.vo.MemberInfo;
 import funfun.vo.MemberLogin;
 import funfun.vo.MyFundingInfo;
 import funfun.vo.MyOrderInfo;
@@ -65,8 +66,9 @@ public class AndroidLoginCtrl {
 		System.out.println(email);
 		HttpHeaders responseHeaders = new HttpHeaders();
 	    responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-	    String name=service.getNameByEmail(email);
-		String result="{\"name\":\""+name+"\"}";
+	    MemberInfo m=service.getMemberInfo(email);
+	    Gson gson=new Gson();
+	    String result=gson.toJson(m);
 		
 		return new ResponseEntity(result, responseHeaders, HttpStatus.CREATED);
 	}
