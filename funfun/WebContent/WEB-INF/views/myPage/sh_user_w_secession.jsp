@@ -58,7 +58,7 @@
 					if(result) { 
 						$("[name=memEmail]").val(memEmail)
 						 $("form").submit();
-						Command: toastr["warning"]("탈퇴가 완료되었습니다");
+						alert("탈퇴가 완료 되었습니다")
 					} else {
 						Command: toastr["warning"]("인증번호가 일치하지 않습니다");
 					}
