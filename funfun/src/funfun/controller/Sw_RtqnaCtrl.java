@@ -90,10 +90,7 @@ public class Sw_RtqnaCtrl {
 		if( user.getMem_code() == mem_code) {
 			// 회원인 경우 채팅방 입장시
 			// 미확인일 경우에만  ==> 확인으로 수정
-			if(true) {
-				service.uptSt3(mem_code);
-				
-			}
+			service.uptSt3(mem_code);
 		}
 		d.addAttribute("rtqna", service.chatdetail(mem_code));
 		return "WEB-INF\\views\\servicecenter\\sw_chatting.jsp";
