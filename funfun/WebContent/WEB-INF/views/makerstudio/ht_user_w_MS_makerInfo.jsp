@@ -27,19 +27,15 @@
 	<span class="sub_gray_font">
 		서포터와 소통이 가능한 정확한 정보를 입력해 주세요	
 	</span>
+	
+	<c:set var="maker" value="makerInfo"/>
+	
+	<form method="post" action="${path}/MakerStudio.do" id="uptForm">
 
-	<form method="post" action="${path}/MakerStudio.do">
-	 
-	<input type="hidden" name="method" value="makerReg_done" />
-
-	<input type="hidden" name="mem_code" value="123132"/>
-	<input type="hidden" name="maker_profile" value="123123"/>
-	<input type="hidden" name="maker_email" value="123123"/>
-	<input type="hidden" name="maker_curr" value=""/>
-	<input type="hidden" name="maker_bankbook" value="123123"/>
+	<input type="hidden" name="method" value="makerInfoUpt" />
+	<input type="hidden" name="mem_code" value="${maker.mem_code }"/>
 
 	<div class="form-group">
-	
 
 	<br><br><br>
 	
@@ -50,7 +46,7 @@
 	</span>
 	<br><br>
 
-    <input type="text" name="maker_name" value="" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" />
+    <input type="text" name="maker_name" value="${maker.maker_name}" placeholder="기업명을 입력하세요" class="form-control" style="width:800px;" />
 	
 	<br><br><br>
 
@@ -61,8 +57,8 @@
 	
 	<br><br><br><br>	
 
-	<span class="reg_content_title">관리자 휴대폰 번호 *</span><br><br>
-    <input style="width:800px;display:inline-block;" type="text" value="" placeholder="휴대폰 번호를 입력하세요" class="form-control" name="mem_phoneno" />
+	<span class="reg_content_title">관리자 e-mail 주소 *</span><br><br>
+    <input style="width:800px;display:inline-block;" type="text" placeholder="e-mail 주소를 입력하세요" class="form-control" name="maker_email" value="${maker.maker_email }"/>
 
 
 	<br><br><br>
@@ -88,4 +84,13 @@
 	</div>
 	<!-- end main -->
 </body>
+
+<script>
+	$("#updateSubmit").click(function(){
+		if(confirm("수정 등록 하시겠습니까?")){
+			$("#uptForm").submit();
+		}
+	})
+</script>
+
 </html>

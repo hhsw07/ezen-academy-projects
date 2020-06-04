@@ -22,6 +22,15 @@
 	WHERE MEM_CODE = #{mem_code}
 	</select>
 	
+	   
+	<update id="makerInfoUpt" parameterType="makerstudio">
+	UPDATE MAKER
+	SET MAKER_NAME = #{maker_name},
+		MAKER_email = #{maker_email},
+		MAKER_type = #{maker_type}
+	WHERE MEM_CODE = #{mem_code}
+	</update>
+	
 	<select id="myProjectList" resultMap="proResult" parameterType="project">
 	SELECT * FROM PROJECT
 	WHERE MAKER_CODE =( 

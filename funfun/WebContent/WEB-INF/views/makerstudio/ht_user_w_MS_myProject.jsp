@@ -57,6 +57,9 @@
 	<div class="jumbotron" style="padding-bottom:50px;">
 	<div class="container tim-container" style="max-width:1200px;background-color:#EEEEEE;"> 
 
+	
+
+
  	<c:choose>
 	
 	<c:when test="${list==[] }">
@@ -69,7 +72,10 @@
 
 	<c:otherwise>	 
 	<div class="row">
+		
 		<c:forEach var="proj" items="${list}">
+		<c:set var="rate" value="${proj.pro_money/proj.pro_target*100}"/>
+		
 		<div class="col-xs-12 col-md-3 item">
 			<div class="thumbnail projectList-item" style="">
 				<c:choose>
@@ -84,11 +90,24 @@
 				<div class="caption proj-info">
 					<p class="ProjectList-title">${proj.pro_title}</p>
 					<div class="maker-info">
-						<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+						<c:choose>
+							<c:when test="${proj.cate_title!=null }">
+							<span class="ProjectList-maker">${proj.cate_title} | ${proj.maker_name}</span>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div>
-						<span class="ProjectList-rate">모금율 : ${proj.percent}%</span>
-					<c:choose>
+						<c:choose>
+							<c:when test="${proj.pro_sub_date==null}">
+							<span class="ProjectList-rate">펀딩 시작 전</span>
+							</c:when>
+							<c:otherwise>
+							<span class="ProjectList-rate">모금율 : ${rate}%</span>
+							</c:otherwise>
+						</c:choose>
+<!-- 					<c:choose>
 						<c:when test="${proj.dday>0}">
 							<span class="ProjectList-date">${proj.dday}일 남음</span>
 						</c:when>
@@ -99,7 +118,7 @@
 							<span class="ProjectList-date">오늘 마감</span>
 						</c:when>
 					</c:choose>
-					</div>
+ -->				</div>
 				</div>
 			</div>
 		</div>
