@@ -64,6 +64,24 @@
 				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
 		 }
+		 
+		 //메일 발송 ajax
+		 function sendMail(no){	
+				
+				$.ajax({
+					type:"post",
+					url:"${path}/sendEmail.do",
+					dataType:"json",
+					async : false,
+					success:function(data){
+						console.log(data)
+					},
+					error:function(error){
+						console.log("에러:"+error);
+						
+					}
+				});
+			}
 			 
 </script>
 </head>
@@ -133,5 +151,7 @@
 	</div>
 	
 	<!-- end main -->
+	
+	
 </body>
 </html>
