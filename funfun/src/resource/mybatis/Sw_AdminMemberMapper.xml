@@ -15,8 +15,9 @@
 	<!-- ArrayList<AdminMember> list(Paging sch) -->
 	<select id="list" resultMap="AdminMemberResult" parameterType="paging">
 		SELECT *
-		FROM (SELECT rownum cnt,a.*
-			  FROM MEMBER a
+		FROM (SELECT rownum cnt,a.*,b.maker_code
+			  FROM MEMBER a, maker b
+	  			WHERE a.mem_code = b.MEM_CODE(+)
 			  ORDER BY a.mem_code)
 		WHERE cnt BETWEEN #{start} AND #{end}
 	</select>

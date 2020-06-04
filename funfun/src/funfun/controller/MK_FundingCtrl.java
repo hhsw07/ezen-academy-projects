@@ -64,6 +64,7 @@ public class MK_FundingCtrl {
 		System.out.println("카테고리"+sch.getCate_title());
 		System.out.println("검색"+sch.getProjectsch());
 		System.out.println("분류:"+sch.getProday());
+		System.out.println("현재페이지:"+sch.getPageCount());
 		return "WEB-INF\\views\\funding\\mk_user_w_projectList.jsp";
 	}
 	// 프로젝트 목록 for json

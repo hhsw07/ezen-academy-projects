@@ -9,9 +9,9 @@
 	<!-- int totCnt() 총 데이터 건수 -->
 	<select id="projcnt" resultType="int" parameterType="projSch">
 		SELECT COUNT(*)
-		FROM (SELECT a.*, round(a.PRO_MONEY/a.PRO_TARGET*100) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name, b.MAKER_PROFILE 
-			FROM project a, MAKER b
-			WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
+		FROM (SELECT a.*, NVL(round(a.PRO_MONEY/a.PRO_TARGET*100), 0) percent, CEIL(a.pro_finish_date - current_date) dday, b.maker_name, b.MAKER_PROFILE  
+				FROM project a, MAKER b
+				WHERE a.MAKER_CODE = b.MAKER_CODE AND PRO_CURR = '정상'
 			<if test="cate_title!=null and cate_title!= ''">
 				and cate_title like '%' || #{cate_title} ||'%'
 			</if>
@@ -25,6 +25,18 @@
 			</if>
 			<if test="proday=='end'">
 				AND CEIL(a.pro_finish_date - current_date) <![CDATA[<]]>  0
+			</if>
+			<if test="sort=='recent'">
+				ORDER BY PRO_START_DATE DESC
+			</if>
+			<if test="sort=='popluar'">
+				ORDER BY percent DESC
+			</if>
+			<if test="sort=='amount'">
+				ORDER BY pro_target DESC
+			</if>
+			<if test="sort=='closing'">
+				ORDER BY dday ASC
 			</if>)
 		WHERE 1=1
 		<if test="projectsch!=null and projectsch!=''">

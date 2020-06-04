@@ -77,7 +77,6 @@
 			} else{
 				alert("입력 내용을 확인해주세요");
 			}
-			 
 		});
 		// 문의하기
 		var article = $(".qnaShow");

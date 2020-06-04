@@ -42,7 +42,8 @@
 
 		 function openConfirm(){
 			 if($("input:checkbox[name=favorChk]").is(":checked")){
-				 $(".openConfirm").css('display','block') 
+				 sendMail();
+				 $(".openConfirm").css('display','block')
 			 }else{
 				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
@@ -64,6 +65,25 @@
 				 Command: toastr["warning"]("탈퇴 전 유의사항을 확인해주세요");
 			 }
 		 }
+		 
+		 //메일 발송 ajax
+		 function sendMail(){	
+				
+				$.ajax({
+					type:"post",
+					url:"${path}/sendEmail.do",
+					dataType:"json",
+					async : false,
+					success:function(data){
+						
+
+					},
+					error:function(error){
+						console.log("에러:"+error);
+						
+					}
+				});
+			}
 			 
 </script>
 </head>
@@ -120,7 +140,7 @@
 		    	</div>
 		    	<div class="confirmInputDiv" style="display:flex;">
 		    		<input style="height:35px;position:relative;top:7px;" class="confirmInput" placeholder="인증번호입력">
-		    		<button style="height:35px;position:relative;top:7px;margin-left:72px;background-color:gray;color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;" type="button">인증확인</button>
+		    		<button id="checkNum" style="height:35px;position:relative;top:7px;margin-left:72px;background-color:gray;color:white;padding-left:8px;padding-right:8px;border:1px solid gray;border-radius:3px;" type="button">인증확인</button>
 		    	</div>
 	    	</div>
 	    	<hr style="color:gray;">
@@ -133,5 +153,7 @@
 	</div>
 	
 	<!-- end main -->
+	
+	
 </body>
 </html>

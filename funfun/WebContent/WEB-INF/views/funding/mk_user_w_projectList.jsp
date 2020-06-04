@@ -172,7 +172,6 @@ a{cursor:pointer;}
 							</label>
 							<div class="select-sort ProjectListHead_sort">
 								<select name="prosort" class="">
-									<option value="recommend">추천순</option>
 									<option value="popluar">인기순</option>
 									<option value="recent">최신순</option>
 									<option value="amount">펀딩액순</option>
