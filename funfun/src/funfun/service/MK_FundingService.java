@@ -26,7 +26,8 @@ public class MK_FundingService {
 	private MK_FundingReposi dao;
 	// 프로젝트 목록
 	public ArrayList<Project> projectList(ProjectSch sch){
-		sch.setCount(dao.projcnt());
+		sch.setCount(dao.projcnt(sch));
+		System.out.println("service 총 프로젝트 수:"+sch.getCount());
 		
 		if(sch.getPageSize()==0) {
 			sch.setPageSize(16);
