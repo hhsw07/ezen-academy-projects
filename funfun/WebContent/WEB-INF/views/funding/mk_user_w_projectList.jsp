@@ -163,7 +163,7 @@ a{cursor:pointer;}
 					<form class="ProjectListHead_search" method="post" action="${path}/funding.do?method=list">
 						<div>
 							<input type="hidden" name="cate_title" value="${projSch.cate_title}"/>
-							<input type="hidden" name="curPage" value="${projSch.curPage}"/>
+							<input type="hidden" name="curPage" value="1"/>
 							<input type="hidden" name="sort" value="${projSch.sort}"/>
 							<input type="hidden" name="proday" value="${projSch.proday}"/>
 							<label for="search-keyword">
