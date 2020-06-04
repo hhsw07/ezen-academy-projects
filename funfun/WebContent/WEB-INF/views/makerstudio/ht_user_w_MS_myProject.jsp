@@ -25,7 +25,6 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=makerInfo")
 		})		
 		
-		console.log(${list});
 	})
 	
 	function go_update(pro_code){
@@ -58,7 +57,7 @@
 	<div class="jumbotron" style="padding-bottom:50px;">
 	<div class="container tim-container" style="max-width:1200px;background-color:#EEEEEE;"> 
 
-	<c:choose>
+ 	<c:choose>
 	
 	<c:when test="${list==[] }">
 		<span class="sub_gray_font_big">
@@ -68,7 +67,7 @@
 		</span>
 	</c:when>
 
-	<c:otherwise>
+	<c:otherwise>	 
 	<div class="row">
 		<c:forEach var="proj" items="${list}">
 		<div class="col-xs-12 col-md-3 item">
@@ -108,9 +107,9 @@
 	</div>
 
 
-	</c:otherwise>
+ 	</c:otherwise>
 	</c:choose>
-
+ 
 	</div>
 	</div>
 
