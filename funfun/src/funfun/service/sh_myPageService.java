@@ -46,8 +46,8 @@ public class sh_myPageService {
 	public void changeFundingAdr(HashMap<String,String> hm2) {
 		dao.changeFundingAdr(hm2);
 	}
-	public void cancleOrder(String oc) {
-		dao.cancleOrder(oc);
+	public void cancleOrder(HashMap<String,String> hm3) {
+		dao.cancleOrder(hm3);
 	}
 	public void cancleFunding(String fc) {
 		dao.cancleFunding(fc);

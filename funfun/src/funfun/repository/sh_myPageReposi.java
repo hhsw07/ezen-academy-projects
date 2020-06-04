@@ -22,7 +22,7 @@ public interface sh_myPageReposi {
 	public MyPageInfo mypageinfo(String memEmail);
 	public void changeAdr(HashMap<String,String> map);
 	public void changeFundingAdr(HashMap<String,String> map);
-	public int cancleOrder(String oc);
+	public int cancleOrder(HashMap<String,String> hm3);
 	public int cancleFunding(String fc);
 	public void deleteFavor(HashMap<String,String> hmDF);
 	public int cancleFundingBal(HashMap<String,String> hmBal);

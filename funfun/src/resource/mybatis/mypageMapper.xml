@@ -40,9 +40,10 @@
 		WHERE FUND_CODE = #{fc}
  	</update>
  	
- 	<update id="cancleOrder" parameterType="String">
+ 	<update id="cancleOrder" parameterType="java.util.HashMap">
 	    UPDATE STORE_ORDER
-		SET STO_ORDER_CURR = '주문취소'
+		SET STO_ORDER_CURR = '주문취소',
+		STO_ORDER_CNT = STO_ORDER_CNT - ${orderCnt,jdbcType=NUMERIC}
 	    WHERE STO_ORDER_CODE = #{oc}
  	</update>
  	

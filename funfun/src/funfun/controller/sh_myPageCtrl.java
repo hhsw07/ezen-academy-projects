@@ -70,7 +70,7 @@ public class sh_myPageCtrl {
 		}
 		
 		@RequestMapping("/cancleOrder.do")
-		public String cancelOrder(HttpServletRequest request,@RequestParam("ocCancle") String oc,@RequestParam("orderPrice") String orderPrice) {
+		public String cancelOrder(HttpServletRequest request,@RequestParam("ocCancle") String oc,@RequestParam("orderPrice") String orderPrice,@RequestParam("orderCnt") String orderCnt) {
 			System.out.println("orderCode : "+oc);
 			HttpSession session = request.getSession();
 			  
@@ -90,7 +90,10 @@ public class sh_myPageCtrl {
 					hmBalTbO.put("orderCode",oc);
 					service.cancleOrderBalTb(hmBalTbO);
 					
-					service.cancleOrder(oc);
+					HashMap<String,String> hm3 = new HashMap<>();
+					hm3.put("orderCnt",orderCnt);
+					hm3.put("oc",oc);
+					service.cancleOrder(hm3);
 			 }
 			return "redirect:/mypage.do";
 		}
