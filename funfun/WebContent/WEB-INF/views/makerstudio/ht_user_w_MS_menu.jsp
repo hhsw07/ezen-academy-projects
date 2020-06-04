@@ -29,9 +29,10 @@ $(document).ready(function(){
 
 	<c:set var="pro" value="${projectInfo}"/>
 	<c:set var="rate" value="${pro.pro_money/pro.pro_target*100 }"/>
-	<c:set var="today" value="<%=new java.util.Date()%>" />
-	<fmt:parseDate var="pro_start_date" value="${pro.pro_start_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-	<fmt:parseDate var="pro_finish_date" value="${pro.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+	<c:set var="today" value="${today}"/>
+	<c:set var="startDate" value="${startDate}"/>
+	<c:set var="finishDate" value="${finishDate}"/>
+	<c:set var="pro" value="${projectInfo }"/>
 
 
 
@@ -91,7 +92,7 @@ $(document).ready(function(){
 			<c:when test="${storeCode==-1 }">
 
 			<c:choose>
-				<c:when test="${pro.pro_finish_date>today and rate>=100 }">
+				<c:when test="${finishDate<today and rate>=100 }">
 					<div class="panel-body sub_gray_font storeOpenReg" style="font-size:1.1em;">
 					스토어 등록 신청
 					</div>
@@ -108,6 +109,7 @@ $(document).ready(function(){
 			 	<details open>
 			    <summary class="sub_gray_font_inact" style="font-size:1.1em;">스토어 등록<br><br></summary>
 				<ul style="list-style:none;line-height:3em">
+			  		<li class="sub_gray_font_inact ">스토어 준비</li>
 			  		<li class="sub_gray_font_inact ">기본 정보</li>
 			  		<li class="sub_gray_font_inact ">옵션 설계</li>
 				</ul>
@@ -132,6 +134,7 @@ $(document).ready(function(){
 			 	<details open>
 			    <summary class="sub_gray_font" style="font-size:1.1em;">스토어 등록<br><br></summary>
 				<ul style="list-style:none;line-height:3em">
+					<li class="sub_gray_font storeRegReady">스토어 준비</li>
 			  		<li class="sub_gray_font storeBasicInfoReg">기본 정보</li>
 			  		<li class="sub_gray_font storeOptionReg">옵션 설계</li>
 				</ul>
@@ -154,6 +157,7 @@ $(document).ready(function(){
 			 	<details open>
 			    <summary class="sub_gray_font_inact" style="font-size:1.1em;">스토어 등록<br><br></summary>
 				<ul style="list-style:none;line-height:3em">
+			  		<li class="sub_gray_font_inact">스토어 준비</li>
 			  		<li class="sub_gray_font_inact ">기본 정보</li>
 			  		<li class="sub_gray_font_inact ">옵션 설계</li>
 				</ul>

@@ -14,6 +14,8 @@ import funfun.vo.storeQnA;
 @Repository
 public interface HT_StoreManageReposi {
 	
+	public Store getStoreInfo(int sto_code);
+	public int getStoOptCnt(int sto_code);
 	public ArrayList<storeQnA> storeQnAList(int sto_code);
 	public void storeQnAAnsReg(storeQnA qna);
 	public ArrayList<storeOrder> orderList(int sto_code);
@@ -23,6 +25,7 @@ public interface HT_StoreManageReposi {
 	public ArrayList<ProOption> getProOptList(int pro_code);
 	public void stoOptUnitReg(storeOption sto);
 	public void stoOptUnitUpt(storeOption sto);
+	public void stoOptUnitDelete(int sto_opt_code);
 	public void storeOpenRegConfirm(int sto_code);
 	public ArrayList<ProStoOptionJoin> getProStoOptionJoinList(int pro_code);
 }

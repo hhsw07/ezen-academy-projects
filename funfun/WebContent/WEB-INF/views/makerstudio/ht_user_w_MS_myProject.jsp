@@ -41,27 +41,37 @@
 
 
 	<div class="main">
-	    <div class="container tim-container" style="max-width:1200px; padding-top:100px; padding-bottom:50px;">
-
-	<h3>${makerInfo.maker_name}님이 만든 프로젝트</h3>
-	<span class="navbar-right" style="display:inline-block">
-	<button id="newProRegBtn" class="btn btn-warning btn_custom">새 프로젝트 등록</button>
-	<button id="makerInfoBtn" class="btn btn-warning btn_custom">메이커 정보 변경</button>
-	</span>
-	        
-	    </div>
+    <div class="container tim-container" style="max-width:1200px; padding-top:100px; padding-bottom:50px;">
+		<h3>${makerInfo.maker_name}님이 만든 프로젝트</h3>
+		<span class="navbar-right" style="display:inline-block">
+		<button id="newProRegBtn" class="btn btn-warning btn_custom">새 프로젝트 오픈</button>
+		<button id="makerInfoBtn" class="btn btn-warning btn_custom">메이커 정보 변경</button>
+		</span>
+		<br><br><br><br><br>
+		<div class="sub_gray_font">
+		수정하기 - 프로젝트 오픈 신청이 완료되지 않았습니다. 프로젝트 신청을 완료해 주세요<br><br>
+		프로젝트 관리 - 프로젝트 오픈 신청이 완료되었습니다. 프로젝트 현황 및 스토어 서비스를 관리할 수 있습니다.
+		</div>
+    </div>
 
 	<div class="jumbotron" style="padding-bottom:50px;">
 	<div class="container tim-container" style="max-width:1200px;background-color:#EEEEEE;"> 
 
+ 	<c:choose>
+	
+	<c:when test="${list==[] }">
+		<span class="sub_gray_font_big">
+		아직 등록한 프로젝트가 없습니다.<br>
+		프로젝트 오픈 신청으로 프로젝트를 시작해 보세요 :)
+		<br><br><br><br><br><br>
+		</span>
+	</c:when>
 
-
-
-
+	<c:otherwise>	 
 	<div class="row">
 		<c:forEach var="proj" items="${list}">
 		<div class="col-xs-12 col-md-3 item">
-			<div class="thumbnail projectList-item">
+			<div class="thumbnail projectList-item" style="">
 				<c:choose>
 					<c:when test="${proj.pro_reg_date==null}">
 					<div class="myProjectFunction" onclick="javascript:go_update('${proj.pro_code}')">수정하기</div>
@@ -97,8 +107,9 @@
 	</div>
 
 
-
-
+ 	</c:otherwise>
+	</c:choose>
+ 
 	</div>
 	</div>
 

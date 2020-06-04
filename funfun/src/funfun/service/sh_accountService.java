@@ -17,8 +17,24 @@ public class sh_accountService {
 	@Autowired(required=false)
 	private sh_accountReposi dao;
 	
-	public ArrayList<Balance> blist(String memEmail){
-		return dao.blist(memEmail);
+	public ArrayList<Balance> blist(Paging_sh psh){
+		psh.setCount(dao.totCnt(psh));
+		psh.setPageSize(10);
+		
+		psh.setPageCount((int)Math.ceil(psh.getCount()/(double)psh.getPageSize()));
+		if(psh.getCurPage() == 0) {
+			psh.setCurPage(1);
+		}
+		psh.setStart((psh.getCurPage()-1)*psh.getPageSize()+1);
+		psh.setEnd(psh.getCurPage()*psh.getPageSize());
+		
+		psh.setBlocksize(5);
+		int blocknum = (int)Math.ceil(psh.getCurPage()/(double)psh.getBlocksize());
+		psh.setStartBlock((blocknum-1)*psh.getBlocksize()+1);
+		int endblock = blocknum*psh.getBlocksize();
+		psh.setEndBlock(endblock>psh.getPageCount()?psh.getPageCount():endblock);
+		
+		return dao.blist(psh);
 	}
 	public UserProfile clist(String memEmail){
 		return dao.clist(memEmail);
@@ -28,25 +44,22 @@ public class sh_accountService {
 	}
 	public ArrayList<Deposit> rdlist(Paging_sh psh){
 		psh.setCount(dao.totCnt(psh));
-
-		if(psh.getPageSize() == 0) {
-			psh.setPageSize(5);
-		}
+		psh.setPageSize(5);
+		
 		psh.setPageCount((int)Math.ceil(psh.getCount()/(double)psh.getPageSize()));
 		if(psh.getCurPage() == 0) {
 			psh.setCurPage(1);
 		}
 		psh.setStart((psh.getCurPage()-1)*psh.getPageSize()+1);
 		psh.setEnd(psh.getCurPage()*psh.getPageSize());
-		
-		psh.setBlocksize(5);
 
+		psh.setBlocksize(5);
 		int blocknum = (int)Math.ceil(psh.getCurPage()/(double)psh.getBlocksize());
 		psh.setStartBlock((blocknum-1)*psh.getBlocksize()+1);
 		int endblock = blocknum*psh.getBlocksize();
 		psh.setEndBlock(endblock>psh.getPageCount()?psh.getPageCount():endblock);
 		
-		
+
 		return dao.rdlist(psh);
 	}
 	public int insDeposit(Deposit ds){
@@ -54,19 +67,16 @@ public class sh_accountService {
 	}
 	public ArrayList<Withdrawl> wilist(Paging_sh psh){
 		psh.setCount(dao.totCnt(psh));
-
-		if(psh.getPageSize() == 0) {
-			psh.setPageSize(5);
-		}
+		psh.setPageSize(5);
+		
 		psh.setPageCount((int)Math.ceil(psh.getCount()/(double)psh.getPageSize()));
 		if(psh.getCurPage() == 0) {
 			psh.setCurPage(1);
 		}
 		psh.setStart((psh.getCurPage()-1)*psh.getPageSize()+1);
 		psh.setEnd(psh.getCurPage()*psh.getPageSize());
-		
-		psh.setBlocksize(5);
 
+		psh.setBlocksize(5);
 		int blocknum = (int)Math.ceil(psh.getCurPage()/(double)psh.getBlocksize());
 		psh.setStartBlock((blocknum-1)*psh.getBlocksize()+1);
 		int endblock = blocknum*psh.getBlocksize();

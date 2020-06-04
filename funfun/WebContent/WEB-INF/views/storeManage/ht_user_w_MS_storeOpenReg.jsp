@@ -20,7 +20,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet&pro_code=${projectCode}")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -29,6 +29,10 @@
 		$(".storeOpenReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
 		})
+		$(".storeRegReady").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeRegReady")
+		})
+
 		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
 		})

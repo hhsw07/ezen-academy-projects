@@ -28,7 +28,7 @@
 			<div class="main">
 			    <div class="container tim-container" style="max-width:1200px; padding-top:100px">
 			        <div class="memtitle" style="margin:150px 0 30px;">
-				        <h2>회원 상세보기</h2>
+				        <h2>회원 상세정보</h2>
 				    </div>
 			        <div>
 				    	<form class="form-group" method="post" action="${path}/AdminMember.do?method=update">
@@ -59,7 +59,7 @@
 					        		<th>계좌번호</th>
 					        		<td>${not empty AdminMember.mem_account?AdminMember.mem_account:"없음"}</td></tr>
 					        	<tr><th>보유 예치금</th>
-					        		<td><fmt:formatNumber pattern="###,###" value="${AdminMember.mem_balance}"/></td>
+					        		<td><fmt:formatNumber pattern="###,###" value="${AdminMember.mem_balance}"/> 원</td>
 					        		<th>메이커유무</th>
 					        		<td>${AdminMember.maker_code == 0?"서포터회원":"메이커회원"}</td></tr>
 					        </table>
@@ -227,6 +227,7 @@
 								</c:forEach>
 							</c:if>
 						</div>
+						<br><br>
 					<!-- 주문 및 배송 조회 끝 -->
 				    </div>
 			    </div>
@@ -253,7 +254,7 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<!-- end main -->
 			</main>
             <%@ include file="/adminTemplate/footer.jsp" %>

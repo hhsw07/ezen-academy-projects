@@ -1,6 +1,7 @@
 package funfun.vo;
 
 public class Admin {
+	private int cnt;
 	private int admin_code;
 	private String admin_pw;
 	private String admin_name;
@@ -8,6 +9,13 @@ public class Admin {
 	
 	
 	
+	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getAdmin_code() {
 		return admin_code;
 	}

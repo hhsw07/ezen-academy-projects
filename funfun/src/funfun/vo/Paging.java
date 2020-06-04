@@ -11,6 +11,13 @@ public class Paging {
 	private String cate_title;
 	private String store_sort;
 	private int report_code;
+	private String pro_title;
+	public String getPro_title() {
+		return pro_title;
+	}
+	public void setPro_title(String pro_title) {
+		this.pro_title = pro_title;
+	}
 	public String getStore_sort() {
 		return store_sort;
 	}

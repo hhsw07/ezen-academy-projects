@@ -42,16 +42,30 @@ public class HT_StoreManageCtrl {
 		sto.setPro_code(projectCode);
 		service.storeOpenStart(sto);
 		session.setAttribute("storeCode", service.getStoreCode());
+		return "redirect:/Store.do?method=storeRegReady"; 
+	}
+
+	@RequestMapping(params="method=storeRegReady")
+	public String storeRegReady(HttpServletRequest request, Store sto, Model d) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		
+		d.addAttribute("storeInfo", service.getStoreInfo(storeCode));
+		d.addAttribute("stoOptCnt", service.getStoOptCnt(storeCode));
+		System.out.println("스토어 옵션 갯수: " + service.getStoOptCnt(storeCode));
+		
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeRegReady.jsp"; 
 	}
 	
+	
 	@RequestMapping(params="method=storeBasicInfo")
-	public String storeBasicInfo() {
+	public String storeBasicInfo(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		d.addAttribute("storeInfo", service.getStoreInfo(storeCode));
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeBasicInfoReg.jsp";
 	}
 
-	
-	
 	
 	@RequestMapping(params="method=storeStoryImgUpload")
 	public String storeStoryImgUpload(HttpServletRequest request, HttpServletResponse response, @RequestParam("upload") MultipartFile[] multiFile) {
@@ -95,12 +109,11 @@ public class HT_StoreManageCtrl {
 		Uploader uploader = new Uploader();
 		String stoImageAddress = uploader.upload(storeImg[0]);
 
-		
 		sto.setSto_code(storeCode);
 		sto.setSto_image(stoImageAddress);
 		service.storeBasicInfoReg(sto);
 		System.out.println("기본정보 등록 프로세스 완료");
-		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeRegReady.jsp";
+		return "redirect:/Store.do?method=storeRegReady";
 	}
 	
 	
@@ -112,11 +125,6 @@ public class HT_StoreManageCtrl {
 		d.addAttribute("proStoOptList", service.getProStoOptionJoinList(projectCode));
 		d.addAttribute("proOptList", service.getProOptList(projectCode));
 		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeOptionReg.jsp";
-	}
-	
-	@RequestMapping(params="method=storeRegReady")
-	public String storeRegReady(HttpServletRequest request, Store sto) {
-		return "WEB-INF\\views\\storeManage\\ht_user_w_MS_storeRegReady.jsp"; 
 	}
 	
 	@RequestMapping(params="method=storeOptionReg")
@@ -139,6 +147,14 @@ public class HT_StoreManageCtrl {
 		return "redirect:/Store.do?method=storeOption";
 	}
 	
+	@RequestMapping(params="method=stoOptUnitDelete")
+	public String stoOptUnitDelete(HttpServletRequest request, storeOption sto, int sto_opt_code) {
+		HttpSession session = request.getSession();
+		int storeCode = (int)session.getAttribute("storeCode");
+		service.stoOptUnitDelete(sto_opt_code);
+		return "redirect:/Store.do?method=storeOption";
+	}
+	
 	
 	
 	@RequestMapping(params="method=storeOpenRegSubmit")
@@ -147,11 +163,11 @@ public class HT_StoreManageCtrl {
 	}
 	
 	@RequestMapping(params="method=storeOpenRegConfirm")
-	public String storeOpenRegConfirm(HttpServletRequest request) {
+	public String storeOpenRegConfirm(HttpServletRequest request, int pro_code) {
 		HttpSession session = request.getSession();
 		int storeCode = (int)session.getAttribute("storeCode");
 		service.storeOpenRegConfirm(storeCode);
-		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_proCurrent.jsp";
+		return "redirect:/MakerStudio.do?method=proCurrnet&pro_code="+pro_code;
 	}
 	
 	

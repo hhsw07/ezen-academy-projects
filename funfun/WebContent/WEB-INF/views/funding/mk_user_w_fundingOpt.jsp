@@ -11,6 +11,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/mk_user_w_projectList.css">
 <style type="text/css">
+.noti-label{display: inline-block;
+    width: 40px;
+    vertical-align: middle;}
+.label-span{vertical-align: middle;
+    padding: 15px 0 13px;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 800;
+    color: #babdc0;}
 .noti-check input[type="checkbox"] {display: none;}
 .noti-check input[type="checkbox"] + label {width: 15px;height: 15px;background: #ff9500; cursor: pointer; border-radius: 5px; margin: 15px 15px 8px 10px;}
 .noti-check input[type="checkbox"]:checked + label {background:url(img/ck01.png) #ff9500 no-repeat center/20px 20px;margin: 15px 0 8px 10px;}
@@ -24,18 +33,20 @@
 		console.log("옵션선택");
 		var mem_code = $("[name=mem_code]").val();
 		console.log("멤버 코드 " + mem_code);
-		
-		
 		$("#funding").click(function(){
-			var opt_no = $("[name=optcode]:checked").val();
-			$("[name=opt_code]").val(opt_no);
-			if(opt_no!=null){
-				$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
+			var checks = document.querySelectorAll("[name=reason]");
+			if(checks[0].checked==false && checks[1].checked==false && checks[2].checked==false) {
+				alert("펀딩하기인 이유를 확인하고 체크해주세요");
 			} else{
-				alert("옵션을 선택하세요");
+				var opt_no = $("[name=optcode]:checked").val();
+				$("[name=opt_code]").val(opt_no);
+				if(opt_no!=null){
+					$(location).attr("href", "${path}/funding.do?method=fund&opt_code="+opt_no+"&mem_code="+mem_code);
+				} else{
+					alert("옵션을 선택하세요");
+				}
 			}
 		});
-		
 	});
 
 </script>
@@ -47,24 +58,33 @@
 				<div>
 					<p class="funding-noti"><strong>잠깐!</strong> 결제하기가 아닌 펀딩하기인 이유를 확인하고, 펀딩하세요.</p>
 					<div class="noti-check">
-						<input type="checkbox" id="checkbox1" >
-						<label for="checkbox1"><span style="top: 178px;">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</span></label>
+						<div class="noti-label">
+							<input type="checkbox" name="reason" id="checkbox1" >
+							<label for="checkbox1"></label>
+						</div>
+						<span class="label-span">펀딩한 리워드는 새롭게 준비하고 있는 제품・서비스입니다.</span>
 					</div>
 					<div class="noti-detail">
 						<p>펀딩 후, 리워드를 제작・준비하는 크라우드펀딩 특성상, 품질 이슈가 발생할 수 있습니다.</p>
 						<p>리워드 품질 이슈 발생 시 펀딩 안내 - <strong>상세 정책</strong>을 꼭 확인해주세요. </p>
 					</div>
 					<div class="noti-check">
-						<input type="checkbox"  id="checkbox2">
-						<label for="checkbox2"><span style="top: 343px;">펀딩 종료 후에는 결제를 취소할 수 없습니다.</span></label>
+						<div class="noti-label">
+							<input type="checkbox"  name="reason" id="checkbox2">
+							<label for="checkbox2"></label>
+						</div>
+						<span class="label-span">펀딩 종료 후에는 결제를 취소할 수 없습니다.</span>
 					</div>
 					<div class="noti-detail">
 						<fmt:parseDate var="pro_finish" value="${project.pro_finish_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 						<p>펀딩 종료일 <strong><fmt:formatDate value="${pro_finish}" pattern="yyyy.MM.dd"/></strong> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다.</p>
 					</div>
 					<div class="noti-check">
-						<input type="checkbox"  id="checkbox3">
-						<label for="checkbox3"><span style="top: 477px;">펀딩한 리워드는 즉시 배송되지 않습니다.</span></label>
+						<div class="noti-label">
+							<input type="checkbox"  name="reason" id="checkbox3">
+							<label for="checkbox3"></label>
+						</div>
+						<span class="label-span">펀딩한 리워드는 즉시 배송되지 않습니다.</span>
 					</div>
 					<div class="noti-detail">
 						<p>메이커가 약속한 리워드 발송 시작일을 확인했나요? 메이커는 펀딩이 성공해야 리워드 제작・준비를 진행합니다.</p>

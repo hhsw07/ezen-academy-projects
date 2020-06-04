@@ -29,6 +29,10 @@
             $("#appr_Btn").click(function(){
                 $("#appr_modal").modal("show");
             })
+            
+             $("#Seach_Btn").click(function(){
+            	$("#SearchForm").submit();
+            })
         })
         
         function goPage(no){
@@ -79,18 +83,20 @@
 					</c:forEach>
 					<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 				</ul>
-				
-				 <ul class="nav navbar-nav" style="float:left;">
-                  <li class="active">
-                    <div class="form-group">
+			</div>	
+				 
+	   
+                  
+                   
+			</form>
+			<form method="post" id="SearchForm">
+				     
+	        		<div id="Serach_Div" style="width:100%; text-align:center">
                       <input type="text" value="" placeholder="상품을 검색해주세요!" class="form-control" style="background-color: transparent; color:black;
-                      margin:15px 3px; border:none; margin-top:-4px; margin-left:0px; width:200px;" name="sto_title"/>
-                    </div>
-                  </li>
-                  <li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
-                    margin: 26px 3px; margin-top:12px; margin-right:30px"></button></li>
-                   </ul>
-	        </div>
+                      margin:15px 3px; border:none; margin-top:-4px; margin-left:0px; width:200px; float:left;" name="sto_title"/>
+                      <button type="submit" class="fa fa-search" style="border:none; background-color: transparent; color:black;
+                      margin-top:5px; margin-right:30px;float:left" id="Seach_Btn"></button>
+            		</div>
 			</form>
        		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -176,12 +182,8 @@
 			 detail:""},
 		methods:{
 			search:function(sto_code){
-				// e.keyCode : 입력한 코드값
-                    console.log("코드 테스트 : " + sto_code);
 					if(sto_code != null){
-						// 현재 객체의 메서드명fetchContacts를 호출한다.
 						this.fetchData(sto_code);
-						
 					}
 				},
 			
@@ -190,7 +192,7 @@
 				this.contactlist=[];
                 console.log("페치 코드 : " + sto_code);
 				// 비동기로 처리할 url 주소..
-				var url = "http://localhost:6080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				var url = "http://localhost:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
 				/*
 				# fetch api를 통한 비동기 통신 처리..
 				1. 기본 형식.

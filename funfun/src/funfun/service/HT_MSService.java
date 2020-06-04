@@ -36,7 +36,7 @@ public class HT_MSService {
 	}
 	
 	public ArrayList<storeQnA> myProjectQnaList(int pro_code){
-		return dao.storeQnaList(pro_code);
+		return dao.myProjectQnaList(pro_code);
 	}
 	
 	public ArrayList<storeOrder> myStoreManage(int sto_code){

@@ -189,6 +189,9 @@
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
               </td></tr>
+              <tr><td class="funding__detail">펀딩수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundCnt}" pattern="#,###,###개"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
               
               <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
@@ -223,6 +226,9 @@
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
+              </td></tr>
+              <tr><td class="funding__detail">펀딩수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundCnt}" pattern="#,###,###개"/>
               </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
               
@@ -287,8 +293,10 @@
 		}
 		function cancleFunding(){
 			var fundPrice = "${list.fundPrice}"
+			var fundCnt = "${list.fundCnt}"
 			$("[name=fcCancle]").val(fundingCode)
 			$("[name=fundPrice]").val(fundPrice)
+			$("[name=fundCnt]").val(fundCnt)
 			$("#cancleFunding").submit()
 			Command: toastr["warning"]("펀딩이 취소되었습니다");
 		}
@@ -313,7 +321,7 @@
 	<c:forEach var="list" items="${tlist}">
         <div class="row rowposition" >
           <div class="col-xs-1 col-md-1 "></div>
-
+			<!-- 주문취소, 배송완료, 배송중 상태일 때  -->
           <c:if test="${list.orderCurr eq '주문취소' or list.orderCurr eq '배송완료' or list.orderCurr eq '배송중'}">
           	<div class="col-xs-10 col-md-10 orderDiv" style="margin-bottom : 50px;">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
@@ -335,6 +343,9 @@
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
               </td></tr>
+              <tr><td class="funding__detail">주문수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderCnt}" pattern="#,###,###개"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
 	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -347,6 +358,7 @@
           </div>
           </div>
           </c:if>
+          <!-- 주문완료 상태일 때  -->
           <c:if test="${list.orderCurr eq '주문완료'}">
 				<div class="col-xs-10 col-md-10 orderDiv">
           <span style="font-size:14px;color:gray;padding-bottom:10px;">주문번호 : ${list.orderCode}</span>
@@ -368,6 +380,9 @@
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
               </td></tr>
+              <tr><td class="funding__detail">주문수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderCnt}" pattern="#,###,###개"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
 	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -375,18 +390,18 @@
               </td></tr>
               <tr><td class="funding__detail">주소지정보</td><td class="funding__detail--text">${list.orderAddress}</td></tr>
             </table>
-			<button onclick="openAdrChangeModal('${list.orderAddress}','${list.orderCode}')" style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">주소지 정보 변경하기</button>
+			<button style="position:relative;top:10px; width : 48.5%;" class="btn btn-warning funding--btn btn1" data-toggle="modal" data-target="#exampleModal${list.orderCode}" data-whatever="@mdo">주소지 정보 변경하기</button>
           		<span style="width:3%"></span>
-			<a onclick="cancleOrderModal(${list.sto_code})" style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
+			<a style="position:relative;bottom:75px;width : 48.5%; float : right" class="trigger-btn btn btn-warning funding--btn btn2" href="#myModal2${list.orderCode}" data-toggle="modal"><span class="CancelText">주문 취소 하기</span></a>
           </div>
           </div>
 			</c:if>
 	
 
         </div>
-     
   
-         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- 주소지 변경 모달 -->
+         <div class="modal fade" id="exampleModal${list.orderCode}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -413,28 +428,35 @@
 	    </div>
 	  </div>
 	  </div>
+
 	  <!-- 취소 모달 -->
-<div class="text-center">
-	<!-- Modal HTML -->
-	<div id="myModal2" class="modal fade">
-		<div class="modal-dialog modal-confirm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div class="icon-box">
-						<i class="material-icons">&#xE5CD;</i>
-					</div>				
-					<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
-	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>주문 취소시 사용 금액은 즉시 반환됩니다</p>
-				</div>
-				<div class="modal-footer">`
-					<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
-					<button onclick="cancleOrder()" type="button" class="btn btn-danger">주문취소하기</button>
-					<script>
+	  <div class="text-center">
+	  	<!-- Modal HTML -->
+	  	<div id="myModal2${list.orderCode}" class="modal fade">
+	  		<div class="modal-dialog modal-confirm">
+	  			<div class="modal-content">
+	  				<div class="modal-header">
+	  					<div class="icon-box">
+	  						<i class="material-icons">&#xE5CD;</i>
+	  					</div>				
+	  					<h4 class="modal-title">정말 취소 하시겠습니까?</h4>	
+	  	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	  				</div>
+	  				<div class="modal-body">
+	  					<p>주문 취소시 사용 금액은 즉시 반환됩니다</p>
+	  				</div>
+	  				<div class="modal-footer">`
+	  					<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
+	  					<button onclick="cancleOrder(${list.orderPrice},${list.orderCode})" type="button" class="btn btn-danger">주문취소하기</button>
+	  		
+	  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	  </div> 
+	  <script>
         var orderCode;
-        var orderPrice;
+
         function movingDetailPageO(Code){
 			var Code = Code
 			location.href='/funfun/store.do?method=detail&sto_code='+Code
@@ -456,24 +478,15 @@
 		function cancleOrderModal(orderCode){
 			this.orderCode = orderCode;
 		}
-		function cancleOrder(){
-			orderPrice = "${list.orderPrice}"
-			orderCode = "${list.orderCode}"
-			console.log("orderCode : "+orderCode)
+		function cancleOrder(orderPrice,orderCode){
 			$("[name=ocCancle]").val(orderCode)
 			$("[name=orderPrice]").val(orderPrice)
-			
 			$("#cancleOrder").submit()
 			Command: toastr["warning"]("주문이 취소되었습니다");
 		}
 		
-        </script>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-	  
+        </script>	  
+
 	   
             
 	</c:forEach>
@@ -498,12 +511,14 @@
 <form id="cancleOrder" style="display:none" action="/funfun/cancleOrder.do">
 	<input type="hidden" name="ocCancle">
 	<input type="hidden" name="orderPrice">
+	<input type="hidden" name="orderCnt">
 	<input type="submit">
 </form>
 
 <form id="cancleFunding" style="display:none" action="/funfun/cancleFunding.do">
 	<input type="hidden" name="fcCancle">
 	<input type="hidden" name="fundPrice">
+	<input type="hidden" name="fundCnt">
 	<input type="submit">
 </form>
 
@@ -546,11 +561,12 @@
 
 <!-- 모달 -->
 
+	  
     </div>
     </div>
   
   <!-- end main -->
-  
+ 		 
 <script src="js/sh_user_w_myPage.js"></script>
 </body>
 </html>

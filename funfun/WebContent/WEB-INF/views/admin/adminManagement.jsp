@@ -87,13 +87,11 @@
 			        <div class="admtitle" style="margin:150px 0 30px;">
 				        <h2>관리자 목록</h2>
 				    </div>
-			    	<form method="post">
+			    	<form method="post" id="pagingForm">
 				    	<input type="hidden" name="curPage" value="${paging.curPage}"/>
-				    	<input type="hidden" name="admin_code"/>
 				    	<div class="row">
 				        	<div class="text-left col-sm-3 ">총건수 : ${paging.count}건</div> 
 				        	<div class="text-right col-sm-9">
-				        		제재회원:<span class="dropColor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				        		페이지수 : 
 					        	<select name="pageSize">
 					        		<option value="5">5건</option>
@@ -104,22 +102,22 @@
 					</form>
 					<div class="admList">
 				        <table class="table table-hover admtable">
-				        	<col width="">
-				        	<col width="">
-				        	<col width="">
-				        	<col width="">
+				        	<col width="25%">
+				        	<col width="25%">
+				        	<col width="25%">
+				        	<col width="25%">
 				        	<tr><th class="text-center">번호</th>
 				        		<th>관리자번호</th>
 				        		<th>이름</th>
 				        		<th>권한</th></tr>
 				        	<c:forEach var="adm" items="${list}">
-				        	<tr onclick="javascript:go(${adm.admin_code})">
-								<td class='text-center'>${adm.cnt}</td>
+				        	<tr class="goDetail"><td class="text-center">${adm.cnt}</td>
 								<td>${adm.admin_code}</td>
 								<td>${adm.admin_name}</td>
-								<td>${adm.admin_auth}</td></tr>
-								<tr><td colspan='4'></td></tr>
+								<td>${adm.admin_auth}</td>
+								<td style="display:none">${adm.admin_pw}</td></tr>
 				        	</c:forEach>
+								<tr><td colspan='4'></td></tr>
 				        </table>
 					</div>
 			        <div class="text-center">
@@ -131,10 +129,86 @@
 							<li><a href="javascript:goPage(${paging.endBlock==paging.pageCount?paging.pageCount:paging.endBlock+1})">&raquo;</a></li>
 						</ul>
 			        </div>
+			        <c:if test="${manager.admin_auth == '마스터'}">
 			        <div class="text-right">
-						<button class="btn btn-warning excelBtn">Excel 다운</button>
+						<button class="btn btn-warning insertModalBtn">등록</button>
 					</div>
+					</c:if>
 			    </div>
+			    <!-- 모달창 -->
+			    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+					<div class="modal-dialog">
+						<div class="modal-content" style="width:600px;">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLabel">관리자 등록</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+								<form method="post" id="insReport">
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 번호 : </label>
+										<input class="form" name="admin_code" placeholder="관리자 번호를 입력하세요." />
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 이름 : </label>
+										<input class="form" name="admin_name" placeholder="관리자 이름을 입력하세요." />
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 권한 : </label>
+										<label><input type="radio" class="form-data" value="마스터" name="admin_auth">&nbsp;마스터&nbsp;</label>
+										<label><input type="radio" class="form-data" value="서브" name="admin_auth" checked>&nbsp;서브&nbsp;</label>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+								<div class="divider"></div>
+								<button type="button" id="insBtn" class="btn btn-info btn-simple">등록</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+					<div class="modal-dialog">
+						<div class="modal-content" style="width:600px;">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLabel">관리자 수정</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+								<form method="post" id="uptReport">
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 번호 : </label>
+										<input class="form" name="admin_code" readonly />
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 이름 : </label>
+										<input class="form" name="admin_name" placeholder="관리자 이름을 입력하세요." />
+									</div>
+									<div class="form-group" id="pwDiv" style="display:none;">
+										<label for="message-text" class="control-label">관리자 비밀번호 : </label><br>
+										<input class="form" type="password" name="admin_pw" placeholder="비밀번호을 입력." /><br>
+										<input class="form" type="password" name="admin_pw2" placeholder="비밀번호을 재입력." />
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="control-label">관리자 권한 : </label>
+										<label><input type="radio" class="form-data" value="마스터" name="admin_auth">&nbsp;마스터&nbsp;</label>
+										<label><input type="radio" class="form-data" value="서브" name="admin_auth">&nbsp;서브&nbsp;</label>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+								<div class="divider"></div>
+								<c:if test="${manager.admin_auth == '마스터'}">
+								<button type="button" id="uptBtn" class="btn btn-info btn-simple">수정</button>
+								<button type="button" id="delBtn" class="btn btn-info btn-simple">삭제</button>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
             </main>
             <%@ include file="/adminTemplate/footer.jsp" %>
@@ -158,14 +232,113 @@
 	    	$("[name=curPage]").val(1);	// 페이지크기를 바꾸면 초기 첫페이지가 나오도록 처리
 			$("form").submit();
 		});
-		
+		console.log("권한 : ${manager.admin_auth}");
 		// 모달로 해보자.
+		$(".insertModalBtn").click(function(){
+            $("#myModal").modal("show");
+        });
 		
+		$(".goDetail").click(function(){
+			var myArticle2 =$(this).children().next().html();
+			var myArticle3 =$(this).children().next().next().html();
+			var myArticle4 =$(this).children().next().next().next().html();
+			var myArticle5 =$(this).children().next().next().next().next().html();
+			
+			var admin_code="${manager.admin_code}";
+			if(admin_code == myArticle2){
+				$("#pwDiv").css("display","block");
+			}else{
+				$("#pwDiv").css("display","none");
+			}
+			
+			$("#myModal2 [name=admin_code]").val(myArticle2);
+			$("#myModal2 [name=admin_name]").val(myArticle3);
+			$("#myModal2 [name=admin_auth]").attr("checked",false);
+			if(myArticle4 == "마스터"){
+				$("#myModal2 [name=admin_auth]").eq(0).attr("checked",true);
+			}else{
+				$("#myModal2 [name=admin_auth]").eq(1).attr("checked",true);
+			}
+			$("#myModal2 [name=admin_pw]").val(myArticle5);
+			$("#myModal2 [name=admin_pw2]").val(myArticle5);
+			
+			$("#myModal2").modal("show");
+		});
+		// 입력시 초과하는 경우
+		$("[name=admin_code]").keyup(function(e){
+			var textLength = $("[name=admin_code]").val().length;
+			if(!maxLengthCheck($("[name=admin_code]"),8)){
+				console.log("글자수 초과");
+			}
+		});
+		$("[name=admin_name]").keyup(function(e){
+			var textLength = $("[name=admin_name]").val().length;
+			if(!maxLengthCheck($("[name=admin_name]"),6)){
+				console.log("글자수 초과");
+			}
+		});
+		// 입력 글자수 체크
+		function maxLengthCheck(obj, maxLength){
+			var textLength = obj.val().length;
+			if(textLength > Number(maxLength)) {
+		    	alert("입력가능문자수를 초과하였습니다.");
+		    	obj.val(obj.val().substring(0,maxLength));
+		    	return false;
+		    }else {
+		    	return true;
+		    }
+		}
+		
+		
+		$("#insBtn").click(function(){
+			var code = $("#myModal [name=admin_code]");
+			var name = $("#myModal [name=admin_name]");
+			// code 8자 이내, name 6자	
+			// 숫자형식 체크 처리. 숫자==> isNaN(code) false
+			if(maxLengthCheck(code,8) && maxLengthCheck(name,6)){
+				if(confirm("등록하시겠습니까?")){
+					if(!isNaN(code.val()) && code.val().length != 0 && name.val().length != 0){
+						$("form").attr("action","${path}/admin-management-insert.do");
+						$("#insReport").submit();
+					}else{
+						alert("번호 및 이름을 확인하세요.");
+					}
+				}
+			}
+		});
+		
+		$("#uptBtn").click(function(){
+			var name = $("#myModal2 [name=admin_name]");
+			if(maxLengthCheck(name,6)){
+				if(confirm("수정하시겠습니까?")){
+					if(name.val().length != 0){
+						var pw1 = $("#myModal2 [name=admin_pw]").val();
+						var pw2 = $("#myModal2 [name=admin_pw2]").val();
+						if(pw1.length != 0 && pw1==pw2){
+							$("#uptReport").attr("action","${path}/admin-management-update.do");
+							$("#uptReport").submit();
+						}else{
+							alert("비밀번호를 다시 입력하세요.");
+						}
+					}else{
+						alert("번호 및 이름을 확인하세요.");
+					}
+				}
+			}
+		});
+		
+		$("#delBtn").click(function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("#uptReport").attr("action","${path}/admin-management-delete.do");
+				$("#uptReport").submit();
+			}
+		});
 		
 	});
+	
 	function goPage(no){
 		$("[name=curPage]").val(no);
-		$("form").submit();
+		$("#pagingForm").submit();
 	}
 </script>
 </html>

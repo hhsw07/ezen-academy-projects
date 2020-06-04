@@ -29,6 +29,9 @@
 		$(".storeOpenReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeOpenReg")
 		})
+		$(".storeRegReady").css('cursor','pointer').click(function(){
+			$(location).attr("href", "${path}/Store.do?method=storeRegReady")
+		})
 		$(".storeBasicInfoReg").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/Store.do?method=storeBasicInfo")
 		})
@@ -122,7 +125,7 @@
   	<br><br>
 	
 	<div class="currentTitle">현재 상태</div>
-today startDate finishDate	
+
 	<c:choose>
 	<c:when test="${pro.pro_sub_date==null }">
 		<div class="currentDetail">프로젝트 신청 완료, 프로젝트가 승인되지 않았습니다. 프로젝트 삭제 신청을 할 수 있습니다.</div>

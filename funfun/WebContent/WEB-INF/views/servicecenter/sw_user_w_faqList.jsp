@@ -66,8 +66,8 @@
 					<li style="margin-right:700px;">총건수 : ${paging.count}건</li>
 					<li class="active">
 						<div class="form-group">
-							<input type="text" name="title" placeholder="문의내용을 검색해보세요." class="form-control" style="background-color: transparent; 
-									color:black; margin:-10px 0px -25px; border:none; " value="${paging.title}" />
+							<form:input path="title" placeholder="문의내용을 검색해보세요." class="form-control"
+								style="background-color:transparent; color:black; margin:-10px 0px -25px; border:none;"/>
 						</div>
 					</li>
 					<li><button type="submit" class="fa fa-search" style="border:none; background-color: transparent;

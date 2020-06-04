@@ -21,7 +21,7 @@
 			$(location).attr("href", "${path}/MakerStudio.do?method=proCancel")
 		})
 		$(".proCurrnet").css('cursor','pointer').click(function(){
-			$(location).attr("href", "${path}/Store.do?method=storeOpenRegConfirm")
+			$(location).attr("href", "${path}/MakerStudio.do?method=proCurrnet&pro_code=${projectCode}")
 		})
 		$(".proQnAManage").css('cursor','pointer').click(function(){
 			$(location).attr("href", "${path}/MakerStudio.do?method=proQnAManage")
@@ -81,6 +81,8 @@
   	<span class="sub_gray_font">등록할 스토어의 기본 사항을 입력해 주세요</span>
 
   	<br><br><br><br>
+  	
+  	<c:set var="sto" value="${storeInfo}"/>
 
 	<form method="post" enctype="multipart/form-data" id="basicInfoForm" action="${path}/Store.do">
 
@@ -91,7 +93,7 @@
 	
 	<span class="reg_content_title">스토어 이름 *</span><br><br>
 
-    <input type="text" name="sto_title" value="" placeholder="스토어  이름을 입력하세요" class="form-control" style="width:60%;" />
+    <input type="text" name="sto_title" value="${sto.sto_title}" placeholder="스토어  이름을 입력하세요" class="form-control" style="width:60%;" />
 	
 	
 	<br><br>
@@ -99,6 +101,9 @@
 	<span class="reg_content_title">스토어 이미지 *</span><br><br>
 
 	<div class="btn btn-warning btn_custom"> 
+		<c:if test="${sto.sto_image!=null }">
+		<img src="${path}/${sto.sto_image}/">
+		</c:if>
 	    <label for="storeImg">스토어 이미지 업로드</label>
 	    <input type="file" id="storeImg" name="storeImg" accept=".gif, .jpg, .png" style="display:hidden;">
 	</div>	
@@ -107,7 +112,7 @@
 
 	<span class="reg_content_title">스토어 상세 설명 *</span><br><br>
 
-	<textarea class="form-control" id="sto_detai" name="sto_detai"></textarea>
+	<textarea class="form-control" id="sto_detai" name="sto_detai">${sto.sto_detai}</textarea>
 	
 
 	<br><br>
@@ -130,7 +135,7 @@
 	
 	<span class="reg_content_title">스토어 물품 최저 가격*</span><br><br>
 
-    <input type="text" name="sto_price" placeholder="가격을 입력하세요" class="form-control" style="width:800px;" />
+    <input type="text" name="sto_price" value="${sto.sto_price}" placeholder="가격을 입력하세요" class="form-control" style="width:800px;" />
 	
 
 	<br><br><br><br>

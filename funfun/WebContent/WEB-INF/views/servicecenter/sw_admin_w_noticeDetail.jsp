@@ -119,7 +119,6 @@
 		$(".updateNoti").click(function(){
 			var title = $(".noti_title");
 			var detail = $(".noti_detail");
-			
 			if(maxLengthCheck(title,30) && maxLengthCheck(detail,600)){
 				if(confirm("수정하시겠습니까?")){
 					if(title.val().length != 0 && detail.val().length != 0){

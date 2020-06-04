@@ -11,9 +11,22 @@
 	<resultMap type="storeOption" id="stoOptResult"/>
 	<resultMap type="proStoOptionJoin" id="proStoOptionJoinResult"/>
 	
-	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
-	SELECT * FROM QNA
+	
+	<select id="getStoreInfo" resultMap="storeResult" parameterType="int">
+	SELECT * FROM STORE
 	WHERE STO_CODE = #{sto_code}
+	</select>
+	
+	<select id="getStoOptCnt" resultType="int" parameterType="int">
+	SELECT COUNT(*) FROM STORE_OPTION
+	WHERE STO_CODE = #{sto_code}
+	</select>
+	
+	<select id="storeQnAList" resultMap="qnaResult" parameterType="int">
+	SELECT a.*, b.mem_name
+	FROM QNA a, "MEMBER" b
+	WHERE a.STO_CODE = #{sto_code}
+	AND b.MEM_CODE = a.MEM_CODE
 	</select>
 
 	<update id="storeQnAAnsReg" parameterType="storeQnA">
@@ -30,7 +43,6 @@
 	IN (SELECT STO_OPT_CODE FROM STORE_OPTION
 	WHERE STO_CODE = #{sto_code})
 	</select>
-	
 	
 	
 	<insert id="storeOpenStart" parameterType="store">
@@ -78,6 +90,11 @@
 		STO_OPT_DETAIL = #{sto_opt_detail}
 	WHERE STO_OPT_CODE = #{sto_opt_code}
 	</update>
+	
+	<delete id="stoOptUnitDelete" parameterType="int">
+	DELETE STORE_OPTION
+	WHERE STO_OPT_CODE = #{sto_opt_code}
+	</delete>
 	
 	<update id="storeOpenRegConfirm" parameterType="int">
 	UPDATE STORE

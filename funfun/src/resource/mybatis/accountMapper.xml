@@ -6,9 +6,24 @@
 
  	<resultMap type="balance" id="balanceResult"/>
  	<select id="blist" resultMap="balanceResult" 
- 		parameterType="balance">
-		SELECT m.MEM_EMAIL memEmail, b.BAL_TYPE balType, b.BAL_HIS balHis, b.BAL_AMOUNT balAmount, b.BAL_DATE balDate 
-		FROM balance b LEFT JOIN MEMBER m ON b.MEM_CODE = m.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail} order by b.BAL_DATE desc
+ 		parameterType="psh">
+		<![CDATA[ 
+		SELECT * 
+		from(
+				select ROW_NUMBER() OVER(order by b.BAL_DATE desc) cnt,
+				m.MEM_EMAIL memEmail, 
+				b.BAL_TYPE balType, 
+				b.BAL_HIS balHis, 
+				b.BAL_AMOUNT balAmount, 
+				b.BAL_DATE balDate 
+				from balance b
+				LEFT JOIN MEMBER m 
+				ON b.MEM_CODE = m.MEM_CODE 
+				WHERE m.MEM_EMAIL = #{memEmail} 
+				ORDER BY b.BAL_DATE DESC
+			)
+				WHERE cnt BETWEEN #{start} AND #{end}
+		]]>	
  	</select>
  	
  	<resultMap type="userprofile" id="userprofileResult"/>
@@ -43,8 +58,23 @@
  	</insert>
 
  	<resultMap type="deposit" id="depositResult"/>
- 	<select id="rdlist" resultMap="depositResult" parameterType="deposit">
-		SELECT m.MEM_EMAIL memEmail, d.rd_amount chargeQueryAmount, d.RD_DATE rddate, d.RD_CURR curr FROM DEPOSIT d LEFT JOIN MEMBER m ON m.MEM_CODE = d.MEM_CODE WHERE m.MEM_EMAIL = #{memEmail} order by d.RD_DATE desc
+ 	<select id="rdlist" resultMap="depositResult" parameterType="psh">
+		<![CDATA[ 
+		SELECT * 
+		from(
+				select ROW_NUMBER() OVER(order by d.RD_DATE desc) cnt,
+				m.MEM_EMAIL memEmail, 
+				d.rd_amount chargeQueryAmount, 
+				d.RD_DATE rddate, 
+				d.RD_CURR curr
+				from DEPOSIT d
+				LEFT JOIN MEMBER m 
+				ON m.MEM_CODE = d.MEM_CODE 
+				WHERE m.MEM_EMAIL = #{memEmail} 
+				ORDER BY d.RD_DATE DESC
+			)
+				WHERE cnt BETWEEN #{start} AND #{end}
+		]]>	
  	</select>
  	
  	<select id="totCnt" resultType="int" parameterType="psh">

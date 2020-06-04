@@ -29,16 +29,11 @@ public class sh_accountCtrl {
 		 if(memberinfo==null) {
 			 
 		 }else {
-			 if(service.blist(memberinfo.getMem_email())==null) {
-				 
-			 }else {
 				 psh.setMemEmail(memberinfo.getMem_email());
-				 d.addAttribute("blist",service.blist(memberinfo.getMem_email()));
+				 d.addAttribute("blist",service.blist(psh));
 				 d.addAttribute("clist",service.clist(memberinfo.getMem_email()));
 				 d.addAttribute("rdlist",service.rdlist(psh));
 				 d.addAttribute("wilist",service.wilist(psh));
-				
-			 }
 		 }
 		 
 		return "WEB-INF\\views\\myPage\\sh_user_w_charge.jsp";
@@ -52,7 +47,6 @@ public class sh_accountCtrl {
 		 if(memberinfo==null) {
 			 
 		 }else {
-			 System.out.println(psh.getCurPage());
 			psh.setMemEmail(memberinfo.getMem_email());
 			d.addAttribute("rdlist",service.rdlist(psh));
 		 }	 
@@ -70,6 +64,19 @@ public class sh_accountCtrl {
 			psh.setMemEmail(memberinfo.getMem_email());
 			d.addAttribute("wilist",service.wilist(psh));
 		 }
+		return "pageJsonReport";
+	}
+	@RequestMapping("/usingList.do")
+	public String ajaxlistUsing(@ModelAttribute("psh") Paging_sh psh, HttpServletRequest request, Model d) {
+
+		HttpSession session = request.getSession(); 
+		 MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		 if(memberinfo==null) {
+			 
+		 }else {
+			psh.setMemEmail(memberinfo.getMem_email());
+			d.addAttribute("blist",service.blist(psh));
+		 }	 
 		return "pageJsonReport";
 	}
 	@RequestMapping("/myaccount.do/chargeQuery.do")

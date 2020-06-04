@@ -130,6 +130,10 @@
   					projectOption!=-1 and
   					projectRisk!=-1}">
 	  	<span>
+	 	<span class="sub_gray_font">
+		모든 항목 작성이 완료되었습니다. 작성하신 내용을 다시 한 번 확인해 주시고, 신청을 진행 하세요 :)	
+		</span>		
+		<br>
 	  	<button class="btn btn-warning btn_custom" style="display:inline-block" id="proRegBtn">프로젝트 등록 신청</button>
 		</span>
  	</c:when>
@@ -142,10 +146,6 @@
 	
 	</c:choose>
 	
-	 	<span class="sub_gray_font">
-		모든 항목 작성이 완료되었습니다. 작성하신 내용을 다시 한 번 확인해 주시고, 신청을 진행 하세요 :)	
-		</span>
-
 		<span class="navbar-right" style="display:inline-block">
   		<button class="btn btn-warning btn_custom navbar-right" id="proCancelBtn"  style="display:inline-block">프로젝트 취소</button>
   	</span>

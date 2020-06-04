@@ -19,6 +19,14 @@ public class HT_StoreManageService {
 	@Autowired(required=false)
 	private HT_StoreManageReposi dao;
 	
+	public Store getStoreInfo(int sto_code) {
+		return dao.getStoreInfo(sto_code);
+	}
+	
+	public int getStoOptCnt(int sto_code) {
+		return dao.getStoOptCnt(sto_code);
+	}
+	
 	public ArrayList<storeQnA> storeQnAList(int sto_code){
 		return dao.storeQnAList(sto_code);
 	}
@@ -54,6 +62,10 @@ public class HT_StoreManageService {
 	
 	public void stoOptUnitUpt(storeOption sto) {
 		dao.stoOptUnitUpt(sto);
+	}
+	
+	public void stoOptUnitDelete(int sto_opt_code) {
+		dao.stoOptUnitDelete(sto_opt_code);
 	}
 	
 	public void storeOpenRegConfirm(int sto_code) {
