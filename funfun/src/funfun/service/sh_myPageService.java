@@ -46,11 +46,11 @@ public class sh_myPageService {
 	public void changeFundingAdr(HashMap<String,String> hm2) {
 		dao.changeFundingAdr(hm2);
 	}
-	public void cancleOrder(HashMap<String,String> hm3) {
-		dao.cancleOrder(hm3);
+	public void cancleOrder(String oc) {
+		dao.cancleOrder(oc);
 	}
-	public void cancleFunding(String fc) {
-		dao.cancleFunding(fc);
+	public void cancleFunding(HashMap<String,String> hm3) {
+		dao.cancleFunding(hm3);
 	}
 	public void deleteFavor(HashMap<String,String> hmDF) {
 		dao.deleteFavor(hmDF);

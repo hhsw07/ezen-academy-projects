@@ -189,6 +189,9 @@
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
               </td></tr>
+              <tr><td class="funding__detail">펀딩수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundCnt}" pattern="#,###,###개"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
               
               <fmt:parseDate var="optDeliverDate" value="${list.optDeliverDate}" pattern="yyyy-MM-dd HH:mm:ss" />  
@@ -223,6 +226,9 @@
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">펀딩금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.fundPrice}" pattern="#,###,###원"/>
+              </td></tr>
+              <tr><td class="funding__detail">펀딩수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.fundCnt}" pattern="#,###,###개"/>
               </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optTitle} -  ${list.optDetail} -  ${list.optCondition}</td></tr>
               
@@ -287,8 +293,10 @@
 		}
 		function cancleFunding(){
 			var fundPrice = "${list.fundPrice}"
+			var fundCnt = "${list.fundCnt}"
 			$("[name=fcCancle]").val(fundingCode)
 			$("[name=fundPrice]").val(fundPrice)
+			$("[name=fundCnt]").val(fundCnt)
 			$("#cancleFunding").submit()
 			Command: toastr["warning"]("펀딩이 취소되었습니다");
 		}
@@ -335,6 +343,9 @@
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
               </td></tr>
+              <tr><td class="funding__detail">주문수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderCnt}" pattern="#,###,###개"/>
+              </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
 	              <fmt:parseDate var="receivDate" value="${list.receivDate}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -368,6 +379,9 @@
               <tr><td colspan="2"><hr class="funding--hr"></td></tr>
               <tr><td class="funding__detail">주문금액</td><td class="funding__detail--text">
               <fmt:formatNumber value="${list.orderPrice}" pattern="#,###,###원"/>
+              </td></tr>
+              <tr><td class="funding__detail">주문수량</td><td class="funding__detail--text">
+              <fmt:formatNumber value="${list.orderCnt}" pattern="#,###,###개"/>
               </td></tr>
               <tr><td class="funding__detail">상품옵션</td><td class="funding__detail--text">${list.optDetail}</td></tr>
               <tr><td class="funding__detail">배송예정일</td><td class="funding__detail--text">
@@ -433,7 +447,7 @@
 	  				</div>
 	  				<div class="modal-footer">`
 	  					<button type="button" class="btn btn-info" data-dismiss="modal">이전화면으로</button>
-	  					<button onclick="cancleOrder(${list.orderPrice},${list.orderCode},${list.orderCnt})" type="button" class="btn btn-danger">주문취소하기</button>
+	  					<button onclick="cancleOrder(${list.orderPrice},${list.orderCode})" type="button" class="btn btn-danger">주문취소하기</button>
 	  		
 	  				</div>
 	  			</div>
@@ -464,11 +478,9 @@
 		function cancleOrderModal(orderCode){
 			this.orderCode = orderCode;
 		}
-		function cancleOrder(orderPrice,orderCode,orderCnt){
-			console.log("orderCode : "+orderCode)
+		function cancleOrder(orderPrice,orderCode){
 			$("[name=ocCancle]").val(orderCode)
 			$("[name=orderPrice]").val(orderPrice)
-			$("[name=orderCnt]").val(orderCnt)
 			$("#cancleOrder").submit()
 			Command: toastr["warning"]("주문이 취소되었습니다");
 		}
@@ -506,6 +518,7 @@
 <form id="cancleFunding" style="display:none" action="/funfun/cancleFunding.do">
 	<input type="hidden" name="fcCancle">
 	<input type="hidden" name="fundPrice">
+	<input type="hidden" name="fundCnt">
 	<input type="submit">
 </form>
 

@@ -123,10 +123,17 @@ toastr.options = {
 		
 		$(document).ready(function(){
 			var memBank = "${clist.memBank}";
-			$("#selectBox").val(memBank).prop("selected", true);	
+			if(memBank=='미등록'){
+				$("#selectBox").val('은행선택').prop("selected", true);
+			}else{
+				$("#selectBox").val(memBank).prop("selected", true);
+			}
+			
+			
 			function setComma(inputNumber){
 				return inputNumber.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,'); 
 			}
+			
 			var ph = $(".ph").get()
 			for(let i=0;i<ph.length;i++){
 				$(ph[i]).blur(function(){		
@@ -183,9 +190,6 @@ toastr.options = {
 			
 			
 		})
-		function makeComma(inputNumber){
-				return inputNumber.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1,'); 
-			}
 		
 		var curPage;
 		// ajax
@@ -272,8 +276,8 @@ toastr.options = {
 					$("#usTable").html(show);
 
 				},
-				error:function(err){
-					console.log("에러:"+err);
+				error:function(error){
+					console.log("에러:"+error);
 					
 				}
 			});
@@ -309,36 +313,43 @@ toastr.options = {
 				<!-- 이용내역 -->	
 				<div id="usingM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">이용내역</p>
+			    	<c:if test="${empty blist}">
+			    		<hr>
+			    		<div class="emptyMsgCharge">이용내역이 존재하지 않습니다</div>
+			    	</c:if>
+			    	<c:if test="${!empty blist}">
+				    	<table id="usTable" style="width:100%;margin:auto;text-align:center">
+				    		<tr><td colspan="4"><hr></td></tr>
+				    		<c:forEach var="list" items="${blist}">
+				    		<tr><td>${list.balDate}</td><td>
+				    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
+				    		</td><td>${list.balHis}</td>
+				    		<td>
+				    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:rgb(247,0,0);">입금</p></c:if>
+				    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:rgb(9,54,135)">출금</p></c:if>
+				    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 구매</p></c:if>
+				    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:rgb(255,151,5);">펀딩 투자</p></c:if>
+				    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:rgb(255,151,5)">펀딩 수입</p></c:if>
+				    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 수입</p></c:if>
+				    		<c:if test="${list.balType == '펀딩취소'}"><p class="ifText" style="color:gray;">펀딩취소</p></c:if>
+				    		<c:if test="${list.balType == '주문취소'}"><p class="ifText" style="color:gray;">주문취소</p></c:if>
+				    		</td></tr>
+				    		<tr><td colspan="4"><hr></td></tr>
+				    		</c:forEach>
+				    	</table>
+				    	<div class="text-center">
+					        <ul class="pagination ct-orange"> 
+								<li><a href="javascript:goPageUs(${psh.startBlock-1})">&laquo;</a></li>
+								<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
+									<li id="wiLi" class="${psh.curPage==cnt?'active':'' }"><a class="wiCnt" href="javascript:goPageUs(${cnt})">${cnt}</a></li>
+								</c:forEach>
+								<li><a href="javascript:goPageUs(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
+							</ul>
+			       		</div>
+			       		</c:if>
+				    </div>
 			    	
-			    	<table id="usTable" style="width:100%;margin:auto;text-align:center">
-			    		<tr><td colspan="4"><hr></td></tr>
-			    		<c:forEach var="list" items="${blist}">
-			    		<tr><td>${list.balDate}</td><td>
-			    		<fmt:formatNumber value = "${list.balAmount}" type = "number" pattern = "#,###,###,###,###원"/>
-			    		</td><td>${list.balHis}</td>
-			    		<td>
-			    		<c:if test="${list.balType == '입금'}"><p class="ifText" style="color:rgb(247,0,0);">입금</p></c:if>
-			    		<c:if test="${list.balType == '출금'}"><p class="ifText" style="color:rgb(9,54,135)">출금</p></c:if>
-			    		<c:if test="${list.balType == '스토어구매'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 구매</p></c:if>
-			    		<c:if test="${list.balType == '펀딩투자'}"><p class="ifText" style="color:rgb(255,151,5);">펀딩 투자</p></c:if>
-			    		<c:if test="${list.balType == '펀딩수입'}"><p class="ifText" style="color:rgb(255,151,5)">펀딩 수입</p></c:if>
-			    		<c:if test="${list.balType == '스토어수입'}"><p class="ifText" style="color:rgb(1,200,201);">스토어 수입</p></c:if>
-			    		<c:if test="${list.balType == '펀딩취소'}"><p class="ifText" style="color:gray;">펀딩취소</p></c:if>
-			    		<c:if test="${list.balType == '주문취소'}"><p class="ifText" style="color:gray;">주문취소</p></c:if>
-			    		</td></tr>
-			    		<tr><td colspan="4"><hr></td></tr>
-			    		</c:forEach>
-			    	</table>
-			    	<div class="text-center">
-				        <ul class="pagination ct-orange"> 
-							<li><a href="javascript:goPageUs(${psh.startBlock-1})">&laquo;</a></li>
-							<c:forEach var="cnt" begin="${psh.startBlock}" end="${psh.endBlock}">
-								<li id="wiLi" class="${psh.curPage==cnt?'active':'' }"><a class="wiCnt" href="javascript:goPageUs(${cnt})">${cnt}</a></li>
-							</c:forEach>
-							<li><a href="javascript:goPageUs(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
-						</ul>
-		       		</div>
-			    </div>
+			    	
 				<!-- 계좌 정보 -->	
 				<div id="infoM_div" style="display:none;width:75%;box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px 0px;margin-left:40px;margin-top:50px;padding : 60px;">
 			    	<p style="font-weight:bold;font-size:20px;margin-bottom:20px;">계좌 정보 등록 및 수정</p>
@@ -354,7 +365,12 @@ toastr.options = {
 						    <option value="산업은행">산업은행</option>
 					</select>
 					<p style="margin-top:30px;font-weight:bold;"class="profile__img--title">계좌 번호</p>
+			    	<c:if test="${clist.memAccount=='미등록'}">
+			    	<input name="memAccount" value="" style="margin-top:-3px;width:100%;height:40px;">
+			    	</c:if>
+			    	<c:if test="${clist.memAccount !='미등록'}">
 			    	<input name="memAccount" value="${clist.memAccount}" style="margin-top:-3px;width:100%;height:40px;">
+			    	</c:if>
 			    	<div style="display:flex;margin-top:40px;">
 							<button onclick="chgAct()" style="background-color:orange;color:white;width:100%;" class="profile__submit" type="button">제출</button>
 			    	</div>
@@ -385,6 +401,11 @@ toastr.options = {
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
+			    	<c:if test="${empty rdlist}">
+			    	<hr>
+			    	<div class="emptyMsgCharge" style="margin-top:50px;">신청내역이 존재하지 않습니다</div>
+			    	</c:if>
+			    	<c:if test="${!empty rdlist}">
 			    	<table id="chTable" style="width:100%;margin:auto;">
 			    		<tr><td colspan="3"><hr></td></tr>
 			    		<c:forEach var="list" items="${rdlist}">
@@ -406,7 +427,7 @@ toastr.options = {
 							<li><a href="javascript:goPageCh(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
 						</ul>
 		        </div>
-			    	
+			    </c:if>	
 				</div>
 				
 				<!-- 예치금 출금 -->	
@@ -439,7 +460,11 @@ toastr.options = {
 			    	</div>
 			    	</form>
 			    	<p style="margin-top:40px;margin-bottom:-10px;font-weight:bold;"class="profile__img--title">신청 내역</p>
-			    	
+			    	<c:if test="${empty wilist}">
+			    	<hr>
+			    	<div class="emptyMsgCharge" style="margin-top:50px;">신청내역이 존재하지 않습니다</div>
+			    	</c:if>
+			    	<c:if test="${!empty wilist}">
 			    	<div id="withDrawlTb"></div>
 			    	
 			    	<table id="wiTable" style="width:100%;margin:auto;">
@@ -463,7 +488,7 @@ toastr.options = {
 						<li><a href="javascript:goPageWi(${psh.endBlock==psh.pageCount?psh.pageCount:psh.endBlock+1})">&raquo;</a></li>
 					</ul>
 		        </div>
-				
+				</c:if>
 				
 	        </div>
 		    </div>

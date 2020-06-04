@@ -22,8 +22,8 @@ public interface sh_myPageReposi {
 	public MyPageInfo mypageinfo(String memEmail);
 	public void changeAdr(HashMap<String,String> map);
 	public void changeFundingAdr(HashMap<String,String> map);
-	public int cancleOrder(HashMap<String,String> hm3);
-	public int cancleFunding(String fc);
+	public int cancleOrder(String oc);
+	public int cancleFunding(HashMap<String,String> hm3);
 	public void deleteFavor(HashMap<String,String> hmDF);
 	public int cancleFundingBal(HashMap<String,String> hmBal);
 	public int cancleFundingBalTb(HashMap<String,String> hmBalTb);
