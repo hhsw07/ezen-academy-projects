@@ -56,7 +56,7 @@ public class AndroidLoginCtrl {
 		result=service.verifyId(m);
 		mem_email=m.getMem_email();
 		String str="{\"result\":"+result+", \"mem_email\":\""+mem_email+"\"}";
-			
+		
 		return str;
 	}
 	

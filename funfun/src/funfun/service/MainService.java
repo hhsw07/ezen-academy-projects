@@ -86,8 +86,9 @@ public class MainService {
 	}
 	
 	public FavorCodeList getFavorCodeListByEmail(String email){
+		int memCode=repo.getMemCodeByEmail(email);
 		FavorCodeList favorCodeList= new FavorCodeList();
-		favorCodeList.setList(repo.getFavorCodeListByEmail(email));
+		favorCodeList.setList(repo.getFavorProjectCodeListByMemCode(memCode));
 		return favorCodeList;
 	}
 	

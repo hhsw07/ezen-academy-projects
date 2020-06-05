@@ -67,7 +67,7 @@ let projectComponent = Vue.extend({
     </div>`,
     methods:{
     	goFunding:function(event){
-    		var url='http://localhost:5080/funfun/funding.do?method=detail&pro_code='+this.code;
+    		var url=window.location.href.substring(0,28)+'/funding.do?method=detail&pro_code='+this.code;
     		window.location=url;
     	}
     },
