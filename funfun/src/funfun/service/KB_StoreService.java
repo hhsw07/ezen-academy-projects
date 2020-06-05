@@ -111,7 +111,7 @@ public class KB_StoreService {
 	}
 	
 	public ArrayList<RewardStore> adminList(Paging sch){
-		sch.setCount(dao.storeCnt(sch));
+		sch.setCount(dao.storeAdminCnt(sch));
 		if(sch.getPageSize() == 0) {
 			sch.setPageSize(7);
 		}

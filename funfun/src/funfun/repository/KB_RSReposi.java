@@ -16,6 +16,8 @@ public interface KB_RSReposi {
 	
 	public int storeCnt(Paging sch);
 	
+	public int storeAdminCnt(Paging sch);
+	
 	public ArrayList<RewardStore> adminList(Paging sch);
 	
 	public RewardStore adminDetail(int sto_code);
