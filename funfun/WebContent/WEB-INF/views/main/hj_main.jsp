@@ -158,7 +158,7 @@
       },
       addFunction:function (data){
     	  console.log(path);
-    	  data.image=window.location.href.substring(0,29)+data.image;
+    	  data.image=window.location.href.substring(0,28)+data.image;
     	  data.targetFunding=numberWithCommas(data.targetFunding)+"원";
     	  data.restDay=data.restDay+"일 남음";
     	  this.projectList.push(data);
