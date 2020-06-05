@@ -100,21 +100,25 @@
 
  
     <input type="text" name="pro_target" value="${projectInfo.pro_target}" placeholder="목표 금액을 숫자로 입력하세요" class="form-control" style="width:60%;" required/>
+    
 
 	<br><br>	
 	
 	<span class="reg_content_title">대표 이미지 *</span><br><br>
 	
+	<c:if test="${projectInfo.pro_image!=null and projectInfo.pro_image!=''}">
 	<img src="${path}/${projectInfo.pro_image}"/>
+	<br><br>
+	</c:if>
 	
 	<div class="btn btn-warning btn_custom"> 
 	    <label for="projectImg">스토어 이미지 수정</label>
 	    <input type="file" id="projectImg" name="projectImg" accept=".gif, .jpg, .png" style="display:hidden;">
 	</div>	 
 	
-	<br><br>
+	<br>
 	
-	<span class="sub_gray_font">&nbsp&nbsp&nbsp&nbsp&nbsp GIF, JPG, PNG 파일만 등록 가능합니다.</span>
+	<span class="sub_gray_font">&nbsp&nbsp&nbsp GIF, JPG, PNG 파일만 등록 가능합니다.</span>
 	
 	<br><br><br>
 	

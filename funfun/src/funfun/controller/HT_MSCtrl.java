@@ -88,8 +88,19 @@ public class HT_MSCtrl {
 	}
 	
 	@RequestMapping(params="method=makerInfo")
-	public String proRegMakerInfo() {
+	public String proRegMakerInfo(HttpServletRequest request, Model d) {
+		HttpSession session = request.getSession();
+		MemberInfo memberinfo = (MemberInfo)session.getAttribute("user");
+		
+		d.addAttribute("makerInfo", service.makerInfo(memberinfo.getMem_code()));
+		
 		return "WEB-INF\\views\\makerstudio\\ht_user_w_MS_makerInfo.jsp";
+	}
+	
+	@RequestMapping(params="method=makerInfoUpt")
+	public String makerInfoUpt(HttpServletRequest request, MakerStudio upt) {
+		service.makerInfoUpt(upt);
+		return "redirect:/MakerStudio.do?ethod=myProject";
 	}
 
 	@RequestMapping(params="method=proCancel")
@@ -152,6 +163,7 @@ public class HT_MSCtrl {
 		 * System.out.println("현재날짜가 종료날짜보다 작다."); }
 		 */
 		session.setAttribute("projectCode", pro_code);
+		System.out.println("지금 테스트 하는거 pro_code : " + pro_code);
 		int storeCode = service.getStoCode(pro_code);
 		session.setAttribute("storeCode", storeCode);
 		if (storeCode!=-1) {

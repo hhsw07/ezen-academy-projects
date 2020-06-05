@@ -73,26 +73,27 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			<th style="width:13%;">주문자 이름</th>
-			<th style="width:13%;">주문 갯수</th>
-			<th style="width:13%;">주문 총 가격</th>
-			<th style="width:48%;text-align:center;">주문 상세 내용</th>
-			<th style="width:13%;">주문 상태</th>
+			<th style="width:13%;text-align:center;">주문자 이름</th>
+			<th style="width:13%;text-align:center;">주문 갯수</th>
+			<th style="width:13%;">주문 가격</th>
+			<th style="width:48%;">주문 상세 내용</th>
+			<th style="width:13%;text-align:center;">주문 상태</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="orderList" items="${orderList}">
 			
 			<tr>
-			<td>${orderList.mem_code}</td>
-			<td>${orderList.sto_order_cnt}</td>
-			<td>${orderList.sto_order_price}</td>
+			<td style="text-align:center;">${orderList.mem_name}</td>
+			<td style="text-align:center;">${orderList.sto_order_cnt}</td>
+			<td style="font-weight:bold;"><fmt:formatNumber type="number" maxFractionDigits="3" value="${orderList.sto_order_price}"/>원</td>
 			<td style="word-break:break-all;">
-			주문 날짜 : ${orderList.sto_order_date}<br>
-			받는 사람 : ${orderList.sto_order_receiver}<br>
-			전화 번호 : ${orderList.sto_order_phoneno}<br>
-			배송 주소 : ${orderList.sto_order_address}<br>
-			배송 요청 : ${orderList.sto_order_ask}
+			<span style="font-weight:bold;">이메일 :</span> ${orderList.mem_email}<br>
+			<span style="font-weight:bold;">주문 날짜 :</span> ${orderList.sto_order_date}<br>
+			<span style="font-weight:bold;">받는 사람 :</span> ${orderList.sto_order_receiver}<br>
+			<span style="font-weight:bold;">전화 번호 :</span> ${orderList.sto_order_phoneno}<br>
+			<span style="font-weight:bold;">배송 주소 :</span> ${orderList.sto_order_address}<br>
+			<span style="font-weight:bold;">배송 요청 :</span> ${orderList.sto_order_ask}
 			<td style="text-align:center;">${orderList.sto_order_curr}</td>
 			</tr>
 			

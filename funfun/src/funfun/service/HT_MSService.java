@@ -30,6 +30,10 @@ public class HT_MSService {
 		return d;
 	}
 	
+	public void makerInfoUpt(MakerStudio upt) {
+		dao.makerInfoUpt(upt);
+	}
+	
 	public ArrayList<Project> myProjectList(int mem_code){
 		System.out.println(mem_code);
 		return dao.myProjectList(mem_code);

@@ -37,11 +37,12 @@
 	</update>
 	
 	<select id="orderList" resultMap="storeOrderResult" parameterType="int">
-	SELECT *
-	FROM STORE_ORDER
+	SELECT a.*, b.MEM_NAME, b.MEM_EMAIL 
+	FROM STORE_ORDER a, "MEMBER" b
 	WHERE STO_OPT_CODE
 	IN (SELECT STO_OPT_CODE FROM STORE_OPTION
 	WHERE STO_CODE = #{sto_code})
+	AND b.MEM_CODE = a.MEM_CODE
 	</select>
 	
 	

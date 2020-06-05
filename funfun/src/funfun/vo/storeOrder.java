@@ -15,6 +15,8 @@ public class storeOrder {
 	private String sto_order_ask;
 	private String sto_receive_date;
 	private String sto_order_date;
+	private String mem_name;
+	private String mem_email;
 	
 	public storeOrder() {
 		super();
@@ -96,6 +98,18 @@ public class storeOrder {
 	}
 	public void setSto_order_date(String sto_order_date) {
 		this.sto_order_date = sto_order_date;
+	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+	public String getMem_email() {
+		return mem_email;
+	}
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 	
 	
