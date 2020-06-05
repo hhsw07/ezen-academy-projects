@@ -69,7 +69,8 @@
 		<div style="text-align:center; line-height:50px; " class="col-md-2">회원가입 약관</div>
 		<div style="text-align:center; line-height:50px" class="col-md-2">서비스이용약관</div>
 		<div style="text-align:center; line-height:50px" class="col-md-2">개인정보처리방침</div>
-		<div style="text-align:center; line-height:50px" class="col-md-2">운영정책</div>
+		<div style="text-align:center; line-height:50px" class="col-md-2" onclick="javascript:goAdm()">
+			운영정책</div>
 		<div style="text-align:center; line-height:50px" class="col-md-2">제휴문의</div>
 		<div style="text-align:center; line-height:50px" class="col-md-2">공지사항</div>
 	</div>
@@ -176,7 +177,12 @@
 			vm.favors=favors;
 			vm.msg=favors[0]; 
 		}
+		
 	})
+	
+	function goAdm(){
+		$(location).attr("href","${path}/admin.do");
+	}
 </script>
 </body>
 
