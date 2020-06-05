@@ -113,7 +113,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">상품이미지</label><br>
-                        <img :src="'img/'+detail.sto_image" style="width:300px; height:120px">
+                        <img :src="detail.sto_image" style="width:300px; height:120px">
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">내용</label><br>
