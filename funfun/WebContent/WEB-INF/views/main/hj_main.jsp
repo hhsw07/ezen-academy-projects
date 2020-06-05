@@ -157,7 +157,7 @@
 			});
       },
       addFunction:function (data){
-    	  data.image="http://localhost:5080${path}/"+data.image;
+    	  data.image="http://192.168.4.19:5080${path}/"+data.image;
     	  data.targetFunding=numberWithCommas(data.targetFunding)+"원";
     	  data.restDay=data.restDay+"일 남음";
     	  this.projectList.push(data);
