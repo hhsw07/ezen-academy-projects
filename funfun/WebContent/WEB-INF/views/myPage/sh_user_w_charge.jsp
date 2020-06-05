@@ -64,7 +64,7 @@ toastr.options = {
 				var result = confirm(amount+'원을 충전 신청 하시겠습니까?'); 
 				if(result) { 
 					$("#chargeForm").submit();
-					Command: toastr["warning"]("신청이 완료되었습니다");
+					alert("입금 신청이 완료되었습니다");
 				} else {
 					
 				}
@@ -73,7 +73,7 @@ toastr.options = {
 		function rdWithdrawl(){
 			var memBalance = "${clist.memBalance}";
 			var amount = $("#wiAmount").val();
-			var memAccount = ${clist.memAccount}
+			var memAccount = "${clist.memAccount}"
 			amount = removeComma(amount)
 			amount = Number(amount)
 			$("#wiAmount").val(amount)
@@ -81,7 +81,7 @@ toastr.options = {
 				amount=null;
 				$("#wiAmount").val('')
 			}
-			if(memAccount==null){
+			if(memAccount=='미등록'){
 				Command: toastr["warning"]("계좌정보 등록이 필요합니다");
 			}else{
 				if(amount == null || amount == 0){
@@ -92,8 +92,7 @@ toastr.options = {
 					var result = confirm(amount+'원을 출금 신청 하시겠습니까?'); 
 					if(result) { 
 						$("#chargeForm").submit();
-						Command: toastr["warning"]("신청이 완료되었습니다");
-						Command: toastr["warning"]("출금이 완료되었습니다(출금확인 프로세스 미적용)");
+						alert("출금 신청이 완료되었습니다");
 						$("#wiForm").submit()
 					} else {
 						
