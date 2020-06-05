@@ -103,7 +103,7 @@
 			<td>답변</td>
 			<td>${qnaList.qna_ans }</td>
 			<td style="text-align:center;">
-				<button data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변수정</button>
+				<button data-mem_code="${qnaList.mem_code }" data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변수정</button>
 			</td>
 			</tr>
 			</c:otherwise>
