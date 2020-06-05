@@ -81,12 +81,11 @@
 			<c:choose>
 			<c:when test="${qnaList.qna_ans==null }">
 			<tr>
-			<input type="hidden" name="mem_code" value="${qnaList.mem_code }" />
 			<td>${qnaList.mem_name }</td>
 			<td>${qnaList.qna_reg_date }</td>
 			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
 			<td style="text-align:center;">
-				<button data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
+				<button data-mem_code="${qnaList.mem_code }" data-qna_code="${qnaList.qna_code }" data-qna_detail="${qnaList.qna_detail }" class="btn btn-warning btn_custom regAnswerBtn" data-toggle="modal" data-target="#myModal">답변등록</button>
 			</td>
 			</tr>
 			</c:when>
@@ -183,13 +182,16 @@
 	</div>
 	<!-- end main -->
 	<script>
-		var mem_code=$('input[name=mem_code]').val();
+		var mem_code;
 		$(".regAnswerBtn").on('click',function(event){
 			$("#qna_code").val(event.target.dataset.qna_code);
 			$("#qna_detail").text(event.target.dataset.qna_detail);
+			mem_code=event.target.dataset.mem_code;
+			console.log(mem_code);
 		})
 		$("#ansSubmit").click(function(){
 			if(confirm("등록 하시겠습니까?")){
+			wsocket1.send(mem_code);
 			$("#qnaAnsSubForm").submit();
 			}
 		})
