@@ -21,7 +21,7 @@
     
 	<link href="${path }/template/assets/css/gsdk.css" rel="stylesheet" />   
     <link href="${path }/template/assets/css/demo.css" rel="stylesheet" />
-
+	<link href="${path }/css/toastr.css" rel="stylesheet" />
     <!--     Font Awesome     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
@@ -186,7 +186,15 @@
   	var loginUser="${user.mem_code}";
   	var path="${path}";
   </script>
+  <script src="${path }/js/toastr.js"></script>
   <script src="${path }/js/notification.js"></script>
+  <script>
+  var user='${user.mem_email}';
+  var userName='${user.mem_name}';
+  var userCode='${user.mem_code}';
+	console.log(userCode);
+  </script>
+  
   
 
 </html>

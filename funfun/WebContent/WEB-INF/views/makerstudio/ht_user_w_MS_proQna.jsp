@@ -81,6 +81,7 @@
 			<c:choose>
 			<c:when test="${qnaList.qna_ans==null }">
 			<tr>
+			<input type="hidden" name="mem_code" value="${qnaList.mem_code }" />
 			<td>${qnaList.mem_name }</td>
 			<td>${qnaList.qna_reg_date }</td>
 			<td style="word-break:break-all;">${qnaList.qna_detail }</td>
@@ -182,6 +183,7 @@
 	</div>
 	<!-- end main -->
 	<script>
+		var mem_code=$('input[name=mem_code]').val();
 		$(".regAnswerBtn").on('click',function(event){
 			$("#qna_code").val(event.target.dataset.qna_code);
 			$("#qna_detail").text(event.target.dataset.qna_detail);

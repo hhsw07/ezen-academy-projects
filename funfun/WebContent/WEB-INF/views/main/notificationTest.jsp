@@ -16,26 +16,6 @@
 <link rel="stylesheet" href="${path }/css/shakeAndBounce.css" />
 
 <script>
-$(document).ready(function(){
-	var user='${user.mem_email}';
-	console.log(user);
-	if(user!==''){
-		var wsocket = new WebSocket("ws://localhost:5080/${path}/notification-ws.do");
-		wsocket.onopen=function(evt){
-			console.log('알림웹소켓 접속',evt);
-		};
-		wsocket.onmessage=function(evt){
-			console.log(evt);
-		};
-		wsocket.onclose=function(){
-			console.log("연결종료");
-		};
-		
-		$('#ws-btn').on('click', ()=>{
-			wsocket.send('알림정보를 업데이트하세요!!');
-		})
-	}
-})
 </script>
 </head>
 <body>
