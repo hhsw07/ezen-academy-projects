@@ -185,10 +185,13 @@ public class MainService {
 		paging.setCategory(cate);
 		paging.setStart((page-1)*9);
 		paging.setEnd(page*9);
+		System.out.println("paging start"+paging.getStart());
+		System.out.println("paging end"+paging.getEnd());
+		System.out.println("paging cate"+paging.getCategory());
 		ArrayList<MainViewProject> list=repo.getMainViewProjectList(paging);
-		
+		System.out.println("리스트");
 		for(MainViewProject m:list) {
-		
+			System.out.println(m.getTitle());
 			int a=(int)Math.round(((double)100*m.getCurrentFunding()/m.getTargetFunding()));
 			m.setPercent(a);
 			m.setRestDay(Math.floor(m.getRestDay()));

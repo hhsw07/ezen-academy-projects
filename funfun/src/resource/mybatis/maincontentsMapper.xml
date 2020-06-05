@@ -7,8 +7,8 @@
  	<resultMap type="funfun.vo.MainViewProject" id="MainViewProjectMap"></resultMap>
 	<select id="getMainViewProjectList" parameterType="funfun.vo.PagingStartEnd" resultMap="MainViewProjectMap">
 	 <![CDATA[
-	 	SELECT * FROM (
-SELECT a.*, rownum rn FROM(
+	 	SELECT b.* FROM (
+SELECT rownum rn, a.* FROM(
 SELECT pro_code code, nvl(pro_title, ' ') title,
 nvl(CATE_TITLE, ' ') category, nvl(pro_target, 0) targetFunding,
 nvl(PRO_FINISH_DATE, current_date)-current_date restDay,
@@ -18,7 +18,7 @@ nvl(PRO_MONEY, 0) currentFunding FROM project WHERE PRO_FINISH_DATE>current_date
     AND cate_title like #{category}
 </if>
 <![CDATA[
-ORDER BY PRO_FINISH_DATE ASC) a WHERE rownum<=#{end}) WHERE rn>${start}
+ORDER BY PRO_FINISH_DATE ASC, pro_code asc) a WHERE rownum<=#{end}) b WHERE rn>${start}
 		]]>
 	 </select>
 	

@@ -192,7 +192,7 @@
 				this.contactlist=[];
                 console.log("페치 코드 : " + sto_code);
 				// 비동기로 처리할 url 주소..
-				var url = "http://localhost:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				var url = "http://192.168.4.19:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
 				/*
 				# fetch api를 통한 비동기 통신 처리..
 				1. 기본 형식.
