@@ -120,9 +120,12 @@
         if(document.documentElement.scrollTop + document.documentElement.clientHeight + 1 >= document.documentElement.scrollHeight) {
           if(this.page<=3){
         	  if(this.favors.length===0){
+        		  console.log("this page:", this.page);
         		  this.loadMore(this.page, "");
             	  this.page=this.page+1;
+            	  
         	  } else {
+        		  console.log("this page:", this.page);
         		  this.loadMore(this.page, this.favors[0]);
         		  this.page=this.page+1;
         	  }
