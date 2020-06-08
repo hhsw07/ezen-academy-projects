@@ -33,6 +33,22 @@
              $("#Seach_Btn").click(function(){
             	$("#SearchForm").submit();
             })
+            
+            $("#apprs_Btn").click(function(){
+            	var curr = $("[name=store_curr]").val();
+            	console.log("테스트 : " + curr);
+            	if(curr == '정상'){
+            		alert("승인 처리 되었습니다.");
+            		$("#curr_form").submit();
+            		
+            	} else if(curr == '정지'){
+            		alert('거절 처리 되었습니다.');
+            		$("#curr_form").submit();
+            	} else {
+            		alert("승인여부를 선택해주세요");
+            	}
+            })
+            
         })
         
         function goPage(no){
@@ -136,7 +152,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                        
                       </div>
-                      <form method="post" action="store-update-curr.do">
+                      <form method="post" action="store-update-curr.do" id="curr_form">
                       <div class="modal-body">
                           
                           <div class="form-group" v-if="detail.sto_curr=='정지' || detail.sto_cur==''">
@@ -154,7 +170,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <span v-if="detail.sto_curr=='정지' || sto_cur==''"><button type="submit" class="btn btn-primary" id="appr_Btn">승인</button></span>
+                        <span v-if="detail.sto_curr=='정지' || sto_cur==''"><button type="submit" class="btn btn-primary" id="apprs_Btn">승인</button></span>
                       </div>
                     </form>
                   </div>
@@ -192,8 +208,8 @@
 				this.contactlist=[];
                 console.log("페치 코드 : " + sto_code);
 				// 비동기로 처리할 url 주소..
-				var url = "http://192.168.4.19:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
-				//var url = "http://localhost:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				//var url = "http://192.168.4.19:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
+				var url = "http://localhost:5080/funfun/store.do?method=adminDetail&sto_code="+sto_code;
 				/*
 				# fetch api를 통한 비동기 통신 처리..
 				1. 기본 형식.
