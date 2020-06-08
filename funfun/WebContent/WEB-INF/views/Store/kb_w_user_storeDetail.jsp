@@ -215,6 +215,9 @@
                         <c:if test="${qna.qna_open=='Y'}">
                         	[비밀글입니다]
                         </c:if>
+                        <c:if test="${qna.qna_open=='n'}">
+                        	${qna.qna_detail}
+                        </c:if>
                         </span></td>
                         <td>${qna.mem_name} </td>
                         <td>${qna.qna_reg_date} </td>
