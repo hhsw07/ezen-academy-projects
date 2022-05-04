@@ -1,0 +1,152 @@
+>> 답변식 게시판 글 추가
+
+1. Board Controller 추가
+
+	@RequestMapping(params="method=reply")
+	public String reply(@ModelAttribute("board")Board b) {
+		System.out.println("번호 : " + b.getNo());
+		System.out.println("제목 : " + b.getTitle());
+		System.out.println("내용 : " + b.getContent());
+		return "WEB-INF\\views\\a03_mvc\\a02_board_insert.jsp";
+	}
+
+2. a01_boardDetail.jsp
+	답글 버튼 추가
+
+3. a01_boardInsert.jsp
+
+4. boardMapper id=boardList SQL 변경
+
+SELECT *
+FROM board
+where 1=1
+START WITH REFNO = 0
+CONNECT BY PRIOR NO = REFNO
+ORDER SIBLINGS BY NO DESC
+
+
+
+
+>> 페이징 처리
+
+1. SQL
+SELECT *
+FROM(
+	SELECT rownum cnt, b.*		<<<<<< rownum cnt 사용하여 페이징
+	FROM board b
+	where 1=1
+	START WITH REFNO = 0
+	CONNECT BY PRIOR NO = REFNO
+	ORDER SIBLINGS BY NO DESC)
+WHERE cnt BETWEEN 1 AND 5
+
+2. BoardSch 생성			VO 변경 cnt추가
+3. BoardDAO 		>> (sch) 변경
+4. mybatis/spring.xml 	>> bsch 추가
+5. boardMapper		>> id=boardList 의 parameterType=bsch로 변경
+
+
+----------------------------------------------------------------------------------- 전체 데이터 건수
+1. DAO
+	> public int totCnt(BoardSch sch);
+2. Mapper
+	> <select id="totCnt" resultType="int" parameterType="bsch">
+	> id=boardList 변경
+----------------------------------------------------------------------------------- 전체 데이터 건수
+
+----------------------------------------------------------------------------------- 컨트롤러 설정
+	@RequestMapping(params="method=list")
+	public String list(@ModelAttribute("bsch")BoardSch sch, Model d) {
+		// http://localhost:6080/springweb/board.do?method=list
+		d.addAttribute("blist", service.boardList(sch));
+		return "WEB-INF\\views\\a03_mvc\\a02_board.jsp";
+	}
+----------------------------------------------------------------------------------- 컨트롤러 설정
+
+
+----------------------------------------------------------------------------------- 페이지 사이즈 선택 UI 구현
+1. 02_board.jsp
+
+	<table class="table table-hover">
+		<tr>
+			<th style="text-align:center;font-color:white;">총 데이터 건수</th>
+			<td>${bsch.count}건</td>
+			<th style="text-align:center;font-color:white;">페이지 크기</th>
+			<td><select name="pageSize" class="form-control">
+					<option>3</option>
+					<option>5</option>
+					<option>10</option>
+					<option>20</option>
+					<option>30</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+
+----------------------------------------------------------------------------------- 페이지 사이즈 선택 UI 구현
+
+
+----------------------------------------------------------------------------------- 페이지 네이션 선택 UI 구현
+1. 02_board.jsp
+
+	<ul class="pagination">
+		<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+		<c:forEach var="cnt" begin="1" end="${bsch.pageCount}">
+		<li class="page-item"><a class="page-link" href="#">${cnt}</a></li>
+		</c:forEach>		
+		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	</ul>
+
+----------------------------------------------------------------------------------- 페이지 네이션 선택 UI 구현
+
+
+----------------------------------------------------------------------------------- 서비스단 구현
+1. public ArrayList<Board> list(BoardSch sch){}
+----------------------------------------------------------------------------------- 서비스단 구현
+
+
+
+=============================================================================================
+클릭 했을 때 페이지 넘어 가는 거
+=============================================================================================
+
+
+----------------------------------------------------------------------------------- 화면 구현
+
+	$("#pageSize").change(function(){
+		$("#curPage").val(1);	// 페이지 크기를 바꾸면 초기 페이지로 출력하도록
+		#("form").submit();
+	})
+
+	function goPage(no){
+		$("#curPage").val(no);
+		$("form").submit();
+	}
+
+	<ul class="pagination">
+		<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+		<c:forEach var="cnt" begin="1" end="${bsch.pageCount}">
+		<li class="page-item ${bsch.curPage==cnt?'active':''}"><a class="page-link" href="javascript:goPage(${cnt})">${cnt}</a></li>
+		</c:forEach>		
+		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	</ul>
+
+----------------------------------------------------------------------------------- 화면 구현
+
+
+----------------------------------------------------------------------------------- 서비스단 구현
+
+	public ArrayList<Board> boardList(BoardSch sch){
+		sch.setCount(dao.totCnt(sch));					// 총 데이터 건수
+		if(sch.getPageCount()==0) sch.setPageSize(5);	// 첫 화면에서 보여줄 데이터 건수 초기값
+		sch.setPageCount((int)(Math.ceil(sch.getCount()/(double)sch.getPageSize())));	
+								// 총 페이지 수 : 총 건수          / 한번에 보여줄 데이터(실수)            ==> 올림처리
+		if(sch.getCurPage()==0) sch.setCurPage(1);
+		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1);
+					//(클릭한 페이지 번호 -1) * 페이지당 보일 데이터 건수 +1
+		sch.setEnd(sch.getCurPage()*sch.getPageSize());
+					// 클릭한 페이지 번호 * 페이지당 보일 데이터 건수
+		return dao.boardList(sch);
+	}
+
+----------------------------------------------------------------------------------- 서비스단 구현

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home1"
+        android:icon="@drawable/homeicon"
+        android:title="홈" />
+    <item
+        android:id="@+id/btn_fragmentA"
+        android:icon="@drawable/fundingicon"
+        android:title="프로젝트 문의관리" />
+    <item
+        android:id="@+id/btn_fragmentB"
+        android:icon="@drawable/storeicon"
+        android:title="스토어 주문관리" />
+    <item
+        android:id="@+id/notice1"
+        android:icon="@drawable/qnaicon"
+        android:title="스토어 문의관리" />
+</menu>

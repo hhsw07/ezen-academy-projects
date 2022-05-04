@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="초 달아서 초당? 초당 옥수수"
+            android:textSize="13pt"
+            android:gravity="center_horizontal"/>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:src="@drawable/oksusu"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/store_border"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="옵션 설정"
+                android:textSize="12pt"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text ="메이커명  :     야수네"
+                android:textSize="12pt"
+                android:layout_marginTop="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="옵션"
+                    android:textSize="12pt"/>
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:entries="@array/스토어옵션"
+                    android:id="@+id/optionSpinner"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="수량"
+                    android:textSize="12pt"/>
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/cntMinus"
+                    android:text="-"
+                    android:textColor="#FFF"
+                    android:background="#FF8000"/>
+                <EditText
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/cnt"
+                    android:text="1"
+                    android:gravity="center_horizontal"/>
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/cntPlus"
+                    android:text="+"
+                    android:textColor="#FFF"
+                    android:background="#FF8000"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="금액"
+                    android:textSize="12pt"/>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:textSize="12pt"
+                    android:text="원"
+                    android:id="@+id/priceText"
+                    android:gravity="right"
+                    android:textColor="#FF8000"/>
+
+            </LinearLayout>
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:text="결제하기"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:textColor="#FFF"
+                android:background="#FF8000"
+                android:id="@+id/movePayBtn"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상세내용"
+            android:textSize="12pt"
+            android:layout_marginTop="20dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/oksusu2"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/oksusu3"
+            android:scaleType="fitXY"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/oksusu4"
+            android:scaleType="fitXY"/>
+
+
+    </LinearLayout>
+</ScrollView>

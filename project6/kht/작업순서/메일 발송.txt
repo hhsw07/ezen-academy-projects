@@ -1,0 +1,31 @@
+1. lib 등록
+
+	mail-1.4.7.jar => 메일 전송을 위한 lib
+	itext-2.1.7.jar, poi-3.9.jar => pdf 파일 등의 전송을 위한 lib
+
+2. gmail 계정 smtp 설정
+
+3. dispatcher servlet
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="username" value="esseone7test"/>
+		<property name="password" value="esseone7"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+4. A04_MailCtrl
+
+5. a04_mail.jsp
+
+6. A04_MailCtrl
+
+7. A04_MailService

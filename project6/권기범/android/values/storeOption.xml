@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="스토어옵션">
+        <item></item>
+        <item>초당옥수수 1KG</item>
+        <item>초당옥수수 2KG</item>
+        <item>초당옥수수 3KG</item>
+    </string-array>
+</resources>

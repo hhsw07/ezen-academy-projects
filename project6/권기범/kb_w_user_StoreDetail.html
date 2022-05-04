@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/kb_w_user_StoreDetail.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <script
+  src="http://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+    <style>
+        main{
+            width:1200px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            
+            var article = ("#sto_QnA_Div .qnaShow");
+            $("#sto_QnA_Div .item td").click(function(){
+                var myArticle = $(this).parent().next("tr");
+                if($(myArticle).hasClass('hide')){
+                    $(article).removeClass('qnaShow').addClass('hide');
+                    $(myArticle).removeClass('hide').addClass('qnaShow');
+                } else {
+                    $(myArticle).addClass('hide').removeClass('qnaShow');
+                }
+            });
+            $(".btn btn-primary").modal("show");
+
+            $("#qnaSubmit").click(function(){
+                $("#qnaForm").submit();
+                $(".btn btn-primary").modal("hide");
+                $("#sto_QnA_Div").focus();
+            })
+        });
+    </script>
+</head>
+<body>
+  
+    <main>
+        <div class="store-title" style="text-align: center;" >
+	    		<div class="label label-warning">푸드</div>
+	    		<h3 style="font-weight:800;">초~달아서 초당! 옥수수가 이렇게 달았다고??</h3>
+        </div>
+        </div>
+        <div id="sto_menu_Div">
+            <ul class="sto_menu_ul">
+                <li class="sto_menu_li"><a href="#sto_Title_Div" class="sto_menu_a">상단</a></li>
+                <li class="sto_menu_li"><a href="#sto_Story_Div" class="sto_menu_a">스토리</a></li>
+                <li class="sto_menu_li"><a href="#sto_QnA_Div" class="sto_menu_a">문의</a></li>
+            </ul>
+        </div>
+        <div id="sto_Main_Info_Div">
+            
+            <div id="sto_Image_Div">
+                <img src="img/oksusu.PNG" class="img-responsive" alt="Responsive image" 
+                style="width:80%;
+                height:100%; margin-left:auto; margin-right:auto;">
+            </div>
+
+            <div id="sto_pay_Div">
+                <div id="maker_name_Div"> 메이커 명 : 야수네</div>
+                <div id="option_Div">
+                    <span id="option_title">옵션 : </span>
+                    <select class="form-data" id="option_select">
+                        <option> 1kg (25,000)</option>
+                        <option> 2kg (35,000)</option>
+                    </select>
+                </div>
+                <div id="option_cnt_div">
+                    <span id="option_cnt_title">수량 : </span>
+                    <input type="number" class="form-data" id="cnt_input">
+                </div>
+                <div id="option_price_Div">
+                    25,000원
+                </div>
+                <div id="pay_Btn_Div">
+                    <button id="Pay_Btn">주문하기</button>
+                </div>
+            </div>
+
+           
+        </div>
+        <div id="sto_Story_Div">
+            <div id="sto_Story_Title">상세 스토리</div>
+            <img src="img/oksusu2.PNG" style="width:100%">
+            <img src="img/oksusu3.PNG" style="width:100%">
+            <img src="img/oksusu4.PNG" style="width:100%">
+        </div>
+
+        <div id="sto_QnA_Div">
+            <div id="sto_QnA_Title">스토어 문의 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right" >문의하기</button></div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성날짜</th>
+                        <th>답변여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="item">
+                        <td>1</td>
+                        <td class="">배송 언제 되나요? 정말 기대되서 기다리고 있는데
+                            언제 되는지 알고 싶습니다.</span>
+                        </td>
+                        <td> 이젠임당 </td>
+                        <td> 2020.05.18 </td>
+                        <td> 미답변 </td>
+                    </tr>
+                    <tr class="hide">
+                        <td colspan="5"><pre>배송 언제 되나요? 정말 기대되서 기다리고 있는데 언제 되는지 알고 싶습니다.</pre>
+                        <pre class="qna_answer_pre">--------------------<span class="qna_answer">메이커 답변</span>---------------------------------------------------------------2020.05-22--------------------<br>
+                        헬로우</pre></td>
+                    </tr>
+                   
+                </tbody>
+
+            </table>
+
+            <div id="pagination_Div">
+                <ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">스토어 문의하기</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form method=post id="qnaForm">
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">문의내용:</label>
+                          <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                      <button type="submit" class="btn btn-primary" id="qnaSubmit">문의하기</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </main>
+</body>
+</html>
