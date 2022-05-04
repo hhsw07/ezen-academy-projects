@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hobbyfactory">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CLA"/>
+        <activity android:name=".PLA"/>
+        <activity android:name=".Cdetail"/>
+        <activity android:name=".Pdetail"/>
+        <activity android:name=".Cpayment"/>
+        <activity android:name=".Ppayment"/>
+        <activity android:name=".mypAdd"/>
+        <activity android:name=".mypOrder"/>
+        <activity android:name=".mypClass"/>
+        <activity android:name=".mypAddr"/>
+        <activity android:name=".mypCreview"/>
+        <activity android:name=".mypSreview"/>
+        <activity android:name=".mypInquiry"/>
+        <activity android:name=".mypMileage"/>
+        <activity android:name=".mypInfo"/>
+        <activity android:name=".mypPass"/>
+        <activity android:name=".mypDrop"/>
+        <activity android:name=".mypHostC"/>
+        <activity android:name=".mypHostS"/>
+        <activity android:name=".login"/>
+        <activity android:name=".join"/>
+        <activity android:name=".findPw"/>
+        <activity android:name=".findId"/>
+        <activity android:name=".found"/>
+        <activity android:name=".new_pass"/>
+        <activity android:name=".hb_myclass"/>
+        <activity android:name=".hb_cart"/>
+        <activity android:name=".hb_faclass"/>
+        <activity android:name=".Sreqhost"/>
+        <activity android:name=".Snewqna"/>
+        <activity android:name=".SFAQ"/>
+        <activity android:name=".Snotice"/>
+    </application>
+
+</manifest>
