@@ -1,0 +1,42 @@
+1. 기본 프로세스 정리
+	1) 초기 화면에 부품 리스트 가져오기
+		디폴트(cpu) 부품 목록 및 부품 카트 표시
+	2) 부품 리스트에서 부품을 클릭시, 부품 카트에 추가
+	
+	3) 부품카트에서 클릭시, 카트에서 제거
+	
+	4) 부품카트의 분류를 눌러 다른 부품 목록 출력
+
+2. 개발 순서
+	1) DAO 구현
+	
+	2) controller - 초기화면
+	3) 초기 jsp
+		- 요청값 넘겼을 때, 처리
+	4) controller - 요청값(부품번호, 등록proc)
+		- service단 호출
+		- dao 등록
+		- 모델로 insert 작업
+	5) jsp 화면
+		- 추가된 부품을 표시
+		- 카트에서 부품 삭제 버튼 클릭
+	6) controller - 요청값(카트속 부품번호, 제거proc)
+		- service단
+		- dao단 (제거)
+
+3. 주요 핵심 코딩
+	1) 사용할 파일
+		- estimateCtrl.java(contoller)
+		- estimateService.java(service)
+		- estimateDao.java(DAO)
+		- estimate.jsp(view)
+	2) sql
+		- 리스트
+			select * from pro5_est
+		- 등록
+			insert into assembly
+			values()
+		- 제거
+			delete
+		
+
