@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_entries">
+        <item >제목</item>
+        <item >작성자</item>
+        <item >제목+내용</item>
+    </string-array>
+
+    <string-array name="select1">
+        <item>보호자집</item>
+        <item>시터집</item>
+    </string-array>
+
+    <string-array name="select2">
+
+        <item>보호자집</item>
+        <item>시터집</item>
+    </string-array>
+
+    <string-array name="select3">
+
+    <item>1시간</item>
+    <item>2시간</item>
+    <item>3시간</item>
+    <item>4시간</item>
+    <item>5시간</item>
+    <item>6시간</item>
+    <item>7시간</item>
+    <item>8시간</item>
+    </string-array>
+
+    <string-array name="select4">
+
+        <item>1시간</item>
+        <item>2시간</item>
+        <item>3시간</item>
+        <item>4시간</item>
+        <item>5시간</item>
+        <item>6시간</item>
+        <item>7시간</item>
+        <item>8시간</item>
+    </string-array>
+
+    <string-array name="select5">
+
+        <item>강아지</item>
+        <item>고양이</item>
+        <item>멍멍이</item>
+
+    </string-array>
+
+    <string-array name="select6">
+
+        <item>공항에서 직접 수취</item>
+        <item>방문해서 수취</item>
+
+    </string-array>
+</resources>

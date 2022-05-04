@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 전체 */
+	ul li{list-style:none;}
+	a{text-decoration:none; color:black;}
+/* header */
+	.header{display:block; position:relative; width:100%; margin:0; padding:0;text-align:left; background-color:#E6F3FF;color:inherit; margin:0 auto;}
+	.logo{display:inline; margin:30px;}
+	.logo img{width:250px;}
+	.navbar{display:inline; position:absolute; font-weight:900;table-layout: auto}
+	.menu li{font-size:20px; float:left; text-align:center; display:flex; padding:10px 25px 25px;}
+	.menu li:hover{border-bottom:5px solid #F15F5F;}
+/* aside */
+	.aside{background-color:#E6F3FF; text-align:center; width:320px; height:800px; float:left; margin-top:10px; display:inline-block;}
+	.log{padding:30px; border-bottom:2px solid #B2CCFF;}
+/* section */
+	.section{background-color:#E6F3FF; width:1565px; height:800px; float:right; margin-top:10px;display:inline-block;}
+	.frame iframe{margin:10px auto; width:100%; height:100%;}
+
+</style>
+
+</head>
+<body>
+<!-- 상단메뉴  -->
+	<header class="header">
+		<div class="logo">
+			<a href="index.html"><img alt="" src="../image/adminlogo.png"></a>
+		</div>
+		<nav class="navbar">
+			<ul class="menu">
+				<li onclick="menu01()"><a href="memberlist.html" target="article">회원관리</a></li>
+				<li onclick="menu02()"><a href="#" target="article">공지사항</a></li>
+				<li onclick="menu03()"><a href="#" target="article">반려동물 프로그램</a></li>
+				<li onclick="menu04()"><a href="#" target="article">장거리 이동 서비스</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+<!-- aside -->
+	<aside class="aside">
+		<div class="log">
+			<p>logged by 관리자</p>
+			<input type="button" value="logout"/>
+		</div>
+		<div id="member">
+			<h2>회원관리</h2>
+			<h3>회원목록</h3>
+		</div>
+		<div id="notice">
+			<h2>공지사항</h2>
+		</div>
+		<div id="program">
+			<h2>반려동물 프로그램</h2>
+			<h3>프로그램관리</h3>
+			<h3>신청관리</h3>
+		</div>
+		<div id="move">
+			<h2>장거리 이동 서비스</h2>
+			<h3>예약조회</h3>
+		</div>
+			
+	</aside>
+	
+<!-- section -->	
+	<section class="section">
+		<article class="frame">
+			<iframe name="article" frameborder="0"></iframe>
+		</article>
+	</section>
+
+<!-- footer -->
+	<footer>
+		
+	</footer>
+	
+</body>
+<script type="text/javascript">
+	var mem = document.querySelector("#member");
+	var not = document.querySelector("#notice");
+	var pro = document.querySelector("#program");
+	var move = document.querySelector("#move");
+	mem.style.display="none";
+	not.style.display="none";
+	pro.style.display="none";
+	move.style.display="none";
+	function menu01(){
+		mem.style.display="inline-block";
+		not.style.display="none";
+		pro.style.display="none";
+		move.style.display="none";
+	}
+	function menu02(){
+		mem.style.display="none";
+		not.style.display="inline-block";
+		pro.style.display="none";
+		move.style.display="none";
+	}
+	function menu03(){
+		mem.style.display="none";
+		not.style.display="none";
+		pro.style.display="inline-block";
+		move.style.display="none";
+	}
+	function menu04(){
+		mem.style.display="none";
+		not.style.display="none";
+		pro.style.display="none";
+		move.style.display="inline-block";
+	}
+	
+
+</script>
+</html>
