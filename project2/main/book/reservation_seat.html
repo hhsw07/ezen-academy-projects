@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EZEN CINEMA</title>
+<style>
+	.movie_home_page{width:1000px;margin:0 auto;}
+	input[type=checkbox] {display:none;}
+	input + label{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		border: 2px solid black;
+		cursor: pointer;}
+	input + label.prime {
+		border: 2px solid red;}
+	input + label.disable {
+		border: 2px solid #ff00ff;}
+	input + label.soldout {
+		border: 2px solid #ff00ff;
+		background-color: gray;}
+	input:checked + label {background-color: #000000;}
+	ul li{ list-style: none; text-align:left; }
+	li img{width:12px;}
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	
+		
+	<div class="movie_home_page">
+	<form >
+		<table border style="border-collapse:collapse; text-align:center;"align="center" height="400px" width="800px">
+			<tr><th rowspan="2" width="10%" >상영시간</th>
+				<th colspan="2" style="height:50px;">좌석 선택</th></tr>
+			<tr><th style="height:50px; width:30%;">
+					성인&nbsp;
+					<select>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>&nbsp;&nbsp;
+					청소년&nbsp;
+					<select>
+						<option>0</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>
+				</th>
+				<th>
+					강남점 | 해치지않아 | 1/26 09:00&nbsp;&nbsp;
+					<input type="button" value="다시선택" onclick="location.href='reservation01.html'" />
+				</th></tr>
+			<tr><th rowspan="2" style="background-color:lightblue;">좌석</th>
+				<td rowspan="6" colspan="2">
+					<table style="width:600px;" align="center">
+						<tr><td style="background-color:gray; width:450px">SCREEN</td><td></td>
+					</table>
+					<br><br><br>
+					<table style="width:600px;" align="center">
+						<tr><td style="width:430px"></td>
+							<td rowspan="8" >
+								<ul>
+									<li>
+										<img src="../image/book/box_soldout.png">
+										예매완료</li>
+									<li>
+										<img src="../image/book/box_ff00ff.png">
+									 	장애인석</li>
+									<li>
+										<img src="../image/book/box_000000.png">
+										일반석</li>
+									<li>
+										<img src="../image/book/box_ff0000.png">
+										Prime Zone</li>
+									<li>
+										<img src="../image/book/box_00ff00.png">
+										커플석</li>
+									<li>
+										<img src="../image/book/box_0000ff.png">
+										SWEETBOX</li>
+								</ul>
+								<input type="button" value="다음" onclick="location.href='reservation_pay.html'" />
+							</td></tr>
+						
+						<tr><td>A&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" id="sa1">
+								<label for="sa1" class="disable">1</label>
+								
+								<input type="checkbox" id="sa2">
+								<label for="sa2" class="disable">2</label>
+								
+								<input type="checkbox" id="sa3">
+								<label for="sa3">3</label>
+								
+								<input type="checkbox" id="sa4">
+								<label for="sa4">4</label>
+								
+								<input type="checkbox" id="sa5">
+								<label for="sa5">5</label>
+							</td></tr>
+						<tr><td style="height:5px;"> </td></tr>
+						<tr><td>B&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" id="sb1">
+								<label for="sb1" class="prime">1</label>
+								
+								<input type="checkbox" id="sb2">
+								<label for="sb2" class="prime">2</label>
+								
+								<input type="checkbox" id="sb3">
+								<label for="sb3" class="prime">3</label>
+								
+								<input type="checkbox" id="sb4">
+								<label for="sb4" class="prime">4</label>
+								
+								<input type="checkbox" id="sb5">
+								<label for="sb5" class="prime">5</label>
+							</td></tr>
+						<tr><td style="height:5px;"> </td></tr>
+						<tr><td>C&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" id="sc1" disabled>
+								<label for="sc1" class="soldout">1</label>
+								
+								<input type="checkbox" id="sc2">
+								<label for="sc2" class="prime">2</label>
+								
+								<input type="checkbox" id="sc3">
+								<label for="sc3" class="prime">3</label>
+								
+								<input type="checkbox" id="sc4">
+								<label for="sc4" class="prime">4</label>
+								
+								<input type="checkbox" id="sc5">
+								<label for="sc5" class="prime">5</label>
+							</td></tr>
+						<tr><td style="height:5px;"> </td></tr>
+						<tr><td>D&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" id="sd1">
+								<label for="sd1">1</label>
+								
+								<input type="checkbox" id="sd2">
+								<label for="sd2">2</label>
+								
+								<input type="checkbox" id="sd3">
+								<label for="sd3">3</label>
+								
+								<input type="checkbox" id="sd4">
+								<label for="sd4">4</label>
+								
+								<input type="checkbox" id="sd5">
+								<label for="sd5">5</label>
+							</td></tr>
+					
+					</table>
+				</td></tr>
+			<tr></tr>
+			<tr><th rowspan="2">결제</th></tr>
+			<tr></tr>
+			<tr><th rowspan="2">결제완료</th></tr>
+			<tr></tr>
+			
+			
+		</table>
+		<br>
+	</form>
+	</div>
+	
+</body>
+</html>

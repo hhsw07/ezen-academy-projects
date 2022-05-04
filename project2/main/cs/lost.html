@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{clear:both;} 
+	#title{margin-top:30px; width:1000px; text-align:left; font-size:24px;}
+	a{color:black; text-decoration:none;}
+	table{border-collapse:collapse; width:1000px;}
+	#ch{background-color:#C3C3C3;opacity:0.8;}
+	.chmenu:hover{background-color:#F6F6F6;opacity:0.8;}
+	
+	select{height:30px;}
+	thead{border-bottom:1px solid gray;}
+	tr{height:50px;}
+	td{text-align:center;}
+	.text_l{text-align:left;}
+	.txt_new{font-size:10px; background-color:red; color:white;}
+	.line{border-bottom:1px solid #EAEAEA}
+	label{font-size:18px; margin-right:10px;}
+	
+	ol li{list-style-type:none; float:left; margin-left:20px}
+	input[type=button]{border:none; background-color:white; color:gray;}
+
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div align="center">
+		<div id="title"><strong>고객센터</strong></div>
+		<div style="margin:15px">&nbsp;</div>
+		<div>
+			<table style="height:50px; border-bottom:1px dashed gray; font-size:20px;">
+				<colgroup>
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+				</colgroup>
+				<tr>
+					<th class="chmenu"><a href="news.html">공지사항</a></th>
+					<th class="chmenu"><a href="faq.html">FAQ</a></th>
+					<th class="chmenu"><a href="one.html">1:1 문의</a></th>
+					<th class="chmenu"><a href="crow.html">단체 및 대관문의</a></th>
+					<th class="chmenu" id="ch"><a href="lost.html">분실물 문의</a></th>
+				</tr>
+			</table>
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+		<div class="text_l" style="width:1000px; margin:15px;text-align:right;">
+			<a href="lost-write.html">
+				<input style="color:white; background-color:#4374D9; font-size:15px;" type="button" name="작성" value="분실물 접수">
+			</a>
+		</div>
+		<fieldset style="width:1000px; vertical-align:middle; padding:5px; margin:5px;">
+				<select title="검색조건 지역 선택">
+					<option value="" selected="">지역</option>
+					<option value="0001">서울</option>
+					<option value="0002">경기/인천</option>
+					<option value="0003">충청/대전</option>
+					<option value="0004">전라/광주</option>
+					<option value="0005">경북/대구</option>
+					<option value="0101">경남/부산/울산</option>
+					<option value="0006">강원</option>
+					<option value="0007">제주</option>
+				</select>
+				<select title="검색조건 영화관명 선택">
+					<option value="" selected="">영화관명</option>
+				</select>
+				<select title="검색조건 제목 선택">
+					<option value="1" selected="">제목</option>
+					<option value="2">내용</option>
+					<option value="3">제목+내용</option>
+				</select>
+				<input type="text" placeholder="검색어를 입력해주세요." style="width:423px; height:30px;">
+				<input type="button" style="width:70px;height:30px; border:1px solid black; color:black;" value="검색">
+			</fieldset>
+		<div>
+			<table style="border-top:2px soild gray;">
+				<colgroup>
+					<col style="width: 10%;">
+					<col style="width: 15%;">
+					<col style="width: auto;">
+					<col style="width: 15%;">
+				</colgroup>
+				<thead>
+					<tr><th>번호</th><th>구분</th><th>제목</th><th>등록일</th></tr>
+				</thead>
+				<tbody>
+					<tr class="line">
+						<td>15497</td>
+						<td>검단</td>
+						<td class="text_l"><a id="19063">2020-01-26_검단 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-27</td>
+					</tr>
+					<tr class="line">
+						<td>15496</td>
+						<td>검단</td>
+						<td class="text_l"><a id="19062">2020-01-22_검단 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-27</td>
+					</tr>
+					<tr class="line">
+						<td>15495</td>
+						<td>합정</td>
+						<td class="text_l"><a id="19061">2020-01-26_합정 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-27</td>
+					</tr>
+					<tr class="line">
+						<td>15494</td>
+						<td>동해</td>
+						<td class="text_l"><a id="19060">2020-01-26_동해 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-27</td>
+					</tr>
+					<tr class="line">
+						<td>15493</td>
+						<td>전주평화</td>
+						<td class="text_l"><a id="19059">2020-01-26_전주평화 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+					<tr class="line">
+						<td>15492</td>
+						<td>대영</td>
+						<td class="text_l"><a id="19058">2020-01-25_대영 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+					<tr class="line">
+						<td>15491</td>
+						<td>대영</td>
+						<td class="text_l"><a id="19057">2020-01-24_대영 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+					<tr class="line">
+						<td>15490</td>
+						<td>광주(백화점)</td>
+						<td class="text_l"><a id="19056">2020-01-25_광주(백화점) 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+					<tr class="line">
+						<td>15489</td>
+						<td>광주(백화점)</td>
+						<td class="text_l"><a id="19055">2020-01-24_광주(백화점) 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+					<tr class="line">
+						<td>15488</td>
+						<td>광주(백화점)</td>
+						<td class="text_l"><a id="19054">2020-01-20_광주(백화점) 분실물 습득안내</a><strong class="txt_new">NEW</strong></td>
+						<td>2020-01-26</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+		<div style="width:450px">
+			<ol>
+				<li><strong title="현재 페이지">1</strong></li>
+				<li><a href="#">2</a></li><li><a href="#">3</a></li>
+				<li><a href="#">4</a></li><li><a href="#">5</a></li>
+				<li><a href="#">6</a></li><li><a href="#">7</a></li>
+				<li><a href="#">8</a></li><li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>
+			</ol>
+			<input type="button" name="다음 페이지로 이동" >＞
+			<input type="button" name="마지막 페이지로 이동">>>
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+	</div>
+
+</body>
+</html>

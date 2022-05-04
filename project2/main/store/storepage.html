@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	html, body {
+		width: 99.5%; height: 100%;
+	}
+			
+	a{
+		text-decoration:none;
+		color: black;
+	}
+	#all{
+		position:relative;
+		width: 100%; height: 100%;
+		text-overflow:visible;
+	}
+	#top{
+		position:relative;
+		width:100%;
+		height:200px;
+		text-align:center;
+	}
+	#top_01{
+		position:relative;
+		text-align:right;
+		margin-right:1%;
+		height:25px;
+	}
+	#top_02{
+		position:relative;
+		text-align:center;
+		height:175px;
+	}
+	#center{
+		position:relative;
+		background-color:white;
+		width:100%;
+		height:80%;
+	}
+
+</style>
+<script type="text/javascript">
+		
+</script>
+</head>
+<body>
+	<div id="all">
+		<div id="top">
+			<div id="top_01">
+				<a href="../login/loginpage.html" target="centerInfo">로그인</a> | 
+				<a href="../mypage/mypage.html" target="centerInfo">마이페이지</a> |
+				<a href="../manager/manager.html" target="centerInfo">관리자페이지</a>
+			</div>
+			<div id="top_02">
+				<a href="../mainpage.html"><img src="../image/ezen.png" width="530" height="140"></a><br>
+				<a href="../book/reservation01.html" target="centerInfo">예매</a> &nbsp;&nbsp;|&nbsp;&nbsp;    
+				<a href="../cinema/movie_list.html" target="centerInfo">영화</a> &nbsp;&nbsp;|&nbsp;&nbsp;    
+				<a href="" >극장</a> &nbsp;&nbsp;|&nbsp;&nbsp;   
+				<a href="" >이벤트</a> &nbsp;&nbsp;|&nbsp;&nbsp;   
+				<a href="storelist.html" target="centerInfo">스토어</a> &nbsp;&nbsp;|&nbsp;&nbsp;   
+				<a href="" >고객센터</a>
+				<!-- target="centerInfo"이 없는 곳은 를 href옆에 넣도록 합시다. -->
+			</div>
+		</div>
+		<div id="center">
+			<iframe src="storelist.html" name="centerInfo" width="100%" height="100%"></iframe>
+			<!-- 본문 안에 표현할 내용 -->	
+		</div>
+	</div>
+</body>
+</html>

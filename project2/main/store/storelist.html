@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{clear:both;} /*div에서 float:left으로 인한 겹침방지*/
+	a{color:black; text-decoration:none;} /*하이퍼링크 밑줄, 파란색보라색 없애기*/
+	.itemlist:hover{opacity:0.9;background-color:#A4A4A4;} /*상품 위에 커서 올리면 회색상자*/
+	ul li{list-style-type:none; float:left; margin-left:20px} /*리스트 마킹없애고 옆으로 정렬*/
+	.itemtitle{text-align:center; line-height:50%} /*상품명 가운데정렬*/
+	.price{text-align:right; margin-right:20px;line-height:150%} /*가격 오른쪽정렬*/
+	h3{margin:30px;}
+	p{font-size:12px; color:#585858;}
+	.store{padding:50px;}
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+	<!-- 상품분류  -->
+		<div style="padding-right:70px; padding-left:70px;">
+			<div>
+				<ul>
+					<li><h2><a href="#ticket">관람권</a></h2></li>
+					<li><h2><a href="#snack">스낵음료</a></h2></li>
+				</ul>
+				<span>
+					<h2 style="float:right; margin-right:50px"><a href="">장바구니</a></h2>
+				</span>
+			</div>
+			<div style="border-bottom:1px dashed gray;"></div>
+		</div>
+	
+	<!-- 상품 리스트  -->
+		<div class="store">
+			<h3 id="ticket">관람권</h3>
+			<ul>
+				<li>
+					<a href="ticket_2d.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/2dticket.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>일반 관람권</h4>
+								<p>2D영화 관람권</p>
+							</div>
+							<div class="price">
+								<b>10,000원</b>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="ticket_3d.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/3dticket.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>3D 관람권</h4>
+								<p>3D영화 전용 관람권</p>
+							</div>
+							<div class="price">
+								<b>12,000원</b>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="ticket_4d.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/4dticket.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>4D 관람권</h4>
+								<p>4D영화 전용 관람권</p>
+							</div> 	
+							<div class="price">
+							 <b>18,000원</b>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="store">
+			<h3 id="snack">스낵음료</h3>
+			<ul>
+				<li>
+					<a href="combo.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/combo.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>EZEN 콤보</h4>
+								<p>팝콘L + 탄산음료M 2</p>
+							</div>
+							<div class="price">
+								<b>9,000원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="originalL.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/originalL.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>오리지널 팝콘 (L)</h4>
+								<p>오리지널 팝콘L</p>
+							</div>
+							<div class="price">
+								<b>5,000원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="sweetL.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/sweeetL.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>카라멜 팝콘 (L)</h4>
+								<p>카라멜 팝콘 L</p>
+							</div>
+							<div class="price">
+								<b>6,000원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="originalM.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/originalM.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>오리지널 팝콘 (M)</h4>
+								<p>오리지널 팝콘 M</p>
+							</div>
+							<div class="price">
+								<b>4,500원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="sweetM.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/sweeetM.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>카라멜 팝콘 (M)</h4>
+							<p>카라멜 팝콘 M</p>
+							</div>
+							<div class="price">
+								<b>5,500원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="cokeL.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/cokeL.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>탄산음료 (L)</h4>
+								<p>탄산음료 L</p>
+							</div>
+							<div class="price">
+								<b>3,000원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="cokeM.html">
+						<div>
+							<div class="itemlist">
+								<img src="../image/store/cokeM.png" width="300">
+							</div>
+							<div class="itemtitle">
+								<h4>탄산음료 (M)</h4>
+								<p>탄산음료 M</p>
+							</div>
+							<div class="price">
+								<b>2,500원</b>
+							</div>
+							<div>&nbsp;</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div style="margin:100px;">&nbsp;</div>
+	
+</body>
+</html>

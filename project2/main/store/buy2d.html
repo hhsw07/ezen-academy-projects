@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.clstable{border-top:2px solid black; border-bottom:1px solid black;}
+	#title{margin-top:30px; width:1000px; text-align:left; font-size:24px;}
+	table{width:1000px;}
+	caption{font-size:22px;text-align:left; margin-bottom:10px;}
+	tr th{font-size:20px; padding:15px;}
+	#itemimg{text-align:right;}
+	.itemtext{text-align:center;}
+	ul li{list-style-type:none; margin:10px 0px;}
+	.itemexp{font-size:12px; color:#585858;}
+	input[type=submit]{width:250px; height:50px; font-size:20px; color:white; background-color:#4374D9;}
+	label{margin-right:20px;}
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div align="center">
+		<div id="title"><strong>결제하기</strong></div>
+		<div style="margin:15px">&nbsp;</div>
+		<div>
+			<table class="clstable">
+				<caption>구매상품 정보</caption>
+				<colgroup>
+					<col width="20%">
+					<col width="26%">
+					<col width="20%">
+					<col width="14%">
+					<col width="20%">
+				</colgroup>
+				<thead>
+					<tr style="background-color:#EAEAEA;"><th colspan="2">상품</th><th>판매금액</th><th>구매수량</th><th>결제금액</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="itemimg"><img src="../image/store/2dticket.png" width="130px" style="margin-right:0px"></td>
+						<td>
+							<ul>
+								<li><strong>일반관람권</strong></li>
+								<li class="itemexp">2D영화 관람권</li>
+							</ul>
+						</td>
+						<td class="itemtext">9,000원</td>
+						<td class="itemtext">1</td>
+						<td class="itemtext">9,000원</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="margin:20px">&nbsp;</div>
+		<div>
+			<table class="clstable" style="padding:25px">
+				<caption>주문자 정보 확인</caption>
+				<colgroup>
+					<col width="25%"><col width="41%"><col width="34%">
+				</colgroup>
+				<tr>
+					<td>이름&nbsp;<input type="text" name="name" style="width:100px; height:24px"></td>
+					<td>휴대전화 번호&nbsp;<input type="tel" name="hp" style="height:24px"></td>
+					<td>&nbsp;</td>
+				</tr>
+			</table>
+			<div class="itemexp" style="width:1000px; text-align:left; padding:5px;">
+				* 구매하신 기프트콘은 주문자 정보에 입력된 휴대전화 번호로 MMS로 발송됩니다. 입력된 휴대전화 번호가 맞는지 꼭 확인하세요.
+			</div>
+		</div>
+		<div style="margin:20px">&nbsp;</div>
+		<div>
+			<table class="clstable" style="padding:25px">
+				<caption>결제수단 선택</caption>
+				<tr>
+					<td>
+						<label><input type="radio" name="howpay" checked>신용카드</label>
+						<label><input type="radio" name="howpay">휴대폰결제</label>
+						<label><input type="radio" name="howpay">무통장입금</label>
+					</td>
+				</tr>
+			</table>
+			<div style="margin:10px">&nbsp;</div>
+		</div>
+		
+		<div>
+			<input type="submit" name="pay" value="결제하기">
+		</div>
+		<div style="margin:10px">&nbsp;</div>
+	</div>
+	
+</body>
+</html>
+
+
+

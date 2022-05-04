@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#title{margin-top:30px; width:1000px; text-align:left; font-size:24px;}
+	a{color:black; text-decoration:none;}
+	table{border-collapse:collapse; width:1000px;}
+	#ch{background-color:#C3C3C3;opacity:0.8;}
+	.chmenu:hover{background-color:#F6F6F6;opacity:0.8;}
+	caption{text-align:left; font-size:18px; padding-bottom:5px;}
+	.hp{height:25px;width:50px;}
+	.idn{height:25px;width:100px;}
+	input[type=text]{height:25px;}
+	.line{border-bottom:1px solid #EAEAEA;height:50px;}
+	.sub{width:97%;}
+	.subbtn{width:150px; height:50px; margin:10px; font-size:20px;}
+	.itemright{text-align:right;}
+	select{height:25px;}
+	
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<div align="center">
+		<div id="title"><strong>고객센터</strong></div>
+		<div style="margin:15px">&nbsp;</div>
+		<div>
+			<table style="height:50px; border-bottom:1px dashed gray; font-size:20px;">
+				<colgroup>
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+					<col width="20%">
+				</colgroup>
+				<tr>
+					<th class="chmenu"><a href="news.html">공지사항</a></th>
+					<th class="chmenu"><a href="faq.html">FAQ</a></th>
+					<th class="chmenu"><a href="one.html">1:1 문의</a></th>
+					<th class="chmenu" id="ch"><a href="crow.html">단체 및 대관문의</a></th>
+					<th class="chmenu"><a href="lost.html">분실물 문의</a></th>
+				</tr>
+			</table>
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+		
+		<div>
+			<form>
+				<table>
+					<colgroup>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
+					</colgroup>
+					<tr class="line">
+						<td>영화관선택</td>
+						<td>
+							<select title="검색조건 지역 선택">
+								<option value="" selected="">지역</option>
+								<option value="0001">서울</option>
+								<option value="0002">경기/인천</option>
+								<option value="0003">충청/대전</option>
+								<option value="0004">전라/광주</option>
+								<option value="0005">경북/대구</option>
+								<option value="0101">경남/부산/울산</option>
+								<option value="0006">강원</option>
+								<option value="0007">제주</option>
+							</select>
+							<select title="검색조건 영화관명 선택">
+								<option value="" selected="">영화관명</option>
+							</select>
+						</td>
+						<td>관람할 영화</td>
+						<td>
+							<input class="sub" type="text" name="영화선택">
+						</td>
+					</tr>
+					<tr class="line">
+						<td>관람 희망일</td>
+						<td>
+							<input type="date" name="관람날짜">
+							<select title="시간 선택">
+								<option value="">시간 선택</option>    
+								<option value="6">6시 이전</option>
+								<option value="7">7시</option>    
+								<option value="8">8시</option>    
+								<option value="9">9시</option>    
+								<option value="10">10시</option>    
+								<option value="11">11시</option>    
+								<option value="12">12시</option>    
+								<option value="13">13시</option>
+								<option value="14">14시</option>
+								<option value="15">15시</option>
+								<option value="16">16시</option>
+								<option value="17">17시</option>
+								<option value="18">18시</option>    
+								<option value="19">19시</option>    
+								<option value="20">20시</option>    
+								<option value="21">21시</option>    
+								<option value="22">22시</option>    
+								<option value="23">23시</option>    
+								<option value="24">23시 이후</option>
+							</select>
+						</td>
+						<td>관람인원</td>
+						<td><input type="text" name="인원"></td>
+					</tr>
+					<tr style="border-bottom:1px solid #EAEAEA;">
+						<td valign="top" style="padding-top:10px;">내용</td>
+						<td style="padding-top:10px; padding-bottom:10px;" colspan="3">
+							<textarea class="sub" rows="8" name="content"></textarea>
+						</td>
+					</tr>
+					
+				</table>
+			</form>
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+		<div>
+			<table style="border-top:2px solid gray; padding:5px;">
+				<caption><strong>신청자 정보</strong></caption>
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tr class="line">
+					<td>이름</td><td colspan="3"><input class="idn" type="text" name="이름"></td>
+				</tr>
+				<tr class="line">
+					<td>연락처</td>
+					<td>
+						<select name="연락처0" style="height:30px; width:50px;">
+							<option>010</option>
+							<option>011</option>
+							<option>016</option>
+							<option>017</option>
+							<option>018</option>
+							<option>019</option>
+						</select>
+						<input class="hp" type="text" name="연락처1">&nbsp;<input class="hp" type="text" name="연락처2">
+					</td>
+					<td>이메일</td>
+					<td>
+						<input class="idn" type="text" name="이메일1">@<input type="text" name="이메일2">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="itemright" style="width:1000px;padding:5px;">
+			<p style="font-size:12px; color:#585858;">남겨주신 이메일 또는 연락처로 답변 드립니다. 정확하게 입력해주세요.</p>
+		</div>	
+		<div style="margin:15px; padding:10px;">
+			<input class="subbtn" type="reset" value="취소">
+			<input style="color:white; background-color:#4374D9;" class="subbtn" type="submit" value="등록">
+		</div>
+		<div style="margin:15px">&nbsp;</div>
+	</div>
+
+</body>
+</html>

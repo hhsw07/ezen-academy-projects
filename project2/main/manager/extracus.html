@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <style media="screen">
+      body{background-color:#f4f4f4;}
+      th{height: 50px;}
+      td{padding-left:10px;
+         padding-right:20px;}
+      .but{width: 100%; position: absolute; left: 125%; top: 120%; transform: translate(-50%, -50%);}
+      input[type=text]:focus{border: 5px solid yellow;}
+      .extra{width: 100%; position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%);}
+      html{padding-top:40px;}
+      input{width:100%; height:30px; padding-left: 5px;}
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<section class="extra">
+  <table border style="border-collapse:collapse; width:1680px; height:auto;">
+    <tr><th style="width:100px ;">제목</th><td style="width:1000px;"><input type="text" name="" value="" ></td></tr>
+    <tr><th>장르</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>등급</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>감독</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>출연</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>개봉일</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>영화정보</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>상영시간</th><td><input type="text" name="" value=""></td></tr>
+    <tr><th>영상</th><td><input type="file" name="" value=""></td></tr>
+    <tr><th>이미지</th><td><input type="file" name="" value=""></td></tr>
+
+
+    <div class="but">
+      <span style="padding-right:50px;"><input type="button" name="" value="취소" style="width:140px;height:50px;" onclick="self.close();"></span>
+      <input type="button" name="" value="저장 후 닫기" style="width:140px;height:50px;" onclick="self.close();">
+    </div>
+  </table>
+</section>
+  </body>
+</html>
